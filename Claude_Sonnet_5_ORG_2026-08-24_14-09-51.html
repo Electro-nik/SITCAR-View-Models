@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Sonnet 5</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Claude Sonnet 5</h1>
+<div class="muted">Anthropic Claude · Prompt: ORG · 2026-08-24T14:09:51</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>claude-sonnet-5</strong></div>
+<div class="metric"><span>Returned</span><strong>claude-sonnet-5</strong></div>
+<div class="metric"><span>Response ID</span><strong>msg_011CeMU7WGfoxshqAKTA7Rdq</strong></div>
+<div class="metric"><span>Context window</span><strong>1 000 000</strong></div>
+<div class="metric"><span>Max output</span><strong>128 000</strong></div>
+<div class="metric"><span>Latency</span><strong>89.571 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>2 495</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>6 379</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>2 649</strong></div>
+<div class="metric"><span>Total tokens</span><strong>8 874</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$2.000000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.004990</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.200000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$10.000000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.063790</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.068780</strong></div>
+</section>
+</div>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">ORG</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Профіль організації</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">limited</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">63</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Молода (з 2024 р.), швидкозростаюча компанія у сфері сонячної енергетики з чіткою ідентичністю продукту, але з тонкою управлінською структурою, критичною залежністю від власника та суперечливою моделлю монетизації.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Компанія «Солар Вест Буд» надала змістовні відповіді щодо продукту, клієнтів, ринку та фінансової динаміки, що дозволяє побудувати достатньо чіткий базовий портрет організації. Бізнес молодий (заснований у 2024 році), але вже демонструє стійке зростання доходу (понад 20% за рік) і прибутковість, працюючи по всій Україні у трьох клієнтських сегментах. Водночас управлінська модель повністю централізована на власнику (максимальний рівень залежності — 5 з 5), що є серйозним структурним ризиком для компанії з командою 11–50 осіб, яка прагне масштабування. Виявлено суперечність між заявленою моделлю монетизації «разовий продаж» та наявністю сервісного напрямку в переліку послуг — незрозуміло, чи генерує сервіс повторювану виручку. Стратегічні цілі поєднують короткостроковий операційний фокус (стабілізація грошового потоку, зростання частки інтернет-продажів) з амбітним 10-річним баченням (топ-5 інтегратор), однак логічний місток між цими горизонтами не описаний. Дані про організаційну структуру, розподіл виручки за сегментами та роль окремих партнерів (зокрема SPAR Україна) відсутні або неповні, що обмежує глибину подальшої діагностики. В цілому якість контексту достатня для базового профілю, але недостатня для впевнених висновків щодо організаційної зрілості та стійкості моделі.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Ідентичність та позиціонування</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чіткий опис продукту: проєктування, монтаж, сервіс, енергоаудит</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Визначені три сегменти клієнтів з описом їхньої проблеми</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає даних про конкурентну диференціацію</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Бізнес-модель та монетизація</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">50</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Вказано «разовий продаж» як спосіб заробітку</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Суперечність із заявленим сервісним напрямком</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає розбивки виручки за напрямками (товар/послуга/сегмент)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Організаційна структура та управління</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">35</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Рішення ухвалює виключно власник</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Залежність від власника оцінена на максимальному рівні (5/5)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає опису управлінських ролей, відділів, делегування</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Фінансовий стан та динаміка</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">75</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Оборот 0,5–2 млн $ США</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Зростання доходу понад 20% за рік</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Стійка прибутковість</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає даних про маржинальність за напрямками</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Стратегічні цілі та горизонт планування</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">55</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Сформульовано 3 цілі з термінами до 2026 та 2035 років</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Незрозумілий логічний зв&#x27;язок між короткостроковими і довгостроковою ціллю</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Ціль щодо інтернет-магазину виглядає як зміна фокусу бізнесу</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Партнерства та екосистема</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">45</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Назвіні партнери: SPAR Україна, Procarte (Польща), Prom.ua</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Роль SPAR Україна незрозуміла і потребує уточнення</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає опису рівня залежності від кожного партнера</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Управлінська видимість даних</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">70</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Регулярно доступні: продажі, грошовий потік, операційні KPI, прибуток/маржа</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Незрозуміло, хто крім власника має доступ і використовує ці дані</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чітке розуміння продукту, ринку та цільових сегментів клієнтів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Підтверджене швидке зростання доходу (&gt;20% за рік) при збереженні прибутковості</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Наявність базового набору управлінських метрик (продажі, грошовий потік, KPI, маржа)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Сформульовані стратегічні цілі з термінами та показниками успіху</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Диверсифікована клієнтська база (B2B, B2C, монтажники-партнери)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Повна централізація управлінських рішень на власникові при команді 11–50 осіб</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутність чіткої організаційної структури та розподілу ролей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Неузгодженість моделі монетизації (разовий продаж) із заявленим сервісним напрямком</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Брак оборотного капіталу як самостійно визнаний бар&#x27;єр для зростання</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Залежність від ключових співробітників у невеликій компанії</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Залежність від власника оцінена на максимальному рівні (5/5) при активному зростанні компанії</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Створює операційний бутилочне горло та ризик для масштабованості й безперервності бізнесу у разі відсутності власника</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Нестача оборотних коштів визначена як топ-2 проблема при заявленому зростанні понад 20%</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Швидке зростання без достатнього фінансування підвищує ризик касових розривів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Суперечність моделі монетизації: «разовий продаж» проти наявного сервісного напрямку</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Відсутність повторюваної виручки знижує передбачуваність грошового потоку та цінність бізнесу</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Партнер SPAR Україна (роздрібна мережа) не вписується логічно в ланцюжок постачання СЕС</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">low</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Незрозуміла залежність або можливості цього партнерства ускладнюють оцінку ризиків екосистеми</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">10-річне бачення (топ-5 інтегратор, власна енергетична платформа) сформульоване компанією віком менше 2 років без опису проміжних кроків</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Розрив між амбіцією і поточною організаційною зрілістю може свідчити про недостатньо реалістичне планування</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Модель монетизації «разовий продаж» не узгоджується з наявністю сервісного напрямку (сервісне обслуговування) в переліку послуг</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Максимальна залежність від власника (5/5) суперечить наявності відділу продажів та команди 11–50 осіб, що зазвичай передбачає часткове делегування</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Ціль щодо зростання частки інтернет-магазину до 30% обороту виглядає як зсув фокусу від EPC-послуг до роздрібної торгівлі, що не узгоджено з ціллю стати «топ-5 інтегратором сонячних рішень»</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутній опис організаційної структури, посад та управлінських ролей окрім власника</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає розбивки виручки за сегментами клієнтів (B2B/B2C/дилери) або товар/послуга</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Відсутні дані про маржинальність за напрямками діяльності</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Незрозуміла роль та характер партнерства з SPAR Україна</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Стратегія згадана як доступний матеріал, але не завантажена для аналізу</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити план часткового делегування операційних рішень (найм або визначення керівників напрямків)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Максимальна залежність від власника є критичним ризиком масштабування</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зниження операційного ризику та підготовка компанії до зростання без вузького місця у прийнятті рішень</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Формалізувати та розширити модель повторюваної виручки (сервісні контракти, моніторинг, гарантійне обслуговування)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Поточна модель «разовий продаж» не відповідає заявленому сервісному напрямку і створює нестабільність грошового потоку</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення передбачуваності доходу та маржинальності</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Комерційний керівник / власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Підготувати розбивку виручки та маржі за сегментами клієнтів і напрямками (товар/послуга)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Без цих даних неможливо оцінити реальну структуру бізнесу та пріоритезувати ресурси</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">База для точніших стратегічних рішень щодо цілей 2026</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий/операційний менеджер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Уточнити та задокументувати роль і рівень залежності від ключових партнерів (зокрема SPAR Україна, Procarte)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Незрозумілі партнерські зв&#x27;язки ускладнюють оцінку ризиків ланцюга постачання</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Чітка карта критичних залежностей для управління ризиками</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Завантажити наявний документ стратегії до системи для подальшого аналізу</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Документ уже згаданий як доступний, але не використаний, що знижує впевненість поточної діагностики</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення точності та глибини подальших модулів аналізу</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Ваша компанія показує сильне зростання та фінансову стійкість, але управлінська модель повністю тримається на вас особисто — це головний ризик на етапі масштабування. Також виявлено нестиковку між моделлю продажів (разові угоди) та сервісним напрямком бізнесу, а також брак чіткості щодо організаційної структури й ролі окремих партнерів. Рекомендуємо найближчим часом зосередитися на делегуванні рішень, уточненні моделі доходів та наданні додаткових даних (структура, сегментація виручки, стратегія) для глибшої діагностики.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;limited&quot;,
+&quot;score&quot;: 63,
+&quot;confidence&quot;: 60,
+&quot;headline&quot;: &quot;Молода (з 2024 р.), швидкозростаюча компанія у сфері сонячної енергетики з чіткою ідентичністю продукту, але з тонкою управлінською структурою, критичною залежністю від власника та суперечливою моделлю монетизації.&quot;,
+&quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» надала змістовні відповіді щодо продукту, клієнтів, ринку та фінансової динаміки, що дозволяє побудувати достатньо чіткий базовий портрет організації. Бізнес молодий (заснований у 2024 році), але вже демонструє стійке зростання доходу (понад 20% за рік) і прибутковість, працюючи по всій Україні у трьох клієнтських сегментах. Водночас управлінська модель повністю централізована на власнику (максимальний рівень залежності — 5 з 5), що є серйозним структурним ризиком для компанії з командою 11–50 осіб, яка прагне масштабування. Виявлено суперечність між заявленою моделлю монетизації «разовий продаж» та наявністю сервісного напрямку в переліку послуг — незрозуміло, чи генерує сервіс повторювану виручку. Стратегічні цілі поєднують короткостроковий операційний фокус (стабілізація грошового потоку, зростання частки інтернет-продажів) з амбітним 10-річним баченням (топ-5 інтегратор), однак логічний місток між цими горизонтами не описаний. Дані про організаційну структуру, розподіл виручки за сегментами та роль окремих партнерів (зокрема SPAR Україна) відсутні або неповні, що обмежує глибину подальшої діагностики. В цілому якість контексту достатня для базового профілю, але недостатня для впевнених висновків щодо організаційної зрілості та стійкості моделі.&quot;,
+&quot;dimension_scores&quot;: [
+{&quot;dimension&quot;: &quot;Ідентичність та позиціонування&quot;, &quot;score&quot;: 80, &quot;evidence&quot;: [&quot;Чіткий опис продукту: проєктування, монтаж, сервіс, енергоаудит&quot;, &quot;Визначені три сегменти клієнтів з описом їхньої проблеми&quot;], &quot;gaps&quot;: [&quot;Немає даних про конкурентну диференціацію&quot;]},
+{&quot;dimension&quot;: &quot;Бізнес-модель та монетизація&quot;, &quot;score&quot;: 50, &quot;evidence&quot;: [&quot;Вказано «разовий продаж» як спосіб заробітку&quot;], &quot;gaps&quot;: [&quot;Суперечність із заявленим сервісним напрямком&quot;, &quot;Немає розбивки виручки за напрямками (товар/послуга/сегмент)&quot;]},
+{&quot;dimension&quot;: &quot;Організаційна структура та управління&quot;, &quot;score&quot;: 35, &quot;evidence&quot;: [&quot;Рішення ухвалює виключно власник&quot;, &quot;Залежність від власника оцінена на максимальному рівні (5/5)&quot;], &quot;gaps&quot;: [&quot;Немає опису управлінських ролей, відділів, делегування&quot;]},
+{&quot;dimension&quot;: &quot;Фінансовий стан та динаміка&quot;, &quot;score&quot;: 75, &quot;evidence&quot;: [&quot;Оборот 0,5–2 млн $ США&quot;, &quot;Зростання доходу понад 20% за рік&quot;, &quot;Стійка прибутковість&quot;], &quot;gaps&quot;: [&quot;Немає даних про маржинальність за напрямками&quot;]},
+{&quot;dimension&quot;: &quot;Стратегічні цілі та горизонт планування&quot;, &quot;score&quot;: 55, &quot;evidence&quot;: [&quot;Сформульовано 3 цілі з термінами до 2026 та 2035 років&quot;], &quot;gaps&quot;: [&quot;Незрозумілий логічний зв&#x27;язок між короткостроковими і довгостроковою ціллю&quot;, &quot;Ціль щодо інтернет-магазину виглядає як зміна фокусу бізнесу&quot;]},
+{&quot;dimension&quot;: &quot;Партнерства та екосистема&quot;, &quot;score&quot;: 45, &quot;evidence&quot;: [&quot;Назвіні партнери: SPAR Україна, Procarte (Польща), Prom.ua&quot;], &quot;gaps&quot;: [&quot;Роль SPAR Україна незрозуміла і потребує уточнення&quot;, &quot;Немає опису рівня залежності від кожного партнера&quot;]},
+{&quot;dimension&quot;: &quot;Управлінська видимість даних&quot;, &quot;score&quot;: 70, &quot;evidence&quot;: [&quot;Регулярно доступні: продажі, грошовий потік, операційні KPI, прибуток/маржа&quot;], &quot;gaps&quot;: [&quot;Незрозуміло, хто крім власника має доступ і використовує ці дані&quot;]}
+],
+&quot;strengths&quot;: [
+&quot;Чітке розуміння продукту, ринку та цільових сегментів клієнтів&quot;,
+&quot;Підтверджене швидке зростання доходу (&gt;20% за рік) при збереженні прибутковості&quot;,
+&quot;Наявність базового набору управлінських метрик (продажі, грошовий потік, KPI, маржа)&quot;,
+&quot;Сформульовані стратегічні цілі з термінами та показниками успіху&quot;,
+&quot;Диверсифікована клієнтська база (B2B, B2C, монтажники-партнери)&quot;
+],
+&quot;weaknesses&quot;: [
+&quot;Повна централізація управлінських рішень на власникові при команді 11–50 осіб&quot;,
+&quot;Відсутність чіткої організаційної структури та розподілу ролей&quot;,
+&quot;Неузгодженість моделі монетизації (разовий продаж) із заявленим сервісним напрямком&quot;,
+&quot;Брак оборотного капіталу як самостійно визнаний бар&#x27;єр для зростання&quot;,
+&quot;Залежність від ключових співробітників у невеликій компанії&quot;
+],
+&quot;red_flags&quot;: [
+{&quot;signal&quot;: &quot;Залежність від власника оцінена на максимальному рівні (5/5) при активному зростанні компанії&quot;, &quot;severity&quot;: &quot;high&quot;, &quot;why_it_matters&quot;: &quot;Створює операційний бутилочне горло та ризик для масштабованості й безперервності бізнесу у разі відсутності власника&quot;},
+{&quot;signal&quot;: &quot;Нестача оборотних коштів визначена як топ-2 проблема при заявленому зростанні понад 20%&quot;, &quot;severity&quot;: &quot;high&quot;, &quot;why_it_matters&quot;: &quot;Швидке зростання без достатнього фінансування підвищує ризик касових розривів&quot;},
+{&quot;signal&quot;: &quot;Суперечність моделі монетизації: «разовий продаж» проти наявного сервісного напрямку&quot;, &quot;severity&quot;: &quot;medium&quot;, &quot;why_it_matters&quot;: &quot;Відсутність повторюваної виручки знижує передбачуваність грошового потоку та цінність бізнесу&quot;},
+{&quot;signal&quot;: &quot;Партнер SPAR Україна (роздрібна мережа) не вписується логічно в ланцюжок постачання СЕС&quot;, &quot;severity&quot;: &quot;low&quot;, &quot;why_it_matters&quot;: &quot;Незрозуміла залежність або можливості цього партнерства ускладнюють оцінку ризиків екосистеми&quot;},
+{&quot;signal&quot;: &quot;10-річне бачення (топ-5 інтегратор, власна енергетична платформа) сформульоване компанією віком менше 2 років без опису проміжних кроків&quot;, &quot;severity&quot;: &quot;medium&quot;, &quot;why_it_matters&quot;: &quot;Розрив між амбіцією і поточною організаційною зрілістю може свідчити про недостатньо реалістичне планування&quot;}
+],
+&quot;contradictions&quot;: [
+&quot;Модель монетизації «разовий продаж» не узгоджується з наявністю сервісного напрямку (сервісне обслуговування) в переліку послуг&quot;,
+&quot;Максимальна залежність від власника (5/5) суперечить наявності відділу продажів та команди 11–50 осіб, що зазвичай передбачає часткове делегування&quot;,
+&quot;Ціль щодо зростання частки інтернет-магазину до 30% обороту виглядає як зсув фокусу від EPC-послуг до роздрібної торгівлі, що не узгоджено з ціллю стати «топ-5 інтегратором сонячних рішень»&quot;
+],
+&quot;data_gaps&quot;: [
+&quot;Відсутній опис організаційної структури, посад та управлінських ролей окрім власника&quot;,
+&quot;Немає розбивки виручки за сегментами клієнтів (B2B/B2C/дилери) або товар/послуга&quot;,
+&quot;Відсутні дані про маржинальність за напрямками діяльності&quot;,
+&quot;Незрозуміла роль та характер партнерства з SPAR Україна&quot;,
+&quot;Стратегія згадана як доступний матеріал, але не завантажена для аналізу&quot;
+],
+&quot;recommendations&quot;: [
+{&quot;action&quot;: &quot;Розробити план часткового делегування операційних рішень (найм або визначення керівників напрямків)&quot;, &quot;why&quot;: &quot;Максимальна залежність від власника є критичним ризиком масштабування&quot;, &quot;expected_result&quot;: &quot;Зниження операційного ризику та підготовка компанії до зростання без вузького місця у прийнятті рішень&quot;, &quot;owner_role&quot;: &quot;Власник&quot;, &quot;deadline&quot;: &quot;90 днів&quot;},
+{&quot;action&quot;: &quot;Формалізувати та розширити модель повторюваної виручки (сервісні контракти, моніторинг, гарантійне обслуговування)&quot;, &quot;why&quot;: &quot;Поточна модель «разовий продаж» не відповідає заявленому сервісному напрямку і створює нестабільність грошового потоку&quot;, &quot;expected_result&quot;: &quot;Підвищення передбачуваності доходу та маржинальності&quot;, &quot;owner_role&quot;: &quot;Комерційний керівник / власник&quot;, &quot;deadline&quot;: &quot;90 днів&quot;},
+{&quot;action&quot;: &quot;Підготувати розбивку виручки та маржі за сегментами клієнтів і напрямками (товар/послуга)&quot;, &quot;why&quot;: &quot;Без цих даних неможливо оцінити реальну структуру бізнесу та пріоритезувати ресурси&quot;, &quot;expected_result&quot;: &quot;База для точніших стратегічних рішень щодо цілей 2026&quot;, &quot;owner_role&quot;: &quot;Фінансовий/операційний менеджер&quot;, &quot;deadline&quot;: &quot;30 днів&quot;},
+{&quot;action&quot;: &quot;Уточнити та задокументувати роль і рівень залежності від ключових партнерів (зокрема SPAR Україна, Procarte)&quot;, &quot;why&quot;: &quot;Незрозумілі партнерські зв&#x27;язки ускладнюють оцінку ризиків ланцюга постачання&quot;, &quot;expected_result&quot;: &quot;Чітка карта критичних залежностей для управління ризиками&quot;, &quot;owner_role&quot;: &quot;Власник&quot;, &quot;deadline&quot;: &quot;30 днів&quot;},
+{&quot;action&quot;: &quot;Завантажити наявний документ стратегії до системи для подальшого аналізу&quot;, &quot;why&quot;: &quot;Документ уже згаданий як доступний, але не використаний, що знижує впевненість поточної діагностики&quot;, &quot;expected_result&quot;: &quot;Підвищення точності та глибини подальших модулів аналізу&quot;, &quot;owner_role&quot;: &quot;Власник&quot;, &quot;deadline&quot;: &quot;7 днів&quot;}
+],
+&quot;manager_summary&quot;: &quot;Ваша компанія показує сильне зростання та фінансову стійкість, але управлінська модель повністю тримається на вас особисто — це головний ризик на етапі масштабування. Також виявлено нестиковку між моделлю продажів (разові угоди) та сервісним напрямком бізнесу, а також брак чіткості щодо організаційної структури й ролі окремих партнерів. Рекомендуємо найближчим часом зосередитися на делегуванні рішень, уточненні моделі доходів та наданні додаткових даних (структура, сегментація виручки, стратегія) для глибшої діагностики.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 63,
+  &quot;confidence&quot;: 60,
+  &quot;headline&quot;: &quot;Молода (з 2024 р.), швидкозростаюча компанія у сфері сонячної енергетики з чіткою ідентичністю продукту, але з тонкою управлінською структурою, критичною залежністю від власника та суперечливою моделлю монетизації.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» надала змістовні відповіді щодо продукту, клієнтів, ринку та фінансової динаміки, що дозволяє побудувати достатньо чіткий базовий портрет організації. Бізнес молодий (заснований у 2024 році), але вже демонструє стійке зростання доходу (понад 20% за рік) і прибутковість, працюючи по всій Україні у трьох клієнтських сегментах. Водночас управлінська модель повністю централізована на власнику (максимальний рівень залежності — 5 з 5), що є серйозним структурним ризиком для компанії з командою 11–50 осіб, яка прагне масштабування. Виявлено суперечність між заявленою моделлю монетизації «разовий продаж» та наявністю сервісного напрямку в переліку послуг — незрозуміло, чи генерує сервіс повторювану виручку. Стратегічні цілі поєднують короткостроковий операційний фокус (стабілізація грошового потоку, зростання частки інтернет-продажів) з амбітним 10-річним баченням (топ-5 інтегратор), однак логічний місток між цими горизонтами не описаний. Дані про організаційну структуру, розподіл виручки за сегментами та роль окремих партнерів (зокрема SPAR Україна) відсутні або неповні, що обмежує глибину подальшої діагностики. В цілому якість контексту достатня для базового профілю, але недостатня для впевнених висновків щодо організаційної зрілості та стійкості моделі.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентичність та позиціонування&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Чіткий опис продукту: проєктування, монтаж, сервіс, енергоаудит&quot;,
+        &quot;Визначені три сегменти клієнтів з описом їхньої проблеми&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає даних про конкурентну диференціацію&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Бізнес-модель та монетизація&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Вказано «разовий продаж» як спосіб заробітку&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Суперечність із заявленим сервісним напрямком&quot;,
+        &quot;Немає розбивки виручки за напрямками (товар/послуга/сегмент)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та управління&quot;,
+      &quot;score&quot;: 35,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалює виключно власник&quot;,
+        &quot;Залежність від власника оцінена на максимальному рівні (5/5)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає опису управлінських ролей, відділів, делегування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансовий стан та динаміка&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Оборот 0,5–2 млн $ США&quot;,
+        &quot;Зростання доходу понад 20% за рік&quot;,
+        &quot;Стійка прибутковість&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає даних про маржинальність за напрямками&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічні цілі та горизонт планування&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Сформульовано 3 цілі з термінами до 2026 та 2035 років&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Незрозумілий логічний зв&#x27;язок між короткостроковими і довгостроковою ціллю&quot;,
+        &quot;Ціль щодо інтернет-магазину виглядає як зміна фокусу бізнесу&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Партнерства та екосистема&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Назвіні партнери: SPAR Україна, Procarte (Польща), Prom.ua&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Роль SPAR Україна незрозуміла і потребує уточнення&quot;,
+        &quot;Немає опису рівня залежності від кожного партнера&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управлінська видимість даних&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Регулярно доступні: продажі, грошовий потік, операційні KPI, прибуток/маржа&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Незрозуміло, хто крім власника має доступ і використовує ці дані&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Чітке розуміння продукту, ринку та цільових сегментів клієнтів&quot;,
+    &quot;Підтверджене швидке зростання доходу (&gt;20% за рік) при збереженні прибутковості&quot;,
+    &quot;Наявність базового набору управлінських метрик (продажі, грошовий потік, KPI, маржа)&quot;,
+    &quot;Сформульовані стратегічні цілі з термінами та показниками успіху&quot;,
+    &quot;Диверсифікована клієнтська база (B2B, B2C, монтажники-партнери)&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Повна централізація управлінських рішень на власникові при команді 11–50 осіб&quot;,
+    &quot;Відсутність чіткої організаційної структури та розподілу ролей&quot;,
+    &quot;Неузгодженість моделі монетизації (разовий продаж) із заявленим сервісним напрямком&quot;,
+    &quot;Брак оборотного капіталу як самостійно визнаний бар&#x27;єр для зростання&quot;,
+    &quot;Залежність від ключових співробітників у невеликій компанії&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Залежність від власника оцінена на максимальному рівні (5/5) при активному зростанні компанії&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює операційний бутилочне горло та ризик для масштабованості й безперервності бізнесу у разі відсутності власника&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача оборотних коштів визначена як топ-2 проблема при заявленому зростанні понад 20%&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Швидке зростання без достатнього фінансування підвищує ризик касових розривів&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Суперечність моделі монетизації: «разовий продаж» проти наявного сервісного напрямку&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Відсутність повторюваної виручки знижує передбачуваність грошового потоку та цінність бізнесу&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Партнер SPAR Україна (роздрібна мережа) не вписується логічно в ланцюжок постачання СЕС&quot;,
+      &quot;severity&quot;: &quot;low&quot;,
+      &quot;why_it_matters&quot;: &quot;Незрозуміла залежність або можливості цього партнерства ускладнюють оцінку ризиків екосистеми&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;10-річне бачення (топ-5 інтегратор, власна енергетична платформа) сформульоване компанією віком менше 2 років без опису проміжних кроків&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Розрив між амбіцією і поточною організаційною зрілістю може свідчити про недостатньо реалістичне планування&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Модель монетизації «разовий продаж» не узгоджується з наявністю сервісного напрямку (сервісне обслуговування) в переліку послуг&quot;,
+    &quot;Максимальна залежність від власника (5/5) суперечить наявності відділу продажів та команди 11–50 осіб, що зазвичай передбачає часткове делегування&quot;,
+    &quot;Ціль щодо зростання частки інтернет-магазину до 30% обороту виглядає як зсув фокусу від EPC-послуг до роздрібної торгівлі, що не узгоджено з ціллю стати «топ-5 інтегратором сонячних рішень»&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутній опис організаційної структури, посад та управлінських ролей окрім власника&quot;,
+    &quot;Немає розбивки виручки за сегментами клієнтів (B2B/B2C/дилери) або товар/послуга&quot;,
+    &quot;Відсутні дані про маржинальність за напрямками діяльності&quot;,
+    &quot;Незрозуміла роль та характер партнерства з SPAR Україна&quot;,
+    &quot;Стратегія згадана як доступний матеріал, але не завантажена для аналізу&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити план часткового делегування операційних рішень (найм або визначення керівників напрямків)&quot;,
+      &quot;why&quot;: &quot;Максимальна залежність від власника є критичним ризиком масштабування&quot;,
+      &quot;expected_result&quot;: &quot;Зниження операційного ризику та підготовка компанії до зростання без вузького місця у прийнятті рішень&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Формалізувати та розширити модель повторюваної виручки (сервісні контракти, моніторинг, гарантійне обслуговування)&quot;,
+      &quot;why&quot;: &quot;Поточна модель «разовий продаж» не відповідає заявленому сервісному напрямку і створює нестабільність грошового потоку&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення передбачуваності доходу та маржинальності&quot;,
+      &quot;owner_role&quot;: &quot;Комерційний керівник / власник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Підготувати розбивку виручки та маржі за сегментами клієнтів і напрямками (товар/послуга)&quot;,
+      &quot;why&quot;: &quot;Без цих даних неможливо оцінити реальну структуру бізнесу та пріоритезувати ресурси&quot;,
+      &quot;expected_result&quot;: &quot;База для точніших стратегічних рішень щодо цілей 2026&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий/операційний менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Уточнити та задокументувати роль і рівень залежності від ключових партнерів (зокрема SPAR Україна, Procarte)&quot;,
+      &quot;why&quot;: &quot;Незрозумілі партнерські зв&#x27;язки ускладнюють оцінку ризиків ланцюга постачання&quot;,
+      &quot;expected_result&quot;: &quot;Чітка карта критичних залежностей для управління ризиками&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Завантажити наявний документ стратегії до системи для подальшого аналізу&quot;,
+      &quot;why&quot;: &quot;Документ уже згаданий як доступний, але не використаний, що знижує впевненість поточної діагностики&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення точності та глибини подальших модулів аналізу&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Ваша компанія показує сильне зростання та фінансову стійкість, але управлінська модель повністю тримається на вас особисто — це головний ризик на етапі масштабування. Також виявлено нестиковку між моделлю продажів (разові угоди) та сервісним напрямком бізнесу, а також брак чіткості щодо організаційної структури й ролі окремих партнерів. Рекомендуємо найближчим часом зосередитися на делегуванні рішень, уточненні моделі доходів та наданні додаткових даних (структура, сегментація виручки, стратегія) для глибшої діагностики.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_creation&quot;: {
+    &quot;ephemeral_1h_input_tokens&quot;: 0,
+    &quot;ephemeral_5m_input_tokens&quot;: 0
+  },
+  &quot;cache_creation_input_tokens&quot;: 0,
+  &quot;cache_read_input_tokens&quot;: 0,
+  &quot;inference_geo&quot;: &quot;global&quot;,
+  &quot;input_tokens&quot;: 2495,
+  &quot;output_tokens&quot;: 6379,
+  &quot;output_tokens_details&quot;: {
+    &quot;thinking_tokens&quot;: 2649
+  },
+  &quot;server_tool_use&quot;: null,
+  &quot;service_tier&quot;: &quot;standard&quot;
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;msg_011CeMU7WGfoxshqAKTA7Rdq&quot;,
+  &quot;container&quot;: null,
+  &quot;content&quot;: [
+    {
+      &quot;signature&quot;: &quot;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&quot;,
+      &quot;thinking&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;thinking&quot;
+    },
+    {
+      &quot;citations&quot;: null,
+      &quot;text&quot;: &quot;```json\n{\n\&quot;module_code\&quot;: \&quot;ORG\&quot;,\n\&quot;module_name\&quot;: \&quot;Профіль організації\&quot;,\n\&quot;analysis_status\&quot;: \&quot;limited\&quot;,\n\&quot;score\&quot;: 63,\n\&quot;confidence\&quot;: 60,\n\&quot;headline\&quot;: \&quot;Молода (з 2024 р.), швидкозростаюча компанія у сфері сонячної енергетики з чіткою ідентичністю продукту, але з тонкою управлінською структурою, критичною залежністю від власника та суперечливою моделлю монетизації.\&quot;,\n\&quot;diagnosis\&quot;: \&quot;Компанія «Солар Вест Буд» надала змістовні відповіді щодо продукту, клієнтів, ринку та фінансової динаміки, що дозволяє побудувати достатньо чіткий базовий портрет організації. Бізнес молодий (заснований у 2024 році), але вже демонструє стійке зростання доходу (понад 20% за рік) і прибутковість, працюючи по всій Україні у трьох клієнтських сегментах. Водночас управлінська модель повністю централізована на власнику (максимальний рівень залежності — 5 з 5), що є серйозним структурним ризиком для компанії з командою 11–50 осіб, яка прагне масштабування. Виявлено суперечність між заявленою моделлю монетизації «разовий продаж» та наявністю сервісного напрямку в переліку послуг — незрозуміло, чи генерує сервіс повторювану виручку. Стратегічні цілі поєднують короткостроковий операційний фокус (стабілізація грошового потоку, зростання частки інтернет-продажів) з амбітним 10-річним баченням (топ-5 інтегратор), однак логічний місток між цими горизонтами не описаний. Дані про організаційну структуру, розподіл виручки за сегментами та роль окремих партнерів (зокрема SPAR Україна) відсутні або неповні, що обмежує глибину подальшої діагностики. В цілому якість контексту достатня для базового профілю, але недостатня для впевнених висновків щодо організаційної зрілості та стійкості моделі.\&quot;,\n\&quot;dimension_scores\&quot;: [\n{\&quot;dimension\&quot;: \&quot;Ідентичність та позиціонування\&quot;, \&quot;score\&quot;: 80, \&quot;evidence\&quot;: [\&quot;Чіткий опис продукту: проєктування, монтаж, сервіс, енергоаудит\&quot;, \&quot;Визначені три сегменти клієнтів з описом їхньої проблеми\&quot;], \&quot;gaps\&quot;: [\&quot;Немає даних про конкурентну диференціацію\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Бізнес-модель та монетизація\&quot;, \&quot;score\&quot;: 50, \&quot;evidence\&quot;: [\&quot;Вказано «разовий продаж» як спосіб заробітку\&quot;], \&quot;gaps\&quot;: [\&quot;Суперечність із заявленим сервісним напрямком\&quot;, \&quot;Немає розбивки виручки за напрямками (товар/послуга/сегмент)\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Організаційна структура та управління\&quot;, \&quot;score\&quot;: 35, \&quot;evidence\&quot;: [\&quot;Рішення ухвалює виключно власник\&quot;, \&quot;Залежність від власника оцінена на максимальному рівні (5/5)\&quot;], \&quot;gaps\&quot;: [\&quot;Немає опису управлінських ролей, відділів, делегування\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Фінансовий стан та динаміка\&quot;, \&quot;score\&quot;: 75, \&quot;evidence\&quot;: [\&quot;Оборот 0,5–2 млн $ США\&quot;, \&quot;Зростання доходу понад 20% за рік\&quot;, \&quot;Стійка прибутковість\&quot;], \&quot;gaps\&quot;: [\&quot;Немає даних про маржинальність за напрямками\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Стратегічні цілі та горизонт планування\&quot;, \&quot;score\&quot;: 55, \&quot;evidence\&quot;: [\&quot;Сформульовано 3 цілі з термінами до 2026 та 2035 років\&quot;], \&quot;gaps\&quot;: [\&quot;Незрозумілий логічний зв&#x27;язок між короткостроковими і довгостроковою ціллю\&quot;, \&quot;Ціль щодо інтернет-магазину виглядає як зміна фокусу бізнесу\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Партнерства та екосистема\&quot;, \&quot;score\&quot;: 45, \&quot;evidence\&quot;: [\&quot;Назвіні партнери: SPAR Україна, Procarte (Польща), Prom.ua\&quot;], \&quot;gaps\&quot;: [\&quot;Роль SPAR Україна незрозуміла і потребує уточнення\&quot;, \&quot;Немає опису рівня залежності від кожного партнера\&quot;]},\n{\&quot;dimension\&quot;: \&quot;Управлінська видимість даних\&quot;, \&quot;score\&quot;: 70, \&quot;evidence\&quot;: [\&quot;Регулярно доступні: продажі, грошовий потік, операційні KPI, прибуток/маржа\&quot;], \&quot;gaps\&quot;: [\&quot;Незрозуміло, хто крім власника має доступ і використовує ці дані\&quot;]}\n],\n\&quot;strengths\&quot;: [\n\&quot;Чітке розуміння продукту, ринку та цільових сегментів клієнтів\&quot;,\n\&quot;Підтверджене швидке зростання доходу (&gt;20% за рік) при збереженні прибутковості\&quot;,\n\&quot;Наявність базового набору управлінських метрик (продажі, грошовий потік, KPI, маржа)\&quot;,\n\&quot;Сформульовані стратегічні цілі з термінами та показниками успіху\&quot;,\n\&quot;Диверсифікована клієнтська база (B2B, B2C, монтажники-партнери)\&quot;\n],\n\&quot;weaknesses\&quot;: [\n\&quot;Повна централізація управлінських рішень на власникові при команді 11–50 осіб\&quot;,\n\&quot;Відсутність чіткої організаційної структури та розподілу ролей\&quot;,\n\&quot;Неузгодженість моделі монетизації (разовий продаж) із заявленим сервісним напрямком\&quot;,\n\&quot;Брак оборотного капіталу як самостійно визнаний бар&#x27;єр для зростання\&quot;,\n\&quot;Залежність від ключових співробітників у невеликій компанії\&quot;\n],\n\&quot;red_flags\&quot;: [\n{\&quot;signal\&quot;: \&quot;Залежність від власника оцінена на максимальному рівні (5/5) при активному зростанні компанії\&quot;, \&quot;severity\&quot;: \&quot;high\&quot;, \&quot;why_it_matters\&quot;: \&quot;Створює операційний бутилочне горло та ризик для масштабованості й безперервності бізнесу у разі відсутності власника\&quot;},\n{\&quot;signal\&quot;: \&quot;Нестача оборотних коштів визначена як топ-2 проблема при заявленому зростанні понад 20%\&quot;, \&quot;severity\&quot;: \&quot;high\&quot;, \&quot;why_it_matters\&quot;: \&quot;Швидке зростання без достатнього фінансування підвищує ризик касових розривів\&quot;},\n{\&quot;signal\&quot;: \&quot;Суперечність моделі монетизації: «разовий продаж» проти наявного сервісного напрямку\&quot;, \&quot;severity\&quot;: \&quot;medium\&quot;, \&quot;why_it_matters\&quot;: \&quot;Відсутність повторюваної виручки знижує передбачуваність грошового потоку та цінність бізнесу\&quot;},\n{\&quot;signal\&quot;: \&quot;Партнер SPAR Україна (роздрібна мережа) не вписується логічно в ланцюжок постачання СЕС\&quot;, \&quot;severity\&quot;: \&quot;low\&quot;, \&quot;why_it_matters\&quot;: \&quot;Незрозуміла залежність або можливості цього партнерства ускладнюють оцінку ризиків екосистеми\&quot;},\n{\&quot;signal\&quot;: \&quot;10-річне бачення (топ-5 інтегратор, власна енергетична платформа) сформульоване компанією віком менше 2 років без опису проміжних кроків\&quot;, \&quot;severity\&quot;: \&quot;medium\&quot;, \&quot;why_it_matters\&quot;: \&quot;Розрив між амбіцією і поточною організаційною зрілістю може свідчити про недостатньо реалістичне планування\&quot;}\n],\n\&quot;contradictions\&quot;: [\n\&quot;Модель монетизації «разовий продаж» не узгоджується з наявністю сервісного напрямку (сервісне обслуговування) в переліку послуг\&quot;,\n\&quot;Максимальна залежність від власника (5/5) суперечить наявності відділу продажів та команди 11–50 осіб, що зазвичай передбачає часткове делегування\&quot;,\n\&quot;Ціль щодо зростання частки інтернет-магазину до 30% обороту виглядає як зсув фокусу від EPC-послуг до роздрібної торгівлі, що не узгоджено з ціллю стати «топ-5 інтегратором сонячних рішень»\&quot;\n],\n\&quot;data_gaps\&quot;: [\n\&quot;Відсутній опис організаційної структури, посад та управлінських ролей окрім власника\&quot;,\n\&quot;Немає розбивки виручки за сегментами клієнтів (B2B/B2C/дилери) або товар/послуга\&quot;,\n\&quot;Відсутні дані про маржинальність за напрямками діяльності\&quot;,\n\&quot;Незрозуміла роль та характер партнерства з SPAR Україна\&quot;,\n\&quot;Стратегія згадана як доступний матеріал, але не завантажена для аналізу\&quot;\n],\n\&quot;recommendations\&quot;: [\n{\&quot;action\&quot;: \&quot;Розробити план часткового делегування операційних рішень (найм або визначення керівників напрямків)\&quot;, \&quot;why\&quot;: \&quot;Максимальна залежність від власника є критичним ризиком масштабування\&quot;, \&quot;expected_result\&quot;: \&quot;Зниження операційного ризику та підготовка компанії до зростання без вузького місця у прийнятті рішень\&quot;, \&quot;owner_role\&quot;: \&quot;Власник\&quot;, \&quot;deadline\&quot;: \&quot;90 днів\&quot;},\n{\&quot;action\&quot;: \&quot;Формалізувати та розширити модель повторюваної виручки (сервісні контракти, моніторинг, гарантійне обслуговування)\&quot;, \&quot;why\&quot;: \&quot;Поточна модель «разовий продаж» не відповідає заявленому сервісному напрямку і створює нестабільність грошового потоку\&quot;, \&quot;expected_result\&quot;: \&quot;Підвищення передбачуваності доходу та маржинальності\&quot;, \&quot;owner_role\&quot;: \&quot;Комерційний керівник / власник\&quot;, \&quot;deadline\&quot;: \&quot;90 днів\&quot;},\n{\&quot;action\&quot;: \&quot;Підготувати розбивку виручки та маржі за сегментами клієнтів і напрямками (товар/послуга)\&quot;, \&quot;why\&quot;: \&quot;Без цих даних неможливо оцінити реальну структуру бізнесу та пріоритезувати ресурси\&quot;, \&quot;expected_result\&quot;: \&quot;База для точніших стратегічних рішень щодо цілей 2026\&quot;, \&quot;owner_role\&quot;: \&quot;Фінансовий/операційний менеджер\&quot;, \&quot;deadline\&quot;: \&quot;30 днів\&quot;},\n{\&quot;action\&quot;: \&quot;Уточнити та задокументувати роль і рівень залежності від ключових партнерів (зокрема SPAR Україна, Procarte)\&quot;, \&quot;why\&quot;: \&quot;Незрозумілі партнерські зв&#x27;язки ускладнюють оцінку ризиків ланцюга постачання\&quot;, \&quot;expected_result\&quot;: \&quot;Чітка карта критичних залежностей для управління ризиками\&quot;, \&quot;owner_role\&quot;: \&quot;Власник\&quot;, \&quot;deadline\&quot;: \&quot;30 днів\&quot;},\n{\&quot;action\&quot;: \&quot;Завантажити наявний документ стратегії до системи для подальшого аналізу\&quot;, \&quot;why\&quot;: \&quot;Документ уже згаданий як доступний, але не використаний, що знижує впевненість поточної діагностики\&quot;, \&quot;expected_result\&quot;: \&quot;Підвищення точності та глибини подальших модулів аналізу\&quot;, \&quot;owner_role\&quot;: \&quot;Власник\&quot;, \&quot;deadline\&quot;: \&quot;7 днів\&quot;}\n],\n\&quot;manager_summary\&quot;: \&quot;Ваша компанія показує сильне зростання та фінансову стійкість, але управлінська модель повністю тримається на вас особисто — це головний ризик на етапі масштабування. Також виявлено нестиковку між моделлю продажів (разові угоди) та сервісним напрямком бізнесу, а також брак чіткості щодо організаційної структури й ролі окремих партнерів. Рекомендуємо найближчим часом зосередитися на делегуванні рішень, уточненні моделі доходів та наданні додаткових даних (структура, сегментація виручки, стратегія) для глибшої діагностики.\&quot;\n}\n```&quot;,
+      &quot;type&quot;: &quot;text&quot;
+    }
+  ],
+  &quot;model&quot;: &quot;claude-sonnet-5&quot;,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;stop_details&quot;: null,
+  &quot;stop_reason&quot;: &quot;end_turn&quot;,
+  &quot;stop_sequence&quot;: null,
+  &quot;type&quot;: &quot;message&quot;,
+  &quot;usage&quot;: {
+    &quot;cache_creation&quot;: {
+      &quot;ephemeral_1h_input_tokens&quot;: 0,
+      &quot;ephemeral_5m_input_tokens&quot;: 0
+    },
+    &quot;cache_creation_input_tokens&quot;: 0,
+    &quot;cache_read_input_tokens&quot;: 0,
+    &quot;inference_geo&quot;: &quot;global&quot;,
+    &quot;input_tokens&quot;: 2495,
+    &quot;output_tokens&quot;: 6379,
+    &quot;output_tokens_details&quot;: {
+      &quot;thinking_tokens&quot;: 2649
+    },
+    &quot;server_tool_use&quot;: null,
+    &quot;service_tier&quot;: &quot;standard&quot;
+  }
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

@@ -1,0 +1,3402 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+>
+
+<title>SITCAR Огляд Моделей ціна якість</title>
+
+<style>
+
+:root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --card2: #1c2128;
+    --border: #30363d;
+    --text: #f0f6fc;
+    --muted: #8b949e;
+    --blue: #58a6ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --orange: #db6d28;
+    --red: #f85149;
+    --purple: #bc8cff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        Segoe UI,
+        Inter,
+        Arial,
+        sans-serif;
+    line-height: 1.5;
+}
+
+.container {
+    width: min(1900px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 34px 0 80px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(88, 166, 255, .16),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #161b22,
+            #111820
+        );
+
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 32px;
+    margin-bottom: 18px;
+}
+
+.hero-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.eyebrow {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+}
+
+.hero p {
+    margin: 13px 0 0;
+    color: var(--muted);
+    max-width: 1000px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.status.ok {
+    color: #7ee787;
+    background: rgba(46, 160, 67, .12);
+    border-color: rgba(63, 185, 80, .35);
+}
+
+.status.warning {
+    color: #e3b341;
+    background: rgba(210, 153, 34, .12);
+    border-color: rgba(210, 153, 34, .35);
+}
+
+.status.danger {
+    color: #ff7b72;
+    background: rgba(248, 81, 73, .12);
+    border-color: rgba(248, 81, 73, .35);
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.summary-card {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.summary-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .08em;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.summary-value {
+    font-size: 25px;
+    line-height: 1.15;
+    font-weight: 850;
+}
+
+.summary-value.small {
+    font-size: 16px;
+}
+
+.summary-value span {
+    color: var(--green);
+    display: block;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.toolbar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: #0d1117;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 11px 14px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search input:focus {
+    border-color: var(--blue);
+}
+
+.toolbar-note {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 2450px;
+    font-size: 13px;
+}
+
+th,
+td {
+    padding: 12px 12px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+th:last-child,
+td:last-child {
+    border-right: 0;
+}
+
+thead th {
+    background: #1c2128;
+    color: #c9d1d9;
+    font-weight: 800;
+}
+
+thead tr:first-child th {
+    color: var(--text);
+    background: #21262d;
+    text-align: center;
+}
+
+thead tr:first-child th.group-price {
+    color: #79c0ff;
+}
+
+thead tr:first-child th.group-limit {
+    color: #d2a8ff;
+}
+
+thead tr:first-child th.group-fact {
+    color: #a5d6ff;
+}
+
+thead tr:first-child th.group-cost {
+    color: #7ee787;
+}
+
+thead tr:first-child th.group-scenario {
+    color: #e3b341;
+}
+
+thead tr:first-child th.group-max {
+    color: #ffa657;
+}
+
+th.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+th.sortable:hover {
+    color: var(--blue);
+}
+
+tbody tr {
+    transition: background .12s ease;
+}
+
+tbody tr:hover td {
+    background: rgba(88, 166, 255, .045);
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.model-cell,
+thead .model-head {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+tbody .model-cell {
+    background: var(--card);
+    min-width: 240px;
+}
+
+tbody tr:hover .model-cell {
+    background: #18202a;
+}
+
+thead .model-head {
+    z-index: 5;
+    background: #21262d !important;
+}
+
+.model-name {
+    font-size: 14px;
+    font-weight: 850;
+    color: var(--text);
+}
+
+.provider {
+    color: var(--blue);
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.run-date {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.money {
+    font-variant-numeric: tabular-nums;
+}
+
+.total {
+    color: #7ee787;
+    font-weight: 850;
+    background: rgba(46, 160, 67, .055);
+}
+
+.max-total {
+    color: #ffa657;
+    font-weight: 850;
+    background: rgba(219, 109, 40, .055);
+}
+
+.max-scenario {
+    color: #ffa657;
+}
+
+.tax {
+    color: #e3b341;
+}
+
+.tax strong,
+.tax span {
+    display: block;
+}
+
+.mini {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.view-cell {
+    text-align: center;
+}
+
+.view-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: #238636;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.view-button:hover {
+    background: #2ea043;
+}
+
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 18px;
+}
+
+.info-card h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
+}
+
+.info-card h3 {
+    margin: 26px 0 10px;
+}
+
+.info-card p {
+    color: #c9d1d9;
+}
+
+.info-card ul {
+    margin: 12px 0;
+    padding-left: 24px;
+    color: #c9d1d9;
+}
+
+.info-card li {
+    margin: 8px 0;
+}
+
+code {
+    background: rgba(110,118,129,.16);
+    border: 1px solid rgba(110,118,129,.25);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: #d2a8ff;
+}
+
+.formula {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.formula-box {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.02);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.formula-box strong {
+    display: block;
+    color: var(--blue);
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   PROMPT
+   ========================================================= */
+
+details {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 18px;
+}
+
+summary {
+    cursor: pointer;
+    padding: 16px 18px;
+    background: #1c2128;
+    font-weight: 850;
+}
+
+.prompt-body {
+    padding: 16px;
+    border-top: 1px solid var(--border);
+}
+
+pre {
+    margin: 0;
+    padding: 18px;
+    background: #090c10;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #c9d1d9;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.5;
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+    padding-top: 8px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .container {
+        width: min(100% - 18px, 1900px);
+        padding-top: 18px;
+    }
+
+    .hero {
+        padding: 22px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formula {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+
+<section class="hero">
+
+    <div class="hero-top">
+
+        <div>
+
+            <div class="eyebrow">
+                SITCAR System · ORG Benchmark
+            </div>
+
+            <h1>
+                SITCAR Огляд Моделей ціна якість
+            </h1>
+
+            <p>
+                Порівняння фактичного використання токенів,
+                тарифів API та прогнозованої вартості
+                Free / Full версій SITCAR.
+            </p>
+
+        </div>
+
+        <span class="status ok">✓ Однаковий prompt у всіх файлах</span>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     SUMMARY
+     ====================================================== -->
+
+<div class="summary-grid">
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            HTML результатів
+        </div>
+
+        <div class="summary-value">
+            20  (gpt-5.4-mini запускали двічі)
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Моделей у таблиці
+        </div>
+
+        <div class="summary-value">
+            19
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Найдешевший фактичний ORG
+        </div>
+
+        <div class="summary-value small">
+            <strong>DeepSeek V4 Flash 0731</strong><span>$0.001457</span>
+        </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            Податок / націнка
+        </div>
+
+        <div class="summary-value small">
+            OpenAI 20% · DeepSeek/OpenRouter 16% · Gemini 20% · Claude 20%
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     TOOLBAR
+     ====================================================== -->
+
+<div class="toolbar">
+
+    <div class="search">
+        <input
+            id="modelSearch"
+            type="text"
+            placeholder="Пошук моделі: GPT, Gemini, Claude, DeepSeek..."
+        >
+    </div>
+
+    <div class="toolbar-note">
+        Натисни на назву колонки для сортування
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     TABLE
+     ====================================================== -->
+
+<div class="table-card">
+
+<div class="table-scroll">
+
+<table id="modelsTable">
+
+<thead>
+
+<tr>
+
+    <th
+        rowspan="2"
+        class="model-head sortable"
+        data-column="0"
+    >
+        Назва моделі
+    </th>
+
+    <th
+        colspan="2"
+        class="group-price"
+    >
+        Тариф за 1M токенів
+    </th>
+
+    <th
+        colspan="2"
+        class="group-limit"
+    >
+        Верхня межа моделі
+    </th>
+
+    <th
+        colspan="3"
+        class="group-fact"
+    >
+        Фактичний запуск ORG
+    </th>
+
+    <th
+        colspan="4"
+        class="group-cost"
+    >
+        Вартість одного запуску
+    </th>
+
+    <th
+        colspan="2"
+        class="group-scenario"
+    >
+        SITCAR · фактичний output
+    </th>
+
+    <th
+        colspan="2"
+        class="group-max"
+    >
+        SITCAR · MAX output
+    </th>
+
+    <th rowspan="2">
+        Результат
+    </th>
+
+</tr>
+
+
+<tr>
+
+    <th
+        class="sortable"
+        data-column="1"
+        title="Ціна за 1 000 000 вхідних токенів"
+    >
+        Input $/1M
+    </th>
+
+    <th
+        class="sortable"
+        data-column="2"
+        title="Ціна за 1 000 000 вихідних токенів"
+    >
+        Output $/1M
+    </th>
+
+    <th
+        class="sortable"
+        data-column="3"
+        title="Заявлене context window моделі"
+    >
+        Max context / input*
+    </th>
+
+    <th
+        class="sortable"
+        data-column="4"
+        title="Максимальна заявлена кількість output tokens"
+    >
+        Max output
+    </th>
+
+    <th
+        class="sortable"
+        data-column="5"
+    >
+        Input tokens
+    </th>
+
+    <th
+        class="sortable"
+        data-column="6"
+    >
+        Output tokens
+    </th>
+
+    <th
+        class="sortable"
+        data-column="7"
+    >
+        Total tokens
+    </th>
+
+    <th
+        class="sortable"
+        data-column="8"
+        title="TOTAL COST без додаткового податку"
+    >
+        TOTAL
+    </th>
+
+    <th
+        class="sortable"
+        data-column="9"
+        title="Прогнозований податок / націнка"
+    >
+        Податок
+    </th>
+
+    <th
+        class="sortable"
+        data-column="10"
+        title="Фактичний TOTAL + прогнозований податок"
+    >
+        TOTAL + податок
+    </th>
+
+    <th
+        class="sortable"
+        data-column="11"
+        title="Вартість цього самого input, якщо модель використає весь заявлений Max output"
+    >
+        MAX TOTAL + податок
+    </th>
+
+    <th
+        class="sortable"
+        data-column="12"
+        title="TOTAL + податок × 3"
+    >
+        Безплатна ×3
+    </th>
+
+    <th
+        class="sortable"
+        data-column="13"
+        title="TOTAL + податок × 10: 9 промтів + презентація"
+    >
+        Повна ×10
+    </th>
+
+    <th
+        class="sortable"
+        data-column="14"
+        title="MAX TOTAL + податок × 3"
+    >
+        Безплатна MAX ×3
+    </th>
+
+    <th
+        class="sortable"
+        data-column="15"
+        title="MAX TOTAL + податок × 10"
+    >
+        Повна MAX ×10
+    </th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+<tr data-model="gpt-5.6 sol openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.6 sol"
+    >
+        <div class="model-name">GPT-5.6 Sol</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:28:26</div>
+    </td>
+
+    <td data-sort="4.000000000000">
+        $4.000000
+    </td>
+
+    <td data-sort="20.000000000000">
+        $20.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="5665.000000000000">
+        5 665
+    </td>
+
+    <td data-sort="7565.000000000000">
+        7 565
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.120900000000"
+    >
+        $0.120900
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.024180000000"
+    >
+        <strong>20%</strong><span class="mini">$0.024180</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.145080000000"
+    >
+        $0.145080
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="3.081120000000"
+    >
+        $3.081120
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.435240000000"
+    >
+        $0.435240
+    </td>
+
+    <td
+        class="money"
+        data-sort="1.450800000000"
+    >
+        $1.450800
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="9.243360000000"
+    >
+        $9.243360
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="30.811200000000"
+    >
+        $30.811200
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.6_Sol_ORG_2026-08-24_13-28-26.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.6 terra openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.6 terra"
+    >
+        <div class="model-name">GPT-5.6 Terra</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:31:26</div>
+    </td>
+
+    <td data-sort="2.000000000000">
+        $2.000000
+    </td>
+
+    <td data-sort="12.000000000000">
+        $12.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="6382.000000000000">
+        6 382
+    </td>
+
+    <td data-sort="8282.000000000000">
+        8 282
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.080384000000"
+    >
+        $0.080384
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.016076800000"
+    >
+        <strong>20%</strong><span class="mini">$0.016077</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.096460800000"
+    >
+        $0.096461
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="1.847760000000"
+    >
+        $1.847760
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.289382400000"
+    >
+        $0.289382
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.964608000000"
+    >
+        $0.964608
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="5.543280000000"
+    >
+        $5.543280
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="18.477600000000"
+    >
+        $18.477600
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.6_Terra_ORG_2026-08-24_13-31-26.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.6 luna openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.6 luna"
+    >
+        <div class="model-name">GPT-5.6 Luna</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:32:17</div>
+    </td>
+
+    <td data-sort="0.200000000000">
+        $0.200000
+    </td>
+
+    <td data-sort="1.200000000000">
+        $1.200000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="5739.000000000000">
+        5 739
+    </td>
+
+    <td data-sort="7639.000000000000">
+        7 639
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.007267000000"
+    >
+        $0.007267
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.001453400000"
+    >
+        <strong>20%</strong><span class="mini">$0.001453</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.008720400000"
+    >
+        $0.008720
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.184776000000"
+    >
+        $0.184776
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.026161200000"
+    >
+        $0.026161
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.087204000000"
+    >
+        $0.087204
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.554328000000"
+    >
+        $0.554328
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="1.847760000000"
+    >
+        $1.847760
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.6_Luna_ORG_2026-08-24_13-32-17.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.5 openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.5"
+    >
+        <div class="model-name">GPT-5.5</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:33:51</div>
+    </td>
+
+    <td data-sort="5.000000000000">
+        $5.000000
+    </td>
+
+    <td data-sort="30.000000000000">
+        $30.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="8752.000000000000">
+        8 752
+    </td>
+
+    <td data-sort="10652.000000000000">
+        10 652
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.272060000000"
+    >
+        $0.272060
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.054412000000"
+    >
+        <strong>20%</strong><span class="mini">$0.054412</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.326472000000"
+    >
+        $0.326472
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="4.619400000000"
+    >
+        $4.619400
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.979416000000"
+    >
+        $0.979416
+    </td>
+
+    <td
+        class="money"
+        data-sort="3.264720000000"
+    >
+        $3.264720
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="13.858200000000"
+    >
+        $13.858200
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="46.194000000000"
+    >
+        $46.194000
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.5_ORG_2026-08-24_13-33-51.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.5 pro openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.5 pro"
+    >
+        <div class="model-name">GPT-5.5 Pro</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:38:03</div>
+    </td>
+
+    <td data-sort="30.000000000000">
+        $30.000000
+    </td>
+
+    <td data-sort="180.000000000000">
+        $180.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="15581.000000000000">
+        15 581
+    </td>
+
+    <td data-sort="17481.000000000000">
+        17 481
+    </td>
+
+    <td
+        class="money"
+        data-sort="2.861580000000"
+    >
+        $2.861580
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.572316000000"
+    >
+        <strong>20%</strong><span class="mini">$0.572316</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="3.433896000000"
+    >
+        $3.433896
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="27.716400000000"
+    >
+        $27.716400
+    </td>
+
+    <td
+        class="money"
+        data-sort="10.301688000000"
+    >
+        $10.301688
+    </td>
+
+    <td
+        class="money"
+        data-sort="34.338960000000"
+    >
+        $34.338960
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="83.149200000000"
+    >
+        $83.149200
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="277.164000000000"
+    >
+        $277.164000
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.5_Pro_ORG_2026-08-24_13-38-03.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.4 openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.4"
+    >
+        <div class="model-name">GPT-5.4</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:39:30</div>
+    </td>
+
+    <td data-sort="2.500000000000">
+        $2.500000
+    </td>
+
+    <td data-sort="15.000000000000">
+        $15.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="11573.000000000000">
+        11 573
+    </td>
+
+    <td data-sort="13473.000000000000">
+        13 473
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.178345000000"
+    >
+        $0.178345
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.035669000000"
+    >
+        <strong>20%</strong><span class="mini">$0.035669</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.214014000000"
+    >
+        $0.214014
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="2.309700000000"
+    >
+        $2.309700
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.642042000000"
+    >
+        $0.642042
+    </td>
+
+    <td
+        class="money"
+        data-sort="2.140140000000"
+    >
+        $2.140140
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="6.929100000000"
+    >
+        $6.929100
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="23.097000000000"
+    >
+        $23.097000
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.4_ORG_2026-08-24_13-39-30.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.4 pro openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.4 pro"
+    >
+        <div class="model-name">GPT-5.4 Pro</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:45:56</div>
+    </td>
+
+    <td data-sort="30.000000000000">
+        $30.000000
+    </td>
+
+    <td data-sort="180.000000000000">
+        $180.000000
+    </td>
+
+    <td data-sort="1050000.000000000000">
+        1 050 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="19440.000000000000">
+        19 440
+    </td>
+
+    <td data-sort="21340.000000000000">
+        21 340
+    </td>
+
+    <td
+        class="money"
+        data-sort="3.556200000000"
+    >
+        $3.556200
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.711240000000"
+    >
+        <strong>20%</strong><span class="mini">$0.711240</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="4.267440000000"
+    >
+        $4.267440
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="27.716400000000"
+    >
+        $27.716400
+    </td>
+
+    <td
+        class="money"
+        data-sort="12.802320000000"
+    >
+        $12.802320
+    </td>
+
+    <td
+        class="money"
+        data-sort="42.674400000000"
+    >
+        $42.674400
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="83.149200000000"
+    >
+        $83.149200
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="277.164000000000"
+    >
+        $277.164000
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.4_Pro_ORG_2026-08-24_13-45-56.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.4 mini openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.4 mini"
+    >
+        <div class="model-name">GPT-5.4 Mini</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:16:42</div>
+    </td>
+
+    <td data-sort="0.750000000000">
+        $0.750000
+    </td>
+
+    <td data-sort="4.500000000000">
+        $4.500000
+    </td>
+
+    <td data-sort="400000.000000000000">
+        400 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="16454.000000000000">
+        16 454
+    </td>
+
+    <td data-sort="18354.000000000000">
+        18 354
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.075468000000"
+    >
+        $0.075468
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.015093600000"
+    >
+        <strong>20%</strong><span class="mini">$0.015094</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.090561600000"
+    >
+        $0.090562
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.692910000000"
+    >
+        $0.692910
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.271684800000"
+    >
+        $0.271685
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.905616000000"
+    >
+        $0.905616
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="2.078730000000"
+    >
+        $2.078730
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="6.929100000000"
+    >
+        $6.929100
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.4_Mini_ORG_2026-08-24_13-16-42.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gpt-5.4 nano openai">
+
+    <td
+        class="model-cell"
+        data-sort="gpt-5.4 nano"
+    >
+        <div class="model-name">GPT-5.4 Nano</div>
+        <div class="provider">OpenAI</div>
+        <div class="run-date">24.08.2026 13:46:26</div>
+    </td>
+
+    <td data-sort="0.200000000000">
+        $0.200000
+    </td>
+
+    <td data-sort="1.250000000000">
+        $1.250000
+    </td>
+
+    <td data-sort="400000.000000000000">
+        400 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="1900.000000000000">
+        1 900
+    </td>
+
+    <td data-sort="5257.000000000000">
+        5 257
+    </td>
+
+    <td data-sort="7157.000000000000">
+        7 157
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.006951000000"
+    >
+        $0.006951
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.001390200000"
+    >
+        <strong>20%</strong><span class="mini">$0.001390</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.008341200000"
+    >
+        $0.008341
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.192456000000"
+    >
+        $0.192456
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.025023600000"
+    >
+        $0.025024
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.083412000000"
+    >
+        $0.083412
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.577368000000"
+    >
+        $0.577368
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="1.924560000000"
+    >
+        $1.924560
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="GPT-5.4_Nano_ORG_2026-08-24_13-46-26.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gemini 3.6 flash google gemini">
+
+    <td
+        class="model-cell"
+        data-sort="gemini 3.6 flash"
+    >
+        <div class="model-name">Gemini 3.6 Flash</div>
+        <div class="provider">Google Gemini</div>
+        <div class="run-date">24.08.2026 13:25:15</div>
+    </td>
+
+    <td data-sort="0.750000000000">
+        $0.750000
+    </td>
+
+    <td data-sort="3.750000000000">
+        $3.750000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="65536.000000000000">
+        65 536
+    </td>
+
+    <td data-sort="1893.000000000000">
+        1 893
+    </td>
+
+    <td data-sort="5224.000000000000">
+        5 224
+    </td>
+
+    <td data-sort="7117.000000000000">
+        7 117
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.021010000000"
+    >
+        $0.021010
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.004202000000"
+    >
+        <strong>20%</strong><span class="mini">$0.004202</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.025212000000"
+    >
+        $0.025212
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.296616000000"
+    >
+        $0.296616
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.075636000000"
+    >
+        $0.075636
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.252120000000"
+    >
+        $0.252120
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.889848000000"
+    >
+        $0.889848
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="2.966160000000"
+    >
+        $2.966160
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gemini 3.5 flash google gemini">
+
+    <td
+        class="model-cell"
+        data-sort="gemini 3.5 flash"
+    >
+        <div class="model-name">Gemini 3.5 Flash</div>
+        <div class="provider">Google Gemini</div>
+        <div class="run-date">24.08.2026 13:53:19</div>
+    </td>
+
+    <td data-sort="1.500000000000">
+        $1.500000
+    </td>
+
+    <td data-sort="9.000000000000">
+        $9.000000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="65536.000000000000">
+        65 536
+    </td>
+
+    <td data-sort="1893.000000000000">
+        1 893
+    </td>
+
+    <td data-sort="6455.000000000000">
+        6 455
+    </td>
+
+    <td data-sort="8348.000000000000">
+        8 348
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.060935000000"
+    >
+        $0.060935
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.012187000000"
+    >
+        <strong>20%</strong><span class="mini">$0.012187</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.073122000000"
+    >
+        $0.073122
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.711196800000"
+    >
+        $0.711197
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.219366000000"
+    >
+        $0.219366
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.731220000000"
+    >
+        $0.731220
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="2.133590400000"
+    >
+        $2.133590
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="7.111968000000"
+    >
+        $7.111968
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gemini 3.5 flash-lite google gemini">
+
+    <td
+        class="model-cell"
+        data-sort="gemini 3.5 flash-lite"
+    >
+        <div class="model-name">Gemini 3.5 Flash-Lite</div>
+        <div class="provider">Google Gemini</div>
+        <div class="run-date">24.08.2026 13:53:26</div>
+    </td>
+
+    <td data-sort="0.300000000000">
+        $0.300000
+    </td>
+
+    <td data-sort="2.500000000000">
+        $2.500000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="65536.000000000000">
+        65 536
+    </td>
+
+    <td data-sort="1893.000000000000">
+        1 893
+    </td>
+
+    <td data-sort="2343.000000000000">
+        2 343
+    </td>
+
+    <td data-sort="4236.000000000000">
+        4 236
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.006425000000"
+    >
+        $0.006425
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.001285000000"
+    >
+        <strong>20%</strong><span class="mini">$0.001285</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.007710000000"
+    >
+        $0.007710
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.197289600000"
+    >
+        $0.197290
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.023130000000"
+    >
+        $0.023130
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.077100000000"
+    >
+        $0.077100
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.591868800000"
+    >
+        $0.591869
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="1.972896000000"
+    >
+        $1.972896
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gemini 3.1 pro preview google gemini">
+
+    <td
+        class="model-cell"
+        data-sort="gemini 3.1 pro preview"
+    >
+        <div class="model-name">Gemini 3.1 Pro Preview</div>
+        <div class="provider">Google Gemini</div>
+        <div class="run-date">24.08.2026 13:55:12</div>
+    </td>
+
+    <td data-sort="2.000000000000">
+        $2.000000
+    </td>
+
+    <td data-sort="12.000000000000">
+        $12.000000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="65536.000000000000">
+        65 536
+    </td>
+
+    <td data-sort="1893.000000000000">
+        1 893
+    </td>
+
+    <td data-sort="5172.000000000000">
+        5 172
+    </td>
+
+    <td data-sort="7065.000000000000">
+        7 065
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.065850000000"
+    >
+        $0.065850
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.013170000000"
+    >
+        <strong>20%</strong><span class="mini">$0.013170</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.079020000000"
+    >
+        $0.079020
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.948261600000"
+    >
+        $0.948262
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.237060000000"
+    >
+        $0.237060
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.790200000000"
+    >
+        $0.790200
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="2.844784800000"
+    >
+        $2.844785
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="9.482616000000"
+    >
+        $9.482616
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="gemini 3.1 flash-lite google gemini">
+
+    <td
+        class="model-cell"
+        data-sort="gemini 3.1 flash-lite"
+    >
+        <div class="model-name">Gemini 3.1 Flash-Lite</div>
+        <div class="provider">Google Gemini</div>
+        <div class="run-date">24.08.2026 13:53:32</div>
+    </td>
+
+    <td data-sort="0.250000000000">
+        $0.250000
+    </td>
+
+    <td data-sort="1.500000000000">
+        $1.500000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="65536.000000000000">
+        65 536
+    </td>
+
+    <td data-sort="1893.000000000000">
+        1 893
+    </td>
+
+    <td data-sort="1533.000000000000">
+        1 533
+    </td>
+
+    <td data-sort="3426.000000000000">
+        3 426
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.002773000000"
+    >
+        $0.002773
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.000554600000"
+    >
+        <strong>20%</strong><span class="mini">$0.000555</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.003327600000"
+    >
+        $0.003328
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.118532400000"
+    >
+        $0.118532
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.009982800000"
+    >
+        $0.009983
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.033276000000"
+    >
+        $0.033276
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.355597200000"
+    >
+        $0.355597
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="1.185324000000"
+    >
+        $1.185324
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="claude opus 5 anthropic claude">
+
+    <td
+        class="model-cell"
+        data-sort="claude opus 5"
+    >
+        <div class="model-name">Claude Opus 5</div>
+        <div class="provider">Anthropic Claude</div>
+        <div class="run-date">24.08.2026 14:05:13</div>
+    </td>
+
+    <td data-sort="5.000000000000">
+        $5.000000
+    </td>
+
+    <td data-sort="25.000000000000">
+        $25.000000
+    </td>
+
+    <td data-sort="1000000.000000000000">
+        1 000 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="2495.000000000000">
+        2 495
+    </td>
+
+    <td data-sort="8154.000000000000">
+        8 154
+    </td>
+
+    <td data-sort="10649.000000000000">
+        10 649
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.216325000000"
+    >
+        $0.216325
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.043265000000"
+    >
+        <strong>20%</strong><span class="mini">$0.043265</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.259590000000"
+    >
+        $0.259590
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="3.854970000000"
+    >
+        $3.854970
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.778770000000"
+    >
+        $0.778770
+    </td>
+
+    <td
+        class="money"
+        data-sort="2.595900000000"
+    >
+        $2.595900
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="11.564910000000"
+    >
+        $11.564910
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="38.549700000000"
+    >
+        $38.549700
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Claude_Opus_5_ORG_2026-08-24_14-05-13.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="claude sonnet 5 anthropic claude">
+
+    <td
+        class="model-cell"
+        data-sort="claude sonnet 5"
+    >
+        <div class="model-name">Claude Sonnet 5</div>
+        <div class="provider">Anthropic Claude</div>
+        <div class="run-date">24.08.2026 14:09:51</div>
+    </td>
+
+    <td data-sort="2.000000000000">
+        $2.000000
+    </td>
+
+    <td data-sort="10.000000000000">
+        $10.000000
+    </td>
+
+    <td data-sort="1000000.000000000000">
+        1 000 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="2495.000000000000">
+        2 495
+    </td>
+
+    <td data-sort="6379.000000000000">
+        6 379
+    </td>
+
+    <td data-sort="8874.000000000000">
+        8 874
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.068780000000"
+    >
+        $0.068780
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.013756000000"
+    >
+        <strong>20%</strong><span class="mini">$0.013756</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.082536000000"
+    >
+        $0.082536
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="1.541988000000"
+    >
+        $1.541988
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.247608000000"
+    >
+        $0.247608
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.825360000000"
+    >
+        $0.825360
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="4.625964000000"
+    >
+        $4.625964
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="15.419880000000"
+    >
+        $15.419880
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Claude_Sonnet_5_ORG_2026-08-24_14-09-51.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="claude fable 5 anthropic claude">
+
+    <td
+        class="model-cell"
+        data-sort="claude fable 5"
+    >
+        <div class="model-name">Claude Fable 5</div>
+        <div class="provider">Anthropic Claude</div>
+        <div class="run-date">24.08.2026 14:06:37</div>
+    </td>
+
+    <td data-sort="10.000000000000">
+        $10.000000
+    </td>
+
+    <td data-sort="50.000000000000">
+        $50.000000
+    </td>
+
+    <td data-sort="1000000.000000000000">
+        1 000 000
+    </td>
+
+    <td data-sort="128000.000000000000">
+        128 000
+    </td>
+
+    <td data-sort="2495.000000000000">
+        2 495
+    </td>
+
+    <td data-sort="4855.000000000000">
+        4 855
+    </td>
+
+    <td data-sort="7350.000000000000">
+        7 350
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.267700000000"
+    >
+        $0.267700
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.053540000000"
+    >
+        <strong>20%</strong><span class="mini">$0.053540</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.321240000000"
+    >
+        $0.321240
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="7.709940000000"
+    >
+        $7.709940
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.963720000000"
+    >
+        $0.963720
+    </td>
+
+    <td
+        class="money"
+        data-sort="3.212400000000"
+    >
+        $3.212400
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="23.129820000000"
+    >
+        $23.129820
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="77.099400000000"
+    >
+        $77.099400
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="Claude_Fable_5_ORG_2026-08-24_14-06-37.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="deepseek v4 flash 0731 deepseek / openrouter">
+
+    <td
+        class="model-cell"
+        data-sort="deepseek v4 flash 0731"
+    >
+        <div class="model-name">DeepSeek V4 Flash 0731</div>
+        <div class="provider">DeepSeek / OpenRouter</div>
+        <div class="run-date">25.08.2026 07:03:29</div>
+    </td>
+
+    <td data-sort="0.040000000000">
+        $0.040000
+    </td>
+
+    <td data-sort="0.080000000000">
+        $0.080000
+    </td>
+
+    <td data-sort="1310720.000000000000">
+        1 310 720
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="2477.000000000000">
+        2 477
+    </td>
+
+    <td data-sort="14461.000000000000">
+        14 461
+    </td>
+
+    <td data-sort="16938.000000000000">
+        16 938
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.001256000000"
+    >
+        $0.001256
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.000200960000"
+    >
+        <strong>16%</strong><span class="mini">$0.000201</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.001456960000"
+    >
+        $0.001457
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.097422692800"
+    >
+        $0.097423
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.004370880000"
+    >
+        $0.004371
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.014569600000"
+    >
+        $0.014570
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.292268078400"
+    >
+        $0.292268
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="0.974226928000"
+    >
+        $0.974227
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+<tr data-model="deepseek v4 pro 0813 deepseek / openrouter">
+
+    <td
+        class="model-cell"
+        data-sort="deepseek v4 pro 0813"
+    >
+        <div class="model-name">DeepSeek V4 Pro 0813</div>
+        <div class="provider">DeepSeek / OpenRouter</div>
+        <div class="run-date">25.08.2026 07:12:13</div>
+    </td>
+
+    <td data-sort="0.660000000000">
+        $0.660000
+    </td>
+
+    <td data-sort="1.980000000000">
+        $1.980000
+    </td>
+
+    <td data-sort="1048576.000000000000">
+        1 048 576
+    </td>
+
+    <td data-sort="384000.000000000000">
+        384 000
+    </td>
+
+    <td data-sort="2398.000000000000">
+        2 398
+    </td>
+
+    <td data-sort="9024.000000000000">
+        9 024
+    </td>
+
+    <td data-sort="11422.000000000000">
+        11 422
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.019450000000"
+    >
+        $0.019450
+    </td>
+
+    <td
+        class="tax"
+        data-sort="0.003112000000"
+    >
+        <strong>16%</strong><span class="mini">$0.003112</span>
+    </td>
+
+    <td
+        class="money total"
+        data-sort="0.022562000000"
+    >
+        $0.022562
+    </td>
+
+    <td
+        class="money max-total"
+        data-sort="0.883807480000"
+    >
+        $0.883807
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.067686000000"
+    >
+        $0.067686
+    </td>
+
+    <td
+        class="money"
+        data-sort="0.225620000000"
+    >
+        $0.225620
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="2.651422440000"
+    >
+        $2.651422
+    </td>
+
+    <td
+        class="money max-scenario"
+        data-sort="8.838074800000"
+    >
+        $8.838075
+    </td>
+
+    <td class="view-cell">
+        <a
+            class="view-button"
+            href="DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.html"
+        >
+            Переглянути
+        </a>
+    </td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     EXPLANATION
+     ====================================================== -->
+
+<section class="info-card">
+
+<h2>
+    Як рахувалась вартість
+</h2>
+
+<p>
+    Ці тести виконувалися для промпта
+    <strong>ORG по ТЗ SITCAR</strong>.
+    Мета — порівняти реальне споживання токенів,
+    вартість одного аналізу та можливу верхню межу
+    витрат для різних LLM-моделей.
+</p>
+
+<p>
+    Скрипт перевірив збережений <code>Prompt sent to model</code>: у всіх знайдених HTML він однаковий.
+</p>
+
+
+<div class="formula">
+
+    <div class="formula-box">
+
+        <strong>
+            Фактична вартість
+        </strong>
+
+        TOTAL, який був отриманий під час
+        реального API-запиту, плюс прогнозований
+        податок / націнка.
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <strong>
+            MAX TOTAL
+        </strong>
+
+        Фактичний input цього ORG-запиту +
+        повний заявлений <code>Max output</code>
+        моделі + податок.
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <strong>
+            Безплатна версія
+        </strong>
+
+        <code>TOTAL з податком × 3</code>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <strong>
+            Повна версія
+        </strong>
+
+        <code>TOTAL з податком × 10</code>,
+        де прогноз — 9 промтів + 1 презентація.
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <strong>
+            Безплатна MAX
+        </strong>
+
+        <code>MAX TOTAL з податком × 3</code>
+
+    </div>
+
+
+    <div class="formula-box">
+
+        <strong>
+            Повна MAX
+        </strong>
+
+        <code>MAX TOTAL з податком × 10</code>
+
+    </div>
+
+</div>
+
+
+<h3>
+    Важливі уточнення
+</h3>
+
+<ul>
+
+    <li>
+        На вхід ми знаємо фактичну кількість
+        <strong>input tokens</strong>,
+        оскільки її повернув API конкретної моделі.
+        Різні моделі можуть токенізувати один і той
+        самий текст трохи по-різному.
+    </li>
+
+    <li>
+        На виході неможливо заздалегідь точно сказати,
+        скільки токенів використає модель.
+    </li>
+
+    <li>
+        Під час цих тестів відповідь запускалась
+        <strong>без ручного обмеження максимальної
+        кількості output tokens</strong>.
+        Тобто фактичний Output tokens — це стільки,
+        скільки сама модель використала до завершення
+        відповіді.
+    </li>
+
+    <li>
+        Колонка <strong>MAX TOTAL</strong> — це
+        прогноз верхнього сценарію:
+        поточний фактичний input залишається таким самим,
+        але output вважається рівним повному
+        заявленому <code>Max output</code>.
+    </li>
+
+    <li>
+        <strong>Max context / input*</strong> —
+        це заявлений Context window із HTML.
+        У частини API context window є спільним лімітом
+        для input + output, тому його не слід завжди
+        трактувати як гарантовану можливість одночасно
+        використати весь context для input і весь
+        Max output.
+    </li>
+
+    <li>
+        Прогноз MAX рахується лінійно за тарифом
+        <code>Output price / 1M</code>,
+        записаним у конкретному HTML.
+        Якщо провайдер має додаткові тарифні рівні,
+        long-context pricing або інші правила,
+        реальний рахунок може відрізнятися.
+    </li>
+
+    <li>
+        Податки в цій таблиці є
+        <strong>прогнозними налаштуваннями</strong>
+        скрипта:
+        OpenAI 20% · DeepSeek/OpenRouter 16% · Gemini 20% · Claude 20%.
+        Їх можна змінити у словнику
+        <code>TAX_RATES</code>.
+    </li>
+
+    <li>
+        Повторних запусків приховано: 1. Для кожної моделі використовується найновіший HTML.
+    </li>
+
+</ul>
+
+
+<!-- ======================================================
+     PROMPT
+     ====================================================== -->
+
+<details>
+
+<summary>
+    Prompt ORG, який відправлявся моделям
+</summary>
+
+<div class="prompt-body">
+
+<pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre>
+
+</div>
+
+</details>
+
+</section>
+
+
+<div class="footer">
+    SITCAR System · LLM Model Cost Benchmark · ORG
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+const searchInput =
+    document.getElementById("modelSearch");
+
+const table =
+    document.getElementById("modelsTable");
+
+const tbody =
+    table.querySelector("tbody");
+
+
+searchInput.addEventListener(
+    "input",
+    function () {
+
+        const value =
+            this.value
+                .trim()
+                .toLowerCase();
+
+        const rows =
+            tbody.querySelectorAll("tr");
+
+        rows.forEach(row => {
+
+            const searchable =
+                (
+                    row.dataset.model
+                    + " "
+                    + row.innerText
+                ).toLowerCase();
+
+            row.style.display =
+                searchable.includes(value)
+                    ? ""
+                    : "none";
+
+        });
+
+    }
+);
+
+
+/* =========================================================
+   SORT
+   ========================================================= */
+
+let currentSortColumn = null;
+let currentSortAscending = true;
+
+
+document
+    .querySelectorAll("th.sortable")
+    .forEach(th => {
+
+        th.addEventListener(
+            "click",
+            () => {
+
+                const column =
+                    Number(th.dataset.column);
+
+                if (
+                    currentSortColumn === column
+                ) {
+                    currentSortAscending =
+                        !currentSortAscending;
+                }
+                else {
+                    currentSortColumn = column;
+                    currentSortAscending = true;
+                }
+
+                sortTable(
+                    column,
+                    currentSortAscending
+                );
+
+            }
+        );
+
+    });
+
+
+function sortTable(
+    column,
+    ascending
+) {
+
+    const rows =
+        Array.from(
+            tbody.querySelectorAll("tr")
+        );
+
+    rows.sort((a, b) => {
+
+        const cellA =
+            a.children[column];
+
+        const cellB =
+            b.children[column];
+
+        let valueA =
+            cellA.dataset.sort ?? "";
+
+        let valueB =
+            cellB.dataset.sort ?? "";
+
+        const numberA =
+            Number(valueA);
+
+        const numberB =
+            Number(valueB);
+
+        const aIsNumber =
+            valueA !== ""
+            && Number.isFinite(numberA);
+
+        const bIsNumber =
+            valueB !== ""
+            && Number.isFinite(numberB);
+
+        let result;
+
+        if (
+            aIsNumber
+            && bIsNumber
+        ) {
+
+            result =
+                numberA - numberB;
+
+        }
+        else {
+
+            result =
+                valueA.localeCompare(
+                    valueB,
+                    "uk",
+                    {
+                        numeric: true,
+                        sensitivity: "base"
+                    }
+                );
+
+        }
+
+        return ascending
+            ? result
+            : -result;
+
+    });
+
+
+    rows.forEach(
+        row => tbody.appendChild(row)
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>

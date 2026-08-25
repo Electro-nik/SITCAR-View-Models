@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Fable 5</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Claude Fable 5</h1>
+<div class="muted">Anthropic Claude · Prompt: ORG · 2026-08-24T14:06:37</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>claude-fable-5</strong></div>
+<div class="metric"><span>Returned</span><strong>claude-fable-5</strong></div>
+<div class="metric"><span>Response ID</span><strong>msg_011CeMTsbSLLdKvoUBofXpQa</strong></div>
+<div class="metric"><span>Context window</span><strong>1 000 000</strong></div>
+<div class="metric"><span>Max output</span><strong>128 000</strong></div>
+<div class="metric"><span>Latency</span><strong>84.071 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>2 495</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>4 855</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>261</strong></div>
+<div class="metric"><span>Total tokens</span><strong>7 350</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$10.000000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.024950</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$1.000000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$50.000000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.242750</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.267700</strong></div>
+</section>
+</div>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">ORG</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Профіль організації</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">complete</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">72</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">68</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Профіль організації заповнено достатньо повно для старту діагностики, але є суперечності в бізнес-моделі та критичні прогалини щодо структури доходів і залежностей.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">«Солар Вест Буд» — молода компанія (2024 р.) у сфері сонячної енергетики, що працює по всій Україні, поєднує торгівлю обладнанням і послуги проєктування та монтажу СЕС, має 11–50 працівників, оборот 0,5–2 млн дол. і заявляє стійку прибутковість зі зростанням понад 20%. Контекст для діагностики загалом якісний: чітко описані клієнтські сегменти (B2B, B2C, монтажники), продукти, канали та цілі з термінами й показниками. Водночас профіль містить внутрішню суперечність: модель заробітку заявлена як «разовий продаж», але стратегічна ціль передбачає стабільні джерела грошового потоку та сервісне обслуговування тисяч клієнтів — механізм переходу не описано. Централізація рішень на власнику та максимальна залежність від його щоденної участі (5 з 5) у поєднанні з залежністю від ключових працівників формує концентрований ризик, який сама компанія визнає («крихка стратегія»). Критичні залежності від зовнішніх гравців (єдиний постачальник панелей Procarte, сайт на платформі Prom.ua) не супроводжуються поясненням резервних варіантів. Роль партнера SPAR Україна незрозуміла з наданих даних. Для наступних модулів діагностики бракує даних про структуру доходів за напрямами, маржинальність, оргструктуру та частки клієнтських сегментів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Ідентифікація та базовий профіль</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">90</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Вказано назву, галузь, нішу, рік заснування (2024), етап розвитку (зростання), географію (вся Україна)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Роль респондента — власник, що підвищує достовірність даних</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Не вказано юридичну форму та фактичну структуру власності</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Бізнес-модель і клієнти</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">70</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чітко визначено три клієнтські сегменти: юрособи, фізособи, монтажники</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Описано товарну лінійку (панелі, кабелі, кріплення, електрообладнання) та послуги (проєктування, монтаж)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Названо канали: сайт/інтернет, відділ продажів, соцмережі</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Модель монетизації зведена лише до «разового продажу» — не описано сервіс, повторні продажі, частки сегментів у виторгу</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не пояснено роль SPAR Україна як критичного партнера</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Фінансовий контекст</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">65</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Оборот 0,5–2 млн дол., зростання доходу понад 20%, статус «стійко прибуткова»</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Керівництву доступні дані про продажі, грошовий потік, операційні показники, прибуток/маржу</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає конкретних показників маржинальності попри заявлену проблему її зниження</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не розкрито структуру доходу за напрямами (торгівля обладнанням vs монтаж)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Заявлена нестача оборотних коштів не деталізована кількісно</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Управління та організаційна зрілість</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">55</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Рішення ухвалюються засновником одноосібно</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Залежність від першої особи — 5 (максимальна)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Компанія сама називає залежність від ключових працівників як проблему</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає інформації про оргструктуру, рівні управління, наявність заступників чи керівників напрямів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Цілі та стратегічна ясність</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">75</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Три цілі з термінами та показниками: стабілізація грошового потоку (2026), 30% обороту через інтернет-магазин (2026), топ-5 інтеграторів в Україні (2035)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Чесно ідентифіковано 4 ключові стримувальні проблеми та 5 типів обмежень</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Ціль топ-5 не має проміжних віх; показник успіху фактично повторює саму ціль</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не описано, як компанія планує перейти від разових продажів до стабільних надходжень</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Висока самокритичність і чесність респондента: власник відкрито називає стратегію «крихкою» та визнає ключові ризики</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявність цілей із термінами та вимірюваними показниками (зокрема 30% обороту через інтернет-магазин до кінця 2026)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Регулярний доступ керівництва до основних управлінських даних: продажі, cash flow, операційні KPI, маржа</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Диверсифікована клієнтська база за трьома сегментами (B2B, B2C, B2B-монтажники) у зростаючій галузі</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Стійка прибутковість і зростання доходу понад 20% на етапі раннього розвитку</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Критична централізація: рішення ухвалює власник, залежність від його щоденної участі максимальна (5/5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Модель доходу — виключно разові продажі, без описаних механізмів повторюваного доходу, попри стратегічну ціль стабільності</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Концентрація зовнішніх залежностей: один названий постачальник панелей (Procarte, Польща) та сайт на орендованій платформі Prom.ua</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Тиск на маржу через зростання зарплат при одночасній нестачі кваліфікованого персоналу та оборотних коштів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Відсутність опису оргструктури та розподілу відповідальності при 11–50 працівниках</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Максимальна залежність від засновника (5/5) у поєднанні з одноосібним ухваленням рішень і залежністю від ключових працівників</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Будь-яка недоступність першої особи або втрата 1–2 ключових людей може зупинити операційну діяльність; це прямо суперечить цілі масштабування до 2026 року</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Розрив між моделлю заробітку («разовий продаж») і стратегічними цілями (стабільний грошовий потік, сервіс тисяч клієнтів, енергетична платформа)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Без переходу до повторюваних доходів (сервісні контракти, обслуговування) заявлена стабілізація грошового потоку до 2026 року не має механізму реалізації</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Єдиний названий постачальник панелей (Procarte) і розміщення сайту на сторонній платформі Prom.ua</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Збій постачальника чи зміна умов платформи безпосередньо б&#x27;ють по продажах і по цілі «30% обороту через інтернет-магазин»</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Нестача оборотних коштів при зростанні понад 20% і моделі разових продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Швидке зростання проєктного бізнесу типово збільшує касові розриви; без фінансового плану зростання може підірвати прибутковість</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Заявлена модель доходу — тільки «разовий продаж», але цілі передбачають стабільні повторювані надходження та сервісне обслуговування тисяч клієнтів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Компанія «стійко прибуткова», але одночасно заявляє нестачу оборотних коштів і зниження маржинальності через зростання зарплат — без цифр ці твердження складно узгодити</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Етап «зростання» і амбіція топ-5 в Україні контрастують з повною централізацією рішень на власнику, що є ознакою більш ранньої стадії управлінської зрілості</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">SPAR Україна названо критично важливим партнером, але роль цієї мережі не пояснена жодним іншим полем анкети (сегменти, канали, продукти)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Структура доходу за напрямами: частки торгівлі обладнанням, монтажу, сервісу та частки клієнтських сегментів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Фактичні показники маржинальності та динаміка витрат на ФОП для верифікації заяви про тиск на маржу</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Оргструктура: чисельність за функціями, наявність керівників напрямів, хто є «ключовими працівниками»</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Роль і формат співпраці зі SPAR Україна; наявність альтернативних постачальників панелей окрім Procarte</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Обіцяний документ «Стратегія» не завантажений — його аналіз може суттєво уточнити цілі та суперечності</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Завантажити документ «Стратегія» та розшифровку структури доходу за напрямами і сегментами за останні 12 місяців</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Без цих даних неможливо перевірити реалістичність цілей 2026 року та узгодити суперечність між разовими продажами і ціллю стабільного грошового потоку</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення точності подальших модулів діагностики та зняття ключових суперечностей профілю</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Описати механізм переходу до повторюваних доходів: продуктова лінійка сервісного обслуговування СЕС з тарифами та цільовою часткою у виторгу</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Стратегічна ціль стабільності грошового потоку до 2026 року не має описаного джерела при поточній моделі «разовий продаж»</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Конкретний план формування повторюваного доходу, який можна перевірити в наступних модулях діагностики</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник разом з керівником продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Зафіксувати карту критичних залежностей: ключові працівники, єдиний постачальник панелей, платформа Prom.ua — з резервним варіантом для кожної</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Компанія сама визнає залежність від ключових людей, а зовнішні залежності (Procarte, Prom.ua) не мають описаних альтернатив</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Знижений ризик зупинки операцій; вихідні дані для модуля ризиків</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Визначити 3–5 типів рішень, які делегуються з рівня власника, з призначенням відповідальних</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Залежність від першої особи 5/5 при одноосібному ухваленні рішень — головне обмеження масштабування, назване і в цілях, і в проблемах</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зниження залежності від засновника хоча б на один рівень; вивільнення часу власника на стратегічні цілі 2026 року</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Підготувати фінансову модель зростання: потреба в оборотних коштах, динаміка маржі та ФОП на 12 місяців уперед</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Заявлені одночасно прибутковість, нестача оборотних коштів і тиск на маржу — без цифр неможливо оцінити стійкість зростання понад 20%</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Кількісне підтвердження або спростування ризику касових розривів; основа для рішення про залучення фінансування</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / фінансово відповідальна особа</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Профіль організації заповнено якісно: зрозумілі клієнти, продукти, цілі з термінами та чесно названі проблеми — це хороша база для повної діагностики (якість контексту 72/100). Головні моменти, на які варто звернути увагу: (1) заявлена модель заробітку «разовий продаж» суперечить цілі стабільного грошового потоку — потрібно описати, звідки візьмуться повторювані доходи; (2) все тримається на власнику (залежність 5/5) — це головний ризик для масштабування; (3) не пояснено роль партнера SPAR і немає альтернатив єдиному постачальнику панелей. Для підвищення точності наступних кроків просимо завантажити стратегію та структуру доходів за напрямами.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 72,
+  &quot;confidence&quot;: 68,
+  &quot;headline&quot;: &quot;Профіль організації заповнено достатньо повно для старту діагностики, але є суперечності в бізнес-моделі та критичні прогалини щодо структури доходів і залежностей.&quot;,
+  &quot;diagnosis&quot;: &quot;«Солар Вест Буд» — молода компанія (2024 р.) у сфері сонячної енергетики, що працює по всій Україні, поєднує торгівлю обладнанням і послуги проєктування та монтажу СЕС, має 11–50 працівників, оборот 0,5–2 млн дол. і заявляє стійку прибутковість зі зростанням понад 20%. Контекст для діагностики загалом якісний: чітко описані клієнтські сегменти (B2B, B2C, монтажники), продукти, канали та цілі з термінами й показниками. Водночас профіль містить внутрішню суперечність: модель заробітку заявлена як «разовий продаж», але стратегічна ціль передбачає стабільні джерела грошового потоку та сервісне обслуговування тисяч клієнтів — механізм переходу не описано. Централізація рішень на власнику та максимальна залежність від його щоденної участі (5 з 5) у поєднанні з залежністю від ключових працівників формує концентрований ризик, який сама компанія визнає («крихка стратегія»). Критичні залежності від зовнішніх гравців (єдиний постачальник панелей Procarte, сайт на платформі Prom.ua) не супроводжуються поясненням резервних варіантів. Роль партнера SPAR Україна незрозуміла з наданих даних. Для наступних модулів діагностики бракує даних про структуру доходів за напрямами, маржинальність, оргструктуру та частки клієнтських сегментів.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентифікація та базовий профіль&quot;,
+      &quot;score&quot;: 90,
+      &quot;evidence&quot;: [
+        &quot;Вказано назву, галузь, нішу, рік заснування (2024), етап розвитку (зростання), географію (вся Україна)&quot;,
+        &quot;Роль респондента — власник, що підвищує достовірність даних&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не вказано юридичну форму та фактичну структуру власності&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Бізнес-модель і клієнти&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначено три клієнтські сегменти: юрособи, фізособи, монтажники&quot;,
+        &quot;Описано товарну лінійку (панелі, кабелі, кріплення, електрообладнання) та послуги (проєктування, монтаж)&quot;,
+        &quot;Названо канали: сайт/інтернет, відділ продажів, соцмережі&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Модель монетизації зведена лише до «разового продажу» — не описано сервіс, повторні продажі, частки сегментів у виторгу&quot;,
+        &quot;Не пояснено роль SPAR Україна як критичного партнера&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансовий контекст&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Оборот 0,5–2 млн дол., зростання доходу понад 20%, статус «стійко прибуткова»&quot;,
+        &quot;Керівництву доступні дані про продажі, грошовий потік, операційні показники, прибуток/маржу&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає конкретних показників маржинальності попри заявлену проблему її зниження&quot;,
+        &quot;Не розкрито структуру доходу за напрямами (торгівля обладнанням vs монтаж)&quot;,
+        &quot;Заявлена нестача оборотних коштів не деталізована кількісно&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управління та організаційна зрілість&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалюються засновником одноосібно&quot;,
+        &quot;Залежність від першої особи — 5 (максимальна)&quot;,
+        &quot;Компанія сама називає залежність від ключових працівників як проблему&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає інформації про оргструктуру, рівні управління, наявність заступників чи керівників напрямів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Цілі та стратегічна ясність&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Три цілі з термінами та показниками: стабілізація грошового потоку (2026), 30% обороту через інтернет-магазин (2026), топ-5 інтеграторів в Україні (2035)&quot;,
+        &quot;Чесно ідентифіковано 4 ключові стримувальні проблеми та 5 типів обмежень&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ціль топ-5 не має проміжних віх; показник успіху фактично повторює саму ціль&quot;,
+        &quot;Не описано, як компанія планує перейти від разових продажів до стабільних надходжень&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока самокритичність і чесність респондента: власник відкрито називає стратегію «крихкою» та визнає ключові ризики&quot;,
+    &quot;Наявність цілей із термінами та вимірюваними показниками (зокрема 30% обороту через інтернет-магазин до кінця 2026)&quot;,
+    &quot;Регулярний доступ керівництва до основних управлінських даних: продажі, cash flow, операційні KPI, маржа&quot;,
+    &quot;Диверсифікована клієнтська база за трьома сегментами (B2B, B2C, B2B-монтажники) у зростаючій галузі&quot;,
+    &quot;Стійка прибутковість і зростання доходу понад 20% на етапі раннього розвитку&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична централізація: рішення ухвалює власник, залежність від його щоденної участі максимальна (5/5)&quot;,
+    &quot;Модель доходу — виключно разові продажі, без описаних механізмів повторюваного доходу, попри стратегічну ціль стабільності&quot;,
+    &quot;Концентрація зовнішніх залежностей: один названий постачальник панелей (Procarte, Польща) та сайт на орендованій платформі Prom.ua&quot;,
+    &quot;Тиск на маржу через зростання зарплат при одночасній нестачі кваліфікованого персоналу та оборотних коштів&quot;,
+    &quot;Відсутність опису оргструктури та розподілу відповідальності при 11–50 працівниках&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Максимальна залежність від засновника (5/5) у поєднанні з одноосібним ухваленням рішень і залежністю від ключових працівників&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Будь-яка недоступність першої особи або втрата 1–2 ключових людей може зупинити операційну діяльність; це прямо суперечить цілі масштабування до 2026 року&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Розрив між моделлю заробітку («разовий продаж») і стратегічними цілями (стабільний грошовий потік, сервіс тисяч клієнтів, енергетична платформа)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без переходу до повторюваних доходів (сервісні контракти, обслуговування) заявлена стабілізація грошового потоку до 2026 року не має механізму реалізації&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Єдиний названий постачальник панелей (Procarte) і розміщення сайту на сторонній платформі Prom.ua&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Збій постачальника чи зміна умов платформи безпосередньо б&#x27;ють по продажах і по цілі «30% обороту через інтернет-магазин»&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача оборотних коштів при зростанні понад 20% і моделі разових продажів&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Швидке зростання проєктного бізнесу типово збільшує касові розриви; без фінансового плану зростання може підірвати прибутковість&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Заявлена модель доходу — тільки «разовий продаж», але цілі передбачають стабільні повторювані надходження та сервісне обслуговування тисяч клієнтів&quot;,
+    &quot;Компанія «стійко прибуткова», але одночасно заявляє нестачу оборотних коштів і зниження маржинальності через зростання зарплат — без цифр ці твердження складно узгодити&quot;,
+    &quot;Етап «зростання» і амбіція топ-5 в Україні контрастують з повною централізацією рішень на власнику, що є ознакою більш ранньої стадії управлінської зрілості&quot;,
+    &quot;SPAR Україна названо критично важливим партнером, але роль цієї мережі не пояснена жодним іншим полем анкети (сегменти, канали, продукти)&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Структура доходу за напрямами: частки торгівлі обладнанням, монтажу, сервісу та частки клієнтських сегментів&quot;,
+    &quot;Фактичні показники маржинальності та динаміка витрат на ФОП для верифікації заяви про тиск на маржу&quot;,
+    &quot;Оргструктура: чисельність за функціями, наявність керівників напрямів, хто є «ключовими працівниками»&quot;,
+    &quot;Роль і формат співпраці зі SPAR Україна; наявність альтернативних постачальників панелей окрім Procarte&quot;,
+    &quot;Обіцяний документ «Стратегія» не завантажений — його аналіз може суттєво уточнити цілі та суперечності&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Завантажити документ «Стратегія» та розшифровку структури доходу за напрямами і сегментами за останні 12 місяців&quot;,
+      &quot;why&quot;: &quot;Без цих даних неможливо перевірити реалістичність цілей 2026 року та узгодити суперечність між разовими продажами і ціллю стабільного грошового потоку&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення точності подальших модулів діагностики та зняття ключових суперечностей профілю&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Описати механізм переходу до повторюваних доходів: продуктова лінійка сервісного обслуговування СЕС з тарифами та цільовою часткою у виторгу&quot;,
+      &quot;why&quot;: &quot;Стратегічна ціль стабільності грошового потоку до 2026 року не має описаного джерела при поточній моделі «разовий продаж»&quot;,
+      &quot;expected_result&quot;: &quot;Конкретний план формування повторюваного доходу, який можна перевірити в наступних модулях діагностики&quot;,
+      &quot;owner_role&quot;: &quot;Власник разом з керівником продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Зафіксувати карту критичних залежностей: ключові працівники, єдиний постачальник панелей, платформа Prom.ua — з резервним варіантом для кожної&quot;,
+      &quot;why&quot;: &quot;Компанія сама визнає залежність від ключових людей, а зовнішні залежності (Procarte, Prom.ua) не мають описаних альтернатив&quot;,
+      &quot;expected_result&quot;: &quot;Знижений ризик зупинки операцій; вихідні дані для модуля ризиків&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Визначити 3–5 типів рішень, які делегуються з рівня власника, з призначенням відповідальних&quot;,
+      &quot;why&quot;: &quot;Залежність від першої особи 5/5 при одноосібному ухваленні рішень — головне обмеження масштабування, назване і в цілях, і в проблемах&quot;,
+      &quot;expected_result&quot;: &quot;Зниження залежності від засновника хоча б на один рівень; вивільнення часу власника на стратегічні цілі 2026 року&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Підготувати фінансову модель зростання: потреба в оборотних коштах, динаміка маржі та ФОП на 12 місяців уперед&quot;,
+      &quot;why&quot;: &quot;Заявлені одночасно прибутковість, нестача оборотних коштів і тиск на маржу — без цифр неможливо оцінити стійкість зростання понад 20%&quot;,
+      &quot;expected_result&quot;: &quot;Кількісне підтвердження або спростування ризику касових розривів; основа для рішення про залучення фінансування&quot;,
+      &quot;owner_role&quot;: &quot;Власник / фінансово відповідальна особа&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Профіль організації заповнено якісно: зрозумілі клієнти, продукти, цілі з термінами та чесно названі проблеми — це хороша база для повної діагностики (якість контексту 72/100). Головні моменти, на які варто звернути увагу: (1) заявлена модель заробітку «разовий продаж» суперечить цілі стабільного грошового потоку — потрібно описати, звідки візьмуться повторювані доходи; (2) все тримається на власнику (залежність 5/5) — це головний ризик для масштабування; (3) не пояснено роль партнера SPAR і немає альтернатив єдиному постачальнику панелей. Для підвищення точності наступних кроків просимо завантажити стратегію та структуру доходів за напрямами.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 72,
+  &quot;confidence&quot;: 68,
+  &quot;headline&quot;: &quot;Профіль організації заповнено достатньо повно для старту діагностики, але є суперечності в бізнес-моделі та критичні прогалини щодо структури доходів і залежностей.&quot;,
+  &quot;diagnosis&quot;: &quot;«Солар Вест Буд» — молода компанія (2024 р.) у сфері сонячної енергетики, що працює по всій Україні, поєднує торгівлю обладнанням і послуги проєктування та монтажу СЕС, має 11–50 працівників, оборот 0,5–2 млн дол. і заявляє стійку прибутковість зі зростанням понад 20%. Контекст для діагностики загалом якісний: чітко описані клієнтські сегменти (B2B, B2C, монтажники), продукти, канали та цілі з термінами й показниками. Водночас профіль містить внутрішню суперечність: модель заробітку заявлена як «разовий продаж», але стратегічна ціль передбачає стабільні джерела грошового потоку та сервісне обслуговування тисяч клієнтів — механізм переходу не описано. Централізація рішень на власнику та максимальна залежність від його щоденної участі (5 з 5) у поєднанні з залежністю від ключових працівників формує концентрований ризик, який сама компанія визнає («крихка стратегія»). Критичні залежності від зовнішніх гравців (єдиний постачальник панелей Procarte, сайт на платформі Prom.ua) не супроводжуються поясненням резервних варіантів. Роль партнера SPAR Україна незрозуміла з наданих даних. Для наступних модулів діагностики бракує даних про структуру доходів за напрямами, маржинальність, оргструктуру та частки клієнтських сегментів.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентифікація та базовий профіль&quot;,
+      &quot;score&quot;: 90,
+      &quot;evidence&quot;: [
+        &quot;Вказано назву, галузь, нішу, рік заснування (2024), етап розвитку (зростання), географію (вся Україна)&quot;,
+        &quot;Роль респондента — власник, що підвищує достовірність даних&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не вказано юридичну форму та фактичну структуру власності&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Бізнес-модель і клієнти&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначено три клієнтські сегменти: юрособи, фізособи, монтажники&quot;,
+        &quot;Описано товарну лінійку (панелі, кабелі, кріплення, електрообладнання) та послуги (проєктування, монтаж)&quot;,
+        &quot;Названо канали: сайт/інтернет, відділ продажів, соцмережі&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Модель монетизації зведена лише до «разового продажу» — не описано сервіс, повторні продажі, частки сегментів у виторгу&quot;,
+        &quot;Не пояснено роль SPAR Україна як критичного партнера&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансовий контекст&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Оборот 0,5–2 млн дол., зростання доходу понад 20%, статус «стійко прибуткова»&quot;,
+        &quot;Керівництву доступні дані про продажі, грошовий потік, операційні показники, прибуток/маржу&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає конкретних показників маржинальності попри заявлену проблему її зниження&quot;,
+        &quot;Не розкрито структуру доходу за напрямами (торгівля обладнанням vs монтаж)&quot;,
+        &quot;Заявлена нестача оборотних коштів не деталізована кількісно&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управління та організаційна зрілість&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалюються засновником одноосібно&quot;,
+        &quot;Залежність від першої особи — 5 (максимальна)&quot;,
+        &quot;Компанія сама називає залежність від ключових працівників як проблему&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає інформації про оргструктуру, рівні управління, наявність заступників чи керівників напрямів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Цілі та стратегічна ясність&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Три цілі з термінами та показниками: стабілізація грошового потоку (2026), 30% обороту через інтернет-магазин (2026), топ-5 інтеграторів в Україні (2035)&quot;,
+        &quot;Чесно ідентифіковано 4 ключові стримувальні проблеми та 5 типів обмежень&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ціль топ-5 не має проміжних віх; показник успіху фактично повторює саму ціль&quot;,
+        &quot;Не описано, як компанія планує перейти від разових продажів до стабільних надходжень&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока самокритичність і чесність респондента: власник відкрито називає стратегію «крихкою» та визнає ключові ризики&quot;,
+    &quot;Наявність цілей із термінами та вимірюваними показниками (зокрема 30% обороту через інтернет-магазин до кінця 2026)&quot;,
+    &quot;Регулярний доступ керівництва до основних управлінських даних: продажі, cash flow, операційні KPI, маржа&quot;,
+    &quot;Диверсифікована клієнтська база за трьома сегментами (B2B, B2C, B2B-монтажники) у зростаючій галузі&quot;,
+    &quot;Стійка прибутковість і зростання доходу понад 20% на етапі раннього розвитку&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична централізація: рішення ухвалює власник, залежність від його щоденної участі максимальна (5/5)&quot;,
+    &quot;Модель доходу — виключно разові продажі, без описаних механізмів повторюваного доходу, попри стратегічну ціль стабільності&quot;,
+    &quot;Концентрація зовнішніх залежностей: один названий постачальник панелей (Procarte, Польща) та сайт на орендованій платформі Prom.ua&quot;,
+    &quot;Тиск на маржу через зростання зарплат при одночасній нестачі кваліфікованого персоналу та оборотних коштів&quot;,
+    &quot;Відсутність опису оргструктури та розподілу відповідальності при 11–50 працівниках&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Максимальна залежність від засновника (5/5) у поєднанні з одноосібним ухваленням рішень і залежністю від ключових працівників&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Будь-яка недоступність першої особи або втрата 1–2 ключових людей може зупинити операційну діяльність; це прямо суперечить цілі масштабування до 2026 року&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Розрив між моделлю заробітку («разовий продаж») і стратегічними цілями (стабільний грошовий потік, сервіс тисяч клієнтів, енергетична платформа)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без переходу до повторюваних доходів (сервісні контракти, обслуговування) заявлена стабілізація грошового потоку до 2026 року не має механізму реалізації&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Єдиний названий постачальник панелей (Procarte) і розміщення сайту на сторонній платформі Prom.ua&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Збій постачальника чи зміна умов платформи безпосередньо б&#x27;ють по продажах і по цілі «30% обороту через інтернет-магазин»&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача оборотних коштів при зростанні понад 20% і моделі разових продажів&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Швидке зростання проєктного бізнесу типово збільшує касові розриви; без фінансового плану зростання може підірвати прибутковість&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Заявлена модель доходу — тільки «разовий продаж», але цілі передбачають стабільні повторювані надходження та сервісне обслуговування тисяч клієнтів&quot;,
+    &quot;Компанія «стійко прибуткова», але одночасно заявляє нестачу оборотних коштів і зниження маржинальності через зростання зарплат — без цифр ці твердження складно узгодити&quot;,
+    &quot;Етап «зростання» і амбіція топ-5 в Україні контрастують з повною централізацією рішень на власнику, що є ознакою більш ранньої стадії управлінської зрілості&quot;,
+    &quot;SPAR Україна названо критично важливим партнером, але роль цієї мережі не пояснена жодним іншим полем анкети (сегменти, канали, продукти)&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Структура доходу за напрямами: частки торгівлі обладнанням, монтажу, сервісу та частки клієнтських сегментів&quot;,
+    &quot;Фактичні показники маржинальності та динаміка витрат на ФОП для верифікації заяви про тиск на маржу&quot;,
+    &quot;Оргструктура: чисельність за функціями, наявність керівників напрямів, хто є «ключовими працівниками»&quot;,
+    &quot;Роль і формат співпраці зі SPAR Україна; наявність альтернативних постачальників панелей окрім Procarte&quot;,
+    &quot;Обіцяний документ «Стратегія» не завантажений — його аналіз може суттєво уточнити цілі та суперечності&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Завантажити документ «Стратегія» та розшифровку структури доходу за напрямами і сегментами за останні 12 місяців&quot;,
+      &quot;why&quot;: &quot;Без цих даних неможливо перевірити реалістичність цілей 2026 року та узгодити суперечність між разовими продажами і ціллю стабільного грошового потоку&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення точності подальших модулів діагностики та зняття ключових суперечностей профілю&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Описати механізм переходу до повторюваних доходів: продуктова лінійка сервісного обслуговування СЕС з тарифами та цільовою часткою у виторгу&quot;,
+      &quot;why&quot;: &quot;Стратегічна ціль стабільності грошового потоку до 2026 року не має описаного джерела при поточній моделі «разовий продаж»&quot;,
+      &quot;expected_result&quot;: &quot;Конкретний план формування повторюваного доходу, який можна перевірити в наступних модулях діагностики&quot;,
+      &quot;owner_role&quot;: &quot;Власник разом з керівником продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Зафіксувати карту критичних залежностей: ключові працівники, єдиний постачальник панелей, платформа Prom.ua — з резервним варіантом для кожної&quot;,
+      &quot;why&quot;: &quot;Компанія сама визнає залежність від ключових людей, а зовнішні залежності (Procarte, Prom.ua) не мають описаних альтернатив&quot;,
+      &quot;expected_result&quot;: &quot;Знижений ризик зупинки операцій; вихідні дані для модуля ризиків&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Визначити 3–5 типів рішень, які делегуються з рівня власника, з призначенням відповідальних&quot;,
+      &quot;why&quot;: &quot;Залежність від першої особи 5/5 при одноосібному ухваленні рішень — головне обмеження масштабування, назване і в цілях, і в проблемах&quot;,
+      &quot;expected_result&quot;: &quot;Зниження залежності від засновника хоча б на один рівень; вивільнення часу власника на стратегічні цілі 2026 року&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Підготувати фінансову модель зростання: потреба в оборотних коштах, динаміка маржі та ФОП на 12 місяців уперед&quot;,
+      &quot;why&quot;: &quot;Заявлені одночасно прибутковість, нестача оборотних коштів і тиск на маржу — без цифр неможливо оцінити стійкість зростання понад 20%&quot;,
+      &quot;expected_result&quot;: &quot;Кількісне підтвердження або спростування ризику касових розривів; основа для рішення про залучення фінансування&quot;,
+      &quot;owner_role&quot;: &quot;Власник / фінансово відповідальна особа&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Профіль організації заповнено якісно: зрозумілі клієнти, продукти, цілі з термінами та чесно названі проблеми — це хороша база для повної діагностики (якість контексту 72/100). Головні моменти, на які варто звернути увагу: (1) заявлена модель заробітку «разовий продаж» суперечить цілі стабільного грошового потоку — потрібно описати, звідки візьмуться повторювані доходи; (2) все тримається на власнику (залежність 5/5) — це головний ризик для масштабування; (3) не пояснено роль партнера SPAR і немає альтернатив єдиному постачальнику панелей. Для підвищення точності наступних кроків просимо завантажити стратегію та структуру доходів за напрямами.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_creation&quot;: {
+    &quot;ephemeral_1h_input_tokens&quot;: 0,
+    &quot;ephemeral_5m_input_tokens&quot;: 0
+  },
+  &quot;cache_creation_input_tokens&quot;: 0,
+  &quot;cache_read_input_tokens&quot;: 0,
+  &quot;inference_geo&quot;: &quot;global&quot;,
+  &quot;input_tokens&quot;: 2495,
+  &quot;output_tokens&quot;: 4855,
+  &quot;output_tokens_details&quot;: {
+    &quot;thinking_tokens&quot;: 261
+  },
+  &quot;server_tool_use&quot;: null,
+  &quot;service_tier&quot;: &quot;standard&quot;
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;msg_011CeMTsbSLLdKvoUBofXpQa&quot;,
+  &quot;container&quot;: null,
+  &quot;content&quot;: [
+    {
+      &quot;signature&quot;: &quot;CAISvQcKjwEIERgCKkCbCn1z0SRhqTCAQM7etb48nk6fO5Z7yYUb4NbeGm0ogqaEv/Xrnb43OGNebO0i85hwSgZ6aj0mG2RexoSiHx9vMg5jbGF1ZGUtZmFibGUtNTgBQgh0aGlua2luZ1okNjM0MmI1MTktMTQ0Yi00OWJiLWFkOGItYmU2MTI3ODU3MmExqAHxyrDUBhIMNxJlQiCkZOcnwqYCGgy2aV+y6AWZ7XZzsrciMEuVSBNblgUIi7PtdiASJvsy77OPAdSf8IMltJA97HWgfZ4e73NO4cAA7UkLwqZn6SraBXzPouA7FlWyZ8+6PHc/1v/TkB+U5/R8FDIxRWENz5o+WX5yuy3xYYgnAbQH1eBt9HegMFVHniJQ3aCLIlnxrCHaVrYY0n4FscJDrcczSgJjNRqbLfLQ8WoikW7chCJyEkiFxYSJtlMvEjSibjogSWgaIazTu0BbE07q+4w/E2ZI8iLcOOuo93VVJkrOvAUkx4iY0aPeFJO5a6wAaY2sH09So0B6kJb+Sbdz2iEZnRAkqYWBZY5KuCGh6V7F0714/mZ8MI652GHGRCe5IbhHwDGlpdwJVUa2s+mqMrIbfcebDMdptFPwIooKlTYRPWlUzjbRepOtOK1jKG3i/wJ814mWg/VfxT7x/ZwZkVxASUmGHVrXKO43GPxjsBdCr5FFPY+fbdrnDx4vSg43oyZdc0Ffsfik6A3nXoOr/jI0TDao4cGrYPsTRq3CU6OvDtQXDHUDXESOJHhVdlfKRW0IYKlMmxW0Hpo9rRbkgqH79mYfF9CIshfjsl1RKprwIhSixgxYLXLbPkGFouV0s7P/gLb30G9PthoHQ3lMLzxeqWL/cCvjTS4MJdOOKhYyk68odppGvetuHXxuSZJOCpdOtuwJi6EFnxReqA5eTGynoYghlwM89hB+d0TXZO3PekXi9yR2oqFfBSSP6XJtAu6Op7AxrfHTET7Rk1TObmESW5eD4JKFDp1gDi8oTK+ipvacM+ej4wEm1NJk1T9/RwIDVcAKG8y4FFFO5NlNiIhe09t+33DjrHExFvV/mfuCp+GMF347OD3nmZ+SxzBUhy4bv8oJV17SRkgIOfzsdfmFiq81+bYV8DrK3HVk4TBHPaBR/XWm1MhBw5n01KLeh6scHtQ9Kh8C7RYF5UkQtgwo2MiPszytADo9YVfY0b6fP6RoP3z8yUsaGHVr29AUbGvXmkKPRYPY2r+6kK9cnUdaqx4R0yKB08JrN0NmDp7K2zG0rLOl346qrH+LO+MYAQ==&quot;,
+      &quot;thinking&quot;: &quot;&quot;,
+      &quot;type&quot;: &quot;thinking&quot;
+    },
+    {
+      &quot;citations&quot;: null,
+      &quot;text&quot;: &quot;```json\n{\n  \&quot;module_code\&quot;: \&quot;ORG\&quot;,\n  \&quot;module_name\&quot;: \&quot;Профіль організації\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;complete\&quot;,\n  \&quot;score\&quot;: 72,\n  \&quot;confidence\&quot;: 68,\n  \&quot;headline\&quot;: \&quot;Профіль організації заповнено достатньо повно для старту діагностики, але є суперечності в бізнес-моделі та критичні прогалини щодо структури доходів і залежностей.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;«Солар Вест Буд» — молода компанія (2024 р.) у сфері сонячної енергетики, що працює по всій Україні, поєднує торгівлю обладнанням і послуги проєктування та монтажу СЕС, має 11–50 працівників, оборот 0,5–2 млн дол. і заявляє стійку прибутковість зі зростанням понад 20%. Контекст для діагностики загалом якісний: чітко описані клієнтські сегменти (B2B, B2C, монтажники), продукти, канали та цілі з термінами й показниками. Водночас профіль містить внутрішню суперечність: модель заробітку заявлена як «разовий продаж», але стратегічна ціль передбачає стабільні джерела грошового потоку та сервісне обслуговування тисяч клієнтів — механізм переходу не описано. Централізація рішень на власнику та максимальна залежність від його щоденної участі (5 з 5) у поєднанні з залежністю від ключових працівників формує концентрований ризик, який сама компанія визнає («крихка стратегія»). Критичні залежності від зовнішніх гравців (єдиний постачальник панелей Procarte, сайт на платформі Prom.ua) не супроводжуються поясненням резервних варіантів. Роль партнера SPAR Україна незрозуміла з наданих даних. Для наступних модулів діагностики бракує даних про структуру доходів за напрямами, маржинальність, оргструктуру та частки клієнтських сегментів.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;Ідентифікація та базовий профіль\&quot;,\n      \&quot;score\&quot;: 90,\n      \&quot;evidence\&quot;: [\n        \&quot;Вказано назву, галузь, нішу, рік заснування (2024), етап розвитку (зростання), географію (вся Україна)\&quot;,\n        \&quot;Роль респондента — власник, що підвищує достовірність даних\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Не вказано юридичну форму та фактичну структуру власності\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Бізнес-модель і клієнти\&quot;,\n      \&quot;score\&quot;: 70,\n      \&quot;evidence\&quot;: [\n        \&quot;Чітко визначено три клієнтські сегменти: юрособи, фізособи, монтажники\&quot;,\n        \&quot;Описано товарну лінійку (панелі, кабелі, кріплення, електрообладнання) та послуги (проєктування, монтаж)\&quot;,\n        \&quot;Названо канали: сайт/інтернет, відділ продажів, соцмережі\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Модель монетизації зведена лише до «разового продажу» — не описано сервіс, повторні продажі, частки сегментів у виторгу\&quot;,\n        \&quot;Не пояснено роль SPAR Україна як критичного партнера\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Фінансовий контекст\&quot;,\n      \&quot;score\&quot;: 65,\n      \&quot;evidence\&quot;: [\n        \&quot;Оборот 0,5–2 млн дол., зростання доходу понад 20%, статус «стійко прибуткова»\&quot;,\n        \&quot;Керівництву доступні дані про продажі, грошовий потік, операційні показники, прибуток/маржу\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає конкретних показників маржинальності попри заявлену проблему її зниження\&quot;,\n        \&quot;Не розкрито структуру доходу за напрямами (торгівля обладнанням vs монтаж)\&quot;,\n        \&quot;Заявлена нестача оборотних коштів не деталізована кількісно\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Управління та організаційна зрілість\&quot;,\n      \&quot;score\&quot;: 55,\n      \&quot;evidence\&quot;: [\n        \&quot;Рішення ухвалюються засновником одноосібно\&quot;,\n        \&quot;Залежність від першої особи — 5 (максимальна)\&quot;,\n        \&quot;Компанія сама називає залежність від ключових працівників як проблему\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає інформації про оргструктуру, рівні управління, наявність заступників чи керівників напрямів\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Цілі та стратегічна ясність\&quot;,\n      \&quot;score\&quot;: 75,\n      \&quot;evidence\&quot;: [\n        \&quot;Три цілі з термінами та показниками: стабілізація грошового потоку (2026), 30% обороту через інтернет-магазин (2026), топ-5 інтеграторів в Україні (2035)\&quot;,\n        \&quot;Чесно ідентифіковано 4 ключові стримувальні проблеми та 5 типів обмежень\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Ціль топ-5 не має проміжних віх; показник успіху фактично повторює саму ціль\&quot;,\n        \&quot;Не описано, як компанія планує перейти від разових продажів до стабільних надходжень\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Висока самокритичність і чесність респондента: власник відкрито називає стратегію «крихкою» та визнає ключові ризики\&quot;,\n    \&quot;Наявність цілей із термінами та вимірюваними показниками (зокрема 30% обороту через інтернет-магазин до кінця 2026)\&quot;,\n    \&quot;Регулярний доступ керівництва до основних управлінських даних: продажі, cash flow, операційні KPI, маржа\&quot;,\n    \&quot;Диверсифікована клієнтська база за трьома сегментами (B2B, B2C, B2B-монтажники) у зростаючій галузі\&quot;,\n    \&quot;Стійка прибутковість і зростання доходу понад 20% на етапі раннього розвитку\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Критична централізація: рішення ухвалює власник, залежність від його щоденної участі максимальна (5/5)\&quot;,\n    \&quot;Модель доходу — виключно разові продажі, без описаних механізмів повторюваного доходу, попри стратегічну ціль стабільності\&quot;,\n    \&quot;Концентрація зовнішніх залежностей: один названий постачальник панелей (Procarte, Польща) та сайт на орендованій платформі Prom.ua\&quot;,\n    \&quot;Тиск на маржу через зростання зарплат при одночасній нестачі кваліфікованого персоналу та оборотних коштів\&quot;,\n    \&quot;Відсутність опису оргструктури та розподілу відповідальності при 11–50 працівниках\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;Максимальна залежність від засновника (5/5) у поєднанні з одноосібним ухваленням рішень і залежністю від ключових працівників\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Будь-яка недоступність першої особи або втрата 1–2 ключових людей може зупинити операційну діяльність; це прямо суперечить цілі масштабування до 2026 року\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Розрив між моделлю заробітку («разовий продаж») і стратегічними цілями (стабільний грошовий потік, сервіс тисяч клієнтів, енергетична платформа)\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Без переходу до повторюваних доходів (сервісні контракти, обслуговування) заявлена стабілізація грошового потоку до 2026 року не має механізму реалізації\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Єдиний названий постачальник панелей (Procarte) і розміщення сайту на сторонній платформі Prom.ua\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Збій постачальника чи зміна умов платформи безпосередньо б&#x27;ють по продажах і по цілі «30% обороту через інтернет-магазин»\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Нестача оборотних коштів при зростанні понад 20% і моделі разових продажів\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Швидке зростання проєктного бізнесу типово збільшує касові розриви; без фінансового плану зростання може підірвати прибутковість\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Заявлена модель доходу — тільки «разовий продаж», але цілі передбачають стабільні повторювані надходження та сервісне обслуговування тисяч клієнтів\&quot;,\n    \&quot;Компанія «стійко прибуткова», але одночасно заявляє нестачу оборотних коштів і зниження маржинальності через зростання зарплат — без цифр ці твердження складно узгодити\&quot;,\n    \&quot;Етап «зростання» і амбіція топ-5 в Україні контрастують з повною централізацією рішень на власнику, що є ознакою більш ранньої стадії управлінської зрілості\&quot;,\n    \&quot;SPAR Україна названо критично важливим партнером, але роль цієї мережі не пояснена жодним іншим полем анкети (сегменти, канали, продукти)\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Структура доходу за напрямами: частки торгівлі обладнанням, монтажу, сервісу та частки клієнтських сегментів\&quot;,\n    \&quot;Фактичні показники маржинальності та динаміка витрат на ФОП для верифікації заяви про тиск на маржу\&quot;,\n    \&quot;Оргструктура: чисельність за функціями, наявність керівників напрямів, хто є «ключовими працівниками»\&quot;,\n    \&quot;Роль і формат співпраці зі SPAR Україна; наявність альтернативних постачальників панелей окрім Procarte\&quot;,\n    \&quot;Обіцяний документ «Стратегія» не завантажений — його аналіз може суттєво уточнити цілі та суперечності\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Завантажити документ «Стратегія» та розшифровку структури доходу за напрямами і сегментами за останні 12 місяців\&quot;,\n      \&quot;why\&quot;: \&quot;Без цих даних неможливо перевірити реалістичність цілей 2026 року та узгодити суперечність між разовими продажами і ціллю стабільного грошового потоку\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підвищення точності подальших модулів діагностики та зняття ключових суперечностей профілю\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник\&quot;,\n      \&quot;deadline\&quot;: \&quot;7 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Описати механізм переходу до повторюваних доходів: продуктова лінійка сервісного обслуговування СЕС з тарифами та цільовою часткою у виторгу\&quot;,\n      \&quot;why\&quot;: \&quot;Стратегічна ціль стабільності грошового потоку до 2026 року не має описаного джерела при поточній моделі «разовий продаж»\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Конкретний план формування повторюваного доходу, який можна перевірити в наступних модулях діагностики\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник разом з керівником продажів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Зафіксувати карту критичних залежностей: ключові працівники, єдиний постачальник панелей, платформа Prom.ua — з резервним варіантом для кожної\&quot;,\n      \&quot;why\&quot;: \&quot;Компанія сама визнає залежність від ключових людей, а зовнішні залежності (Procarte, Prom.ua) не мають описаних альтернатив\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Знижений ризик зупинки операцій; вихідні дані для модуля ризиків\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Визначити 3–5 типів рішень, які делегуються з рівня власника, з призначенням відповідальних\&quot;,\n      \&quot;why\&quot;: \&quot;Залежність від першої особи 5/5 при одноосібному ухваленні рішень — головне обмеження масштабування, назване і в цілях, і в проблемах\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зниження залежності від засновника хоча б на один рівень; вивільнення часу власника на стратегічні цілі 2026 року\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Підготувати фінансову модель зростання: потреба в оборотних коштах, динаміка маржі та ФОП на 12 місяців уперед\&quot;,\n      \&quot;why\&quot;: \&quot;Заявлені одночасно прибутковість, нестача оборотних коштів і тиск на маржу — без цифр неможливо оцінити стійкість зростання понад 20%\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Кількісне підтвердження або спростування ризику касових розривів; основа для рішення про залучення фінансування\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / фінансово відповідальна особа\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Профіль організації заповнено якісно: зрозумілі клієнти, продукти, цілі з термінами та чесно названі проблеми — це хороша база для повної діагностики (якість контексту 72/100). Головні моменти, на які варто звернути увагу: (1) заявлена модель заробітку «разовий продаж» суперечить цілі стабільного грошового потоку — потрібно описати, звідки візьмуться повторювані доходи; (2) все тримається на власнику (залежність 5/5) — це головний ризик для масштабування; (3) не пояснено роль партнера SPAR і немає альтернатив єдиному постачальнику панелей. Для підвищення точності наступних кроків просимо завантажити стратегію та структуру доходів за напрямами.\&quot;\n}\n```&quot;,
+      &quot;type&quot;: &quot;text&quot;
+    }
+  ],
+  &quot;model&quot;: &quot;claude-fable-5&quot;,
+  &quot;role&quot;: &quot;assistant&quot;,
+  &quot;stop_details&quot;: null,
+  &quot;stop_reason&quot;: &quot;end_turn&quot;,
+  &quot;stop_sequence&quot;: null,
+  &quot;type&quot;: &quot;message&quot;,
+  &quot;usage&quot;: {
+    &quot;cache_creation&quot;: {
+      &quot;ephemeral_1h_input_tokens&quot;: 0,
+      &quot;ephemeral_5m_input_tokens&quot;: 0
+    },
+    &quot;cache_creation_input_tokens&quot;: 0,
+    &quot;cache_read_input_tokens&quot;: 0,
+    &quot;inference_geo&quot;: &quot;global&quot;,
+    &quot;input_tokens&quot;: 2495,
+    &quot;output_tokens&quot;: 4855,
+    &quot;output_tokens_details&quot;: {
+      &quot;thinking_tokens&quot;: 261
+    },
+    &quot;server_tool_use&quot;: null,
+    &quot;service_tier&quot;: &quot;standard&quot;
+  }
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

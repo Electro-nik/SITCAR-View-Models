@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini 3.5 Flash-Lite</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Gemini 3.5 Flash-Lite</h1>
+<div class="muted">Google Gemini · Prompt: ORG · 2026-08-24T13:53:26</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gemini-3.5-flash-lite</strong></div>
+<div class="metric"><span>Returned</span><strong>gemini-3.5-flash-lite</strong></div>
+<div class="metric"><span>Response ID</span><strong>oCKMauunBL3ykdUPk4vG2AQ</strong></div>
+<div class="metric"><span>Context window</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Max output</span><strong>65 536</strong></div>
+<div class="metric"><span>Latency</span><strong>7.405 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>1 893</strong></div>
+<div class="metric"><span>Cached input</span><strong>—</strong></div>
+<div class="metric"><span>Output tokens</span><strong>2 343</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>—</strong></div>
+<div class="metric"><span>Total tokens</span><strong>4 236</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.300000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.000568</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.030000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$2.500000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.005857</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.006425</strong></div>
+</section>
+</div>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">ORG</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Профіль організації</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">complete</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">78</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">85</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Компанія демонструє швидке фінансове зростання на ринку відновлюваної енергетики, проте стикається з класичною кризою управління та дефіцитом кадру й капіталу при високій централізації прийняття рішень.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Компанія «Солар Вест Буд» створена у 2024 році та перебуває на етапі активного зростання (понад 20% на рік), маючи прибутковий бізнес із фінансовим оборотом 0,5–2 млн дол. США та штатом 11–50 людей. Організація поєднує інжинірингові послуги (проєктування, монтаж СЕС) із товарним продажем обладнання через власний інтернет-магазин і B2B/B2C канали. Попри стійкий фінансовий стан, ключові рішення повністю замкнені на засновнику (найвищий рівень залежності), що створює операційний вузький горловий ефект. Головними стримуючими факторами є нестача кваліфікованого персоналу, дефіцит оборотних коштів для масштабного розвитку, ризики залежності від ключових працівників та ерозія маржинальності через швидке зростання зарплат. Стратегічні цілі компанії амбітні (стабілізація моделі до 2026 року та входження в ТОП-5 до 2035 року), проте поточна управлінська архітектура є «крихкою» через надмірну залученість першої особи та слабку децентралізацію повноважень.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Контекст та ринкова позиція</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">85</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Галузь: відновлювані джерела енергії</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Продукти: СЕС під ключ, обладнання</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Клієнти: B2B, B2C, монтажники</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Оборот: 0,5–2 млн дол.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Деталізована структура доходу між послугами монтажу та продажем обладнання</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Фінансова стійкість та дані</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Стійко прибуткова</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Зростання понад 20%</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Регулярно доступні: продажі, грошовий потік, маржа, ОКП</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Точний обсяг потреби в оборотних коштах</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Управління та структура</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Рішення ухвалює виключно засновник (залежність рівня 5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Штат 11-50 людей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Залежність від ключових працівників</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявність середнього менеджменту та делегованих повноважень</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Стратегічна зрілість</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявні чіткі цілі до 2026 та 2035 років</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Усвідомлення обмежень (люди, компетенції, бюджет)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Операційний план досягнення 30% частоти інтернет-магазину в загальному обороті</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Високі темпи зростання виручки (понад 20% на рік) у перспективній галузі зеленої енергетики.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Стійкий прибутковий бізнес із диверсифікованою базою клієнтів (B2B, B2C, монтажники) та наявністю управлінської звітності.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Чітко сформовані довгострокові стратегічні цілі розвитку до 2026 та 2035 років.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Адекватне самоусвідомлення внутрішніх обмежень (дефіцит людей, час, бюджети, компетенції).</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Критична залежність операційної діяльності та прийняття рішень від засновника (рівень 5 із 5).</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Нестача кваліфікованого персоналу та високі темпи росту зарплат, що розмивають маржинальність.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Дефіцит оборотних коштів для фінансування стрімкого розвитку.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Ризик втрати ключових співробітників у невеликій команді (11–50 осіб).</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Повна централізація прийняття рішень на засновнику при масштабуванні бізнесу</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">critical</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Унеможливлює подальше масштабування компанії та створює ризик зупинки бізнесу у разі відсутності чи перевантаження засновника.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Зменшення маржинальності проєктів через випереджаюче зростання зарплат</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Загрожує перетворити прибуткове зростання на збиток при подальшому збільшенні обсягів діяльності.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Нестача оборотних коштів на фоні зростання понад 20%</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Класичний симптом касового розриву росту (overtrading), коли бізнес генерує прибуток на папері, але не має кешу на виконання нових контрактів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Компанія стрімко зростає (понад 20%) і ставить цілі масштабування, але при цьому повністю залежить від ручного управління власника та страждає від нестачі оборотних коштів і кадрів.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутність деталізації щодо структури витрат та причин стрімкого росту зарплат відносно продуктивності праці.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає інформації про наявність формалізованих бізнес-процесів або середньої управлінської ланки.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити та затвердити матрицю делегування повноважень (Delegation of Authority), передавши частину операційних рішень на рівень керівників напрямків.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Знизити критичну залежність бізнесу від засновника та розвантажити його для вирішення стратегічних завдань.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зменшення залежності від першої особи з рівня 5 до рівня 3, прискорення прийняття щоденних рішень.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / Засновник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Провести фінансовий аудит юніт-економіки проєктів та прив&#x27;язати зростання зарплат до ключових показників ефективності (KPI) і продуктивності.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Зупинити ерозію маржинальності проєктів на фоні зростання витрат на персонал.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Стабілізація або відновлення цільової маржинальності проєктів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий директор / Бухгалтер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Сформувати короткостроковий прогноз грошових потоків (Cash Flow Forecast) на 90 днів із урахуванням касових розривів на закупівлю обладнання.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Вирішити проблему нестачі оборотних коштів для забезпечення стрімкого зростання продажів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Чітке розуміння касових розривів та залучення необхідного фінансування завчасно.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий директор / Власник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Запустити внутрішню програму розвитку/онбордингу та партнерство з профільними навчальними закладами для вирішення дефіциту кваліфікованих кадрів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Зняти обмеження по персоналу, яке стримує виконання цілей компанії до 2026 року.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зменшення дефіциту технічних спеціалістів та зниження залежності від окремих ключових працівників.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">HR-менеджер / Операційний директор</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Ваша компанія «Солар Вест Буд» стрімко розвивається у перспективній галузі, демонструючи гарні фінансові результати та прибутковість. Ви маєте чітке бачення майбутнього та розумієте свої цілі на найближчі роки. Однак поточне зростання натикається на класичні обмеження: бізнес тримається переважно на ручному управлінні власника, відчувається нестача обігових коштів та кваліфікованих кадрів, а витрати на зарплати починають «з&#x27;їдати» маржу. Щоб перейти від «крихкого» зростання до стабільного масштабування, необхідно почати делегувати управління, оптимізувати фінансові потоки та вибудувати систему роботи з людьми.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete&quot;,
+&quot;score&quot;: 78,
+&quot;confidence&quot;: 85,
+&quot;headline&quot;: &quot;Компанія демонструє швидке фінансове зростання на ринку відновлюваної енергетики, проте стикається з класичною кризою управління та дефіцитом кадру й капіталу при високій централізації прийняття рішень.&quot;,
+&quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» створена у 2024 році та перебуває на етапі активного зростання (понад 20% на рік), маючи прибутковий бізнес із фінансовим оборотом 0,5–2 млн дол. США та штатом 11–50 людей. Організація поєднує інжинірингові послуги (проєктування, монтаж СЕС) із товарним продажем обладнання через власний інтернет-магазин і B2B/B2C канали. Попри стійкий фінансовий стан, ключові рішення повністю замкнені на засновнику (найвищий рівень залежності), що створює операційний вузький горловий ефект. Головними стримуючими факторами є нестача кваліфікованого персоналу, дефіцит оборотних коштів для масштабного розвитку, ризики залежності від ключових працівників та ерозія маржинальності через швидке зростання зарплат. Стратегічні цілі компанії амбітні (стабілізація моделі до 2026 року та входження в ТОП-5 до 2035 року), проте поточна управлінська архітектура є «крихкою» через надмірну залученість першої особи та слабку децентралізацію повноважень.&quot;,
+&quot;dimension_scores&quot;: [
+  {
+    &quot;dimension&quot;: &quot;Контекст та ринкова позиція&quot;,
+    &quot;score&quot;: 85,
+    &quot;evidence&quot;: [&quot;Галузь: відновлювані джерела енергії&quot;, &quot;Продукти: СЕС під ключ, обладнання&quot;, &quot;Клієнти: B2B, B2C, монтажники&quot;, &quot;Оборот: 0,5–2 млн дол.&quot;],
+    &quot;gaps&quot;: [&quot;Деталізована структура доходу між послугами монтажу та продажем обладнання&quot;]
+  },
+  {
+    &quot;dimension&quot;: &quot;Фінансова стійкість та дані&quot;,
+    &quot;score&quot;: 80,
+    &quot;evidence&quot;: [&quot;Стійко прибуткова&quot;, &quot;Зростання понад 20%&quot;, &quot;Регулярно доступні: продажі, грошовий потік, маржа, ОКП&quot;],
+    &quot;gaps&quot;: [&quot;Точний обсяг потреби в оборотних коштах&quot;]
+  },
+  {
+    &quot;dimension&quot;: &quot;Управління та структура&quot;,
+    &quot;score&quot;: 60,
+    &quot;evidence&quot;: [&quot;Рішення ухвалює виключно засновник (залежність рівня 5)&quot;, &quot;Штат 11-50 людей&quot;, &quot;Залежність від ключових працівників&quot;],
+    &quot;gaps&quot;: [&quot;Наявність середнього менеджменту та делегованих повноважень&quot;]
+  },
+  {
+    &quot;dimension&quot;: &quot;Стратегічна зрілість&quot;,
+    &quot;score&quot;: 80,
+    &quot;evidence&quot;: [&quot;Наявні чіткі цілі до 2026 та 2035 років&quot;, &quot;Усвідомлення обмежень (люди, компетенції, бюджет)&quot;],
+    &quot;gaps&quot;: [&quot;Операційний план досягнення 30% частоти інтернет-магазину в загальному обороті&quot;]
+  }
+],
+&quot;strengths&quot;: [
+  &quot;Високі темпи зростання виручки (понад 20% на рік) у перспективній галузі зеленої енергетики.&quot;,
+  &quot;Стійкий прибутковий бізнес із диверсифікованою базою клієнтів (B2B, B2C, монтажники) та наявністю управлінської звітності.&quot;,
+  &quot;Чітко сформовані довгострокові стратегічні цілі розвитку до 2026 та 2035 років.&quot;,
+  &quot;Адекватне самоусвідомлення внутрішніх обмежень (дефіцит людей, час, бюджети, компетенції).&quot;
+],
+&quot;weaknesses&quot;: [
+  &quot;Критична залежність операційної діяльності та прийняття рішень від засновника (рівень 5 із 5).&quot;,
+  &quot;Нестача кваліфікованого персоналу та високі темпи росту зарплат, що розмивають маржинальність.&quot;,
+  &quot;Дефіцит оборотних коштів для фінансування стрімкого розвитку.&quot;,
+  &quot;Ризик втрати ключових співробітників у невеликій команді (11–50 осіб).&quot;
+],
+&quot;red_flags&quot;: [
+  {
+    &quot;signal&quot;: &quot;Повна централізація прийняття рішень на засновнику при масштабуванні бізнесу&quot;,
+    &quot;severity&quot;: &quot;critical&quot;,
+    &quot;why_it_matters&quot;: &quot;Унеможливлює подальше масштабування компанії та створює ризик зупинки бізнесу у разі відсутності чи перевантаження засновника.&quot;
+  },
+  {
+    &quot;signal&quot;: &quot;Зменшення маржинальності проєктів через випереджаюче зростання зарплат&quot;,
+    &quot;severity&quot;: &quot;high&quot;,
+    &quot;why_it_matters&quot;: &quot;Загрожує перетворити прибуткове зростання на збиток при подальшому збільшенні обсягів діяльності.&quot;
+  },
+  {
+    &quot;signal&quot;: &quot;Нестача оборотних коштів на фоні зростання понад 20%&quot;,
+    &quot;severity&quot;: &quot;high&quot;,
+    &quot;why_it_matters&quot;: &quot;Класичний симптом касового розриву росту (overtrading), коли бізнес генерує прибуток на папері, але не має кешу на виконання нових контрактів.&quot;
+  }
+],
+&quot;contradictions&quot;: [
+  &quot;Компанія стрімко зростає (понад 20%) і ставить цілі масштабування, але при цьому повністю залежить від ручного управління власника та страждає від нестачі оборотних коштів і кадрів.&quot;
+],
+&quot;data_gaps&quot;: [
+  &quot;Відсутність деталізації щодо структури витрат та причин стрімкого росту зарплат відносно продуктивності праці.&quot;,
+  &quot;Немає інформації про наявність формалізованих бізнес-процесів або середньої управлінської ланки.&quot;
+],
+&quot;recommendations&quot;: [
+  {
+    &quot;action&quot;: &quot;Розробити та затвердити матрицю делегування повноважень (Delegation of Authority), передавши частину операційних рішень на рівень керівників напрямків.&quot;,
+    &quot;why&quot;: &quot;Знизити критичну залежність бізнесу від засновника та розвантажити його для вирішення стратегічних завдань.&quot;,
+    &quot;expected_result&quot;: &quot;Зменшення залежності від першої особи з рівня 5 до рівня 3, прискорення прийняття щоденних рішень.&quot;,
+    &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+    &quot;deadline&quot;: &quot;30 днів&quot;
+  },
+  {
+    &quot;action&quot;: &quot;Провести фінансовий аудит юніт-економіки проєктів та прив&#x27;язати зростання зарплат до ключових показників ефективності (KPI) і продуктивності.&quot;,
+    &quot;why&quot;: &quot;Зупинити ерозію маржинальності проєктів на фоні зростання витрат на персонал.&quot;,
+    &quot;expected_result&quot;: &quot;Стабілізація або відновлення цільової маржинальності проєктів.&quot;,
+    &quot;owner_role&quot;: &quot;Фінансовий директор / Бухгалтер&quot;,
+    &quot;deadline&quot;: &quot;30 днів&quot;
+  },
+  {
+    &quot;action&quot;: &quot;Сформувати короткостроковий прогноз грошових потоків (Cash Flow Forecast) на 90 днів із урахуванням касових розривів на закупівлю обладнання.&quot;,
+    &quot;why&quot;: &quot;Вирішити проблему нестачі оборотних коштів для забезпечення стрімкого зростання продажів.&quot;,
+    &quot;expected_result&quot;: &quot;Чітке розуміння касових розривів та залучення необхідного фінансування завчасно.&quot;,
+    &quot;owner_role&quot;: &quot;Фінансовий директор / Власник&quot;,
+    &quot;deadline&quot;: &quot;7 днів&quot;
+  },
+  {
+    &quot;action&quot;: &quot;Запустити внутрішню програму розвитку/онбордингу та партнерство з профільними навчальними закладами для вирішення дефіциту кваліфікованих кадрів.&quot;,
+    &quot;why&quot;: &quot;Зняти обмеження по персоналу, яке стримує виконання цілей компанії до 2026 року.&quot;,
+    &quot;expected_result&quot;: &quot;Зменшення дефіциту технічних спеціалістів та зниження залежності від окремих ключових працівників.&quot;,
+    &quot;owner_role&quot;: &quot;HR-менеджер / Операційний директор&quot;,
+    &quot;deadline&quot;: &quot;90 днів&quot;
+  }
+],
+&quot;manager_summary&quot;: &quot;Ваша компанія «Солар Вест Буд» стрімко розвивається у перспективній галузі, демонструючи гарні фінансові результати та прибутковість. Ви маєте чітке бачення майбутнього та розумієте свої цілі на найближчі роки. Однак поточне зростання натикається на класичні обмеження: бізнес тримається переважно на ручному управлінні власника, відчувається нестача обігових коштів та кваліфікованих кадрів, а витрати на зарплати починають «з&#x27;їдати» маржу. Щоб перейти від «крихкого» зростання до стабільного масштабування, необхідно почати делегувати управління, оптимізувати фінансові потоки та вибудувати систему роботи з людьми.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 78,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;Компанія демонструє швидке фінансове зростання на ринку відновлюваної енергетики, проте стикається з класичною кризою управління та дефіцитом кадру й капіталу при високій централізації прийняття рішень.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» створена у 2024 році та перебуває на етапі активного зростання (понад 20% на рік), маючи прибутковий бізнес із фінансовим оборотом 0,5–2 млн дол. США та штатом 11–50 людей. Організація поєднує інжинірингові послуги (проєктування, монтаж СЕС) із товарним продажем обладнання через власний інтернет-магазин і B2B/B2C канали. Попри стійкий фінансовий стан, ключові рішення повністю замкнені на засновнику (найвищий рівень залежності), що створює операційний вузький горловий ефект. Головними стримуючими факторами є нестача кваліфікованого персоналу, дефіцит оборотних коштів для масштабного розвитку, ризики залежності від ключових працівників та ерозія маржинальності через швидке зростання зарплат. Стратегічні цілі компанії амбітні (стабілізація моделі до 2026 року та входження в ТОП-5 до 2035 року), проте поточна управлінська архітектура є «крихкою» через надмірну залученість першої особи та слабку децентралізацію повноважень.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Контекст та ринкова позиція&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Галузь: відновлювані джерела енергії&quot;,
+        &quot;Продукти: СЕС під ключ, обладнання&quot;,
+        &quot;Клієнти: B2B, B2C, монтажники&quot;,
+        &quot;Оборот: 0,5–2 млн дол.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Деталізована структура доходу між послугами монтажу та продажем обладнання&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансова стійкість та дані&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Стійко прибуткова&quot;,
+        &quot;Зростання понад 20%&quot;,
+        &quot;Регулярно доступні: продажі, грошовий потік, маржа, ОКП&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Точний обсяг потреби в оборотних коштах&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управління та структура&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалює виключно засновник (залежність рівня 5)&quot;,
+        &quot;Штат 11-50 людей&quot;,
+        &quot;Залежність від ключових працівників&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Наявність середнього менеджменту та делегованих повноважень&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічна зрілість&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Наявні чіткі цілі до 2026 та 2035 років&quot;,
+        &quot;Усвідомлення обмежень (люди, компетенції, бюджет)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Операційний план досягнення 30% частоти інтернет-магазину в загальному обороті&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Високі темпи зростання виручки (понад 20% на рік) у перспективній галузі зеленої енергетики.&quot;,
+    &quot;Стійкий прибутковий бізнес із диверсифікованою базою клієнтів (B2B, B2C, монтажники) та наявністю управлінської звітності.&quot;,
+    &quot;Чітко сформовані довгострокові стратегічні цілі розвитку до 2026 та 2035 років.&quot;,
+    &quot;Адекватне самоусвідомлення внутрішніх обмежень (дефіцит людей, час, бюджети, компетенції).&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична залежність операційної діяльності та прийняття рішень від засновника (рівень 5 із 5).&quot;,
+    &quot;Нестача кваліфікованого персоналу та високі темпи росту зарплат, що розмивають маржинальність.&quot;,
+    &quot;Дефіцит оборотних коштів для фінансування стрімкого розвитку.&quot;,
+    &quot;Ризик втрати ключових співробітників у невеликій команді (11–50 осіб).&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Повна централізація прийняття рішень на засновнику при масштабуванні бізнесу&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Унеможливлює подальше масштабування компанії та створює ризик зупинки бізнесу у разі відсутності чи перевантаження засновника.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Зменшення маржинальності проєктів через випереджаюче зростання зарплат&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Загрожує перетворити прибуткове зростання на збиток при подальшому збільшенні обсягів діяльності.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача оборотних коштів на фоні зростання понад 20%&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Класичний симптом касового розриву росту (overtrading), коли бізнес генерує прибуток на папері, але не має кешу на виконання нових контрактів.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія стрімко зростає (понад 20%) і ставить цілі масштабування, але при цьому повністю залежить від ручного управління власника та страждає від нестачі оборотних коштів і кадрів.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутність деталізації щодо структури витрат та причин стрімкого росту зарплат відносно продуктивності праці.&quot;,
+    &quot;Немає інформації про наявність формалізованих бізнес-процесів або середньої управлінської ланки.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити та затвердити матрицю делегування повноважень (Delegation of Authority), передавши частину операційних рішень на рівень керівників напрямків.&quot;,
+      &quot;why&quot;: &quot;Знизити критичну залежність бізнесу від засновника та розвантажити його для вирішення стратегічних завдань.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення залежності від першої особи з рівня 5 до рівня 3, прискорення прийняття щоденних рішень.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести фінансовий аудит юніт-економіки проєктів та прив&#x27;язати зростання зарплат до ключових показників ефективності (KPI) і продуктивності.&quot;,
+      &quot;why&quot;: &quot;Зупинити ерозію маржинальності проєктів на фоні зростання витрат на персонал.&quot;,
+      &quot;expected_result&quot;: &quot;Стабілізація або відновлення цільової маржинальності проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор / Бухгалтер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Сформувати короткостроковий прогноз грошових потоків (Cash Flow Forecast) на 90 днів із урахуванням касових розривів на закупівлю обладнання.&quot;,
+      &quot;why&quot;: &quot;Вирішити проблему нестачі оборотних коштів для забезпечення стрімкого зростання продажів.&quot;,
+      &quot;expected_result&quot;: &quot;Чітке розуміння касових розривів та залучення необхідного фінансування завчасно.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор / Власник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити внутрішню програму розвитку/онбордингу та партнерство з профільними навчальними закладами для вирішення дефіциту кваліфікованих кадрів.&quot;,
+      &quot;why&quot;: &quot;Зняти обмеження по персоналу, яке стримує виконання цілей компанії до 2026 року.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення дефіциту технічних спеціалістів та зниження залежності від окремих ключових працівників.&quot;,
+      &quot;owner_role&quot;: &quot;HR-менеджер / Операційний директор&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Ваша компанія «Солар Вест Буд» стрімко розвивається у перспективній галузі, демонструючи гарні фінансові результати та прибутковість. Ви маєте чітке бачення майбутнього та розумієте свої цілі на найближчі роки. Однак поточне зростання натикається на класичні обмеження: бізнес тримається переважно на ручному управлінні власника, відчувається нестача обігових коштів та кваліфікованих кадрів, а витрати на зарплати починають «з&#x27;їдати» маржу. Щоб перейти від «крихкого» зростання до стабільного масштабування, необхідно почати делегувати управління, оптимізувати фінансові потоки та вибудувати систему роботи з людьми.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_tokens_details&quot;: null,
+  &quot;cached_content_token_count&quot;: null,
+  &quot;candidates_token_count&quot;: 2343,
+  &quot;candidates_tokens_details&quot;: null,
+  &quot;prompt_token_count&quot;: 1893,
+  &quot;prompt_tokens_details&quot;: [
+    {
+      &quot;modality&quot;: &quot;TEXT&quot;,
+      &quot;token_count&quot;: 1893
+    }
+  ],
+  &quot;thoughts_token_count&quot;: null,
+  &quot;tool_use_prompt_token_count&quot;: null,
+  &quot;tool_use_prompt_tokens_details&quot;: null,
+  &quot;total_token_count&quot;: 4236,
+  &quot;traffic_type&quot;: null
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;sdk_http_response&quot;: {
+    &quot;headers&quot;: {
+      &quot;x-gemini-service-tier&quot;: &quot;standard&quot;,
+      &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,
+      &quot;vary&quot;: &quot;Origin, X-Origin, Referer&quot;,
+      &quot;content-encoding&quot;: &quot;gzip&quot;,
+      &quot;date&quot;: &quot;Mon, 24 Aug 2026 10:53:27 GMT&quot;,
+      &quot;server&quot;: &quot;scaffolding on HTTPServer2&quot;,
+      &quot;x-xss-protection&quot;: &quot;0&quot;,
+      &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+      &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+      &quot;server-timing&quot;: &quot;gfet4t7; dur=7378&quot;,
+      &quot;alt-svc&quot;: &quot;h3=\&quot;:443\&quot;; ma=2592000,h3-29=\&quot;:443\&quot;; ma=2592000&quot;,
+      &quot;transfer-encoding&quot;: &quot;chunked&quot;
+    },
+    &quot;body&quot;: null
+  },
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: {
+        &quot;parts&quot;: [
+          {
+            &quot;media_resolution&quot;: null,
+            &quot;code_execution_result&quot;: null,
+            &quot;executable_code&quot;: null,
+            &quot;file_data&quot;: null,
+            &quot;function_call&quot;: null,
+            &quot;function_response&quot;: null,
+            &quot;inline_data&quot;: null,
+            &quot;text&quot;: &quot;```json\n{\n\&quot;module_code\&quot;: \&quot;ORG\&quot;,\n\&quot;module_name\&quot;: \&quot;Профіль організації\&quot;,\n\&quot;analysis_status\&quot;: \&quot;complete\&quot;,\n\&quot;score\&quot;: 78,\n\&quot;confidence\&quot;: 85,\n\&quot;headline\&quot;: \&quot;Компанія демонструє швидке фінансове зростання на ринку відновлюваної енергетики, проте стикається з класичною кризою управління та дефіцитом кадру й капіталу при високій централізації прийняття рішень.\&quot;,\n\&quot;diagnosis\&quot;: \&quot;Компанія «Солар Вест Буд» створена у 2024 році та перебуває на етапі активного зростання (понад 20% на рік), маючи прибутковий бізнес із фінансовим оборотом 0,5–2 млн дол. США та штатом 11–50 людей. Організація поєднує інжинірингові послуги (проєктування, монтаж СЕС) із товарним продажем обладнання через власний інтернет-магазин і B2B/B2C канали. Попри стійкий фінансовий стан, ключові рішення повністю замкнені на засновнику (найвищий рівень залежності), що створює операційний вузький горловий ефект. Головними стримуючими факторами є нестача кваліфікованого персоналу, дефіцит оборотних коштів для масштабного розвитку, ризики залежності від ключових працівників та ерозія маржинальності через швидке зростання зарплат. Стратегічні цілі компанії амбітні (стабілізація моделі до 2026 року та входження в ТОП-5 до 2035 року), проте поточна управлінська архітектура є «крихкою» через надмірну залученість першої особи та слабку децентралізацію повноважень.\&quot;,\n\&quot;dimension_scores\&quot;: [\n  {\n    \&quot;dimension\&quot;: \&quot;Контекст та ринкова позиція\&quot;,\n    \&quot;score\&quot;: 85,\n    \&quot;evidence\&quot;: [\&quot;Галузь: відновлювані джерела енергії\&quot;, \&quot;Продукти: СЕС під ключ, обладнання\&quot;, \&quot;Клієнти: B2B, B2C, монтажники\&quot;, \&quot;Оборот: 0,5–2 млн дол.\&quot;],\n    \&quot;gaps\&quot;: [\&quot;Деталізована структура доходу між послугами монтажу та продажем обладнання\&quot;]\n  },\n  {\n    \&quot;dimension\&quot;: \&quot;Фінансова стійкість та дані\&quot;,\n    \&quot;score\&quot;: 80,\n    \&quot;evidence\&quot;: [\&quot;Стійко прибуткова\&quot;, \&quot;Зростання понад 20%\&quot;, \&quot;Регулярно доступні: продажі, грошовий потік, маржа, ОКП\&quot;],\n    \&quot;gaps\&quot;: [\&quot;Точний обсяг потреби в оборотних коштах\&quot;]\n  },\n  {\n    \&quot;dimension\&quot;: \&quot;Управління та структура\&quot;,\n    \&quot;score\&quot;: 60,\n    \&quot;evidence\&quot;: [\&quot;Рішення ухвалює виключно засновник (залежність рівня 5)\&quot;, \&quot;Штат 11-50 людей\&quot;, \&quot;Залежність від ключових працівників\&quot;],\n    \&quot;gaps\&quot;: [\&quot;Наявність середнього менеджменту та делегованих повноважень\&quot;]\n  },\n  {\n    \&quot;dimension\&quot;: \&quot;Стратегічна зрілість\&quot;,\n    \&quot;score\&quot;: 80,\n    \&quot;evidence\&quot;: [\&quot;Наявні чіткі цілі до 2026 та 2035 років\&quot;, \&quot;Усвідомлення обмежень (люди, компетенції, бюджет)\&quot;],\n    \&quot;gaps\&quot;: [\&quot;Операційний план досягнення 30% частоти інтернет-магазину в загальному обороті\&quot;]\n  }\n],\n\&quot;strengths\&quot;: [\n  \&quot;Високі темпи зростання виручки (понад 20% на рік) у перспективній галузі зеленої енергетики.\&quot;,\n  \&quot;Стійкий прибутковий бізнес із диверсифікованою базою клієнтів (B2B, B2C, монтажники) та наявністю управлінської звітності.\&quot;,\n  \&quot;Чітко сформовані довгострокові стратегічні цілі розвитку до 2026 та 2035 років.\&quot;,\n  \&quot;Адекватне самоусвідомлення внутрішніх обмежень (дефіцит людей, час, бюджети, компетенції).\&quot;\n],\n\&quot;weaknesses\&quot;: [\n  \&quot;Критична залежність операційної діяльності та прийняття рішень від засновника (рівень 5 із 5).\&quot;,\n  \&quot;Нестача кваліфікованого персоналу та високі темпи росту зарплат, що розмивають маржинальність.\&quot;,\n  \&quot;Дефіцит оборотних коштів для фінансування стрімкого розвитку.\&quot;,\n  \&quot;Ризик втрати ключових співробітників у невеликій команді (11–50 осіб).\&quot;\n],\n\&quot;red_flags\&quot;: [\n  {\n    \&quot;signal\&quot;: \&quot;Повна централізація прийняття рішень на засновнику при масштабуванні бізнесу\&quot;,\n    \&quot;severity\&quot;: \&quot;critical\&quot;,\n    \&quot;why_it_matters\&quot;: \&quot;Унеможливлює подальше масштабування компанії та створює ризик зупинки бізнесу у разі відсутності чи перевантаження засновника.\&quot;\n  },\n  {\n    \&quot;signal\&quot;: \&quot;Зменшення маржинальності проєктів через випереджаюче зростання зарплат\&quot;,\n    \&quot;severity\&quot;: \&quot;high\&quot;,\n    \&quot;why_it_matters\&quot;: \&quot;Загрожує перетворити прибуткове зростання на збиток при подальшому збільшенні обсягів діяльності.\&quot;\n  },\n  {\n    \&quot;signal\&quot;: \&quot;Нестача оборотних коштів на фоні зростання понад 20%\&quot;,\n    \&quot;severity\&quot;: \&quot;high\&quot;,\n    \&quot;why_it_matters\&quot;: \&quot;Класичний симптом касового розриву росту (overtrading), коли бізнес генерує прибуток на папері, але не має кешу на виконання нових контрактів.\&quot;\n  }\n],\n\&quot;contradictions\&quot;: [\n  \&quot;Компанія стрімко зростає (понад 20%) і ставить цілі масштабування, але при цьому повністю залежить від ручного управління власника та страждає від нестачі оборотних коштів і кадрів.\&quot;\n],\n\&quot;data_gaps\&quot;: [\n  \&quot;Відсутність деталізації щодо структури витрат та причин стрімкого росту зарплат відносно продуктивності праці.\&quot;,\n  \&quot;Немає інформації про наявність формалізованих бізнес-процесів або середньої управлінської ланки.\&quot;\n],\n\&quot;recommendations\&quot;: [\n  {\n    \&quot;action\&quot;: \&quot;Розробити та затвердити матрицю делегування повноважень (Delegation of Authority), передавши частину операційних рішень на рівень керівників напрямків.\&quot;,\n    \&quot;why\&quot;: \&quot;Знизити критичну залежність бізнесу від засновника та розвантажити його для вирішення стратегічних завдань.\&quot;,\n    \&quot;expected_result\&quot;: \&quot;Зменшення залежності від першої особи з рівня 5 до рівня 3, прискорення прийняття щоденних рішень.\&quot;,\n    \&quot;owner_role\&quot;: \&quot;Власник / Засновник\&quot;,\n    \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n  },\n  {\n    \&quot;action\&quot;: \&quot;Провести фінансовий аудит юніт-економіки проєктів та прив&#x27;язати зростання зарплат до ключових показників ефективності (KPI) і продуктивності.\&quot;,\n    \&quot;why\&quot;: \&quot;Зупинити ерозію маржинальності проєктів на фоні зростання витрат на персонал.\&quot;,\n    \&quot;expected_result\&quot;: \&quot;Стабілізація або відновлення цільової маржинальності проєктів.\&quot;,\n    \&quot;owner_role\&quot;: \&quot;Фінансовий директор / Бухгалтер\&quot;,\n    \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n  },\n  {\n    \&quot;action\&quot;: \&quot;Сформувати короткостроковий прогноз грошових потоків (Cash Flow Forecast) на 90 днів із урахуванням касових розривів на закупівлю обладнання.\&quot;,\n    \&quot;why\&quot;: \&quot;Вирішити проблему нестачі оборотних коштів для забезпечення стрімкого зростання продажів.\&quot;,\n    \&quot;expected_result\&quot;: \&quot;Чітке розуміння касових розривів та залучення необхідного фінансування завчасно.\&quot;,\n    \&quot;owner_role\&quot;: \&quot;Фінансовий директор / Власник\&quot;,\n    \&quot;deadline\&quot;: \&quot;7 днів\&quot;\n  },\n  {\n    \&quot;action\&quot;: \&quot;Запустити внутрішню програму розвитку/онбордингу та партнерство з профільними навчальними закладами для вирішення дефіциту кваліфікованих кадрів.\&quot;,\n    \&quot;why\&quot;: \&quot;Зняти обмеження по персоналу, яке стримує виконання цілей компанії до 2026 року.\&quot;,\n    \&quot;expected_result\&quot;: \&quot;Зменшення дефіциту технічних спеціалістів та зниження залежності від окремих ключових працівників.\&quot;,\n    \&quot;owner_role\&quot;: \&quot;HR-менеджер / Операційний директор\&quot;,\n    \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n  }\n],\n\&quot;manager_summary\&quot;: \&quot;Ваша компанія «Солар Вест Буд» стрімко розвивається у перспективній галузі, демонструючи гарні фінансові результати та прибутковість. Ви маєте чітке бачення майбутнього та розумієте свої цілі на найближчі роки. Однак поточне зростання натикається на класичні обмеження: бізнес тримається переважно на ручному управлінні власника, відчувається нестача обігових коштів та кваліфікованих кадрів, а витрати на зарплати починають «з&#x27;їдати» маржу. Щоб перейти від «крихкого» зростання до стабільного масштабування, необхідно почати делегувати управління, оптимізувати фінансові потоки та вибудувати систему роботи з людьми.\&quot;\n}\n```&quot;,
+            &quot;thought&quot;: null,
+            &quot;thought_signature&quot;: &quot;El4KXAERTTIPfPg3PxsbpYdziAjetkZwCOWEMGGxb-t9T9WLrAWoAX0UL-k4sc9zv77DESYBDwV61ChMUrbPZxSykKqOSBmSV3E2vQUAfaSRD0p3LwaF-eA9at2pC-vV&quot;,
+            &quot;video_metadata&quot;: null,
+            &quot;tool_call&quot;: null,
+            &quot;tool_response&quot;: null,
+            &quot;part_metadata&quot;: null,
+            &quot;audio_transcription&quot;: null
+          }
+        ],
+        &quot;role&quot;: &quot;model&quot;
+      },
+      &quot;citation_metadata&quot;: null,
+      &quot;finish_message&quot;: null,
+      &quot;token_count&quot;: null,
+      &quot;finish_reason&quot;: &quot;STOP&quot;,
+      &quot;grounding_metadata&quot;: null,
+      &quot;avg_logprobs&quot;: null,
+      &quot;index&quot;: 0,
+      &quot;logprobs_result&quot;: null,
+      &quot;safety_ratings&quot;: null,
+      &quot;url_context_metadata&quot;: null
+    }
+  ],
+  &quot;create_time&quot;: null,
+  &quot;model_version&quot;: &quot;gemini-3.5-flash-lite&quot;,
+  &quot;prompt_feedback&quot;: null,
+  &quot;response_id&quot;: &quot;oCKMauunBL3ykdUPk4vG2AQ&quot;,
+  &quot;usage_metadata&quot;: {
+    &quot;cache_tokens_details&quot;: null,
+    &quot;cached_content_token_count&quot;: null,
+    &quot;candidates_token_count&quot;: 2343,
+    &quot;candidates_tokens_details&quot;: null,
+    &quot;prompt_token_count&quot;: 1893,
+    &quot;prompt_tokens_details&quot;: [
+      {
+        &quot;modality&quot;: &quot;TEXT&quot;,
+        &quot;token_count&quot;: 1893
+      }
+    ],
+    &quot;thoughts_token_count&quot;: null,
+    &quot;tool_use_prompt_token_count&quot;: null,
+    &quot;tool_use_prompt_tokens_details&quot;: null,
+    &quot;total_token_count&quot;: 4236,
+    &quot;traffic_type&quot;: null
+  },
+  &quot;model_status&quot;: null,
+  &quot;automatic_function_calling_history&quot;: [],
+  &quot;parsed&quot;: null
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>
