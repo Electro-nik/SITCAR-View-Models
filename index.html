@@ -1159,6 +1159,56 @@ pre {
     }
 }
 
+
+/* =========================================================
+   FIX: TECHNICAL DATA ON MOBILE
+   ========================================================= */
+@media (max-width: 760px) {
+
+    /* Не дозволяємо desktop-режиму розтягувати таблицю до 2450px */
+    body.tech-visible #modelsTable {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        table-layout: auto !important;
+    }
+
+    body.tech-visible #modelsTable tbody,
+    body.tech-visible #modelsTable tbody tr {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Після натискання показуємо технічні поля як звичайні рядки картки */
+    body.tech-visible #modelsTable tbody td:nth-child(n+6):nth-child(-n+12) {
+        display: flex !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+
+    body.tech-visible .table-scroll,
+    body.tech-visible .table-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+    }
+
+    /* Невелике відділення технічного блоку */
+    body.tech-visible #modelsTable tbody td:nth-child(6) {
+        border-top: 1px solid rgba(88,166,255,.32);
+    }
+
+    .tech-toggle {
+        min-height: 34px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
 </style>
 
 </head>
