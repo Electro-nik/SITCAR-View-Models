@@ -225,6 +225,31 @@ h1 {
     font-size: 13px;
 }
 
+.visual-legend {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 12px;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: var(--card);
+    font-size: 11px;
+}
+
+.legend-item b { font-size: 10px; letter-spacing: .04em; }
+.legend-actual b { color: #79c0ff; }
+.legend-limit b { color: #d2a8ff; }
+.legend-free b { color: #7ee787; }
+.legend-paid b { color: #d2a8ff; }
+
 
 /* =========================================================
    TABLE
@@ -283,22 +308,27 @@ thead tr:first-child th.group-price {
 
 thead tr:first-child th.group-limit {
     color: #d2a8ff;
+    background: rgba(188, 140, 255, .10);
 }
 
 thead tr:first-child th.group-fact {
-    color: #a5d6ff;
+    color: #79c0ff;
+    background: rgba(88, 166, 255, .11);
 }
 
 thead tr:first-child th.group-cost {
-    color: #7ee787;
+    color: #c9d1d9;
+    background: #1c2128;
 }
 
 thead tr:first-child th.group-scenario {
-    color: #e3b341;
+    color: #7ee787;
+    background: rgba(46, 160, 67, .12);
 }
 
 thead tr:first-child th.group-max {
     color: #ffa657;
+    background: rgba(219, 109, 40, .12);
 }
 
 th.sortable {
@@ -368,15 +398,15 @@ thead .model-head {
 }
 
 .total {
-    color: #7ee787;
-    font-weight: 850;
-    background: rgba(46, 160, 67, .055);
+    color: var(--text);
+    font-weight: 750;
+    background: rgba(255, 255, 255, .018);
 }
 
 .max-total {
-    color: #ffa657;
-    font-weight: 850;
-    background: rgba(219, 109, 40, .055);
+    color: #e3b341;
+    font-weight: 750;
+    background: rgba(210, 153, 34, .035);
 }
 
 .max-scenario {
@@ -396,6 +426,47 @@ thead .model-head {
     margin-top: 2px;
     color: var(--muted);
     font-size: 10px;
+}
+
+
+/* Візуальне розділення фактичних даних, меж та тарифних сценаріїв */
+tbody td:nth-child(4),
+tbody td:nth-child(5) {
+    background: rgba(188, 140, 255, .025);
+}
+
+tbody td:nth-child(6),
+tbody td:nth-child(7),
+tbody td:nth-child(8) {
+    background: rgba(88, 166, 255, .030);
+}
+
+/* Безплатна версія */
+tbody td:nth-child(13),
+tbody td:nth-child(15) {
+    background: rgba(46, 160, 67, .075);
+    color: #7ee787;
+    font-weight: 850;
+}
+
+/* Повна версія */
+tbody td:nth-child(14),
+tbody td:nth-child(16) {
+    background: rgba(188, 140, 255, .080);
+    color: #d2a8ff;
+    font-weight: 850;
+}
+
+thead tr:nth-child(2) th:nth-child(12),
+thead tr:nth-child(2) th:nth-child(14) {
+    color: #7ee787;
+    background: rgba(46, 160, 67, .075);
+}
+
+thead tr:nth-child(2) th:nth-child(13),
+thead tr:nth-child(2) th:nth-child(15) {
+    color: #d2a8ff;
+    background: rgba(188, 140, 255, .075);
 }
 
 .view-cell {
@@ -481,6 +552,36 @@ code {
     display: block;
     color: var(--blue);
     margin-bottom: 5px;
+}
+
+/* Перші дві картки — довідкова вартість одного ORG; без сильного акценту */
+.formula-box:nth-child(1),
+.formula-box:nth-child(2) {
+    background: rgba(255,255,255,.018);
+}
+
+/* Безплатні сценарії */
+.formula-box:nth-child(3),
+.formula-box:nth-child(5) {
+    background: rgba(46,160,67,.065);
+    border-color: rgba(63,185,80,.25);
+}
+
+.formula-box:nth-child(3) strong,
+.formula-box:nth-child(5) strong {
+    color: #7ee787;
+}
+
+/* Повні сценарії */
+.formula-box:nth-child(4),
+.formula-box:nth-child(6) {
+    background: rgba(188,140,255,.065);
+    border-color: rgba(188,140,255,.25);
+}
+
+.formula-box:nth-child(4) strong,
+.formula-box:nth-child(6) strong {
+    color: #d2a8ff;
 }
 
 
@@ -627,6 +728,33 @@ pre {
     .toolbar-note {
         display: none;
     }
+    .visual-legend {
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .legend-item {
+        width: calc(50% - 3px);
+        border-radius: 10px;
+        padding: 8px;
+        line-height: 1.25;
+        align-items: flex-start;
+    }
+
+    tbody td:nth-child(13),
+    tbody td:nth-child(15) {
+        background: rgba(46,160,67,.10);
+        color: #7ee787;
+        font-weight: 850;
+    }
+
+    tbody td:nth-child(14),
+    tbody td:nth-child(16) {
+        background: rgba(188,140,255,.10);
+        color: #d2a8ff;
+        font-weight: 850;
+    }
+
 
     .table-card {
         background: transparent;
@@ -729,30 +857,41 @@ pre {
     tbody td:nth-child(6)::before { content: "Input tokens"; }
     tbody td:nth-child(7)::before { content: "Output tokens"; }
     tbody td:nth-child(8)::before { content: "Total tokens"; }
-    tbody td:nth-child(9)::before { content: "TOTAL"; }
+    tbody td:nth-child(9)::before { content: "ORG TOTAL"; }
     tbody td:nth-child(10)::before { content: "Податок"; }
-    tbody td:nth-child(11)::before { content: "TOTAL + податок"; }
-    tbody td:nth-child(12)::before { content: "MAX TOTAL + податок"; }
-    tbody td:nth-child(13)::before { content: "Безплатна ×3"; }
-    tbody td:nth-child(14)::before { content: "Повна ×10"; }
-    tbody td:nth-child(15)::before { content: "Безплатна MAX ×3"; }
-    tbody td:nth-child(16)::before { content: "Повна MAX ×10"; }
+    tbody td:nth-child(11)::before { content: "1 ORG + податок"; }
+    tbody td:nth-child(12)::before { content: "1 ORG при MAX output"; }
+    tbody td:nth-child(13)::before { content: "БЕЗПЛАТНА · фактично ×3"; }
+    tbody td:nth-child(14)::before { content: "ПОВНА · фактично ×10"; }
+    tbody td:nth-child(15)::before { content: "БЕЗПЛАТНА · MAX ×3"; }
+    tbody td:nth-child(16)::before { content: "ПОВНА · MAX ×10"; }
     tbody td:nth-child(17)::before { content: "Результат"; }
 
     tbody td.total {
-        background: rgba(46,160,67,.08);
-        color: #7ee787;
-        font-weight: 850;
+        background: rgba(255,255,255,.02);
+        color: var(--text);
+        font-weight: 750;
     }
 
     tbody td.max-total {
-        background: rgba(219,109,40,.08);
-        color: #ffa657;
-        font-weight: 850;
+        background: rgba(210,153,34,.045);
+        color: #e3b341;
+        font-weight: 750;
     }
 
     tbody td.max-scenario {
         color: #ffa657;
+    }
+
+    /* На мобільному Free / Full мають пріоритет над загальним MAX-кольором */
+    tbody td:nth-child(13),
+    tbody td:nth-child(15) {
+        color: #7ee787;
+    }
+
+    tbody td:nth-child(14),
+    tbody td:nth-child(16) {
+        color: #d2a8ff;
     }
 
     tbody td.tax {
@@ -870,14 +1009,14 @@ pre {
             </h1>
 
             <p>
-                Порівняння фактичного використання токенів,
-                тарифів API та прогнозованої вартості
-                Free / Full версій SITCAR.
+                Порівняння моделей на одному однаковому ORG-промпті SITCAR:
+                фактичне споживання токенів, верхні межі та прогноз вартості
+                Безплатної / Повної версій. Тест виконано без завантаження файлів.
             </p>
 
         </div>
 
-        <span class="status ok">✓ Однаковий prompt у всіх файлах</span>
+        <span class="status ok">✓ Однаковий prompt для всіх моделей</span>
 
     </div>
 
@@ -964,6 +1103,12 @@ pre {
 
 </div>
 
+<div class="visual-legend" aria-label="Пояснення кольорів">
+    <span class="legend-item legend-actual"><b>ФАКТИЧНО</b> реальні токени та витрати ORG</span>
+    <span class="legend-item legend-limit"><b>ВЕРХНЯ МЕЖА</b> ліміти / MAX output</span>
+    <span class="legend-item legend-free"><b>БЕЗПЛАТНА</b> прогноз ×3</span>
+    <span class="legend-item legend-paid"><b>ПОВНА</b> прогноз ×10</span>
+</div>
 
 <!-- ======================================================
      TABLE
@@ -1005,28 +1150,28 @@ pre {
         colspan="3"
         class="group-fact"
     >
-        Фактичний запуск ORG
+        Фактичне споживання ORG
     </th>
 
     <th
         colspan="4"
         class="group-cost"
     >
-        Вартість одного запуску
+        1 ORG-промпт · без файлів
     </th>
 
     <th
         colspan="2"
         class="group-scenario"
     >
-        SITCAR · фактичний output
+        SITCAR · за фактичним ORG output
     </th>
 
     <th
         colspan="2"
         class="group-max"
     >
-        SITCAR · MAX output
+        SITCAR · якщо output = MAX
     </th>
 
     <th rowspan="2">
@@ -1094,9 +1239,9 @@ pre {
     <th
         class="sortable"
         data-column="8"
-        title="TOTAL COST без додаткового податку"
+        title="Фактична вартість одного ORG API-запиту без додаткового податку"
     >
-        TOTAL
+        ORG TOTAL
     </th>
 
     <th
@@ -1110,17 +1255,17 @@ pre {
     <th
         class="sortable"
         data-column="10"
-        title="Фактичний TOTAL + прогнозований податок"
+        title="Фактична вартість одного ORG-промпта + прогнозований податок. Файли в тесті не передавались."
     >
-        TOTAL + податок
+        ORG + податок
     </th>
 
     <th
         class="sortable"
         data-column="11"
-        title="Вартість цього самого input, якщо модель використає весь заявлений Max output"
+        title="Теоретична верхня оцінка для одного ORG-промпта: той самий input, але output дорівнює заявленому Max output"
     >
-        MAX TOTAL + податок
+        ORG при MAX output
     </th>
 
     <th
@@ -1128,7 +1273,7 @@ pre {
         data-column="12"
         title="TOTAL + податок × 3"
     >
-        Безплатна ×3
+        Безплатна · ×3 ORG
     </th>
 
     <th
@@ -1136,7 +1281,7 @@ pre {
         data-column="13"
         title="TOTAL + податок × 10: 9 промтів + презентація"
     >
-        Повна ×10
+        Повна · ×10 запитів
     </th>
 
     <th
@@ -1144,7 +1289,7 @@ pre {
         data-column="14"
         title="MAX TOTAL + податок × 3"
     >
-        Безплатна MAX ×3
+        Безплатна · MAX ×3
     </th>
 
     <th
@@ -1152,7 +1297,7 @@ pre {
         data-column="15"
         title="MAX TOTAL + податок × 10"
     >
-        Повна MAX ×10
+        Повна · MAX ×10
     </th>
 
 </tr>
@@ -3216,11 +3361,10 @@ pre {
 </h2>
 
 <p>
-    Ці тести виконувалися для промпта
-    <strong>ORG по ТЗ SITCAR</strong>.
-    Мета — порівняти реальне споживання токенів,
-    вартість одного аналізу та можливу верхню межу
-    витрат для різних LLM-моделей.
+    Ці тести виконувалися для <strong>одного однакового ORG-промпта по ТЗ SITCAR</strong>.
+    У моделі передавалися лише відповіді користувача з форми — <strong>без завантажених файлів</strong>.
+    Тому блок «1 ORG-промпт» показує вартість саме одного такого API-запиту, а не повного проходження SITCAR.
+    Окремо показано фактичне споживання токенів і теоретичний сценарій, якщо output дійде до заявленого максимуму моделі.
 </p>
 
 <p>
@@ -3233,12 +3377,12 @@ pre {
     <div class="formula-box">
 
         <strong>
-            Фактична вартість
+            1 ORG-промпт · фактична вартість
         </strong>
 
-        TOTAL, який був отриманий під час
-        реального API-запиту, плюс прогнозований
-        податок / націнка.
+        Реальна вартість одного API-запиту ORG за фактично використаними
+        input/output tokens, плюс прогнозований податок / націнка.
+        Файли в цьому тесті не передавались.
 
     </div>
 
@@ -3246,12 +3390,12 @@ pre {
     <div class="formula-box">
 
         <strong>
-            MAX TOTAL
+            1 ORG-промпт · верхня оцінка
         </strong>
 
-        Фактичний input цього ORG-запиту +
-        повний заявлений <code>Max output</code>
-        моделі + податок.
+        Той самий фактичний input ORG, але output умовно дорівнює
+        повному заявленому <code>Max output</code> моделі, плюс податок.
+        Це теоретична верхня оцінка, а не фактичне споживання.
 
     </div>
 
@@ -3259,10 +3403,10 @@ pre {
     <div class="formula-box">
 
         <strong>
-            Безплатна версія
+            Безплатна версія · фактичний сценарій
         </strong>
 
-        <code>TOTAL з податком × 3</code>
+        <code>Фактична вартість ORG з податком × 3</code>
 
     </div>
 
@@ -3270,11 +3414,12 @@ pre {
     <div class="formula-box">
 
         <strong>
-            Повна версія
+            Повна версія · фактичний сценарій
         </strong>
 
-        <code>TOTAL з податком × 10</code>,
-        де прогноз — 9 промтів + 1 презентація.
+        <code>Фактична вартість ORG з податком × 10</code>.
+        Це прогнозний множник для повного пакета: 9 промптів + 1 презентація;
+        фактична вартість інших модулів може відрізнятися від ORG.
 
     </div>
 
@@ -3282,10 +3427,10 @@ pre {
     <div class="formula-box">
 
         <strong>
-            Безплатна MAX
+            Безплатна версія · MAX сценарій
         </strong>
 
-        <code>MAX TOTAL з податком × 3</code>
+        <code>Верхня оцінка ORG з податком × 3</code>
 
     </div>
 
@@ -3293,10 +3438,10 @@ pre {
     <div class="formula-box">
 
         <strong>
-            Повна MAX
+            Повна версія · MAX сценарій
         </strong>
 
-        <code>MAX TOTAL з податком × 10</code>
+        <code>Верхня оцінка ORG з податком × 10</code>
 
     </div>
 
@@ -3323,20 +3468,15 @@ pre {
     </li>
 
     <li>
-        Під час цих тестів відповідь запускалась
-        <strong>без ручного обмеження максимальної
-        кількості output tokens</strong>.
-        Тобто фактичний Output tokens — це стільки,
-        скільки сама модель використала до завершення
-        відповіді.
+        Під час цих тестів у модель передавалися <strong>відповіді з форми без файлів</strong>,
+        а відповідь генерувалася <strong>без ручного обмеження максимальної кількості output tokens</strong>.
+        Тому фактичний Output tokens — це стільки, скільки модель реально використала до завершення відповіді.
     </li>
 
     <li>
-        Колонка <strong>MAX TOTAL</strong> — це
-        прогноз верхнього сценарію:
-        поточний фактичний input залишається таким самим,
-        але output вважається рівним повному
-        заявленому <code>Max output</code>.
+        Колонка <strong>ORG при MAX output</strong> — це теоретична верхня оцінка одного ORG-промпта:
+        поточний фактичний input залишається таким самим, а output вважається рівним повному
+        заявленому <code>Max output</code>. Це не означає, що модель зазвичай витратить стільки токенів.
     </li>
 
     <li>
