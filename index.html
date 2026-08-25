@@ -543,33 +543,302 @@ pre {
    ========================================================= */
 
 @media (max-width: 1100px) {
-
     .summary-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
 }
 
-@media (max-width: 650px) {
+/* =========================================================
+   MOBILE TABLE -> CARDS
+   ========================================================= */
+
+@media (max-width: 760px) {
+    body {
+        overflow-x: hidden;
+    }
 
     .container {
-        width: min(100% - 18px, 1900px);
-        padding-top: 18px;
+        width: calc(100% - 16px);
+        padding: 12px 0 50px;
     }
 
     .hero {
-        padding: 22px;
+        padding: 20px 16px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .status {
+        font-size: 11px;
+        padding: 7px 10px;
     }
 
     .summary-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .summary-card {
+        padding: 13px;
+        border-radius: 12px;
+    }
+
+    .summary-label {
+        font-size: 9px;
+    }
+
+    .summary-value {
+        font-size: 20px;
+    }
+
+    .summary-value.small {
+        font-size: 12px;
+    }
+
+    .toolbar {
+        padding: 10px;
+        border-radius: 12px;
+        display: block;
+    }
+
+    .search {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .search input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .toolbar-note {
+        display: none;
+    }
+
+    .table-card {
+        background: transparent;
+        border: 0;
+        overflow: visible;
+        border-radius: 0;
+    }
+
+    .table-scroll {
+        overflow: visible;
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        font-size: 13px;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+        display: block;
+        width: 100%;
+    }
+
+    tbody tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 14px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    tbody tr:hover td {
+        background: transparent;
+    }
+
+    tbody .model-cell {
+        position: static;
+        display: block;
+        width: 100%;
+        min-width: 0;
+        padding: 16px;
+        text-align: left;
+        background: linear-gradient(135deg, rgba(88,166,255,.13), rgba(188,140,255,.05));
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:hover .model-cell {
+        background: linear-gradient(135deg, rgba(88,166,255,.13), rgba(188,140,255,.05));
+    }
+
+    .model-name {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    .provider {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .run-date {
+        font-size: 11px;
+        margin-top: 3px;
+    }
+
+    tbody td:not(.model-cell) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        width: 100%;
+        padding: 10px 14px;
+        white-space: normal;
+        text-align: right;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.065);
+    }
+
+    tbody td:not(.model-cell)::before {
+        flex: 1;
+        text-align: left;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    tbody td:nth-child(2)::before { content: "Input / 1M"; }
+    tbody td:nth-child(3)::before { content: "Output / 1M"; }
+    tbody td:nth-child(4)::before { content: "Max context"; }
+    tbody td:nth-child(5)::before { content: "Max output"; }
+    tbody td:nth-child(6)::before { content: "Input tokens"; }
+    tbody td:nth-child(7)::before { content: "Output tokens"; }
+    tbody td:nth-child(8)::before { content: "Total tokens"; }
+    tbody td:nth-child(9)::before { content: "TOTAL"; }
+    tbody td:nth-child(10)::before { content: "Податок"; }
+    tbody td:nth-child(11)::before { content: "TOTAL + податок"; }
+    tbody td:nth-child(12)::before { content: "MAX TOTAL + податок"; }
+    tbody td:nth-child(13)::before { content: "Безплатна ×3"; }
+    tbody td:nth-child(14)::before { content: "Повна ×10"; }
+    tbody td:nth-child(15)::before { content: "Безплатна MAX ×3"; }
+    tbody td:nth-child(16)::before { content: "Повна MAX ×10"; }
+    tbody td:nth-child(17)::before { content: "Результат"; }
+
+    tbody td.total {
+        background: rgba(46,160,67,.08);
+        color: #7ee787;
+        font-weight: 850;
+    }
+
+    tbody td.max-total {
+        background: rgba(219,109,40,.08);
+        color: #ffa657;
+        font-weight: 850;
+    }
+
+    tbody td.max-scenario {
+        color: #ffa657;
+    }
+
+    tbody td.tax {
+        color: #e3b341;
+    }
+
+    .tax strong,
+    .tax span {
+        display: inline;
+    }
+
+    .tax .mini {
+        margin-left: 5px;
+    }
+
+    tbody td.view-cell {
+        padding: 12px 14px;
+        border-bottom: 0;
+    }
+
+    .view-button {
+        min-width: 125px;
+        padding: 9px 12px;
+        text-align: center;
+    }
+
+    .info-card {
+        padding: 17px;
+        border-radius: 14px;
+    }
+
+    .info-card h2 {
+        font-size: 20px;
+    }
+
+    .info-card p,
+    .info-card li {
+        font-size: 13px;
     }
 
     .formula {
         grid-template-columns: 1fr;
     }
 
+    .formula-box {
+        font-size: 13px;
+    }
+
+    summary {
+        padding: 14px;
+        font-size: 13px;
+    }
+
+    .prompt-body {
+        padding: 10px;
+    }
+
+    pre {
+        padding: 12px;
+        font-size: 10px;
+        max-height: 600px;
+        overflow: auto;
+    }
+}
+
+@media (max-width: 430px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    tbody td:not(.model-cell) {
+        padding: 9px 12px;
+        gap: 10px;
+    }
+
+    tbody td:not(.model-cell)::before {
+        font-size: 10px;
+    }
+
+    .view-button {
+        width: 100%;
+    }
 }
 
 </style>
