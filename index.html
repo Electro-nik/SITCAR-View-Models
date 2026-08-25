@@ -490,6 +490,169 @@ thead tr:nth-child(2) th:nth-child(15) {
 }
 
 
+
+/* =========================================================
+   COMPACT / TECHNICAL TOGGLE
+   ========================================================= */
+
+.tech-toggle {
+    margin-left: auto;
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.035);
+    color: var(--muted);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.tech-toggle:hover {
+    color: var(--text);
+    border-color: #484f58;
+    background: rgba(255,255,255,.06);
+}
+
+.tech-toggle.is-active {
+    color: #79c0ff;
+    border-color: rgba(88,166,255,.45);
+    background: rgba(88,166,255,.08);
+}
+
+/* За замовчуванням технічні колонки приховані:
+   5-7 = фактичні токени ORG
+   8-11 = технічна вартість одного ORG-промпта */
+body:not(.tech-visible) #modelsTable thead .group-fact,
+body:not(.tech-visible) #modelsTable thead .group-cost {
+    display: none;
+}
+
+body:not(.tech-visible) #modelsTable thead tr:nth-child(2) th:nth-child(n+5):nth-child(-n+11) {
+    display: none;
+}
+
+body:not(.tech-visible) #modelsTable tbody td:nth-child(n+6):nth-child(-n+12) {
+    display: none;
+}
+
+/* У компактному режимі таблиця має вміщатися у звичайний desktop viewport */
+body:not(.tech-visible) #modelsTable {
+    min-width: 0;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 12px;
+}
+
+body:not(.tech-visible) #modelsTable th,
+body:not(.tech-visible) #modelsTable td {
+    padding: 7px 7px;
+}
+
+body:not(.tech-visible) #modelsTable .model-head,
+body:not(.tech-visible) #modelsTable .model-cell {
+    width: 17%;
+    min-width: 0;
+}
+
+body:not(.tech-visible) #modelsTable .view-cell {
+    width: 9%;
+}
+
+body:not(.tech-visible) #modelsTable .view-button {
+    padding: 6px 8px;
+    font-size: 11px;
+}
+
+body:not(.tech-visible) #modelsTable .model-name {
+    font-size: 13px;
+}
+
+body:not(.tech-visible) #modelsTable .provider,
+body:not(.tech-visible) #modelsTable .run-date {
+    font-size: 9px;
+}
+
+/* При показі технічних даних повертаємо широкий режим зі скролом */
+body.tech-visible #modelsTable {
+    min-width: 2450px;
+    table-layout: auto;
+}
+
+/* Компактніший верх сторінки на desktop, щоб більше таблиці було видно одразу */
+@media (min-width: 761px) {
+    .container {
+        padding-top: 16px;
+    }
+
+    .hero {
+        padding: 17px 22px;
+        margin-bottom: 10px;
+        border-radius: 16px;
+    }
+
+    .hero p {
+        margin-top: 7px;
+        font-size: 13px;
+    }
+
+    h1 {
+        font-size: clamp(28px, 3vw, 40px);
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        margin-bottom: 4px;
+    }
+
+    .summary-grid {
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .summary-card {
+        padding: 10px 12px;
+        border-radius: 12px;
+    }
+
+    .summary-label {
+        font-size: 9px;
+        margin-bottom: 3px;
+    }
+
+    .summary-value {
+        font-size: 19px;
+    }
+
+    .summary-value.small {
+        font-size: 12px;
+    }
+
+    .toolbar {
+        padding: 8px 10px;
+        margin-bottom: 8px;
+    }
+
+    .search input {
+        padding: 8px 11px;
+        font-size: 13px;
+    }
+
+    .toolbar-note {
+        font-size: 11px;
+    }
+
+    .legend {
+        margin-bottom: 8px !important;
+        padding: 6px 9px !important;
+    }
+
+    #modelsTable thead th {
+        line-height: 1.15;
+    }
+}
+
 /* =========================================================
    INFO
    ========================================================= */
@@ -980,6 +1143,22 @@ pre {
     }
 }
 
+
+
+/* Технічні поля також приховані у мобільних картках, доки користувач їх не відкриє */
+@media (max-width: 760px) {
+    body:not(.tech-visible) #modelsTable tbody td:nth-child(n+6):nth-child(-n+12) {
+        display: none !important;
+    }
+
+    .tech-toggle {
+        margin: 8px 0 0;
+        width: auto;
+        font-size: 10px;
+        padding: 6px 9px;
+    }
+}
+
 </style>
 
 </head>
@@ -1016,7 +1195,7 @@ pre {
 
         </div>
 
-        <span class="status ok">✓ Однаковий prompt для всіх моделей</span>
+        <span class="status ok">✓ Однаковий prompt у всіх моделях</span>
 
     </div>
 
@@ -1101,10 +1280,19 @@ pre {
         Натисни на назву колонки для сортування
     </div>
 
+    <button
+        id="techToggle"
+        class="tech-toggle"
+        type="button"
+        aria-pressed="false"
+        title="Показати фактичні токени ORG та технічну вартість одного ORG-промпта"
+    >
+        + технічні дані
+    </button>
+
 </div>
 
 <div class="visual-legend" aria-label="Пояснення кольорів">
-    <span class="legend-item legend-actual"><b>ФАКТИЧНО</b> реальні токени та витрати ORG</span>
     <span class="legend-item legend-limit"><b>ВЕРХНЯ МЕЖА</b> ліміти / MAX output</span>
     <span class="legend-item legend-free"><b>БЕЗПЛАТНА</b> прогноз ×3</span>
     <span class="legend-item legend-paid"><b>ПОВНА</b> прогноз ×10</span>
@@ -3640,6 +3828,24 @@ pre {
 
 
 <script>
+
+/* =========================================================
+   TECHNICAL COLUMNS TOGGLE
+   ========================================================= */
+
+const techToggle = document.getElementById("techToggle");
+
+if (techToggle) {
+    techToggle.addEventListener("click", () => {
+        const visible = document.body.classList.toggle("tech-visible");
+
+        techToggle.classList.toggle("is-active", visible);
+        techToggle.setAttribute("aria-pressed", visible ? "true" : "false");
+        techToggle.textContent = visible
+            ? "− сховати технічні"
+            : "+ технічні дані";
+    });
+}
 
 /* =========================================================
    SEARCH
