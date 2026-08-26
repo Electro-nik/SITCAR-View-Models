@@ -491,6 +491,56 @@ thead tr:nth-child(2) th:nth-child(15) {
 
 
 
+
+
+/* =========================================================
+   RESULT BUTTONS: TECHNICAL HTML + CLEAN PDF
+   ========================================================= */
+
+.view-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    width: 100%;
+}
+
+.view-actions .view-button {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    white-space: nowrap;
+    padding: 5px 6px;
+    font-size: 10px;
+    line-height: 1.15;
+}
+
+.view-button.tech-result {
+    background: #238636;
+}
+
+.view-button.tech-result:hover {
+    background: #2ea043;
+}
+
+.view-button.pdf-result {
+    background: #1f6feb;
+}
+
+.view-button.pdf-result:hover {
+    background: #388bfd;
+}
+
+@media (max-width: 760px) {
+    .view-actions {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
 /* =========================================================
    COMPACT / TECHNICAL TOGGLE
    ========================================================= */
@@ -557,12 +607,13 @@ body:not(.tech-visible) #modelsTable .model-cell {
 }
 
 body:not(.tech-visible) #modelsTable .view-cell {
-    width: 9%;
+    width: 7%;
 }
 
 body:not(.tech-visible) #modelsTable .view-button {
-    padding: 6px 8px;
-    font-size: 11px;
+    padding: 4px 5px;
+    font-size: 9px;
+    line-height: 1.1;
 }
 
 body:not(.tech-visible) #modelsTable .model-name {
@@ -1076,9 +1127,10 @@ pre {
     }
 
     .view-button {
-        min-width: 125px;
-        padding: 9px 12px;
+        min-width: 0;
+        padding: 8px 10px;
         text-align: center;
+        font-size: 11px;
     }
 
     .info-card {
@@ -1642,12 +1694,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.6_Sol_ORG_2026-08-24_13-28-26.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.6_Sol_ORG_2026-08-24_13-28-26.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.6_Sol_ORG_2026-08-24_13-28-26.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -1749,12 +1812,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.6_Terra_ORG_2026-08-24_13-31-26.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.6_Terra_ORG_2026-08-24_13-31-26.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.6_Terra_ORG_2026-08-24_13-31-26.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -1856,12 +1930,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.6_Luna_ORG_2026-08-24_13-32-17.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.6_Luna_ORG_2026-08-24_13-32-17.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.6_Luna_ORG_2026-08-24_13-32-17.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -1963,12 +2048,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.5_ORG_2026-08-24_13-33-51.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.5_ORG_2026-08-24_13-33-51.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.5_ORG_2026-08-24_13-33-51.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2070,12 +2166,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.5_Pro_ORG_2026-08-24_13-38-03.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.5_Pro_ORG_2026-08-24_13-38-03.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.5_Pro_ORG_2026-08-24_13-38-03.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2177,12 +2284,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.4_ORG_2026-08-24_13-39-30.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.4_ORG_2026-08-24_13-39-30.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.4_ORG_2026-08-24_13-39-30.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2284,12 +2402,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.4_Pro_ORG_2026-08-24_13-45-56.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.4_Pro_ORG_2026-08-24_13-45-56.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.4_Pro_ORG_2026-08-24_13-45-56.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2391,12 +2520,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.4_Mini_ORG_2026-08-24_13-16-42.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.4_Mini_ORG_2026-08-24_13-16-42.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.4_Mini_ORG_2026-08-24_13-16-42.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2498,12 +2638,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="GPT-5.4_Nano_ORG_2026-08-24_13-46-26.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="GPT-5.4_Nano_ORG_2026-08-24_13-46-26.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/GPT-5.4_Nano_ORG_2026-08-24_13-46-26.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2605,12 +2756,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2712,12 +2874,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2819,12 +2992,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -2926,12 +3110,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3033,12 +3228,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3140,12 +3346,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Claude_Opus_5_ORG_2026-08-24_14-05-13.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Claude_Opus_5_ORG_2026-08-24_14-05-13.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Claude_Opus_5_ORG_2026-08-24_14-05-13.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3247,12 +3464,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Claude_Sonnet_5_ORG_2026-08-24_14-09-51.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Claude_Sonnet_5_ORG_2026-08-24_14-09-51.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Claude_Sonnet_5_ORG_2026-08-24_14-09-51.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3354,12 +3582,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="Claude_Fable_5_ORG_2026-08-24_14-06-37.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="Claude_Fable_5_ORG_2026-08-24_14-06-37.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/Claude_Fable_5_ORG_2026-08-24_14-06-37.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3461,12 +3700,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
@@ -3568,12 +3818,23 @@ pre {
     </td>
 
     <td class="view-cell">
-        <a
-            class="view-button"
-            href="DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.html"
-        >
-            Переглянути
-        </a>
+        <div class="view-actions">
+            <a
+                class="view-button tech-result"
+                href="DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.html"
+                title="Відкрити технічний HTML-результат моделі"
+            >
+                HTML
+            </a>
+            <a
+                class="view-button pdf-result"
+                href="PDF_RESULTS/DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.pdf"
+                title="Відкрити чистий PDF-результат моделі"
+                target="_blank"
+            >
+                PDF
+            </a>
+        </div>
     </td>
 
 </tr>
