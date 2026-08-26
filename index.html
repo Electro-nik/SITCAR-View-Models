@@ -1261,6 +1261,79 @@ pre {
     }
 }
 
+
+/* =========================================================
+   MOBILE: LARGE RESULT BUTTONS
+   ========================================================= */
+@media (max-width: 760px) {
+
+    /* У компактному мобільному режимі результат займає всю ширину картки */
+    body:not(.tech-visible) #modelsTable tbody td.view-cell {
+        display: block !important;
+        width: 100% !important;
+        padding: 12px 14px 14px !important;
+        text-align: left !important;
+    }
+
+    /* Прибираємо службовий напис "Результат", щоб він не забирав пів рядка */
+    body:not(.tech-visible) #modelsTable tbody td.view-cell::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    body:not(.tech-visible) #modelsTable .view-actions {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Великі touch-friendly кнопки */
+    body:not(.tech-visible) #modelsTable .view-actions .view-button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 46px !important;
+        padding: 11px 10px !important;
+        border-radius: 10px !important;
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+        font-weight: 850 !important;
+        white-space: normal !important;
+        text-align: center !important;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Підсвітка займає всю площу кнопки */
+    body:not(.tech-visible) #modelsTable .view-button.tech-result {
+        background: #238636 !important;
+        border-color: rgba(63,185,80,.55) !important;
+    }
+
+    body:not(.tech-visible) #modelsTable .view-button.pdf-result {
+        background: #1f6feb !important;
+        border-color: rgba(88,166,255,.60) !important;
+    }
+}
+
+/* На дуже вузьких екранах кнопки стають одна під одною і ще більшими */
+@media (max-width: 430px) {
+    body:not(.tech-visible) #modelsTable .view-actions {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    body:not(.tech-visible) #modelsTable .view-actions .view-button {
+        min-height: 48px !important;
+        font-size: 13px !important;
+        padding: 12px 12px !important;
+    }
+}
+
 </style>
 
 </head>
