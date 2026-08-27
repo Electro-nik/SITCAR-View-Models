@@ -232,7 +232,7 @@ th.sortable:hover { color:var(--blue); }
 tbody tr:hover td { background:rgba(88,166,255,.035); }
 
 .model-head,.model-cell {
-    width:18%;
+    width:17%;
     text-align:left;
     position:sticky;
     left:0;
@@ -277,10 +277,136 @@ tbody tr:hover td { background:rgba(88,166,255,.035); }
 .max-cell { box-shadow:inset 0 2px 0 rgba(219,109,40,.18); }
 
 .view-cell {
-    width:22%;
+    width:26%;
+    padding:6px !important;
     text-align:left;
     white-space:normal;
 }
+
+/* Решта 8 інформаційних колонок навмисно вузькі,
+   щоб віддати максимум місця блоку "Результати". */
+#modelsTable tbody td:nth-child(n+2):nth-child(-n+9) {
+    width:7.125%;
+}
+
+#modelsTable thead tr:nth-child(2) th {
+    width:7.125%;
+}
+
+#modelsTable thead tr:first-child th:last-child {
+    width:26%;
+}
+
+/* =========================================================
+   RESULTS — 2 MODULE BLOCKS PER ROW
+   ========================================================= */
+.results-main-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:5px;
+    width:100%;
+}
+
+.result-main-card {
+    min-width:0;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:stretch;
+    min-height:42px;
+    border:1px solid rgba(139,148,158,.24);
+    border-radius:7px;
+    background:rgba(255,255,255,.018);
+    overflow:hidden;
+}
+
+.result-main-card:hover {
+    border-color:rgba(88,166,255,.42);
+    background:rgba(88,166,255,.035);
+}
+
+.result-main-label {
+    min-width:0;
+    justify-content:center;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:5px 7px;
+}
+
+.result-main-code {
+    flex:0 0 auto;
+    color:#79c0ff;
+    font-size:9px;
+    font-weight:900;
+}
+
+.result-main-name {
+    min-width:0;
+    color:#c9d1d9;
+    font-size:10px;
+    font-weight:650;
+    line-height:1.2;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+}
+
+.result-main-actions {
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+}
+
+.result-main-btn {
+    min-width:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:5px 7px;
+    border-left:1px solid rgba(139,148,158,.22);
+    color:#c9d1d9;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.02em;
+    transition:background .12s ease,color .12s ease;
+}
+
+.result-main-btn.html {
+    color:#79c0ff;
+    background:rgba(88,166,255,.075);
+}
+.result-main-btn.html:hover { background:rgba(88,166,255,.17); }
+
+.result-main-btn.pdf {
+    color:#ff7b72;
+    background:rgba(248,81,73,.065);
+}
+.result-main-btn.pdf:hover { background:rgba(248,81,73,.15); }
+
+/* Якщо PDF/HTML відсутній — одна кнопка не прилипає до краю. */
+.result-main-card.single-format .result-main-actions {
+    min-width:118px;
+    align-items:center;
+    padding:4px 8px;
+}
+
+.result-main-card.single-format .result-main-btn {
+    width:82px;
+    min-width:82px;
+    min-height:28px;
+    border:1px solid rgba(139,148,158,.24);
+    border-radius:6px;
+}
+
+.result-main-card.final-result {
+    border-color:rgba(188,140,255,.30);
+    background:rgba(188,140,255,.04);
+}
+.result-main-card.final-result .result-main-code { color:#d2a8ff; }
+
+/* Старі result-link використовуються у технічній панелі. */
 .results-list {
     display:flex;
     flex-wrap:wrap;
@@ -307,6 +433,25 @@ tbody tr:hover td { background:rgba(88,166,255,.035); }
 .result-link:not(.pdf) .result-code { color:#79c0ff; }
 .result-name { overflow:hidden; text-overflow:ellipsis; }
 .muted { color:var(--muted); }
+
+@media(max-width:1500px) and (min-width:761px) {
+    .view-cell { width:26%; }
+    #modelsTable thead tr:first-child th:last-child { width:26%; }
+
+    .result-main-btn {
+        min-width:54px;
+        padding:5px 6px;
+        font-size:9px;
+    }
+
+    .result-main-name {
+        font-size:9px;
+        line-height:1.18;
+    }
+
+    .result-main-card.single-format .result-main-actions { min-width:108px; }
+    .result-main-card.single-format .result-main-btn { width:78px; min-width:78px; }
+}
 
 /* TECHNICAL PANEL */
 .technical-panel {
@@ -523,8 +668,50 @@ code {
 
     .money { display:flex !important; }
     .money > strong,.money > .coverage { display:block; }
-    .view-cell { display:block !important; text-align:left !important; }
-    .view-cell::before { display:block; margin-bottom:5px; }
+    .view-cell { display:block !important; width:100% !important; text-align:left !important; padding:10px !important; }
+    .view-cell::before { display:block; margin-bottom:6px; }
+
+    /* На телефоні також тримаємо 2 модулі в ряд,
+       а на дуже вузькому екрані нижче перемикаємо на 1. */
+    .results-main-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:6px;
+    }
+    .result-main-card {
+        display:block;
+        min-height:0;
+    }
+    .result-main-label {
+        min-height:37px;
+        padding:6px 7px;
+        border-bottom:1px solid rgba(139,148,158,.18);
+    }
+    .result-main-code { font-size:9px; }
+    .result-main-name { font-size:9px; }
+    .result-main-actions {
+        width:100%;
+        min-width:0 !important;
+        padding:0 !important;
+    }
+    .result-main-btn {
+        flex:1 1 50%;
+        width:auto !important;
+        min-width:0 !important;
+        min-height:34px !important;
+        border:0;
+        border-radius:0 !important;
+    }
+    .result-main-btn + .result-main-btn {
+        border-left:1px solid rgba(139,148,158,.20);
+    }
+    .result-main-card.single-format .result-main-btn {
+        flex:0 1 80%;
+        margin:4px auto;
+        min-height:30px !important;
+        border:1px solid rgba(139,148,158,.24);
+        border-radius:6px !important;
+    }
+
     .results-list { justify-content:flex-start; }
     .result-link { font-size:9px; padding:5px 6px; }
 
@@ -541,6 +728,7 @@ code {
     .summary-grid { grid-template-columns:1fr; }
     .visual-legend { grid-template-columns:1fr; }
     .tech-metrics-grid { grid-template-columns:1fr; }
+    .results-main-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
@@ -598,6 +786,18 @@ code {
 <div class="table-card">
 <div class="table-scroll">
 <table id="modelsTable">
+<colgroup>
+    <col style="width:17%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:7.125%">
+    <col style="width:26%">
+</colgroup>
 <thead>
 <tr>
     <th rowspan="2" class="model-head sortable" data-column="0">Назва моделі</th>
@@ -638,7 +838,7 @@ code {
     <td class="money free-cell max-cell" data-sort="9.358056000000"><strong>$9.36</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="28.659720000000"><strong>$28.66</strong><span class="coverage">9/9 мод. · без презентації</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.6_Sol_ORG_2026-08-24_13-28-26.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_ORG_2026-08-24_13-28-26.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="GPT-5.6_Sol_SYS_2026-08-27_09-00-00.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_SYS_2026-08-27_09-00-00.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="GPT-5.6_Sol_STR_2026-08-27_09-56-57.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_STR_2026-08-27_09-56-57.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a><a class="result-link" href="GPT-5.6_Sol_INN_2026-08-27_10-29-27.html" title="Інновації · HTML"><span class="result-code">HTML</span><span class="result-name">Інновації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_INN_2026-08-27_10-29-27.pdf" title="Інновації · PDF"><span class="result-code">PDF</span><span class="result-name">Інновації</span></a><a class="result-link" href="GPT-5.6_Sol_TAL_2026-08-27_10-36-01.html" title="Таланти · HTML"><span class="result-code">HTML</span><span class="result-name">Таланти</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_TAL_2026-08-27_10-36-01.pdf" title="Таланти · PDF"><span class="result-code">PDF</span><span class="result-name">Таланти</span></a><a class="result-link" href="GPT-5.6_Sol_CUL_2026-08-27_10-43-47.html" title="Культура · HTML"><span class="result-code">HTML</span><span class="result-name">Культура</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_CUL_2026-08-27_10-43-47.pdf" title="Культура · PDF"><span class="result-code">PDF</span><span class="result-name">Культура</span></a><a class="result-link" href="GPT-5.6_Sol_ADA_2026-08-27_10-48-28.html" title="Адаптивність · HTML"><span class="result-code">HTML</span><span class="result-name">Адаптивність</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_ADA_2026-08-27_10-48-28.pdf" title="Адаптивність · PDF"><span class="result-code">PDF</span><span class="result-name">Адаптивність</span></a><a class="result-link" href="GPT-5.6_Sol_REP_2026-08-27_10-59-36.html" title="Репутація · HTML"><span class="result-code">HTML</span><span class="result-name">Репутація</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_REP_2026-08-27_10-59-36.pdf" title="Репутація · PDF"><span class="result-code">PDF</span><span class="result-name">Репутація</span></a><a class="result-link" href="GPT-5.6_Sol_ARC_2026-08-27_11-13-12.html" title="Поведінковий профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Поведінковий профіль організації</span></a><a class="result-link" href="GPT-5.6_Sol_FULL_2026-08-27_11-22-46.html" title="Повний результат · HTML"><span class="result-code">HTML</span><span class="result-name">Повний результат</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Sol_FULL_2026-08-27_11-22-46.pdf" title="Повний результат · PDF"><span class="result-code">PDF</span><span class="result-name">Повний результат</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_ORG_2026-08-24_13-28-26.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_ORG_2026-08-24_13-28-26.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_SYS_2026-08-27_09-00-00.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_SYS_2026-08-27_09-00-00.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_STR_2026-08-27_09-56-57.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_STR_2026-08-27_09-56-57.pdf" title="Стратегія · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">INN</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_INN_2026-08-27_10-29-27.html" title="Інновації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_INN_2026-08-27_10-29-27.pdf" title="Інновації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">TAL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_TAL_2026-08-27_10-36-01.html" title="Таланти · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_TAL_2026-08-27_10-36-01.pdf" title="Таланти · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">CUL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_CUL_2026-08-27_10-43-47.html" title="Культура · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_CUL_2026-08-27_10-43-47.pdf" title="Культура · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ADA</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_ADA_2026-08-27_10-48-28.html" title="Адаптивність · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_ADA_2026-08-27_10-48-28.pdf" title="Адаптивність · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">REP</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_REP_2026-08-27_10-59-36.html" title="Репутація · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_REP_2026-08-27_10-59-36.pdf" title="Репутація · PDF">PDF</a></div></div><div class="result-main-card single-format">  <div class="result-main-label">    <span class="result-main-code">ARC</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_ARC_2026-08-27_11-13-12.html" title="Поведінковий профіль · HTML">HTML</a></div></div><div class="result-main-card final-result">  <div class="result-main-label">    <span class="result-main-code">FULL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Sol_FULL_2026-08-27_11-22-46.html" title="Повний результат · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Sol_FULL_2026-08-27_11-22-46.pdf" title="Повний результат · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -660,7 +860,7 @@ code {
     <td class="money free-cell max-cell" data-sort="1.847760000000"><strong>$1.85</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="1.847760000000"><strong>$1.85</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.6_Terra_ORG_2026-08-24_13-31-26.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Terra_ORG_2026-08-24_13-31-26.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Terra_ORG_2026-08-24_13-31-26.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Terra_ORG_2026-08-24_13-31-26.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -682,7 +882,7 @@ code {
     <td class="money free-cell max-cell" data-sort="0.560133600000"><strong>$0.56</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="1.712325600000"><strong>$1.71</strong><span class="coverage">9/9 мод. · без презентації</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.6_Luna_ORG_2026-08-24_13-32-17.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_ORG_2026-08-24_13-32-17.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="GPT-5.6_Luna_SYS_2026-08-27_08-52-18.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_SYS_2026-08-27_08-52-18.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="GPT-5.6_Luna_STR_2026-08-27_09-55-32.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_STR_2026-08-27_09-55-32.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a><a class="result-link" href="GPT-5.6_Luna_INN_2026-08-27_10-28-00.html" title="Інновації · HTML"><span class="result-code">HTML</span><span class="result-name">Інновації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_INN_2026-08-27_10-28-00.pdf" title="Інновації · PDF"><span class="result-code">PDF</span><span class="result-name">Інновації</span></a><a class="result-link" href="GPT-5.6_Luna_TAL_2026-08-27_10-34-07.html" title="Таланти · HTML"><span class="result-code">HTML</span><span class="result-name">Таланти</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_TAL_2026-08-27_10-34-07.pdf" title="Таланти · PDF"><span class="result-code">PDF</span><span class="result-name">Таланти</span></a><a class="result-link" href="GPT-5.6_Luna_CUL_2026-08-27_10-42-14.html" title="Культура · HTML"><span class="result-code">HTML</span><span class="result-name">Культура</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_CUL_2026-08-27_10-42-14.pdf" title="Культура · PDF"><span class="result-code">PDF</span><span class="result-name">Культура</span></a><a class="result-link" href="GPT-5.6_Luna_ADA_2026-08-27_10-46-56.html" title="Адаптивність · HTML"><span class="result-code">HTML</span><span class="result-name">Адаптивність</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_ADA_2026-08-27_10-46-56.pdf" title="Адаптивність · PDF"><span class="result-code">PDF</span><span class="result-name">Адаптивність</span></a><a class="result-link" href="GPT-5.6_Luna_REP_2026-08-27_10-57-54.html" title="Репутація · HTML"><span class="result-code">HTML</span><span class="result-name">Репутація</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_REP_2026-08-27_10-57-54.pdf" title="Репутація · PDF"><span class="result-code">PDF</span><span class="result-name">Репутація</span></a><a class="result-link" href="GPT-5.6_Luna_ARC_2026-08-27_11-12-11.html" title="Поведінковий профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Поведінковий профіль організації</span></a><a class="result-link" href="GPT-5.6_Luna_FULL_2026-08-27_11-21-01.html" title="Повний результат · HTML"><span class="result-code">HTML</span><span class="result-name">Повний результат</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.6_Luna_FULL_2026-08-27_11-21-01.pdf" title="Повний результат · PDF"><span class="result-code">PDF</span><span class="result-name">Повний результат</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_ORG_2026-08-24_13-32-17.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_ORG_2026-08-24_13-32-17.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_SYS_2026-08-27_08-52-18.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_SYS_2026-08-27_08-52-18.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_STR_2026-08-27_09-55-32.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_STR_2026-08-27_09-55-32.pdf" title="Стратегія · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">INN</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_INN_2026-08-27_10-28-00.html" title="Інновації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_INN_2026-08-27_10-28-00.pdf" title="Інновації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">TAL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_TAL_2026-08-27_10-34-07.html" title="Таланти · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_TAL_2026-08-27_10-34-07.pdf" title="Таланти · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">CUL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_CUL_2026-08-27_10-42-14.html" title="Культура · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_CUL_2026-08-27_10-42-14.pdf" title="Культура · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ADA</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_ADA_2026-08-27_10-46-56.html" title="Адаптивність · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_ADA_2026-08-27_10-46-56.pdf" title="Адаптивність · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">REP</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_REP_2026-08-27_10-57-54.html" title="Репутація · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_REP_2026-08-27_10-57-54.pdf" title="Репутація · PDF">PDF</a></div></div><div class="result-main-card single-format">  <div class="result-main-label">    <span class="result-main-code">ARC</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_ARC_2026-08-27_11-12-11.html" title="Поведінковий профіль · HTML">HTML</a></div></div><div class="result-main-card final-result">  <div class="result-main-label">    <span class="result-main-code">FULL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.6_Luna_FULL_2026-08-27_11-21-01.html" title="Повний результат · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.6_Luna_FULL_2026-08-27_11-21-01.pdf" title="Повний результат · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -704,7 +904,7 @@ code {
     <td class="money free-cell max-cell" data-sort="4.619400000000"><strong>$4.62</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="4.619400000000"><strong>$4.62</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.5_ORG_2026-08-24_13-33-51.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.5_ORG_2026-08-24_13-33-51.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.5_ORG_2026-08-24_13-33-51.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.5_ORG_2026-08-24_13-33-51.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -726,7 +926,7 @@ code {
     <td class="money free-cell max-cell" data-sort="27.716400000000"><strong>$27.72</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="27.716400000000"><strong>$27.72</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.5_Pro_ORG_2026-08-24_13-38-03.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.5_Pro_ORG_2026-08-24_13-38-03.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.5_Pro_ORG_2026-08-24_13-38-03.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.5_Pro_ORG_2026-08-24_13-38-03.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -748,7 +948,7 @@ code {
     <td class="money free-cell max-cell" data-sort="2.309700000000"><strong>$2.31</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="2.309700000000"><strong>$2.31</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.4_ORG_2026-08-24_13-39-30.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_ORG_2026-08-24_13-39-30.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_ORG_2026-08-24_13-39-30.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_ORG_2026-08-24_13-39-30.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -770,7 +970,7 @@ code {
     <td class="money free-cell max-cell" data-sort="27.716400000000"><strong>$27.72</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="27.716400000000"><strong>$27.72</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.4_Pro_ORG_2026-08-24_13-45-56.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_Pro_ORG_2026-08-24_13-45-56.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_Pro_ORG_2026-08-24_13-45-56.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_Pro_ORG_2026-08-24_13-45-56.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -792,7 +992,7 @@ code {
     <td class="money free-cell max-cell" data-sort="2.097584400000"><strong>$2.10</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="2.097584400000"><strong>$2.10</strong><span class="coverage">3/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.4_Mini_ORG_2026-08-24_13-16-42.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_Mini_ORG_2026-08-24_13-16-42.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="GPT-5.4_Mini_SYS_2026-08-27_09-01-24.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_Mini_SYS_2026-08-27_09-01-24.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="GPT-5.4_Mini_STR_2026-08-27_09-58-13.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_Mini_STR_2026-08-27_09-58-13.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_Mini_ORG_2026-08-24_13-16-42.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_Mini_ORG_2026-08-24_13-16-42.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_Mini_SYS_2026-08-27_09-01-24.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_Mini_SYS_2026-08-27_09-01-24.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_Mini_STR_2026-08-27_09-58-13.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_Mini_STR_2026-08-27_09-58-13.pdf" title="Стратегія · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -809,12 +1009,12 @@ code {
     <td data-sort="400000.000000000000">400 000</td>
     <td data-sort="128000.000000000000">128 000</td>
 
-    <td class="money free-cell" data-sort="0.008341200000"><strong>$0.01</strong><span class="coverage">1/3 мод. · частково</span></td>
-    <td class="money paid-cell" data-sort="0.008341200000"><strong>$0.01</strong><span class="coverage">1/9 мод. · частково</span></td>
+    <td class="money free-cell" data-sort="0.008341200000"><strong>$0.0083412</strong><span class="coverage">1/3 мод. · частково</span></td>
+    <td class="money paid-cell" data-sort="0.008341200000"><strong>$0.0083412</strong><span class="coverage">1/9 мод. · частково</span></td>
     <td class="money free-cell max-cell" data-sort="0.192456000000"><strong>$0.19</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="0.192456000000"><strong>$0.19</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="GPT-5.4_Nano_ORG_2026-08-24_13-46-26.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/GPT-5.4_Nano_ORG_2026-08-24_13-46-26.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="GPT-5.4_Nano_ORG_2026-08-24_13-46-26.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/GPT-5.4_Nano_ORG_2026-08-24_13-46-26.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -836,7 +1036,7 @@ code {
     <td class="money free-cell max-cell" data-sort="0.906620400000"><strong>$0.91</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="2.791764000000"><strong>$2.79</strong><span class="coverage">9/9 мод. · без презентації</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="Gemini_3.6_Flash_SYS_2026-08-27_09-04-37.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_SYS_2026-08-27_09-04-37.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="Gemini_3.6_Flash_STR_2026-08-27_09-59-06.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_STR_2026-08-27_09-59-06.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a><a class="result-link" href="Gemini_3.6_Flash_INN_2026-08-27_10-31-10.html" title="Інновації · HTML"><span class="result-code">HTML</span><span class="result-name">Інновації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_INN_2026-08-27_10-31-10.pdf" title="Інновації · PDF"><span class="result-code">PDF</span><span class="result-name">Інновації</span></a><a class="result-link" href="Gemini_3.6_Flash_TAL_2026-08-27_10-37-59.html" title="Таланти · HTML"><span class="result-code">HTML</span><span class="result-name">Таланти</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_TAL_2026-08-27_10-37-59.pdf" title="Таланти · PDF"><span class="result-code">PDF</span><span class="result-name">Таланти</span></a><a class="result-link" href="Gemini_3.6_Flash_CUL_2026-08-27_10-39-57.html" title="Культура · HTML"><span class="result-code">HTML</span><span class="result-name">Культура</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_CUL_2026-08-27_10-39-57.pdf" title="Культура · PDF"><span class="result-code">PDF</span><span class="result-name">Культура</span></a><a class="result-link" href="Gemini_3.6_Flash_ADA_2026-08-27_10-50-04.html" title="Адаптивність · HTML"><span class="result-code">HTML</span><span class="result-name">Адаптивність</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_ADA_2026-08-27_10-50-04.pdf" title="Адаптивність · PDF"><span class="result-code">PDF</span><span class="result-name">Адаптивність</span></a><a class="result-link" href="Gemini_3.6_Flash_REP_2026-08-27_10-55-51.html" title="Репутація · HTML"><span class="result-code">HTML</span><span class="result-name">Репутація</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.6_Flash_REP_2026-08-27_10-55-51.pdf" title="Репутація · PDF"><span class="result-code">PDF</span><span class="result-name">Репутація</span></a><a class="result-link" href="Gemini_3.6_Flash_ARC_2026-08-27_11-13-57.html" title="Поведінковий профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Поведінковий профіль організації</span></a><a class="result-link" href="Gemini_3.6_Flash_FULL_2026-08-27_11-23-59.html" title="Повний результат · HTML"><span class="result-code">HTML</span><span class="result-name">Повний результат</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_ORG_2026-08-24_13-25-15.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_SYS_2026-08-27_09-04-37.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_SYS_2026-08-27_09-04-37.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_STR_2026-08-27_09-59-06.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_STR_2026-08-27_09-59-06.pdf" title="Стратегія · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">INN</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_INN_2026-08-27_10-31-10.html" title="Інновації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_INN_2026-08-27_10-31-10.pdf" title="Інновації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">TAL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_TAL_2026-08-27_10-37-59.html" title="Таланти · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_TAL_2026-08-27_10-37-59.pdf" title="Таланти · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">CUL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_CUL_2026-08-27_10-39-57.html" title="Культура · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_CUL_2026-08-27_10-39-57.pdf" title="Культура · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ADA</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_ADA_2026-08-27_10-50-04.html" title="Адаптивність · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_ADA_2026-08-27_10-50-04.pdf" title="Адаптивність · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">REP</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_REP_2026-08-27_10-55-51.html" title="Репутація · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.6_Flash_REP_2026-08-27_10-55-51.pdf" title="Репутація · PDF">PDF</a></div></div><div class="result-main-card single-format">  <div class="result-main-label">    <span class="result-main-code">ARC</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_ARC_2026-08-27_11-13-57.html" title="Поведінковий профіль · HTML">HTML</a></div></div><div class="result-main-card single-format final-result">  <div class="result-main-label">    <span class="result-main-code">FULL</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.6_Flash_FULL_2026-08-27_11-23-59.html" title="Повний результат · HTML">HTML</a></div></div></div></td>
 </tr>
 
 
@@ -858,7 +1058,7 @@ code {
     <td class="money free-cell max-cell" data-sort="0.711196800000"><strong>$0.71</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="0.711196800000"><strong>$0.71</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.5_Flash_ORG_2026-08-24_13-53-19.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -875,12 +1075,12 @@ code {
     <td data-sort="1048576.000000000000">1 048 576</td>
     <td data-sort="65536.000000000000">65 536</td>
 
-    <td class="money free-cell" data-sort="0.007710000000"><strong>$0.01</strong><span class="coverage">1/3 мод. · частково</span></td>
-    <td class="money paid-cell" data-sort="0.007710000000"><strong>$0.01</strong><span class="coverage">1/9 мод. · частково</span></td>
+    <td class="money free-cell" data-sort="0.007710000000"><strong>$0.00771</strong><span class="coverage">1/3 мод. · частково</span></td>
+    <td class="money paid-cell" data-sort="0.007710000000"><strong>$0.00771</strong><span class="coverage">1/9 мод. · частково</span></td>
     <td class="money free-cell max-cell" data-sort="0.197289600000"><strong>$0.20</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="0.197289600000"><strong>$0.20</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.5_Flash-Lite_ORG_2026-08-24_13-53-26.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -902,7 +1102,7 @@ code {
     <td class="money free-cell max-cell" data-sort="0.948261600000"><strong>$0.95</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="0.948261600000"><strong>$0.95</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.1_Pro_Preview_ORG_2026-08-24_13-55-12.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -919,12 +1119,12 @@ code {
     <td data-sort="1048576.000000000000">1 048 576</td>
     <td data-sort="65536.000000000000">65 536</td>
 
-    <td class="money free-cell" data-sort="0.003327600000"><strong>$0.00</strong><span class="coverage">1/3 мод. · частково</span></td>
-    <td class="money paid-cell" data-sort="0.003327600000"><strong>$0.00</strong><span class="coverage">1/9 мод. · частково</span></td>
+    <td class="money free-cell" data-sort="0.003327600000"><strong>$0.0033276</strong><span class="coverage">1/3 мод. · частково</span></td>
+    <td class="money paid-cell" data-sort="0.003327600000"><strong>$0.0033276</strong><span class="coverage">1/9 мод. · частково</span></td>
     <td class="money free-cell max-cell" data-sort="0.118532400000"><strong>$0.12</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="0.118532400000"><strong>$0.12</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Gemini_3.1_Flash-Lite_ORG_2026-08-24_13-53-32.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -946,7 +1146,7 @@ code {
     <td class="money free-cell max-cell" data-sort="3.854970000000"><strong>$3.85</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="3.854970000000"><strong>$3.85</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Claude_Opus_5_ORG_2026-08-24_14-05-13.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Claude_Opus_5_ORG_2026-08-24_14-05-13.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Claude_Opus_5_ORG_2026-08-24_14-05-13.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Claude_Opus_5_ORG_2026-08-24_14-05-13.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -968,7 +1168,7 @@ code {
     <td class="money free-cell max-cell" data-sort="1.541988000000"><strong>$1.54</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="1.541988000000"><strong>$1.54</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Claude_Sonnet_5_ORG_2026-08-24_14-09-51.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Claude_Sonnet_5_ORG_2026-08-24_14-09-51.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Claude_Sonnet_5_ORG_2026-08-24_14-09-51.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Claude_Sonnet_5_ORG_2026-08-24_14-09-51.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -990,7 +1190,7 @@ code {
     <td class="money free-cell max-cell" data-sort="7.709940000000"><strong>$7.71</strong><span class="coverage">1/3 мод. · частково</span></td>
     <td class="money paid-cell max-cell" data-sort="7.709940000000"><strong>$7.71</strong><span class="coverage">1/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="Claude_Fable_5_ORG_2026-08-24_14-06-37.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/Claude_Fable_5_ORG_2026-08-24_14-06-37.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="Claude_Fable_5_ORG_2026-08-24_14-06-37.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/Claude_Fable_5_ORG_2026-08-24_14-06-37.pdf" title="Профіль організації · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -1007,12 +1207,12 @@ code {
     <td data-sort="1310720.000000000000">1 310 720</td>
     <td data-sort="1048576.000000000000">1 048 576</td>
 
-    <td class="money free-cell" data-sort="0.004664360000"><strong>$0.00</strong><span class="coverage">3/3 мод. · повністю</span></td>
-    <td class="money paid-cell" data-sort="0.004664360000"><strong>$0.00</strong><span class="coverage">3/9 мод. · частково</span></td>
+    <td class="money free-cell" data-sort="0.004664360000"><strong>$0.00466436</strong><span class="coverage">3/3 мод. · повністю</span></td>
+    <td class="money paid-cell" data-sort="0.004664360000"><strong>$0.00466436</strong><span class="coverage">3/9 мод. · частково</span></td>
     <td class="money free-cell max-cell" data-sort="0.293454758400"><strong>$0.29</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="0.293454758400"><strong>$0.29</strong><span class="coverage">3/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="DeepSeek_V4_Flash_0731_SYS_2026-08-27_09-21-19.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_SYS_2026-08-27_09-21-19.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="DeepSeek_V4_Flash_0731_STR_2026-08-27_10-18-51.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_STR_2026-08-27_10-18-51.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_ORG_2026-08-25_07-03-29.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Flash_0731_SYS_2026-08-27_09-21-19.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_SYS_2026-08-27_09-21-19.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Flash_0731_STR_2026-08-27_10-18-51.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Flash_0731_STR_2026-08-27_10-18-51.pdf" title="Стратегія · PDF">PDF</a></div></div></div></td>
 </tr>
 
 
@@ -1034,7 +1234,7 @@ code {
     <td class="money free-cell max-cell" data-sort="2.672014760000"><strong>$2.67</strong><span class="coverage">3/3 мод. · повністю</span></td>
     <td class="money paid-cell max-cell" data-sort="2.672014760000"><strong>$2.67</strong><span class="coverage">3/9 мод. · частково</span></td>
 
-    <td class="view-cell"><div class="results-list"><a class="result-link" href="DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.html" title="Профіль організації · HTML"><span class="result-code">HTML</span><span class="result-name">Профіль організації</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.pdf" title="Профіль організації · PDF"><span class="result-code">PDF</span><span class="result-name">Профіль організації</span></a><a class="result-link" href="DeepSeek_V4_Pro_0813_SYS_2026-08-27_09-46-22.html" title="Системна перевірка · HTML"><span class="result-code">HTML</span><span class="result-name">Системна перевірка</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_SYS_2026-08-27_09-46-22.pdf" title="Системна перевірка · PDF"><span class="result-code">PDF</span><span class="result-name">Системна перевірка</span></a><a class="result-link" href="DeepSeek_V4_Pro_0813_STR_2026-08-27_10-23-55.html" title="Стратегія · HTML"><span class="result-code">HTML</span><span class="result-name">Стратегія</span></a><a class="result-link pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_STR_2026-08-27_10-23-55.pdf" title="Стратегія · PDF"><span class="result-code">PDF</span><span class="result-name">Стратегія</span></a></div></td>
+    <td class="view-cell"><div class="results-main-grid"><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">ORG</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.html" title="Профіль організації · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_ORG_2026-08-25_07-12-13.pdf" title="Профіль організації · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">SYS</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Pro_0813_SYS_2026-08-27_09-46-22.html" title="Системна перевірка · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_SYS_2026-08-27_09-46-22.pdf" title="Системна перевірка · PDF">PDF</a></div></div><div class="result-main-card">  <div class="result-main-label">    <span class="result-main-code">STR</span>  </div>  <div class="result-main-actions"><a class="result-main-btn html" href="DeepSeek_V4_Pro_0813_STR_2026-08-27_10-23-55.html" title="Стратегія · HTML">HTML</a><a class="result-main-btn pdf" href="PDF_RESULTS/DeepSeek_V4_Pro_0813_STR_2026-08-27_10-23-55.pdf" title="Стратегія · PDF">PDF</a></div></div></div></td>
 </tr>
 
 </tbody>
@@ -1367,7 +1567,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$1.20</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 050 000</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>128 000</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.01</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.0087204</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.18</strong></div>
     </div>
 
@@ -1857,7 +2057,7 @@ code {
             <small>OpenAI</small>
         </span>
         <span class="tech-summary-meta">
-            1 мод. · 30.6 с · факт $0.01 · MAX $0.19
+            1 мод. · 30.6 с · факт $0.0083412 · MAX $0.19
         </span>
     </summary>
     <div class="tech-model-body">
@@ -1881,7 +2081,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$1.25</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>400 000</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>128 000</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.01</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.0083412</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.19</strong></div>
     </div>
 
@@ -2189,7 +2389,7 @@ code {
             <small>Google Gemini</small>
         </span>
         <span class="tech-summary-meta">
-            1 мод. · 7.4 с · факт $0.01 · MAX $0.20
+            1 мод. · 7.4 с · факт $0.00771 · MAX $0.20
         </span>
     </summary>
     <div class="tech-model-body">
@@ -2213,7 +2413,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$2.50</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 048 576</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>65 536</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.01</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00771</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.20</strong></div>
     </div>
 
@@ -2277,7 +2477,7 @@ code {
             <small>Google Gemini</small>
         </span>
         <span class="tech-summary-meta">
-            1 мод. · 5.8 с · факт $0.00 · MAX $0.12
+            1 мод. · 5.8 с · факт $0.0033276 · MAX $0.12
         </span>
     </summary>
     <div class="tech-model-body">
@@ -2301,7 +2501,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$1.50</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 048 576</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>65 536</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.0033276</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.12</strong></div>
     </div>
 
@@ -2453,7 +2653,7 @@ code {
             <small>DeepSeek / OpenRouter</small>
         </span>
         <span class="tech-summary-meta">
-            3 мод. · 25 хв 57 с · факт $0.00 · MAX $0.29
+            3 мод. · 25 хв 57 с · факт $0.00466436 · MAX $0.29
         </span>
     </summary>
     <div class="tech-model-body">
@@ -2477,7 +2677,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$0.08</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 310 720</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>1 048 576</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00145696</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.10</strong></div>
     </div>
 
@@ -2502,7 +2702,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$0.08</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 310 720</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>1 048 576</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00149408</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.10</strong></div>
     </div>
 
@@ -2527,7 +2727,7 @@ code {
         <div class="tech-metric "><span>Output / 1M</span><strong>$0.08</strong></div>
         <div class="tech-metric "><span>Max context</span><strong>1 310 720</strong></div>
         <div class="tech-metric "><span>Max output</span><strong>1 048 576</strong></div>
-        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00</strong></div>
+        <div class="tech-metric actual-cost"><span>Фактично + податок</span><strong>$0.00171332</strong></div>
         <div class="tech-metric max-cost"><span>При MAX output</span><strong>$0.10</strong></div>
     </div>
 
