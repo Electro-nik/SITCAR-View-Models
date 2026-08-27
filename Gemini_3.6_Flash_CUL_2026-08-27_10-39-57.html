@@ -1,0 +1,2031 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini 3.6 Flash</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Gemini 3.6 Flash</h1>
+<div class="muted">Google Gemini · Prompt: CUL · 2026-08-27T10:39:57</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Returned</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Response ID</span><strong>pOmPasLjM-C0kdUP6oXoiQM</strong></div>
+<div class="metric"><span>Context window</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Max output</span><strong>65 536</strong></div>
+<div class="metric"><span>Latency</span><strong>41.385 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>20 389</strong></div>
+<div class="metric"><span>Cached input</span><strong>—</strong></div>
+<div class="metric"><span>Output tokens</span><strong>7 978</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>4 599</strong></div>
+<div class="metric"><span>Total tokens</span><strong>28 367</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.750000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.015292</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.075000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$3.750000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.029918</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.045209</strong></div>
+</section>
+</div>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">CUL</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Культура</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">complete</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">59</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">85</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Підприємницька культура гнучності та орієнтації на якість стикається із загрозою «героїзму», замовчуванням ризиків до останнього моменту та замиканням знань на ключових людях.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Культурне середовище «Солар Вест Буд» оцінюється як підприємницьке, з високою орієнтацією на швидкість дій, якість виконання та задоволеність клієнтів. Задекларовані цінності (безпека, якість, відповідальність та навчання) відповідають стратегічним завданням EPC-ринку. Проте аналіз виявляє суттєві розриви між задекларованими правилами та щоденною поведінкою: через високе навантаження у пікові періоди працівники схильні замовчувати ризики до останнього моменту та іноді обходити контрольні чеклісти. Значна частина експертизи та контактів залишається зосередженою в головах окремих «ключових» фахівців без належного документування у базі знань. Додатковим бар&#x27;єром є надмірний контроль у комерційному блоці (3–4 рівні погоджень, що забирає 1–3 дні), що суперечить підприємницькому духу та знижує швидкість обслуговування. Для безпечного масштабування компанії необхідно перейти від ситуативного реагування до системної культури раннього сигналізування про ризики, стандартизації знань і суворого дотримання правил безпеки.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">cultural_identity — Культурна ідентичність і цінності</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">62</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чітко сформульовані та задекларовані 3 ключові цінності (безпека/якість, відповідальність за результат, навчання/співпраця).</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявність базових артефактів: кодекс, корпоративна книга, регламенти, чеклісти монтажу.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Існує розрив між цінностями та практикою: під тиском дедлайнів виникає спокуса обходити чеклісти та тримати знання неформально.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">leadership_culture — Лідерство і управлінська культура</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">58</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Керівники власноруч дотримуються правил та демонструють рівень поведінки на 3 з 5.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Усвідомлення керівництвом необхідності трансформації культури від «героїзму» до системних ролей.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Надмірний централізований контроль у комерційних погодженнях (3–4 підписи, втрата 1–3 днів на видачу КП), що стримує конверсію продажів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">trust_communication — Довіра, комунікація і безпека</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">55</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Рівень психологічної безпеки та можливості ставити незручні питання оцінений на 3 з 5.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Використання швидких каналів взаємодії (робочі чати, статуси) для розв&#x27;язання оперативних питань.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявна культура замовчування ризиків та затримок «до останнього моменту» через бажання швидко закрити задачу без ескалації.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">accountability_cycle — Відповідальність і управлінський цикл</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Впроваджено ритм звітності: щоденні статуси лідів/монтажів, щотижневі план-факт сесії та щомісячні фінансові огляди.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Чітке розуміння власників рішень під час оперативних розборів.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Частина відповідальності замінюється неформальними погодженнями та залежністю від кількох ключових фахівців.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">rituals_coherence — Ритуали, символи і цілісність</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">62</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Функціонування щотижневих ритуалів review ризиків та перевірки планів монтажу.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявність позитивних культурних нарративів («Безпечніше зупинитися, ніж зробити помилку»).</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Ритуал щомісячних зустрічей 1:1 та розбору кейсів після проєктів ще не стали системними для всіх підрозділів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">service_brand_alignment — Сервіс/якість і бренд</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Принцип «Довіра клієнта важливіша за обіцянку» та орієнтація на показник NPS.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Чеклісти якості та безпеки на робочих об&#x27;єктах як головний артефакт бренду.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Нерівномірність проєктного потоку у пікові періоди створює загрозу зниження якості та вигорання монтажних бригад.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">learning_red_flags_ai — Навчання, тривожні сигнали і ШІ</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">58</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Глибоке розуміння керівництвом культурних ризиків (утримання знань, обхід стандартів, замовчування проблем).</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Початок використання ШІ для персоналізації комунікацій та генерації навчальних сценаріїв.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Навчання та обмін знаннями залишаються ситуативними через відсутність єдиної бази SOP та виділеного часу працівників.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявність чітко сформульованого культурного коду та задекларованих цінностей, орієнтованих на якість і безпеку.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Глибока саморефлексія керівництва щодо наявних культурних бар&#x27;єрів та ризиків залежності від ключових людей.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Функціонування дисциплінованого ритму щотижневого та щоденного оперативної звітності за планом і ризиками.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Визнання пріоритету командної роботи та відмова від заохочення індивідуального «героїзму» на шкоду безпеці.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Практика замовчування технічних та часових ризиків до критичного моменту через побоювання ескалації.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Замикання операційних знань, рішень та контактів на 2–3 ключових фахівцях без фіксації у базі знань.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Надмірний контроль та 3–4 рівні погоджень для стандартних комерційних пропозицій, що втрачає до 3 днів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Періодичний обхід чеклістів якості та безпеки у пікові періоди високого навантаження.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Відсутність системного ритму зустрічей 1:1 та систематичного формату розбору кейсів (post-mortem).</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Замовчування ризиків та затримок працівниками під тиском дедлайнів до останнього моменту</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Призводить до аварійних затримок на об&#x27;єктах, аврального перепланування бригад, додаткових витрат та втрати довіри клієнтів.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Утримання критичних знань та контактів окремими фахівцями (Coverage Risk)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Створює тотальну залежність компанії від декількох осіб, унеможливлює швидкий онбординг новачків та блокує масштабування.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Спроби обходу чеклістів безпеки та якості заради швидкості здачі об&#x27;єктів у пікові періоди</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">critical</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Створює загрозу травматизму на об&#x27;єктах, критичних аварій обладнання, гарантійних збитків та руйнування репутації бренду.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Задекларована цінність «Безпека й якість понад усе» суперечить фактам обходу контрольних чеклістів у пікові періоди навантаження.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Заявлена підприємницька культура, яка вимагає гнучкості та швидкості, суперечить наявності 3–4 рівнів погоджень для стандартних цінових пропозицій.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Цінність «Відкритість і навчання» суперечить відсутності виділеного часу для фіксації знань і регулярного розбору помилок у єдиній базі.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутні оцифровані дані щодо рівня задоволеності персоналу (eNPS / pulse-опитування).</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не обраховано точний відсоток відхилень та рекламацій, спричинених порушенням чеклістів під час монтажу.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Запровадити правило «ранньої ескалації» без покарання за вчасно піднятий ризик та затвердити регламент негайного сигналу про затримку.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Усуне практику приховування проблем до останнього моменту та дозволить коригувати графіки без аварійних втрат.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Скорочення випадків критичних затримок монтажу на 50% та зниження напруги в команді.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">CEO / Керівники функцій</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Делегувати повноваження щодо затвердження стандартних КП і комплектацій, скоротивши кількість погоджень з 3–4 до 1 на основі цінових лімітів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Прискорить комунікацію з клієнтом і зніме операційне перевантаження з керівництва.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Скорочення часу видачі комерційної пропозиції з 1–3 днів до 2–4 годин, зростання конверсії продажів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівник відділу продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Затвердити регламент обов&#x27;язкового розбору кейсів (post-mortem) після завершення кожного об&#x27;єкта з внесенням змін до SOP.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Забезпечить відчуження знань від конкретних людей та сформує єдину базу стандартів компанії.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зменшення кількості повторюваних інженерних та монтажних помилок, прискорення адаптації нових фахівців.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Головний інженер / Керівник сервісу</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Впровадити обов&#x27;язковий щомісячний ритм зустрічей 1:1 керівників із підлеглими для обговорення навантаження, ризиків та розвитку.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Забезпечить вчасне виявлення ознак вигорання та невдоволення працівників до моменту прийняття рішення про звільнення.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення довіри до керівництва, збереження критичних кадрів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівники функціональних напрямів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Впровадити жорсткий аудит дотримання чеклістів безпеки та прив&#x27;язати 100% їх виконання до виплати проєктних премій.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Ліквідує практику обходу стандартів якості та безпеки заради швидкості у пікові періоди.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">100% заповнення чеклістів, нульовий рівень інцидентів з безпеки та зниження кількості гарантійних звернень.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівник монтажного напряму / Інженер з охорони праці</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Культура «Солар Вест Буд» є енергійною та орієнтованою на результат, але зараз працює в режимі «перевантаження»: працівники замовчують ризики до останнього моменту, знання тримаються в головах кількох людей, а в пікові періоди існує загроза обходу чеклістів безпеки. Одночасно бюрократія в погодженні КП (3–4 підписи, втрата до 3 днів) гальмує продажі. Для підготовки до масштабування першочергово необхідно скоротити рівні погоджень у продажах, впровадити правило ранньої ескалації ризиків та зафіксувати стандарти у базі знань.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+  &quot;module_code&quot;: &quot;CUL&quot;,
+  &quot;module_name&quot;: &quot;Культура&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 59,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;Підприємницька культура гнучності та орієнтації на якість стикається із загрозою «героїзму», замовчуванням ризиків до останнього моменту та замиканням знань на ключових людях.&quot;,
+  &quot;diagnosis&quot;: &quot;Культурне середовище «Солар Вест Буд» оцінюється як підприємницьке, з високою орієнтацією на швидкість дій, якість виконання та задоволеність клієнтів. Задекларовані цінності (безпека, якість, відповідальність та навчання) відповідають стратегічним завданням EPC-ринку. Проте аналіз виявляє суттєві розриви між задекларованими правилами та щоденною поведінкою: через високе навантаження у пікові періоди працівники схильні замовчувати ризики до останнього моменту та іноді обходити контрольні чеклісти. Значна частина експертизи та контактів залишається зосередженою в головах окремих «ключових» фахівців без належного документування у базі знань. Додатковим бар&#x27;єром є надмірний контроль у комерційному блоці (3–4 рівні погоджень, що забирає 1–3 дні), що суперечить підприємницькому духу та знижує швидкість обслуговування. Для безпечного масштабування компанії необхідно перейти від ситуативного реагування до системної культури раннього сигналізування про ризики, стандартизації знань і суворого дотримання правил безпеки.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;cultural_identity — Культурна ідентичність і цінності&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Чітко сформульовані та задекларовані 3 ключові цінності (безпека/якість, відповідальність за результат, навчання/співпраця).&quot;,
+        &quot;Наявність базових артефактів: кодекс, корпоративна книга, регламенти, чеклісти монтажу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Існує розрив між цінностями та практикою: під тиском дедлайнів виникає спокуса обходити чеклісти та тримати знання неформально.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;leadership_culture — Лідерство і управлінська культура&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Керівники власноруч дотримуються правил та демонструють рівень поведінки на 3 з 5.&quot;,
+        &quot;Усвідомлення керівництвом необхідності трансформації культури від «героїзму» до системних ролей.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Надмірний централізований контроль у комерційних погодженнях (3–4 підписи, втрата 1–3 днів на видачу КП), що стримує конверсію продажів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;trust_communication — Довіра, комунікація і безпека&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Рівень психологічної безпеки та можливості ставити незручні питання оцінений на 3 з 5.&quot;,
+        &quot;Використання швидких каналів взаємодії (робочі чати, статуси) для розв&#x27;язання оперативних питань.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Наявна культура замовчування ризиків та затримок «до останнього моменту» через бажання швидко закрити задачу без ескалації.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;accountability_cycle — Відповідальність і управлінський цикл&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Впроваджено ритм звітності: щоденні статуси лідів/монтажів, щотижневі план-факт сесії та щомісячні фінансові огляди.&quot;,
+        &quot;Чітке розуміння власників рішень під час оперативних розборів.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Частина відповідальності замінюється неформальними погодженнями та залежністю від кількох ключових фахівців.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;rituals_coherence — Ритуали, символи і цілісність&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Функціонування щотижневих ритуалів review ризиків та перевірки планів монтажу.&quot;,
+        &quot;Наявність позитивних культурних нарративів («Безпечніше зупинитися, ніж зробити помилку»).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ритуал щомісячних зустрічей 1:1 та розбору кейсів після проєктів ще не стали системними для всіх підрозділів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;service_brand_alignment — Сервіс/якість і бренд&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Принцип «Довіра клієнта важливіша за обіцянку» та орієнтація на показник NPS.&quot;,
+        &quot;Чеклісти якості та безпеки на робочих об&#x27;єктах як головний артефакт бренду.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нерівномірність проєктного потоку у пікові періоди створює загрозу зниження якості та вигорання монтажних бригад.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;learning_red_flags_ai — Навчання, тривожні сигнали і ШІ&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Глибоке розуміння керівництвом культурних ризиків (утримання знань, обхід стандартів, замовчування проблем).&quot;,
+        &quot;Початок використання ШІ для персоналізації комунікацій та генерації навчальних сценаріїв.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Навчання та обмін знаннями залишаються ситуативними через відсутність єдиної бази SOP та виділеного часу працівників.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Наявність чітко сформульованого культурного коду та задекларованих цінностей, орієнтованих на якість і безпеку.&quot;,
+    &quot;Глибока саморефлексія керівництва щодо наявних культурних бар&#x27;єрів та ризиків залежності від ключових людей.&quot;,
+    &quot;Функціонування дисциплінованого ритму щотижневого та щоденного оперативної звітності за планом і ризиками.&quot;,
+    &quot;Визнання пріоритету командної роботи та відмова від заохочення індивідуального «героїзму» на шкоду безпеці.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Практика замовчування технічних та часових ризиків до критичного моменту через побоювання ескалації.&quot;,
+    &quot;Замикання операційних знань, рішень та контактів на 2–3 ключових фахівцях без фіксації у базі знань.&quot;,
+    &quot;Надмірний контроль та 3–4 рівні погоджень для стандартних комерційних пропозицій, що втрачає до 3 днів.&quot;,
+    &quot;Періодичний обхід чеклістів якості та безпеки у пікові періоди високого навантаження.&quot;,
+    &quot;Відсутність системного ритму зустрічей 1:1 та систематичного формату розбору кейсів (post-mortem).&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Замовчування ризиків та затримок працівниками під тиском дедлайнів до останнього моменту&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Призводить до аварійних затримок на об&#x27;єктах, аврального перепланування бригад, додаткових витрат та втрати довіри клієнтів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Утримання критичних знань та контактів окремими фахівцями (Coverage Risk)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює тотальну залежність компанії від декількох осіб, унеможливлює швидкий онбординг новачків та блокує масштабування.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Спроби обходу чеклістів безпеки та якості заради швидкості здачі об&#x27;єктів у пікові періоди&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює загрозу травматизму на об&#x27;єктах, критичних аварій обладнання, гарантійних збитків та руйнування репутації бренду.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Задекларована цінність «Безпека й якість понад усе» суперечить фактам обходу контрольних чеклістів у пікові періоди навантаження.&quot;,
+    &quot;Заявлена підприємницька культура, яка вимагає гнучкості та швидкості, суперечить наявності 3–4 рівнів погоджень для стандартних цінових пропозицій.&quot;,
+    &quot;Цінність «Відкритість і навчання» суперечить відсутності виділеного часу для фіксації знань і регулярного розбору помилок у єдиній базі.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні оцифровані дані щодо рівня задоволеності персоналу (eNPS / pulse-опитування).&quot;,
+    &quot;Не обраховано точний відсоток відхилень та рекламацій, спричинених порушенням чеклістів під час монтажу.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Запровадити правило «ранньої ескалації» без покарання за вчасно піднятий ризик та затвердити регламент негайного сигналу про затримку.&quot;,
+      &quot;why&quot;: &quot;Усуне практику приховування проблем до останнього моменту та дозволить коригувати графіки без аварійних втрат.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення випадків критичних затримок монтажу на 50% та зниження напруги в команді.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / Керівники функцій&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Делегувати повноваження щодо затвердження стандартних КП і комплектацій, скоротивши кількість погоджень з 3–4 до 1 на основі цінових лімітів.&quot;,
+      &quot;why&quot;: &quot;Прискорить комунікацію з клієнтом і зніме операційне перевантаження з керівництва.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення часу видачі комерційної пропозиції з 1–3 днів до 2–4 годин, зростання конверсії продажів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник відділу продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити регламент обов&#x27;язкового розбору кейсів (post-mortem) після завершення кожного об&#x27;єкта з внесенням змін до SOP.&quot;,
+      &quot;why&quot;: &quot;Забезпечить відчуження знань від конкретних людей та сформує єдину базу стандартів компанії.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення кількості повторюваних інженерних та монтажних помилок, прискорення адаптації нових фахівців.&quot;,
+      &quot;owner_role&quot;: &quot;Головний інженер / Керівник сервісу&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язковий щомісячний ритм зустрічей 1:1 керівників із підлеглими для обговорення навантаження, ризиків та розвитку.&quot;,
+      &quot;why&quot;: &quot;Забезпечить вчасне виявлення ознак вигорання та невдоволення працівників до моменту прийняття рішення про звільнення.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення довіри до керівництва, збереження критичних кадрів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівники функціональних напрямів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити жорсткий аудит дотримання чеклістів безпеки та прив&#x27;язати 100% їх виконання до виплати проєктних премій.&quot;,
+      &quot;why&quot;: &quot;Ліквідує практику обходу стандартів якості та безпеки заради швидкості у пікові періоди.&quot;,
+      &quot;expected_result&quot;: &quot;100% заповнення чеклістів, нульовий рівень інцидентів з безпеки та зниження кількості гарантійних звернень.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник монтажного напряму / Інженер з охорони праці&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Культура «Солар Вест Буд» є енергійною та орієнтованою на результат, але зараз працює в режимі «перевантаження»: працівники замовчують ризики до останнього моменту, знання тримаються в головах кількох людей, а в пікові періоди існує загроза обходу чеклістів безпеки. Одночасно бюрократія в погодженні КП (3–4 підписи, втрата до 3 днів) гальмує продажі. Для підготовки до масштабування першочергово необхідно скоротити рівні погоджень у продажах, впровадити правило ранньої ескалації ризиків та зафіксувати стандарти у базі знань.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;CUL&quot;,
+  &quot;module_name&quot;: &quot;Культура&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 59,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;Підприємницька культура гнучності та орієнтації на якість стикається із загрозою «героїзму», замовчуванням ризиків до останнього моменту та замиканням знань на ключових людях.&quot;,
+  &quot;diagnosis&quot;: &quot;Культурне середовище «Солар Вест Буд» оцінюється як підприємницьке, з високою орієнтацією на швидкість дій, якість виконання та задоволеність клієнтів. Задекларовані цінності (безпека, якість, відповідальність та навчання) відповідають стратегічним завданням EPC-ринку. Проте аналіз виявляє суттєві розриви між задекларованими правилами та щоденною поведінкою: через високе навантаження у пікові періоди працівники схильні замовчувати ризики до останнього моменту та іноді обходити контрольні чеклісти. Значна частина експертизи та контактів залишається зосередженою в головах окремих «ключових» фахівців без належного документування у базі знань. Додатковим бар&#x27;єром є надмірний контроль у комерційному блоці (3–4 рівні погоджень, що забирає 1–3 дні), що суперечить підприємницькому духу та знижує швидкість обслуговування. Для безпечного масштабування компанії необхідно перейти від ситуативного реагування до системної культури раннього сигналізування про ризики, стандартизації знань і суворого дотримання правил безпеки.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;cultural_identity — Культурна ідентичність і цінності&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Чітко сформульовані та задекларовані 3 ключові цінності (безпека/якість, відповідальність за результат, навчання/співпраця).&quot;,
+        &quot;Наявність базових артефактів: кодекс, корпоративна книга, регламенти, чеклісти монтажу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Існує розрив між цінностями та практикою: під тиском дедлайнів виникає спокуса обходити чеклісти та тримати знання неформально.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;leadership_culture — Лідерство і управлінська культура&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Керівники власноруч дотримуються правил та демонструють рівень поведінки на 3 з 5.&quot;,
+        &quot;Усвідомлення керівництвом необхідності трансформації культури від «героїзму» до системних ролей.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Надмірний централізований контроль у комерційних погодженнях (3–4 підписи, втрата 1–3 днів на видачу КП), що стримує конверсію продажів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;trust_communication — Довіра, комунікація і безпека&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Рівень психологічної безпеки та можливості ставити незручні питання оцінений на 3 з 5.&quot;,
+        &quot;Використання швидких каналів взаємодії (робочі чати, статуси) для розв&#x27;язання оперативних питань.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Наявна культура замовчування ризиків та затримок «до останнього моменту» через бажання швидко закрити задачу без ескалації.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;accountability_cycle — Відповідальність і управлінський цикл&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Впроваджено ритм звітності: щоденні статуси лідів/монтажів, щотижневі план-факт сесії та щомісячні фінансові огляди.&quot;,
+        &quot;Чітке розуміння власників рішень під час оперативних розборів.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Частина відповідальності замінюється неформальними погодженнями та залежністю від кількох ключових фахівців.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;rituals_coherence — Ритуали, символи і цілісність&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Функціонування щотижневих ритуалів review ризиків та перевірки планів монтажу.&quot;,
+        &quot;Наявність позитивних культурних нарративів («Безпечніше зупинитися, ніж зробити помилку»).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ритуал щомісячних зустрічей 1:1 та розбору кейсів після проєктів ще не стали системними для всіх підрозділів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;service_brand_alignment — Сервіс/якість і бренд&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Принцип «Довіра клієнта важливіша за обіцянку» та орієнтація на показник NPS.&quot;,
+        &quot;Чеклісти якості та безпеки на робочих об&#x27;єктах як головний артефакт бренду.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нерівномірність проєктного потоку у пікові періоди створює загрозу зниження якості та вигорання монтажних бригад.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;learning_red_flags_ai — Навчання, тривожні сигнали і ШІ&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Глибоке розуміння керівництвом культурних ризиків (утримання знань, обхід стандартів, замовчування проблем).&quot;,
+        &quot;Початок використання ШІ для персоналізації комунікацій та генерації навчальних сценаріїв.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Навчання та обмін знаннями залишаються ситуативними через відсутність єдиної бази SOP та виділеного часу працівників.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Наявність чітко сформульованого культурного коду та задекларованих цінностей, орієнтованих на якість і безпеку.&quot;,
+    &quot;Глибока саморефлексія керівництва щодо наявних культурних бар&#x27;єрів та ризиків залежності від ключових людей.&quot;,
+    &quot;Функціонування дисциплінованого ритму щотижневого та щоденного оперативної звітності за планом і ризиками.&quot;,
+    &quot;Визнання пріоритету командної роботи та відмова від заохочення індивідуального «героїзму» на шкоду безпеці.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Практика замовчування технічних та часових ризиків до критичного моменту через побоювання ескалації.&quot;,
+    &quot;Замикання операційних знань, рішень та контактів на 2–3 ключових фахівцях без фіксації у базі знань.&quot;,
+    &quot;Надмірний контроль та 3–4 рівні погоджень для стандартних комерційних пропозицій, що втрачає до 3 днів.&quot;,
+    &quot;Періодичний обхід чеклістів якості та безпеки у пікові періоди високого навантаження.&quot;,
+    &quot;Відсутність системного ритму зустрічей 1:1 та систематичного формату розбору кейсів (post-mortem).&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Замовчування ризиків та затримок працівниками під тиском дедлайнів до останнього моменту&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Призводить до аварійних затримок на об&#x27;єктах, аврального перепланування бригад, додаткових витрат та втрати довіри клієнтів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Утримання критичних знань та контактів окремими фахівцями (Coverage Risk)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює тотальну залежність компанії від декількох осіб, унеможливлює швидкий онбординг новачків та блокує масштабування.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Спроби обходу чеклістів безпеки та якості заради швидкості здачі об&#x27;єктів у пікові періоди&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює загрозу травматизму на об&#x27;єктах, критичних аварій обладнання, гарантійних збитків та руйнування репутації бренду.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Задекларована цінність «Безпека й якість понад усе» суперечить фактам обходу контрольних чеклістів у пікові періоди навантаження.&quot;,
+    &quot;Заявлена підприємницька культура, яка вимагає гнучкості та швидкості, суперечить наявності 3–4 рівнів погоджень для стандартних цінових пропозицій.&quot;,
+    &quot;Цінність «Відкритість і навчання» суперечить відсутності виділеного часу для фіксації знань і регулярного розбору помилок у єдиній базі.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні оцифровані дані щодо рівня задоволеності персоналу (eNPS / pulse-опитування).&quot;,
+    &quot;Не обраховано точний відсоток відхилень та рекламацій, спричинених порушенням чеклістів під час монтажу.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Запровадити правило «ранньої ескалації» без покарання за вчасно піднятий ризик та затвердити регламент негайного сигналу про затримку.&quot;,
+      &quot;why&quot;: &quot;Усуне практику приховування проблем до останнього моменту та дозволить коригувати графіки без аварійних втрат.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення випадків критичних затримок монтажу на 50% та зниження напруги в команді.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / Керівники функцій&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Делегувати повноваження щодо затвердження стандартних КП і комплектацій, скоротивши кількість погоджень з 3–4 до 1 на основі цінових лімітів.&quot;,
+      &quot;why&quot;: &quot;Прискорить комунікацію з клієнтом і зніме операційне перевантаження з керівництва.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення часу видачі комерційної пропозиції з 1–3 днів до 2–4 годин, зростання конверсії продажів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник відділу продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити регламент обов&#x27;язкового розбору кейсів (post-mortem) після завершення кожного об&#x27;єкта з внесенням змін до SOP.&quot;,
+      &quot;why&quot;: &quot;Забезпечить відчуження знань від конкретних людей та сформує єдину базу стандартів компанії.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення кількості повторюваних інженерних та монтажних помилок, прискорення адаптації нових фахівців.&quot;,
+      &quot;owner_role&quot;: &quot;Головний інженер / Керівник сервісу&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язковий щомісячний ритм зустрічей 1:1 керівників із підлеглими для обговорення навантаження, ризиків та розвитку.&quot;,
+      &quot;why&quot;: &quot;Забезпечить вчасне виявлення ознак вигорання та невдоволення працівників до моменту прийняття рішення про звільнення.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення довіри до керівництва, збереження критичних кадрів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівники функціональних напрямів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити жорсткий аудит дотримання чеклістів безпеки та прив&#x27;язати 100% їх виконання до виплати проєктних премій.&quot;,
+      &quot;why&quot;: &quot;Ліквідує практику обходу стандартів якості та безпеки заради швидкості у пікові періоди.&quot;,
+      &quot;expected_result&quot;: &quot;100% заповнення чеклістів, нульовий рівень інцидентів з безпеки та зниження кількості гарантійних звернень.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник монтажного напряму / Інженер з охорони праці&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Культура «Солар Вест Буд» є енергійною та орієнтованою на результат, але зараз працює в режимі «перевантаження»: працівники замовчують ризики до останнього моменту, знання тримаються в головах кількох людей, а в пікові періоди існує загроза обходу чеклістів безпеки. Одночасно бюрократія в погодженні КП (3–4 підписи, втрата до 3 днів) гальмує продажі. Для підготовки до масштабування першочергово необхідно скоротити рівні погоджень у продажах, впровадити правило ранньої ескалації ризиків та зафіксувати стандарти у базі знань.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_tokens_details&quot;: null,
+  &quot;cached_content_token_count&quot;: null,
+  &quot;candidates_token_count&quot;: 3379,
+  &quot;candidates_tokens_details&quot;: null,
+  &quot;prompt_token_count&quot;: 20389,
+  &quot;prompt_tokens_details&quot;: [
+    {
+      &quot;modality&quot;: &quot;TEXT&quot;,
+      &quot;token_count&quot;: 20389
+    }
+  ],
+  &quot;thoughts_token_count&quot;: 4599,
+  &quot;tool_use_prompt_token_count&quot;: null,
+  &quot;tool_use_prompt_tokens_details&quot;: null,
+  &quot;total_token_count&quot;: 28367,
+  &quot;traffic_type&quot;: null
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;sdk_http_response&quot;: {
+    &quot;headers&quot;: {
+      &quot;x-gemini-service-tier&quot;: &quot;standard&quot;,
+      &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,
+      &quot;vary&quot;: &quot;Origin, X-Origin, Referer&quot;,
+      &quot;content-encoding&quot;: &quot;gzip&quot;,
+      &quot;date&quot;: &quot;Thu, 27 Aug 2026 07:39:57 GMT&quot;,
+      &quot;server&quot;: &quot;scaffolding on HTTPServer2&quot;,
+      &quot;x-xss-protection&quot;: &quot;0&quot;,
+      &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+      &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+      &quot;server-timing&quot;: &quot;gfet4t7; dur=41229&quot;,
+      &quot;alt-svc&quot;: &quot;h3=\&quot;:443\&quot;; ma=2592000,h3-29=\&quot;:443\&quot;; ma=2592000&quot;,
+      &quot;transfer-encoding&quot;: &quot;chunked&quot;
+    },
+    &quot;body&quot;: null
+  },
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: {
+        &quot;parts&quot;: [
+          {
+            &quot;media_resolution&quot;: null,
+            &quot;code_execution_result&quot;: null,
+            &quot;executable_code&quot;: null,
+            &quot;file_data&quot;: null,
+            &quot;function_call&quot;: null,
+            &quot;function_response&quot;: null,
+            &quot;inline_data&quot;: null,
+            &quot;text&quot;: &quot;```json\n{\n  \&quot;module_code\&quot;: \&quot;CUL\&quot;,\n  \&quot;module_name\&quot;: \&quot;Культура\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;complete\&quot;,\n  \&quot;score\&quot;: 59,\n  \&quot;confidence\&quot;: 85,\n  \&quot;headline\&quot;: \&quot;Підприємницька культура гнучності та орієнтації на якість стикається із загрозою «героїзму», замовчуванням ризиків до останнього моменту та замиканням знань на ключових людях.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Культурне середовище «Солар Вест Буд» оцінюється як підприємницьке, з високою орієнтацією на швидкість дій, якість виконання та задоволеність клієнтів. Задекларовані цінності (безпека, якість, відповідальність та навчання) відповідають стратегічним завданням EPC-ринку. Проте аналіз виявляє суттєві розриви між задекларованими правилами та щоденною поведінкою: через високе навантаження у пікові періоди працівники схильні замовчувати ризики до останнього моменту та іноді обходити контрольні чеклісти. Значна частина експертизи та контактів залишається зосередженою в головах окремих «ключових» фахівців без належного документування у базі знань. Додатковим бар&#x27;єром є надмірний контроль у комерційному блоці (3–4 рівні погоджень, що забирає 1–3 дні), що суперечить підприємницькому духу та знижує швидкість обслуговування. Для безпечного масштабування компанії необхідно перейти від ситуативного реагування до системної культури раннього сигналізування про ризики, стандартизації знань і суворого дотримання правил безпеки.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;cultural_identity — Культурна ідентичність і цінності\&quot;,\n      \&quot;score\&quot;: 62,\n      \&quot;evidence\&quot;: [\n        \&quot;Чітко сформульовані та задекларовані 3 ключові цінності (безпека/якість, відповідальність за результат, навчання/співпраця).\&quot;,\n        \&quot;Наявність базових артефактів: кодекс, корпоративна книга, регламенти, чеклісти монтажу.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Існує розрив між цінностями та практикою: під тиском дедлайнів виникає спокуса обходити чеклісти та тримати знання неформально.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;leadership_culture — Лідерство і управлінська культура\&quot;,\n      \&quot;score\&quot;: 58,\n      \&quot;evidence\&quot;: [\n        \&quot;Керівники власноруч дотримуються правил та демонструють рівень поведінки на 3 з 5.\&quot;,\n        \&quot;Усвідомлення керівництвом необхідності трансформації культури від «героїзму» до системних ролей.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Надмірний централізований контроль у комерційних погодженнях (3–4 підписи, втрата 1–3 днів на видачу КП), що стримує конверсію продажів.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;trust_communication — Довіра, комунікація і безпека\&quot;,\n      \&quot;score\&quot;: 55,\n      \&quot;evidence\&quot;: [\n        \&quot;Рівень психологічної безпеки та можливості ставити незручні питання оцінений на 3 з 5.\&quot;,\n        \&quot;Використання швидких каналів взаємодії (робочі чати, статуси) для розв&#x27;язання оперативних питань.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Наявна культура замовчування ризиків та затримок «до останнього моменту» через бажання швидко закрити задачу без ескалації.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;accountability_cycle — Відповідальність і управлінський цикл\&quot;,\n      \&quot;score\&quot;: 60,\n      \&quot;evidence\&quot;: [\n        \&quot;Впроваджено ритм звітності: щоденні статуси лідів/монтажів, щотижневі план-факт сесії та щомісячні фінансові огляди.\&quot;,\n        \&quot;Чітке розуміння власників рішень під час оперативних розборів.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Частина відповідальності замінюється неформальними погодженнями та залежністю від кількох ключових фахівців.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;rituals_coherence — Ритуали, символи і цілісність\&quot;,\n      \&quot;score\&quot;: 62,\n      \&quot;evidence\&quot;: [\n        \&quot;Функціонування щотижневих ритуалів review ризиків та перевірки планів монтажу.\&quot;,\n        \&quot;Наявність позитивних культурних нарративів («Безпечніше зупинитися, ніж зробити помилку»).\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Ритуал щомісячних зустрічей 1:1 та розбору кейсів після проєктів ще не стали системними для всіх підрозділів.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;service_brand_alignment — Сервіс/якість і бренд\&quot;,\n      \&quot;score\&quot;: 60,\n      \&quot;evidence\&quot;: [\n        \&quot;Принцип «Довіра клієнта важливіша за обіцянку» та орієнтація на показник NPS.\&quot;,\n        \&quot;Чеклісти якості та безпеки на робочих об&#x27;єктах як головний артефакт бренду.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Нерівномірність проєктного потоку у пікові періоди створює загрозу зниження якості та вигорання монтажних бригад.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;learning_red_flags_ai — Навчання, тривожні сигнали і ШІ\&quot;,\n      \&quot;score\&quot;: 58,\n      \&quot;evidence\&quot;: [\n        \&quot;Глибоке розуміння керівництвом культурних ризиків (утримання знань, обхід стандартів, замовчування проблем).\&quot;,\n        \&quot;Початок використання ШІ для персоналізації комунікацій та генерації навчальних сценаріїв.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Навчання та обмін знаннями залишаються ситуативними через відсутність єдиної бази SOP та виділеного часу працівників.\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Наявність чітко сформульованого культурного коду та задекларованих цінностей, орієнтованих на якість і безпеку.\&quot;,\n    \&quot;Глибока саморефлексія керівництва щодо наявних культурних бар&#x27;єрів та ризиків залежності від ключових людей.\&quot;,\n    \&quot;Функціонування дисциплінованого ритму щотижневого та щоденного оперативної звітності за планом і ризиками.\&quot;,\n    \&quot;Визнання пріоритету командної роботи та відмова від заохочення індивідуального «героїзму» на шкоду безпеці.\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Практика замовчування технічних та часових ризиків до критичного моменту через побоювання ескалації.\&quot;,\n    \&quot;Замикання операційних знань, рішень та контактів на 2–3 ключових фахівцях без фіксації у базі знань.\&quot;,\n    \&quot;Надмірний контроль та 3–4 рівні погоджень для стандартних комерційних пропозицій, що втрачає до 3 днів.\&quot;,\n    \&quot;Періодичний обхід чеклістів якості та безпеки у пікові періоди високого навантаження.\&quot;,\n    \&quot;Відсутність системного ритму зустрічей 1:1 та систематичного формату розбору кейсів (post-mortem).\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;Замовчування ризиків та затримок працівниками під тиском дедлайнів до останнього моменту\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Призводить до аварійних затримок на об&#x27;єктах, аврального перепланування бригад, додаткових витрат та втрати довіри клієнтів.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Утримання критичних знань та контактів окремими фахівцями (Coverage Risk)\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Створює тотальну залежність компанії від декількох осіб, унеможливлює швидкий онбординг новачків та блокує масштабування.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Спроби обходу чеклістів безпеки та якості заради швидкості здачі об&#x27;єктів у пікові періоди\&quot;,\n      \&quot;severity\&quot;: \&quot;critical\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Створює загрозу травматизму на об&#x27;єктах, критичних аварій обладнання, гарантійних збитків та руйнування репутації бренду.\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Задекларована цінність «Безпека й якість понад усе» суперечить фактам обходу контрольних чеклістів у пікові періоди навантаження.\&quot;,\n    \&quot;Заявлена підприємницька культура, яка вимагає гнучкості та швидкості, суперечить наявності 3–4 рівнів погоджень для стандартних цінових пропозицій.\&quot;,\n    \&quot;Цінність «Відкритість і навчання» суперечить відсутності виділеного часу для фіксації знань і регулярного розбору помилок у єдиній базі.\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Відсутні оцифровані дані щодо рівня задоволеності персоналу (eNPS / pulse-опитування).\&quot;,\n    \&quot;Не обраховано точний відсоток відхилень та рекламацій, спричинених порушенням чеклістів під час монтажу.\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Запровадити правило «ранньої ескалації» без покарання за вчасно піднятий ризик та затвердити регламент негайного сигналу про затримку.\&quot;,\n      \&quot;why\&quot;: \&quot;Усуне практику приховування проблем до останнього моменту та дозволить коригувати графіки без аварійних втрат.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Скорочення випадків критичних затримок монтажу на 50% та зниження напруги в команді.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;CEO / Керівники функцій\&quot;,\n      \&quot;deadline\&quot;: \&quot;7 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Делегувати повноваження щодо затвердження стандартних КП і комплектацій, скоротивши кількість погоджень з 3–4 до 1 на основі цінових лімітів.\&quot;,\n      \&quot;why\&quot;: \&quot;Прискорить комунікацію з клієнтом і зніме операційне перевантаження з керівництва.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Скорочення часу видачі комерційної пропозиції з 1–3 днів до 2–4 годин, зростання конверсії продажів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівник відділу продажів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Затвердити регламент обов&#x27;язкового розбору кейсів (post-mortem) після завершення кожного об&#x27;єкта з внесенням змін до SOP.\&quot;,\n      \&quot;why\&quot;: \&quot;Забезпечить відчуження знань від конкретних людей та сформує єдину базу стандартів компанії.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зменшення кількості повторюваних інженерних та монтажних помилок, прискорення адаптації нових фахівців.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Головний інженер / Керівник сервісу\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Впровадити обов&#x27;язковий щомісячний ритм зустрічей 1:1 керівників із підлеглими для обговорення навантаження, ризиків та розвитку.\&quot;,\n      \&quot;why\&quot;: \&quot;Забезпечить вчасне виявлення ознак вигорання та невдоволення працівників до моменту прийняття рішення про звільнення.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підвищення довіри до керівництва, збереження критичних кадрів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівники функціональних напрямів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Впровадити жорсткий аудит дотримання чеклістів безпеки та прив&#x27;язати 100% їх виконання до виплати проєктних премій.\&quot;,\n      \&quot;why\&quot;: \&quot;Ліквідує практику обходу стандартів якості та безпеки заради швидкості у пікові періоди.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;100% заповнення чеклістів, нульовий рівень інцидентів з безпеки та зниження кількості гарантійних звернень.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівник монтажного напряму / Інженер з охорони праці\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Культура «Солар Вест Буд» є енергійною та орієнтованою на результат, але зараз працює в режимі «перевантаження»: працівники замовчують ризики до останнього моменту, знання тримаються в головах кількох людей, а в пікові періоди існує загроза обходу чеклістів безпеки. Одночасно бюрократія в погодженні КП (3–4 підписи, втрата до 3 днів) гальмує продажі. Для підготовки до масштабування першочергово необхідно скоротити рівні погоджень у продажах, впровадити правило ранньої ескалації ризиків та зафіксувати стандарти у базі знань.\&quot;\n}\n```&quot;,
+            &quot;thought&quot;: null,
+            &quot;thought_signature&quot;: &quot;EoefAQqDnwEBEU0yD90fa1CaAljMXQRpdWbIr6BriAjgmg7aKiZ2khrwKv4XaXLkvsUh1BQxs8_1tkl7mbC9evBvk_W3u9NdKqC7CsVuRaia80KOsbaUApbep5GNvVuvUhdNz5guRnsQSn-IQUdSXzvzKUu4RPzN6YLBlkY9s0aWRs0e_3rM8UrfBOwfJEFH7gMD2Uaqc3a0OZo3iLC0F3yCZCRr6CgWE1jLoOdwLUE3vgV6Ehyrkl5pqha15d_GMeLBhuje63vbWJquURrJxVH5EJstuEMnbt2HACEv0UpfubsQtSM9QCI9vLD6qIOyu_KdqkbrPRtvO0RLpK1xZbOR8pUVqGoRReochvgwEAmwqg42rrmzkyAdJCaENCU9kwG5Xol2K-gDhqcrNo6j2f9v_6kbSrrfvIgNbciz907g6jYiXnkN9B-w8jECSLhQ-Ga0bq-TPJ27U0cgtqBqIJY-2L94EUgamVA9DX6bYr2Q-N8fDrI3zjrrSwQXaMv-Rpk8-4Dwg_WYYHwtcWW0L61xCtc85kADXcAaMcVdXoNmWtovcOhtnHMZvTub7Fj2_VsjiQ19DIav91uxEYjBkpe3mWGoWJxEJFe0gJJ5l3VMyY8Wk3pLfjcGGfux9gsobIrQCmXu4QOa8bI-hfZT3gcplEtKSeIGcZj_HAIxfL7eGTkGS4S3bSLeMvWCJ8DYmEKiiR513h7rLT1AOmjzQT-9R0qqY5T_9WRVXA4twiSO3mkarOhE76Z_nZnhgyHHdHpOtsO5j4iMl_m1cZmXmUu8GHqXSK0_ZTVKSh4JaAXNiVl2hrQrai0KfaBPHMpS50ONBNyJHsYa3R0XDxYWCuDZF4HVYz5clMcp90zuYz025H-BM4Yn21TEqKuSGPK1f5c99qX0xzVNnV1mverIqPWx9IQ6FetCJPoawy4YSgzXqC-MbcmRPEisYAK7bwhiUPERdRT6m8Xq83TdA-nfVYpVYe1aOAFAwmraUzdQvoA4e93N2xF_-ixKe8A8c7z92RHaupOEwdv4JEcw0zkSxVfj7ecW3urIqoCJgCx8vmRv12nLeuaabx5SdZXS5vdLPCnVsV96icMXYnz_gvgPTPyFYuQDCgdsXcJ8FZimJA2Dm_aaiRlQnRZVImzgrEE-hilOuQ0N0T_XKzIZmmgAstpblfE_fgCbXu4a0CogFkMWhsaKGPVtdjU5vEhPaFKnmH-62i49yNJg05RcECbu2LDWry4ZyjKCT_VkkbvHEYdowQBtxivWYh8xP89BqWEj4o4xSJfBJhnmWn8rO2Ym9fT6iXIbXyx-R6__xlU6vofhBqM3btomw4Mi7Xcl_CiT1ndS8FhtpCi7T4pWJSvGr7G2PbMCX17EqIQGojh4mY4MZKid_aOOj64J92SJeZjTB9ZM5ntxffq0-2updnLLm8k7vv3V-OcZ0BiqHAHiVoG5iaVmQFqy_ffAbQuzXvcmi4lQvjpdt5y76ma0MPRfbFwz_dvV1rYtSmCdS2I4dwj-nwQI4a4Owgap24mSIvUHf-qbpD7hAoSLGye5uiJXf19igHpnk_RDUb0RA_zwNxWEQ-YJId3MIn68IOQ8Vvm79LCnWibZtMVivUvZOz8DZsaCsT5gQYFBB03qVzlIcuf4kIMf5JfaeSxtJhUd9J_5pht2QTf-7WvXdwh_2jdjyCTF-NVfkcovSodobjeqX3jOUYR1GSx1bX4RqLTaFjPn2EBPML2gDJv8e0anfUhytaO93PJS6j76G2YF0qBGf6XtqFynEWrD-haqR-eyKWD_0xYHkJnEK5AX-Zvhzs01rRnxpwNPwy7aFBZ6twnfbVXSY_naMUbR4LGl0BR9OdKahBtpJTCG74x6Keysr5G5G3chLDcxvrSGM89LeItZDYnNSHQMUW3o1TZhTl5r2m7SGmb4unQL_3450Slu2F3f0KlFDk63UH7bz-X2W9GLuow93qeIo84F_sA5WaQqalPrfI4MmKVQcpWPtWaINdy8aafTouNI_JFbAsYo4LBO_aAe-SvQHF3xhLSzRfWV17qzkr4AD6vW7aTxiXUH1wpddMhw85rsvJDuDtha4EDm_cizTCdV3-LNnkDZnDZq1CUtcdZPGDYlijs21CEH4XAB0ldTdgH3bdicMQG0uUy9BTMGaFW1ah4dDVVOlygxlQ81sAdi-JN6U0qTafDXf73YpQnS19m0vrZkP3g9ouRF2g6g-wWOEhoUXuXyoAGjfUTtv7yB_IEU7QT15_zYOuN_9WWSzPTbU_5p-zvVzkoiYOuNkqeRHpbMWTQbB8UT5WqS5gnyXxb_Aq6idy9mzaQ0sv9ezGh9tDOjvHsMbvY1Qnj44g7mjjdTd0fhofQx3bAOCcLZFjeDbPRghER7ULQ8_w9o-ghOQ-a0tGz3MUacUGwVVn_7Zh3cR19VDfa39WzVJpcRV9RH81NQghDx0WB5vOPe4e_Z6zSG-1aXBBgUj20KnQYmS4uEcJXOGlIN8MyyAQcpc4l2zCTKr7QO-HkTTGtrfsPRHwmMhOLsyP9y1md4hiZMjWqSAHruGFycvmxyCxYrncNJ9PmvtZirzp6o9ZSwgpZ56o1iPdICf36zBzn09ol7gjFA7fm5KgjwUjsxkBwYZ0uwxSa-LfyhZ_C2m66hSY2OpLfG3j8iiHjirLLgy47s00c7_5BHK9sZ_tm-yX6QeWf7XK7WbyZbwV_uZeX2dcsEDuJ4xg2G_JwDghpbEcy3CxpAz9A-T4rJ1Zci3LdrJg3-xyXD8R-t-RTKVKmvEw5upsJw5UBIKkpZR6fTT7MLYPZqnHcUAMYslcpT2xtR-M7CrIrnfig7GQQQDuZq8IyeyVlvvNYFDPt7BkvcqkGBfdEHwTwIXHOZjsdhnaVR0nauEyIxhdr8-2NS05aLz_jX6pVkZ9lQ6y6nQd837g_aJGQqqeC3yKMvWIxO6TD5cO-hfKS12zBxQHnUGKJBdDPU2Zijgj31JShYGu-7g6l1ZqSvwqanDIvUGLm7TB65EKAu80XTdjoeKsGnY0EMdL85teGqPbiEskC_vKmAQwDK5pT4v_FV7vIDR0J-vIWj4UVtlpblmUgN0nw9U7YOpCxC9QqODn_-8piEnFrntH7Zl_XylKgoRJ0bQAz1X-8REErWe3CMn9_kY_imylqHNW3mDti281ZQD_xiLdEqaJ4WKXNNC31NhLsSW71wdNq8qyGiErSfd5oyX5vJ69aRkGpU7r5fYzxyTR1BBZma1xvpnLNyvpxcVaKodZg84mTd9GUmBEQ6eyFKVELrkaQCmPjuRA1CsehBx5MsjFTmmgzjVcyD7zNKRx9JuL9Xah0VwWCoC_d2NIGRHgEMTCukWSCTQrsCYgwENmNonEHYgYfiOt4X-nbc2oDbjlJAWq1jqk0OilD5Anh8b9HJQ1hF8fpTpK-PiRRu4zxmBt1h5rfJ8lFO4cTrq5_tKdDCpxfesPSvkGfvkk_AUNAlKvaAZ3LP8lNAa7v1X2L6_jsAzbR6WcADsb7Aoxufk_qcPkcQyPtP6SrtKT3btxP2aS3Ltvh3RgZMGcXYmZ97-kWGXsaZ5nh9DbQNp6a3H7S6bobbVRrR51vx1de1WUaDuMimKVzg00qkYET_E3MuX0wtNNuifU59Ar51HucTnnmRqI0Jy8WzapzrbvLrdypMyOMvzOkgJvcQTAMvzpO2aNwQn9FmT0d47XhLM7MdeZzo1KX4c5jg113sEkuJWwPwxaKAi9ruL9HYa-BzEcJ94oVcPiGHkDsLjVJFMHyuvz3UTidaXWZuOqXwe_PZDogmffAx6IXg5_1WQJG9d4MC27T-ZzLa9jekM0Ze__UBqdnFomJVA6mPihN4Ku94zgBevRsmHb655QXRE_OVfPIHrp50KNk3Q5uK4utOzYlPbr6XyXLUEiGmWJFAC8KYQ5HYj4JzhhWdaCkDHFmU4LqUQP511g0n55HpJ4i5rTIl5ozHNRkic4HZUV7AugEzWuW8E5sKXMLrJGDjVi-Vvyr0kyKFzLqINUdDBnAnuwUnA2i-rYwyrbHcll-JVknFGT-5O42_7Qh9CJI2B6Fl3ii_9RhUiHr6stASBsoOoT5xUvpyNj_heW9mI8MgQVgwaIFH4VRwYW6i8UyQxGY_UuKriVYkERqugQOgs-IzuiGH-uXWq6djMnkAtn8k_ZLWqiUSyHnLJh1NyOeDKKN0BGzYzR0OTN_PlX_eaOkRJRT7dsqsFqnY4-HZ67FFmtMP_cJishXE6b6l6Bh55Yq9YOqGove4cmY_jXXasFZtNZmzf1yDBbeM4EFkqJbDHrJhbAaUJ-IzuBvywb0YNWwHKHog-krDjUUy7I3jSIU4G3YgJ_iEiXdUWfh4IWfQLspUEyEKaMPO9JQosV7TJesggh236AB-N8en2HYNSu5zB_1MLncNHKlgivJaqf7fmVY-kLhajjoRpzYaUXkWFHd6PemfJwd4Eg8FEtE5qFPEweR70woNP-JhoHd2CMzXkwV-GETBeoLaCDTl-n--aYvfulVUShgZWF0rTMdRhZyXf4GULdL1i3Hm1dcYvlMdZF2afeJ35dtMBrFzW0a_kylKrXWT-HZ8cZ_JIKSVD1WcrazUi6e-lOW0x5RzZnxv3xdTexwm-OBxUQ6bf5v2AMdlpe0IUiVKQJmLY5Ui94cTa1XhiKIC_h33RZeYP2rknVu-6e3zScbKetocH11Jdf80DKMPT10EVbLFLb8JlMsAiMs9ROz25-jwcbYSdvQUTYjYe8y_4tlEAIZMxTDDpcUQRQTIEvFXGn9hcimn7WoI7EIrBWR_5ATl2O3xSSpJV1YM__NZDJNwhcipm0nC2DU2oy3SK5lM_N889vaNlvk45j2wQptirvNZEmVZWNyN8n8mp2Ey869fbM2CN0ucSIV2KeeYtcqcQ9jmwrOxv9i4ZF4vkGz_xhjHePYz3Npnc7NTg1d1z35phlZaSXk77IK71nEhFwL4dJIExVO1_ei7AIYze-kQqd5hWe7K3RqzKWo37Pg61UYP2tlJfL8w3C8_vW4VmONJbgnWtwZj1dtizpHu57nPpzAbCwjWmOFAx1YPpbWbKjQD2_cd1FwG5SeN78kvGnsTFZQANhfkOETtxGK3Gq2otqV__rgIEF13YVpIT1hQjpKVN6Yqp-jZ6PjsCH7ej9AQJxd8ELUpS4r187q9u0uJ3xR7g_xWzUS9SFgMn6vfqK1sJYItzqAowZvO2hX6nMNSQfxXk4zTNnCfIoog5vqqXkBOpk5FsmH85HLO2dUId26g45rPHupA4cHpPqSugxYhYYf_gg7o23sBar1UN2DAb4gP5O05g6-mOt2l63644hqXZQIu3atQF_coGVGGzbkebTEU-N09OTj_PnOjkNptx7FUVbeahT_ICuHS1_yB0MyJ-aiNFD-VTJHhUPWW1oiexSNWA5s4nYGAm6TCpxjYCa2W46erCY2u2lUPc-kUqzOi9dPlNtFc6qy1MUw1YzqXyfHYBQJqSREVdNC6BFQombLWWQZvdY074MT3-srcMIwzeBOws2FHrdmVUtd5HNI4dMm2_zVdHMO9NgqkrOALteDeY7qeuotbPDKMDmo30v9YQvso333ltcfAZKhRquh4_xY11w9nljaIbH5G_tyrDzc9SokRes363ZhGhzTkU5Rn_1yGgxGMTFckP4YTpQX6r1gy7b8NPcBeB7J-P4jrgycjXatShk-yqO1MMkDofQojD93Y8s3uSfSNiRQCLqzRaVWO8u-s0zq2Y-nTXinJTyI8AbeuVWtm1rxF7xiCFggneUbLzWIVu2sGO3x0P5RZjq7gsa8bF3UQFS4hkuxAEhUerimdDjHrZethq7Apy1IyXOpg21jaY4pkljRwhQsne8TKYLY75Dgw2iPTEbiOBxlQwNIxCcQbh12O7bbAFufmx58ElLI0C2dsMK-gpY5CDmR2I6ks46BeizssQoJlRuOCBmTssizTf_FKybGl7RC9s49qXsao4XwOIZfbnetp6TLptwhD4Bb9uSwZ9nsbmpn3L7tHpBW5gdOEJVhlgAkCklff2huoNMcDaLwsn7x69ylWr0x1gZI4pWOUT84AblZ1NJqO64sY7NFPxY4JNfkS6Fl_W6BeU3VL4i52hf-g0jQHJBLdAm4vMfr4KJym62C5Gw3NHkGuBQ5EWdNz0ebv1XKYsdOnhwLEW27NJnrky3lTDco732z23cerFL7Osr-mOGNvExvLEW1H6jcpVRnX7qBr1Ijr5cnKL9WJUtSWA4koJmxIGLqA8Jl3ikh2QIEltikbmtpIuOdXlKpnR5Mr3ns5PVU3aGR-76lUjmybEDWHVu-Inj94wR3ABFVnYyhSNu9Wr56VKU67Se-DqA8l1fXpd_lzGdSvkm8bYc5TXiD0oZ16pQD_WDX__0tEVPtqb2A5-4eAV1FuyZLh_IU1BMuO_HWTJlvEWvYcCcpQeH9k4BJiyTJ_YcE6HIBwQ-Ml_nQJKqjbzMoaoM6LqbFIL3oc12WLStyvzXmqTxG9_uLYBlFleYoUDoIzrVbAh40WTEKfFUYqYtGkMFIbfnPZMQGNTHetKYCckhzclT4aR0-PV8RJpgxexq_1wo4paQnEZvfJWrxz53p0dXU9yQvFfxJelEwPW83Fsmw7kojfqdvpntl1XnJ9j7Zckh_akAxP0cF45cVKj9zkn419kGWImJSbyB1LCDqdbzfIZsojJMpTp308BWKrRqB1qRK2lvGVBJMGZgUFONRFMFTmFLqZ1CIZV-QCJeGoPBmflkmLQTRDfSVzGV9_gNlNLSnOd7srAuvUoO1E6-3eREpnYS1wCWnjjJffLHaZ9Zez11CGgWFsKM64Y58USJctZtI6icAiMMJzEd9W4dJLugCUGR7QkY5ouBhbtArorX3fogfUduZ8OKGQ0JbXjBXaQNnx_2REJ7N3lO2jtbpws6_05h8aNkEQh2AqQtuUIgwP49J2zkaihyCEBgcrGTOK5j_y-OmOmRBk-SDwZbDQ94uS7jtBpDOdvl-4FUR5Ad0bQxsgqL3aCiI_sfVksYYdqR_xhqTxO9VJEfsFGhcmNEDbUiokST5lM3N4HoW91ree7itrF8JbhIyPMY-eLJE6u3_Zu-pWWZGWyZIpx0ZCqFJVA9QCmSyL9P7undQ4LN_0gt9e1KLBPxAIBB5zEMTAyS-JAK92zHe2WBBil0Fkno4AT960IJjCPUBOCbbNf5aICJUDl7muwJ8Reo93PkLfj1yvXvckybENk4rVdgV7nW5GDeu90sYl3yn2b_FchLuqDIxYrL_DMNml_a37X5AsDBNTMs5080NztjM9llTHw8KgOggwSELpUSwBsQliqnrCRn-FwzNQQu8FnALEsals-sV0pP5EBdmFo10CYKnpLf99mlN5W7_37wWcPqSNtA-nNqu7JU6M23Nqb1nXHOfeYtJETMDj2byWvRoWdZodnZosftsiR8yZc7LKT1aj4KQ6EUfLvwfqAFIY-i6BI3LZczIc7WxzmRJpLCMQ6Jq81IzgH7OgtsuepWzUkD90BrD_nCWOk2aVr1gkIplPZTmrxQ856JqeXDymKUa0fmR18Z2mvU00LlxCKloUQ8ZgbPgVus9v3BP6Tpe5suCN3I5hJ4kdts-mWljRTJ1SwVaQU_y9OM9SvXMITMO-aHIcfI1m7T6TMwCpr3Ze3hiMdtGK_DxNXq6bwLv4RI3HeOkQniqWs9vAp-nQSBH53IxJfOgyrbPyrDyL_jVEUKaj-Q2uMxIsU-aIBZFsuWlxapS3E36gIyJ3LhjdftOyN3ByH_rxdZ_3WyFJMZwoykFSPkqnES7Mlnx8g3g172FIl3REk16WQxQlK4G_SyxiFJGeMWQq_qWsMOz21rlVRP8fW-ltjXlOUW1ZTHC3yPt2JuAv-n77M7K5P-AgkyXuxBywWM8wu9ES62KVB9uVXTacIJ5XyVgzy5GDNDcMssm2dJ4OhL64APF3CrPe58f3ESVGXkW4FD2TXABw52jTiucLk5gmBjwgy0vjZGFH84fG6rESteKHFjy6R7EGksrCoVGJuMQodn0iw4wGzVcC6e3904aiJDbf3NycQuSzD6t2kq_Le37nzxJh-PYexFUDkMERliKELSRwf-mRn4Uz5sidQ3SCiGO5KXXBhqLL5wTyiHMBB3CmCaFs1psX1v7NVF4OHckYsFwoa4Wkg5xevPH-GLWxt00giq3yP0ImLfZEQbANtT7R98f8kxIbKkFf4jUoQQK_NJfJRSdadwr5iF_pT3OZUUN5zrcXFbu3g6hagxA-TkNenNJ6FIpolNbixvf12GJVldx9RtSHPIV3D0msfs3qLkncJSYvwKcTblpIifKlguDpghuOby8ximZaDHLYNsP2bG7Xb43tLqlx5dAIxHdx-2J4KwT0g8P7sqf-7K40NQu2skUEaLbwUTkGYUEVOxj824ivPqvd4Ceahc-kDm9BHH16Z1UuNLQTi5oBs5dvROGEfQO2Va__Pl-J389i7B7tAAt6uYL2YY7R-12Pj776h0AB5WVVhyibflpywoR2HjRUSm6JR7UgTLA70JaKnz3McLYsn-vH4Luf5TOTTQLPOEYXta1YSjrpi_nqr0_kcyNU-vYDUj3cxZRP1W37GqjOGxGcX2NzYd6dy4lb8xgnnfs874rNZ3jCgPMOVs2hC7e46oTDVd_4PAU3ejRk8B02iOPMePzGJS4ya8xk8oMycKlGYTvBt7QV0iRPrmiP5eLRdYQRAn9Dt6frQoakt3kR1hmehheJV1NxfoyFQgv6A6IWiFU7x8ESoikNoXTbD3jmGRnEgqTub_z26HddJAqMvoXpg4GH5gpJyEIX1i599Zt9G-SZLy0qkIEclOcml07eVrr3wZvw5r6G1G6nK7JK21Tqwr90IZk_aM3spF_BXZDJD7mVwex6VlDKXxs3CTtpr3vMPwrvXVsLabQpgKzAKpEh4L6vH0uQlz7R3KndPV2bMpJ6zHrk0D0DGiVuEgP3UuEbSnZeDl5ncxKjBuVG4d6UXUmlU0F29I51AVSMzjpWG5ddbG-j4foJjG7WUNz-FxaSSST1B8D3y5Qu0c4WSR5DW4bTAsY5Bul8xTzCpQXZqQW2MWBVKx-5IwFunQOq8ogNyRKBN16ImnZ2jlz5M61x8X_VRak4C8sHszK8hn0Zv0TSCYjUUpPwIkF-NmWn88XfxeDWaaHUfFVu2CACd-qAPXLlGujjn1XTC-xQcZs011qDCgTCJO1rUFly_Z5azN1WYWiGShRcwDSekZncnrLMv_LnUjZMKy6ENK0xzlwBEkp6q53LMgscMtzdAtqW1ZkFyEK8ZBbvJkeCKRB_QWjeRUI5MFjzsUVtNfrkuWHgwT0ygmhhH0Y9uW0PKg0BO3-cEFOdmGOZNVIshsZxV8WGuVTJ2umOaC6qncJg3INGskpMl17U2_dypm_UupeTEJQIiHTTTyC2oe1ah5to_ro9q9Lv7N21DBhmK2bRpvMefvDDU0UPpWo-gtNMPfpKDPLInxffICE1oo5WfwQR4fOP-e_Lq6j8qETYC9AHYtsT4DFc5g2WgwdcbUrZ_P1pcIgK-KjKAlcwJK_x8VZTgO44-Tspjl8hCCpb44KmS0eGs_vV5oNDOl1fgy2nS3o-I2aikmD60mivVKyudUdmKTnzZK998_jlftNmn1yAEUBMihP2bj3jmPaid9378xybzSqRFwgOI5XdjDCme6cdOllgyurFw0HPODEXiCX64Z53Bj4J1tGDGYZOga3cZ_8Apr-uB1BQwCFSQENVyb6BswgiB7L3JPhbtrx0TJLDgx6WPG-NqTXRQFfVgDGxJWbTnEoGO9Z_HNRmHNXx4UEj9fdUYiL-4kDGE8sIaTSJabGdvGC3CrRHUFL27tesEvBPVg7TObVhPsuIQj46HG4bmYRMYFZdEJzHiiBdpmzYOkB1SUG6RiIro8u8UY_4ggSTKLf-t9rp_j4AqD4shKppRuEQI4WDD3uZm_cq04kVBPO90YFCVyOKmhu74GYIU2KpBJDMId6ENaz7tzfgY5oDQJmZKWfusZ6ph17bN6ortoG7MSHi6cs3I_Xs6RJs6lfoOdY1yOAS5tF3gfj8J12kbftLRvhGwddRKLh54hWlImcQQAxasxICyPaRdXZyo28anzW8yw0Q-P1riBrlUrY4xTg_E84ybSHc-jJ59rdscUvdSIfpxW4MksQKpHHtMfuZ6JsrvEwkUyhecQ2KaliUSIPdw1qyg4ar4egAAzwGXuB_xd1tfq3SAvIC7d_mVurFoKROu4DPlz_Pt3m71gb8PnTosxcvheiarirAEWoh2DBD6QFbslj4RGaMd0T9PK3Tp7EecHTFGcii5Z50mKiMtFxAXw2mD8kN85fb688MZVgwbARHQUJqrSm3_62yud-vqRps7ZDn7wUqMG_10TI38e0oUexa95pazW-ukXU2qjkogNBHVxIF-u67roEpF78ViqgNy5IgYLUGhiQUksBvtZJbZm9_PIEXJoqWrIZpb_VX3UJfxJp71dufk6gMqLVACFnN-4nmBpBjNhP1XrAk9Dr2IXQVHUBleKuPdUfS78zIyuWWE9MnaTnVY3f_G_IveOlKpRdwdUZo1fsnff8pddBSStgGGKHyVGZ8xDOASkxbNorvi4wdOoNX6Ymqd-2AoryrelTA6Pvjez-wh1zWeUkjaqV3wmi89kQBK63G0R_j9fKE1F4HqocYij9N0hVXvk692pe_2wUMXdWyPvUwS9UfnUIly8gvBTIpgHbaXqkI3vWeL7U6t-ubgdD5WU2fAD_AP40txvDqHOEULuy8rL41rCSTdDlDZzrE7O0ZUkIhXfio0a-AoAg_mUNOZjWXFQcHYZcoculNrRJgvAQ_XSAQ8jgdkQ6dDh7n8Bq09wcOk_npUJqFY0GgyGHLVJKzPt6vT2W9MinZmlCTgBe4af7S0sr1blFiBx2QGDA8yCvtLvvyRDLRqdKh2O-Lk5M3ReN55uXcj2IaRERMLEkF7eOkPGLBKmNBqA0fQF5luLoEZXUOjTiu113cnKlndDRF4cfGLNsrlw2-PvBxLRZW8A8wd6ysjuvjLUz_uGbxi8XnP1sTLl8N0lWwXuBhpIYyLsCJvl7bcTuJQUtq6uG5Rc4l8T93eR0xIxBX-yI4IwdNHZSA8_35TpmPjO5io_IRcqHUhURXBatHWTwy7t-ftjo3yh8iad0ZAEmjh8GsfEPYJhpm2s7ukeTPGTZWBJ0P9GvttAeVD5cHuMRb_K1OhVtjtqwJGIkmzRucE5PxmsobO3X9cWcypn-rC0Ydpl2t_cp1b2C_KowmwoUYVkCtnbSXv7G-Jcsvpb11ANDSoYvMTUAIaTY4q2TOsV5wA3eTMclCdBO-zrK9tlGZ9gBKJunJlQtHHoyj0_6al_GeCgBnppwDs5GusW04g0Rooth0AngWSMvna0QJje94yTGp05m7Yk_7Z3gJl9N7VppqyrX862TliGx3qc0vZq-d99l4NodubHPbDbmfW-hdzVspvJzGNyaidBHFPvv4qH_MN-Lu4p3hVHW3THvG1I0cmqhW5tmrh5WjisoaLsSjM6hWHsjpS0UD13jO6AQlO63Ep0uhVTXuZ4bQSXwWxOjCOBVdiw31PiObgZgGjqcy1YS3MiWzYSAD0_M-BYGrBpXJyWWINo6YX3EnoKFR2ZtVnGrS100JQa9fXTrppPC6QfPwweYKuGdn6mECXChyfyWVAWsyHTtMKtpMTiQxjq4EhVy-HoJCcQ-WUhPOWXxWV2xXKqAqF4uUFsAFITIfp0oqVwE8_WTpWA0zDky6nscYgySf4LpyABV5C_HyEWSno4usAXBLBnsTx17xl88e6SLuWJ8V3fCHzH9rGooap_D2WOjgh8o81zZrSA1TAxCPMcRbpqBOcpX5JQucEn4FtUe0VWIN5IZ0doFE3v4BhRTVGpQzNxqMY6jf7pYg56BKcgoHbUvhrGBzMS6UH1FGPzzcl800aubGX8KqLtGJEqFM7OP_5spffBwsRWSEboTaMbQ6htJEvk9vr7kehv8hoBjAU0iOvVdqq_4OpCjLVgJYANoQuZEo9rYWCGyutJ4WGn3QbPdVQCf6tVeg60luD3L_volaORIM_8GsJ-GH0YMOl5la-dEjYn6ebxWGncmPjoVIJZpAZAviOJVA6TJ6402DWET5QJYAz10ATeyDOXSKQQJ4Aov3UDYRPBzVseUOcyKCa-5JiGoGCTZufFCDKE7ID4OCHjUGY4eBlAtX1kOO4QMsYtiTL4VDx7V8zlCePz6oUDkaFmWEHsVTGsOy1wLQzqm9JWy5d_PgtXeH-69TaoleikP79ZqSL5CvMDZJNPOXhymovoUYiXA_bXK7BW_7mI8olsNIpxnx0KEyt8jzKfUvIceHDE5h8bpxj3ry1vh7WbPGbHQQ59V9JLACMMsmMsHemAfEgMUDwbOemWxW3d-DsRUPFYayLb2Rtdutfdjnh5Jt-SPFVFOCKCBh4AQ9XCw9J0axAlZnnlO2I43M1Eu3exTcvazuJEl4JTyuvgpWcwyjw_4iKnjY71I_xOfjwngo_C4lEOHX8O6PI12En2CXnaB8Fl7BxVbfSK19NV10YLUgdXkrgdXuT6S5VXaFd1R0koMgI2egYbtTaIu82rhfIkoW3qTVtKenuqoeRAGxo-lMSK2Lm1R-MzOT6et8Sg5z2_ri2NKRS3C7r-IHZ64S8M9aL3jVhJhz1xq2AbK1mSCRh_3iGXFlDGFTfxrIy0_PFKV0gsM0Tz5NeA0Hqe6ieYbPkxwXNbjtK6xvGlKkpEMfltab22pAtiVfY2sbrq3lp0UL0NR6pFQziLN4Z5weZl8c7dkB-6T7LaZwK3zX7f61sIl1_LvrJUa5QWW2EwVA7cyV0tj8Xb6vmNulVmp32QptMze008X2qBJ669uhfJ7vt5tIY_7F-Tu2dEZRlbPtUQr-JdY4TNYANVL6s_KpjrtrqadYPXFv3oOpk5l6jqWZvqMj4UqMgskKhiStqW7KwJ4zboE2Bre1qEQSkpIXcziLtgAnu7zkjNZP376LXQhKeC6qkZi1lSpyipC6MZuiCmtj7V6YoQDujfxoWrrU1mBLw40g2kRCei8-YxWG4jnUD50H1KSu9yk86fSn-_w5s0hcsuohZot7dHtUpGPwCFjgOnWwPha_EXZhGljtGdLTYoyimh1To5UUznIzvPp7Jc0rH_F2wVRVhOCjGQMFqz6GOyudobkDb5wF8sfbTV-blMU72NNwdHgM_PCWu64ZMS9me6aYTd1sFqjUSkRUFAVRX00KLx7HYZlCs-smSS8BtP3ChSLrQxFjEZ9quB-1t1jCMySXqPeBvRVplWHFu498XB1OO2rL03Li0Ba2-hxTVnJlz2c61yqSpdO6TqigUf0zBqKkAt1w4vtnG6c8ZL5PDA5aRvvopa92O3p-mJeprJBL5AHtpprnzg0KSb4vh2lR0JgkYpvyIQr7V3BCiZ3epfZghOj0YR1HwwocbNZ8C00_YlUjNgaL_IdtjTBAqCkp_GhumDF0GydQQ_11B_P9Jjtj3gQp9l1nqzTLSvso3khWCvbFdRlXFI_9duWuxcp5yBTFsA_BpddoRhUU-RIYLcMOhAFbjNBjPRZ57v92kcRUIObdP2MR_MR9gT237HNi4dklsxIHFuLn-kGjoEH75JmyER6SNUOHWkjMZzRZN-olxHuUUMMkVqGUAl7Ios0cabFwX0fH52WE3Cq4sfbYpu0h8QocbjUBK80nkyUWSx-iRgr_U6ujD1KPiUDgjPNE5Zkvh2ZQWKpq6IX67TUmaoetq0sUKKWhKG-znyX4kygNQwfcL2dJQzdsbghwoUKV9mFOxahxZg6R6PVoVS5zleX6cTiTUGt-KMNzbxbh4KZmo0-A8AnyqqoNKSDnHQW5ov2Wacz42pHVfuoG8zLrQMC0-3yzDDsa6U6LGq9wKzFbzYAFMsDGzDKvzYLHkl2RsTCR8P5DRFY9P1mDrg6BlwIcI9lgAfdGmFBXzS27G_Lni4wOV-0cyOlUQXv604zEvIMWOZ2xobGGrsS9hUYSo_T8oWKSp-VdqXT4LSflWwXeQiJtIDvQuflUjT2AbZkEtRXbqvErsoJz37f1iM7rAu1zVxvgaRXPhJLa88fNKSWxXGbXhwxl1wCqeaqvjvVA9qqDekFmkoM9v3tbH17Tlydk3cusbjjgEc4XYbv06FuqH7LO40tSM_q-uWnUav-1cvueKl0n8dU48iDPKywVeFNUYHdSvK588dOp-WV-iDaycAd0wYYR6E3S604BVN_zOFXKLAIXDFcNORBHxMOmbL5XsdtIix3xwOHfqbg5bQwSZhu_poXZbN_Fm0Uolovka-Gz7hvFvXHtKy6iCgB0oaXOJfN2quQ0wqQSjD_sQoHHpFei4LvEtu1j534w_RnJe-8sfSUnmYbJ9qIxj3QAlH1NB_rfP3PdWWMwb6ZMPpsXcGUa_XxiX3VbUxxPPAONzezYufv-Tph58BPT2Smvy8i13frLTRA1YWIS8zZArZgOH_zVFNX-MGRpOn9184OrvwuNVZj0SM0P0zmoLpe18YMigU48HpDF0lfVLiZuN0SWjO96EtAeDoQ13xln0yT9pqTJ26cMycYs9-pZS1Tj-J4bY_PtRjkAiQ9i9K2hOwfX0qQ5_b0MYxHGXLCDvt8OiMtwDKkNnVFNxzqzFORg8_vJOmVT7WWh9yCRw3B4Tcxv7S-VkvFxjlf_0mUpWJD7pZQqEnKYZ2p0xUOGoOftDzvY8inW5BOYAdk1uK4YtksDkxU9QhJs9rfBaq2gXKR-y_KeGfNK1HU97OKOTqcBVdNY67T5Ytp5iDnNjmy5-2Bj713mItMG700s_gtRWiwyZf5yMs7EVnJRrQeRyQIVZzromTdvsv_l198LJbQy6SOvec2CyukYaF-tIooGxry8hV5FPrgYiEk6N06sNU_hI0VJ2BA6vTL8ks4uYTSh0H89_LnFKadhu1EEzdUjJIrzTmlvIqqYVEoKvZTqYuBSu6clgf-4eJvUNXWr5iK_uOTU4tFZudfcBfSnzsodlTpjfPJm_wkiMaDQVg-n4-x24FlmzUnE-oCiI215--ftokDiW1FCjQ3V2K7h46wFpnN7_N7WmqSxKoXygmYcIta_dBBbVD_V8JioKNqjwfDr8SwtEiWa83jx2-_xDtN0jEcxiqoA31_vLCCZzKhy8IJDAMB-2N7low1jlzW_olAMtykIeOxw2p5roXkamymNlVpbB9KWFe9RJsCb3a5ZEdVPTe98ZZnIMg-doGV2eZtVKEKQWjsqzA2WjBmkUB0jOqrHNGb8tbQocePL72IAx8QdLv_X9dBEKRtQXKHgc5UCApudrAThVaBe2SfhLUcBaL5jQW32HEG_zYUlymiCHU-UEJ5S8J0tOKXTUfl2n17dRLjiPdZFt5rGVlz1OuvRbfONKVi7DKp-W-Doo5NJOKReNNmfaf8KPlOCrV1_FrFL9rQpukq96TgACP54Qj8HKZ2VEq7B7iFFOhUcaltM30K8iYaVHj5d7bKHdwh8-nDmQ2REuqvcLisDUifMvcGizgwIFhyM8LMEvAj8FkcqWXtBIaTGrwbaNK7PFfKzK3f5rZ13aaBQATfAIw91Kl_Fg9d2KhPD69_TriMiE8tJJ6B8FNk3wMoC7BbPvIcx3N13rfRhGiniit9rZ7dS0MVSAVs6CS1nVgoZrDfQD6ydmbrjyxKx1NOHVtRX3IcflAOk4oK9IG-UbdD1KTpTuDmTKbOsJB6i8bXPZwgq8ozRAcy0D5QOEXq4Wgkl2ZF7mXIvbZZigR2IukbhG6bIdsKD8qjjieVdus4J4ve6WZIjv9fdRvithmivKZLitm84U0FkytjkhpJktY92v9Wg7h_nI-qtxF09p_zvqGIgMINyoaQ2PVQlQqVZ4MV2coWM33FCS_1QJn-MPqFpRRgSHWCXHCf0HPUxpLc1Eqfoy-o4iOfOiMQDhvKIJsKe9Xp3neLMe2XnX4qbLdhteOxeHeWv3RdpP-gizG7o3Nv8z81ibifINj7hAR_-5d-zUP9s_F1S2Y-xQgUh9no7p2IE3wmgwoVyRAOeyl-WxtqFx0pbvdPOjSclKPnRfuEDBarxeRYVqwHPVgbbP5gVpNMCDU2f6CB3VnNgVgog5c38I9nwnk0--OR0utb3625vo3RIaecTkIMbuh3Qnm0p6IdY9kUzRbzSjad8Th-3TOLTa5zC5mKvx7j1myYziHZwvq3LfeYNmyS13754wL5DamrF-WWRrsCuUm5q3SjwckW4wWXvBMs2k1V7aEjN_9xVDGKsE4KHmZLLr0geK3UbtDTG0u3Qtcisl-9vNugMATi8C0OJBzFjhwTT_b1aSrnYlN77ixjtLk30uZpaOwcl0m-NZJgvZknz1R2-CjiszSFbyb_lnq3N-755CV8CL2JBCf5_OsERAT8qPyMdtCcMSUrawuT7Eo0MPcchgC6OfhFoEzjg_63ZLXdtPOap3a2GkquBPe6ubQ2GytDNELIo2pcoinubhvd-ZYZ6B1FqDILfrCk_dj7YXrxA14x0sbVjiVnYfp1F8ztxFnX_ymgxuPSDoQooU701ml-dn4hMYNSRw4RYjdYKN59rgcIoBP1l7Q4IGPR2dyC1YkPnvgaYI3rQNxoMKOJPJFoj21SbFxgFCTpyvyUZ4pvyE6Y79sFAUXn06E5oT0x0TAZD8Vu4f1U6kczj0L0z8C0oM6-aO-xp0ETDMZEwVgcUIqqt1WHAA0tbMUVRq4-hBGvz0RpXUtZrDdFg-y3UZnTzlz4InBlwTvlXWsG_fNbrkmJUldUwlj28W8qPyzno1qor2BT_r5IkFo7daXwGLorHk6wlY1myegJA0UcFaD6dNsdCjAADsVkobi9U5ckzs4oQCNexMaB97DgJUjtbyJCwhj2b2teETQ0bubzLt3rGRA-BqR8X5oMpQuLiLXAvyupKAPszDx6fFY1EwH1KHEHXRv4uPB81BzgPjb3dm_c478FKd2lW0qBtiBBJI8WW-7tDmlWB0pNAcSx6qddHZ5ezm3pWHi_v9FMYyknRLEFNIk974dZohQwSFLC8K2_gcAD4KPUn0Y3c4NzxOFe3VSoKVnYG2QlZAiaEt-uY_CGPkGgZRgrMkhmyj7-pakCWYCFsIGw29UdGQjwnXhda_AuueQtyvBAfwhIrD7FztpFr_W5rR6iQ2o7wq6TbHoXqUUlaZLfVNl2grjsSNdf9Dy2bZW3-aSWjUtDtdEJEQO1HM6SaZRuunlI2KuzGJBppzES0K7y1BFGHrDcHWusFDcgOpp1iSetOUPbQALV0qtpcIXK5RiLGKHvZ-YmBS7Z1KHoN0P040VcvQmQtREuaWpBBxPii9uM9fj2f_8EB5veX473rEiJCfRc3Zy5H-hqHE7zYpqxDV95noQ51NA12v3zdtTzkMYOjeStzaC0DjyKM--MfhHUtIT5Oy5cT30qyFxiDuVxLOLmlWBSSwi76X_0ussdB-NP2PnT83_fnGOASMavFUNA5wgGVHLw7D_JxnMeQ7PpLy_JCNTvSNQAXCbrl8UjxZqjArtdn80luza67xagdFEqHQ58uzjlutH7snrIRNT0nvctL8jiQYXll0spXgD5YKDBxTOwu_V6X4C_5Q9-iP60bunHpxsWIBkhAydC5FedAT-b1u8fh4sJr8L3IAXwttYK-H5iukIy_GtX1bqO79bh4sTVi-sWUy2Pi6e_2KZYvFyxnPBORLM-fR6Vp3bAJTVy8jsdZCTW6CWP_VpHP_UjDaxcXwE4tV7Y0y5CdLye0jt3yIRXbsMQec3cKs2mlccrliDm0jVTJU_xnGZS_QLoOPLiudlPxEoDcHJcr5VPkeB9u6lkWmmA3ko8OL9vtJjvuWE2KRpRAVsa_ry1x6N3A2dhCj6u97lqdKbWYVLxtWNMv8169pLYjHf7ErHXHI4uATmT5mkbOJ9iT4FKjrColNXEHr7tbHx-7sCuJKdIoCHd0t5eYkqohhnWquPFjNLcwwz-HVQlRUZXAo5YMhwBDsyWXs-2t8wsGfRa9yGKHaEdyCtSBfc0UxWq9F57nnLhpRp8PoGD2D9aN1tn9QJ5ZtQLGWjG2kPVnAWPGuk8mL7Mcb9V1UhVAGRwknmN7zhR-8dk-gc3yAV4V357dxCFYacwd6eweQynxiOhjfiD7XDqsTirwERYjxDCUhyXYOWSAIEyF6KDsSo9Xh25W9mWLp0BqEo7Qb-mrnf5m_SXt6BvGOY2nBDUNymjNASGM_ZOivZm6-kJ4XSjniLuagdwlurmg-NuTphNZbGQ9sw--hy-iRgJRx2dHrIK3swxD1igxscSSJ7RNQTdcRWrBDUqw3e3FOqsEiQRflrwrJroM21-FG38t5276687lqxrx1tBzEyU0Y6JfR65N2n1V-wP79rNJBQLV1hpaITPRLOW1_t0QHxpvbowvDVGU7D4KmnNnchLtSsiZfnVROHehpKwWo57ALgLrgw3zmLjPqeJcfPp2TzKQhD3T9Y8U6wFUBKUATotEzkU0IrDkHIJfh0M1NCEy7ydNpgotp1lqyd2mHdmPY0VC_-mlnshts-38hN0WSifnHIKZ06LjfAxvPJqM83RuHoRY-XnggUqs1mkZhR_PnYbY329Al4Zwy2_C2wC6a7xbM5DDsfRah1DfVG1ru9diIl6h_OO7Shmug9zJhGgpy-2-BjANrvyP76ChFm5V7e3iPNhBGUA0j4s0EaQpsldOz2KVkvNNPn_PwpFpRLrf1RjCox6J1KG-ZNQ3IKecZ8ysxihdTG4TcL_2YpN3LuEphVEf_U6Gx9vsa7t9G923E5Bs38HJ1vQBv_0Np5Uz90cQHJgK1bS5g2uC9fs8_CvATkenb1T9zYn0oDEJuqY_xBO3TcFnxvPi_GSREMCK_AHZtv-ifkEbZJHI4LMIIu-aUtZvEPLoJZN5np2cpTtLW0hnM6SFLFnT5WPDtOfW9EtOkezGsp5DXeF8cSwiioec9fVbO3VxhX2IZZco_5kUHrBJLPXVzfQSRDb6qoLZ6zCC83jmVPT1bb_4uLi_BmXMV-Lr4JVmO42kWUN9_QklLjJCHadpCZeT6G2qIifJvy8uMpyS2zkVaTJ1ybMkdLI0JZTZ9nvY61BHf3BzwKDGeD1UssAkbjBptRbQaR06ZdlNhL6amsmTxafSmN1lx8iM5qYNMgDvHA9K2JBZmfW_RtYSM2Wi9foV09MhJFSor9rXZUcSbrCA0Zp0EZWCPutoj8zMZFYz4xR2TzJUm0iyxnijL79PlStQ2xPYiJohXcXAtqxHxGZu3SUQYg4EvU1prJs0Hu8LV8iNtwO_VjQtaVmdsgiYzPsOvTxbeKKdrJrQYtt9LVdXs8G_xfk3pGCCrGYbtBElKyvrEFIIsM3kAd7zvklJwbyLy8gt9SnLkyn0H-mpNp4LKpZq4TJ9EMfrqIhW6lfsmkNWkS-8-dvNbWFpyvKCE12DtA6NUkxD-DIMEoaZfNti8aQ83nlg6p49Fm2dcbKIlft2dDTE9pTde7SbldrwO6yMZuC_JjYi2CsEK7FYjilDCc0NNOnOsPWFQMfk5aVcpXrAotRzNnOHemejJYGAD7SC2cE6_qveEfjgx1uunpcGa7XFVql3_7BxEWZUBo_MeQ9QGrI1ap88VzDX0pTYjborCdWcL0aSdsBj90r2vzjNiBw4uvYs-h5K6x9Np5qI6jwqjpUYcuXQTTnXf4QHav_Qz-O9uzP4hJXB8Og60VlfN-2b0w61cRAMoBDkaeYhbieBqUnBZvEQVSONvaldkRhBuQD3EUU3o5AlIqlU-2UaYqB2Z6BYcV0oL36faPg0_CIO4ur0ZkDNtmmkbNgeEJoxFpJXjH1vvtvWb2PdIdxRPGrhPp4M_HPPXHaSswSswSdCZK6vJMlwEsRnxhzHkRh_n-vSnTo68neXm8xKzgqTamKrkXosf0wmHYq4GmwH_gM4fRnCcA6Y43T-A3kayQbUY-Cvo1neg4ZhooLSJn0VZOKCv0D8B6OqpY6mD4E6PCmHJWkYBIjJ0-AGZXF8gJ2SNV7RafY-h7cA6U9r805uSOYefnPuMaRYLeoq1cMWxpCkMwi3aA5nnlaRnkcfa7HTyRfTHg2zNygl14jeITZ7gIFLH2QAG54J-oG4JfKuLGSPARh_7l0cTpScAFhF94M7GjAv890LSE7WZA9OWdKwI3hT2UqfKX4dPIh1Ngh7ocWcK2XVK5WUakRsyfdA9ofN5bOMGVV5ttyg-nrdeRU9ctolVs-OEfPafSRmgKBvZrwzcR_BsjRKXVtsvDdw3B5eB1A86zawGR_xyDD3jRsKf3r0BVra-yG_0GIIZqwlmBue3Eo9EpHef0fKzLo9YEEcd-lU4Ryb5eLHm6e2vsB18_OYyrEHkKwGpA5pm4xHEpXCh0zpp4Dzhw7h_tnalmRxWctp5Mm2HjggKbFdq3yj9VqNZJg0cYPN41Q1y3GiTRq_G28f4btmrie6e5C8KKBA6HSf5R_lbhMFLuMP63F7TtnT9QVpRw_gch219SIi7vepYackRxcZinmYIE3YEqe1tS4iD2D3G6xSM5OPzDUwBW8pIpVpuczu-4sEMqLgHCwpIeOfrB2Hb0fp293sr50lY61zEExJmOM4uya9hcso-GTCdSSjFxi9ZD4uMtk4lA0LJnlhwdREZ3I_nkwhkZU423FuHKRTjr0xClGk88k6xksoW8Vm-_JGnTo1Jss-3SH48tF_fB6x788nIlLvCaH6kVQqrFcO4vNuD-qbOMw1_kWyYL5X2HB0YrrlO-9d14GTKeGBgSbu23NpO1asns7znOfBT5nqIUtFbFac9zWSSQ-fpRW9Dbt5qRT0XJrSbWhuaeB7hD1bnOvPhlMLbrRCWiFJaswUQJISdxjVDmXKG31Mdnzee-PuQzoLUb1Eq6NsdDL8z1KDDo54A2shQ_A7MN_T8AupqTPep6Dgtgjm_-3i_veRiqZvKvX0vyMjqbvDWWgcR0OzlPcAy5h3e5rB1aWnSyyNSGSAlHCAVrh7cXCq428KbbFCfhQvMaX-3SVoJD0Etlx31ZaniVHDY5mOwtS34cVmRabJXjvBtLS_UsHdBDSHv0zDMAIDEg3n1SnOrMHLr6XubekuVWwFwm0QyQgbFrNXN9ous4tKjsa5e08z6fl1N6z_kOVuVANNbTE2ZF0OBQoAzsEL5Y_fRkX85u_WiPUlXwUihkXgW9ubQPH858Wj2L4HW5MHdIzujIZ01qOqKWFWgJIQrKwcIrHOjA2baEJy4X06NMrzz3w9gBXqoQvtvSl_-lYOxrX3ezyaUdJ4J0HtUxj3wpOiQhMHLV4qZB-iyGEArTJcYUw3RoNh6uIQWZ2CFkgEBJr1ItqbRyjmjqTPW4wSN-hfF6aipF5TgWE2Gi6uZh7DEc9eJHiBLQg3tlX5ghmyi_FZKTtrL1V2yfRgE48G41jdP7Fn0pCWL9o-2_dKxWuVddT-nrYEfsDbQB3WR0XhC_wZmRN-9rUduo72lXPcvWP7vU_ROZPIlqABuvM244Xa7r1HcjYCeipkQXTQQPp2nVDoLOEDHP2f0IA_PupTokYVOO3TfWDaF8GAXQcDFBeukm183XqMTNrnGP4mK6tnrcp1pw6Cr2EZJvMEjg3pW7CcCWUQBKEN50-jV80L2pJRjWaJ5xU8-AxwLFDWBihc1Yj8VMfQ9tqNWvBsRSoCSTjsu_QZSdrFTDrEGEVq8IMDDvLYZjQ81ZorVNisR_Q0gw_DE32RAHRlYeH_-nIhUiPtU1HZbcu9fd1-aK0wGnhSzeYpEexUqTO9tUlp4_8nwhy5WRaXzFt0M_KQaeLuANNLmNyvDJr1WWyis4iIVy2fSxq8H1Yjbt-kpSkFOwHKmmJ87oi3GYnS7xlVKqrtdaCf7-4Z0yBT7qrNboliFG8DSv0BPdzWS6OhzirvzuotRTXjTTN-K4IpLvZGeKCxidUOxr1euFQpwK8rmcU_RjERehcqd9Rsg6PnWi_efh2mC706haty9sGkMi9vrDbtPNULbX4vSWcEvAQGgbQp9LVHGvASqKRdvzeqDEzcKka8gmCeqZ84BZQQoPHvPW2WEsmKsodC83p5XbQWXhbwQ2cHuaJSrxiAHj3k5wi38PVQWs998IzRConOhs5Cu6syZqZKijFgl163nQ9s_j8_6JLVzEq5dsiPOt1khZY5Iu6akMWzvnaeFJi6ZxQVQoVe4ffuZRbIKDNGGrE8yKl96-EezW-vuAI8_0KYzPLJz-3wX3yfSb0w2R0K9nM-HmEcV5UjRlNJYU1QsT6xSPDaCygDExyebuK5gc_-kceqs765EnM7eO-UVMXwn3zSBHOsq8qYWITVyTlryyDzPwa4RDmDfIm9uxSj0QNKWrO1KHjKrEYT2FbMwkx9OVPYGB-dGTXyydylmXJ9QNGzPnNq6eJI0bde91Lvs_Fs-aN5HWLDcKulTxF50PEfgdQQzkhYrNj50dj51pWSkNk0_QZXToydXugLEcRMsb5Xg-CYRnwOyhGUumolBDT4y5J6yUBUZ6z-3ZUpmpOlOl9q_K87y9sdN62hFk-8mK1bAinInFu2XFSXyJx9xAIEs5vbSrZAt6_21Piz0xurrafeLZMhy8tmsw5OVWl41UdX49Fyjq9KR3Nxc19_6hhef6_JzXqngYd2faNlbGcjZC28mdCkRol-KG0GXSy3K9JVHd7s1EBoA4Wm7tH5POxIHkhsMcJaC1CW5PrEvVjb43n9IzVTPaTGZXWcwvb7LktLN_G8n3QDOpkYdEFJwpcV8zz_rlDzAY-LiI9Q_78-tSFm1HckTtMlPZRPLRhGAliIw5YvseBpYlIUW39KUEE3avUVRe2Qvy9FUZDhCI_U1gZmIpxYKkxaGTZkKq07zVfK7q9AdV-LWpYb_X1pWAn1G99xPH7GptAsrFhwsyDTML2VcJhtcrAQaTS-qCzXAik9yjVLGd1-Aj2IXdF6BX3JedXcjTh2GEnAccXEp_7FO5gmGVunLjGiyk7IqlCjAI5369-fu4zwPGz0Izi45hZo0LzKJtefcqHRodQfvE5orTE9xbVcAqK2DJXDA5bNyWybzCayHJv-LVVNXdDiQ-I76prhYAICJ-iCSQrIMKZckLc_CgBaidaNJnjBXmzcugtDsprnxRQiXCX7rposMnqJKyucQ0tJC69VO30_TRYjIBlGrH9GMAqvIOBk2wVlxhOVouW5cEwx5aqGaMALpWZzawkSZ5i9KAw4OgxsSKNUNzoJ_ythihzJh3_qVa6_cZppNOnE7kG3UTv2zAT_UAKOY9x4U5aa-QPNP_t5UJ3yYOYaXAAfcytWnNxjFpqff79yF4myfijE-CT8p-vlhneBKzGavCJlz6UEowHQEQty34YlX90tBhMc-_uQzeIjGbdBWGhCCUTHLqbFqSgNlkZY2fMKw0pUN_NU7oV0ESObVSnwxA731-dfz1ycWNOVRvjYzO2fTlTKJCT0pnSXWW0M4TdhVFR4Mu3uTBFeuUmddWpGfROiZo-ePjWcdyC9nQjJVzG17bU5qdASrgTBATGdc5mDdc5kawYR0xl2ukzjyi-JVH0Tx6d4wMfTJYy6Dj6XpUENdswVkFZxumjZIrJDMFSIPFxNcRojvdI7DRRzi2oodKbOAXOKwOogRQU_9KQQSzJ78DCMV3PI3LsqNeb3o_n1uN90WztuSrh62icPnUbxCtgIJ2JDVQhFBPW_meEiRR_9FVZBvOHcCHJdlPsxcmi136BO2etypgMKg7lG4PBaYWwoxPRNDke_AWtG4_t7bBltw-DEOMhwharxkv6ogIhx2CpaWz7WdRl64i57175Aik_HELrxcKahRCvlCxYfVTtk0-mml91xraX3SDvZuzY1ipwOfBa5Cmw_k7DuYon-h9Xvqva6Z8GhjsD31x4trOCUQQuZrV96M830I8JiD9e_rR3U7y5wHqaD1HD27IRxjBrY_Ur8AWj_ZqyyytTLE642WCDFHZ4F51PtfFDUufcZsCVniub113Z5KnO5BKWIknDbzmvQUuB0Ju7V_IjtfZ3e2SFHfS1ok_cesZ44BMJv8GfmPAfHStqSwtQ4PbZI68z-0rDvNSllCWZGjvI7947__tQvRMT1qYfijUfBf_W5KuqbFPu-4Ql6IaOgfWnzwDDc_21re-OLpNREOdtrv-c6qMhI6QypDpbqBDwZQcGnjcsHTdL6o95mggfh1UvWWWqpRBuri-_RoKov5UEIdST259KVT9L2hD2GwCnlKQ8x71CHHBAw5lwMV9Ny2ghLBYI-jB7D_00kGAQSnns-6-FH1LFkBtmrdoTKgclzs9qvNqtmnYKHP0ACLsPqs8Iqdbzp1qr7O0RofnZArhPOFoIOG__TQ3Z6UjpAxv3TT6RjVmLnMMjTeesCr99N82aPH6K0wB4jZbxFwUexCQEOKNAg1ck7f6UHgTJqa64kxz5cHinOh0gOvYoOMDr7eDtizReVO-eVOPZ3lxUir8rKV0HmIMl2kEl2tlX_-THyUbXflmeK6Ied9E2U6EemaRMiPxYOisBJN4dXsE32lxoMFBOON7Ids8re98O3ASq2YGYkc9s9jgvait5kxevTugKJZbm4ypvfjvtmvccX6wa3XVcmvi4cSx-7jfmHa0u-sN7JdbPCpLrpR5sG6HOMbM4vfEuVlcNPBhgD6Cl7l0Iu7OtcikkA4hoKBUlv3cOXRttLaYVaT5nML7VYfPnBYGcBpscy4hRUTnuz4IrJ3J33rdZU4X-5iXu0aphcYkA5NpWqc0g-KY2Ept_FXzXrM6pRCI53A3CR36vmBGYTUV94iz6rWojIsDLPVhyrQQRSRWZLCDZm59dl5K-DTmk0TpEs7J_YVXX9ZWanbzbudcxM-SYRt1YG3BQJ4W3d4N-GnSc3Vt8InXh8A1chUA1oq0GLMXgczWmzcqCj_GGBRo1quFPbfmQ2Qea8AmtBgK7VXA_mp6l-Lh8ZzlPD9NRQ3VVEkOjj1bMbuDAYJ1CQwYNrVmpWO8EfGnaCf9oXGlrnb6MsfYODrNLQyamNeWPQ37QQz_8k8rWiBLUYbmOv6AkTo69qN9QrZROsrCSLl4ptJERC9zP2eKDJZT6ZgePeRLyoGlGHkwFKl-ql8_kD13b3neiLpJEGk_fXMwlVHV6cAjfziYxMMCtK24QIAmdoiQ4tH9YWvQg78aT-zx5yXMnekJUZIkznMDWDDYt6AQNtfVD1JZmBmVqCvxTcGIk5FG7rH4I-WQ9RojlENaHlUjIS9zf97o6fNgFIijXh50HXh6NhQv9QORb_h44sMEDjs4R0VIzedlUTEspuaBKAASatUgw8u-FPHBNb4DPUdtsyEK3-m65FWOmq1ZsEz-TDKPahY6dtRomia-jds_7MK-VLM5pKHZGoP0Fj5cTNLS-yC9wvZjBirTlvHomeGyTFqqgFnfjQlCtnueUDFRYTor7tVFj0h87PVy5FhwayDTvO1EKfBcGPT97k-kdwuzvgVO8QvdLrWG-nGtdMakIlPxFCYoG1qp8977H2m4FxSzsbnYysqg6hltjTjKOBwnQLVCqwxyEOcYuFWaygkoaGZSFPPYvgpXMKgHvyJ3zv4UOYULq8b4_GyYbbHtv6TNZRR8cC60iROFw4emepDgdkvp8cHzvPdTPjxgllgBSXhFF9LKdS0maPDD89smnT7oWX-j8b4_FwkR0Ryj3Y9BnSHMEtvH9jPDbx1lTUhQKTj2k1boP1FMGeBV_BnLp5xosEJ48-WHyCyrT-3MDSX4eFftONWSAAhb2A2HVhYWb6PXeOzkPkhtd7rQ8ugot_F15ZNGtYg4s3GFHrctH3H-qEgJx9W1WuBZXDW9ZPRhtWgbL1jvmqBturbxHEe7RkreuIyn69o48jjzKnNNErORP2QQJZqrHZ03GheK60JJjSCxzsZ2U0Jl2UZARbfN-C8ohrECG68z5bS9z6E2J4Hxb_42ZP8s9Ek3lpJyNzIa60rkirvdv8JtTGsQQabhUe43qSXU5JjFZT0jT4L_WiBz2Uvt20iLGFPv41taG9Ewcja2Z4YV3HIQAWnIaGXKWKriSeXJ_3QSteHHxLsa7N7R3V3StQYBMqazF9J28EoI06Y-8ZdJnlyFPk6la7dssZ-d0ZQwhNfJ0SfLPNd_hJXwvJ0BtZI8MgFWuJg98Ujjzo3BpKkF21DZFsCaux88V5h13UlwesXOepkjoO1cXoyBJEdpl5lIWEt55GoLyLHSDAN8hx9RAKFYPxEYP4w7XVnFhQCOU8xfyvZAsd_bdUtHU3atHmgr9aTy-Lpy2Kg4Ofy43ntrPugSbawjodbQ7vLtZr9a9mABhmLWzZ8xOVealLP5WoHDBAqIALe0m0U0NgYaDg5hJexCXiZSah0_YYjNYZdutu9tfF15w-ZBiCvb_whRWwy-qLmvbAjG4D714RYiBBaydepx_TFmoLtAj4-gf_kiVvyiKa3kUv7o42cqwPEKbRDw0tnYC9tscLP-dZbMv8MHtOUi1Icvy62uV9NWy7Lyw7zUnEAhafMgCNbzLvSVGHr9cHSLY7PX8JmoSweynN4HKSXnVCv3pUy6LPnlLT79EsNpLhCbsHNOzBm_Gpt6fKChoty_jIZbhvMTJz0w_jT367ZZwuNWN1G_ydy1tx2587oy7gaRlvvNwJsGxHaV2q6ok1f153_q4XV_SxPlfQY6Ibr_js-enCROyyloXRrba0SV8bx4eoEdFjCWklPiA5LP2PtXggRTDaTsnrpLjSDFHfTQ3-c4EZ9lKcQ4S-W9DiUj5MqBGIF5m0He6Dj7DcZlaMZbRIjyET-JAGl-psTqD5LBauKNvJJv4tTc2rTx84opP982mWMVtFVBZ9MFfPVt8VMG9zQ1xVlyyENwRhY-F_EV04PuDncC7lSYuE94bUNEmCd7n_Iuzw8pyCsvzPqBvNDx8yxjzsZfSIyYPN1aTmQt55DaPa3XDCrFK5S1uxb6MywMktJl-EgQcm9fMfdeTKl-m63eY7l9rabPa-5LD0zjSqrAB1YaM4ahxqeFJVJptxV5XXtpEEOvsiRZDu2_ruxJQarCMR6RbxGW8qPRTjXfxYpE5q4MLoTfpCj3CyEfbbiPVeVpEFCPfMjF7Ib1jhzeyeTT_WG_bSy9MSdN4nproh9FrdvAtUG-8gTZQ=&quot;,
+            &quot;video_metadata&quot;: null,
+            &quot;tool_call&quot;: null,
+            &quot;tool_response&quot;: null,
+            &quot;part_metadata&quot;: null,
+            &quot;audio_transcription&quot;: null
+          }
+        ],
+        &quot;role&quot;: &quot;model&quot;
+      },
+      &quot;citation_metadata&quot;: null,
+      &quot;finish_message&quot;: null,
+      &quot;token_count&quot;: null,
+      &quot;finish_reason&quot;: &quot;STOP&quot;,
+      &quot;grounding_metadata&quot;: null,
+      &quot;avg_logprobs&quot;: null,
+      &quot;index&quot;: 0,
+      &quot;logprobs_result&quot;: null,
+      &quot;safety_ratings&quot;: null,
+      &quot;url_context_metadata&quot;: null
+    }
+  ],
+  &quot;create_time&quot;: null,
+  &quot;model_version&quot;: &quot;gemini-3.6-flash&quot;,
+  &quot;prompt_feedback&quot;: null,
+  &quot;response_id&quot;: &quot;pOmPasLjM-C0kdUP6oXoiQM&quot;,
+  &quot;usage_metadata&quot;: {
+    &quot;cache_tokens_details&quot;: null,
+    &quot;cached_content_token_count&quot;: null,
+    &quot;candidates_token_count&quot;: 3379,
+    &quot;candidates_tokens_details&quot;: null,
+    &quot;prompt_token_count&quot;: 20389,
+    &quot;prompt_tokens_details&quot;: [
+      {
+        &quot;modality&quot;: &quot;TEXT&quot;,
+        &quot;token_count&quot;: 20389
+      }
+    ],
+    &quot;thoughts_token_count&quot;: 4599,
+    &quot;tool_use_prompt_token_count&quot;: null,
+    &quot;tool_use_prompt_tokens_details&quot;: null,
+    &quot;total_token_count&quot;: 28367,
+    &quot;traffic_type&quot;: null
+  },
+  &quot;model_status&quot;: null,
+  &quot;automatic_function_calling_history&quot;: [],
+  &quot;parsed&quot;: null
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Оціни реальну культуру: цінності у поведінці, довіру, справедливість, лідерство, контроль, комунікацію, ритуали і культурні тривожні сигнали.
+Виміри оцінювання:
+- cultural_identity — Культурна ідентичність і цінності — 15%
+- leadership_culture — Лідерство і управлінська культура — 20%
+- trust_communication — Довіра, комунікація і безпека — 15%
+- accountability_cycle — Відповідальність і управлінський цикл — 15%
+- rituals_coherence — Ритуали, символи і цілісність — 10%
+- service_brand_alignment — Сервіс/якість і бренд — 15%
+- learning_red_flags_ai — Навчання, тривожні сигнали і ШІ — 10%
+Додатково врахуй пояснення типів культури: корпоративна, консультативна, партизанська і підприємницька. Не оцінюй назву типу як добру або погану; оцінюй, чи цей тип допомагає стратегії та чи не створює тривожних сигналів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;CUL&quot;,
+&quot;module_name&quot;: &quot;Культура&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Оберіть або опишіть головні питання щодо культури, поведінки й взаємодії в організації.
+Інше
+2) Які матеріали про культуру вже існують?
+Корпоративна книга
+Ритуали й традиції
+Система мотивації
+Регламенти звітності
+Цінності/кодекс
+3) Опишіть культуру організації: що люди бачать зовні, які правила декларуються і як реально поводяться щодня.
+Артефакти й видимі прояви
+Видимі прояви: технічне обладнання, робочі обєкти, чеклісти, CRM і швидка взаємодія з клієнтами
+Задекларовані цінності, цілі та правила
+Безпека, якість, відповідальність за результат, повага до клієнта й розвиток
+Глибинні переконання і негласні норми
+Негласна норма: вирішувати проблеми швидко, але бракує формалізації знань і ролей
+Приклади
+Приклад: команда мобілізується для запуску обєкта, а ризики ескалюються через ключових людей
+4) Які цінності організація офіційно проголошує?
+Цінність | Що вона означає | Для кого важлива | Джерело/документ
+Безпека і якість | Не жертвувати безпекою, технічними стандартами чи довірою клієнта заради швидкості | Клієнти, монтаж, інженери, партнери | Стандарти монтажу, чеклісти, гарантійні зобовязання
+Відповідальність за результат | Власник задачі доводить її до рішення, сигналізує про ризик завчасно | Усі функції, особливо керівники проєктів і продажі | KPI, CRM, план проєкту, 1:1
+Відкритість до навчання і співпраці | Вчимося на обєктах, ділимося знаннями, сперечаємося фактами | Технічна, комерційна та сервісна команди | Розбори кейсів, наставництво, база знань
+5) Як кожна задекларована цінність проявляється у щоденній поведінці?
+Цінність | 3 бажані поведінки | Неприпустима поведінка | Приклад останніх 6 місяців | Як вимірюється
+Безпека і якість | Чеклісти; stop-work за ризику; чесне повідомлення про дефект | Обхід стандартів або приховування технічного ризику | Перевірка комплектації та якості перед запуском обєкта | Інциденти, рекламації, чеклісти, NPS
+Відповідальність за результат | Ясний власник; регулярний статус; ескалація до дедлайну | Перекладання відповідальності або мовчання про затримку | Ведення CRM-воронки та контроль плану монтажу | Виконання строків, CRM-повнота, маржа, NPS
+Навчання і співпраця | Розбір кейсів; наставництво; обмін рішеннями між функціями | Утримання знань або ігнорування зворотного звязку | Передача технічних рішень у парному проєктуванні | Кількість SOP, ІПР, повторні помилки, готовність резерву
+6) Де є найбільший розрив між задекларованими цінностями та реальною поведінкою?
+Цінність/обіцянка | Реальна поведінка | Приклад | Кого зачіпає | Наслідок | Можлива причина
+Відповідальність за результат | Частина рішень і знань тримається на ключових людях | Затримка ескалації ризику через неформальні погодження | Продажі, інженери, монтаж, клієнти | Повільні рішення, перевантаження, ризик помилок | Нечіткі ролі та недостатня документація
+Відкритість і навчання | Навчання та обмін знаннями ще не є регулярним процесом | Кейси розбираються ситуативно, без єдиної бази | Нові працівники та резерв критичних ролей | Повільніший розвиток і повторення помилок | Немає виділеного часу та власника знань
+Повага до людей | У пікові періоди навантаження не завжди прозоре | Монтажні задачі виникають терміново | Монтаж, сервіс, керівники | Ризик вигорання та зниження якості | Нерівний потік проєктів і нестача резерву
+7) Наскільки працівники реально впливають на постановку цілей?
+3
+8) Наскільки працівники мають автономію у способах досягнення цілей?
+3
+9) Який тип культури, на вашу думку, реально домінує?
+Підприємницька
+Пояснення
+Потрібні чіткі ролі, рання ескалація ризиків і регулярний зворотний зв’язок
+10) Наскільки поведінка керівників відповідає проголошеним цінностям?
+Виконують власні правила
+3
+Визнають помилки
+3
+Дотримуються обіцянок
+3
+Поважають людей
+3
+Приймають неприємну правду
+3
+Не використовують подвійні стандарти
+3
+Пояснюють рішення
+3
+11) Наскільки безпечно людям говорити правду, сперечатися і визнавати помилки?
+Можна не погодитися з керівником
+3
+Можна повідомити погану новину
+3
+Можна визнати помилку
+3
+Можна попросити допомогу
+3
+Можна поставити незручне питання
+3
+За конструктивну критику не карають
+3
+Вразливі групи захищені
+3
+12) Яку шкідливу поведінку організація терпить через результат, статус або дефіцит людини?
+Поведінка | Хто/де проявляє | Чому терплять | Наслідок | Остання реакція керівництва | Що потрібно змінити
+Мовчати про ризик до останнього моменту | Будь-яка функція під тиском строків | Бажання швидко закрити задачу та не ескалувати проблему | Зрив строків, перевантаження, нижча якість | Вирішується ситуативно | Правило ранньої ескалації, безпечний зворотний звязок, статуси
+Тримати знання або контакти в однієї людини | Критичні технічні та комерційні ролі | Людина швидко дає результат і важко замінюється | Coverage risk, повільна адаптація, ризик втрати клієнтів | Почато опис процесів і наставництво | SOP, база знань, парна робота, план наступництва
+Обхід чеклістів заради швидкості | Монтаж у піковий період | Тиск дедлайнів та дефіцит ресурсу | Ризик безпеки, рекламацій і NPS | Контроль обєктів керівником | Нульова толерантність до порушень безпеки, аудит чеклістів
+13) Наскільки однакові правила діють для різних рівнів і груп працівників?
+Правила однакові для керівників і працівників
+3
+Рішення можна пояснити
+3
+Критерії винагороди прозорі
+3
+Порушення мають передбачувані наслідки
+3
+Немає фаворитизму
+3
+Є механізм оскарження
+3
+14) Як організація виявляє й розв’язує конфлікти?
+Канали повідомлення
+Рішення мають базуватися на даних, безпеці, якості та цінності для клієнта
+Хто фасилітує
+Конфлікти розбираються через факти, власника рішення та строк коригувальної дії
+Строк реакції
+Винагорода має бути прозорою: результат, якість, безпека, командна взаємодія
+Принцип рішення
+Пріоритет — командний результат, розвиток компетенцій і довгострокова довіра клієнта
+Приклад
+Ризики: перевантаження у піки, неформальна комунікація, залежність від ключових людей
+Чи усунута першопричина
+Щотижневі 1:1, короткі статуси, розбір кейсів і навчання на помилках
+15) Наскільки система винагород сприймається справедливою?
+Винагорода відповідає внеску
+3
+Критерії відомі заздалегідь
+3
+Порівнянні ролі мають співставні умови
+3
+Рішення про премії пояснюються
+3
+Нефінансове визнання справедливе
+3
+Є механізм перегляду
+3
+16) Чи підтримує система мотивації особистий розвиток і залученість до цілей?
+Є зрозумілий сенс роботи
+3
+Є автономія
+3
+Є можливість розвиватися
+3
+Досягнення визнаються
+3
+Людина впливає на цілі
+3
+Є ресурс для навчання
+3
+Довгостроковий внесок винагороджується
+3
+17) Наскільки працівники задоволені, енергійні та відчувають сенс у роботі?
+готовність працівників рекомендувати роботодавця (eготовність клієнтів рекомендувати (NPS))/задоволеність
+План-факт по продажах, монтажу, сервісу, cash і критичних ризиках
+Залученість
+Сигнал: затримка постачання могла зсунути монтажний графік
+Втома/вигорання
+Рішення: перепланувати бригаду, ескалувати постачання та запропонувати клієнту оновлений строк
+Відчуття сенсу
+Відповідальний: керівник монтажу разом із закупівлями
+Намір залишатися
+Строк: 1 робочий день
+Динаміка
+Результат: уникнули простою бригади та зберегли прозору комунікацію з клієнтом
+Джерело
+Після: перевірили виконання нового строку, витрати і NPS
+18) Які ранні сигнали байдужості або емоційного відсторонення вже помітні?
+Мовчання на зустрічах
+3
+Мінімальна ініціатива
+3
+Формальне виконання
+3
+Уникнення відповідальності
+3
+Падіння участі у спільних подіях
+3
+Цинізм
+3
+Зростання відсутностей
+3
+«Це не моя справа»
+3
+Небажання давати зворотний зв’язок
+3
+19) Як організація підсилює поведінку, що відповідає культурі?
+Визнання пов’язане з конкретною поведінкою
+3
+Історії успіху поширюються
+3
+Визнання своєчасне
+3
+Визнається командний внесок
+3
+Неформальний внесок помітний
+3
+Керівники регулярно підсилюють норми
+3
+20) Як працівники розуміють свій внесок у цілі організації?
+Знають 3 головні пріоритети
+3
+Розуміють внесок своєї ролі
+3
+Бачать прогрес
+3
+Можуть запропонувати зміну
+3
+Отримують зворотний зв’язок
+3
+Командні цілі не конфліктують
+3
+21) Де надмірний контроль уповільнює рішення або вбиває ініціативу?
+Процес/рішення | Кількість погоджень | Втрачений час | Наслідок | Чому контроль зберігається | Що делегувати
+Погодження комплектації та ціни | 3–4 | 1–3 дні | Повільна відповідь клієнту і втрата конверсії | Ризик маржі та технічної помилки | Типові пакети, ліміти знижок, шаблони КП
+Планування монтажу та закупівель | 2–3 | 1–2 дні | Ризик зміщення графіка та простою бригади | Залежність від постачання й фінансів | Стандартні BOM, пороги запасу, рольові ліміти
+Ескалація сервісного інциденту | 2 | До 1 дня | Повільніша реакція та нижчий NPS | Відсутність SLA-ролей і процедур | Сервісному власнику — рішення в межах SLA
+22) Наскільки дисципліновано працює цикл ціль → план → виконання → контроль → зворотний зв’язок → навчання?
+Постановка цілей
+3
+Планування
+3
+Розподіл відповідальності
+3
+Виконання
+3
+Контроль
+3
+Зворотний зв’язок
+3
+Коригувальні дії
+3
+Фіксація уроків
+3
+23) Які рівні звітності реально працюють?
+Щоденна | Щотижнева | Щомісячна | Щоквартальна | Щорічна | Мета | Ключові показники | Власник | Отримувач | Рішення
+Статус лідів, монтажу, сервісу та критичних ризиків | — | — | — | — | Швидко виявляти блокери й ескалувати | Ліди, угоди, монтажний план, інциденти, SLA | Керівники функцій | CEO і ключова команда | Пріоритети дня, ресурс, ескалація
+— | План-факт продажів, проєктів, закупівель і ризиків | — | — | — | Координувати функції та знімати міжфункціональні блокери | Конверсія, маржа, план монтажу, cash, постачання | CEO + функціональні керівники | Ключова команда | Перерозподіл ресурсу, пріоритети, корекція плану
+— | — | Фінансовий, операційний і клієнтський підсумок | Стратегічний review | Річні цілі та бюджет | Навчання на даних і управління результатом | Виручка, маржа, cash, NPS, якість, плинність | CEO | Власник і керівники | Корекція цілей, бюджетів, ролей і процесів
+24) Наскільки звітність точна, своєчасна й корисна для рішень?
+Дані точні
+3
+Дані своєчасні
+3
+Є єдині визначення ключові показники
+3
+Видно відхилення й причини
+3
+Є відповідальні дії
+3
+Звіт не перевантажений
+3
+Перевіряється якість
+3
+Джерела даних простежувані
+3
+25) Наведіть приклад, коли звітність реально змінила управлінське рішення.
+Сигнал/відхилення
+Внутрішні канали: 1:1, CRM, щотижневі зустрічі, робочі чати
+Рішення
+Зовнішні канали: відгуки клієнтів, сервісні звернення, партнери
+Відповідальний
+Комунікація повинна бути двосторонньою, конкретною і привязаною до рішень
+Строк
+Культурний код: безпечніше повільніше, ніж швидко з помилкою
+Результат
+Історії успіху мають показувати командну роботу, а не героїзм однієї людини
+Що перевірили після
+Потрібно візуалізувати ролі, цілі, правила ескалації й стандарти якості
+26) Наскільки культура підтримує ресурсність, ощадливість і відповідальність за результат?
+Команди шукають прості рішення
+3
+Ресурси використовуються ощадливо
+3
+Малий тест передує великим витратам
+3
+Люди беруть власність за результат
+3
+Немає показного марнотратства
+3
+Економія не руйнує якість і безпеку
+3
+Ресурсність визнається
+3
+27) Які видимі артефакти підтримують або суперечать бажаній культурі?
+Артефакт | Який сигнал дає | Підтримує/суперечить | Кому помітний | Що змінити
+Чеклісти монтажу та безпеки | Якість і безпека важливіші за швидке закриття | Підтримує | Монтажникам, інженерам, клієнтам | Регулярно оновлювати й перевіряти виконання
+CRM і шаблони комерційних пропозицій | Робота має бути прозорою та відтворюваною | Підтримує, якщо дані вносяться повно | Продажам, керівникам, клієнтам | Єдині етапи, обовязкові поля, щотижневий review
+Неформальні чати й усні погодження | Швидкість є, але знання можуть губитися | Частково суперечить | Усім функціям | Ключові рішення фіксувати у CRM, SOP або плані проєкту
+28) Які регулярні ритуали реально закріплюють потрібну поведінку?
+Ритуал/традиція | Частота | Яку поведінку підсилює | Участь | Ефект | Зберегти/змінити/припинити
+Щотижневий план-факт і review ризиків | Щотижня | Відповідальність, рання ескалація, співпраця | CEO і функціональні керівники | Швидше зняття блокерів і ясність пріоритетів | Зберегти та стандартизувати
+1:1 керівника з працівником | Щомісяця | Зворотний звязок, розвиток, безпечне обговорення ризиків | Керівник і працівник | Раннє виявлення проблем і краща адаптація | Запровадити системно
+Розбір кейсу після запуску або інциденту | Після ключової події | Навчання на фактах, якість, обмін знаннями | Технічна, монтажна, сервісна і комерційна функції | Менше повторних помилок, кращі SOP | Запровадити як короткий стандарт
+29) Наскільки внутрішня комунікація є своєчасною, чесною й двосторонньою?
+Важливі рішення пояснюються
+3
+Погані новини не приховуються
+3
+Інформація доходить до всіх груп
+3
+Є двосторонній зв’язок
+3
+Канали не перевантажені
+3
+Керівники говорять узгоджено
+3
+Чутки швидко спростовуються
+3
+30) Які слова, історії, герої й міфи формують культурний код?
+Історія/вислів/герой | Який урок передає | Позитивний/негативний вплив | Хто поширює | Що оновити
+Безпечніше зупинитися, ніж швидко зробити помилку | Безпека і якість не є предметом компромісу | Позитивний, якщо не перетворюється на зайву бюрократію | Технічні керівники та наставники | Додати практичні приклади stop-work і ескалації
+Клієнтська довіра створюється прозорістю, а не обіцянкою | Раннє повідомлення про ризик краще за приховування | Позитивний | Продажі, сервіс, CEO | Включити у CRM-playbook і правила комунікації
+Сильна команда не тримає знання в однієї людини | Наставництво і документація зменшують залежність | Позитивний | Керівники критичних функцій | Закріпити у планах наступництва й визнанні внеску
+31) Наскільки культура описана просто, зрозуміло й візуально?
+Є короткий культурний код
+3
+Цінності перекладені у поведінку
+3
+Є візуальні матеріали
+3
+Правила доступні в роботі
+3
+Є приклади складних ситуацій
+3
+Матеріали регулярно оновлюються
+3
+32) Як організація навчає правилам культурної взаємодії?
+Частота
+Онбординг: правила взаємодії, безпека, CRM, зворотний зв’язок, чеклісти
+Цільові групи
+Culture Operating System Solar West
+Формати
+Неформальні правила і залежність від ключових людей створюють ризик якості та вигорання
+Теми
+Культура відповідальності, безпеки, навчання і клієнтської цінності
+Перевірка засвоєння
+Рання ескалація; власник результату; обмін знаннями та повага до людей
+Приклад зміни поведінки
+Приховування ризиків, обхід безпеки, утримання критичних знань в однієї людини
+Власник
+Щотижневий review ризиків, 1:1, розбори кейсів, база знань, визнання командного внеску
+33) Які ознаки показують, що культура перестала допомагати організації?
+Цінності стали формальністю
+3
+Ритуали втратили сенс
+3
+Нові люди не приймають правила
+3
+Зростає цинізм
+3
+Керівники тримаються старих норм
+3
+За минулі заслуги терплять шкоду
+3
+Команди ізольовані
+3
+Нова стратегія конфліктує з культурою
+3
+Мова й символи застаріли
+3
+Культура тримається на одній людині
+3
+34) оцініть ранні сигнали слабкості культури.
+Байдужість
+3
+Токсичність
+3
+Подвійні стандарти
+3
+Страх помилки
+3
+Слабка комунікація
+3
+Пошук винних
+3
+Мікроменеджмент
+3
+Фаворитизм
+3
+Приховування поганих новин
+3
+Внутрішня конкуренція без правил
+3
+Конфлікт цінностей і мотивації
+3
+Фасад сильніший за реальність
+3
+Різні правила у підрозділах
+3
+Толерування сильних токсичних людей
+3
+35) Для яких культурних задач організація використовує ШІ?
+Персоналізація комунікації; Генерація сценаріїв і кейсів
+36) Який системний проєкт має оновити культуру організації?
+Назва проєкту
+CEO
+Проблема
+Керівники продажів, технічної функції, монтажу, сервісу та HR-координатор
+Цільовий тип культури
+NPS, інциденти, строки, pulse-клімат, плинність, coverage risk, CRM-повнота
+3 цільові поведінки
+Описати 3 цінності, поведінки, стоп-правила й ритуали
+Що припинити
+Запустити щотижневий review, 1:1, розбори помилок і правила ескалації
+Нові правила/ритуали
+Закріпити цінності в онбордингу, KPI, визнанні та планах розвитку
+Власник
+Обмеження: дефіцит часу, навантаження, опір формалізації; безпека і якість не є предметом компромісу
+Команда
+Потрібна регулярна перевірка практикою, а не лише деклараціями
+ключові показники
+Власники культури — керівники, але участь і зворотний зв’язок потрібні від усіх
+30 днів
+Прогрес оцінюється щомісяця за діями, інцидентами, NPS і pulse-сигналами
+90 днів
+Потрібно формалізувати процес, власника, метрику та регулярний перегляд
+365 днів
+Потрібно формалізувати процес, власника, метрику та регулярний перегляд
+Обмеження й ризики
+Потрібно формалізувати процес, власника, метрику та регулярний перегляд
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+ПЕРВИННІ ВХІДНІ ДАНІ МОДУЛЯ ORG
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія
+РЕЗУЛЬТАТ МОДУЛЯ ORG — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 78,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;Молодий бізнес у трендовій ніші із високим темпом зростання, чий подальший розвиток стримується дефіцитом оборотних коштів та тотальною залежністю від засновника.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» демонструє високу ринкову динаміку (зростання понад 20% на рік у діапазоні $0,5–2 млн обороту) за рахунок актуального попиту на енергонезалежність B2B та B2C клієнтів. Сформовано стійку базу партнерств із закордонними постачальниками (Procarte, Польща) та великими клієнтами (SPAR Україна). Проте компанія, заснована у 2024 році, перебуває у зоні високого операційного ризику через критичну залежність від особистої участі власника (оцінка 5 з 5) та відсутності системного делегування. Головними викликами є дефіцит оборотного капіталу для масштабування, зростання витрат на оплату праці та ризик втрати ключових фахівців при відсутності стандартизованих процесів. Окрім цього, поточна монетизація заснована виключно на разових продажах, що суперечить довгостроковій меті побудови власної сервісно-енергетичної платформи. Для переходу до стабільного зростання компанії необхідно диверсифікувати джерела доходу за рахунок регулярного сервісу та послабити централізацію управління.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Галузевий та ринковий контекст&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Робота у сприятливій ніші відновлюваної енергетики та енергонезалежності в Україні.&quot;,
+        &quot;Наявність прямих імпортних постачальників (Procarte) та системних клієнтів (мережа SPAR).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не вказано частку ринку компанії та детальний розподіл клієнтів між B2B, B2C та гуртовим продажем монтажникам.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Операційна та бізнес-модель&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Комплексна пропозиція (обладнання + проєктування + монтаж + сервіс).&quot;,
+        &quot;Використання декількох каналів залучення (сайт/Prom.ua, відділ продажів, соцмережі).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутня модель монетизації через регулярні сервісні платежі (зазначено лише «Разовий продаж»).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Масштаб та фінансовий профіль&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Річний оборот $0,5–2 млн, штат 11–50 осіб.&quot;,
+        &quot;Заявлено стан «стійко прибуткова» та зростання виторгу понад 20% за останні 12 місяців.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Дефіцит оборотних коштів при високих темпах зростання створює загрозу касових розривів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управлінська система та цілепокладання&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Наявність регулярно доступних управлінських даних (продажі, грошовий потік, маржа, операційні KPI).&quot;,
+        &quot;Сформовано чіткі часові та кількісні орієнтири до 2026 та 2035 років.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Максимальна залежність ухвалення рішень від засновника (рівень 5).&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока динаміка зростання доходу (&gt;20% за 12 місяців) у високопопитному секторі енергетики.&quot;,
+    &quot;Наявність підтвердженої мережі партнерів та постачальників (Procarte, Prom.ua, SPAR Україна).&quot;,
+    &quot;Широка лінійка рішень: від торгівлі обладнанням до EPC-контрактів (проєктування та монтаж «під ключ»).&quot;,
+    &quot;Наявність чітко сформульованого бачення розвитку та вимірюваних цілей до 2026 року.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична залежність усіх операційних та стратегічних рішень від засновника.&quot;,
+    &quot;Виключно разова модель продажу без регулярного сервісного доходу (recurring revenue).&quot;,
+    &quot;Брак оборотних коштів для підтримання високих темпів масштабування.&quot;,
+    &quot;Падіння маржинальності проєктів через випереджальне зростання зарплат на ринку.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Максимальна залежність від першої особи (оцінка 5 з 5) при команді до 50 осіб&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює перевантаження власника, формує «вузьке місце» у прийнятті рішень та унеможливлює безпечне масштабування бізнесу.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Зниження маржинальності на тлі дефіциту оборотного капіталу та швидкого зростання&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Зростання масштабів за умов падіння маржі та браку грошей може призвести до касового розриву та втрати ліквідності.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія створена у 2024 році та вказує на брак оборотних коштів, але при цьому характеризує свій стан як «стійко прибуткова».&quot;,
+    &quot;Сервісне обслуговування декларується як складова продукту та довгострокової платформи, однак спосіб фінансування вказано виключно як «Разовий продаж».&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутній структурований розподіл маржинальності між продажем обладнання та інженерними послугами.&quot;,
+    &quot;Не вказано точний розподіл доходів між B2B та B2C сегментами.&quot;,
+    &quot;Не розкрито структуру команди (співвідношення продажів, інженерів та адмінперсоналу).&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Надати для аналізу наявну Стратегію компанії для уточнення фінансових орієнтирів та структури доходів.&quot;,
+      &quot;why&quot;: &quot;Це дозволить верифікувати плановані показники та виявити резерви для залучення оборотного капіталу.&quot;,
+      &quot;expected_result&quot;: &quot;Уточнення аналітичного паспорта та виявлення фінансових ризиків.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити систему довгострокових сервісних договорів обслуговування побудованих СЕС із фіксованою абонплатою.&quot;,
+      &quot;why&quot;: &quot;Перехід від виключно разових продажів до сервісних контрактів створить прогнозований грошовий потік і підвищить маржинальність.&quot;,
+      &quot;expected_result&quot;: &quot;Формування бази повторюваного доходу (recurring revenue) та підвищення LTV клієнтів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напряму сервісу / Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Описати та делегувати операційні функції керівникам напрямів (продажі, монтаж, закупівлі) з фіксацією зон відповідальності.&quot;,
+      &quot;why&quot;: &quot;Знизить залежність компанії від засновника з рівня 5 до прийнятного операційного рівня.&quot;,
+      &quot;expected_result&quot;: &quot;Звільнення часу власника для стратегічного розвитку та залучення капіталу.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити внутрішню систему онбордингу та стандартів монтажу для швидкої адаптації нових спеціалістів.&quot;,
+      &quot;why&quot;: &quot;Подолає дефіцит кваліфікованого персоналу та зменшить залежність від поодиноких унікальних фахівців.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення строків введення працівників у стрій та стабілізація якості проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник технічного/інженерного відділу&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Паспорт організації «Солар Вест Буд» успішно сформовано. Бізнес демонструє чудове ринкове позиціонування та стрімке зростання у затребуваній ніші. Проте ключові бар&#x27;єри розвитку лежать у площині управління: тотальна залежність від власника, дефіцит оборотних коштів та тиск зарплат на маржу. Для досягнення стратегічних цілей до 2026 року першочергово необхідно формалізувати внутрішні процеси, запустити сервісні контракти з регулярною оплатою та делегувати операційку.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ SYS — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;SYS&quot;,
+  &quot;module_name&quot;: &quot;Системна перевірка&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 62,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;Компанія демонструє високий ринковий чуття та попит, але втрачає 30% обороту через вузьке місце у виконанні робіт та ризики фінансово-клієнтської залежності.&quot;,
+  &quot;diagnosis&quot;: &quot;«Солар Вест Буд» володіє сильним зовнішнім орієнтиром, гнучкістю та чітким баченням точок зростання (сервіс O&amp;M, системи збереження енергії ESS, онлайн-магазин). Однак організаційна система перебуває під значним тиском обмежень виконання. Головним операційним бар&#x27;єром є гострий дефіцит монтажних бригад та електриків, через що компанія щомісяця втрачає близько 30% потенційного товарообороту. При цьому виявлено суттєві системні ризики стійкості: критична залежність від одного великого клієнта та одного джерела фінансування на тлі браку оборотного капіталу. Додатково спостерігається розрив між вищими оцінками внутрішньої ефективності (5 з 5) та реальністю: розуміння пріоритетів у команді оцінено лише на 3 з 5, внутрішні синергії не використовуються, а системні проблеми раніше не вирішувалися. Для масштабування компанії необхідно терміново розширити виробничі потужності та диверсифікувати фінансові й клієнтські ризики.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;openness — Відкритість і зовнішня чутливість&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Постійний щотижневий аналіз зовнішнього середовища з використанням понад 7 джерел сигналів.&quot;,
+        &quot;Успішний кейс випереджального реагування на зростання цін панелей через логістику та зміни в Китаї (закупівля партії через польського постачальника).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не деталізовано, як саме аналізуються дії конкурентів у регіонах розгортання.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;feedback_learning — Зворотний зв’язок і навчання&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Декларується висока безпека повідомлень про проблеми та збір відгуків клієнтів (5 з 5).&quot;,
+        &quot;Чітко визначена «сліпа пляма» організації — нестача оборотних коштів для розвитку.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Існує суперечність: високі оцінки зворотного зв&#x27;язку декларуються на тлі того, що раніше для усунення системних проблем не робилося «нічого».&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;synergy_alignment — Узгодженість і синергия&quot;,
+      &quot;score&quot;: 52,
+      &quot;evidence&quot;: [
+        &quot;Використовуються зовнішні синергії (партнери, дистриб’ютори, платформи).&quot;,
+        &quot;Швидке вирішення конфліктів між підрозділами (5 з 5).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низький рівень однакового розуміння топ-3 пріоритетів між керівниками та працівниками (3 з 5).&quot;,
+        &quot;Внутрішні синергетичні можливості взагалі не використовуються («Не використовуються»).&quot;,
+        &quot;Слабкий розвиток міжфункціональних проєктів та визначення власників процесів на стиках (3 з 5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;bottlenecks_resilience — Вузькі місця і стійкість&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Чітко ідентифіковано головне вузьке місце: брак монтажних бригад та електриків.&quot;,
+        &quot;Оцінено точний розмір втрат від вузького місця — 30% товарообороту.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Високий рівень уразливості: залежність від одного джерела фінансування та одного великого клієнта.&quot;,
+        &quot;Постійний характер вузького місця, який стримує задоволення наявного попиту.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;governance_architecture — Архітектура управління&quot;,
+      &quot;score&quot;: 68,
+      &quot;evidence&quot;: [
+        &quot;Висока швидкість ухвалення критичних рішень та відсутність зайвих погоджень (5 з 5).&quot;,
+        &quot;Прийнятна користь від нарад та процедур (4 з 5).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Невизначеність та середній рівень чіткості ролей і повноважень (3 з 5).&quot;,
+        &quot;Розбіжність даних: у модулі ORG вказано тотальну залежність від власника (5/5), що суперечить високому рівню децентралізації прийняття рішень.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_longevity — Стратегічна цілісність і гени довголіття&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Наявність орієнтирів довголіття: репутація, близькість до клієнта, стратегічний фокус, партнерства.&quot;,
+        &quot;Опрацьовані альтернативні шляхи розвитку (нові продукти, нові ринки, нові канали).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька здатність команди чітко сформулювати та транслювати три головні пріоритети (3 з 5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;renewal_aging — Оновлення та відсутність старіння&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Власник оцінює всі 12 ознак старіння на 0 (відсутні).&quot;,
+        &quot;Готовність до розгортання та додавання нових напрямів (O&amp;M, ESS, e-commerce).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Заперечення наявності проблем старіння або бюрократизації при визнанні того, що системні проблеми раніше не вирішувалися («нічого»).&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока ринкова чутливість та здатність швидко реагувати на зовнішні зміни (приклад із закупівлею панелей).&quot;,
+    &quot;Точне розуміння незадіяного потенціалу (сервісне обслуговування O&amp;M, пакети СЕС+ESS, розвиток онлайн-магазину).&quot;,
+    &quot;Високий попит на послуги компанії, який перевищує поточні спроможності виконання.&quot;,
+    &quot;Гнучкість та оперативність ухвалення критичних рішень без завеликої бюрократизації.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критичне вузьке місце у монтажних потужностях (брак монтажників та електриків), що веде до втрати 30% обороту.&quot;,
+    &quot;Низький рівень узгодженості команди щодо топ-3 пріоритетів (3 з 5) та відсутність використання внутрішніх синергій.&quot;,
+    &quot;Висока системна вразливість через залежність від одного великого клієнта та одного джерела фінансування.&quot;,
+    &quot;Хронічний дефіцит оборотних коштів для забезпечення стрімкого зростання.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Постійна втрата 30% товарообороту через брак монтажного персоналу&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Компанія віддає частку ринку конкурентам і недоотримує прибуток, який міг би закрити дефіцит оборотного капіталу.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Одночасна залежність від одного джерела фінансування та одного великого клієнта&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Втрата цього клієнта або сбої у джерелі фінансування спровокують миттєву кризу ліквідності та зупинку діяльності.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Розрив між оцінкою розуміння пріоритетів (3/5) та прагненням до стрімкого розгортання&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Масштабування компанії, в якій команда не однаково розуміє головні цілі, призведе до хаосу, втрати якості та вигорання персоналу.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Менеджмент оцінює зворотний зв&#x27;язок і швидкість рішень на 5/5, але вказує, що раніше «нічого» не робилося для усунення повторюваних проблем.&quot;,
+    &quot;Заявлено відсутність додаткової потреби в децентралізації та високу автономність (5/5), що суперечить даним з модуля ORG про тотальну залежність компанії від засновника (5/5).&quot;,
+    &quot;Задекларовано нульовий рівень ознак старіння чи проблем, проте підтверджено наявність постійних повторюваних проблем та втрату 30% продажів.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні дані про структуру та поточну чисельність монтажних бригад, а також їхню виробітку.&quot;,
+    &quot;Не вказано частку обороту, яку генерує єдиний великий клієнт, та умови роботи з єдиним джерелом фінансування.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити та впровадити модель розширення монтажних потужностей (включаючи найм, аутстафінг або залучення субпідрядних бригад електриків та монтажників).&quot;,
+      &quot;why&quot;: &quot;Це ліквідує головне вузьке місце, яке сьогодні коштує компанії 30% втраченого обороту.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення обсягу виконаних монтажів та ліквідація черги замовлень.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник операційного / будівельного напряму&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити пілотну пропозицію регулярно платного сервісного обслуговування (O&amp;M) та SLA для 10 ключових клієнтів.&quot;,
+      &quot;why&quot;: &quot;Створить стабільний та прогнозований грошовий потік (recurring revenue) для поповнення оборотних коштів.&quot;,
+      &quot;expected_result&quot;: &quot;Формування першого пулу регулярного доходу та підвищення LTV клієнтів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник сервісного напряму&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести стратегічну вирівнювальну сесію з керівниками та ключовими працівниками для каскадування топ-3 пріоритетів.&quot;,
+      &quot;why&quot;: &quot;Підвищить рівень розуміння цілей з поточних 3/5 до 5/5 і зніме ризик неузгодженості дій під час розгортання.&quot;,
+      &quot;expected_result&quot;: &quot;Синхронізація дій усіх підрозділів навколо єдиних фокусів на 2026 рік.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити план диверсифікації клієнтського портфеля та сформувати резервний канал залучення оборотного капіталу.&quot;,
+      &quot;why&quot;: &quot;Знизить критичну залежність від одного джерела фінансування та одного великого клієнта.&quot;,
+      &quot;expected_result&quot;: &quot;Зниження частки одного клієнта в структурі доходу та гарантія фінансової стійкості.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Фінансовий менеджер&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Стандартизувати 2-3 пакетні рішення «СЕС + ESS» (системи накопичення) та провести навчання відділу продажів та інженерів.&quot;,
+      &quot;why&quot;: &quot;Дозволить реалізувати наявний потенціал ринку з вищою маржинальністю проєкту.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання середнього чека та прибутковості нових угод.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник відділу продажів / Головний інженер&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Аналіз показує високий потенціал ринку та чітке бачення перспективних продуктів, однак компанія впирається у «стелю» виконання: через брак монтажників втрачається 30% доходу. Окрім цього, існує високий ризик залежності від одного клієнта та одного джерела коштів. Першочергове завдання — розширити монтажні потужності (найм/аутсорсинг), синхронізувати команду навколо 3 головних пріоритетів та запустити регулярні сервісні контракти для поповнення оборотного капіталу.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ STR — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;STR&quot;,
+  &quot;module_name&quot;: &quot;Стратегія&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 65,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;Сильна та актуальна ринкова стратегія перебуває під загрозою через суттєвий розрив між висунутими цілями та ресурсною спроможністю їх виконати.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» володіє якісним розумінням ринку та чітким баченням векторів розвитку: фокус на комплексних EPC-проєктах, системах накопичення (ESS) та сервісі (O&amp;M) повністю відповідає запиту ринку на енергонезалежність. Стратегічний вибір уникнення цінового демпінгу на користь цінності є правильним, а візія становлення топ-5 інтегратором є чітко сформульованою. Однак аналіз виявляє критичний розрив між стратегічними цілями та операційною системою виконання. Головним стопором є дефіцит персоналу (оцінка 1/5) та фінансів (2/5), через що компанія вже втрачає до 30% потенційних замовлень. Системи продажів та маркетингу є неукомплектованими: придбана CRM-система фактично не функціонує, показники CAC, LTV та NPS не вимірюються, а бюджетна підтримка пріоритетів є слабкою (2/5). Система мотивації команди не прив&#x27;язана до стратегічних цілей (2/5). Без термінового налаштування операційного ритму та вирішення ресурсної кризи реалізація стратегії опиниться під загрозою.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;market_intelligence&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Глибоке розуміння темпів зростання ринку СЕС (CAGR 18–25%) та ключових рушіїв (попит на автономність під час відключень).&quot;,
+        &quot;Чітка ідентифікація зовнішніх загрози: воєнні ризики, валютні коливання, дефіцит кадрів та зміна митних правил.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Рішення та оцінки конкурентів досі частково базуються на припущеннях, а не на регулярній аналітиці даних (оцінка даних 3/5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;company_capabilities&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Наявність власного імпорту обладнання з ЄС та експертизи повного циклу (проєктування, монтаж, сервіс).&quot;,
+        &quot;Досвід реалізації понад 1 МВт потужностей та наявність портфеля рішень для B2B і B2C.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критично низький рівень забезпечення людьми (1/5) та потужностями (2/5) для виконання наявного попиту.&quot;,
+        &quot;Низький рівень впровадження цифрових інструментів та процесів обліку клієнтської бази.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_core&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Сформовано надихаючу місію (створення спільноти енергонезалежних об&#x27;єктів) та чітку довгострокову візію 2035 (топ-5 інтегратор з власною платформою).&quot;,
+        &quot;Керівництво демонструє високий рівень розуміння довгострокової суті бізнесу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низький рівень трансляції пріоритетів на рівень рядових працівників, що знижує залученість команди.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;advantages&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Наявність прямого імпорту дозволяє контролювати собівартість краще за звичайних реселерів.&quot;,
+        &quot;Здатність давати швидкі розрахунки окупності та реалізовувати нестандартні об&#x27;єкти (фасадні СЕС).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Заявлені переваги в EPC-сегменті легко копіюються конкурентами; стійкий захисний бар&#x27;єр (moat) у вигляді сервісної платформи чи SLA ще не побудований.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_choice&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Сформовано свідомі межі: відмова від збиткових тендерів та демпінгу.&quot;,
+        &quot;Правильний фокус на суміжних високомаржинальних напрямах: пакети СЕС+ESS та регулярний O&amp;M-сервіс.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Розпорошення уваги між роздрібним інтернет-магазином, B2B-об&#x27;єктами та будівництвом сервісної компанії за обмеженого часу керівників (2/5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;execution&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Визначено оцифровані цілі до 2026 року (25% зростання, 30% частки інтернет-магазину, 50 SLA-контрактів).&quot;,
+        &quot;Призначено відповідальних за ключові проєкти.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Стратегія суттєво недоінвестована ресурсами: фінанси (2/5), люди (1/5), час керівників (2/5).&quot;,
+        &quot;Мотивація та KPI керівників слабо пов&#x27;язані зі стратегічними цілями (2/5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;marketing_ai&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Визначено ключові цільові сегменти та канал інтернет-магазину.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Маркетинг не керований: CRM купили, але не використовують; CAC і LTV не розраховуються.&quot;,
+        &quot;Бюджет не підтримує обрані маркетингові пріоритети (2/5).&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Глибока синхронізація стратегічного фокусу (СЕС+ESS+O&amp;M) із реальними трендами та потребами ринку в Україні.&quot;,
+    &quot;Наявність власного імпорту обладнання з ЄС, що дає маржинальний буфер та контроль постачання.&quot;,
+    &quot;Прозора позиція щодо способів конкуренції: ставка на комплексність, окупність та якість, а не на збитковий демпінг.&quot;,
+    &quot;Чітко вимірювані стратегічні цілі на горизонт до 2026 року.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критичний брак людських ресурсів та потужностей для виконання угод (втрата до 30% доходу).&quot;,
+    &quot;Формальне впровадження CRM та відсутність керованої воронки продажів (невідомі CAC, LTV, конверсії).&quot;,
+    &quot;Слабка ресурсна забезпеченість стратегічних проєктів фінансами та часом топ-менеджменту.&quot;,
+    &quot;Відсутність прив&#x27;язки системи мотивації персоналу та керівників до досягнення стратегічних цілей.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Критичний дефіцит людей (1/5) та фінансів (2/5) при амбіції щорічного зростання &gt;25%&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Спроба масштабувати продажі без ресурсів для виконання робіт призведе до зриву строків, втрати репутації та вигорання команди.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Простоювання CRM-системи та відсутність вимірювання CAC/LTV/воронки&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Ціль вивести інтернет-магазин на 30% обороту без керованої цифрової воронки гарантовано призведе до неконтрольованого зливу рекламних бюджетів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Низький зв&#x27;язок між мотивацією працівників та стратегічними цілями (2/5)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Команда буде фокусуватися на гасінні щоденних операційних пожеж, ігноруючи виконання стратегічних проєктів.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія декларує мету вивести інтернет-магазин на 30% обороту, але при цьому вказує, що CRM не використовується, воронка не вимірюється, а бюджет на маркетинг знаходиться на рівні 2/5.&quot;,
+    &quot;Заявлена висока оцінка розуміння цінності та місії всередині компанії суперечить оцінці 2/5 у розумінні працівниками їхнього особистого внеску в стратегію.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутній точний розрахунок поточної конверсії продажів та вартості залучення клієнта (CAC).&quot;,
+    &quot;Не вказано поточну структуру та продуктивність власного монтажного штату проти субпідрядників.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Впровадити регламент роботи в CRM для відділу продажів та налаштувати щотижневий контроль воронки (ліди, конверсія, причини відмов).&quot;,
+      &quot;why&quot;: &quot;Неможливо управляти зростанням та розвивати інтернет-магазин без базового обліку контактів та розуміння ефективності каналів.&quot;,
+      &quot;expected_result&quot;: &quot;Прозора та керована воронка продажів, виявлення точок втрати клієнтів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник відділу продажів / Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити та упакувати 2–3 типові пакетні рішення «СЕС + ESS» (акумуляція) із розрахованою окупністю для B2B та B2C.&quot;,
+      &quot;why&quot;: &quot;Забезпечить фокус на високомаржинальному сегменті та реалізує ключовий ринковий тренд на автономність.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання середнього чека та підвищення маржинальності проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Головний інженер / Керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити стандартний договір післяпродажного обслуговування (O&amp;M/SLA) та впровадити його обов&#x27;язкове пропонування всім новим та існуючим клієнтам.&quot;,
+      &quot;why&quot;: &quot;Дозволить сформувати прогнозований щомісячний дохід (recurring revenue) та закласти основу для майбутньої енергетичної платформи.&quot;,
+      &quot;expected_result&quot;: &quot;Підписання перших 15–20 сервісних контрактів та запуск регулярних надходжень.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник сервісного напряму&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити гібридну модель виконання монтажів (власний ядро-персонал + акредитовані субпідрядні бригади) зі стандартами якості.&quot;,
+      &quot;why&quot;: &quot;Ліквідує головне вузьке место (дефіцит людей 1/5), яке блокує обробку 30% наявного попиту.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення обсягів монтажу без випереджального зростання постійного фонду оплати праці.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник монтажного напряму&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Переглянути систему KPI для керівників підрозділів, прив&#x27;язавши 30% винагороди до стратегічних цілей (маржа EPC, частка онлайн-продажів, кількість SLA).&quot;,
+      &quot;why&quot;: &quot;Забезпечить синхронізацію командних зусиль навколо стратегії замість операційного хаосу.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення фокусування керівників на досягненні стратегічних орієнтирів 2026 року.&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Стратегічний вектор «Солар Вест Буд» обрано правильно: фокус на системному сервісі, акумуляторах (ESS) та відмові від демпінгу відповідає ринковим трендам. Однак виконати цю стратегію наразі неможливо через кадровий голод, некерований маркетинг та простоювання CRM-системи. Першочергове завдання — оцифрувати воронку продажів у CRM, упакувати сервісні пакети ESS/SLA та залучити субпідрядні бригади для зняття обмежень у монтажі.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ TAL — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;TAL&quot;,
+  &quot;module_name&quot;: &quot;Таланти&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 56,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;Компанія володіє високою зовнішньою привабливістю завдяки динамічному ринку та змісту роботи, але перебуває в зоні високого кадрового ризику через тотальну залежність від трьох ключових фахівців і неформальну систему адаптації та розвитку.&quot;,
+  &quot;diagnosis&quot;: &quot;Система управління талантами в «Солар Вест Буд» функціонує переважно у ситуативному模式, що створює значні ризики для запланованого масштабування бізнесу. Компанія має сильну зовнішню пропозицію (робота у зростаючій сфері енергонезалежності, складні інженерні об&#x27;єкти СЕС/ESS), проте внутрішній досвід працівників суттєво відстає через стихійний розвиток, відсутність прозорих кар&#x27;єрних треків та перевантаження персоналу. Усі 3 критичні для бізнесу ролі (головний інженер, керівник монтажу/сервісу, керівник продажів) знаходяться під критичним ризиком залежності від однієї особи та мають 0 готових наступників («ready now»). Процеси найму базуються на особистій мережі контактів, але адаптація новачків не регламентована (оцінка планів 30/60/90 — 2 з 5), що спричиняє ризик плинності кадрів у перші 12 місяців. Передача знань та навчання відбуваються безсистемно, а корпоративна пам&#x27;ять практично не документується. Для подолання втрат доходу через брак виконавців та забезпечення стійкості бізнесу необхідно терміново стандартизувати онбординг, упровадити матриці компетенцій та заупустити програму підготовки дублерів.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Привабливість роботодавця та бренд роботодавця&quot;,
+      &quot;score&quot;: 52,
+      &quot;evidence&quot;: [
+        &quot;Висока оцінка змісту роботи (4/5) та практичного впливу в ніші енергонезалежності.&quot;,
+        &quot;Ефективне залучення кандидатів через рекомендації та професійну мережу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Розрив між обіцянками та реальністю: стиль керівництва, розвиток, кар&#x27;єрний ріст, навантаження та гнучкість оцінені працівниками лише на 2 з 5.&quot;,
+        &quot;Розвиток бренду роботодавця перебуває на початковому рівні (тестування повідомлень — 1/5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегія талантів і критичні ролі&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначено 3 критичні ролі (технічний керівник, керівник монтажу, керівник продажів).&quot;,
+        &quot;Сформовано конкретні цілі з кадрового покриття та розвитку компетенцій до кінця 2026 року.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Високий рівень ризику залежності від ключових людей (оцінки 4–5 з 5).&quot;,
+        &quot;Час заміни критичних фахівців становить від 2 до 6 місяців, що є критичним для операційної діяльності.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Залучення, відбір і онбординг&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Розуміння дефіцитності ринку за ключовими сегментами (інженери, монтажники — 5/5).&quot;,
+        &quot;Використання кількох оцінювачів при відборі та відсутність сліпої довіри до ШІ.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Слабкий рівень організації 90-денного онбордингу (плани 30/60/90, наставництво, перевірка адаптації — 2 з 5).&quot;,
+        &quot;Якість найму та час виходу на продуктивність не вимірюються системно.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Розвиток трьох інтелектів&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Наявність опрацьованих планів розвитку (ІПР) для 3 ключових ролей.&quot;,
+        &quot;Добре оцінено практичні розбори кейсів та комунікаційні навички.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Матриці компетенцій та професійні стандарти сформовані лише частково (2 з 5).&quot;,
+        &quot;Вимірювання бізнес-ефекту від навчання перебуває на низькому рівні (2 з 5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Керівники, результативність і наступництво&quot;,
+      &quot;score&quot;: 48,
+      &quot;evidence&quot;: [
+        &quot;Щомісячний і щоквартальний ритм проведення 1:1 та talent review.&quot;,
+        &quot;Керівники надають автономію та ставлять ясні очікування (3 з 5).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;0 готових наступників (ready now) для всіх критичних ролей.&quot;,
+        &quot;Слабкі показники керівників у захисті команди від перевантаження та формуванні наступників (2 з 5).&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Утримання, добробут і знання&quot;,
+      &quot;score&quot;: 52,
+      &quot;evidence&quot;: [
+        &quot;Визначено ключові причини плинності (нечіткі очікування, навантаження, мотивація).&quot;,
+        &quot;Працівники мають можливість говорити про перевантаження (3 з 5).&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низький рівень збереження корпоративної пам&#x27;яті та документування знань (2 з 5).&quot;,
+        &quot;Прозорість критеріїв винагороди та нематеріальна мотивація оцінені на 2 з 5.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Тривожні сигнали, дані та ШІ&quot;,
+      &quot;score&quot;: 68,
+      &quot;evidence&quot;: [
+        &quot;Використання ШІ для профілів вакансій, первинного аналізу та планів розвитку.&quot;,
+        &quot;Чітка ідентифікація ризиків виходу сильних людей та ключової залежності.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутність цілісного аналітичного дашборду HR-даних для прийняття управлінських рішень.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Глибока та чітка ідентифікація критичних ролей, їх поточного дефіциту та ризиків заміни.&quot;,
+    &quot;Привабливий зміст роботи та вагомий практичний вплив у швидкозростаючому секторі енергонезалежності.&quot;,
+    &quot;Наявність практико-орієнтованих планів розвитку (ІПР) для ключових фахівців напрямів проєктування, монтажу та продажів.&quot;,
+    &quot;Активне використання реферальних каналів залучення кандидатів із високим показником якості найму.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Повна відсутність готових заміщаючих працівників («ready now») для всіх ключових управлінських та технічних посад.&quot;,
+    &quot;Низький рівень формалізації та підтримки 90-денної адаптації нових працівників (оцінка 2/5).&quot;,
+    &quot;Суттєвий розрив між зовнішнім брендом та реальним досвідом працівників щодо навантаження, розвитку та стилю керівництва.&quot;,
+    &quot;Слабке документування операційних знань і стандартів (2/5), що створює загрозу втрати корпоративної пам&#x27;яті.&quot;,
+    &quot;Непрозора система мотивації та відсутність чітких кар&#x27;єрних маршрутів для утримання фахівців.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Критична залежність бізнесу від 3 фахівців без жодного готового наступника (Ready now: 0)&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Раптовий вихід головного інженера або керівника монтажу зупинить реалізацію проєктів на 3–6 місяців та призведе до прямих збитків.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Низька якість 90-денної адаптації новачків на тлі високої дефіцитності спеціалістів на ринку&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Компанія витрачає час і зусилля на найм, але втрачає залучених людей у перші 3–9 місяців через хаотичні очікування та відсутність наставників.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Низькі оцінки досвіду працівників щодо стилю керівництва (2/5) та захисту від перевантаження (2/5)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Провокує емоційне вигорання та підвищує ризик виходу найбільш кваліфікованих ініціативних фахівців.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Менеджмент декларує високу привабливість компанії (4/5 за зміст роботи та вплив), однак реальний внутрішній досвід щодо керівництва, розвитку, кар&#x27;єрного росту та навантаження оцінює лише на 2/5.&quot;,
+    &quot;Сформовано мету забезпечити 100% покриття критичних ролей кадровим резервом до кінця 2026 року, але поточні інструменти кар&#x27;єрних треків та наставництва залишаються на початковому неформальному рівні.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутній системний розрахунок показника плинності кадрів (turnover rate) у розрізі перших 3, 6 та 12 місяців роботи.&quot;,
+    &quot;Не обраховано час виходу нових інженерів та монтажників на повну продуктивність (time-to-productivity).&quot;,
+    &quot;Відсутня регулярна оцифрована оцінка рівня задоволеності та вигорання персоналу (eNPS / pulse surveys).&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Затвердити та впровадити стандартизовану програму 90-денного онбордингу (чекліст 30/60/90, закріплений наставник, регулярний 1:1 фідбек).&quot;,
+      &quot;why&quot;: &quot;Усуне основну причину плинності нових працівників у перші місяці та прискорить їх вихід на повну продуктивність.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення показника проходження випробувального терміну до 90% та скорочення часу адаптації.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / HR-координатор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити та оцифрувати матриці компетенцій для ролей інженера СЕС/ESS, керівника монтажу та B2B-менеджера з продажів.&quot;,
+      &quot;why&quot;: &quot;Створить прозорі орієнтири для оцінки, підвищення кваліфікації та прозорої прив&#x27;язки винагороди до навичок.&quot;,
+      &quot;expected_result&quot;: &quot;Оцифрована база навичок команди та сформовані індивідуальні плани розвитку (ІПР) для 100% критичних ролей.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / Керівники напрямів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити систему дублювання критичних ролей через парне проєктування, тіньове керівництво монтажем та спільне ведення угоди.&quot;,
+      &quot;why&quot;: &quot;Зніме критичну залежність бізнесу від 3 осіб і сформує резерв наступників терміном підготовки 1–2 роки.&quot;,
+      &quot;expected_result&quot;: &quot;Зниження показника кадрового ризику (coverage risk) та наявність принаймні 3 підготовлених дублерів.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / Керівники напрямів&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити єдиний баз-знань регламентів (SOP проєктів, чеклісти монтажу, CRM-playbook) для збереження корпоративної пам&#x27;яті.&quot;,
+      &quot;why&quot;: &quot;Унеможливить втрату унікальних знань при виході ключових людей та зменшить кількість повторюваних операційних помилок.&quot;,
+      &quot;expected_result&quot;: &quot;Задокументовані стандарти для 80% операційних процесів та вільний доступ новачків до матеріалів.&quot;,
+      &quot;owner_role&quot;: &quot;Головний інженер / Керівник сервісу&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити щомісячний контроль навантаження та регламент щотижневих 1:1 зустрічей керівників із командами.&quot;,
+      &quot;why&quot;: &quot;Виправить проблеми слабкого зворотного зв&#x27;язку та допоможе вчасно виявляти й компенсувати вигорання.&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення рівня вигорання та збереження 100% ключових фахівців компанії.&quot;,
+      &quot;owner_role&quot;: &quot;Керівники функціональних підрозділів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Аналіз підсистеми «Таланти» показує, що компанія «Солар Вест Буд» має високий потенціал залучення завдяки цікавим інженерним задачам та ринку, що зростає. Проте бізнес перебуває в зоні вразливості: 100% критичних ролей тримаються на поодиноких фахівцях без підготовлених наступників, а адаптація новачків відбувається неформально. Першочергові завдання: за 30 днів стандартизувати адаптацію 30/60/90 та розробити матриці компетенцій, а за 90 днів запустити програму підготовки дублерів і зафіксувати операційні знання в базі стандартів.&quot;
+}</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

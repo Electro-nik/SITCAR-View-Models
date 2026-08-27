@@ -1,0 +1,1519 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DeepSeek V4 Flash 0731</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>DeepSeek V4 Flash 0731</h1>
+<div class="muted">OpenRouter / DeepSeek · Prompt: SYS · 2026-08-27T09:21:19</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>deepseek/deepseek-v4-flash-0731</strong></div>
+<div class="metric"><span>Returned</span><strong>deepseek/deepseek-v4-flash-0731</strong></div>
+<div class="metric"><span>Response ID</span><strong>gen-1787810698-8bu9E8E9aMXaVBc4jduQ</strong></div>
+<div class="metric"><span>Context window</span><strong>1 310 720</strong></div>
+<div class="metric"><span>Max output</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Latency</span><strong>981.605 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>9 059</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>11 575</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>6 795</strong></div>
+<div class="metric"><span>Total tokens</span><strong>20 634</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.040000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.000362</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.008000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$0.080000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.000926</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.001288</strong></div>
+</section>
+</div>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">SYS</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Системна перевірка</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">limited</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">67</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">0.6</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Організація відкрита до змін і має добре налагоджений зворотний зв&#x27;язок, але критичні вузькі місця в персоналі та залежність від одного клієнта загрожують стійкості.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Організація демонструє високу відкритість до зовнішніх сигналів: регулярно аналізує ринок, використовує різноманітні джерела інформації та реагує на зміни (наприклад, закупівля панелей через зростання цін). Зворотний зв&#x27;язок працює ефективно — співробітники можуть безпечно повідомляти про проблеми, відгуки клієнтів збираються системно, а рішення перевіряються. Проте існують серйозні вузькі місця: нестача монтажного персоналу призводить до втрати 30% обороту, а залежність від одного великого клієнта та одного джерела фінансування створює високі ризики. Команда недостатньо розуміє стратегічні пріоритети (3 з 5), а внутрішні синергії практично не використовуються — відсутні міжфункціональні проєкти, а власники процесів на стиках не визначені. Ознаки старіння відсутні, що характерно для молодої компанії, але відсутність активних дій для усунення системних проблем (за відповіддю «нічого») може призвести до їх накопичення. Стратегічна цілісність середня: є місія та напрями розвитку, але команда не повністю їх поділяє. Загалом організація потребує зосередження на операційній стійкості, диверсифікації ризиків та покращенні внутрішньої комунікації.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Відкритість і зовнішня чутливість</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Оцінка здатності помічати зміни — 4 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Аналіз зовнішнього середовища проводиться щотижня або постійно</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Використовуються різні джерела: клієнти, партнери, працівники, аналіз конкурентів, технологічні тренди</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Конкретний сигнал (зростання цін на панелі) призвів до додаткової закупівлі</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Визнано, що нестача оборотних коштів є інформацією, яку організація може не бачити</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає чітких метрик для оцінки швидкості реакції на зовнішні зміни</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутній систематичний аналіз конкурентів у довгостроковій перспективі</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Зворотний зв&#x27;язок і навчання</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Усі п&#x27;ять пунктів зворотного зв&#x27;язку оцінені на 5 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Працівники можуть безпечно повідомляти про проблеми</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Відгуки клієнтів збираються регулярно і доходять до керівництва</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">За сигналами призначаються відповідальні та перевіряються результати</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Оцінка здатності навчатися швидше за середовище — 4 з 5</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Не вказано, як вимірюється ефективність навчання на основі зворотного зв&#x27;язку</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутні приклади конкретних змін, впроваджених завдяки зворотному зв&#x27;язку</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Узгодженість і синергія</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Розуміння трьох головних пріоритетів командою — 3 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Спільна робота підрозділів оцінена в середньому на 4, але два пункти (власники процесів на стиках, міжфункціональні проєкти) — 3</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Внутрішні синергетичні можливості не використовуються</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Зовнішні синергії використовуються: стратегічні партнери, дистриб&#x27;ютори, платформи</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Визначено недостатньо використані можливості: сервіс, ESS, інтернет-магазин</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає опису наявних міжфункціональних проєктів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не зрозуміло, як узгоджуються цілі між підрозділами</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Вузькі місця і стійкість</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">40</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Вузькі місця: фінансування, запаси, пошук і утримання працівників</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Головне вузьке місце — персонал: неможливість швидкого монтажу, втрати 30% товарообороту</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Залежність від одного джерела фінансування та одного великого клієнта</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Для розвитку необхідне збільшення монтажних бригад</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Не надано фінансових даних для підтвердження втрат 30%</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутня деталізація структури залежності від клієнта та джерела фінансування</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Архітектура управління</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">70</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Рішення ухвалюються там, де є інформація — 4 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Ролі та повноваження зрозумілі — 3 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Критичні рішення ухвалюються швидко — 5 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Для простої дії не потрібні зайві погодження — 5 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Звіти та наради корисні — 4 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><span class="j-str">На стиках немає нічийних процесів — 4 з 5</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Ролі та повноваження недостатньо чіткі (оцінка 3)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає даних про процедури делегування повноважень</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Стратегічна цілісність і довголіття</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">70</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Місія та сенс існування зрозумілі — 4 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Команда може назвати три пріоритети — 3 з 5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Розглядаються нові продукти, ринки, канали, підвищення ефективності</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Довголіття забезпечують: репутація, близькість до клієнта, стратегічний фокус, партнерства</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Всі ознаки старіння оцінені як 0</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає документованої стратегії (лише згадка про готовність надати)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутні конкретні плани реалізації стратегічних цілей</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Оновлення та відсутність старіння</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Усі ознаки старіння оцінені як 0 (відмінно)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Визначено невикористані можливості для зростання (сервіс, ESS, інтернет-магазин)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Організація потребує руху у напрямку розгортання (масштабування)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Молодий вік компанії (2024) та відсутність бюрократизації</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає доказів впровадження інноваційних рішень</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутня інформація про заходи з підтримки навчання та розвитку персоналу</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Висока відкритість до зовнішніх сигналів: регулярний аналіз ринку та швидка реакція на зміни</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Ефективний зворотний зв&#x27;язок: працівники можуть повідомляти про проблеми, рішення перевіряються</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Відсутні ознаки старіння: немає бюрократизації, консерватизму, ізоляції від середовища</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Використання зовнішніх синергій: стратегічні партнери, дистриб&#x27;ютори, платформи</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Чітке бачення довгострокових цілей та напрямків розвитку</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Критична нестача монтажного персоналу, що призводить до втрати 30% обороту</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Висока залежність від одного великого клієнта та одного джерела фінансування</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Команда недостатньо розуміє стратегічні пріоритети (3 з 5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Внутрішні синергії не використовуються, слабкий розвиток міжфункціональних проєктів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Відсутність активних дій для усунення системних проблем (відповідь «нічого»)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Залежність від одного великого клієнта та одного джерела фінансування</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">critical</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Втрата клієнта або джерела фінансування може зупинити діяльність компанії або різко знизити доходи</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Втрата 30% товарообороту через нестачу монтажних бригад</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Це означає значний упущений дохід і незадоволений попит, що стримує зростання</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Відсутність дій для усунення системних проблем (відповідь «нічого» на питання 27)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Проблеми повторюються, але не вирішуються, що може призвести до накопичення кризових ситуацій</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Низьке розуміння стратегічних пріоритетів командою (3 з 5)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Без єдиного розуміння цілей різні підрозділи можуть діяти неузгоджено, знижуючи ефективність</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Відсутність міжфункціональних проєктів та власників процесів на стиках</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Це може призводити до конфліктів між підрозділами та втрат на межфункціональних стиках</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Заявлено про відсутність конфліктів, але при цьому є нестача персоналу та несогласованість у ролях — це може свідчити про приховані конфлікти або недостатнє виявлення</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Вказано, що додаткова централізація/децентралізація не потрібна, але при цьому ролі та повноваження не повністю зрозумілі (3 з 5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Відсутні ознаки старіння, але немає жодних дій для вирішення системних проблем — це може вказувати на самозаспокоєність</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає підтверджених даних про втрати 30% товарообороту (як вимірювалися)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутня деталізація залежності від одного клієнта та джерела фінансування (частка доходу, умови)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не вказано, які саме заходи вживалися для вирішення проблем (відповідь «нічого» не містить деталей)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Немає фінансових показників, що підтверджують нестачу оборотних коштів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Не надано стратегічний документ або план дій для досягнення цілей</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити програму найму та навчання монтажних бригад (включно з електриками) для збільшення кількості одночасних монтажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Нестача персоналу призводить до втрати 30% обороту; усунення цього дефіциту дозволить задовольнити попит і збільшити дохід</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зменшення втрат товарообороту, збільшення кількості завершених проєктів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / HR-менеджер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів для плану, 90 днів для перших результатів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Диверсифікувати клієнтську базу та джерела фінансування: залучити нових клієнтів, розвивати сервісні послуги, розглянути кредитні лінії або гранти</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Залежність від одного клієнта та джерела фінансування створює критичний ризик стійкості</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зниження концентрації ризиків, стабільніший грошовий потік</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / фінансовий менеджер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Провести стратегічну сесію для всієї команди з метою чіткого формулювання трьох головних пріоритетів та індикаторів їх досягнення</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Команда недостатньо розуміє пріоритети (3 з 5), що знижує узгодженість дій</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення рівня розуміння цілей до 4-5, краща координація роботи</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / директор з розвитку</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Створити робочу групу для розвитку сервісного обслуговування (O&amp;M) та гібридних рішень (СЕС+ESS) з пілотними проєктами на 10 клієнтах</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Це дозволить отримати повторні доходи, стабілізувати грошовий потік і диференціюватися від конкурентів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Нові джерела доходу, підвищення лояльності клієнтів, зменшення залежності від разових продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Технічний директор</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів для запуску пілотів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Впровадити систему регулярного моніторингу системних проблем та щомісячні зустрічі для їх вирішення</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Відповідь «нічого» на питання про дії свідчить про відсутність процесу усунення проблем; це призводить до їх повторення</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Виявлення та вирішення проблем на ранніх стадіях, запобігання кризам</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / операційний менеджер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів для впровадження системи</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Компанія «Солар Вест Буд» демонструє хорошу відкритість до змін та ефективний зворотний зв&#x27;язок, але стикається з критичними операційними проблемами. Головна проблема — нестача монтажників, що призводить до втрати 30% обороту. Також існує небезпечна залежність від одного клієнта та одного джерела фінансування. Команда недостатньо розуміє стратегічні пріоритети, а внутрішні синергії не використовуються. Рекомендується негайно вжити заходів для найму персоналу, диверсифікації ризиків, покращення комунікації цілей та запуску нових напрямків (сервіс, ESS). Відсутність дій по вирішенню системних проблем є тривожним сигналом — потрібно впровадити процес безперервного вдосконалення.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+  &quot;module_code&quot;: &quot;SYS&quot;,
+  &quot;module_name&quot;: &quot;Системна перевірка&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 67,
+  &quot;confidence&quot;: 0.6,
+  &quot;headline&quot;: &quot;Організація відкрита до змін і має добре налагоджений зворотний зв&#x27;язок, але критичні вузькі місця в персоналі та залежність від одного клієнта загрожують стійкості.&quot;,
+  &quot;diagnosis&quot;: &quot;Організація демонструє високу відкритість до зовнішніх сигналів: регулярно аналізує ринок, використовує різноманітні джерела інформації та реагує на зміни (наприклад, закупівля панелей через зростання цін). Зворотний зв&#x27;язок працює ефективно — співробітники можуть безпечно повідомляти про проблеми, відгуки клієнтів збираються системно, а рішення перевіряються. Проте існують серйозні вузькі місця: нестача монтажного персоналу призводить до втрати 30% обороту, а залежність від одного великого клієнта та одного джерела фінансування створює високі ризики. Команда недостатньо розуміє стратегічні пріоритети (3 з 5), а внутрішні синергії практично не використовуються — відсутні міжфункціональні проєкти, а власники процесів на стиках не визначені. Ознаки старіння відсутні, що характерно для молодої компанії, але відсутність активних дій для усунення системних проблем (за відповіддю «нічого») може призвести до їх накопичення. Стратегічна цілісність середня: є місія та напрями розвитку, але команда не повністю їх поділяє. Загалом організація потребує зосередження на операційній стійкості, диверсифікації ризиків та покращенні внутрішньої комунікації.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Відкритість і зовнішня чутливість&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Оцінка здатності помічати зміни — 4 з 5&quot;,
+        &quot;Аналіз зовнішнього середовища проводиться щотижня або постійно&quot;,
+        &quot;Використовуються різні джерела: клієнти, партнери, працівники, аналіз конкурентів, технологічні тренди&quot;,
+        &quot;Конкретний сигнал (зростання цін на панелі) призвів до додаткової закупівлі&quot;,
+        &quot;Визнано, що нестача оборотних коштів є інформацією, яку організація може не бачити&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає чітких метрик для оцінки швидкості реакції на зовнішні зміни&quot;,
+        &quot;Відсутній систематичний аналіз конкурентів у довгостроковій перспективі&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Зворотний зв&#x27;язок і навчання&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Усі п&#x27;ять пунктів зворотного зв&#x27;язку оцінені на 5 з 5&quot;,
+        &quot;Працівники можуть безпечно повідомляти про проблеми&quot;,
+        &quot;Відгуки клієнтів збираються регулярно і доходять до керівництва&quot;,
+        &quot;За сигналами призначаються відповідальні та перевіряються результати&quot;,
+        &quot;Оцінка здатності навчатися швидше за середовище — 4 з 5&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не вказано, як вимірюється ефективність навчання на основі зворотного зв&#x27;язку&quot;,
+        &quot;Відсутні приклади конкретних змін, впроваджених завдяки зворотному зв&#x27;язку&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Узгодженість і синергія&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Розуміння трьох головних пріоритетів командою — 3 з 5&quot;,
+        &quot;Спільна робота підрозділів оцінена в середньому на 4, але два пункти (власники процесів на стиках, міжфункціональні проєкти) — 3&quot;,
+        &quot;Внутрішні синергетичні можливості не використовуються&quot;,
+        &quot;Зовнішні синергії використовуються: стратегічні партнери, дистриб&#x27;ютори, платформи&quot;,
+        &quot;Визначено недостатньо використані можливості: сервіс, ESS, інтернет-магазин&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає опису наявних міжфункціональних проєктів&quot;,
+        &quot;Не зрозуміло, як узгоджуються цілі між підрозділами&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Вузькі місця і стійкість&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Вузькі місця: фінансування, запаси, пошук і утримання працівників&quot;,
+        &quot;Головне вузьке місце — персонал: неможливість швидкого монтажу, втрати 30% товарообороту&quot;,
+        &quot;Залежність від одного джерела фінансування та одного великого клієнта&quot;,
+        &quot;Для розвитку необхідне збільшення монтажних бригад&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не надано фінансових даних для підтвердження втрат 30%&quot;,
+        &quot;Відсутня деталізація структури залежності від клієнта та джерела фінансування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Архітектура управління&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалюються там, де є інформація — 4 з 5&quot;,
+        &quot;Ролі та повноваження зрозумілі — 3 з 5&quot;,
+        &quot;Критичні рішення ухвалюються швидко — 5 з 5&quot;,
+        &quot;Для простої дії не потрібні зайві погодження — 5 з 5&quot;,
+        &quot;Звіти та наради корисні — 4 з 5&quot;,
+        &quot;На стиках немає нічийних процесів — 4 з 5&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ролі та повноваження недостатньо чіткі (оцінка 3)&quot;,
+        &quot;Немає даних про процедури делегування повноважень&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічна цілісність і довголіття&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Місія та сенс існування зрозумілі — 4 з 5&quot;,
+        &quot;Команда може назвати три пріоритети — 3 з 5&quot;,
+        &quot;Розглядаються нові продукти, ринки, канали, підвищення ефективності&quot;,
+        &quot;Довголіття забезпечують: репутація, близькість до клієнта, стратегічний фокус, партнерства&quot;,
+        &quot;Всі ознаки старіння оцінені як 0&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає документованої стратегії (лише згадка про готовність надати)&quot;,
+        &quot;Відсутні конкретні плани реалізації стратегічних цілей&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Оновлення та відсутність старіння&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Усі ознаки старіння оцінені як 0 (відмінно)&quot;,
+        &quot;Визначено невикористані можливості для зростання (сервіс, ESS, інтернет-магазин)&quot;,
+        &quot;Організація потребує руху у напрямку розгортання (масштабування)&quot;,
+        &quot;Молодий вік компанії (2024) та відсутність бюрократизації&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає доказів впровадження інноваційних рішень&quot;,
+        &quot;Відсутня інформація про заходи з підтримки навчання та розвитку персоналу&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока відкритість до зовнішніх сигналів: регулярний аналіз ринку та швидка реакція на зміни&quot;,
+    &quot;Ефективний зворотний зв&#x27;язок: працівники можуть повідомляти про проблеми, рішення перевіряються&quot;,
+    &quot;Відсутні ознаки старіння: немає бюрократизації, консерватизму, ізоляції від середовища&quot;,
+    &quot;Використання зовнішніх синергій: стратегічні партнери, дистриб&#x27;ютори, платформи&quot;,
+    &quot;Чітке бачення довгострокових цілей та напрямків розвитку&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична нестача монтажного персоналу, що призводить до втрати 30% обороту&quot;,
+    &quot;Висока залежність від одного великого клієнта та одного джерела фінансування&quot;,
+    &quot;Команда недостатньо розуміє стратегічні пріоритети (3 з 5)&quot;,
+    &quot;Внутрішні синергії не використовуються, слабкий розвиток міжфункціональних проєктів&quot;,
+    &quot;Відсутність активних дій для усунення системних проблем (відповідь «нічого»)&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Залежність від одного великого клієнта та одного джерела фінансування&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Втрата клієнта або джерела фінансування може зупинити діяльність компанії або різко знизити доходи&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Втрата 30% товарообороту через нестачу монтажних бригад&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Це означає значний упущений дохід і незадоволений попит, що стримує зростання&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Відсутність дій для усунення системних проблем (відповідь «нічого» на питання 27)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Проблеми повторюються, але не вирішуються, що може призвести до накопичення кризових ситуацій&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Низьке розуміння стратегічних пріоритетів командою (3 з 5)&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Без єдиного розуміння цілей різні підрозділи можуть діяти неузгоджено, знижуючи ефективність&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Відсутність міжфункціональних проєктів та власників процесів на стиках&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Це може призводити до конфліктів між підрозділами та втрат на межфункціональних стиках&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Заявлено про відсутність конфліктів, але при цьому є нестача персоналу та несогласованість у ролях — це може свідчити про приховані конфлікти або недостатнє виявлення&quot;,
+    &quot;Вказано, що додаткова централізація/децентралізація не потрібна, але при цьому ролі та повноваження не повністю зрозумілі (3 з 5)&quot;,
+    &quot;Відсутні ознаки старіння, але немає жодних дій для вирішення системних проблем — це може вказувати на самозаспокоєність&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Немає підтверджених даних про втрати 30% товарообороту (як вимірювалися)&quot;,
+    &quot;Відсутня деталізація залежності від одного клієнта та джерела фінансування (частка доходу, умови)&quot;,
+    &quot;Не вказано, які саме заходи вживалися для вирішення проблем (відповідь «нічого» не містить деталей)&quot;,
+    &quot;Немає фінансових показників, що підтверджують нестачу оборотних коштів&quot;,
+    &quot;Не надано стратегічний документ або план дій для досягнення цілей&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити програму найму та навчання монтажних бригад (включно з електриками) для збільшення кількості одночасних монтажів&quot;,
+      &quot;why&quot;: &quot;Нестача персоналу призводить до втрати 30% обороту; усунення цього дефіциту дозволить задовольнити попит і збільшити дохід&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення втрат товарообороту, збільшення кількості завершених проєктів&quot;,
+      &quot;owner_role&quot;: &quot;Власник / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів для плану, 90 днів для перших результатів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Диверсифікувати клієнтську базу та джерела фінансування: залучити нових клієнтів, розвивати сервісні послуги, розглянути кредитні лінії або гранти&quot;,
+      &quot;why&quot;: &quot;Залежність від одного клієнта та джерела фінансування створює критичний ризик стійкості&quot;,
+      &quot;expected_result&quot;: &quot;Зниження концентрації ризиків, стабільніший грошовий потік&quot;,
+      &quot;owner_role&quot;: &quot;Власник / фінансовий менеджер&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести стратегічну сесію для всієї команди з метою чіткого формулювання трьох головних пріоритетів та індикаторів їх досягнення&quot;,
+      &quot;why&quot;: &quot;Команда недостатньо розуміє пріоритети (3 з 5), що знижує узгодженість дій&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення рівня розуміння цілей до 4-5, краща координація роботи&quot;,
+      &quot;owner_role&quot;: &quot;Власник / директор з розвитку&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити робочу групу для розвитку сервісного обслуговування (O&amp;M) та гібридних рішень (СЕС+ESS) з пілотними проєктами на 10 клієнтах&quot;,
+      &quot;why&quot;: &quot;Це дозволить отримати повторні доходи, стабілізувати грошовий потік і диференціюватися від конкурентів&quot;,
+      &quot;expected_result&quot;: &quot;Нові джерела доходу, підвищення лояльності клієнтів, зменшення залежності від разових продажів&quot;,
+      &quot;owner_role&quot;: &quot;Технічний директор&quot;,
+      &quot;deadline&quot;: &quot;90 днів для запуску пілотів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити систему регулярного моніторингу системних проблем та щомісячні зустрічі для їх вирішення&quot;,
+      &quot;why&quot;: &quot;Відповідь «нічого» на питання про дії свідчить про відсутність процесу усунення проблем; це призводить до їх повторення&quot;,
+      &quot;expected_result&quot;: &quot;Виявлення та вирішення проблем на ранніх стадіях, запобігання кризам&quot;,
+      &quot;owner_role&quot;: &quot;Власник / операційний менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів для впровадження системи&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Компанія «Солар Вест Буд» демонструє хорошу відкритість до змін та ефективний зворотний зв&#x27;язок, але стикається з критичними операційними проблемами. Головна проблема — нестача монтажників, що призводить до втрати 30% обороту. Також існує небезпечна залежність від одного клієнта та одного джерела фінансування. Команда недостатньо розуміє стратегічні пріоритети, а внутрішні синергії не використовуються. Рекомендується негайно вжити заходів для найму персоналу, диверсифікації ризиків, покращення комунікації цілей та запуску нових напрямків (сервіс, ESS). Відсутність дій по вирішенню системних проблем є тривожним сигналом — потрібно впровадити процес безперервного вдосконалення.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;SYS&quot;,
+  &quot;module_name&quot;: &quot;Системна перевірка&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 67,
+  &quot;confidence&quot;: 0.6,
+  &quot;headline&quot;: &quot;Організація відкрита до змін і має добре налагоджений зворотний зв&#x27;язок, але критичні вузькі місця в персоналі та залежність від одного клієнта загрожують стійкості.&quot;,
+  &quot;diagnosis&quot;: &quot;Організація демонструє високу відкритість до зовнішніх сигналів: регулярно аналізує ринок, використовує різноманітні джерела інформації та реагує на зміни (наприклад, закупівля панелей через зростання цін). Зворотний зв&#x27;язок працює ефективно — співробітники можуть безпечно повідомляти про проблеми, відгуки клієнтів збираються системно, а рішення перевіряються. Проте існують серйозні вузькі місця: нестача монтажного персоналу призводить до втрати 30% обороту, а залежність від одного великого клієнта та одного джерела фінансування створює високі ризики. Команда недостатньо розуміє стратегічні пріоритети (3 з 5), а внутрішні синергії практично не використовуються — відсутні міжфункціональні проєкти, а власники процесів на стиках не визначені. Ознаки старіння відсутні, що характерно для молодої компанії, але відсутність активних дій для усунення системних проблем (за відповіддю «нічого») може призвести до їх накопичення. Стратегічна цілісність середня: є місія та напрями розвитку, але команда не повністю їх поділяє. Загалом організація потребує зосередження на операційній стійкості, диверсифікації ризиків та покращенні внутрішньої комунікації.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Відкритість і зовнішня чутливість&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Оцінка здатності помічати зміни — 4 з 5&quot;,
+        &quot;Аналіз зовнішнього середовища проводиться щотижня або постійно&quot;,
+        &quot;Використовуються різні джерела: клієнти, партнери, працівники, аналіз конкурентів, технологічні тренди&quot;,
+        &quot;Конкретний сигнал (зростання цін на панелі) призвів до додаткової закупівлі&quot;,
+        &quot;Визнано, що нестача оборотних коштів є інформацією, яку організація може не бачити&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає чітких метрик для оцінки швидкості реакції на зовнішні зміни&quot;,
+        &quot;Відсутній систематичний аналіз конкурентів у довгостроковій перспективі&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Зворотний зв&#x27;язок і навчання&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Усі п&#x27;ять пунктів зворотного зв&#x27;язку оцінені на 5 з 5&quot;,
+        &quot;Працівники можуть безпечно повідомляти про проблеми&quot;,
+        &quot;Відгуки клієнтів збираються регулярно і доходять до керівництва&quot;,
+        &quot;За сигналами призначаються відповідальні та перевіряються результати&quot;,
+        &quot;Оцінка здатності навчатися швидше за середовище — 4 з 5&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не вказано, як вимірюється ефективність навчання на основі зворотного зв&#x27;язку&quot;,
+        &quot;Відсутні приклади конкретних змін, впроваджених завдяки зворотному зв&#x27;язку&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Узгодженість і синергія&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Розуміння трьох головних пріоритетів командою — 3 з 5&quot;,
+        &quot;Спільна робота підрозділів оцінена в середньому на 4, але два пункти (власники процесів на стиках, міжфункціональні проєкти) — 3&quot;,
+        &quot;Внутрішні синергетичні можливості не використовуються&quot;,
+        &quot;Зовнішні синергії використовуються: стратегічні партнери, дистриб&#x27;ютори, платформи&quot;,
+        &quot;Визначено недостатньо використані можливості: сервіс, ESS, інтернет-магазин&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає опису наявних міжфункціональних проєктів&quot;,
+        &quot;Не зрозуміло, як узгоджуються цілі між підрозділами&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Вузькі місця і стійкість&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Вузькі місця: фінансування, запаси, пошук і утримання працівників&quot;,
+        &quot;Головне вузьке місце — персонал: неможливість швидкого монтажу, втрати 30% товарообороту&quot;,
+        &quot;Залежність від одного джерела фінансування та одного великого клієнта&quot;,
+        &quot;Для розвитку необхідне збільшення монтажних бригад&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не надано фінансових даних для підтвердження втрат 30%&quot;,
+        &quot;Відсутня деталізація структури залежності від клієнта та джерела фінансування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Архітектура управління&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Рішення ухвалюються там, де є інформація — 4 з 5&quot;,
+        &quot;Ролі та повноваження зрозумілі — 3 з 5&quot;,
+        &quot;Критичні рішення ухвалюються швидко — 5 з 5&quot;,
+        &quot;Для простої дії не потрібні зайві погодження — 5 з 5&quot;,
+        &quot;Звіти та наради корисні — 4 з 5&quot;,
+        &quot;На стиках немає нічийних процесів — 4 з 5&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ролі та повноваження недостатньо чіткі (оцінка 3)&quot;,
+        &quot;Немає даних про процедури делегування повноважень&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічна цілісність і довголіття&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Місія та сенс існування зрозумілі — 4 з 5&quot;,
+        &quot;Команда може назвати три пріоритети — 3 з 5&quot;,
+        &quot;Розглядаються нові продукти, ринки, канали, підвищення ефективності&quot;,
+        &quot;Довголіття забезпечують: репутація, близькість до клієнта, стратегічний фокус, партнерства&quot;,
+        &quot;Всі ознаки старіння оцінені як 0&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає документованої стратегії (лише згадка про готовність надати)&quot;,
+        &quot;Відсутні конкретні плани реалізації стратегічних цілей&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Оновлення та відсутність старіння&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Усі ознаки старіння оцінені як 0 (відмінно)&quot;,
+        &quot;Визначено невикористані можливості для зростання (сервіс, ESS, інтернет-магазин)&quot;,
+        &quot;Організація потребує руху у напрямку розгортання (масштабування)&quot;,
+        &quot;Молодий вік компанії (2024) та відсутність бюрократизації&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає доказів впровадження інноваційних рішень&quot;,
+        &quot;Відсутня інформація про заходи з підтримки навчання та розвитку персоналу&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока відкритість до зовнішніх сигналів: регулярний аналіз ринку та швидка реакція на зміни&quot;,
+    &quot;Ефективний зворотний зв&#x27;язок: працівники можуть повідомляти про проблеми, рішення перевіряються&quot;,
+    &quot;Відсутні ознаки старіння: немає бюрократизації, консерватизму, ізоляції від середовища&quot;,
+    &quot;Використання зовнішніх синергій: стратегічні партнери, дистриб&#x27;ютори, платформи&quot;,
+    &quot;Чітке бачення довгострокових цілей та напрямків розвитку&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична нестача монтажного персоналу, що призводить до втрати 30% обороту&quot;,
+    &quot;Висока залежність від одного великого клієнта та одного джерела фінансування&quot;,
+    &quot;Команда недостатньо розуміє стратегічні пріоритети (3 з 5)&quot;,
+    &quot;Внутрішні синергії не використовуються, слабкий розвиток міжфункціональних проєктів&quot;,
+    &quot;Відсутність активних дій для усунення системних проблем (відповідь «нічого»)&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Залежність від одного великого клієнта та одного джерела фінансування&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Втрата клієнта або джерела фінансування може зупинити діяльність компанії або різко знизити доходи&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Втрата 30% товарообороту через нестачу монтажних бригад&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Це означає значний упущений дохід і незадоволений попит, що стримує зростання&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Відсутність дій для усунення системних проблем (відповідь «нічого» на питання 27)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Проблеми повторюються, але не вирішуються, що може призвести до накопичення кризових ситуацій&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Низьке розуміння стратегічних пріоритетів командою (3 з 5)&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Без єдиного розуміння цілей різні підрозділи можуть діяти неузгоджено, знижуючи ефективність&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Відсутність міжфункціональних проєктів та власників процесів на стиках&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Це може призводити до конфліктів між підрозділами та втрат на межфункціональних стиках&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Заявлено про відсутність конфліктів, але при цьому є нестача персоналу та несогласованість у ролях — це може свідчити про приховані конфлікти або недостатнє виявлення&quot;,
+    &quot;Вказано, що додаткова централізація/децентралізація не потрібна, але при цьому ролі та повноваження не повністю зрозумілі (3 з 5)&quot;,
+    &quot;Відсутні ознаки старіння, але немає жодних дій для вирішення системних проблем — це може вказувати на самозаспокоєність&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Немає підтверджених даних про втрати 30% товарообороту (як вимірювалися)&quot;,
+    &quot;Відсутня деталізація залежності від одного клієнта та джерела фінансування (частка доходу, умови)&quot;,
+    &quot;Не вказано, які саме заходи вживалися для вирішення проблем (відповідь «нічого» не містить деталей)&quot;,
+    &quot;Немає фінансових показників, що підтверджують нестачу оборотних коштів&quot;,
+    &quot;Не надано стратегічний документ або план дій для досягнення цілей&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити програму найму та навчання монтажних бригад (включно з електриками) для збільшення кількості одночасних монтажів&quot;,
+      &quot;why&quot;: &quot;Нестача персоналу призводить до втрати 30% обороту; усунення цього дефіциту дозволить задовольнити попит і збільшити дохід&quot;,
+      &quot;expected_result&quot;: &quot;Зменшення втрат товарообороту, збільшення кількості завершених проєктів&quot;,
+      &quot;owner_role&quot;: &quot;Власник / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів для плану, 90 днів для перших результатів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Диверсифікувати клієнтську базу та джерела фінансування: залучити нових клієнтів, розвивати сервісні послуги, розглянути кредитні лінії або гранти&quot;,
+      &quot;why&quot;: &quot;Залежність від одного клієнта та джерела фінансування створює критичний ризик стійкості&quot;,
+      &quot;expected_result&quot;: &quot;Зниження концентрації ризиків, стабільніший грошовий потік&quot;,
+      &quot;owner_role&quot;: &quot;Власник / фінансовий менеджер&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести стратегічну сесію для всієї команди з метою чіткого формулювання трьох головних пріоритетів та індикаторів їх досягнення&quot;,
+      &quot;why&quot;: &quot;Команда недостатньо розуміє пріоритети (3 з 5), що знижує узгодженість дій&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення рівня розуміння цілей до 4-5, краща координація роботи&quot;,
+      &quot;owner_role&quot;: &quot;Власник / директор з розвитку&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити робочу групу для розвитку сервісного обслуговування (O&amp;M) та гібридних рішень (СЕС+ESS) з пілотними проєктами на 10 клієнтах&quot;,
+      &quot;why&quot;: &quot;Це дозволить отримати повторні доходи, стабілізувати грошовий потік і диференціюватися від конкурентів&quot;,
+      &quot;expected_result&quot;: &quot;Нові джерела доходу, підвищення лояльності клієнтів, зменшення залежності від разових продажів&quot;,
+      &quot;owner_role&quot;: &quot;Технічний директор&quot;,
+      &quot;deadline&quot;: &quot;90 днів для запуску пілотів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити систему регулярного моніторингу системних проблем та щомісячні зустрічі для їх вирішення&quot;,
+      &quot;why&quot;: &quot;Відповідь «нічого» на питання про дії свідчить про відсутність процесу усунення проблем; це призводить до їх повторення&quot;,
+      &quot;expected_result&quot;: &quot;Виявлення та вирішення проблем на ранніх стадіях, запобігання кризам&quot;,
+      &quot;owner_role&quot;: &quot;Власник / операційний менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів для впровадження системи&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Компанія «Солар Вест Буд» демонструє хорошу відкритість до змін та ефективний зворотний зв&#x27;язок, але стикається з критичними операційними проблемами. Головна проблема — нестача монтажників, що призводить до втрати 30% обороту. Також існує небезпечна залежність від одного клієнта та одного джерела фінансування. Команда недостатньо розуміє стратегічні пріоритети, а внутрішні синергії не використовуються. Рекомендується негайно вжити заходів для найму персоналу, диверсифікації ризиків, покращення комунікації цілей та запуску нових напрямків (сервіс, ESS). Відсутність дій по вирішенню системних проблем є тривожним сигналом — потрібно впровадити процес безперервного вдосконалення.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;completion_tokens&quot;: 11575,
+  &quot;prompt_tokens&quot;: 9059,
+  &quot;total_tokens&quot;: 20634,
+  &quot;completion_tokens_details&quot;: {
+    &quot;accepted_prediction_tokens&quot;: null,
+    &quot;audio_tokens&quot;: 0,
+    &quot;reasoning_tokens&quot;: 6795,
+    &quot;rejected_prediction_tokens&quot;: null,
+    &quot;text_tokens&quot;: null,
+    &quot;image_tokens&quot;: 0
+  },
+  &quot;prompt_tokens_details&quot;: {
+    &quot;audio_tokens&quot;: 0,
+    &quot;cache_write_tokens&quot;: 0,
+    &quot;cached_tokens&quot;: 0,
+    &quot;image_tokens&quot;: null,
+    &quot;text_tokens&quot;: null,
+    &quot;video_tokens&quot;: 0
+  },
+  &quot;cost&quot;: 0.00142927,
+  &quot;is_byok&quot;: false,
+  &quot;cost_details&quot;: {
+    &quot;upstream_inference_cost&quot;: 0.00142927,
+    &quot;upstream_inference_prompt_cost&quot;: 0.00027177,
+    &quot;upstream_inference_completions_cost&quot;: 0.0011575
+  }
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;gen-1787810698-8bu9E8E9aMXaVBc4jduQ&quot;,
+  &quot;choices&quot;: [
+    {
+      &quot;finish_reason&quot;: &quot;stop&quot;,
+      &quot;index&quot;: 0,
+      &quot;logprobs&quot;: null,
+      &quot;message&quot;: {
+        &quot;content&quot;: &quot; ```json\n{\n  \&quot;module_code\&quot;: \&quot;SYS\&quot;,\n  \&quot;module_name\&quot;: \&quot;Системна перевірка\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;limited\&quot;,\n  \&quot;score\&quot;: 67,\n  \&quot;confidence\&quot;: 0.6,\n  \&quot;headline\&quot;: \&quot;Організація відкрита до змін і має добре налагоджений зворотний зв&#x27;язок, але критичні вузькі місця в персоналі та залежність від одного клієнта загрожують стійкості.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Організація демонструє високу відкритість до зовнішніх сигналів: регулярно аналізує ринок, використовує різноманітні джерела інформації та реагує на зміни (наприклад, закупівля панелей через зростання цін). Зворотний зв&#x27;язок працює ефективно — співробітники можуть безпечно повідомляти про проблеми, відгуки клієнтів збираються системно, а рішення перевіряються. Проте існують серйозні вузькі місця: нестача монтажного персоналу призводить до втрати 30% обороту, а залежність від одного великого клієнта та одного джерела фінансування створює високі ризики. Команда недостатньо розуміє стратегічні пріоритети (3 з 5), а внутрішні синергії практично не використовуються — відсутні міжфункціональні проєкти, а власники процесів на стиках не визначені. Ознаки старіння відсутні, що характерно для молодої компанії, але відсутність активних дій для усунення системних проблем (за відповіддю «нічого») може призвести до їх накопичення. Стратегічна цілісність середня: є місія та напрями розвитку, але команда не повністю їх поділяє. Загалом організація потребує зосередження на операційній стійкості, диверсифікації ризиків та покращенні внутрішньої комунікації.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;Відкритість і зовнішня чутливість\&quot;,\n      \&quot;score\&quot;: 80,\n      \&quot;evidence\&quot;: [\n        \&quot;Оцінка здатності помічати зміни — 4 з 5\&quot;,\n        \&quot;Аналіз зовнішнього середовища проводиться щотижня або постійно\&quot;,\n        \&quot;Використовуються різні джерела: клієнти, партнери, працівники, аналіз конкурентів, технологічні тренди\&quot;,\n        \&quot;Конкретний сигнал (зростання цін на панелі) призвів до додаткової закупівлі\&quot;,\n        \&quot;Визнано, що нестача оборотних коштів є інформацією, яку організація може не бачити\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає чітких метрик для оцінки швидкості реакції на зовнішні зміни\&quot;,\n        \&quot;Відсутній систематичний аналіз конкурентів у довгостроковій перспективі\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Зворотний зв&#x27;язок і навчання\&quot;,\n      \&quot;score\&quot;: 80,\n      \&quot;evidence\&quot;: [\n        \&quot;Усі п&#x27;ять пунктів зворотного зв&#x27;язку оцінені на 5 з 5\&quot;,\n        \&quot;Працівники можуть безпечно повідомляти про проблеми\&quot;,\n        \&quot;Відгуки клієнтів збираються регулярно і доходять до керівництва\&quot;,\n        \&quot;За сигналами призначаються відповідальні та перевіряються результати\&quot;,\n        \&quot;Оцінка здатності навчатися швидше за середовище — 4 з 5\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Не вказано, як вимірюється ефективність навчання на основі зворотного зв&#x27;язку\&quot;,\n        \&quot;Відсутні приклади конкретних змін, впроваджених завдяки зворотному зв&#x27;язку\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Узгодженість і синергія\&quot;,\n      \&quot;score\&quot;: 60,\n      \&quot;evidence\&quot;: [\n        \&quot;Розуміння трьох головних пріоритетів командою — 3 з 5\&quot;,\n        \&quot;Спільна робота підрозділів оцінена в середньому на 4, але два пункти (власники процесів на стиках, міжфункціональні проєкти) — 3\&quot;,\n        \&quot;Внутрішні синергетичні можливості не використовуються\&quot;,\n        \&quot;Зовнішні синергії використовуються: стратегічні партнери, дистриб&#x27;ютори, платформи\&quot;,\n        \&quot;Визначено недостатньо використані можливості: сервіс, ESS, інтернет-магазин\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає опису наявних міжфункціональних проєктів\&quot;,\n        \&quot;Не зрозуміло, як узгоджуються цілі між підрозділами\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Вузькі місця і стійкість\&quot;,\n      \&quot;score\&quot;: 40,\n      \&quot;evidence\&quot;: [\n        \&quot;Вузькі місця: фінансування, запаси, пошук і утримання працівників\&quot;,\n        \&quot;Головне вузьке місце — персонал: неможливість швидкого монтажу, втрати 30% товарообороту\&quot;,\n        \&quot;Залежність від одного джерела фінансування та одного великого клієнта\&quot;,\n        \&quot;Для розвитку необхідне збільшення монтажних бригад\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Не надано фінансових даних для підтвердження втрат 30%\&quot;,\n        \&quot;Відсутня деталізація структури залежності від клієнта та джерела фінансування\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Архітектура управління\&quot;,\n      \&quot;score\&quot;: 70,\n      \&quot;evidence\&quot;: [\n        \&quot;Рішення ухвалюються там, де є інформація — 4 з 5\&quot;,\n        \&quot;Ролі та повноваження зрозумілі — 3 з 5\&quot;,\n        \&quot;Критичні рішення ухвалюються швидко — 5 з 5\&quot;,\n        \&quot;Для простої дії не потрібні зайві погодження — 5 з 5\&quot;,\n        \&quot;Звіти та наради корисні — 4 з 5\&quot;,\n        \&quot;На стиках немає нічийних процесів — 4 з 5\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Ролі та повноваження недостатньо чіткі (оцінка 3)\&quot;,\n        \&quot;Немає даних про процедури делегування повноважень\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Стратегічна цілісність і довголіття\&quot;,\n      \&quot;score\&quot;: 70,\n      \&quot;evidence\&quot;: [\n        \&quot;Місія та сенс існування зрозумілі — 4 з 5\&quot;,\n        \&quot;Команда може назвати три пріоритети — 3 з 5\&quot;,\n        \&quot;Розглядаються нові продукти, ринки, канали, підвищення ефективності\&quot;,\n        \&quot;Довголіття забезпечують: репутація, близькість до клієнта, стратегічний фокус, партнерства\&quot;,\n        \&quot;Всі ознаки старіння оцінені як 0\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає документованої стратегії (лише згадка про готовність надати)\&quot;,\n        \&quot;Відсутні конкретні плани реалізації стратегічних цілей\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Оновлення та відсутність старіння\&quot;,\n      \&quot;score\&quot;: 80,\n      \&quot;evidence\&quot;: [\n        \&quot;Усі ознаки старіння оцінені як 0 (відмінно)\&quot;,\n        \&quot;Визначено невикористані можливості для зростання (сервіс, ESS, інтернет-магазин)\&quot;,\n        \&quot;Організація потребує руху у напрямку розгортання (масштабування)\&quot;,\n        \&quot;Молодий вік компанії (2024) та відсутність бюрократизації\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає доказів впровадження інноваційних рішень\&quot;,\n        \&quot;Відсутня інформація про заходи з підтримки навчання та розвитку персоналу\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Висока відкритість до зовнішніх сигналів: регулярний аналіз ринку та швидка реакція на зміни\&quot;,\n    \&quot;Ефективний зворотний зв&#x27;язок: працівники можуть повідомляти про проблеми, рішення перевіряються\&quot;,\n    \&quot;Відсутні ознаки старіння: немає бюрократизації, консерватизму, ізоляції від середовища\&quot;,\n    \&quot;Використання зовнішніх синергій: стратегічні партнери, дистриб&#x27;ютори, платформи\&quot;,\n    \&quot;Чітке бачення довгострокових цілей та напрямків розвитку\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Критична нестача монтажного персоналу, що призводить до втрати 30% обороту\&quot;,\n    \&quot;Висока залежність від одного великого клієнта та одного джерела фінансування\&quot;,\n    \&quot;Команда недостатньо розуміє стратегічні пріоритети (3 з 5)\&quot;,\n    \&quot;Внутрішні синергії не використовуються, слабкий розвиток міжфункціональних проєктів\&quot;,\n    \&quot;Відсутність активних дій для усунення системних проблем (відповідь «нічого»)\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;Залежність від одного великого клієнта та одного джерела фінансування\&quot;,\n      \&quot;severity\&quot;: \&quot;critical\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Втрата клієнта або джерела фінансування може зупинити діяльність компанії або різко знизити доходи\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Втрата 30% товарообороту через нестачу монтажних бригад\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Це означає значний упущений дохід і незадоволений попит, що стримує зростання\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Відсутність дій для усунення системних проблем (відповідь «нічого» на питання 27)\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Проблеми повторюються, але не вирішуються, що може призвести до накопичення кризових ситуацій\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Низьке розуміння стратегічних пріоритетів командою (3 з 5)\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Без єдиного розуміння цілей різні підрозділи можуть діяти неузгоджено, знижуючи ефективність\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Відсутність міжфункціональних проєктів та власників процесів на стиках\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Це може призводити до конфліктів між підрозділами та втрат на межфункціональних стиках\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Заявлено про відсутність конфліктів, але при цьому є нестача персоналу та несогласованість у ролях — це може свідчити про приховані конфлікти або недостатнє виявлення\&quot;,\n    \&quot;Вказано, що додаткова централізація/децентралізація не потрібна, але при цьому ролі та повноваження не повністю зрозумілі (3 з 5)\&quot;,\n    \&quot;Відсутні ознаки старіння, але немає жодних дій для вирішення системних проблем — це може вказувати на самозаспокоєність\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Немає підтверджених даних про втрати 30% товарообороту (як вимірювалися)\&quot;,\n    \&quot;Відсутня деталізація залежності від одного клієнта та джерела фінансування (частка доходу, умови)\&quot;,\n    \&quot;Не вказано, які саме заходи вживалися для вирішення проблем (відповідь «нічого» не містить деталей)\&quot;,\n    \&quot;Немає фінансових показників, що підтверджують нестачу оборотних коштів\&quot;,\n    \&quot;Не надано стратегічний документ або план дій для досягнення цілей\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Розробити програму найму та навчання монтажних бригад (включно з електриками) для збільшення кількості одночасних монтажів\&quot;,\n      \&quot;why\&quot;: \&quot;Нестача персоналу призводить до втрати 30% обороту; усунення цього дефіциту дозволить задовольнити попит і збільшити дохід\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зменшення втрат товарообороту, збільшення кількості завершених проєктів\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / HR-менеджер\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів для плану, 90 днів для перших результатів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Диверсифікувати клієнтську базу та джерела фінансування: залучити нових клієнтів, розвивати сервісні послуги, розглянути кредитні лінії або гранти\&quot;,\n      \&quot;why\&quot;: \&quot;Залежність від одного клієнта та джерела фінансування створює критичний ризик стійкості\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зниження концентрації ризиків, стабільніший грошовий потік\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / фінансовий менеджер\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Провести стратегічну сесію для всієї команди з метою чіткого формулювання трьох головних пріоритетів та індикаторів їх досягнення\&quot;,\n      \&quot;why\&quot;: \&quot;Команда недостатньо розуміє пріоритети (3 з 5), що знижує узгодженість дій\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підвищення рівня розуміння цілей до 4-5, краща координація роботи\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / директор з розвитку\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Створити робочу групу для розвитку сервісного обслуговування (O&amp;M) та гібридних рішень (СЕС+ESS) з пілотними проєктами на 10 клієнтах\&quot;,\n      \&quot;why\&quot;: \&quot;Це дозволить отримати повторні доходи, стабілізувати грошовий потік і диференціюватися від конкурентів\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Нові джерела доходу, підвищення лояльності клієнтів, зменшення залежності від разових продажів\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Технічний директор\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів для запуску пілотів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Впровадити систему регулярного моніторингу системних проблем та щомісячні зустрічі для їх вирішення\&quot;,\n      \&quot;why\&quot;: \&quot;Відповідь «нічого» на питання про дії свідчить про відсутність процесу усунення проблем; це призводить до їх повторення\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Виявлення та вирішення проблем на ранніх стадіях, запобігання кризам\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / операційний менеджер\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів для впровадження системи\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Компанія «Солар Вест Буд» демонструє хорошу відкритість до змін та ефективний зворотний зв&#x27;язок, але стикається з критичними операційними проблемами. Головна проблема — нестача монтажників, що призводить до втрати 30% обороту. Також існує небезпечна залежність від одного клієнта та одного джерела фінансування. Команда недостатньо розуміє стратегічні пріоритети, а внутрішні синергії не використовуються. Рекомендується негайно вжити заходів для найму персоналу, диверсифікації ризиків, покращення комунікації цілей та запуску нових напрямків (сервіс, ESS). Відсутність дій по вирішенню системних проблем є тривожним сигналом — потрібно впровадити процес безперервного вдосконалення.\&quot;\n}\n```&quot;,
+        &quot;refusal&quot;: null,
+        &quot;role&quot;: &quot;assistant&quot;,
+        &quot;annotations&quot;: null,
+        &quot;audio&quot;: null,
+        &quot;function_call&quot;: null,
+        &quot;tool_calls&quot;: null,
+        &quot;reasoning&quot;: &quot;Мы должны проанализировать ответы пользователя на вопросы модуля SYS (системная проверка). Входные данные: ответы на 27 вопросов, а также контекст из предыдущего модуля ORG.\n\nНам нужно дать анализ в формате JSON с модулем SYS. Оценить по 7 измерениям, дать диагноз, сильные/слабые стороны, красные флаги, противоречия, пробелы данных, рекомендации.\n\nИтак, изучим ответы:\n\n1) Почему решили пройти проверку? - Зміни ринку вимагають перебудови; Одні й ті самі проблеми повторюються; Потрібна трансформація\n2) Какой результат важен? - Визначити причини повторюваних проблем; Інше; Посилити стійкість; Знайти нові шляхи розвитку; Визначити, що централізувати або децентралізувати\n3) Насколько организация замечает изменения и учится быстрее, чем меняется среда? - 4 (по шкале? вероятно 1-5)\n4) Как часто руководство системно анализирует изменения внешней среды? - Щотижня або постійно\n5) Из каких источников получает внешние сигналы? - Відгуки та скарги клієнтів; Дані продажів і поведінки клієнтів; Партнери й постачальники; Працівники першої лінії; Аналіз конкурентів; Технологічні тренди; Соціальні мережі й медіа\n6) Приведите один важный внешний сигнал за последние 12 месяцев: - Взростання вартості сонячних панелей у передвесною та влітку через зростання вартості перевезень морем, А також зменшення дотаційних програм в Китаї. Дата/период: Лютий 2026 года. Решение: Додаткова закупівля партій сонячних панелей. Результат: Було закуплено партію сонячних панелей. Источник: Постачальник сонячних панелей з Польщі.\n7) Оцените, как работает обратная связь в организации: (все оценки 5)\n- Працівники можуть безпечно повідомляти про проблеми: 5\n- Відгуки клієнтів і партнерів збираються регулярно: 5\n- Важлива інформація доходить до відповідальних керівників: 5\n- За сигналами призначаються дії та відповідальні: 5\n- Перевіряється, чи дали рішення очікуваний результат: 5\n8) Какую важную информацию организация сегодня может не видеть или не хотеть замечать? - Нестача оборотних коштів для розвитку.\n9) Насколько одинаково руководители и сотрудники понимают три главных приоритета организации? - 3 (по шкале 1-5)\n10) Оцените согласованность работы подразделений: (все оценки 4 или 5 кроме некоторых)\n- Підрозділи працюють на спільні цілі, а не лише на власні ключові показники: 4\n- Підрозділи використовують узгоджені дані: 4\n- На стиках між функціями визначені власники процесів: 3\n- Успіх одного підрозділу не створює проблем іншому: 4\n- Конфлікти між підрозділами вирішуються швидко: 5\n- Діють спільні міжфункціональні проєкти: 3\n11) Какие внутренние синергетические возможности уже использует организация? - Не використовуються\n12) Какие внешние синергетические возможности использует? - Стратегічні партнери; Дистриб’ютори та торгові мережі; Спільні продукти або проєкти; Платформи й екосистеми\n13) Какие ресурсы или возможности используются недостаточно? (три пункта)\n- Сервісне обслуговування та O&amp;M для чинних СЕС: поточне использование - поки що не оформлено як регулярний окремий продукт. Потенциальный эффект - повторний дохід, більша довіра клієнтів і стабільніший грошовий потік. Первая действие - Запустити пілотну пропозицію сервісу й SLA для 10 чинних або нових клієнтів.\n- Гібридні СЕС та системи накопичення енергії (ESS): розглядається, але не стандартизовано. Потенциальный эффект - вища маржа, енергонезалежність клієнтів і диференціація. Действие - Створити 2–3 типові пакети СЕС+ESS та навчити інженерів.\n- Інтернет-магазин обладнання для СЕС: канал є, але не дає цільової частки обороту. Потенциальный эффект - масштабування продажів, ширша географія та 30% обороту через онлайн. Действие - Побудувати воронку інтернет-магазину: асортимент, контент, реклама, CRM-аналітика.\n14) Какие системные конфликты существуют? - Конфліктів не виявлено. Пояснення: Пріоритет 2026: пакетні СЕС+ESS і сервіс/O&amp;M; паралельно — розвиток інтернет-магазину та регіональних партнерств.\n15) Где основные узкие места? - Фінансування; Запаси; Пошук і утримання працівників\n16) Опишите главное узкое место:\n- Де знаходиться: Персонал.\n- Як проявляється: Не можемо забезпечити швидкий монтаж сонячних електростанцій по всіх замовленнях.\n- Що стримує: Не можемо задовольнити весь попит клієнтів\n- Частота: Постійно.\n- Втрати: 30% товарообороту.\n17) От каких элементов организация зависит больше всего? - Одне джерело фінансування; Один великий клієнт\n18) Что целесообразно больше централизовать? - Додаткова централізація не потрібна\n19) Что целесообразно больше децентрализовать? - Додаткова децентралізація не потрібна\n20) Оцените качество организационной архитектуры: (оценки)\n- Рішення ухвалюються там, де є інформація й відповідальність: 4\n- Ролі та повноваження зрозумілі: 3\n- На стиках немає нічийних процесів: 4\n- Критичні рішення ухвалюються достатньо швидко: 5\n- Для простої дії не потрібні зайві погодження: 5\n- Звіти, наради та процедури мають реальну користь: 4\n21) Якого руху зараз більше потребує організація? - Розгортання\n22) Что нужно добавить/развить, а что упростить/объединить/передать наружу/прекратить?\n- Додати/розвинути: Збільшити кількість монтажних бригад. Для цього потрібні як монтажники, так і фахівець електрик по монтажу, встановленню, підключенню сонячної електростанції.\n- Спростити/об’єднати/припинити: Немає потреби щось спрощувати.\n23) Оцените стратегическую ясность:\n- Є зрозуміла місія та сенс існування: 4\n- Команда може назвати три: 3 (видимо, три приоритета, но не указано полностью, но скорее всего оценка 3)\n24) Какие альтернативные пути развития реально рассматривает организация? - Нові продукти/послуги; Вихід на нові ринки; Нові канали продажу; Підвищення ефективності. Пояснення або пріоритет: нет.\n25) Какие характеристики обеспечивают долголетие? - Репутація; Близькість до клієнта; Стратегічний фокус; Партнерства\n26) Оцените признаки старения (все 0 - т.е. нет признаков)\n27) Что организация уже делала для устранения системных проблем? - Проблема: нічого (т.е. ничего не делала)\n\nТакже есть контекст из модуля ORG: там указано, что компания молодая, растет, но много ограничений: нехватка персонала, оборотных средств, зависимость от основателя и т.д.\n\nТеперь оценим по измерениям:\n\n1) Открытость и внешняя чувствительность (openness) - 15% вес.\nОценки: 3) 4 из 5 (замечает изменения), 4) анализирует еженедельно/постоянно, 5) множество источников, 6) конкретный сигнал и реакция (закупка панелей), 8) указали невидимую информацию (нехватка оборотных средств - это скорее внутренняя, но они осознают). В целом, открытость высокая: они отслеживают рынок, реагируют. Но есть момент: они не видят нехватку оборотных средств как проблему? Наоборот, они указали, что это информация, которую не видят или не хотят замечать - то есть признают, что есть слепое пятно. Но оценки по обратной связи все 5 - это очень хорошо. Так что открытость хорошая. Поставлю оценку 8 из 10.\n\n2) Обратная связь и обучение (feedback_learning) - 10% вес.\nВопросы 7 (оценки 5 по всем пунктам) и 8 (указали, что не видят нехватку оборотных средств - это признание). Но также вопрос 3 - насколько учатся быстрее среды - 4 из 5. В целом, обратная связь хорошо работает: сотрудники могут сообщать, отзывы собираются, доходят, назначаются действия, проверяются результаты. Оценка высокая. Но есть указание на невидимую информацию, значит не всё идеально. Поставлю 8 из 10.\n\n3) Синергия и согласованность (synergy_alignment) - 15% вес.\nВопрос 9: понимание приоритетов - 3 из 5 (ниже среднего). Вопрос 10: оценки по подразделениям - в основном 4 и 5, но два пункта получили 3 (владельцы процессов на стыках, межфункциональные проекты). Вопрос 11: внутренние синергии не используются (0). Вопрос 12: внешние синергии используются (стратегические партнеры и т.д.). Вопрос 13: недостаточно используемые возможности (сервис, ESS, интернет-магазин). Вопрос 14: конфликтов нет, но приоритеты указаны. В целом, согласованность средняя: есть понимание целей на уровне руководства, но команда не полностью понимает приоритеты (3 из 5), слабо развиты межфункциональные проекты, внутренние синергии не используются. Оценка - 6 из 10.\n\n4) Узкие места и устойчивость (bottlenecks_resilience) - 20% вес.\nВопрос 15: узкие места - финансирование, запасы, персонал. Вопрос 16: главное узкое место - персонал, нехватка монтажников, потеря 30% товарооборота. Вопрос 17: зависимость от одного источника финансирования и одного крупного клиента - это критично. Вопрос 18-19: централизация/децентрализация не нужна - возможно, это не проблема. Вопрос 22: нужно увеличить монтажные бригады. Вопрос 13: недостаточно используются сервис, ESS, интернет-магазин - это возможности для роста, но также и слабость. Устойчивость низкая из-за зависимости и нехватки персонала. Оценка - 4 из 10.\n\n5) Архитектура управления (governance_architecture) - 15% вес.\nВопрос 20: оценки - в целом 4-5, кроме ролей и полномочий (3), на стыках 4, критичные решения быстро - 5, простота действий - 5, отчеты полезны - 4. Это довольно хорошо, но есть слабость в понимании ролей (3). Вопрос 27: ничего не делали для устранения проблем - это говорит о слабой реакции системы. Вопрос 18-19: не видят необходимости централизации/децентрализации - возможно, архитектура устраивает. В целом, архитектура неплохая, но есть пробелы в ролях. Оценка - 7 из 10.\n\n6) Стратегическая целостность и долголетие (strategic_longevity) - 10% вес.\nВопрос 23: миссия есть (4), команда может назвать три приоритета (3 - среднее). Вопрос 24: рассматривают новые продукты, рынки, каналы - это хорошо. Вопрос 25: характеристики долголетия - репутация, близость к клиенту, стратегический фокус, партнерства - это сильные стороны. Вопрос 26: все признаки старения 0 - отлично. Но вопрос 27: ничего не делали для устранения проблем - это слабость. В целом, стратегическая целостность средняя: есть миссия и видение, но команда не полностью понимает приоритеты, и мало действий. Оценка - 7 из 10.\n\n7) Обновление и отсутствие старения (renewal_aging) - 15% вес.\nВопрос 26: все признаки старения 0 - это очень хорошо, компания молодая и не имеет признаков старения. Но вопрос 27: ничего не делали для устранения системных проблем - это может указывать на отсутствие активных действий по обновлению, но признаки старения отсутствуют. Также вопрос 13: видят неиспользуемые возможности (сервис, ESS, интернет-магазин) - это указывает на инновационное мышление. Вопрос 21: движение - развертывание, т.е. рост. Так что обновление хорошее, но отсутствие действий по проблемам может быть тревожным. Оценка - 8 из 10 (признаки старения 0 - это отлично, но отсутствие действий - небольшой минус).\n\nТеперь посчитаем общий балл с весами: \nopenness: 8*0.15 = 1.2\nfeedback: 8*0.10 = 0.8\nsynergy: 6*0.15 = 0.9\nbottlenecks: 4*0.20 = 0.8\ngovernance: 7*0.15 = 1.05\nstrategic: 7*0.10 = 0.7\nrenewal: 8*0.15 = 1.2\nИтого: 1.2+0.8+0.9+0.8+1.05+0.7+1.2 = 6.65, т.е. примерно 66.5 из 100. Можно округлить до 67.\n\nУровень уверенности: на основе полноты данных. Многие ответы субъективные, оценки, но нет конкретных данных по финансам, персоналу. В целом, данные достаточно полные, но есть пробелы (например, нет данных о том, как именно измеряются потери 30%, не указано, что конкретно делалось для устранения проблем). Уверенность средняя - около 0.6.\n\nТеперь сформируем диагноз. На основе анализа: компания молодая, растет, но имеет критические узкие места: нехватка персонала, зависимость от одного клиента/источника финансирования, недостаток оборотных средств. При этом она открыта к изменениям, имеет хорошую обратную связь, но не использует внутренние синергии, команда не полностью понимает приоритеты, есть слабость в определении ролей. Признаки старения отсутствуют, но компания ничего не делала для решения системных проблем.\n\nКрасные флаги: зависимость от одного крупного клиента и одного источника финансирования, нехватка монтажников с потерей 30% оборота, отсутствие действий по решению проблем.\n\nПротиворечия: \n- Заявляют \&quot;конфліктів не виявлено\&quot;, но при этом нехватка персонала может вызывать конфликты.\n- Отсутствие необходимости централизации/децентрализации, но при этом роли и полномочия не полностью понятны (3/5).\n- Признаки старения отсутствуют, но при этом ничего не делается для устранения системных проблем - это может быть признаком complacency.\n\nПробелы данных: нет информации о том, как измеряются потери 30%, нет деталей по финансированию, нет данных о том, какие действия предпринимались для решения проблем (только \&quot;ничего\&quot;).\n\nРекомендации (не более 5):\n1. Разработать план по найму и обучению монтажных бригад, включая электриков, чтобы сократить потери от неудовлетворенного спроса.\n2. Диверсифицировать источники финансирования и клиентскую базу, чтобы снизить зависимость от одного клиента и источника.\n3. Улучшить коммуникацию стратегических приоритетов среди сотрудников, чтобы повысить понимание целей (сейчас 3/5).\n4. Начать использовать внутренние синергии: например, развивать сервисное обслуживание и гибридные решения, как указано в ответах на вопрос 13.\n5. Создать систему мониторинга и решения системных проблем, так как сейчас ничего не делается.\n\nТеперь оформим JSON.\n\nОбратим внимание, что в задании указано: \&quot;Поверни JSON: {...}\&quot; - нужно строго следовать структуре. Мы должны дать поля: module_code, module_name, analysis_status, score, confidence, headline, diagnosis, dimension_scores, strengths, weaknesses, red_flags, contradictions, data_gaps, recommendations, manager_summary.\n\nДля dimension_scores каждое измерение - объект с полями dimension, score (0-100?), evidence (массив), gaps (массив). В примере из ORG они используют числа от 0 до 100. Но в нашем случае мы можем использовать шкалу 0-10 или 0-100? В инструкции не указано, но в примере из ORG они используют 0-100 (62). Так что давайте переведем наши оценки в 100-балльную шкалу: умножим на 10 (8 -&gt; 80 и т.д.)\n\nИтак: \nopenness: 80\nfeedback: 80\nsynergy: 60\nbottlenecks: 40\ngovernance: 70\nstrategic: 70\nrenewal: 80\n\nОбщий балл: (80*15 + 80*10 + 60*15 + 40*20 + 70*15 + 70*10 + 80*15)/100 = (1200+800+900+800+1050+700+1200)/100 = 6650/100 = 66.5, округлим до 67.\n\nanalysis_status: \&quot;complete\&quot; или \&quot;limited\&quot;? Данных достаточно, но есть пробелы, но мы можем сказать \&quot;complete\&quot;, так как все вопросы отвечены. Но учитывая, что некоторые ответы субъективны и не подкреплены данными, можно поставить \&quot;limited\&quot;. В ORG они поставили limited из-за нехватки данных. Здесь мы имеем много субъективных оценок, но нет фактических цифр (например, потери 30% - это заявлено, но не подтверждено). Так что я поставлю \&quot;limited\&quot; с уверенностью 0.6.\n\nConfidence: 0.6\n\nHeadline: короткое предложение, отражающее суть. Например: \&quot;Организация растет и открыта к изменениям, но критические узкие места в персонале и зависимость от одного клиента угрожают устойчивости.\&quot;\n\nDiagnosis: 5-8 предложений, резюмирующих основные выводы.\n\nDimension_scores: \n- Открытость и внешняя чувствительность: 80, evidence: [п.3 оценка 4, п.4 еженедельный анализ, п.5 множество источников, п.6 конкретный сигнал и реакция, п.8 признание невидимой информации]. gaps: [нет систематического отслеживания трендов? но они делают, так что можно сказать, что нет метрик для оценки скорости реакции].\n- Обратная связь и обучение: 80, evidence: [оценки 5 по всем пунктам обратной связи, п.3 оценка 4], gaps: [не указано, как измеряется эффективность обучения].\n- Синергия и согласованность: 60, evidence: [п.9 оценка 3, п.10 оценки 4-5, но 3 за владельцев процессов и межфункциональные проекты, п.11 внутренние синергии не используются, п.12 внешние используются], gaps: [нет описания межфункциональных проектов, нет данных о том, как согласуются цели подразделений].\n- Узкие места и устойчивость: 40, evidence: [п.15 узкие места, п.16 потеря 30%, п.17 зависимость от одного клиента и источника финансирования, п.22 необходимость увеличения бригад], gaps: [нет данных о том, как измеряется зависимость, нет финансовых показателей устойчивости].\n- Архитектура управления: 70, evidence: [п.20 оценка 4-5, но 3 за роли, п.27 ничего не делали], gaps: [нет описания процедур принятия решений, нет данных о распределении полномочий].\n- Стратегическая целостность: 70, evidence: [п.23 миссия 4, команда 3, п.24 рассматривают новые направления, п.25 характеристики долголетия, п.26 отсутствие признаков старения], gaps: [нет документа стратегии, нет конкретных планов].\n- Обновление и отсутствие старения: 80, evidence: [п.26 все 0, п.13 видят неиспользуемые возможности, п.21 развертывание], gaps: [нет данных о реализации инноваций, нет данных о том, как поддерживается обучение].\n\nStrengths: \n- Открытость к изменениям и регулярный анализ внешней среды.\n- Хорошо работающая обратная связь (оценки 5).\n- Отсутствие признаков старения.\n- Наличие стратегических целей.\n- Использование внешних синергий с партнерами.\n\nWeaknesses:\n- Нехватка монтажного персонала, что приводит к потере 30% оборота.\n- Зависимость от одного крупного клиента и одного источника финансирования.\n- Команда недостаточно понимает стратегические приоритеты (3/5).\n- Слабо развиты внутренние синергии и межфункциональные проекты.\n- Ничего не сделано для устранения системных проблем.\n\nRed flags:\n- Критическая зависимость от одного клиента и одного источника финансирования (severity high).\n- Потеря 30% оборота из-за нехватки персонала (severity high).\n- Отсутствие действий по решению системных проблем (severity medium).\n- Низкое понимание приоритетов командой (severity medium).\n- Признаки старения отсутствуют, но отсутствие действий может привести к застою (severity low).\n\nContradictions:\n- Заявляют, что конфликтов нет, но при этом есть нехватка персонала, которая может вызывать конфликты.\n- Указывают, что централизация/децентрализация не нужна, но при этом роли и полномочия не полностью понятны.\n- Отсутствие признаков старения, но и отсутствие действий по улучшению — возможное самоуспокоение.\n\nData gaps:\n- Нет данных о потерях 30% (как измерялись).\n- Нет деталей о зависимости от клиента и финансирования.\n- Нет информации о том, какова текущая структура персонала и сколько именно не хватает.\n- Нет данных о том, какие конкретно действия предпринимались для решения проблем.\n- Нет финансовых показателей, кроме общих.\n\nRecommendations:\n1. Разработать программу найма и обучения монтажных бригад, включая электриков, с целью увеличить количество одновременных монтажей. Ожидаемый результат — сокращение потерь от неудовлетворенного спроса. Ответственный: HR/владелец. Срок: 30 дней для плана, 90 дней для первых результатов.\n2. Диверсифицировать клиентскую базу и источники финансирования: привлечь новых клиентов, развить сервисное обслуживание, рассмотреть кредитные линии. Ожидаемый результат — снижение зависимости. Ответственный: владелец/финансовый менеджер. Срок: 90 дней.\n3. Провести сессию по стратегическому фокусу для всей команды, чтобы донести три главных приоритета. Ожидаемый результат — повышение понимания целей до 4-5. Ответственный: владелец/директор по развитию. Срок: 30 дней.\n4. Начать разработку сервисного предложения и гибридных решений (СЕС+ESS) как новых продуктов. Ожидаемый результат — новые источники дохода, стабильный cash flow. Ответственный: технический директор. Срок: 90 дней.\n5. Создать систему мониторинга системных проблем и регулярные встречи для их решения, так как сейчас ничего не делается. Ожидаемый результат — предотвращение повторяющихся проблем. Ответственный: владелец. Срок: 30 дней для внедрения.\n\nManager summary: краткое резюме для владельца.\n\nТеперь соберем JSON.\n\nВ поле diagnosis должно быть 5-8 предложений. Напишем что-то вроде:\n\n\&quot;Организация демонстрирует хорошую открытость к изменениям и эффективную обратную связь, однако сталкивается с критическими узкими местами: нехватка монтажного персонала приводит к потере 30% оборота, а зависимость от одного крупного клиента и одного источника финансирования создает высокие риски. Команда недостаточно понимает стратегические приоритеты, что снижает согласованность действий. Внутренние синергии практически не используются, а межфункциональные проекты слабо развиты. Признаки старения отсутствуют, что характерно для молодой компании, но отсутствие активных действий по решению системных проблем может привести к их накоплению. Рекомендуется сосредоточиться на найме и обучении персонала, диверсификации клиентской базы, улучшении коммуникации целей и развитии новых продуктовых направлений.\&quot;\n\nТеперь напишем все поля.\n\nУбедимся, что все структуры соответствуют примеру. В примере из ORG dimension_scores имеют массив объектов с полями dimension, score, evidence, gaps. У нас будет 7 объектов.\n\nРекомендации - массив объектов с полями action, why, expected_result, owner_role, deadline.\n\nКрасные флаги - массив объектов signal, severity, why_it_matters.\n\nПротиворечия - массив строк.\n\nПробелы данных - массив строк.\n\nСильные/слабые - массивы строк.\n\nТеперь сформируем окончательный JSON.&quot;,
+        &quot;reasoning_details&quot;: [
+          {
+            &quot;type&quot;: &quot;reasoning.text&quot;,
+            &quot;text&quot;: &quot;Мы должны проанализировать ответы пользователя на вопросы модуля SYS (системная проверка). Входные данные: ответы на 27 вопросов, а также контекст из предыдущего модуля ORG.\n\nНам нужно дать анализ в формате JSON с модулем SYS. Оценить по 7 измерениям, дать диагноз, сильные/слабые стороны, красные флаги, противоречия, пробелы данных, рекомендации.\n\nИтак, изучим ответы:\n\n1) Почему решили пройти проверку? - Зміни ринку вимагають перебудови; Одні й ті самі проблеми повторюються; Потрібна трансформація\n2) Какой результат важен? - Визначити причини повторюваних проблем; Інше; Посилити стійкість; Знайти нові шляхи розвитку; Визначити, що централізувати або децентралізувати\n3) Насколько организация замечает изменения и учится быстрее, чем меняется среда? - 4 (по шкале? вероятно 1-5)\n4) Как часто руководство системно анализирует изменения внешней среды? - Щотижня або постійно\n5) Из каких источников получает внешние сигналы? - Відгуки та скарги клієнтів; Дані продажів і поведінки клієнтів; Партнери й постачальники; Працівники першої лінії; Аналіз конкурентів; Технологічні тренди; Соціальні мережі й медіа\n6) Приведите один важный внешний сигнал за последние 12 месяцев: - Взростання вартості сонячних панелей у передвесною та влітку через зростання вартості перевезень морем, А також зменшення дотаційних програм в Китаї. Дата/период: Лютий 2026 года. Решение: Додаткова закупівля партій сонячних панелей. Результат: Було закуплено партію сонячних панелей. Источник: Постачальник сонячних панелей з Польщі.\n7) Оцените, как работает обратная связь в организации: (все оценки 5)\n- Працівники можуть безпечно повідомляти про проблеми: 5\n- Відгуки клієнтів і партнерів збираються регулярно: 5\n- Важлива інформація доходить до відповідальних керівників: 5\n- За сигналами призначаються дії та відповідальні: 5\n- Перевіряється, чи дали рішення очікуваний результат: 5\n8) Какую важную информацию организация сегодня может не видеть или не хотеть замечать? - Нестача оборотних коштів для розвитку.\n9) Насколько одинаково руководители и сотрудники понимают три главных приоритета организации? - 3 (по шкале 1-5)\n10) Оцените согласованность работы подразделений: (все оценки 4 или 5 кроме некоторых)\n- Підрозділи працюють на спільні цілі, а не лише на власні ключові показники: 4\n- Підрозділи використовують узгоджені дані: 4\n- На стиках між функціями визначені власники процесів: 3\n- Успіх одного підрозділу не створює проблем іншому: 4\n- Конфлікти між підрозділами вирішуються швидко: 5\n- Діють спільні міжфункціональні проєкти: 3\n11) Какие внутренние синергетические возможности уже использует организация? - Не використовуються\n12) Какие внешние синергетические возможности использует? - Стратегічні партнери; Дистриб’ютори та торгові мережі; Спільні продукти або проєкти; Платформи й екосистеми\n13) Какие ресурсы или возможности используются недостаточно? (три пункта)\n- Сервісне обслуговування та O&amp;M для чинних СЕС: поточне использование - поки що не оформлено як регулярний окремий продукт. Потенциальный эффект - повторний дохід, більша довіра клієнтів і стабільніший грошовий потік. Первая действие - Запустити пілотну пропозицію сервісу й SLA для 10 чинних або нових клієнтів.\n- Гібридні СЕС та системи накопичення енергії (ESS): розглядається, але не стандартизовано. Потенциальный эффект - вища маржа, енергонезалежність клієнтів і диференціація. Действие - Створити 2–3 типові пакети СЕС+ESS та навчити інженерів.\n- Інтернет-магазин обладнання для СЕС: канал є, але не дає цільової частки обороту. Потенциальный эффект - масштабування продажів, ширша географія та 30% обороту через онлайн. Действие - Побудувати воронку інтернет-магазину: асортимент, контент, реклама, CRM-аналітика.\n14) Какие системные конфликты существуют? - Конфліктів не виявлено. Пояснення: Пріоритет 2026: пакетні СЕС+ESS і сервіс/O&amp;M; паралельно — розвиток інтернет-магазину та регіональних партнерств.\n15) Где основные узкие места? - Фінансування; Запаси; Пошук і утримання працівників\n16) Опишите главное узкое место:\n- Де знаходиться: Персонал.\n- Як проявляється: Не можемо забезпечити швидкий монтаж сонячних електростанцій по всіх замовленнях.\n- Що стримує: Не можемо задовольнити весь попит клієнтів\n- Частота: Постійно.\n- Втрати: 30% товарообороту.\n17) От каких элементов организация зависит больше всего? - Одне джерело фінансування; Один великий клієнт\n18) Что целесообразно больше централизовать? - Додаткова централізація не потрібна\n19) Что целесообразно больше децентрализовать? - Додаткова децентралізація не потрібна\n20) Оцените качество организационной архитектуры: (оценки)\n- Рішення ухвалюються там, де є інформація й відповідальність: 4\n- Ролі та повноваження зрозумілі: 3\n- На стиках немає нічийних процесів: 4\n- Критичні рішення ухвалюються достатньо швидко: 5\n- Для простої дії не потрібні зайві погодження: 5\n- Звіти, наради та процедури мають реальну користь: 4\n21) Якого руху зараз більше потребує організація? - Розгортання\n22) Что нужно добавить/развить, а что упростить/объединить/передать наружу/прекратить?\n- Додати/розвинути: Збільшити кількість монтажних бригад. Для цього потрібні як монтажники, так і фахівець електрик по монтажу, встановленню, підключенню сонячної електростанції.\n- Спростити/об’єднати/припинити: Немає потреби щось спрощувати.\n23) Оцените стратегическую ясность:\n- Є зрозуміла місія та сенс існування: 4\n- Команда може назвати три: 3 (видимо, три приоритета, но не указано полностью, но скорее всего оценка 3)\n24) Какие альтернативные пути развития реально рассматривает организация? - Нові продукти/послуги; Вихід на нові ринки; Нові канали продажу; Підвищення ефективності. Пояснення або пріоритет: нет.\n25) Какие характеристики обеспечивают долголетие? - Репутація; Близькість до клієнта; Стратегічний фокус; Партнерства\n26) Оцените признаки старения (все 0 - т.е. нет признаков)\n27) Что организация уже делала для устранения системных проблем? - Проблема: нічого (т.е. ничего не делала)\n\nТакже есть контекст из модуля ORG: там указано, что компания молодая, растет, но много ограничений: нехватка персонала, оборотных средств, зависимость от основателя и т.д.\n\nТеперь оценим по измерениям:\n\n1) Открытость и внешняя чувствительность (openness) - 15% вес.\nОценки: 3) 4 из 5 (замечает изменения), 4) анализирует еженедельно/постоянно, 5) множество источников, 6) конкретный сигнал и реакция (закупка панелей), 8) указали невидимую информацию (нехватка оборотных средств - это скорее внутренняя, но они осознают). В целом, открытость высокая: они отслеживают рынок, реагируют. Но есть момент: они не видят нехватку оборотных средств как проблему? Наоборот, они указали, что это информация, которую не видят или не хотят замечать - то есть признают, что есть слепое пятно. Но оценки по обратной связи все 5 - это очень хорошо. Так что открытость хорошая. Поставлю оценку 8 из 10.\n\n2) Обратная связь и обучение (feedback_learning) - 10% вес.\nВопросы 7 (оценки 5 по всем пунктам) и 8 (указали, что не видят нехватку оборотных средств - это признание). Но также вопрос 3 - насколько учатся быстрее среды - 4 из 5. В целом, обратная связь хорошо работает: сотрудники могут сообщать, отзывы собираются, доходят, назначаются действия, проверяются результаты. Оценка высокая. Но есть указание на невидимую информацию, значит не всё идеально. Поставлю 8 из 10.\n\n3) Синергия и согласованность (synergy_alignment) - 15% вес.\nВопрос 9: понимание приоритетов - 3 из 5 (ниже среднего). Вопрос 10: оценки по подразделениям - в основном 4 и 5, но два пункта получили 3 (владельцы процессов на стыках, межфункциональные проекты). Вопрос 11: внутренние синергии не используются (0). Вопрос 12: внешние синергии используются (стратегические партнеры и т.д.). Вопрос 13: недостаточно используемые возможности (сервис, ESS, интернет-магазин). Вопрос 14: конфликтов нет, но приоритеты указаны. В целом, согласованность средняя: есть понимание целей на уровне руководства, но команда не полностью понимает приоритеты (3 из 5), слабо развиты межфункциональные проекты, внутренние синергии не используются. Оценка - 6 из 10.\n\n4) Узкие места и устойчивость (bottlenecks_resilience) - 20% вес.\nВопрос 15: узкие места - финансирование, запасы, персонал. Вопрос 16: главное узкое место - персонал, нехватка монтажников, потеря 30% товарооборота. Вопрос 17: зависимость от одного источника финансирования и одного крупного клиента - это критично. Вопрос 18-19: централизация/децентрализация не нужна - возможно, это не проблема. Вопрос 22: нужно увеличить монтажные бригады. Вопрос 13: недостаточно используются сервис, ESS, интернет-магазин - это возможности для роста, но также и слабость. Устойчивость низкая из-за зависимости и нехватки персонала. Оценка - 4 из 10.\n\n5) Архитектура управления (governance_architecture) - 15% вес.\nВопрос 20: оценки - в целом 4-5, кроме ролей и полномочий (3), на стыках 4, критичные решения быстро - 5, простота действий - 5, отчеты полезны - 4. Это довольно хорошо, но есть слабость в понимании ролей (3). Вопрос 27: ничего не делали для устранения проблем - это говорит о слабой реакции системы. Вопрос 18-19: не видят необходимости централизации/децентрализации - возможно, архитектура устраивает. В целом, архитектура неплохая, но есть пробелы в ролях. Оценка - 7 из 10.\n\n6) Стратегическая целостность и долголетие (strategic_longevity) - 10% вес.\nВопрос 23: миссия есть (4), команда может назвать три приоритета (3 - среднее). Вопрос 24: рассматривают новые продукты, рынки, каналы - это хорошо. Вопрос 25: характеристики долголетия - репутация, близость к клиенту, стратегический фокус, партнерства - это сильные стороны. Вопрос 26: все признаки старения 0 - отлично. Но вопрос 27: ничего не делали для устранения проблем - это слабость. В целом, стратегическая целостность средняя: есть миссия и видение, но команда не полностью понимает приоритеты, и мало действий. Оценка - 7 из 10.\n\n7) Обновление и отсутствие старения (renewal_aging) - 15% вес.\nВопрос 26: все признаки старения 0 - это очень хорошо, компания молодая и не имеет признаков старения. Но вопрос 27: ничего не делали для устранения системных проблем - это может указывать на отсутствие активных действий по обновлению, но признаки старения отсутствуют. Также вопрос 13: видят неиспользуемые возможности (сервис, ESS, интернет-магазин) - это указывает на инновационное мышление. Вопрос 21: движение - развертывание, т.е. рост. Так что обновление хорошее, но отсутствие действий по проблемам может быть тревожным. Оценка - 8 из 10 (признаки старения 0 - это отлично, но отсутствие действий - небольшой минус).\n\nТеперь посчитаем общий балл с весами: \nopenness: 8*0.15 = 1.2\nfeedback: 8*0.10 = 0.8\nsynergy: 6*0.15 = 0.9\nbottlenecks: 4*0.20 = 0.8\ngovernance: 7*0.15 = 1.05\nstrategic: 7*0.10 = 0.7\nrenewal: 8*0.15 = 1.2\nИтого: 1.2+0.8+0.9+0.8+1.05+0.7+1.2 = 6.65, т.е. примерно 66.5 из 100. Можно округлить до 67.\n\nУровень уверенности: на основе полноты данных. Многие ответы субъективные, оценки, но нет конкретных данных по финансам, персоналу. В целом, данные достаточно полные, но есть пробелы (например, нет данных о том, как именно измеряются потери 30%, не указано, что конкретно делалось для устранения проблем). Уверенность средняя - около 0.6.\n\nТеперь сформируем диагноз. На основе анализа: компания молодая, растет, но имеет критические узкие места: нехватка персонала, зависимость от одного клиента/источника финансирования, недостаток оборотных средств. При этом она открыта к изменениям, имеет хорошую обратную связь, но не использует внутренние синергии, команда не полностью понимает приоритеты, есть слабость в определении ролей. Признаки старения отсутствуют, но компания ничего не делала для решения системных проблем.\n\nКрасные флаги: зависимость от одного крупного клиента и одного источника финансирования, нехватка монтажников с потерей 30% оборота, отсутствие действий по решению проблем.\n\nПротиворечия: \n- Заявляют \&quot;конфліктів не виявлено\&quot;, но при этом нехватка персонала может вызывать конфликты.\n- Отсутствие необходимости централизации/децентрализации, но при этом роли и полномочия не полностью понятны (3/5).\n- Признаки старения отсутствуют, но при этом ничего не делается для устранения системных проблем - это может быть признаком complacency.\n\nПробелы данных: нет информации о том, как измеряются потери 30%, нет деталей по финансированию, нет данных о том, какие действия предпринимались для решения проблем (только \&quot;ничего\&quot;).\n\nРекомендации (не более 5):\n1. Разработать план по найму и обучению монтажных бригад, включая электриков, чтобы сократить потери от неудовлетворенного спроса.\n2. Диверсифицировать источники финансирования и клиентскую базу, чтобы снизить зависимость от одного клиента и источника.\n3. Улучшить коммуникацию стратегических приоритетов среди сотрудников, чтобы повысить понимание целей (сейчас 3/5).\n4. Начать использовать внутренние синергии: например, развивать сервисное обслуживание и гибридные решения, как указано в ответах на вопрос 13.\n5. Создать систему мониторинга и решения системных проблем, так как сейчас ничего не делается.\n\nТеперь оформим JSON.\n\nОбратим внимание, что в задании указано: \&quot;Поверни JSON: {...}\&quot; - нужно строго следовать структуре. Мы должны дать поля: module_code, module_name, analysis_status, score, confidence, headline, diagnosis, dimension_scores, strengths, weaknesses, red_flags, contradictions, data_gaps, recommendations, manager_summary.\n\nДля dimension_scores каждое измерение - объект с полями dimension, score (0-100?), evidence (массив), gaps (массив). В примере из ORG они используют числа от 0 до 100. Но в нашем случае мы можем использовать шкалу 0-10 или 0-100? В инструкции не указано, но в примере из ORG они используют 0-100 (62). Так что давайте переведем наши оценки в 100-балльную шкалу: умножим на 10 (8 -&gt; 80 и т.д.)\n\nИтак: \nopenness: 80\nfeedback: 80\nsynergy: 60\nbottlenecks: 40\ngovernance: 70\nstrategic: 70\nrenewal: 80\n\nОбщий балл: (80*15 + 80*10 + 60*15 + 40*20 + 70*15 + 70*10 + 80*15)/100 = (1200+800+900+800+1050+700+1200)/100 = 6650/100 = 66.5, округлим до 67.\n\nanalysis_status: \&quot;complete\&quot; или \&quot;limited\&quot;? Данных достаточно, но есть пробелы, но мы можем сказать \&quot;complete\&quot;, так как все вопросы отвечены. Но учитывая, что некоторые ответы субъективны и не подкреплены данными, можно поставить \&quot;limited\&quot;. В ORG они поставили limited из-за нехватки данных. Здесь мы имеем много субъективных оценок, но нет фактических цифр (например, потери 30% - это заявлено, но не подтверждено). Так что я поставлю \&quot;limited\&quot; с уверенностью 0.6.\n\nConfidence: 0.6\n\nHeadline: короткое предложение, отражающее суть. Например: \&quot;Организация растет и открыта к изменениям, но критические узкие места в персонале и зависимость от одного клиента угрожают устойчивости.\&quot;\n\nDiagnosis: 5-8 предложений, резюмирующих основные выводы.\n\nDimension_scores: \n- Открытость и внешняя чувствительность: 80, evidence: [п.3 оценка 4, п.4 еженедельный анализ, п.5 множество источников, п.6 конкретный сигнал и реакция, п.8 признание невидимой информации]. gaps: [нет систематического отслеживания трендов? но они делают, так что можно сказать, что нет метрик для оценки скорости реакции].\n- Обратная связь и обучение: 80, evidence: [оценки 5 по всем пунктам обратной связи, п.3 оценка 4], gaps: [не указано, как измеряется эффективность обучения].\n- Синергия и согласованность: 60, evidence: [п.9 оценка 3, п.10 оценки 4-5, но 3 за владельцев процессов и межфункциональные проекты, п.11 внутренние синергии не используются, п.12 внешние используются], gaps: [нет описания межфункциональных проектов, нет данных о том, как согласуются цели подразделений].\n- Узкие места и устойчивость: 40, evidence: [п.15 узкие места, п.16 потеря 30%, п.17 зависимость от одного клиента и источника финансирования, п.22 необходимость увеличения бригад], gaps: [нет данных о том, как измеряется зависимость, нет финансовых показателей устойчивости].\n- Архитектура управления: 70, evidence: [п.20 оценка 4-5, но 3 за роли, п.27 ничего не делали], gaps: [нет описания процедур принятия решений, нет данных о распределении полномочий].\n- Стратегическая целостность: 70, evidence: [п.23 миссия 4, команда 3, п.24 рассматривают новые направления, п.25 характеристики долголетия, п.26 отсутствие признаков старения], gaps: [нет документа стратегии, нет конкретных планов].\n- Обновление и отсутствие старения: 80, evidence: [п.26 все 0, п.13 видят неиспользуемые возможности, п.21 развертывание], gaps: [нет данных о реализации инноваций, нет данных о том, как поддерживается обучение].\n\nStrengths: \n- Открытость к изменениям и регулярный анализ внешней среды.\n- Хорошо работающая обратная связь (оценки 5).\n- Отсутствие признаков старения.\n- Наличие стратегических целей.\n- Использование внешних синергий с партнерами.\n\nWeaknesses:\n- Нехватка монтажного персонала, что приводит к потере 30% оборота.\n- Зависимость от одного крупного клиента и одного источника финансирования.\n- Команда недостаточно понимает стратегические приоритеты (3/5).\n- Слабо развиты внутренние синергии и межфункциональные проекты.\n- Ничего не сделано для устранения системных проблем.\n\nRed flags:\n- Критическая зависимость от одного клиента и одного источника финансирования (severity high).\n- Потеря 30% оборота из-за нехватки персонала (severity high).\n- Отсутствие действий по решению системных проблем (severity medium).\n- Низкое понимание приоритетов командой (severity medium).\n- Признаки старения отсутствуют, но отсутствие действий может привести к застою (severity low).\n\nContradictions:\n- Заявляют, что конфликтов нет, но при этом есть нехватка персонала, которая может вызывать конфликты.\n- Указывают, что централизация/децентрализация не нужна, но при этом роли и полномочия не полностью понятны.\n- Отсутствие признаков старения, но и отсутствие действий по улучшению — возможное самоуспокоение.\n\nData gaps:\n- Нет данных о потерях 30% (как измерялись).\n- Нет деталей о зависимости от клиента и финансирования.\n- Нет информации о том, какова текущая структура персонала и сколько именно не хватает.\n- Нет данных о том, какие конкретно действия предпринимались для решения проблем.\n- Нет финансовых показателей, кроме общих.\n\nRecommendations:\n1. Разработать программу найма и обучения монтажных бригад, включая электриков, с целью увеличить количество одновременных монтажей. Ожидаемый результат — сокращение потерь от неудовлетворенного спроса. Ответственный: HR/владелец. Срок: 30 дней для плана, 90 дней для первых результатов.\n2. Диверсифицировать клиентскую базу и источники финансирования: привлечь новых клиентов, развить сервисное обслуживание, рассмотреть кредитные линии. Ожидаемый результат — снижение зависимости. Ответственный: владелец/финансовый менеджер. Срок: 90 дней.\n3. Провести сессию по стратегическому фокусу для всей команды, чтобы донести три главных приоритета. Ожидаемый результат — повышение понимания целей до 4-5. Ответственный: владелец/директор по развитию. Срок: 30 дней.\n4. Начать разработку сервисного предложения и гибридных решений (СЕС+ESS) как новых продуктов. Ожидаемый результат — новые источники дохода, стабильный cash flow. Ответственный: технический директор. Срок: 90 дней.\n5. Создать систему мониторинга системных проблем и регулярные встречи для их решения, так как сейчас ничего не делается. Ожидаемый результат — предотвращение повторяющихся проблем. Ответственный: владелец. Срок: 30 дней для внедрения.\n\nManager summary: краткое резюме для владельца.\n\nТеперь соберем JSON.\n\nВ поле diagnosis должно быть 5-8 предложений. Напишем что-то вроде:\n\n\&quot;Организация демонстрирует хорошую открытость к изменениям и эффективную обратную связь, однако сталкивается с критическими узкими местами: нехватка монтажного персонала приводит к потере 30% оборота, а зависимость от одного крупного клиента и одного источника финансирования создает высокие риски. Команда недостаточно понимает стратегические приоритеты, что снижает согласованность действий. Внутренние синергии практически не используются, а межфункциональные проекты слабо развиты. Признаки старения отсутствуют, что характерно для молодой компании, но отсутствие активных действий по решению системных проблем может привести к их накоплению. Рекомендуется сосредоточиться на найме и обучении персонала, диверсификации клиентской базы, улучшении коммуникации целей и развитии новых продуктовых направлений.\&quot;\n\nТеперь напишем все поля.\n\nУбедимся, что все структуры соответствуют примеру. В примере из ORG dimension_scores имеют массив объектов с полями dimension, score, evidence, gaps. У нас будет 7 объектов.\n\nРекомендации - массив объектов с полями action, why, expected_result, owner_role, deadline.\n\nКрасные флаги - массив объектов signal, severity, why_it_matters.\n\nПротиворечия - массив строк.\n\nПробелы данных - массив строк.\n\nСильные/слабые - массивы строк.\n\nТеперь сформируем окончательный JSON.&quot;,
+            &quot;format&quot;: &quot;unknown&quot;,
+            &quot;index&quot;: 0
+          }
+        ]
+      },
+      &quot;native_finish_reason&quot;: &quot;stop&quot;
+    }
+  ],
+  &quot;created&quot;: 1787810698,
+  &quot;model&quot;: &quot;deepseek/deepseek-v4-flash-0731&quot;,
+  &quot;object&quot;: &quot;chat.completion&quot;,
+  &quot;metadata&quot;: null,
+  &quot;moderation&quot;: null,
+  &quot;service_tier&quot;: null,
+  &quot;system_fingerprint&quot;: &quot;vllm-dev-ep-8b5ae245&quot;,
+  &quot;usage&quot;: {
+    &quot;completion_tokens&quot;: 11575,
+    &quot;prompt_tokens&quot;: 9059,
+    &quot;total_tokens&quot;: 20634,
+    &quot;completion_tokens_details&quot;: {
+      &quot;accepted_prediction_tokens&quot;: null,
+      &quot;audio_tokens&quot;: 0,
+      &quot;reasoning_tokens&quot;: 6795,
+      &quot;rejected_prediction_tokens&quot;: null,
+      &quot;text_tokens&quot;: null,
+      &quot;image_tokens&quot;: 0
+    },
+    &quot;prompt_tokens_details&quot;: {
+      &quot;audio_tokens&quot;: 0,
+      &quot;cache_write_tokens&quot;: 0,
+      &quot;cached_tokens&quot;: 0,
+      &quot;image_tokens&quot;: null,
+      &quot;text_tokens&quot;: null,
+      &quot;video_tokens&quot;: 0
+    },
+    &quot;cost&quot;: 0.00142927,
+    &quot;is_byok&quot;: false,
+    &quot;cost_details&quot;: {
+      &quot;upstream_inference_cost&quot;: 0.00142927,
+      &quot;upstream_inference_prompt_cost&quot;: 0.00027177,
+      &quot;upstream_inference_completions_cost&quot;: 0.0011575
+    }
+  },
+  &quot;provider&quot;: &quot;OpenInference&quot;
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Вияв системні проблеми, вузькі місця, залежності, симптоми старіння, тривожні сигнали і першопричини, які впливають на життєздатність організації.
+Виміри оцінювання:
+- openness — Відкритість і зовнішня чутливість — 15%
+- feedback_learning — Зворотний зв’язок і навчання — 10%
+- synergy_alignment — Узгодженість і синергія — 15%
+- bottlenecks_resilience — Вузькі місця і стійкість — 20%
+- governance_architecture — Архітектура управління — 15%
+- strategic_longevity — Стратегічна цілісність і гени довголіття — 10%
+- renewal_aging — Оновлення та відсутність старіння — 15%
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;SYS&quot;,
+&quot;module_name&quot;: &quot;Системна перевірка&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Чому ви вирішили пройти системну перевірку організації?
+Зміни ринку вимагають перебудови; Одні й ті самі проблеми повторюються; Потрібна трансформація
+2) Який результат системної перевірки для вас найважливіший?
+Визначити причини повторюваних проблем; Інше; Посилити стійкість; Знайти нові шляхи розвитку; Визначити, що централізувати або децентралізувати
+3) Наскільки організація помічає зміни та навчається швидше, ніж змінюється зовнішнє середовище?
+4
+4) Як часто керівництво системно аналізує зміни зовнішнього середовища?
+Щотижня або постійно
+5) З яких джерел організація регулярно отримує зовнішні сигнали?
+Відгуки та скарги клієнтів; Дані продажів і поведінки клієнтів; Партнери й постачальники; Працівники першої лінії; Аналіз конкурентів; Технологічні тренди; Соціальні мережі й медіа
+6) Наведіть один важливий зовнішній сигнал, який організація помітила протягом останніх 12 місяців.
+Сигнал
+Взростання вартості сонячних панелей у передвесною та влітку через зростання вартості перевезень морем, А також зменшення дотаційних програм в Китаї.
+Дата/період
+Лютий 2026 року.
+Рішення
+Додаткова закупівля партій сонячних панелей.
+Результат
+Було закуплено партію сонячних панелей.
+Джерело інформації
+Постачальник сонячних панелей з Польщі.
+7) оцініть, як у вашій організації працює зворотний зв’язок.
+Працівники можуть безпечно повідомляти про проблеми
+5
+Відгуки клієнтів і партнерів збираються регулярно
+5
+Важлива інформація доходить до відповідальних керівників
+5
+За сигналами призначаються дії та відповідальні
+5
+Перевіряється, чи дали рішення очікуваний результат
+5
+8) Яку важливу інформацію організація сьогодні може не бачити або не хотіти помічати?
+Нестача оборотних коштів для розвитку.
+9) Наскільки однаково керівники й працівники розуміють три головні пріоритети організації?
+3
+10) оцініть узгодженість роботи підрозділів.
+Підрозділи працюють на спільні цілі, а не лише на власні ключові показники
+4
+Підрозділи використовують узгоджені дані
+4
+На стиках між функціями визначені власники процесів
+3
+Успіх одного підрозділу не створює проблем іншому
+4
+Конфлікти між підрозділами вирішуються швидко
+5
+Діють спільні міжфункціональні проєкти
+3
+11) Які внутрішні синергетичні можливості вже використовує організація?
+Не використовуються
+12) Які зовнішні синергетичні можливості використовує організація?
+Стратегічні партнери; Дистриб’ютори та торгові мережі; Спільні продукти або проєкти; Платформи й екосистеми
+13) Які ресурси або можливості організації сьогодні використовуються недостатньо?
+Актив/можливість | Поточне використання | Потенційний ефект | Перша дія
+Сервісне обслуговування та O&amp;M для чинних СЕС | Поки що не оформлено як регулярний окремий продукт. | Повторний дохід, більша довіра клієнтів і стабільніший грошовий потік. | Запустити пілотну пропозицію сервісу й SLA для 10 чинних або нових клієнтів.
+Гібридні СЕС та системи накопичення енергії (ESS) | Напрямок розглядається, але ще не стандартизований у пакетних рішеннях. | Вища маржа, енергонезалежність клієнтів і диференціація від цінових конкурентів. | Створити 2–3 типові пакети СЕС+ESS та навчити інженерів їх продавати й монтувати.
+Інтернет-магазин обладнання для СЕС | Канал є, але ще не дає цільової частки обороту. | Масштабування продажів обладнання, ширша географія та 30% обороту через онлайн-канал. | Побудувати воронку інтернет-магазину: асортимент, контент, реклама, CRM-аналітика та відстеження конверсії.
+14) Які системні конфлікти сьогодні існують в організації?
+Конфліктів не виявлено
+Пояснення або пріоритет
+Пріоритет 2026: пакетні СЕС+ESS і сервіс/O&amp;M; паралельно — розвиток інтернет-магазину та регіональних партнерств.
+15) Де сьогодні знаходяться основні вузькі місця організації?
+Фінансування; Запаси; Пошук і утримання працівників
+16) Опишіть головне вузьке місце організації.
+Де знаходиться
+Персонал.
+Як проявляється
+Не можемо забезпечити швидкий монтаж сонячних електростанцій по всіх замовленнях.
+Що стримує
+Не можемо задовольнити весь попит клієнтів
+Частота
+Постійно.
+Втрати
+30% товарообороту.
+17) Від яких елементів організація залежить найбільше?
+Одне джерело фінансування; Один великий клієнт
+18) Що доцільно більше централізувати?
+Додаткова централізація не потрібна
+19) Що доцільно більше децентралізувати?
+Додаткова децентралізація не потрібна
+20) оцініть якість організаційної архітектури.
+Рішення ухвалюються там, де є інформація й відповідальність
+4
+Ролі та повноваження зрозумілі
+3
+На стиках немає нічийних процесів
+4
+Критичні рішення ухвалюються достатньо швидко
+5
+Для простої дії не потрібні зайві погодження
+5
+Звіти, наради та процедури мають реальну користь
+4
+21) Якого руху зараз більше потребує організація?
+Розгортання
+22) Що потрібно додати або розвинути, а що — спростити, об’єднати, передати назовні чи припинити?
+Додати/розвинути — до 5 пунктів | Спростити/об’єднати/припинити — до 5 пунктів
+Збільшити кількість монтажних бригад. Для цього потрібні як монтажники, так і фахівець електрик по монтажу, встановленню, підключенню сонячної електростанції. | Немає потреби щось спрощувати.
+23) оцініть стратегічну ясність організації.
+Є зрозуміла місія та сенс існування
+4
+Команда може назвати три
+3
+24) Які альтернативні шляхи розвитку реально розглядає організація?
+Нові продукти/послуги
+Вихід на нові ринки
+Нові канали продажу
+Підвищення ефективності
+Пояснення або пріоритет
+25) Які характеристики найбільше забезпечують довголіття вашої організації?
+Репутація; Близькість до клієнта; Стратегічний фокус; Партнерства
+26) оцініть ознаки старіння організації.
+Стратегічна консервативність
+0
+Інноваційна близорукість
+0
+Культурне старіння
+0
+Бюрократизація
+0
+Ізоляція від зовнішнього середовища
+0
+Зниження готовності до ризику
+0
+Моральне застарівання активів
+0
+Втома персоналу
+0
+Застаріння навичок
+0
+Втрата корпоративної пам’яті
+0
+Ерозія співробітництва
+0
+Ризик зміни лідерських поколінь
+0
+27) Що організація вже робила для усунення системних проблем або ознак старіння?
+Проблема
+нічого
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+ПЕРВИННІ ВХІДНІ ДАНІ МОДУЛЯ ORG
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія
+РЕЗУЛЬТАТ МОДУЛЯ ORG — DeepSeek V4 Flash 0731
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 62,
+  &quot;confidence&quot;: 0.55,
+  &quot;headline&quot;: &quot;Молода компанія зростає і прибуткова, але для повної впевненості бракує фінансової аналітики, оргструктури та стратегії.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест Буд — це молодий, прибутковий і зростаючий гравець на українському ринку сонячної енергетики, який пропонує проєктування, монтаж і обладнання для СЕС. Заявлене зростання понад 20% і оборот $0,5–2 млн свідчать про попит, але для стабільної діагностики бракує фінансових документів і структури доходів. Модель доходу позначена як «разовий продаж», що разом із нестачею оборотних коштів створює ризик нерівномірного грошового потоку. Компанія сильно залежить від засновника і ключових працівників; це обмежує масштабування і потребує делегування. Обмеження (люди, компетенції, час, технології, бюджет) зазначені без пріоритетів, тому незрозуміло, що блокує розвиток найбільше. Цілі до 2026 і 2035 року сформульовані, але стратегія, яка має їх забезпечити, не надана. Для наступних модулів потрібно уточнити фінансову модель, оргструктуру, канали продажів і реальні причини кадрових/грошових обмежень.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Бізнес-модель і ринок&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;СЕС під ключ для дому та бізнесу; проєктування, монтаж, сервіс.&quot;,
+        &quot;Продаж обладнання: сонячні панелі, кабелі, кріплення, електрообладнання.&quot;,
+        &quot;Клієнти: юридичні особи, фізичні особи, монтажники.&quot;,
+        &quot;Канали: сайт/інтернет-продажі, відділ продажів, соціальні мережі.&quot;,
+        &quot;Партнери: SPAR Україна, Procarte, Prom.ua.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає розбивки доходу між обладнанням, монтажем і сервісом.&quot;,
+        &quot;Незрозуміло, який сегмент клієнтів приносить основний дохід.&quot;,
+        &quot;Не визначена конкурентна позиція і частка ринку.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінанси і ресурси&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Річний оборот $0,5–2 млн.&quot;,
+        &quot;Зростання доходу понад 20% за останні 12 місяців.&quot;,
+        &quot;Фінансовий стан: стійко прибуткова.&quot;,
+        &quot;Доступні управлінські дані: продажі, cash flow, прибуток/маржа.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не надано фінансову звітність або аналітику.&quot;,
+        &quot;Не вказана фактична маржинальність проєктів.&quot;,
+        &quot;Проблема нестачі оборотних коштів не підтверджена цифрами.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Команда та операційна здатність&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;11–50 співробітників.&quot;,
+        &quot;Обмеження: люди, компетенції, час, технології, бюджет.&quot;,
+        &quot;Залежність від ключових працівників у маленькій компанії.&quot;,
+        &quot;Ключові рішення приймає засновник; щоденна залежність від нього — 5 за шкалою 1–5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає організаційної структури.&quot;,
+        &quot;Не вказано, які ролі критичні і хто за що відповідає.&quot;,
+        &quot;Не пояснено, що саме означає рівень залежності від засновника.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегія і управління&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Ціль до 31.12.2026: перехід до стабільної та масштабованої стратегії.&quot;,
+        &quot;Ціль до 31.12.2026: 30% обороту від інтернет-магазину.&quot;,
+        &quot;Довгострокова ціль до 2035: увійти до топ-5 інтеграторів сонячних рішень в Україні.&quot;,
+        &quot;Є показники успіху для цілей.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Документ стратегії заявлений, але не наданий.&quot;,
+        &quot;Немає плану переходу від «крихкої» до стабільної моделі.&quot;,
+        &quot;Не визначено, як досягатимуться цільові показники.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Якість вхідних даних&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Анкета заповнена структуровано.&quot;,
+        &quot;Є кількісні орієнтири: оборот, зростання, строки цілей.&quot;,
+        &quot;Перелічені головні проблеми і обмеження.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Багато відповідей на рівні напрямів, без конкретних цифр.&quot;,
+        &quot;Коментарі до подій та обмежень порожні.&quot;,
+        &quot;Немає завантажених документів; лише згадка про готовність надати стратегію.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Прибутковий бізнес на зростаючому ринку: оборот $0,5–2 млн, зростання понад 20%.&quot;,
+    &quot;Чітка ціннісна пропозиція: економія на електроенергії та енергонезалежність для дому і бізнесу.&quot;,
+    &quot;Кілька каналів збуту: сайт/Prom.ua, відділ продажів, соціальні мережі.&quot;,
+    &quot;Наявні партнери: SPAR Україна, Procarte, Prom.ua.&quot;,
+    &quot;Сформульовані стратегічні цілі з дедлайнами і показниками успіху.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Висока залежність від засновника і концентрація ключових рішень в одній людині.&quot;,
+    &quot;Модель доходу позначена лише як «разовий продаж», що свідчить про нестабільність грошового потоку.&quot;,
+    &quot;Нестача кваліфікованого персоналу і оборотних коштів обмежує масштабування.&quot;,
+    &quot;Залежність від ключових працівників без видимої системи резервування ролей.&quot;,
+    &quot;Зростання зарплат тисне на маржинальність проєктів, але точних даних немає.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Щоденна залежність від засновника — оцінка 5 за шкалою 1–5; ключові рішення приймає власник.&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Бізнес не зможе масштабуватися без делегування; ризик зупинки операцій у разі відсутності власника.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Модель доходу — «разовий продаж».&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Разові проєкти дають нерівномірний cash flow, що підвищує потребу в оборотних коштах і робить зростання менш стабільним.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача кваліфікованого персоналу + швидке зростання зарплат.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Це може знизити маржинальність проєктів, спричинити зриви строків і обмежити кількість одночасних монтажів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Залежність від ключових працівників у маленькій компанії.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Втрата навіть одного ключового фахівця може зупинити окремий напрямок або проєкт.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Компанія заснована у 2024 році і заявляє роботу «по всій Україні».&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Швидке географічне розширення без достатньої операційної бази може створити ризики якості, логістики і сервісу.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;«Стійко прибуткова» vs «нестача оборотних коштів» — прибутковість не означає ліквідність; потребує пояснення.&quot;,
+    &quot;«Разовий продаж» як модель доходу vs ціль «стабільність джерел грошового потоку» — разові продажі зазвичай створюють нерівномірність.&quot;,
+    &quot;«По всій Україні» vs команда 11–50 і заснування у 2024 році — потребує уточнення, як забезпечується покриття території.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Фінансова звітність або аналітика: фактична виручка, маржа, cash flow.&quot;,
+    &quot;Структура доходу за напрямами: обладнання, монтаж, сервіс, енергоаудит.&quot;,
+    &quot;Організаційна структура і функціональні ролі.&quot;,
+    &quot;Деталі стратегії: документ заявлений, але не наданий.&quot;,
+    &quot;Пріоритизація обмежень: люди, компетенції, час, технології, бюджет.&quot;,
+    &quot;Деталі події «вихід на новий ринок»: який ринок, коли, результати.&quot;,
+    &quot;Поточні показники каналів продажів: частка онлайн, середній чек, конверсія.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Надати фінансову аналітику: фактичний грошовий потік за 6–12 місяців, маржинальність за типами проєктів і структуру доходу (обладнання/монтаж/сервіс).&quot;,
+      &quot;why&quot;: &quot;Без цих даних неможливо перевірити стійку прибутковість і зрозуміти причину нестачі оборотних коштів.&quot;,
+      &quot;expected_result&quot;: &quot;Точна база для фінансового модуля і рішень про інвестиції в зростання.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / фінансовий менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Зафіксувати організаційну структуру та ключові ролі: хто за що відповідає, які рішення делеговані, які вакансії критичні.&quot;,
+      &quot;why&quot;: &quot;Залежність від засновника і ключових працівників — головний ризик масштабування.&quot;,
+      &quot;expected_result&quot;: &quot;Зрозуміло, де потрібні найм і делегування; зниження операційної залежності.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Визначити топ-3 обмеження, які найбільше блокують зростання, і зафіксувати їхній вплив на дохід.&quot;,
+      &quot;why&quot;: &quot;Зараз усі обмеження позначені однаково, тому фокус і бюджет розпорошуються.&quot;,
+      &quot;expected_result&quot;: &quot;Список пріоритетних заходів із очікуваним ефектом на виручку.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / керівник проєктів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Уточнити стратегію доходів: яка цільова частка інтернет-магазину, сервісу і проєктів; як компанія знижує нерівномірність «разових продажів».&quot;,
+      &quot;why&quot;: &quot;Ціль 30% онлайн-продажів потребує іншої операційної моделі й оборотних коштів, ніж проєктний монтаж.&quot;,
+      &quot;expected_result&quot;: &quot;Узгоджена модель зростання, зрозумілі інвестиції в маркетинг і склад.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / директор з розвитку&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Завантажити наявну стратегію та управлінську звітність у систему до наступної сесії.&quot;,
+      &quot;why&quot;: &quot;Це підвищить точність діагностики і дозволить перейти від обмеженого до повного профілю.&quot;,
+      &quot;expected_result&quot;: &quot;Повніший ORG-паспорт, менше припущень у подальших модулях.&quot;,
+      &quot;owner_role&quot;: &quot;Власник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Базу для діагностики сформовано: Solar West Bud — молода, прибуткова і зростаюча компанія у сфері сонячної енергетики. Щоб перейти до наступних модулів, потрібні фінансова звітність, оргструктура, стратегія та деталізація моделі доходів. Найбільші ризики — залежність від власника, разові продажі та кадрові обмеження.&quot;
+}</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>
