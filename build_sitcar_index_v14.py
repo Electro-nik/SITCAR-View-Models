@@ -7,15 +7,15 @@ from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 
 # ============================================================
-# SITCAR MODEL BENCHMARK INDEX BUILDER v2
+# SITCAR MODEL BENCHMARK INDEX BUILDER v13
 # ============================================================
 # Поклади цей файл у директорію з результатами моделей і запусти:
 #
-#     python build_sitcar_index_v2.py
+#     python build_sitcar_index_v13.py
 #
 # Скрипт:
 #   1) знаходить HTML/PDF виду MODEL_MODULE_YYYY-MM-DD_HH-MM-SS.*
@@ -31,6 +31,17 @@ from urllib.parse import quote
 BASE_DIR = Path(__file__).resolve().parent
 INDEX_FILE = BASE_DIR / "index.html"
 PDF_RESULTS_DIR = BASE_DIR / "PDF_RESULTS"
+FILES_DIR = BASE_DIR / "Files"
+
+# Один і той самий ПДВ/податок для відображення у result HTML.
+# TOTAL COST залишається чистою API-вартістю; TOTAL + 20% показується окремо.
+RESULT_HTML_TAX_RATE = 0.20
+
+# v13: result HTML вже підготовлені попереднім запуском.
+# False = builder лише ЧИТАЄ result HTML і генерує index.html, нічого в них не змінює.
+# Якщо колись додаси нові сирі HTML і захочеш знову автоматично виправити
+# back-link / Files/ / TOTAL + 20%, тимчасово постав True.
+AUTO_PATCH_RESULT_HTML = False
 
 
 # ============================================================
@@ -113,7 +124,7 @@ DISPLAY_CODES = MODULE_ORDER + DISPLAY_ONLY_CODES + OPTIONAL_FINAL_CODES
 
 TAX_RATES = {
     "openai": 0.20,
-    "deepseek": 0.16,
+    "deepseek": 0.20,
     "gemini": 0.20,
     "claude": 0.20,
     "other": 0.20,
@@ -154,10 +165,20 @@ MODEL_ORDER = [
 # Для reasoning-моделей беремо найсильніший/Max effort результат, якщо він є.
 # ============================================================
 
-# Ці моделі навмисно НЕ показуємо у верхній основній таблиці навіть якщо
-# у директорії є тестовий HTML. Вони переходять у нижній блок.
+# Ці моделі, навіть якщо мають реальний тест і показуються у верхній таблиці,
+# додатково лишаємо в нижньому блоці як «відкинуті / економічно невигідні».
+# Тобто результат Fable НЕ ховається — дубль унизу потрібен лише як пояснення рішення.
 FORCED_REJECTED_MODELS = {
     "claude fable 5",
+}
+
+# Artificial Analysis Intelligence Index (актуальний зріз для наших основних моделей).
+# Для моделей, що вже є в OTHER_MODEL_CATALOG, значення нижче не обов'язкове:
+# helper автоматично забере intelligence з каталогу. Тут — моделі, яких у каталозі немає.
+MAIN_INTELLIGENCE_INDEX = {
+    "gpt-5.6 sol": 61,
+    "gpt-5.6 luna": 52,
+    "gemini 3.6 flash": 52,
 }
 
 # price_input / price_output можуть бути рядками, бо для OpenRouter ціна
@@ -676,6 +697,265 @@ def patch_index_link(document: str) -> tuple[str, bool]:
     return document, document != original
 
 
+def build_files_lookup() -> tuple[dict[str, Path], dict[str, Path]]:
+    """Повертає (relative_lookup, unique_basename_lookup) для BASE_DIR/Files.
+
+    relative_lookup дозволяє знайти файл за відносним шляхом всередині Files,
+    basename_lookup використовується лише коли basename унікальний. Це не дає
+    випадково послатися не на той файл, якщо у вкладених папках є однакові назви.
+    """
+    relative_lookup: dict[str, Path] = {}
+    basename_candidates: dict[str, list[Path]] = defaultdict(list)
+
+    if not FILES_DIR.exists() or not FILES_DIR.is_dir():
+        return relative_lookup, {}
+
+    for path in FILES_DIR.rglob("*"):
+        if not path.is_file():
+            continue
+        try:
+            rel_inside = path.relative_to(FILES_DIR).as_posix()
+        except ValueError:
+            continue
+        relative_lookup[rel_inside.casefold()] = path
+        basename_candidates[path.name.casefold()].append(path)
+
+    unique_basename_lookup = {
+        name: paths[0]
+        for name, paths in basename_candidates.items()
+        if len(paths) == 1
+    }
+    return relative_lookup, unique_basename_lookup
+
+
+def file_href(path: Path) -> str:
+    """URL файла відносно result HTML/index.html, наприклад Files/report.pdf."""
+    try:
+        rel = path.resolve().relative_to(BASE_DIR.resolve())
+    except (OSError, ValueError):
+        rel = Path("Files") / path.name
+    return quote(rel.as_posix(), safe="/")
+
+
+def resolve_files_reference(
+    raw_value: str,
+    relative_lookup: dict[str, Path],
+    basename_lookup: dict[str, Path],
+) -> Path | None:
+    """Намагається зіставити старий href/видимий шлях із реальним файлом Files/."""
+    if not raw_value:
+        return None
+
+    value = html.unescape(unquote(str(raw_value))).strip()
+    value = value.split("#", 1)[0].split("?", 1)[0]
+    value = value.replace("\\", "/").strip(" ./")
+    if not value:
+        return None
+
+    # Якщо href уже містить Files/... — беремо частину після Files/.
+    m = re.search(r'(?:^|/)Files/(.+)$', value, flags=re.IGNORECASE)
+    inside_files = m.group(1).strip("/") if m else value
+
+    direct = relative_lookup.get(inside_files.casefold())
+    if direct:
+        return direct
+
+    basename = inside_files.rsplit("/", 1)[-1].casefold()
+    return basename_lookup.get(basename)
+
+
+def _link_plain_filenames_in_html_fragment(
+    fragment: str,
+    relative_lookup: dict[str, Path],
+    basename_lookup: dict[str, Path],
+) -> tuple[str, int]:
+    """Робить видимі назви файлів клікабельними, якщо вони ще не всередині <a>."""
+    if not basename_lookup:
+        return fragment, 0
+
+    # Довші назви першими, щоб одна коротша назва не перехопила частину довшої.
+    names = sorted((p.name for p in basename_lookup.values()), key=len, reverse=True)
+    if not names:
+        return fragment, 0
+
+    # Працюємо тільки з текстовими сегментами між HTML-тегами.
+    tokens = re.split(r'(<[^>]+>)', fragment)
+    anchor_depth = 0
+    linked = 0
+
+    for i, token in enumerate(tokens):
+        if token.startswith("<"):
+            if re.match(r'<a\b', token, flags=re.IGNORECASE):
+                anchor_depth += 1
+            elif re.match(r'</a\s*>', token, flags=re.IGNORECASE):
+                anchor_depth = max(0, anchor_depth - 1)
+            continue
+
+        if anchor_depth or not token.strip():
+            continue
+
+        updated = token
+        for name in names:
+            path = basename_lookup.get(name.casefold())
+            if not path:
+                continue
+
+            # У тексті HTML символи можуть бути entity-escaped.
+            variants = {name, html.escape(name)}
+            for visible in sorted(variants, key=len, reverse=True):
+                pattern = re.compile(re.escape(visible), flags=re.IGNORECASE)
+                if not pattern.search(updated):
+                    continue
+                href = file_href(path)
+                replacement = (
+                    f'<a class="attachment-file-link" href="{html.escape(href)}" '
+                    f'target="_blank" rel="noopener">{html.escape(path.name)}</a>'
+                )
+                updated, count = pattern.subn(replacement, updated)
+                linked += count
+                if count:
+                    break
+        tokens[i] = updated
+
+    return "".join(tokens), linked
+
+
+def patch_attachment_links(
+    document: str,
+    relative_lookup: dict[str, Path],
+    basename_lookup: dict[str, Path],
+) -> tuple[str, int]:
+    """Виправляє attachment links на BASE_DIR/Files/... у всіх result HTML."""
+    if not relative_lookup and not basename_lookup:
+        return document, 0
+
+    section_re = re.compile(
+        r'(<section\b[^>]*class=["\'][^"\']*\battachments-card\b[^"\']*["\'][^>]*>)(.*?)(</section>)',
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    total_links = 0
+
+    def patch_section(match: re.Match) -> str:
+        nonlocal total_links
+        opening, body, closing = match.group(1), match.group(2), match.group(3)
+
+        # 1) Існуючі <a href="..."> — переписуємо href, якщо файл знайдено у Files/.
+        anchor_re = re.compile(
+            r'<a\b(?P<before>[^>]*?)href\s*=\s*(?P<q>["\'])(?P<href>.*?)(?P=q)(?P<after>[^>]*)>',
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+
+        def patch_anchor(a: re.Match) -> str:
+            nonlocal total_links
+            target = resolve_files_reference(
+                a.group("href"),
+                relative_lookup,
+                basename_lookup,
+            )
+            if not target:
+                return a.group(0)
+
+            href = file_href(target)
+            tag = f'<a{a.group("before")}href="{html.escape(href)}"{a.group("after")}>'
+            if not re.search(r'\btarget\s*=', tag, flags=re.IGNORECASE):
+                tag = tag[:-1] + ' target="_blank" rel="noopener">'
+            total_links += 1
+            return tag
+
+        body = anchor_re.sub(patch_anchor, body)
+
+        # 2) Якщо генератор показав просто назву файла без <a>, робимо її клікабельною.
+        body, added = _link_plain_filenames_in_html_fragment(
+            body,
+            relative_lookup,
+            basename_lookup,
+        )
+        total_links += added
+        return opening + body + closing
+
+    document = section_re.sub(patch_section, document)
+    return document, total_links
+
+
+def patch_total_with_tax(document: str, tax_rate: float = RESULT_HTML_TAX_RATE) -> tuple[str, bool]:
+    """Додає після TOTAL COST окремий TOTAL + 20% у картці COST.
+
+    Функція ідемпотентна: повторний запуск оновлює/перегенеровує наш рядок,
+    а не додає дублікати.
+    """
+    original = document
+
+    # Прибираємо попередньо доданий нами рядок, якщо скрипт запускають повторно.
+    document = re.sub(
+        r'<div\s+class=["\'][^"\']*\btotal-with-tax\b[^"\']*["\'][^>]*>.*?</div>\s*',
+        '',
+        document,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    total_re = re.compile(
+        r'(?P<row><div\s+class=["\'][^"\']*\btotal\b[^"\']*["\'][^>]*>\s*'
+        r'<span>\s*TOTAL\s+COST\s*</span>\s*<strong>\s*(?P<value>.*?)\s*</strong>\s*</div>)',
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+    def add_tax_row(match: re.Match) -> str:
+        raw = strip_tags(match.group("value"))
+        total = parse_number(raw)
+        if total is None:
+            return match.group("row")
+
+        total_with_tax = total * (1.0 + tax_rate)
+        percent = int(round(tax_rate * 100))
+        tax_row = (
+            f'<div class="metric total total-with-tax">'
+            f'<span>TOTAL + {percent}%</span>'
+            f'<strong>${total_with_tax:.6f}</strong>'
+            f'</div>'
+        )
+        return match.group("row") + "\n" + tax_row
+
+    document, count = total_re.subn(add_tax_row, document, count=1)
+
+    # CSS для нового total та посилань на вкладення — додаємо один раз.
+    css_lines = []
+    if "total-with-tax strong" not in document:
+        css_lines.append('.total-with-tax strong { color:#d2a8ff; }')
+    if "attachment-file-link" not in document:
+        css_lines.append(
+            '.attachments-card a, .attachment-file-link { color:var(--accent); font-weight:700; text-decoration:none; }\n'
+            '.attachments-card a:hover, .attachment-file-link:hover { text-decoration:underline; }'
+        )
+    if css_lines and "</style>" in document:
+        document = document.replace("</style>", "\n" + "\n".join(css_lines) + "\n</style>", 1)
+
+    return document, (document != original and count > 0)
+
+
+def patch_result_html(
+    document: str,
+    relative_lookup: dict[str, Path],
+    basename_lookup: dict[str, Path],
+) -> tuple[str, dict[str, int]]:
+    """Усі автоматичні правки одного result HTML перед побудовою index.html."""
+    stats = {"back": 0, "tax": 0, "file_links": 0}
+
+    document, changed = patch_index_link(document)
+    stats["back"] = int(changed)
+
+    document, linked = patch_attachment_links(
+        document,
+        relative_lookup,
+        basename_lookup,
+    )
+    stats["file_links"] = linked
+
+    document, tax_changed = patch_total_with_tax(document)
+    stats["tax"] = int(tax_changed)
+
+    return document, stats
+
+
 # ============================================================
 # DATA STRUCTURES
 # ============================================================
@@ -732,6 +1012,14 @@ def discover_artifacts() -> list[Artifact]:
     """
     artifacts: list[Artifact] = []
 
+    # v13 за замовчуванням не змінює result HTML.
+    # Lookup потрібен лише якщо вручну увімкнути AUTO_PATCH_RESULT_HTML.
+    if AUTO_PATCH_RESULT_HTML:
+        relative_files, basename_files = build_files_lookup()
+    else:
+        relative_files, basename_files = {}, {}
+    patch_stats = {"html_changed": 0, "tax": 0, "file_links": 0, "back": 0}
+
     candidate_paths: list[Path] = []
 
     # HTML-моделі лежать поруч зі скриптом/index.html.
@@ -775,12 +1063,23 @@ def discover_artifacts() -> list[Artifact]:
         model_raw = m.group("model")
         model_name = filename_model_to_name(model_raw)
 
-        # HTML лежить у тій самій директорії, що index.html, тому back -> index.html.
-        if ext == "html":
+        # Автоматично переписуємо result HTML:
+        #   - back -> index.html
+        #   - attachment links -> Files/...
+        #   - TOTAL + 20% після чистого TOTAL COST
+        if ext == "html" and AUTO_PATCH_RESULT_HTML:
             document = path.read_text(encoding="utf-8", errors="replace")
-            patched, changed = patch_index_link(document)
-            if changed:
+            patched, stats = patch_result_html(
+                document,
+                relative_files,
+                basename_files,
+            )
+            if patched != document:
                 path.write_text(patched, encoding="utf-8")
+                patch_stats["html_changed"] += 1
+            patch_stats["tax"] += stats["tax"]
+            patch_stats["file_links"] += stats["file_links"]
+            patch_stats["back"] += stats["back"]
 
         artifacts.append(
             Artifact(
@@ -792,6 +1091,20 @@ def discover_artifacts() -> list[Artifact]:
                 run_dt=extract_datetime(m),
             )
         )
+
+    if AUTO_PATCH_RESULT_HTML:
+        if patch_stats["html_changed"] or patch_stats["file_links"]:
+            print(
+                "HTML auto-patch: "
+                f"оновлено={patch_stats['html_changed']}, "
+                f"TOTAL+20%={patch_stats['tax']}, "
+                f"посилань Files/={patch_stats['file_links']}, "
+                f"back-link={patch_stats['back']}"
+            )
+        elif FILES_DIR.exists():
+            print("HTML auto-patch: змін не потрібно; Files/ перевірено")
+    else:
+        print("Result HTML: read-only режим; файли не змінюються")
 
     return artifacts
 
@@ -1157,6 +1470,41 @@ def module_file_links(files: dict[str, Artifact], module: str, compact: bool = F
     return "".join(parts)
 
 
+def model_intelligence_score(model_name: str) -> int | float | None:
+    """AA Intelligence для моделі у верхній таблиці.
+
+    Спочатку дивимося explicit map для реально протестованих моделей,
+    потім — загальний OTHER_MODEL_CATALOG.
+    """
+    key = normalize_model_name(model_name)
+
+    if key in MAIN_INTELLIGENCE_INDEX:
+        return MAIN_INTELLIGENCE_INDEX[key]
+
+    for model in OTHER_MODEL_CATALOG:
+        if normalize_model_name(model.get("name", "")) == key:
+            return model.get("intelligence")
+
+    return None
+
+
+def make_main_intelligence_cell(model_name: str) -> str:
+    score = model_intelligence_score(model_name)
+    if score is None:
+        return (
+            '<td class="main-intel-cell" data-sort="">'
+            '<strong>—</strong><span>немає AA-балу</span></td>'
+        )
+
+    display = f"{float(score):g}"
+    level = intelligence_level(score)
+    return (
+        f'<td class="main-intel-cell" data-sort="{float(score):.6f}">'
+        f'<strong>{html.escape(display)}</strong>'
+        f'<span>{html.escape(level)}</span></td>'
+    )
+
+
 def make_results_cell(item: dict) -> str:
     """Красивий компактний блок результатів у головній таблиці.
 
@@ -1248,6 +1596,8 @@ def make_main_row(item: dict) -> str:
         <div class="model-meta">{tested_count}/{len(FULL_MODULES)} зап. · {html.escape(time_text)}</div>
         <div class="module-badges">{module_badges}</div>
     </td>
+
+    {make_main_intelligence_cell(item['model_name'])}
 
     <td data-sort="{numeric_sort_value(item['input_price'])}">{fmt_price_per_million(item['input_price'])}</td>
     <td data-sort="{numeric_sort_value(item['output_price'])}">{fmt_price_per_million(item['output_price'])}</td>
@@ -1382,17 +1732,34 @@ def intelligence_level(score: int | float | None) -> str:
 def make_other_models_section(main_items: list[dict], all_items: list[dict]) -> str:
     """Таблиця моделей, яких немає у верхньому основному benchmark.
 
-    Fable 5 примусово лишається тут навіть якщо її тестовий HTML присутній.
-    Для моделей, які вже потрапили у верхню таблицю, дубль не показуємо.
+    Fable 5 лишається тут навіть якщо її реальний тест одночасно показаний зверху:
+    верхня таблиця = фактичний результат, нижня = пояснення, чому модель відкидаємо за ціною.
+    Інші моделі, які вже потрапили у верхню таблицю, не дублюємо.
     """
     main_names = {normalize_model_name(item["model_name"]) for item in main_items}
     all_by_name = {normalize_model_name(item["model_name"]): item for item in all_items}
 
+    # Сортуємо нижню таблицю від найвищого AA Intelligence до найнижчого.
+    # Моделі без зіставного AA-балу завжди йдуть внизу; при однаковому балі — за назвою.
+    other_models = [
+        model
+        for model in OTHER_MODEL_CATALOG
+        if (
+            normalize_model_name(model["name"]) not in main_names
+            or normalize_model_name(model["name"]) in FORCED_REJECTED_MODELS
+        )
+    ]
+    other_models.sort(
+        key=lambda model: (
+            model.get("intelligence") is None,
+            -(model.get("intelligence") or 0),
+            normalize_model_name(model["name"]),
+        )
+    )
+
     rows = []
-    for model in OTHER_MODEL_CATALOG:
+    for model in other_models:
         key = normalize_model_name(model["name"])
-        if key in main_names and key not in FORCED_REJECTED_MODELS:
-            continue
 
         observed = all_by_name.get(key)
         observed_note = ""
@@ -1437,7 +1804,7 @@ def make_other_models_section(main_items: list[dict], all_items: list[dict]) -> 
         <div>
             <div class="eyebrow">Довідник · станом на 28.08.2026</div>
             <h2>Інші та відкинуті моделі</h2>
-            <p>Моделі, яких немає у верхній основній таблиці SITCAR. Ціни наведено за 1M токенів без нашої податкової/комерційної націнки. Intelligence — Artificial Analysis Intelligence Index; вищий бал = сильніша модель.</p>
+            <p>Додаткові кандидати та відкинуті моделі. Якщо модель уже має реальний SITCAR-тест (наприклад Claude Fable 5), її результат може одночасно бути у верхній таблиці, а тут лишається пояснення рішення. Ціни наведено за 1M токенів без нашої податкової/комерційної націнки. Intelligence — Artificial Analysis Intelligence Index; вищий бал = сильніша модель.</p>
         </div>
     </div>
     <div class="other-table-wrap">
@@ -1684,7 +2051,7 @@ h1 {
 .table-scroll { overflow-x:auto; }
 table {
     width:100%;
-    min-width:1180px;
+    min-width:1280px;
     border-collapse:separate;
     border-spacing:0;
     table-layout:fixed;
@@ -1728,7 +2095,7 @@ th.sortable:hover { color:var(--blue); }
 tbody tr:hover td { background:rgba(88,166,255,.035); }
 
 .model-head,.model-cell {
-    width:17%;
+    width:16%;
     text-align:left;
     position:sticky;
     left:0;
@@ -1772,25 +2139,42 @@ tbody tr:hover td { background:rgba(88,166,255,.035); }
 }
 .max-cell { box-shadow:inset 0 2px 0 rgba(219,109,40,.18); }
 
+.main-intel-cell {
+    width:7%;
+    text-align:center;
+    white-space:normal;
+}
+.main-intel-cell strong {
+    display:block;
+    font-size:14px;
+    color:#d2a8ff;
+}
+.main-intel-cell span {
+    display:block;
+    margin-top:1px;
+    color:var(--muted);
+    font-size:8px;
+    line-height:1.15;
+}
+
 .view-cell {
-    width:26%;
+    width:25%;
     padding:6px !important;
     text-align:left;
     white-space:normal;
 }
 
-/* Решта 8 інформаційних колонок навмисно вузькі,
-   щоб віддати максимум місця блоку "Результати". */
-#modelsTable tbody td:nth-child(n+2):nth-child(-n+9) {
-    width:7.125%;
+/* 8 числових колонок: тарифи, ліміти та 4 SITCAR-вартості. */
+#modelsTable tbody td:nth-child(n+3):nth-child(-n+10) {
+    width:6.5%;
 }
 
 #modelsTable thead tr:nth-child(2) th {
-    width:7.125%;
+    width:6.5%;
 }
 
 #modelsTable thead tr:first-child th:last-child {
-    width:26%;
+    width:25%;
 }
 
 /* =========================================================
@@ -1931,8 +2315,8 @@ tbody tr:hover td { background:rgba(88,166,255,.035); }
 .muted { color:var(--muted); }
 
 @media(max-width:1500px) and (min-width:761px) {
-    .view-cell { width:26%; }
-    #modelsTable thead tr:first-child th:last-child { width:26%; }
+    .view-cell { width:25%; }
+    #modelsTable thead tr:first-child th:last-child { width:25%; }
 
     .result-main-btn {
         min-width:54px;
@@ -2209,15 +2593,16 @@ code {
     .provider,.model-meta { font-size:10px; }
     .module-badge { font-size:8px; }
 
-    tbody .model-row td:nth-child(2)::before { content:"Input / 1M"; }
-    tbody .model-row td:nth-child(3)::before { content:"Output / 1M"; }
-    tbody .model-row td:nth-child(4)::before { content:"Max context"; }
-    tbody .model-row td:nth-child(5)::before { content:"Max output"; }
-    tbody .model-row td:nth-child(6)::before { content:"БЕЗПЛАТНА · фактично"; }
-    tbody .model-row td:nth-child(7)::before { content:"ПОВНА"; }
-    tbody .model-row td:nth-child(8)::before { content:"БЕЗПЛАТНА · MAX"; }
-    tbody .model-row td:nth-child(9)::before { content:"ПОВНА · MAX"; }
-    tbody .model-row td:nth-child(10)::before { content:"Результати"; }
+    tbody .model-row td:nth-child(2)::before { content:"AA Intelligence"; }
+    tbody .model-row td:nth-child(3)::before { content:"Input / 1M"; }
+    tbody .model-row td:nth-child(4)::before { content:"Output / 1M"; }
+    tbody .model-row td:nth-child(5)::before { content:"Max context"; }
+    tbody .model-row td:nth-child(6)::before { content:"Max output"; }
+    tbody .model-row td:nth-child(7)::before { content:"БЕЗПЛАТНА · фактично"; }
+    tbody .model-row td:nth-child(8)::before { content:"ПОВНА"; }
+    tbody .model-row td:nth-child(9)::before { content:"БЕЗПЛАТНА · MAX"; }
+    tbody .model-row td:nth-child(10)::before { content:"ПОВНА · MAX"; }
+    tbody .model-row td:nth-child(11)::before { content:"Результати"; }
 
     .money { display:flex !important; }
     .money > strong,.money > .coverage { display:block; }
@@ -2340,20 +2725,22 @@ code {
 <div class="table-scroll">
 <table id="modelsTable">
 <colgroup>
-    <col style="width:17%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:7.125%">
-    <col style="width:26%">
+    <col style="width:16%">
+    <col style="width:7%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:6.5%">
+    <col style="width:25%">
 </colgroup>
 <thead>
 <tr>
     <th rowspan="2" class="model-head sortable" data-column="0">Назва моделі</th>
+    <th rowspan="2" class="sortable" data-column="1">AA Intelligence</th>
     <th colspan="2">Тариф за 1M токенів</th>
     <th colspan="2" class="group-limit">Верхня межа моделі</th>
     <th colspan="2" class="group-actual">SITCAR · фактичний output</th>
@@ -2361,14 +2748,14 @@ code {
     <th rowspan="2">Результати</th>
 </tr>
 <tr>
-    <th class="sortable" data-column="1">Input</th>
-    <th class="sortable" data-column="2">Output</th>
-    <th class="sortable" data-column="3">Max context</th>
-    <th class="sortable" data-column="4">Max output</th>
-    <th class="sortable" data-column="5">Безплатна</th>
-    <th class="sortable" data-column="6">Повна</th>
-    <th class="sortable" data-column="7">Безплатна MAX</th>
-    <th class="sortable" data-column="8">Повна MAX</th>
+    <th class="sortable" data-column="2">Input</th>
+    <th class="sortable" data-column="3">Output</th>
+    <th class="sortable" data-column="4">Max context</th>
+    <th class="sortable" data-column="5">Max output</th>
+    <th class="sortable" data-column="6">Безплатна</th>
+    <th class="sortable" data-column="7">Повна</th>
+    <th class="sortable" data-column="8">Безплатна MAX</th>
+    <th class="sortable" data-column="9">Повна MAX</th>
 </tr>
 </thead>
 <tbody>
@@ -2420,10 +2807,12 @@ code {
         <li>Тому коректніше використовувати реальну вартість кожного окремого модуля, а не множити ORG на кількість запитів.</li>
         <li>Позначка <strong>частково</strong> означає, що для цієї моделі ще немає всіх необхідних тестів; показана сума — лише за реально наявні HTML-запуски.</li>
         <li>PDF-файли з папки <code>PDF_RESULTS</code> показуються поруч з HTML як альтернативний формат результату, але сам PDF не додає окремої вартості — розрахунок виконується за HTML API-запуском.</li>
+        <li>У v13 result HTML працюють у read-only режимі: builder їх не переписує, а лише читає для метрик і формує <code>index.html</code>.</li>
+        <li>Колонка <strong>AA Intelligence</strong> показує актуальний Artificial Analysis Intelligence Index для наших протестованих моделей; вищий бал = сильніша модель.</li>
         <li><code>FULL.html</code> — це <strong>окремий фінальний API-запит</strong>, тому його фактичні токени, latency і вартість входять у Повну версію. <code>FULL.pdf</code> — лише альтернативний формат цього самого результату і окремої вартості не додає.</li>
         <li>Окрема презентація / фінальний загальний API-запит не додається до ціни автоматично без реального HTML тестового файла. Якщо HTML з кодом FINAL / PRES / PRESENTATION з'явиться, скрипт підхопить його.</li>
         <li>Сумарний час у назві моделі — сума latency усіх реально протестованих HTML-запусків повної діагностики: 9 напрямків + <code>FULL</code>, якщо він є.</li>
-        <li>Податок / націнка: @@TAX_NOTE@@.</li>
+        <li>Податок / націнка (20% для всіх провайдерів): @@TAX_NOTE@@.</li>
         <li>Знайдено файлів до дедуплікації: @@ARTIFACT_COUNT@@; старіших повторів model+module+format приховано: @@DUP_COUNT@@.</li>
     </ul>
 </section>
@@ -2521,10 +2910,11 @@ function sortTable(column, ascending) {
 def main() -> None:
     print()
     print("=" * 76)
-    print("SITCAR — MULTI-MODULE MODEL INDEX BUILDER v11 (HTML + PDF + FULL API + OTHER MODELS)")
+    print("SITCAR — MULTI-MODULE MODEL INDEX BUILDER v13 (HTML + PDF + FULL API + INTELLIGENCE)")
     print("=" * 76)
     print(f"Директорія: {BASE_DIR}")
     print(f"PDF_RESULTS: {PDF_RESULTS_DIR}")
+    print(f"Files:       {FILES_DIR}")
     print()
 
     artifacts = discover_artifacts()
@@ -2537,10 +2927,9 @@ def main() -> None:
     newest, hidden_duplicates = newest_by_model_module_format(artifacts)
     grouped = group_data(newest)
     all_items = sorted(grouped.values(), key=model_sort_key)
-    items = [
-        item for item in all_items
-        if normalize_model_name(item["model_name"]) not in FORCED_REJECTED_MODELS
-    ]
+    # Усі реально протестовані моделі показуємо у верхній таблиці.
+    # Fable більше НЕ ховаємо: якщо є HTML/PDF результат — він має бути видимим.
+    items = list(all_items)
 
     html_count = sum(1 for a in artifacts if a.ext == "html")
     pdf_count = sum(1 for a in artifacts if a.ext == "pdf")
@@ -2573,7 +2962,7 @@ def main() -> None:
 
     print()
     print("-" * 76)
-    print("Посилання class=back у всіх model HTML -> index.html: перевірено/виправлено")
+    print("Result HTML не змінювалися (read-only); згенеровано лише index.html")
     print(f"ГОТОВО: {INDEX_FILE}")
     print("=" * 76)
     print()

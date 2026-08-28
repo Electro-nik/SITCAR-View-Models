@@ -45,6 +45,10 @@ summary { cursor:pointer; padding:15px 18px; font-weight:800; }
 .details-body { border-top:1px solid var(--border); padding:16px; }
 pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
 @media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+
+.total-with-tax strong { color:#d2a8ff; }
+.attachments-card a, .attachment-file-link { color:var(--accent); font-weight:700; text-decoration:none; }
+.attachments-card a:hover, .attachment-file-link:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -81,6 +85,7 @@ pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-w
 <div class="metric"><span>Output price / 1M</span><strong>$20.000000</strong></div>
 <div class="metric"><span>Output cost</span><strong>$0.215720</strong></div>
 <div class="metric total"><span>TOTAL COST</span><strong>$0.410864</strong></div>
+<div class="metric total total-with-tax"><span>TOTAL + 20%</span><strong>$0.493037</strong></div>
 </section>
 </div>
 <section class="result-card attachments-card">
