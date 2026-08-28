@@ -1,0 +1,2099 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini 3.6 Flash</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Gemini 3.6 Flash</h1>
+<div class="muted">Google Gemini · Prompt: TAL · 2026-08-28T12:27:37</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Returned</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Response ID</span><strong>WlSRar-ZEJb4nsEPjZSFwAI</strong></div>
+<div class="metric"><span>Context window</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Max output</span><strong>65 536</strong></div>
+<div class="metric"><span>Latency</span><strong>48.157 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>21 131</strong></div>
+<div class="metric"><span>Cached input</span><strong>—</strong></div>
+<div class="metric"><span>Output tokens</span><strong>7 040</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>3 685</strong></div>
+<div class="metric"><span>Total tokens</span><strong>28 171</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.750000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.015848</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.075000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$3.750000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.026400</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.042248</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted">Цей запуск виконано без додаткових файлів.</div>
+        </section>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">TAL</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Таланти</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">complete</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">44</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">88</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Система управління талантами «Солар Вест Буд» перебуває на початковій стадії: бізнес має 100% критичну залежність від трьох осіб, нуль готових наступників та двократний дефіцит виробничого персоналу.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Компанія оперує в умовах високого кадрового ризику. Наразі повністю відсутній кадровий резерв «готові зараз» (ready now) для всіх трьох ключових позицій: технічного керівника, керівника монтажу та керівника продажів. Вихід будь-кого з них загрожує зупинкою операцій чи суттєвими фінансовими втратами. Внутрішні процеси найму, онбордингу та розвитку мають переважно неформальний характер. Спостерігається суттєвий розрив між зовнішньою привабливістю ринку відновлюваної енергетики та реальним внутрішнім досвідом працівників: оцінки розвитку, стилю керівництва, кар’єрного зростання та навантаження становлять лише 2 бали з 5. Це створює високий ризик відтоку нових фахівців у перші 90 днів адаптації. Разом із тим, керівництво чітко усвідомлює власні слабкі місця, сформувало адекватні вимірювані цілі до кінця 2026 року та підготувало якісний план системного проєкту з побудови Talent-системи.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">employer_attractiveness</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">45</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Сильна ринкова ніша (СЕС, ESS, енергонезалежність) та європейське обладнання приваблюють фахівців</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Сформовано цілі та визначено аудиторії для розвитку бренду роботодавця</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Низька оцінка реального досвіду працівників у порівнянні з обіцянками: стиль керівництва (2/5), розвиток (2/5), навантаження (2/5), кар’єра (2/5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Слабке тестування повідомлень роботодавця (1/5)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">talent_strategy</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">50</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чітко визначено критичні ролі (Технічний керівник, Керівник монтажу, Керівник продажів)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Визначено конкретні розриви штату та способи їх закриття (Hire/Build/Borrow)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Гострий кадровий дефіцит: відсутній штатний інженер-проєктувальник, брак 50% монтажного персоналу</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Всі ризики критичних ролей замкнені особисто на засновника (CEO)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">attraction_selection_адаптація нових працівників</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">45</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Реферальний найм та професійна мережа дають високу якість кандидатів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Впроваджується людський контроль та захист від упередженості під час найму</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Неформальний процес адаптації: планомірний онбординг, наставництво та кар’єрний маршрут до 90 дня оцінені у 2/5</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Високий ризик відтоку новачків у перші 30–90 днів через нечіткі очікування</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">learning_intelligences</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">40</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Розуміння необхідності розвитку технічних компетенцій (СЕС+ESS) та консультаційних продажів</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявність елементів практики, наставництва та розбору кейсів</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Навчання є нерегулярним, а його бізнес-ефект системно не вимірюється (2/5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Естетичний та психологічний інтелект розвиваються фрагментарно (оцінки 1–2/5)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">leadership_performance_succession</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">35</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Визначено критерії результативності та потенціалу працівників</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Заплановано щоквартальний Talent Review та щомісячні 1:1 зустрічі</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">0 готових наступників («ready now») для 100% критичних ролей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Керівники слабо захищають людей від перевантаження та недостатньо формують наступників (2/5)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">retention_wellbeing_continuity</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">40</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Затверджено заходи щодо розробки SOP та чеклістів для передачі знань</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявне безпечне середовище для підйому питань про перевантаження (3/5)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Високий ризик вигорання через нерівний графік та відрядження у монтажу/сервісу</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Слабкий рівень збереження корпоративної пам&#x27;яті та документування знань (2/5)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">risk_data_ai</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">65</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Адекватна оцінка ранніх сигналів слабкості (ключова залежність, вихід сильних людей, слабкий резерв оцінені на 3/5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Прагматичне використання ШІ для профілів вакансій, аналізу резюме та планів розвитку з людським контролем</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутність оцифрованих даних щодо HR-метрик (time-to-productivity, 6/12-місячне утримання наразі лише в цілях)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Точне усвідомлення ключових точок залежності бізнесу та визначення критичних ролей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Привабливий ринковий контекст (відновлювана енергетика, СЕС+ESS), що дає природну перевагу при залученні фахівців</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Ефективне використання реферальних каналів залучення кандидатів із низькими витратами та високою якістю</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Зріле розуміння рольового застосування ШІ-інструментів для автоматизації HR-процесів під контролем людини</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Повна відсутність готових наступників (0 ready now) для ключових технічних, сервісних та комерційних ролей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Суттєвий розрив між привабливістю бренду роботодавця та реальним внутрішнім досвідом працівників (оцінка 2/5 за розвиток і керівництво)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Низький рівень регламентації адаптації (30/60/90 днів), що створює ризик втрати нових фахівців на початку роботи</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Нерегулярний характер навчання та відсутність системи оцінки його впливу на результати бізнесу</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">100% критичних ролей мають нульовий рівень негайної заміни (0 ready now)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">critical</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Раптовий вихід Технічного керівника або Керівника монтажу призведе до зупинки реалізації проєктів та невиконання зобов&#x27;язань перед клієнтами.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Двократний дефіцит монтажників (5 факт проти 10 за потребою) та відсутність штатного інженера</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Прямо обмежує виробіток компанії, спричиняє втрату 30% товарообороту та створює навантаження на існуючих людей.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Оцінка внутрішнього досвіду працівників за параметрами «Розвиток», «Кар’єра», «Навантаження» та «Керівники» на рівні 2 балів з 5</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Сигналізує про приховане вигорання та формує передумови для добровільного звільнення ключових спеціалістів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Компанія декларує швидке професійне зростання як перевагу для кандидатів, але оцінює реальний внутрішній досвід працівників щодо розвитку та кар&#x27;єри лише у 2 бали з 5.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Власник ставить ціль сформувати кадровий резерв і передати відповідальність, проте єдиним власником ризику для всіх критичних ролей досі вказано виключно CEO.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутня оцифрована статистика плинності кадрів та виходу працівників протягом перших 90 днів за минулий рік.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не обраховано фактичний час виходу нового фахівця на повну продуктивність (time-to-productivity).</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити та затвердити 90-денну програму онбордингу (чекліст 30/60/90, закріплення buddy-наставника, щотижневий зворотний зв’язок) для нових монтажників та інженерів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Зменшити ризик відтоку новачків у перші місяці через нечіткі очікування та прискорити їхній вихід на норму виробітку.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення утримання нових працівників до 80% на етапі випробувального терміну.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">HR-координатор / Керівники напрямів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Запустити Індивідуальні плани розвитку (ІПР) для 3 ідентифікованих потенційних наступників (інженер-проєктувальник, старший монтажник, менеджер продажів).</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Розпочати формування кадрового резерву та знизити рівень покриття ризику з критичного (5) до безпечного.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Наявність підготовлених заступників рівня «1–2 роки» для 100% критичних ролей до кінця року.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">CEO / Технічний керівник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Провести найм 1 штатного інженера-проєктувальника та 2 монтажників/електриків.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Ліквідувати головне операційне вузьке місце, що спричиняє втрату 30% товарообороту та перевантаження команди.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зняття ризику проєктних помилок та збільшення монтажної спроможності бізнесу.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">CEO / HR-координатор</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Створити та впровадити базову матрицю компетенцій і грейдів для технічних та комерційних ролей.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Привести реальний досвід працівників у відповідність до обіцянок роботодавця та забезпечити прозорий кар&#x27;єрний трек.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підвищення оцінки задоволеності розвитком та кар&#x27;єрою з 2 до 4 балів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Технічний керівник / Керівник продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Запровадити обов&#x27;язковий процес документування знань (стандарти SOP, чеклісти об&#x27;єктів, база виконаних проєктів).</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Захистити корпоративну пам’ять компанії від втрати знань у разі звільнення ключових співробітників.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Скорочення часу передачі справ та навчання нових людей удвічі.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Технічний керівник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Оцінка системи таланту «Солар Вест Буд» становить 44 зі 100. Бізнес має високий ринковий потенціал, але перебуває у зоні підвищеної вразливості через 100% залежність від трьох незамінних працівників та дефіцит виконавців на об&#x27;єктах. Наразі у вас немає жодного готового наступника на критичні посади, а адаптація та розвиток людей відбуваються неформально. Першочергове завдання для засновника — закрити дефіцит інженера та монтажників, впровадити 90-денну програму адаптації та запустити планомірну підготовку заступників для критичних ролей.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+  &quot;module_code&quot;: &quot;TAL&quot;,
+  &quot;module_name&quot;: &quot;Таланти&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 44,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;Система управління талантами «Солар Вест Буд» перебуває на початковій стадії: бізнес має 100% критичну залежність від трьох осіб, нуль готових наступників та двократний дефіцит виробничого персоналу.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія оперує в умовах високого кадрового ризику. Наразі повністю відсутній кадровий резерв «готові зараз» (ready now) для всіх трьох ключових позицій: технічного керівника, керівника монтажу та керівника продажів. Вихід будь-кого з них загрожує зупинкою операцій чи суттєвими фінансовими втратами. Внутрішні процеси найму, онбордингу та розвитку мають переважно неформальний характер. Спостерігається суттєвий розрив між зовнішньою привабливістю ринку відновлюваної енергетики та реальним внутрішнім досвідом працівників: оцінки розвитку, стилю керівництва, кар’єрного зростання та навантаження становлять лише 2 бали з 5. Це створює високий ризик відтоку нових фахівців у перші 90 днів адаптації. Разом із тим, керівництво чітко усвідомлює власні слабкі місця, сформувало адекватні вимірювані цілі до кінця 2026 року та підготувало якісний план системного проєкту з побудови Talent-системи.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;employer_attractiveness&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Сильна ринкова ніша (СЕС, ESS, енергонезалежність) та європейське обладнання приваблюють фахівців&quot;,
+        &quot;Сформовано цілі та визначено аудиторії для розвитку бренду роботодавця&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька оцінка реального досвіду працівників у порівнянні з обіцянками: стиль керівництва (2/5), розвиток (2/5), навантаження (2/5), кар’єра (2/5)&quot;,
+        &quot;Слабке тестування повідомлень роботодавця (1/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;talent_strategy&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначено критичні ролі (Технічний керівник, Керівник монтажу, Керівник продажів)&quot;,
+        &quot;Визначено конкретні розриви штату та способи їх закриття (Hire/Build/Borrow)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Гострий кадровий дефіцит: відсутній штатний інженер-проєктувальник, брак 50% монтажного персоналу&quot;,
+        &quot;Всі ризики критичних ролей замкнені особисто на засновника (CEO)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;attraction_selection_адаптація нових працівників&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Реферальний найм та професійна мережа дають високу якість кандидатів&quot;,
+        &quot;Впроваджується людський контроль та захист від упередженості під час найму&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Неформальний процес адаптації: планомірний онбординг, наставництво та кар’єрний маршрут до 90 дня оцінені у 2/5&quot;,
+        &quot;Високий ризик відтоку новачків у перші 30–90 днів через нечіткі очікування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;learning_intelligences&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Розуміння необхідності розвитку технічних компетенцій (СЕС+ESS) та консультаційних продажів&quot;,
+        &quot;Наявність елементів практики, наставництва та розбору кейсів&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Навчання є нерегулярним, а його бізнес-ефект системно не вимірюється (2/5)&quot;,
+        &quot;Естетичний та психологічний інтелект розвиваються фрагментарно (оцінки 1–2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;leadership_performance_succession&quot;,
+      &quot;score&quot;: 35,
+      &quot;evidence&quot;: [
+        &quot;Визначено критерії результативності та потенціалу працівників&quot;,
+        &quot;Заплановано щоквартальний Talent Review та щомісячні 1:1 зустрічі&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;0 готових наступників («ready now») для 100% критичних ролей&quot;,
+        &quot;Керівники слабо захищають людей від перевантаження та недостатньо формують наступників (2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;retention_wellbeing_continuity&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Затверджено заходи щодо розробки SOP та чеклістів для передачі знань&quot;,
+        &quot;Наявне безпечне середовище для підйому питань про перевантаження (3/5)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Високий ризик вигорання через нерівний графік та відрядження у монтажу/сервісу&quot;,
+        &quot;Слабкий рівень збереження корпоративної пам&#x27;яті та документування знань (2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;risk_data_ai&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Адекватна оцінка ранніх сигналів слабкості (ключова залежність, вихід сильних людей, слабкий резерв оцінені на 3/5)&quot;,
+        &quot;Прагматичне використання ШІ для профілів вакансій, аналізу резюме та планів розвитку з людським контролем&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутність оцифрованих даних щодо HR-метрик (time-to-productivity, 6/12-місячне утримання наразі лише в цілях)&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Точне усвідомлення ключових точок залежності бізнесу та визначення критичних ролей&quot;,
+    &quot;Привабливий ринковий контекст (відновлювана енергетика, СЕС+ESS), що дає природну перевагу при залученні фахівців&quot;,
+    &quot;Ефективне використання реферальних каналів залучення кандидатів із низькими витратами та високою якістю&quot;,
+    &quot;Зріле розуміння рольового застосування ШІ-інструментів для автоматизації HR-процесів під контролем людини&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Повна відсутність готових наступників (0 ready now) для ключових технічних, сервісних та комерційних ролей&quot;,
+    &quot;Суттєвий розрив між привабливістю бренду роботодавця та реальним внутрішнім досвідом працівників (оцінка 2/5 за розвиток і керівництво)&quot;,
+    &quot;Низький рівень регламентації адаптації (30/60/90 днів), що створює ризик втрати нових фахівців на початку роботи&quot;,
+    &quot;Нерегулярний характер навчання та відсутність системи оцінки його впливу на результати бізнесу&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;100% критичних ролей мають нульовий рівень негайної заміни (0 ready now)&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Раптовий вихід Технічного керівника або Керівника монтажу призведе до зупинки реалізації проєктів та невиконання зобов&#x27;язань перед клієнтами.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою) та відсутність штатного інженера&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Прямо обмежує виробіток компанії, спричиняє втрату 30% товарообороту та створює навантаження на існуючих людей.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Оцінка внутрішнього досвіду працівників за параметрами «Розвиток», «Кар’єра», «Навантаження» та «Керівники» на рівні 2 балів з 5&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Сигналізує про приховане вигорання та формує передумови для добровільного звільнення ключових спеціалістів.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія декларує швидке професійне зростання як перевагу для кандидатів, але оцінює реальний внутрішній досвід працівників щодо розвитку та кар&#x27;єри лише у 2 бали з 5.&quot;,
+    &quot;Власник ставить ціль сформувати кадровий резерв і передати відповідальність, проте єдиним власником ризику для всіх критичних ролей досі вказано виключно CEO.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутня оцифрована статистика плинності кадрів та виходу працівників протягом перших 90 днів за минулий рік.&quot;,
+    &quot;Не обраховано фактичний час виходу нового фахівця на повну продуктивність (time-to-productivity).&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити та затвердити 90-денну програму онбордингу (чекліст 30/60/90, закріплення buddy-наставника, щотижневий зворотний зв’язок) для нових монтажників та інженерів.&quot;,
+      &quot;why&quot;: &quot;Зменшити ризик відтоку новачків у перші місяці через нечіткі очікування та прискорити їхній вихід на норму виробітку.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення утримання нових працівників до 80% на етапі випробувального терміну.&quot;,
+      &quot;owner_role&quot;: &quot;HR-координатор / Керівники напрямів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити Індивідуальні плани розвитку (ІПР) для 3 ідентифікованих потенційних наступників (інженер-проєктувальник, старший монтажник, менеджер продажів).&quot;,
+      &quot;why&quot;: &quot;Розпочати формування кадрового резерву та знизити рівень покриття ризику з критичного (5) до безпечного.&quot;,
+      &quot;expected_result&quot;: &quot;Наявність підготовлених заступників рівня «1–2 роки» для 100% критичних ролей до кінця року.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / Технічний керівник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести найм 1 штатного інженера-проєктувальника та 2 монтажників/електриків.&quot;,
+      &quot;why&quot;: &quot;Ліквідувати головне операційне вузьке місце, що спричиняє втрату 30% товарообороту та перевантаження команди.&quot;,
+      &quot;expected_result&quot;: &quot;Зняття ризику проєктних помилок та збільшення монтажної спроможності бізнесу.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / HR-координатор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити та впровадити базову матрицю компетенцій і грейдів для технічних та комерційних ролей.&quot;,
+      &quot;why&quot;: &quot;Привести реальний досвід працівників у відповідність до обіцянок роботодавця та забезпечити прозорий кар&#x27;єрний трек.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення оцінки задоволеності розвитком та кар&#x27;єрою з 2 до 4 балів.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / Керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запровадити обов&#x27;язковий процес документування знань (стандарти SOP, чеклісти об&#x27;єктів, база виконаних проєктів).&quot;,
+      &quot;why&quot;: &quot;Захистити корпоративну пам’ять компанії від втрати знань у разі звільнення ключових співробітників.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення часу передачі справ та навчання нових людей удвічі.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Оцінка системи таланту «Солар Вест Буд» становить 44 зі 100. Бізнес має високий ринковий потенціал, але перебуває у зоні підвищеної вразливості через 100% залежність від трьох незамінних працівників та дефіцит виконавців на об&#x27;єктах. Наразі у вас немає жодного готового наступника на критичні посади, а адаптація та розвиток людей відбуваються неформально. Першочергове завдання для засновника — закрити дефіцит інженера та монтажників, впровадити 90-денну програму адаптації та запустити планомірну підготовку заступників для критичних ролей.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;TAL&quot;,
+  &quot;module_name&quot;: &quot;Таланти&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 44,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;Система управління талантами «Солар Вест Буд» перебуває на початковій стадії: бізнес має 100% критичну залежність від трьох осіб, нуль готових наступників та двократний дефіцит виробничого персоналу.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія оперує в умовах високого кадрового ризику. Наразі повністю відсутній кадровий резерв «готові зараз» (ready now) для всіх трьох ключових позицій: технічного керівника, керівника монтажу та керівника продажів. Вихід будь-кого з них загрожує зупинкою операцій чи суттєвими фінансовими втратами. Внутрішні процеси найму, онбордингу та розвитку мають переважно неформальний характер. Спостерігається суттєвий розрив між зовнішньою привабливістю ринку відновлюваної енергетики та реальним внутрішнім досвідом працівників: оцінки розвитку, стилю керівництва, кар’єрного зростання та навантаження становлять лише 2 бали з 5. Це створює високий ризик відтоку нових фахівців у перші 90 днів адаптації. Разом із тим, керівництво чітко усвідомлює власні слабкі місця, сформувало адекватні вимірювані цілі до кінця 2026 року та підготувало якісний план системного проєкту з побудови Talent-системи.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;employer_attractiveness&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Сильна ринкова ніша (СЕС, ESS, енергонезалежність) та європейське обладнання приваблюють фахівців&quot;,
+        &quot;Сформовано цілі та визначено аудиторії для розвитку бренду роботодавця&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька оцінка реального досвіду працівників у порівнянні з обіцянками: стиль керівництва (2/5), розвиток (2/5), навантаження (2/5), кар’єра (2/5)&quot;,
+        &quot;Слабке тестування повідомлень роботодавця (1/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;talent_strategy&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначено критичні ролі (Технічний керівник, Керівник монтажу, Керівник продажів)&quot;,
+        &quot;Визначено конкретні розриви штату та способи їх закриття (Hire/Build/Borrow)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Гострий кадровий дефіцит: відсутній штатний інженер-проєктувальник, брак 50% монтажного персоналу&quot;,
+        &quot;Всі ризики критичних ролей замкнені особисто на засновника (CEO)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;attraction_selection_адаптація нових працівників&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Реферальний найм та професійна мережа дають високу якість кандидатів&quot;,
+        &quot;Впроваджується людський контроль та захист від упередженості під час найму&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Неформальний процес адаптації: планомірний онбординг, наставництво та кар’єрний маршрут до 90 дня оцінені у 2/5&quot;,
+        &quot;Високий ризик відтоку новачків у перші 30–90 днів через нечіткі очікування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;learning_intelligences&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Розуміння необхідності розвитку технічних компетенцій (СЕС+ESS) та консультаційних продажів&quot;,
+        &quot;Наявність елементів практики, наставництва та розбору кейсів&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Навчання є нерегулярним, а його бізнес-ефект системно не вимірюється (2/5)&quot;,
+        &quot;Естетичний та психологічний інтелект розвиваються фрагментарно (оцінки 1–2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;leadership_performance_succession&quot;,
+      &quot;score&quot;: 35,
+      &quot;evidence&quot;: [
+        &quot;Визначено критерії результативності та потенціалу працівників&quot;,
+        &quot;Заплановано щоквартальний Talent Review та щомісячні 1:1 зустрічі&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;0 готових наступників («ready now») для 100% критичних ролей&quot;,
+        &quot;Керівники слабо захищають людей від перевантаження та недостатньо формують наступників (2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;retention_wellbeing_continuity&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Затверджено заходи щодо розробки SOP та чеклістів для передачі знань&quot;,
+        &quot;Наявне безпечне середовище для підйому питань про перевантаження (3/5)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Високий ризик вигорання через нерівний графік та відрядження у монтажу/сервісу&quot;,
+        &quot;Слабкий рівень збереження корпоративної пам&#x27;яті та документування знань (2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;risk_data_ai&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Адекватна оцінка ранніх сигналів слабкості (ключова залежність, вихід сильних людей, слабкий резерв оцінені на 3/5)&quot;,
+        &quot;Прагматичне використання ШІ для профілів вакансій, аналізу резюме та планів розвитку з людським контролем&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутність оцифрованих даних щодо HR-метрик (time-to-productivity, 6/12-місячне утримання наразі лише в цілях)&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Точне усвідомлення ключових точок залежності бізнесу та визначення критичних ролей&quot;,
+    &quot;Привабливий ринковий контекст (відновлювана енергетика, СЕС+ESS), що дає природну перевагу при залученні фахівців&quot;,
+    &quot;Ефективне використання реферальних каналів залучення кандидатів із низькими витратами та високою якістю&quot;,
+    &quot;Зріле розуміння рольового застосування ШІ-інструментів для автоматизації HR-процесів під контролем людини&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Повна відсутність готових наступників (0 ready now) для ключових технічних, сервісних та комерційних ролей&quot;,
+    &quot;Суттєвий розрив між привабливістю бренду роботодавця та реальним внутрішнім досвідом працівників (оцінка 2/5 за розвиток і керівництво)&quot;,
+    &quot;Низький рівень регламентації адаптації (30/60/90 днів), що створює ризик втрати нових фахівців на початку роботи&quot;,
+    &quot;Нерегулярний характер навчання та відсутність системи оцінки його впливу на результати бізнесу&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;100% критичних ролей мають нульовий рівень негайної заміни (0 ready now)&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Раптовий вихід Технічного керівника або Керівника монтажу призведе до зупинки реалізації проєктів та невиконання зобов&#x27;язань перед клієнтами.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою) та відсутність штатного інженера&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Прямо обмежує виробіток компанії, спричиняє втрату 30% товарообороту та створює навантаження на існуючих людей.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Оцінка внутрішнього досвіду працівників за параметрами «Розвиток», «Кар’єра», «Навантаження» та «Керівники» на рівні 2 балів з 5&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Сигналізує про приховане вигорання та формує передумови для добровільного звільнення ключових спеціалістів.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія декларує швидке професійне зростання як перевагу для кандидатів, але оцінює реальний внутрішній досвід працівників щодо розвитку та кар&#x27;єри лише у 2 бали з 5.&quot;,
+    &quot;Власник ставить ціль сформувати кадровий резерв і передати відповідальність, проте єдиним власником ризику для всіх критичних ролей досі вказано виключно CEO.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутня оцифрована статистика плинності кадрів та виходу працівників протягом перших 90 днів за минулий рік.&quot;,
+    &quot;Не обраховано фактичний час виходу нового фахівця на повну продуктивність (time-to-productivity).&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити та затвердити 90-денну програму онбордингу (чекліст 30/60/90, закріплення buddy-наставника, щотижневий зворотний зв’язок) для нових монтажників та інженерів.&quot;,
+      &quot;why&quot;: &quot;Зменшити ризик відтоку новачків у перші місяці через нечіткі очікування та прискорити їхній вихід на норму виробітку.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення утримання нових працівників до 80% на етапі випробувального терміну.&quot;,
+      &quot;owner_role&quot;: &quot;HR-координатор / Керівники напрямів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити Індивідуальні плани розвитку (ІПР) для 3 ідентифікованих потенційних наступників (інженер-проєктувальник, старший монтажник, менеджер продажів).&quot;,
+      &quot;why&quot;: &quot;Розпочати формування кадрового резерву та знизити рівень покриття ризику з критичного (5) до безпечного.&quot;,
+      &quot;expected_result&quot;: &quot;Наявність підготовлених заступників рівня «1–2 роки» для 100% критичних ролей до кінця року.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / Технічний керівник&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести найм 1 штатного інженера-проєктувальника та 2 монтажників/електриків.&quot;,
+      &quot;why&quot;: &quot;Ліквідувати головне операційне вузьке місце, що спричиняє втрату 30% товарообороту та перевантаження команди.&quot;,
+      &quot;expected_result&quot;: &quot;Зняття ризику проєктних помилок та збільшення монтажної спроможності бізнесу.&quot;,
+      &quot;owner_role&quot;: &quot;CEO / HR-координатор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Створити та впровадити базову матрицю компетенцій і грейдів для технічних та комерційних ролей.&quot;,
+      &quot;why&quot;: &quot;Привести реальний досвід працівників у відповідність до обіцянок роботодавця та забезпечити прозорий кар&#x27;єрний трек.&quot;,
+      &quot;expected_result&quot;: &quot;Підвищення оцінки задоволеності розвитком та кар&#x27;єрою з 2 до 4 балів.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / Керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запровадити обов&#x27;язковий процес документування знань (стандарти SOP, чеклісти об&#x27;єктів, база виконаних проєктів).&quot;,
+      &quot;why&quot;: &quot;Захистити корпоративну пам’ять компанії від втрати знань у разі звільнення ключових співробітників.&quot;,
+      &quot;expected_result&quot;: &quot;Скорочення часу передачі справ та навчання нових людей удвічі.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Оцінка системи таланту «Солар Вест Буд» становить 44 зі 100. Бізнес має високий ринковий потенціал, але перебуває у зоні підвищеної вразливості через 100% залежність від трьох незамінних працівників та дефіцит виконавців на об&#x27;єктах. Наразі у вас немає жодного готового наступника на критичні посади, а адаптація та розвиток людей відбуваються неформально. Першочергове завдання для засновника — закрити дефіцит інженера та монтажників, впровадити 90-денну програму адаптації та запустити планомірну підготовку заступників для критичних ролей.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_tokens_details&quot;: null,
+  &quot;cached_content_token_count&quot;: null,
+  &quot;candidates_token_count&quot;: 3355,
+  &quot;candidates_tokens_details&quot;: null,
+  &quot;prompt_token_count&quot;: 21131,
+  &quot;prompt_tokens_details&quot;: [
+    {
+      &quot;modality&quot;: &quot;TEXT&quot;,
+      &quot;token_count&quot;: 21131
+    }
+  ],
+  &quot;thoughts_token_count&quot;: 3685,
+  &quot;tool_use_prompt_token_count&quot;: null,
+  &quot;tool_use_prompt_tokens_details&quot;: null,
+  &quot;total_token_count&quot;: 28171,
+  &quot;traffic_type&quot;: null
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;sdk_http_response&quot;: {
+    &quot;headers&quot;: {
+      &quot;x-gemini-service-tier&quot;: &quot;standard&quot;,
+      &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,
+      &quot;vary&quot;: &quot;Origin, X-Origin, Referer&quot;,
+      &quot;content-encoding&quot;: &quot;gzip&quot;,
+      &quot;date&quot;: &quot;Fri, 28 Aug 2026 09:27:37 GMT&quot;,
+      &quot;server&quot;: &quot;scaffolding on HTTPServer2&quot;,
+      &quot;x-xss-protection&quot;: &quot;0&quot;,
+      &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+      &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+      &quot;server-timing&quot;: &quot;gfet4t7; dur=47920&quot;,
+      &quot;alt-svc&quot;: &quot;h3=\&quot;:443\&quot;; ma=2592000,h3-29=\&quot;:443\&quot;; ma=2592000&quot;,
+      &quot;transfer-encoding&quot;: &quot;chunked&quot;
+    },
+    &quot;body&quot;: null
+  },
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: {
+        &quot;parts&quot;: [
+          {
+            &quot;media_resolution&quot;: null,
+            &quot;code_execution_result&quot;: null,
+            &quot;executable_code&quot;: null,
+            &quot;file_data&quot;: null,
+            &quot;function_call&quot;: null,
+            &quot;function_response&quot;: null,
+            &quot;inline_data&quot;: null,
+            &quot;text&quot;: &quot;```json\n{\n  \&quot;module_code\&quot;: \&quot;TAL\&quot;,\n  \&quot;module_name\&quot;: \&quot;Таланти\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;complete\&quot;,\n  \&quot;score\&quot;: 44,\n  \&quot;confidence\&quot;: 88,\n  \&quot;headline\&quot;: \&quot;Система управління талантами «Солар Вест Буд» перебуває на початковій стадії: бізнес має 100% критичну залежність від трьох осіб, нуль готових наступників та двократний дефіцит виробничого персоналу.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Компанія оперує в умовах високого кадрового ризику. Наразі повністю відсутній кадровий резерв «готові зараз» (ready now) для всіх трьох ключових позицій: технічного керівника, керівника монтажу та керівника продажів. Вихід будь-кого з них загрожує зупинкою операцій чи суттєвими фінансовими втратами. Внутрішні процеси найму, онбордингу та розвитку мають переважно неформальний характер. Спостерігається суттєвий розрив між зовнішньою привабливістю ринку відновлюваної енергетики та реальним внутрішнім досвідом працівників: оцінки розвитку, стилю керівництва, кар’єрного зростання та навантаження становлять лише 2 бали з 5. Це створює високий ризик відтоку нових фахівців у перші 90 днів адаптації. Разом із тим, керівництво чітко усвідомлює власні слабкі місця, сформувало адекватні вимірювані цілі до кінця 2026 року та підготувало якісний план системного проєкту з побудови Talent-системи.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;employer_attractiveness\&quot;,\n      \&quot;score\&quot;: 45,\n      \&quot;evidence\&quot;: [\n        \&quot;Сильна ринкова ніша (СЕС, ESS, енергонезалежність) та європейське обладнання приваблюють фахівців\&quot;,\n        \&quot;Сформовано цілі та визначено аудиторії для розвитку бренду роботодавця\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Низька оцінка реального досвіду працівників у порівнянні з обіцянками: стиль керівництва (2/5), розвиток (2/5), навантаження (2/5), кар’єра (2/5)\&quot;,\n        \&quot;Слабке тестування повідомлень роботодавця (1/5)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;talent_strategy\&quot;,\n      \&quot;score\&quot;: 50,\n      \&quot;evidence\&quot;: [\n        \&quot;Чітко визначено критичні ролі (Технічний керівник, Керівник монтажу, Керівник продажів)\&quot;,\n        \&quot;Визначено конкретні розриви штату та способи їх закриття (Hire/Build/Borrow)\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Гострий кадровий дефіцит: відсутній штатний інженер-проєктувальник, брак 50% монтажного персоналу\&quot;,\n        \&quot;Всі ризики критичних ролей замкнені особисто на засновника (CEO)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;attraction_selection_адаптація нових працівників\&quot;,\n      \&quot;score\&quot;: 45,\n      \&quot;evidence\&quot;: [\n        \&quot;Реферальний найм та професійна мережа дають високу якість кандидатів\&quot;,\n        \&quot;Впроваджується людський контроль та захист від упередженості під час найму\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Неформальний процес адаптації: планомірний онбординг, наставництво та кар’єрний маршрут до 90 дня оцінені у 2/5\&quot;,\n        \&quot;Високий ризик відтоку новачків у перші 30–90 днів через нечіткі очікування\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;learning_intelligences\&quot;,\n      \&quot;score\&quot;: 40,\n      \&quot;evidence\&quot;: [\n        \&quot;Розуміння необхідності розвитку технічних компетенцій (СЕС+ESS) та консультаційних продажів\&quot;,\n        \&quot;Наявність елементів практики, наставництва та розбору кейсів\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Навчання є нерегулярним, а його бізнес-ефект системно не вимірюється (2/5)\&quot;,\n        \&quot;Естетичний та психологічний інтелект розвиваються фрагментарно (оцінки 1–2/5)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;leadership_performance_succession\&quot;,\n      \&quot;score\&quot;: 35,\n      \&quot;evidence\&quot;: [\n        \&quot;Визначено критерії результативності та потенціалу працівників\&quot;,\n        \&quot;Заплановано щоквартальний Talent Review та щомісячні 1:1 зустрічі\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;0 готових наступників («ready now») для 100% критичних ролей\&quot;,\n        \&quot;Керівники слабо захищають людей від перевантаження та недостатньо формують наступників (2/5)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;retention_wellbeing_continuity\&quot;,\n      \&quot;score\&quot;: 40,\n      \&quot;evidence\&quot;: [\n        \&quot;Затверджено заходи щодо розробки SOP та чеклістів для передачі знань\&quot;,\n        \&quot;Наявне безпечне середовище для підйому питань про перевантаження (3/5)\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Високий ризик вигорання через нерівний графік та відрядження у монтажу/сервісу\&quot;,\n        \&quot;Слабкий рівень збереження корпоративної пам&#x27;яті та документування знань (2/5)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;risk_data_ai\&quot;,\n      \&quot;score\&quot;: 65,\n      \&quot;evidence\&quot;: [\n        \&quot;Адекватна оцінка ранніх сигналів слабкості (ключова залежність, вихід сильних людей, слабкий резерв оцінені на 3/5)\&quot;,\n        \&quot;Прагматичне використання ШІ для профілів вакансій, аналізу резюме та планів розвитку з людським контролем\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Відсутність оцифрованих даних щодо HR-метрик (time-to-productivity, 6/12-місячне утримання наразі лише в цілях)\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Точне усвідомлення ключових точок залежності бізнесу та визначення критичних ролей\&quot;,\n    \&quot;Привабливий ринковий контекст (відновлювана енергетика, СЕС+ESS), що дає природну перевагу при залученні фахівців\&quot;,\n    \&quot;Ефективне використання реферальних каналів залучення кандидатів із низькими витратами та високою якістю\&quot;,\n    \&quot;Зріле розуміння рольового застосування ШІ-інструментів для автоматизації HR-процесів під контролем людини\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Повна відсутність готових наступників (0 ready now) для ключових технічних, сервісних та комерційних ролей\&quot;,\n    \&quot;Суттєвий розрив між привабливістю бренду роботодавця та реальним внутрішнім досвідом працівників (оцінка 2/5 за розвиток і керівництво)\&quot;,\n    \&quot;Низький рівень регламентації адаптації (30/60/90 днів), що створює ризик втрати нових фахівців на початку роботи\&quot;,\n    \&quot;Нерегулярний характер навчання та відсутність системи оцінки його впливу на результати бізнесу\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;100% критичних ролей мають нульовий рівень негайної заміни (0 ready now)\&quot;,\n      \&quot;severity\&quot;: \&quot;critical\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Раптовий вихід Технічного керівника або Керівника монтажу призведе до зупинки реалізації проєктів та невиконання зобов&#x27;язань перед клієнтами.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою) та відсутність штатного інженера\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Прямо обмежує виробіток компанії, спричиняє втрату 30% товарообороту та створює навантаження на існуючих людей.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Оцінка внутрішнього досвіду працівників за параметрами «Розвиток», «Кар’єра», «Навантаження» та «Керівники» на рівні 2 балів з 5\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Сигналізує про приховане вигорання та формує передумови для добровільного звільнення ключових спеціалістів.\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Компанія декларує швидке професійне зростання як перевагу для кандидатів, але оцінює реальний внутрішній досвід працівників щодо розвитку та кар&#x27;єри лише у 2 бали з 5.\&quot;,\n    \&quot;Власник ставить ціль сформувати кадровий резерв і передати відповідальність, проте єдиним власником ризику для всіх критичних ролей досі вказано виключно CEO.\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Відсутня оцифрована статистика плинності кадрів та виходу працівників протягом перших 90 днів за минулий рік.\&quot;,\n    \&quot;Не обраховано фактичний час виходу нового фахівця на повну продуктивність (time-to-productivity).\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Розробити та затвердити 90-денну програму онбордингу (чекліст 30/60/90, закріплення buddy-наставника, щотижневий зворотний зв’язок) для нових монтажників та інженерів.\&quot;,\n      \&quot;why\&quot;: \&quot;Зменшити ризик відтоку новачків у перші місяці через нечіткі очікування та прискорити їхній вихід на норму виробітку.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підвищення утримання нових працівників до 80% на етапі випробувального терміну.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;HR-координатор / Керівники напрямів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Запустити Індивідуальні плани розвитку (ІПР) для 3 ідентифікованих потенційних наступників (інженер-проєктувальник, старший монтажник, менеджер продажів).\&quot;,\n      \&quot;why\&quot;: \&quot;Розпочати формування кадрового резерву та знизити рівень покриття ризику з критичного (5) до безпечного.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Наявність підготовлених заступників рівня «1–2 роки» для 100% критичних ролей до кінця року.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;CEO / Технічний керівник\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Провести найм 1 штатного інженера-проєктувальника та 2 монтажників/електриків.\&quot;,\n      \&quot;why\&quot;: \&quot;Ліквідувати головне операційне вузьке місце, що спричиняє втрату 30% товарообороту та перевантаження команди.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зняття ризику проєктних помилок та збільшення монтажної спроможності бізнесу.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;CEO / HR-координатор\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Створити та впровадити базову матрицю компетенцій і грейдів для технічних та комерційних ролей.\&quot;,\n      \&quot;why\&quot;: \&quot;Привести реальний досвід працівників у відповідність до обіцянок роботодавця та забезпечити прозорий кар&#x27;єрний трек.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підвищення оцінки задоволеності розвитком та кар&#x27;єрою з 2 до 4 балів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Технічний керівник / Керівник продажів\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Запровадити обов&#x27;язковий процес документування знань (стандарти SOP, чеклісти об&#x27;єктів, база виконаних проєктів).\&quot;,\n      \&quot;why\&quot;: \&quot;Захистити корпоративну пам’ять компанії від втрати знань у разі звільнення ключових співробітників.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Скорочення часу передачі справ та навчання нових людей удвічі.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Технічний керівник\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Оцінка системи таланту «Солар Вест Буд» становить 44 зі 100. Бізнес має високий ринковий потенціал, але перебуває у зоні підвищеної вразливості через 100% залежність від трьох незамінних працівників та дефіцит виконавців на об&#x27;єктах. Наразі у вас немає жодного готового наступника на критичні посади, а адаптація та розвиток людей відбуваються неформально. Першочергове завдання для засновника — закрити дефіцит інженера та монтажників, впровадити 90-денну програму адаптації та запустити планомірну підготовку заступників для критичних ролей.\&quot;\n}\n```&quot;,
+            &quot;thought&quot;: null,
+            &quot;thought_signature&quot;: &quot;Eoh5CoV5ARFNMg8knzHNfg_CYpc2TTYubrraUQDWCnfh3xpP0zg46RUG0ahhGKNekXiaRCcUoYYc2uoyg0i_JhxNRTgUrKrrsgnY3f7_7cByAzmuLQZSATuIGuqG2TE6Poh_MKcr1KE33SRKsdX3dRyPwsNgixChHWpe6aI_1l7RGTT6H4gq1qNmlQeTiO0J6eFDZF9dIdArfOfBS84yqc-L_f4lzNOiBKQUyFAR5tsoS29dKF7Ub960RECbsDLxOwnBMAMuO3nVTA5ewn83mLgN-4McY4pYtVUjmIYE-AWlNg5bgXTIuXfHbAWTYHFFsCS1GP424UfSHEBjmRX5dvh126x_cLd-tD0e-B7G2ZXAA6cRfrUD9xG-qKqyKHGWXPAvW2Oaj0_uomKATm5z4UHXOTjCd54uxcG6EVWHhwcLzQmT9-xy6Pd5mv7qZs78_A_-9WogS2HCbBlIEHOlg8XH_mk4jmUszxuKCwTi64Txl-qK9A3g7KybTgbRgeY-eHElTU7c5SDOXpRAr4VTOmzefBJUjWMT7dtOtjImFuqrhHE8BeXB5aQgR8ygb_005XeSrHEbSJAGdgHLwEbOihJp4KvmN0Ju_pWoR0negiUu9iMsgzQ52scfaY4HmUHGwkKVTN2GOJkr30qfhyihseq7NcypEZp_ePCyVBbqHpiGkADUE0pVNphpb-XitOIop_BxXkI17JJ4BkquoKd3LFlqxjwRxJCCywm-6SVVlal07aJdgVUWNqRoJ6Lxyil4PHwUiIKZG29PCX3ZSSCd8I2IAZIq9YdQY81TS8HuFR37KhHtZ58hXHhWKf86oy7lEYmCmbnBphxdQqktbqVNPsIfqg4Ua6tb3rWecEqd3WNKlGFqOZzdFuS-Y9QxtGlQSAp-tBfVdIDzFKUUXh--JT6PAMjO2Oam-TaAZ-cwHYc0RjNyofVOhyn08wLdR7b_FDt4jDJlKgneuZ2v7zwTAjlxLiX2KmROOWB0BfNDuvH92xOokxvzLO3uK-i6ZPRANSa1wZENtrmxKMmnt0iVyoBset495sv3AumlR6lnxWfwSbPcN805D-5EEmyEqD1dfti5D7AVyBgDWklOynm4djfpmnhexZwr_XFRYNth1RZMTthiBtG00_W0Iki9u3Ymte_VaUBpzTwQ-NnQg4kc2HD9wGFdm850Rw6l6yaGsFAgDWJDxnECArxYdizgw3Ea5LqE81vrYo6Es8wtxXoUpvQ4LxtcZiPpwhQ18mewTbXBsQoEZaAoQTKKIeAeRFs7VJ7LYI5LWliRIuMbMNdPTchG7YG0UJdKtZY1Ck8xIqkuJkIDeTUWCONea9K7XFJGEWvJrZF4ermnjd1fx9Oglwpapf-86DJ2NE0GqKlaRXPTwJnwdqFyv90zNx4ygtIFZAO4eUyLpiP2x5ByJS4Imq3cgs8_xSzUBZZgZaWgEMTwehd6Aa_JFtdNakqemxibzd_M9nK3lnAGaaoyslxBTuOXVKPPwd7tSijv71qJLMqIirIVxT5kEmJBUwJCfjANyVeJDceNPJzthkytCd46IbrfFIU2gCn2i6s2Qv2yyoSpK8Hut5kpr5uBBAMKMTtcRm5ujrQw8fzxxtrcYjPj4S9Zbuua6oGOdpJPDCpLRsQJ756nmk-GqLk6hdYym-SXePu6syghPlxOX3-muSaRIVsZ5VduAYAWszZJs7_2-HG1nxMzc9sv0SthEEfx1-TBaqKryQ0p_WD2pZtwUZhLWfAOs7OG6KHFoWJedwapodQZk2CLoq7btMUaEOEwYvXYYzzV2uyR5bUtu8HVDqOMACUSsrfcTGmm2_JJZ4EnRLFMYmPtqzKXlW9tP5hs7mWNFtihCgiuIomOUS718jOGlqKjeJk4_gQaHz8ocF5BXdydGPlKhDr1CACCzmBv-467nuTcNJpwA58I5ZEcxGHm1qc2D7t6j_gJT6RxLYBiuEF6hk1SNnzSekfRvAhw-1I-T81sjUzC5Pz4mQrB8TS6j8C_wuc_S6y4ZKs4_6A6p76lL1jTgriY87OkO0GsnzebGn65cPEopl0RL5a4a9AoJWoeMHZfZSWrELzrlw0kviP958P_L6_LK7lVwWeZchAg14Detv-lslFr5L4Waau8JC9rWWTeDTsMim3wEujIXyLJszrfHx1F9R4gi3jxJTQ5san41I7e9DyuCd3d1rNrchRXN09ixRMnGeE2pwMJvsqZeP-1YpxooXsdAAgBBo8KcNXvrLDOFDMzjHr8PvkhY7LsPNNiR5Z_Zprhw5Sw4Mvh3taf3cQTt0A7FJuiEVoa9RUBCvyZ9cFkijCWgLzy4IFQrZOhaBHFSl1hHD6x9Z7W1AmUGj6KjkYnUpNghXmWBXnvFey80UHRil8nsEUHKKWnejmKMSxEf89SSOzpokNDViM7J7i5-9XHtsLIZSxVVbLd4YNV25LUpWhQCy95EzP8_UefjbwJXSu_94PlICjzfGwDTzZwbZnqkQpT1-8bczLjreZtPrWIdWzILc-3OxyCP36BdsG1V0msCYV9z6S1uJk6vLfacnNYSxfZHHAUo9yR088zmElBLVzfnM2bTa86j4teMwaJ4D56nTKlqYo5RNUNSjn3vdc5AcGtc-o2J8NEsOXFilZRQtuPYIv-i8KLcrpCsTad7QPLsJMWzoAdodJaq-MBWqmGUHs3ok8kFsni-5ko00gwL2t4GinKAv-qh8aXxEaKs01HHVzGQ0RGGBt_6AFJPk5-9DnUBB6ad9vcW1ROA8aTiOyAX7_CY9JOPYPGhYeLHHAbmW4U4hNVsNzoRQOZ_q77RH2qi1dvFNFQ1tvFf3YTGd-knd_jo-qgBQkl_1iwjnkKsf6OAL0_bBJrWBzHXzzlDnBmJteR2GAiF4K991lFbSQ6NQXN0l64UJ2j8BkixXp491kSWYNJX8F7YatmKXjpMLtPI2xTUuWAkBHWE2ihJizZQyzVqbvSG7VbfBzMWgOWlbJ8JkVvPdeHo0t0LhYN4EdJ3KlkLrhke2-CRTTMSvogMsSL2o_ua6nBwHuQcwjAihbbrbIs57GguZ58shpZzb9jAvXC3OHMd8KKEYKYGjF7CG9EvYBWWll8TVSvWdxK4kZ5z-ZyXVznf4FnN9YUPDS6tZHJ3hegZM5kpsMJ5Tkzb8DTintP8CSuu5id_pjUQ5ZCbNJh7OlQzyf5AfLjK9k0ziF71NBAQP06nG-xnHsSj672pMObFTTUj5-9m9Q03GPIFXsHaAM2olNcjl27WOQJ5yGCTseT9lJSmNCn68_t2EwHp4ZOEYhcvPLAOxyz08dsodYqJDPxZ7oYZfEEkMfzAhEZEj-owSqq421FFOeYSKIRAbKKI4YJnI2P0Y0EE95khUKRlPPmObFEp0B-z-aUoxH1DRG8uPokAqaEeyXytnP3d79ju_uaNElJziaJPaAI6YrYm_sw5iinyypvuuY9mKZr8FZFX3iGbhLHwvITCSFQly0P-a8Kw5HMuw_IhSbGXd0_RsXJFzGX_GzW7DlNvGSqKmq4kFl3p6zDQz6ki72d4yW6ZzKKJREROuWw0LyxIbpuEbYFFh9yCfqRY3eKcDvRp2XPWzOKitnoLOdOycUjihIfGBpUCDNs79q_0EF56spqpARGEGrSJ7W4ad6C3DYA1Jryw0zFlu2tzUsvTNEdsc5bOqLS9t59lKpf_Ik94DMOjKBx6tX-zhiCeUSBWnQOMQg7A1JMa2V_cbVzVeC4FvSB2UEciXcZxKJL-upgVZVbvqi0MCVRLMEvcuE2q_MAbzVWcSkh_GzqYdknzLxfYXAOeL4r4hXDcJMkjnlLNAqQ2G3bTj29iP7S3DfNy-z_kxBjhyc45XZVWHzwoNsZI6SpKqpyWI1YYKSJQ1kpsRhPAJQR1-2FOwnS7RZ76syz6_zc2XL-pDLyNu85pkGvPAtS4RB1CjV6CoUCDPCz_yl4P26uUz8h2K5Ub0R4nTfGn1PjX16qEZeutSBrFj6mYEBP3_rTMN7g9akhTZX-usqpu5HVyv8ak6vc6P-s_b6_rELR3obZmioMQ23u_ievE28qQN0fU1lvIRES3HqdvqTfv6fudRz9R1wPbIqskpz_LgwTngNwXRVxTRC8dE2DVcteH8z5dQOc0OGJrwkkSJGJNORNbq-jTeFbhM0aZb-94oQGsiqIaYuYp0SYG9AZKydKK-Jq7YGsm62r7Jj7-N-Br6ouiMkT08wje1QC0JFv4KP9KA0GwZzL-abZHFt5dBaZeiZBJbGyHTuYi-q9odMBv0RqfeSK-wjHZHMmBQLVT53o0hDcS1QhnxvVGGRZba2K5Ghnso4-KvPyYHXwGsIZeek9Ri0ppq9OTubd3BzFIP6doc51Egj8TK-26yOKfDt6fGzYVD3hBBy6g-uVS9jasDdKEnDpQY9fNhuUITS_On6pFrNs6Hy9BcdYBX85FVpTx5mxw_QiLpGflV-aFtBwN-2yjAHq668okqsnxqeNy0boqsB9eaAYdk2DuabOVdJjqJcMpiR8on6fyGot27BGhpqaAUaMTWLwfZPDNKwmXihMr2jyQj_cxWVKZ3E7rtJIej_maMhGvNPCuEyS8DXCKRuThIjHLLmWuw-UFavXZ9Jfl2Vrf4lpsbV82CSMbExNnYrl6mT2GfrRRBxfJfmRTTtNB9dwAWWu0tXYG0hbWTzpT6dmtWVNtbAo16TFahVIJ_FT2JmYqWWPvGS6r9AjN5R6KOnI9ycvcJDsxrsYMVsK5KIFPG6ztg_hkau6s252YBwDLnFsgsszySFFSJqrk3dQ3j-X9G4XoAmfjTwxgbHsKz6trIIO86nE9l46YeS5IeJbI7FVJOrHl4qlBJ_7_XMmY34EHUJDxyujlQuP4qv8-YdZH2W0vdOyuBUJaJifMEQjhJffxpgveVkH0kt6MKwbu052h_GY4qjMELJ6Lnj8siqtC0rTB3p4xRYZdSy62xLk7GoBmpHHGgYzK1y8NifzaDsgLgEQ11w76F_m-7mii7Ox87kgN7LG01FXvKSooBrk1oPjHn0qqgx4IDxU5owd2Frke4L-gEn6kp2nlHbAv9AcOgkgIMux9GGXjypFjf4vqmuqSnQS9B03cb1vZucVRB6BeCqFSRrqHwIu7MO0_VOiu_R3E6dIZJXwhrTvKOHJGIid-zzHbC92WcfwQ9llUbn34wUmwkKOrgmcWHJxeT-KWAoIrRlDdirpR2c8EaT0WlErdtTJ1oAX2vSqYgRcFciTYsgwIsrHaIDM8ERNDWGmH14EiWhJdfuadR6piAe9q6EKID6JeSEqdnFfnkYgk476IH3qMYdFAiBS-u0u1w2l9NnOHyojeZhr9uAghpNNXAmpcZXx-YjO-eW0TtWOBqENQsp-9KFrwVbYP8hathcIdYNr6Kcz8R-XQ5EQ1w8SS8qnzOuQqlfcna8aLVAxCjI4PNNIhUMO-FmUMeF8nutEWERIJVST0xswk-K1ht_VX_Rei8E7mq7X40KSevWUH9t3hVD8WK2Xh4AAdzleM8IanjH_G7AHBFaHSNAsqts_sWBEiLVpRoNGY-VlTvloARDIFgm8a7dfgA0Kt4e7u1Cl2DMK7Umxf81eFsTLA64rTVp6BhvRC8_1NLLWRIQZO_PPEole1sKSZCp85eX-vctwI-WW-ma5W1IvFdDdzZWcaGfsaHE2VsP0iJxP3IZNZzvvOiJN7A2PopZUDEr3hDSiuPesEJtbsIkfhgOAwwUM0JeSuhb0SJ_Umqfh71rxDlwIY80CIKVtXK6d3zIGYzHYjyebCJLoHpn2GyZ7HOzLGR2qj0-9p4wNo8YU1N9p7tVDDvEpSffwIzwOCR6heUCIXEckaGUFJNyfyNwFA_QK2k66HXwpMeFuujMyILxeB2KzhsCC_LRPBlCpqdkU3KLtRIIWQJ8hEV_5tO5uJKMUfrEFvWdVKpImEwjiPfVA83d-Gyg60-Rre6PRcYlw0-6_7DMcIlSzkni8hGWvax7kbXFbMPOuPW5Hd-tdP-RHx_efkELHb6gnjr-I-Hp2J_bR775QBjn734nMlwg9c8i6zBllji5iqNAFaBJznuSfnRn54w0aefixwbvHtv5B7FvDCLWsZYgCNaYZKGJ6zAz1ESTxDu_CXkCcq1LVUhI1om9CqFFc3GF-F0v7ccXF0lZLugeWzstS-WNFmP3WESB0-QXbAfpgomrNxCR2qfPqSr3phHd4djDtpN1TdoJPd4n2PZkgoCrQ_k92_xdp2crB1G06ESdP-zgkpgH4oZ9Jsjt5QSlxIZ_hIdfewk6WjYR-gF7zg4QyWEGMTdVjwX6CG6hKxq0iRO_-zXiVtdkdTJ_HNnuXBjhP5_wMAYU2VcPVxblTce2e2j4DCL5edOc587KEX-5PY2L4sTLqJWM5vpNLPngReH-YvkFlGsfSQQfoMzNui_eUrV9wArC2024USQwGhZtKH130e5ig4356BFmI0w4uMaliyCgRpzTita4oCzEzzbmj_TkhvqE0FqiIwhq21qmviaA6Cfz8TGEpUJxBLaRaTVGUzfG5HeD46UVPOzcGsuOpINx_Kfy6iJRWxIDhEfHG4CMenlbxMrHFFAFJ-ScvPR_wOyclqvQc5hE1G9zBKomA1t4VreKkysD26lt2KBl7OFkwYJfWjtG1AeRLT339CtXr2qvZySRHc3Aaxf9aa5Xz5WgUpA9FmBa7PaOqsDQnwqiudnyqlxH5jGT0BQ-t3fZZ_BXqc3wXee8YddlobrNne2dRpgWF0Ajbknda781AtMaLR0bMsxsN1IHgrQDSUYqbCQnsXLTYPKlZ_eEOZb19ru_RML7ASXR5Oq_eaMj6aUIrkI2XQUE_Z78WuXB4nrXkuPFslBUbC7EM3N_ikW_tRxYBLdPWiZLqGlTO1jmnpa6fZCC7lG9n0hV7gYmdqrjMvGcJpThG4JrO-azdr8_TRo6GgCx2f3mzaTa2MK3WBUFpEjrpxHURFrgY2wb85mt5mVnSAdvVc9_fxSv-zUKMBW1ntGKXwm0MFVMif6qr4MlJIrjQVgDZlmch7mKhXDi4Z0mY4FHOkNFWAhmPcqfurqBKXxC7xFVI4e2XG_FhgZXlkqdgps3GESaw4nuIYnohNB4qnq8VFz3H1MQQCDzUXMlE_5n3MWvYT0PCtsFSiPr8YiIrIAFnqXIdZBOBnrfZG_dB2hjqs9Ela7Z2H5LBlQ9n5afgegFsMJ7TWoVPBjLdl8Vbmh-1nU5FZ84QuehbP8_8jRCvvgPbGe1pHMZEVS5zCRwx1Dar6LTixwPrTjDR6fu26IJ0y6siDivEukJH7j5yLdqWjSC7SvoWAUmkvOMncxWmEOdJArbA81ffzr5x35YpKF9rUPExoQXeUDJnUk2ac69GfYJMp0KZh6oAdSnFpgvRWnmTOwMhkvGITacICj3RpEdBWL09EZIl5454wj_MjOK7LP771FZuStUTBT_6xdzEcQR6sYB8fvo8JqmjxSAessOl3kQO8ySj_rRRsyOyVWwwq9c1J0xj_MXAft52odbyemp4unkK-KJ7hQfAJd-G7sF4Og6FC4pMNjOfGP55vpkUjlcP-hJMi4ASkJlRUYkNWQbWsrKqex1LVAA9JXzp93PWjxlt1QYM2ymLXKN5_H-jPMLztsEk9GGMvY1Dr7X6heZfVjEDDKCSBBfcnWSNlu169sFeGekbJ3ggsp9zB9dIWu8OLlHD7z7FdRrpF7Tmvu1UDFpCif-ufDtH8jXdzvZvvWnJEHBtkBd61uduIGGUAXmi_8o61rSLrqnItx103QnxRq5cMIMrkb9cRvFTmmQTFc5EOzvIsU9G3QXQgO8BHGjwrLJ1O1pA5N_T5vPzBnyeGGSdzWqaDXBAzNd7S7tDvdp1zjOQrLz43zQ9pGyqqsQfng7icOq1FXPfYMSyHSNfsHriIletbAVi0cfmYzo5u3ZVKadLi0JVjF8ZbQQAWUQ69vpefb0sWLFIS4cKv_LHkxHfDh2SidAOAEyVXImi3PwJK0B8IA4Wi5eUD5sGCqbKUQtcmoa6mPc-x687XqDNJWFs3xZm-aMzGx0dy5Tpsrcuc6P8oD4iOXtlVysxBjnAgpw42AhUOK4wF7tTSyk3qVYzaQy0LiQwKrKmHa8vEr8R5zZx1J1g4ekTjrAREwvtOEiQtrxmodZoplYbTKSuJwn1CA9pFrHoAu3KLcHkQI5OlIp2jqAmW1-Qj8OtSCp4LsgM25kn7reTXjL_SPhOxNkxtEWBe_J4b35V7nkciZUGxl2SYtGfaPg4DPHrcFaKKmdjhUrU7yJ_PszrlyqvK6kZLgqWj-Ik3205UI2RMpEIChS_YHtc1nB9qcbxnoc3TqfSm_GubF5B7lJtRm3xUeQhUMpYmSiZyIdnhSNpuIBMBbvgvhBH-jqHqxej7Iuc6L7zf6KgA0cIrQyDa_YoHBFpnyuwxWwBYYrg4DIYGl5oL7-VG_iHVxDxVq_zDXcC_Bnp1HagMyd1V_I6ML4WPRnuHa1wCA7sCNx451Vq7s-rjbcmh2aOQQh_LaPGKES0cXcdk9909riLrI-Xr7yYJWugHkHEB-1kQaXzB0BpGCSFHo22X3fvikrV15briuj-LzwmxJ6SRzkmaLveFYYzkyqcYHYSu4TMHMrozK1QkHNv-SIlwLRbiSVkB98VKGm6bvULbr5kUa1MdmjHW3aSfbwZVcWfeHLdIC2L_6VZYhf4Gj6WlGL1fyedReNkvLams9as2Gx60PKMxpjsXCTO6fkOzAMQ1WcvtFi6jMT-9iRCaPkzmsgT0-p6KRrUxpj8f_rWZSOiy-sYQZ-urHUEf8S3vrjCoexbqjYY9ivToLazD-bY3gZ9uUIV4SehqESjTjQeB7FZxv2XelAhegK4vDI0xT1qd2imU2ILrnw8dSp1JmBn_S8okIgakZi0XCahyIRYXIhvcGQ6Fz_ER6KcUvJy-YHdoWiODGjfQyPu9G9gkyG8H08FEl-4NtJ0BOnHlke1_184eBY0kvqqYolCklEyVmH7sStJ91ZbZMQQu5Nw1bmliedMviOAAcL-RfL5iEYT8zAnwE5XgFndWtwmJj8KZJc706xpbsMQbFktvSYo3yvKRJHxeRHU51wZe0SYj06kwFM5e6AGTpROAY5evQZpRarJ8zP-kq_rU09Bf8SWVZMFjbpOxyWyyZa0Cs6OhaR7ToFAGvVHxtNS7cfH7retSqxfdWPUuleIM-6WmuE8hL7mskgM-E7MB_lFAbDPCH9i-ChZy-tTfAn0CBKaLTipTz6U3g6MCF0T-Jxwxv8z39vMs9TBkCvSZaC_LM-A8Jkfxq-rZoQpsFf6WUaRMKjzMGKBUCkgu6r-OmJFA91m8OHiW-p3sKYENYx8nHQQMafVHQY0ygBXtYZ7kYgP02ItKCaQ92SMih78qtYlzGdgobtHzsly2mTy8rJCQujeqHccs3hRtiyLOk7b-IiiB--x9psEtTb7xP2by5LwwPGQBE-R7__9imtNpCGaxIc53yD64naavHk36WRzFL5nKMjsr225-6xQHmaAa2swQIZV3xQmGOyzz0udhWbcSIGtG30jtkNSjzlGfd_gem4hi3lIFN0LTskh5vriBEtbR3cYVZFpbcNUjn4ayxO9w06W7-CLOIpLsiox0nd1avMnJF2pXuq6d6CiEV7A6vz71FUu2bHWYoTMF6ykW5R5mYVHF33OAf_u3GpdGwhAqHCSe22qValp_IeUSY2NGzDY1VqcB66mrT_ZJkJ-YF2kvTTqJZnWbM5z0bYALWIKxZDZI79lR2NnrP78NOUFzD82fidHK3YnukNiVSk_shAIGI2tLNa5LTGs6VWHBGFqHOY3unNqU-JC6zjNAGfZAJlD67swSzqLareCFkSTRNb_Q2o9Ey-7SpLFC7Xzlbj9XgLv01cjFZuPdJO_aH7oQ69ul1mRylcwCAm-rlG2P3TNeTFcBjMkleRPYsrWe6OlONU_Caq0PGqHiJS9uVMmIbl7qRJZV99IvPbDVFyww5XYZTK1vUnyNHPhTUxxrldGie2ixGcP0pdQVtGgFyeSQLrXKZ1mEMjTe_UCFieiLbLbG606TrpS4-ACjccCRJ5ukLBuqIeR3DXbUAVkZbNNwLFQrfpoAEjHu_64UHrT8_xRmgPPjqYtcBCpC2VCz-inlz7X_6lS3gErfnhJzDzjqSf7ZGInBZpSoePmbZLi3DPIhA9sGf84eKVW6wGIaHjw9CF6050-mDLayTDhyKaNs-2AYebyjUCKwLfGvTjsBZkekYHgGVmWjOAEtPcwMEoiF2MN585e5CvIg0ggoZczqMRZ10KuVFiGrf4CSD-sCZbDrKJ8Wji5bfryiCgnDXfbNXTUEmRXzi7kr5XR22tYIwSUjVR5XgLmsm48c8RYDAKS91HNA4BKBs42xKTtOCpx3QxGwDVma1hyqX4sQWkyjoKgWbadOHaimqRYd1x3URwiRVYan6bLkyA1QW3sCFgtnbaikaRoekmFEqmF7eRYTqVfd7JpNP7Nem9fk9b-zp4euT-QoVxY2jwx7rJ2zkVK7IntqtVaV6Nni3eInSpHnSOh7pWvwrpXgnxjAdxK7aKMINA04ZAE6Nz6fQorZ46wKqAM1lYacZcww34cpcUttqbESu1I1GMid3u9k49V14qGhAfyRKbk8AiLL0xouj7NWteJLRQzXxDm3MyarJh1t2jSPtOPr4RMKnLiNIzdpWYNrPKpU2O0j_6ieE-q0T5jy3AUCODZOAVdq-fvcF79fAvqKK2vXSAuCLemQhdUlQ74b5mOfZBnN8hPXbA-Mju5eb-vRetF37_Ryvg75xlDdrbtNPDIouCkBkAXYDyGhpv6j6FRWEYtlNoXqNgpo6Y2wN-1a3FRoVQVhu4dt9w-rHOWz3JijUxOa51FH1WeKIghdteMgMPsARFsQ6jmkrKOOVSs61XOG0mTY8GMopCn8Gpd4leTpT5pLurZOUN5SRDMc_k5i3xGQUgqxH7ruu9WFFhdZujt5CTTw3w0xAG71n5LP8XNt3HsSvv3z9oAq1NQcE9PflzNKi190wT80tmJsLAYhiNpcoXGzBr2BYXVNOLe3VUK7u5ItXsm6jn8Zb7eHARFT5t-reeWEo-_4_Fefw-RH11L1rW-AS1pGJ0EsH2M0qjDOw097htGOvIldmLuh-WgiiLrG4k6PN9aGc0xAGxhSdDjnx4aXTeQtrURlKcLsGUuStrjJqiugfE3Tl5yQm6-XG6IiB4Z-2nhEKtudThxXAhIlk5ggEbNfPNlx3w0FaQMAB9ZEe6ewqG4vskpGEEAAkeakJNg4Z4GH8KVjGF7JP7eyRQu60hCgfJSUI6NaP2qbcUuWkl8XBR5yb6DeYzNmz6g6C6GVWfu1cBx0dHgL3Zi1Av3ON9rakGM_J_3jor1f6Rq3sRc4bH0Y0djrI83dEmAGHLXDRV18reN0B-iZkhz1ZDvtUf-hpOj4Jkda3pX1KlgLUmhnUCeYn4s2KTKDZQdO1TCPKzms9t-Cea0qTng-RhgjN-U72ksdBIfaCW7Fs-kK5aGRpJ9b1lQZL8P4YAA6i0d-NYvXxjWeflFuDMxoB4zhcn897JVv52yTiwVfFR2bcj1z9QnMjM8I84XcJx3AZQPPvC8LexGAbSwP7eF-b2kr5sFPNdX0nUSPg-m0yJBnEVGvE7wVfjenO06KsbQvYRsLAMaEWStN5ZWWEqNHqnHcMM5n2gAHbAYWjhiKosTAwJ-RUAZoy5gG6Op3ahruLLAHyXFuni_yqXZR9RieJ3qGyNFyoTGLrmLttxNcTtS9MNd4uOlzi6RxKiBrCrQUItEafaUmCxECLqZkD_2vONxeZNEdIVZsQ2hcvQC_hx9yuiMm3eRpodpUM0Luk7qao-QrMqwn0ETmrZHywPSoy65viyTgiokOeiCCO9UrGzdHHZLZgfjVxauHcNd_M60zcDALw3Ma-AW371IKGNL1jfOwG31pB1n_Hb4RTPIJQtWKH1sb5g1QchnT_CFPyJDYAoTc3KLAaQzSl_FEG93oE3iGwL2b_hle3-MRB9oezMGDSrj9FBe9aq2MRhRf90hpOwgLrh0mUvp7ieFULKXQBduS1BtsRYLBgrggzKVM7vWmFqzdiXQOQp1APA5PYb2sWeER5Im-t5OWbSTRq7lFYhxiBULf20w1vfKAVoyqV2Qox2mdY2TLwPDN4aZS7Fmt90AGT7NIxrBhGv-GGlF2GDNEYKzuytiFCzR0y99tFuy862MJKqCpgMBgE3KBEgrubKhBKubRYabe5nPs_N9p0X-F56JKHws3Q2qe22yhpRvCOafDi1yjpP6zSUCM5uClzCiy6E7ADZjEybmT94tt7aDviUjlQQgRGm9ix_c1gnQnaTbvFnT-31iuQwzRaheGc9i7MuZVlXupAnm4sSvnuv8ncAJvYYIa_A0H8_jCP2Gj_v782p6gcgDVOnaD-p0_6O6n-LMGMboA30QtflE52ZjjA68rwPD5312okCAMu93PQjapJorh7J_F0QwBi2cAePYs76DflCclDrQzEIAUhJ4Q7gnvBCz3H6WdKS0dciV-c3EISuEcumR9D03QLqapDqB2_aNlJkCC_yqUlQsf4p3VM9C0XKecH_gipYGRU2g9yb534gB_IaCIe-uenGVq4LmnNo_Kldf8ZsPNXbYyeNTZEqz5IURVTD6Z-Xc80FpixMVHlpLccaOJUDHcmzOXKFHBE9EHGghlAJf5oS6nJtyTQifgdYJ-mrAMpnza6CD-_sfVY6rFl3e20x-dFWXqXjNcxV8UMp_sEkGCvbgkn2jMbHjHOyRLnllKmIvNIG5YaFou2N8OXweUn3cVeTWKz6s1JIRaC4AIw24HPMtCtHgHTDi9m_UVV6_7y8Fq_bptHYUaSYAIueoV1hmgouvAMygsXwVg6SRt4br20-UoZJ7HdAlsMPUQCn10vxbgmd0-Cn09B6w4HGvxJrbDLkcCad8Q9A467nNGbTVFJFDvs9bN0BnDakrTnWuPqoiAjDmHgm9p84ogmknuIc-LAqLX5AQ64i6oIXsJff9axpWYKyUKU1LNG4gkFx0kBWOZrlsRsdMslc0uSfy6H6Hatqozz0ERatMwY13Ro0F_WfgOVeDxcXnRIIQHdL1Cu4BBVOvPxBeyh85iCUia5uw4blQc4vtYBU6S1qIIWz1hJzPjPoyzX_n_9RGHJxQfv0-lK1CKce6_eOE0XvtmvNmpKn7J5q0HIH0wIw5PowbIiQimMwnMvk7lqTbqCsg_zYCfOiq5C66hh8jW-Vt3QfMyoRXkIYTfzR5YuMl4p6kd7GCv70ryZQHpE9LqVv69YGbgDO-a-KIURA4wS9p87E49Ar3qN4KxqPf2EcQFuT-6hWQNSsmLO8Dkl_fvcGPt2UYCAH1m-4rXGcIBLgUJQexyzE0DQg-4yefjIO_m2ZUh_GNy4jjhhFRwTelIJIchgXArx_xLrrVPRiyNn1clObLTrnlREOYTfCQst81U20MLdXkk4vUCGEsPctAXzsp9IJ8hMbbS04444hNGjfw8kwJx2JP2hYrr-45rMG07jMcLJsJXjcuOdwr9k4P-9zUyA8FvU3sXpZ9HYi6BACSMJmoODOxivJJ6B3llX0PCam1-taPyxfoexG1slXpGmTk_Tmh3wGM_dU2Jr1xtbBqvAqmPP-HooFu7RpcfPdsXAXyFe0Cj0AWS2wVcIJqou-cYCocCzevcfhKcCOOwmbnzPA4EQsI2qflFkz99NSLgQf59-EuBUUsbsL4LQPqqr580Ct5DF-3qq_ia9ulyP47Y61rq8tleofqulf5XrWM4snVTGCB4nMYaoH5LFCszdka5FJsNYp9fnoauYVbG_yA6ciIHrUJPKRElb4KZ6L0BwgQOkMlGcTEiqpIMfmOYtKnIL-0Z0a6HdkEPDK7peE_nKq6CEx9kspCfTk2hU79rw0dU6mObBDFn0GzTknOIJBYEHnrCdnHnrj_92gKBqLWRCeGoEYlIGsMFLYy7tbGa1KjyzTRZYKXCa5Bgt_O1IhL9xxy1hfy6nL11XUQtKLGNd7eAPol6v_U_I7qnRkrR7mr18uFxFoj59IFIdCSQnk6nUCWZg13KwgLBJ7Ub4cu1dSEazoVZzWayaDNbDWMzcGhAwWsHhkAf8cvxx15Y2b6zCCLuoo_VDu40uhZghxcCFQ3cDHfH94V97x-W0rSEieJH-GIWG2sMIqlR7SBerV1ukbhCDAvzpTxh4bddWFQNgbSwuiaXRNFr18xd2gFZAm9F6eIO2Rj4JRw90dcQzG7stacGz5lT_8I98HqXCSEtdBsRBs4NMnDtTG8Q8RQUmR3F2yMFtKHr9Vipi7V56NOZ8fd9RIItnA2sLkSBICUU-mKVOljwZHQnNVzEVfdKjvmUwVllAZKwHt7v22SDIvLCk49iSKc7Hg5N9F1GH2OartHFdGBcM4MDkQBT_-gEBw-bABG0RLzHoq3Pus-BQbnVD48QJ-UaSEZ0AR2V34eI3RfN66nWunUHVibh44mfUojqzdgVZBy7v327F35LNKx1VyGr19TQn-La8odY48OkgfHfPXQjGMGIVaK-IGEMaz6Eq4cah1dS31E7VXppIR8KveYGoLbw6L-O7ajnXeO61IDaiKwknwPufjt86n9Ji4auWyfRm6ziSmc9jqbfjKhW1Tl1b8Jm-i4jitplp1bPf3-ORik6cv4_150-IdIO4DsZaPN3Nq658b3WHHjGUNc5xv-yheEDwSj28PfjB8RTI7cHtVLL7dRMH97O4FQ4kOMUZ1e3tX3SfttXskKKSRYX1QFhS3Uq6ZrtTwTaZGBTALVo_ZijFzb6-UmTlLW4NKAxiAaBCrcLkUtHqlfkAA_zA-pLd92_uoz2MBO5ButHmcW8JZKqG3jX-Ft2FSWGCd4SK5aZEFuX1GVh3b0wMwUNUgdBp44NKkXu7rl4L9RK-Q6vnm2pxRlM850zD8dHXvlA13cbqh15WUhjhu0cKv48P_VZ78s6r1pdEipV_9fSC9ZYpfoKnAit-9s3pfEU_uaz8gX1ulSzeFkkB1D_c7amXWhfLdphpXIka1A-bZhaIzv-9s0afbOYWcQhGbhR6zzivqvDKxKB--ht6SLYsIK0SB7xXdkH3K_Uyu642Wn98vbPr16nvgHI7vBqyGnPwiSS6CdCdNVFMlvGmanaImiuG93UKtkxa1jH1lIoBcpM9MVQ1kXz3VVklsl14n_YyHqna335cp1c5fudqqkNYYOej0ZOGY81OvSXy9eaxN6d8jyY40Z-Dan4VR_2M_HH0ar2HMsMl3TGWk14A2yMbI_0Gp4mngQIi2_LofJeign9XF0SQscH1lpegwfg5eMPQfKPs4z9y-d3fFlxMl6dxDiUEsSdGl-A_-4hnAEEccTqdCfNonTTdLsdeLT_NTrtSpIMeWKqN3LJ2Km1uDL6-mzFvS_SUcWTZB-Z-1Yg9N5HXQB2FwFvU1DtIDv2XmAo_dyOShcG0nVwoIS3Hw1wgknH93d2owQMebhLO1ZCmcVcLpVNdHURHBcjBLEej7ZxQh2hGJUpYxlM2Sj4pDhXa633iMW3tAYclbBfPd56595c083zncOhDyS3dSzjXFcXhiPPTcexExlRfGmjmhy6LsZ-49VyrtEMOBS0rrpsz-bdvrOzZcGA0cQTZ0DFDO0qvlbTmm6J0S2E-yxFIE7Rmquhhvhv-j-irk94TIPpYfC3ahMI3xs6lNKyaPfeRFUxjOoN0v7W-B3ua_n0ruiQetGr_pFZXMx3F6ShqrNOfwHSZLLlNmxK3vyHVtigEj-HOZq_u2ttztCZVetTS6KRUiE-D_EqsTobbu0obxXj2xNn2Jv4Gd1DXx_TeuUM1wz07-Q4BtP9EThNk8t7T6QfSLIdrASgrrVXy5lGdEXiOaXtH7xU9Hd2v-IjTyndd5s5QLncDZClP1mtx5BY_UPQR4MFVjtgAJKr5ShEa5or99m_MU5lPiu6Wn4smKLB-Hwayo7a2gglDyOtcZ8rlwJOHDCyb9mexj7MUxZXW_7YeMRrsPvi0U1t04POzPcFEpfz7FLoyohZXtvMCczbYSKyi0M5_3lg51foRNJ9cqySwAeMerqLLq5BmyE6Lw5031HVYtsa04WYk7Bhg_2CjnMJFIRIbFfIDVBxH2eWlmkVuXwrZuiXXtkpLkuAoTLSWdFSc7l8kvsG7keV5-Osz1HI3g5zu-2ZAcs4Qwbt-FrmMdkliQdUT2ykok7rnA61Q8XM3-FycDiOUaUUqq3WGH937azu7EyeeZd9nbifpGPIECBdFBDvUioqCxd8MK_cIFI9W-6rzWjb4lPmKUNLzlrtQU8vqCW1Z-w7KbuDpnm0u2nNlhPSIyn0tRrxRdRliDrQWXxXt1_1BcYh-UTz6RTosZSPfr5OX77y5-OU4j8XW0HLawqBcHo3BqJ7mk9-8UCx2utpJHdcVa0CyaWrgK5deCSpmbcyIxj0AksugOUUe45SA5lT51jtx1g5puyLXwJNh_gVBCwtvflmcmhXCB-n5uimlw1PZGag65f-5qMsB1xWUO_NeKTQRL941zaXvBoxFhRFx6VjcSTSH_4s0xT4XzUVKn5Srd5wYlePb52mjlyJYcjgZOixOImYsEYTOg0t4elDs_JpYA6whdIA-m4qX-iBEStGFoyFbsHH-k_pZgopXeGAk70GKBGwAI96Ue4tCTLDp24vPtLRjRw1D0P0tbQgmPLCNq-diqy4Z7oElHERa5au4DGLjgDs2r22hliRgn12ap0jsSWAStVRqS__OYvj1ESRVdVYryZdWYTmaIJgiG3ywqVlbQHVKBIc6_RHPTrTo4G6AVxPbuoMP7lAfXYNk_gkofV-Gfa8ngb4JCFGegTl14BsiyWlYIQB1te3KJsvJXPu79DYex_3-OHtzmT7c5sEFsgU1KTHFHZxeJfXYqOxbkeyrpOcoIEh7wT2n1H4rj4kHr5IZFfRWQ14xHYSYD1J9h6_B-PfT4nix4FywfP2GjJ7JQFB8OMFp4tqLoyoX9Ajt-4K9uqPOqOMA2E7YOl4O8nH9XGO6xQ9bd_TDwgxUyyODXzWZf70iorKFrrOjAXIDXtxIpGxzyc3p0hMkLzjqvOTICZWRwPJdZwMUNRlsEW4Igex7jpfksxi65_UJ3QpENnvD2RS4jk_KuuVimKSCBmiySj9nS_OHvGvSN-ntBYkkbLC3DWJwHMM3JOm3WHCvpSYIdHczSvcTj-qFYhMDYfKW-2mRPlxOBhVEF756jTHhLCSrFMsb4lDJHzu8moWg2WVzd5z9Onu5c1w6lLMcu_sW8MFkceICkOT1F1_Td6Kbj3YdurBaM38QDBRcGDgqSDUJxwNdkWDI6Rtu9Q8RgMQiTPAQFeziALb1N0KpKNwqm5lHgLDYn9afgYaq2F6O5R0FEQJntbEHIOdbRvu5U1JTWjM5oVzr8cFjwi4uVvNJOP9s4ysyF8kIIkyGlQXn0_FGa6FaUe4h045p3hBD_h8RUb7ouEx5MYBJWtIKhRnAmq2FMvAopLLer6qlI4Xb_bdizn6Mhn_nmdNt0EyN5q0Hkj48Eld3VMLvssXK72db1VszPjz5nUrLoNZIOt43hT0ahRN4E_b2sFafid5djHDy1d7YCLNCVc6WuuJu1poMYarsJ5imdtVsoDwM8e2VJ3yPRIDJL_rEEJXdddetFqg0k7bt5Q5Bbi72ENF-XbQUaaZmf_hGC-_ROb9xEV8G7WfySfsw_WBRnL5snZPPkjlBMQZSQlPB0BLkKno14-BptvB2gOyj5JlW_ly-X9uTfk49hX_tUN77XjQG677_ePnOBUFZ1bhd9-UtbHca3sAph1X8by-qakTmZSe9rZkHu0WfJFIZ9y1a3jVzk7DlDvI26TTrelkYMZHkYBZy3MQkYBzc0kyjo_AA4E5mDGEZsefS998-P3pcmuoIGNfShTShH_5O80rCsBqhAKU569ESfOAovTMsTmYjZUeloRwBbM7LMyt2TCaBFV4ex5j9h7nA0DHMOziIplhfzzYKUnKJOg4B3ieGD3-mn7J42JLEYS-tCXk80zn5RYHUXsFgNcGAkzgJAJPTqat_yzFmQ2RZRfbOodqI6SKEuFTucuRF89pXIi5cM5zeu_6_EphrDtVrksQyTaQQ3AylNpHpqA9v2qEorYfL9-sEgtNqEqfuWH7lS7sICR14qqXw0VbKt7bu41j-GWWjb0LTconUHq2q3QmpJQOFDyHoOAgmtujxC_D3FlfoSoEkKo-xB-ZizbWM3gdX6ECLjiHX-PAwNj1Ssc7UYaMG8pj1UkOOjvgQbfe87FWbWOH7bLD1n1KTdhe8a72oCm25sz4R9eyhXrIAtjtqAfJYkFuvlUIPRMO_zf-6pA3awleAX8PRl0CaQRSGgTohZMaSeK07M1FH3mqQLYBLavd7olzNpwQ8NgVcpT-BrF2j3zg31yy-SMlMfG5-1wsO3uarCce08Aj95LKJRUCW2HOEqQyOFNKecJUK3QY2QUiHpN0duZu-uf5I4CKLRLG_81Ew6r83Ce53gZ_moOxmgRz2IqwPu6TrjL-1yqt_RgXh3tnst8xj_1L6iOmj5KB24_uxq87ThfFa688ylT-9VKdVseLk0BeXmpR_uhSkIIptYYdOV14OnHLBUQVLkzN6KhIxVFqxZTIu6K5jukmQ-pkwopKvr7WSGd8G7DRxmFu2v4te_SFMNv128PhvX2yAdxci3WXp9SkxCQ3OCR8LjXLKhKZwT5cGXHDxeZIbEXD-bkI0Qaqmrw-v6YdkOnEvRa2D_WAccG0pLGUSF9n8UfR8l7a3yF9B0nxXCww51_iaRXv9oDiOo2il6-4jWlh60llTOj-smUqLYLuN0TOT-8-qRTth2NHJgrZ6uioGIusZ8HkSQZrrfsQqOX8PXtWMUXxlo9d1o7UNf01Ce5ywe_GwXrk7tqDBBxosFmPoF558JraAqEQ5Ru2d-MLi7dGW9Q-APSp6nH0zUt2zIfug2zI3ApMJg-RyUmsoljcBtP7CyERc4oH9c7hDnyV49zrBBH9n6FK6JUI9qj01PUEd3wyefO2w637tPNzh6IgbEl0_ihi3IMoUKNvJSHJQCI0yP50AboPfpS9PnUi4aPFKC7fOO_kgiEYFnA6TXlGLSEvSiCOOmsb_CT0Oz35qh9CX8dWDpKYok4Q68QGwMvQEYGsbjgufBF7YcX6ba7v46MlkkIUSiiOlrmOx396SzI-hXy9SR-V2jt7gIs6EVaPEjJINBUHFIjyX3tqFrU5DUMbFB6IGAhhuWmM0W5MuTiOaqML0bK-jUaSzEhW47W0AmG95tNCEYqCFK5N1U2jPw1vMlodIle10l7RBpaqZTyfi5UZrnYpcDC5f9ynxtHRxkQKK85JJ89kTuoPatVmZb64RBMyf6WkWrutqNnfJDIIFCOQDCeM3YSenZfZY5pYUuQxOx8K9jDUQzpH2wDHPL4z4jvth66hLVa91CAIZllaxoBcEKwnFUhphCuBcLPm3HrzDDuMNI8KVg2kikJdy77k5K8o90MRpMHTgk9gZ7GaLFyb1Ca6qnOJkty3apmTw9LIzFDqabUMqjOVv-IpYh2F6v3UD5VQ-DtqXJJQhTiRVs0z74h8YeXVdhEc9w295TEeuJsNmYtMKD6aaVW5FBR2pwpH3HmysF_iRGp4Ilu10KQrkd1HXSyFmU_aU4VavgYNXNQemNKXQnhQtuYnVBki0aJtRQMfszl2i_0FqTknfQXW3mE5u99xNr5NIGpo3VA-yC0EqhhV3SbnpFaWegr9kBxuhBCRHndyA-aqWok3zIv_SQ5WlgRvVqzIHqjgUVCG_Pee1oKDI-HRD8L_kSQbBlmgUl-lh5cwkIv2EtOiv84uBE6F4vQEZ6YVIoFOfP_GQER5u_BItQIO7uR7HL5-UNuAebg5DLVArdGwLHKFmauD4jrCEAgwCI8GCiboUzFAYKLVeH1_kLXtwqatayBGf1bqUyUx1vdH5b11i0-7EPhGQBPCfzOaDzitC05fEL8v7_I0syqgW2vOF0eVGlNgZhe3nf96_uRj_c6jI9PDC7gWO0n_k1Lm4xNpWru_eMsgO_Q8To1ogaIhbcLIX35rfSC6jXBRK-EjMHA5JqQV0q1pEYgzFVq83urwR_DnuGp6OiY8DMEJeq7NzAjH0X601E8sEoj8KO59sfw-tF5SaLavsl6AwSbSefuEsDjusPkpEFBfD9Xg3PruPMm1ksea_avWi2BZ6aVyL9RJWfPFMTm0nPvaXtGm13YXXrURTVJXdzANAijZRTzV4CEsgG8ULyGv5etWSdLHtLu9V0Sew3DzF_K_uodkzngyT4A5jFWc5RxIwEV3RmzIVLArzKoSjoK7pZxZ9DIZJ487Pzjq7-J-Bnaseaqxy_G94QzqWbHNEkq4GYD9f0WbTCEwu2dbBIKt8jaopnTfBvBlZnfIIv8nqGa4SvLyt0Wt4dhEMgS4wcauVZNmC4i5gnmqZM489nchLapO1okVXGS_U01M3mcVsrRwv6JPYOp9iogr0Rj1Ckr5eZmKPC96yaQ9hUBgzi3G2mOhyLw3klKZ_OR9tdPyPp-DFgtwCCUXL-5FFmjadyvNhj3peyJb7AB61Dpvvozr_upkUS10HGAutoQi1gKuwVEjRS6Vq92buAftIqdI4rvrqlS_v7ivYh0v6_pK2V3sYYG6IQ4UWTUsg==&quot;,
+            &quot;video_metadata&quot;: null,
+            &quot;tool_call&quot;: null,
+            &quot;tool_response&quot;: null,
+            &quot;part_metadata&quot;: null,
+            &quot;audio_transcription&quot;: null
+          }
+        ],
+        &quot;role&quot;: &quot;model&quot;
+      },
+      &quot;citation_metadata&quot;: null,
+      &quot;finish_message&quot;: null,
+      &quot;token_count&quot;: null,
+      &quot;finish_reason&quot;: &quot;STOP&quot;,
+      &quot;grounding_metadata&quot;: null,
+      &quot;avg_logprobs&quot;: null,
+      &quot;index&quot;: 0,
+      &quot;logprobs_result&quot;: null,
+      &quot;safety_ratings&quot;: null,
+      &quot;url_context_metadata&quot;: null
+    }
+  ],
+  &quot;create_time&quot;: null,
+  &quot;model_version&quot;: &quot;gemini-3.6-flash&quot;,
+  &quot;prompt_feedback&quot;: null,
+  &quot;response_id&quot;: &quot;WlSRar-ZEJb4nsEPjZSFwAI&quot;,
+  &quot;usage_metadata&quot;: {
+    &quot;cache_tokens_details&quot;: null,
+    &quot;cached_content_token_count&quot;: null,
+    &quot;candidates_token_count&quot;: 3355,
+    &quot;candidates_tokens_details&quot;: null,
+    &quot;prompt_token_count&quot;: 21131,
+    &quot;prompt_tokens_details&quot;: [
+      {
+        &quot;modality&quot;: &quot;TEXT&quot;,
+        &quot;token_count&quot;: 21131
+      }
+    ],
+    &quot;thoughts_token_count&quot;: 3685,
+    &quot;tool_use_prompt_token_count&quot;: null,
+    &quot;tool_use_prompt_tokens_details&quot;: null,
+    &quot;total_token_count&quot;: 28171,
+    &quot;traffic_type&quot;: null
+  },
+  &quot;model_status&quot;: null,
+  &quot;automatic_function_calling_history&quot;: [],
+  &quot;parsed&quot;: null
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Оціни систему талантів: ціннісна пропозиція роботодавця, критичні ролі, найм, адаптація нових працівників, розвиток, утримання, наступництво, знання і кадрові ризики.
+Виміри оцінювання:
+- employer_attractiveness — Привабливість роботодавця та бренд роботодавця — 15%
+- talent_strategy — Стратегія талантів і критичні ролі — 15%
+- attraction_selection_адаптація нових працівників — Залучення, відбір і онбординг — 15%
+- learning_intelligences — Розвиток трьох інтелектів — 20%
+- leadership_performance_succession — Керівники, результативність і наступництво — 15%
+- retention_wellbeing_continuity — Утримання, добробут і знання — 15%
+- risk_data_ai — Тривожні сигнали, дані та ШІ — 5%
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;TAL&quot;,
+&quot;module_name&quot;: &quot;Таланти&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Оберіть або опишіть головні питання щодо людей, команди й управління персоналом.
+Знайти сильних людей; Закрити критичні ролі; Зменшити плинність; Утримати ключових працівників; Побудувати кадровий резерв; Підвищити продуктивність; Розвинути керівників; Створити кар’єрні маршрути; Посилити бренд роботодавця; Знизити вигорання; Оновити навчання; Використовувати ШІ
+2) Чи є зараз і в якому вигляді оформлена управління талантами?
+Є програми найму та навчання
+3) Які 1–3 вимірювані результати має досягти система талантів?
+Результат | База | Ціль | Строк | Ключові показники
+Закрити критичні ролі та знизити залежність від окремих людей | Ключові ролі частково залежать від 1 людини | 100% критичних ролей мають резерв або план передачі | 31.12.2026 | Coverage risk, час заміни, готовність наступників
+Побудувати систему найму, адаптації та розвитку | Процеси переважно неформальні | 90-денна адаптація та ІПР для ключових ролей | 30.09.2026 | Якість найму, 6/12-місячне утримання, time-to-productivity
+Посилити технічні й комерційні компетенції | Навчання нерегулярне, знання зосереджені в досвідчених людях | Матриця компетенцій, наставництво й щоквартальний review | 31.12.2026 | Рівень компетенцій, сертифікації, продуктивність
+4) Які конкурентні переваги має організація як роботодавець?
+Перевага | Для якого сегмента | Доказ | Важливість 1–5 | Рідкісність 1–5 | Складність копіювання 1–5
+Робота у зростаючій сфері енергонезалежності | Інженери, монтажники, продажі | Запуски СЕС, попит на ESS і сервісні рішення | 5 | 3 | 3
+Практичний вплив і швидке професійне зростання | Сильні фахівці ранньої та середньої карєри | Кросфункціональні задачі від продажу до запуску обєкта | 4 | 3 | 3
+Доступ до сучасних рішень СЕС, ESS та сервісу | Технічні спеціалісти | Європейське обладнання та реальні пілоти | 4 | 3 | 4
+5) Яких людей організація прагне залучати й утримувати?
+Сегмент | Критичні ролі | Мотиви | Що приваблює | Що відштовхує | Дефіцитність 1–5
+Інженери-проєктувальники та енергетики | Проєктувальник СЕС/ESS, технічний керівник | Складні задачі, професійний розвиток, стабільний дохід | Сучасне обладнання, автономія, видимий результат | Хаотичні задачі, нестача ресурсів, нечіткі ролі | 5
+Монтажні та сервісні фахівці | Керівник монтажу, електромонтажник, сервісний інженер | Безпечні умови, прогнозоване завантаження, оплата за результат | Практична робота, навчання, карєрний ріст | Нерівний графік, неясні стандарти, затримки матеріалів | 5
+Комерційні та цифрові фахівці | Менеджер продажів, CRM/маркетинг-аналітик | Вплив на дохід, прозорі KPI, сучасні інструменти | Ріст ринку, гнучкість, цифрові пілоти | Ручні процеси, слабкі дані, нечітка мотивація | 4
+6) Наскільки зовнішня обіцянка роботодавця відповідає реальному досвіду працівників?
+Сенс і місія
+3
+Стиль керівництва
+2
+Автономія
+3
+Розвиток
+2
+Кар’єрний ріст
+2
+Винагорода
+3
+Навантаження
+2
+Гнучкість
+2
+Повага
+3
+Безпека
+4
+7) Як організація розвиває імідж роботодавця?
+Є цілі бренд роботодавцяу
+2
+Визначені аудиторії
+2
+Є правдиві історії розвитку
+2
+Є регулярний контент
+2
+Тестуються повідомлення
+1
+Вимірюється якість кандидатів
+2
+Відгуки працівників використовуються для змін
+2
+8) оцініть конкурентну позицію організації як роботодавця.
+Зміст роботи
+4
+Рівень амбіції
+3
+Вплив на результат
+4
+Керівники
+2
+Команда
+3
+Розвиток
+2
+Кар’єра
+2
+Винагорода
+3
+Гнучкість
+2
+Репутація
+3
+Стабільність
+3
+Робоче середовище
+3
+9) Які ролі є критичними для стратегії та життєздатності організації?
+Роль | Чому критична | Кількість людей | Поточна забезпеченість | Ризик 1–5 | Час заміни | Власник ризику
+Технічний керівник/головний інженер | Якість рішень, безпека, стандарти і запуск проєктів | 1 | Є ключова людина, резерв обмежений | 5 | 4–6 місяців | CEO
+Керівник монтажу та сервісу | Терміни, якість монтажу, SLA й задоволення клієнта | 1 | Є відповідальний, потрібен заступник | 4 | 3–4 місяці | CEO
+Керівник продажів/ключові продажі | Воронка, конверсія, маржа і клієнтські відносини | 1–2 | Потрібне масштабування та CRM-дисципліна | 4 | 2–3 місяці | CEO
+10) Де організації бракує або надлишково людей?
+Функція/роль | Поточно | Потрібно | Розрив | Строк | Причина | Рішення hire/build/borrow/automate/redeploy
+Проєктування СЕС/ESS | 1 ключовий інженер | 2 інженери або зовнішній резерв | 1 | Q4 2026 | Зростання портфеля та складність ESS | Hire + build через наставництво
+Монтаж і сервіс | Мала бригада, сервіс епізодичний | Керівник сервісу та 2 підготовлені виконавці | 2–3 | Q4 2026 | Запуск O&amp;M/SLA і потреба у швидкій реакції | Build + borrow регіональних партнерів
+CRM/маркетинг-аналітика | Розподілена відповідальність | 0.5–1 FTE аналітик/CRM-адміністратор | 1 | Q3 2026 | Потрібна керована цифрова воронка | Automate + частково outsource
+11) Які компетенції стануть критичними протягом стратегічного горизонту?
+Компетенція | Для яких ролей | Поточний рівень 1–5 | Потрібний рівень 1–5 | Дефіцитність | Спосіб закриття
+Проєктування СЕС+ESS і технічна економіка | Інженери, технічний керівник, продажі | 3 | 5 | Висока | Навчання, сертифікація, наставництво, зовнішній експерт
+Сервіс, діагностика та SLA | Монтажники, сервісні інженери, керівник сервісу | 2 | 4 | Висока | SOP, польове наставництво та сервісні пілоти
+CRM-аналітика і консультаційні продажі | Продажі, маркетинг, власник | 2 | 4 | Середня | CRM-шаблони, навчання, AI-асистент, аналітик
+12) Як організація визначає талант, потенціал і високу результативність?
+Критерії результативності
+Результати ролі, якість, дотримання стандартів, KPI та командна взаємодія
+Критерії потенціалу
+Здатність навчатися, самостійність, системне мислення і готовність брати відповідальність
+Критерії цінностей/поведінки
+Безпека, клієнтоорієнтованість, відкритість до навчання, командність
+Хто оцінює
+Безпосередній керівник разом із CEO; за потреби технічний/комерційний лід
+Частота
+Щомісячний 1:1, 90-денний review, щоквартальний talent review
+Як оскаржується рішення
+Факти й критерії фіксуються; рішення переглядають CEO та функціональний керівник
+13) Де результат залежить від однієї незамінної людини?
+Роль/людина без ПІБ | Критичне знання/зв’язок | Вплив виходу | Ймовірність 1–5 | Наступник | План передачі
+Технічний керівник | Архітектура рішень, підбір обладнання, стандарти | Затримки проєктування, ризик помилок і втрати маржі | 3 | Інженер-проєктувальник у розвитку | База проєктів, SOP, парне проєктування 6 місяців
+Керівник монтажу | Польова координація, стандарти якості, підрядники | Зрив термінів, нижча якість і NPS | 3 | Старший монтажник | Чеклісти, тіньове керівництво, оцінка обєктів
+Ключовий менеджер продажів | Клієнтська база, переговори, логіка КП | Втрата лідів і повільніше закриття угод | 3 | Менеджер продажів у розвитку | CRM-повнота, спільні зустрічі, playbook продажів
+14) Які канали реально приводять сильних кандидатів?
+Канал | Ролі | Кандидати | Найнято | Якість найму | 6/12-місячне утримання | Вартість
+Рекомендації та професійна мережа | Інженери, монтаж, сервіс | 10 на квартал | 2 на квартал | Висока за рекомендацією та 90-денним review | Ціль 80%/70% | Низька–середня
+Профільні job-сайти і спільноти | Продажі, монтаж, інженери | 20 на квартал | 2–3 на квартал | Середня, потрібен структурований відбір | Ціль 75%/65% | Середня
+Партнерства з навчальними центрами та підрядниками | Монтажники, сервісні інженери | 8 на квартал | 1–2 на квартал | Зростає за рахунок практичного відбору | Ціль 80%/70% | Середня
+15) Як організація знижує упередження і дискримінаційні ризики у наймі та оцінці?
+Критерії пов’язані з роботою
+3
+Рішення приймають кілька оцінювачів
+2
+Є стандартизовані шкали
+2
+ШІ не ухвалює фінальний вердикт
+4
+Є людська перевірка
+4
+Є можливість виправлення помилки
+2
+Дані захищені
+3
+16) Як організація визначає, що найняла правильну людину?
+Роль/група | Метрика якість найму | База | Ціль | Період | Відповідальний
+Інженери й технічні спеціалісти | 90-денна продуктивність, якість проєктів, утримання | Не вимірюється системно | 90% проходять 90-денний review і відповідають матриці | Q3–Q4 2026 | Технічний керівник + CEO
+Монтаж і сервіс | Безпека, чеклісти, швидкість, NPS | Переважно оцінка керівника | Єдиний 30/60/90 review і 80% утримання | Q3–Q4 2026 | Керівник монтажу
+Продажі | CRM-дисципліна, win-rate, маржа, NPS | Нерівні індивідуальні оцінки | KPI-дашборд і 90-денний план виходу на результат | Q3 2026 | Керівник продажів
+17) Наскільки нова людина розуміє роль, очікування і маршрут росту протягом перших 90 днів?
+Є план 30/60/90
+2
+Чіткі результати ролі
+3
+Є наставник/buddy
+2
+Регулярний зворотний зв’язок
+3
+Є доступ до знань
+2
+Є перевірка адаптації
+2
+До 90 дня зрозумілий маршрут розвитку
+2
+18) Чому працівники залишають організацію протягом перших 12 місяців?
+Причина | Частка/кількість | Ролі | Коли виникає | Доказ | Коригувальна дія
+Нечіткі очікування та адаптація | Ризик високий, базу треба замірити | Нові монтажники, продажі, інженери | Перші 30–90 днів | Зворотний звязок новачків і керівників | Рольова карта, buddy, 30/60/90 review
+Нерівний графік і перевантаження | Ризик середній | Монтаж і сервіс | Пікові періоди та відрядження | Графіки, понаднормові, короткі pulse-опитування | Планування ресурсу, резерв бригад, контроль вигорання
+Нечітка винагорода й можливості росту | Ризик середній | Продажі та спеціалісти середнього рівня | Після 3–9 місяців | Exit-інтервю, 1:1, дані утримання | Прозорі KPI, грейди, ІПР і регулярний review
+19) Наскільки навчання пов’язане з ролями, стратегією і реальними прогалинами?
+Є аналіз прогалин
+2
+Програми прив’язані до ролей
+2
+Є бюджет і час
+2
+Є внутрішні/зовнішні формати
+3
+Керівник підтримує навчання
+3
+Є практика після навчання
+3
+Вимірюється бізнес-ефект
+2
+20) Як організація розвиває професійний інтелект?
+Є матриці компетенцій
+2
+Є професійні стандарти
+3
+Є практика і розбір кейсів
+3
+Є наставництво
+2
+Є сертифікація/перевірка
+2
+Є доступ до знань
+2
+Компетенції регулярно оновлюються
+2
+21) Як організація розвиває психологічний інтелект?
+Самоусвідомлення
+2
+Саморегуляція
+2
+Емпатія
+3
+Комунікація
+3
+Зворотний зв’язок
+3
+Управління
+2
+22) Як організація розвиває естетичний інтелект працівників?
+Естетичне спостереження
+2
+Контакт із мистецтвом/дизайном
+1
+Якість робочого простору
+2
+Візуальна культура
+2
+Естетика продукту/сервісу
+3
+Творча практика
+2
+Вміння аргументувати естетичні рішення
+2
+23) Чи мають ключові працівники індивідуальні плани розвитку?
+Сегмент/роль без ПІБ | Ціль розвитку | Прогалини | Дії | Наставник | Строк | Критерій результату
+Інженер-проєктувальник | Готовність самостійно вести СЕС+ESS-проєкти | ESS, технічна економіка, стандарти документації | Навчання, парне проєктування, 3 кейси | Технічний керівник | 6 місяців | Самостійний проєкт без критичних помилок
+Старший монтажник | Наступник керівника монтажу | Планування, безпека, керування бригадою | Тіньове керівництво, чеклісти, 5 обєктів | Керівник монтажу | 6–9 місяців | Веде обєкт за строком, якістю і безпекою
+Менеджер продажів | Ведення складних B2B-угод і CRM-аналітика | Фінмодель, ESS-цінність, робота з даними | Playbook, спільні переговори, AI/CRM-пілот | Керівник продажів | 3–6 місяців | Виконує KPI конверсії, маржі і CRM-повноти
+24) Як перевіряється, що навчання змінило поведінку і результат?
+Є перевірка знань
+2
+Є практика на роботі
+3
+Є зворотний зв’язок керівника
+3
+Є поведінкова метрика
+2
+Є бізнес-метрика
+2
+Результат перевіряється через 30–90 днів
+2
+25) Як організовано передачу знань і розвиток через інших людей?
+Є наставники
+2
+Є внутрішні експерти
+3
+Є професійні спільноти практики
+2
+Знання документуються
+2
+Є розбори помилок
+2
+Керівники навчають
+3
+Внесок у розвиток визнається
+2
+26) Наскільки працівникам зрозуміло, як вони можуть зростати?
+Є карти ролей
+2
+Є критерії переходу
+2
+Є експертний трек
+2
+Є управлінський трек
+1
+Є горизонтальні переходи
+2
+Відкриті внутрішні вакансії
+1
+Кар’єрні розмови проводяться регулярно
+2
+27) Наскільки керівники допомагають сильним людям реалізувати потенціал?
+Ставить ясні очікування
+3
+Дає автономію
+3
+Надає зворотний зв’язок
+3
+Розвиває людей
+2
+Не привласнює заслуги
+3
+Вирішує конфлікти
+2
+Захищає від перевантаження
+2
+Формує наступників
+2
+28) Як організація дає сильним людям можливість реалізувати талант?
+розвивальні складні завдання
+3
+Кросфункціональні проєкти
+3
+Автономія
+3
+Ротація
+1
+Внутрішнє підприємництво
+2
+Доступ до стратегічних задач
+3
+Видимість внеску
+3
+29) Як організація проводить перегляд талантів і формує кадровий резерв?
+Частота
+Проводити щоквартально; для нових критичних ролей — одразу після 90 днів
+Учасники
+CEO, технічний керівник, керівники продажів і монтажу
+Критерії
+Результат, потенціал, компетенції, цінності, ризик втрати та готовність наступника
+Критичні ролі
+Технічний керівник, керівник монтажу/сервісу, керівник продажів, CRM-аналітик
+Кількість ready now/1–2 years
+0 ready now; щонайменше 3 наступники рівня 1–2 роки до кінця 2026
+Дії розвитку
+ІПР, наставництво, парна робота, сертифікація, перевірка на реальних задачах
+Контроль прогресу
+Щомісячний статус ІПР, щоквартальний перегляд coverage risk
+30) Наскільки захищені критичні ролі на випадок виходу або зростання?
+Критична роль | Наступник ready now | Наступник 1–2 роки | Coverage risk 1–5 | План розвитку | План передачі знань
+Технічний керівник/головний інженер | Немає | Інженер-проєктувальник у розвитку | 5 | ESS, стандарти, парне проєктування, сертифікація | База рішень, SOP, review проєктів щотижня
+Керівник монтажу та сервісу | Старший монтажник після підготовки | Сервісний інженер у розвитку | 4 | Планування, безпека, SLA, керування бригадою | Чеклісти, спільні обєкти, журнал інцидентів
+Керівник продажів/ключові продажі | Немає | Менеджер продажів у розвитку | 4 | Консультаційні B2B-продажі, CRM, фінмоделі | CRM, playbook, спільні переговори, база КП
+31) Наскільки винагорода, визнання і можливості підтримують потрібну поведінку?
+Оплата конкурентна
+3
+Критерії прозорі
+2
+Є визнання внеску
+2
+Винагороджується командний результат
+2
+Є нематеріальна мотивація
+2
+Сильні люди мають вплив
+3
+Мотивація не провокує внутрішню конкуренцію
+2
+32) Наскільки організація виявляє і знижує ризик вигорання?
+Навантаження вимірюється
+2
+Овертайм не є нормою
+2
+Пріоритети реалістичні
+2
+Є право говорити про перевантаження
+3
+Керівники реагують
+3
+Є відновлення/підтримка
+2
+Аналізуються причини вигорання
+2
+33) Як організація зберігає корпоративну пам’ять при переходах і звільненнях?
+Критичні знання визначені
+2
+Знання документуються
+2
+Є дублювання компетенцій
+2
+Є план передачі
+2
+Проводиться exit transfer
+2
+База знань актуальна
+2
+Доступи й контакти передаються безпечно
+3
+34) оцініть ранні сигнали слабкості системи талантів.
+Вигорання
+2
+Падіння ініціативи
+2
+Слабкий керівник
+2
+Фальшивий бренд роботодавця
+1
+Відсутність росту
+3
+Вихід сильних людей
+3
+Ключова залежність від однієї особи
+3
+Слабкий кадровий резерв
+3
+Найм за симпатією
+1
+Низька якість онбордингу
+2
+Навчання без ефекту
+2
+Внутрішня конкуренція талантів
+1
+Застаріння навичок
+3
+Втрата корпоративної пам’яті
+3
+Несправедлива винагорода
+2
+35) Як організація використовує ШІ для пошуку, розвитку, оцінки та утримання талантів?
+ШІ — для профілів вакансій, первинного аналізу резюме, матриці компетенцій, планів розвитку та аналізу ризику плинності; фінальне рішення приймає людина.
+36) Який системний проєкт потрібно реалізувати для посилення опори «Таланти»?
+Назва
+Система талантів Solar West: критичні ролі, адаптація, розвиток і резерв
+Проблема
+Залежність від ключових людей, нестача фахівців, неформальні процеси найму та розвитку
+Мета
+Створити відтворювану систему залучення, адаптації, розвитку й утримання критичних талантів
+Межі проєкту
+Критичні ролі, матриця компетенцій, 90-денна адаптація, ІПР, наставництво, резерв
+Власник
+CEO
+Команда
+Технічний керівник, керівники продажів і монтажу, фінанси, HR-функція/координатор
+Бюджет/ресурси
+Внутрішні наставники, шаблони, навчання; бюджет до 3% фонду оплати праці
+ключові показники
+Час закриття ролі, 90-денна адаптація, утримання 6/12 міс., coverage risk, компетенції
+30 днів
+Затвердити критичні ролі, матрицю компетенцій, шаблони 30/60/90 та ІПР
+90 днів
+Запустити talent review, наставництво, резерв для 3 ролей і вимірювання найму
+365 днів
+100% критичних ролей мають план наступництва; 80% утримання 12 міс.; знання документовані
+Ризики
+Дефіцит ринку, перевантаження, обмежений бюджет, опір формалізації
+Обмеження
+Неможливо зменшувати безпеку, якість монтажу або повагу до людей заради швидкості
+Неприйнятні рішення
+Не наймати без ролі/KPI, не тримати критичні знання в однієї людини, не замінювати розвиток хаотичними курсами
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+ПЕРВИННІ ВХІДНІ ДАНІ МОДУЛЯ ORG
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія
+РЕЗУЛЬТАТ МОДУЛЯ ORG — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 80,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» — прибуткова та динамічна компанія на ринку відновлюваної енергетики, що спирається на партнерство з корпоративною групою, але стримується дефіцитом кадрів, оборотних коштів та високою залежністю від засновника.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» демонструє вражаючий старт: за перший рік роботи з серпня 2024 року встановлено понад 1 МВт потужностей, а річний оборот досяг рівня 0,5–2 млн дол. США зі стійкою прибутковістю. Ключовою перевагою є наявність гарантованого якірного замовника в особі мережі SPAR та підприємств групи Volwest, що забезпечує стабільний грошовий потік і базу для розвитку. Водночас оперування компанією ускладнено дефіцитом кваліфікованого персоналу: у штаті відсутній штатний інженер, а кількість монтажників удвічі менша за потребу. Швидке зростання виручки понад 20% випереджає наявний оборотний капітал, що створює ризик касових розривів при великих закупівлях обладнання. Високі темпи зростання заробітних плат починають тиснути на маржинальність проєктів, що вимагає суворого контролю собівартості. Для досягнення стратегічної мети — увійти до топ-5 інтеграторів України до 2035 року — компанії необхідно систематизувати делегування, залучити оборотне фінансування та розширити монтажні потужності.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Якість контексту та повнота операційних даних&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Деталізовані звіти P&amp;L (Форма 2) та Cash Flow (Форма 3) за 2024-2025 роки&quot;,
+        &quot;Наявний реєстр реалізованих об&#x27;єктів із розбивкою доходів та собівартості&quot;,
+        &quot;Заповнена структура штату FTE з фіксацією поточного складу та потреб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутні розраховані метрики CAC (вартість залучення клієнта) та LTV (довічна цінність)&quot;,
+        &quot;Відсутня регулярна системна оцінка задоволеності клієнтів (NPS/CSAT)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансова стійкість та динаміка&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Статус стійко прибуткового бізнесу з річним оборотом $0,5–2 млн&quot;,
+        &quot;Зростання доходу понад 20% за останні 12 місяців&quot;,
+        &quot;Наявність усталених маржинальних орієнтирів (price floor 20% для B2B/B2C, 13% для внутрішніх)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нестача оборотних коштів для забезпечення стрімкого зростання закупівлі обладнання&quot;,
+        &quot;Вплив зростання зарплат на зниження підсумкової маржинальності проєктів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та кадрове забезпечення&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Штат розширено до 11–50 людей&quot;,
+        &quot;Чітко виявлено дефіцит кадрів: 5 монтажників при потребі в 10 осіб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критична залежність від щоденної участі засновника (оцінка 5 з 5)&quot;,
+        &quot;Повна відсутність у штаті інженера (потреба — 1 FTE)&quot;,
+        &quot;Неповна зайнятість фінансового директора та бухгалтера (по 0,5 FTE)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічне фокусування та ринкові канали&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Формалізовані довгострокові цілі до 2026 та 2035 років&quot;,
+        &quot;Прямий імпорт обладнання з Європи (Procarte) та надійні суміжні постачальники&quot;,
+        &quot;Диверсифікація клієнтів: B2B, B2C, внутрішній корпоративний клієнт&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька частка e-commerce продажів при цільовому показнику 30% до кінця 2026 року&quot;,
+        &quot;Частка ринку в регіонах присутності наразі складає менше 1%&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Наявність гарантованого якірного замовника (Volwest Group / SPAR), що забезпечує базовий обсяг робіт і стабільний виторг&quot;,
+    &quot;Прямий імпорт сонячних панелей та інверторів із Європи (компанія Procarte, Польща)&quot;,
+    &quot;Висока якість і прозорість управлінського обліку (P&amp;L, Cash Flow, облік об&#x27;єктів)&quot;,
+    &quot;Швидкий старт і вихід на прибутковість за перший рік діяльності (понад 1 МВт змонтованих потужностей)&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Вузьке місце у монтажних потужностях (лише 5 монтажників у штаті, що обмежує виробіток до 150 кВт/міс)&quot;,
+    &quot;Відсутність штатного інженера-проєктанта для забезпечення зростаючих обсягів замовлень&quot;,
+    &quot;Висока залежність операційної діяльності та ухвалення рішень від засновника&quot;,
+    &quot;Нестача власного оборотного капіталу для масштабних закупівель обладнання під зростаючий попит&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Відсутність у штаті інженера при зростанні кількості та складності об&#x27;єктів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює ризик проєктних помилок, затримок у здачі об&#x27;єктів та фінансових втрат через гарантійні випадки.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою)&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює обмеження виробітку на рівні 150 кВт/місяць, що унеможливлює виконання плану зростання продажів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Тиск зростання заробітних плат на маржу проєктів&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Загрожує падінням рентабельності B2B-проєктів нижче цільового порогу в 20% маржі.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Власник зазначає фінансовий стан як «стійко прибутковий», але серед головних факторів обмеження вказує «нестачу оборотних коштів для стрімкого розвитку».&quot;,
+    &quot;Декларується мета зі зростання інтернет-магазину до 30% від обороту компанії до 2026 року, проте поточний фокус за джерелами доходів повністю зміщений на разові B2B/B2C проєкти та внутрішнє замовлення.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні розраховані значення CAC (вартості залучення клієнта) та LTV по каналах збуту.&quot;,
+    &quot;Відсутні систематизовані дані щодо оцінки задоволеності клієнтів (NPS/CSAT) після реалізації об&#x27;єктів.&quot;,
+    &quot;Не вказані точні обсяги загального ринку СЕС у регіонах присутності для розрахунку потенціалу зростання.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Закрити критичні вакансії: найняти штатного інженера-проєктанта та сформувати ще одну монтажну бригаду (+5 осіб).&quot;,
+      &quot;why&quot;: &quot;Ліквідувати вузьке місце у 150 кВт/міс та зняти ризики якості та строків виконання проєктів.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення монтажних потужностей удвічі та зниження ризику помилок у проєктній документації.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напрямку / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Залучити відновлювану кредитну лінію або овердрафт під контракти B2B/SPAR.&quot;,
+      &quot;why&quot;: &quot;Поповнити оборотні кошти для закупівлі обладнання з Європи та покрити касові розриви під час зростання.&quot;,
+      &quot;expected_result&quot;: &quot;Забезпечення безперебійного постачання обладнання без затримки виконання проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор (CFO)&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити та впровадити матрицю делегування операційних рішень від власника до проєктного менеджера та виконроба.&quot;,
+      &quot;why&quot;: &quot;Знизити залежність бізнесу від засновника (з рівня 5 до 2-3) та вивільнити його час для стратегії.&quot;,
+      &quot;expected_result&quot;: &quot;Вивільнення 30%+ часу власника та прискорення операційного погодження об&#x27;єктів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;60 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити окрему комерційну та маркетингову стратегію для e-commerce каналу (Prom.ua / власний сайт).&quot;,
+      &quot;why&quot;: &quot;Наразі інтернет-продажі не мають чіткої структури, що загрожує невиконанням цілі у 30% обороту до 2026 року.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання високомаржинальних разових продажів обладнання без залучення монтажних бригад.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер з продажів / Маркетолог&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язковий анкетний замір CSAT/NPS після введення кожної СЕС в експлуатацію.&quot;,
+      &quot;why&quot;: &quot;Отримувати системний зворотний зв&#x27;язок та конвертувати разові монтажі у довгострокові сервісні контракти.&quot;,
+      &quot;expected_result&quot;: &quot;Формування прогнозованого повторного доходу від обслуговування СЕС.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер проєктів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Організаційний профіль «Солар Вест Буд» сформовано на високому рівні завдяки якісним фінансово-управлінським даним. Компанія має сильний старт і надійний фундамент у вигляді корпоративного замовника. Головні виклики зараз — кадровий дефіцит (інженер та монтажники), залежність від власника та брак оборотного капіталу для масштабування. Впровадження запропонованих кроків дозволить зняти операційні обмеження та створити основу для стійкого зростання.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ SYS — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;SYS&quot;,
+  &quot;module_name&quot;: &quot;Системна перевірка&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 58,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» має потужне ринкове чуття, але втрачає до 30% товарообороту через дефіцит монтажників, високу залежність від одного замовника та розмитість стратегічних пріоритетів у команді.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія демонструє високу зовнішню чутливість і здатність оперативно реагувати на ринкові ризики, як-от зміни цін на панелі чи логістичні зсуви. Проте всередині організації сформувалося критичне операційне вузьке місце: нестача монтажників та електриків спричиняє постійну втрату близько 30% товарообороту. Ситуацію ускладнює високий рівень залежності бізнесу від одного великого замовника, єдиного джерела фінансування та засновника. Попри високі самооцінки внутрішніх процесів, розуміння трьох головних пріоритетів серед керівників і працівників перебуває на середньому рівні (3 з 5), а внутрішні синергії між напрямами взагалі не використовуються. Також виявлено «сліпу пляму»: менеджмент заперечує наявність ознак старіння чи конфліктів, але визнає, що системні проблеми повторюються, а для їх вирішення раніше «нічого не робилося». Для безпечного масштабування та розгортання компанії необхідно терміново розширити монтажні потужності, запустити регулярні сервісні продукти (O&amp;M) і залучити додаткове оборотне фінансування.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;openness&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Організація регулярно відстежує ринок із багатьох джерел (постачальники, конкуренти, тренди)&quot;,
+        &quot;Оперативно помічено зростання вартості панелей у лютому 2026 та ухвалено рішення про дозакупівлю&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Виявлено внутрішню сліпу пляму — брак оборотного капіталу для розвитку, який організація схильна не помічати або відкладати&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;feedback_learning&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Висока оцінка функціонування каналів зворотного зв&#x27;язку (5 з 5 по всіх елементах оцінювання)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У минулому робилося «нічого» для усунення системних проблем, що свідчить про розрив між збором сигналів та системними діями&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;synergy_alignment&quot;,
+      &quot;score&quot;: 48,
+      &quot;evidence&quot;: [
+        &quot;Підрозділи працюють на спільні цілі (4 з 5) і швидке вирішення конфліктів (5 з 5)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Внутрішні синергетичні можливості взагалі не використовуються&quot;,
+        &quot;Рівень однакового розуміння топ-3 пріоритетів між керівниками й працівниками — лише 3 з 5&quot;,
+        &quot;Міжфункціональні проєкти та власники процесів на стиках оцінені низько (3 з 5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;bottlenecks_resilience&quot;,
+      &quot;score&quot;: 38,
+      &quot;evidence&quot;: [
+        &quot;Ідентифіковано ключові підрозділи стримування: персонал, фінансування, запаси&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критичне вузьке місце у монтажному персоналі призводить до постійної втрати 30% товарообороту&quot;,
+        &quot;Висока залежність від одного великого клієнта та одного джерела фінансування&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;governance_architecture&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Критичні рішення ухвалюються швидко (5 з 5), відсутні зайві погодження для простих дій&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Чіткість ролей та повноважень перебуває на середньому рівні (3 з 5)&quot;,
+        &quot;Залежність операційної діяльності від засновника оцінена у 5 з 5 в модулі ORG&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_longevity&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Організація спирається на репутацію, близькість до клієнта та партнерства&quot;,
+        &quot;Виявлено потужні невикористані можливості: напрям O&amp;M, пакети СЕС+ESS, інтернет-магазин&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутність оформленого регулярного продукту з сервісного обслуговування, що обмежує стабільність грошового потоку&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;renewal_aging&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Визначення потреби організації в русі «Розгортання»&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Менеджмент оцінив усі 12 ознак старіння на 0, що вказує на переоцінку системи на тлі повторюваних операційних проблем&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Висока ринкова чутливість та оперативне реагування на зміни в ланцюгах постачання обладнання&quot;,
+    &quot;Швидкість ухвалення критичних та операційних рішень без бюрократичних затримок&quot;,
+    &quot;Наявність чітко ідентифікованих точок зростання (сервіс O&amp;M, гібридні системи ESS, e-commerce)&quot;,
+    &quot;Висока безпека та відкритість для працівників у висвітленні поточних проблем&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична дефіцитність монтажних бригад, що прямим чином формує 30% недоотриманої виручки&quot;,
+    &quot;Повна відсутність використання внутрішніх синергій між напрямами та функціями&quot;,
+    &quot;Низький рівень синхронізації команди щодо 3 головних стратегічних пріоритетів (3 з 5)&quot;,
+    &quot;Крихітна фінансова та клієнтська стійкість через залежність від одного джерела коштів та одного ключового замовника&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Постійна втрата 30% товарообороту через брак монтажного персоналу&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Компанія добровільно віддає третину ринкового попиту конкурентам та обмежує власне зростання при наявній гарячій базі замовлень.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Подвійна залежність: один великий клієнт та одне джерело фінансування&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Будь-який збій у замовника або зупинка джерела фінансування становить пряму загрозу життєдіяльності всього бізнесу.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Парадокс самооцінки: 0 ознак старіння при відсутності дій щодо усунення системних проблем у минулому&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Вказує на наявність управлінської сліпої плями, коли реальні системні дефекти сприймаються як норми або ігноруються.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Керівник вказує, що проблеми в організації повторюються і потрібна перебудова, але на питання про минулі дії відповідає «нічого».&quot;,
+    &quot;Усі ознаки старіння оцінені на 0 («відсутні»), але водночас команда втрачає 30% обороту, не має чіткої сили ролей (3/5) та не використовує внутрішніх синергій.&quot;,
+    &quot;Сплановано стрімкий розвиток інтернет-магазину та нових пакетних продуктів, проте стверджується, що «додаткова централізація/децентралізація не потрібна» і «немає потреби щось спрощувати».&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутній розрахунок точно суми фінансових втрат від недооотриманого 30% обороту у грошовому вираженні.&quot;,
+    &quot;Не деталізовано умови та ризики співпраці з єдиним джерелом фінансування.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Сформувати та найняти 2 додаткові монтажні бригади (монтажники та інженер-електрик).&quot;,
+      &quot;why&quot;: &quot;Усунути головне операційне вузьке місце і повернути 30% втраченого товарообороту.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення монтажної потужності бізнесу до 300+ кВт/міс та ліквідація черги замовлень.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напряму монтажу / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити стандартну сервісну пропозицію (O&amp;M та SLA) для 10 існуючих або нових об&#x27;єктів СЕС.&quot;,
+      &quot;why&quot;: &quot;Перетворити разові монтажі на регулярний передбачуваний дохід (recurring revenue).&quot;,
+      &quot;expected_result&quot;: &quot;Оформлення першого пулу сервісних контрактів та підвищення LTV клієнтів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник сервісного напрямку / Комерційний директор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити 2-3 стандартні комерційні пакети «СЕС + ESS (системи накопичення)» та провести навчання продажів і монтажу.&quot;,
+      &quot;why&quot;: &quot;Задіяти невикористаний потенціал високомаржинального ринку автономності та енергонезалежності.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання маржинальності проєктів та середнього чека на 15-20%.&quot;,
+      &quot;owner_role&quot;: &quot;Головний інженер / Керівник відділу продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести серію сесій каскадування та погодити 3 головні стратегічні пріоритети компанії між усіма керівниками й командою.&quot;,
+      &quot;why&quot;: &quot;Підвищити рівень узгодженості та розуміння цілей з поточного рівня 3/5 до 5/5.&quot;,
+      &quot;expected_result&quot;: &quot;100% командне розуміння фокусів 2026 року та зняття внутрішньої розсинхронізації.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Відкрити додаткову банківську кредитну лінію або овердрафт під контракти B2B.&quot;,
+      &quot;why&quot;: &quot;Зняти загрозу касових розривів та диверсифікувати залежність від єдиного джерела фінансування.&quot;,
+      &quot;expected_result&quot;: &quot;Безперебійне поповнення оборотного капіталу для закупівель обладнання в Польщі.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор / Власник&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Системний аналіз виявив високий ринковий потенціал компанії, який наразі стримується внутрішньою спроможністю. Головний біль бізнесу — дефіцит монтажників, через який ви втрачаєте 30% товарообороту, та концентрація ризиків довкола одного джерела фінансування і ключового замовника. Для безпечного розгортання в 2026 році потрібно терміново розширити монтажний штат, запакувати високоморальний продукт СЕС+ESS, запустити регулярний сервіс (O&amp;M) та вирівняти розуміння цілей серед всієї команди.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ STR — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;STR&quot;,
+  &quot;module_name&quot;: &quot;Стратегія&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 66,
+  &quot;confidence&quot;: 88,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» має якісно опрацьовану стратегію диференціації та високий потенціал на зростаючому ринку, проте стикається із критичним розривом виконання через дефіцит ресурсів, невикористану CRM та низьку залученість команди.&quot;,
+  &quot;diagnosis&quot;: &quot;Стратегічна візія компанії опрацьована на високому рівні: чітко обрано цільові ніші (МСБ 30–200 кВт та преміум B2C), сформовано ціннісну пропозицію (EPC+ESS+SLA) та розроблено фінансово-сценарне планування. Ринок СЕС швидко зростає, а наявність власного імпорту та корпоративного замовника (Volwest/SPAR) дає компанії потужний плацдарм. Однак між якісною стратегією на папері та її реальним виконанням існує небезпечний розрив. Ключові обмеження бізнесу — критичний дефіцит кадрів (оцінка 1/5) та відсутність керованої воронки продажів (CRM куплена, але не працює; CAC/LTV не вимірюються). Заявлені стратегічні цілі (30% обороту через e-commerce, 50 сервісних контрактів) не підкріплені фінансовим буфером та часом керівництва. Окрім того, система мотивації та розуміння цілей командою знаходяться на низькому рівні (2/5), що створює ризик «зриву» реалізації проєктів розвитку. Для успішного масштабування компанія має терміново збалансувати стратегічний апетит із ресурсною спроможністю системи.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;market_intelligence&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Глибоке розуміння трендів ринку: оцінка CAGR (18–25% / 30–40%), розуміння впливу тарифів та воєнних ризиків&quot;,
+        &quot;Детальний аналіз конкурентного середовища (Kerbis, KNESS, Atmosfera, dрібні монтажники)&quot;,
+        &quot;Оцінка PESTLE-факторів та специфіки регуляторики (Net Billing, пільгове кредитування)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Аналіз конкурентів та ринку спирається переважно на інтуїцію та періодичні огляди, а не на регулярну оцифровану систему (оцінка 3/5)&quot;,
+        &quot;Рішення не повною мірою спираються на внутрішні дані (оцінка 3/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;company_capabilities&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Наявність власного імпорту обладнання з ЄС (Procarte)&quot;,
+        &quot;Підтверджений досвід реалізації проєктів (понад 1 МВт за перший рік)&quot;,
+        &quot;Повний цикл реалізації EPC (проєктування, монтаж, сервіс)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критичний дефіцит людських ресурсів (оцінка 1/5): брак монтажників (5 факт проти 10 за потребою) та відсутність штатного інженера&quot;,
+        &quot;Обмеженість фінансових ресурсів та оборотного капіталу для зростання (оцінка 2/5)&quot;,
+        &quot;Висока залежність операційних процесів від власника (5/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_core&quot;,
+      &quot;score&quot;: 80,
+      &quot;evidence&quot;: [
+        &quot;Формалізована місія та візія на 10 років (входження до топ-5 інтеграторів України, розвиток енергоплатформи)&quot;,
+        &quot;Чітко сформульовані межі стратегії (де граємо, як перемагаємо, чого свідомо НЕ робимо)&quot;,
+        &quot;Визначені цільові сегменти (МСБ 30–200 кВт, критична інфраструктура, преміум B2C)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Слабке каскадування візії та місії на рівень лінійного персоналу (оцінка залученості 2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;advantages&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Комплексна ціннісна пропозиція: швидкість, прозора окупність (1,5–3 роки) та сервісний супровід&quot;,
+        &quot;Власний імпорт забезпечує кращий контроль собівартості&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Поточні переваги (EPC-монтаж) легко копіюються конкурентами (оцінка складності копіювання 2–3/5)&quot;,
+        &quot;Захисні бар&#x27;єри (moats) — сервісна платформа та підписки — знаходяться на етапі розробки і ще не генерують захищеного доходу&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_choice&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Обрано обґрунтовану стратегію фокусованої диференціації та оптимальних витрат (відмова від демпінгу)&quot;,
+        &quot;Наявність опрацьованих сценаріїв (Базовий, Оптимістичний, Стрес) із ризик-тригерами&quot;,
+        &quot;Обґрунтована суміжна диверсифікація (ESS, O&amp;M, e-commerce)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ризик розпилення ресурсів між занадто великою кількістю напрямів (інтернет-магазин, B2B, B2C, BIPV, O&amp;M) при обмеженій команді&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;execution&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Сформовано RICE-пріоритизований беклог проєктів та Стратегічну карту KPI на 2026 рік&quot;,
+        &quot;Визначено відповідальних за ключові ініціативи&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;CRM-система куплена, але не використовується у продажах; CAC та LTV не вимірюються&quot;,
+        &quot;Низька відповідність системи мотивації стратегічним цілям (оцінка 2/5)&quot;,
+        &quot;Високий розрив між цілями та ресурсною забезпеченістю (люди 1/5, час 2/5, фінанси 2/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;marketing_ai&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Чітко визначена аудиторія та сегменти JTBD&quot;,
+        &quot;Розуміння необхідності цифрових каналів та онлайн-калькуляторів окупності&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька оцінка маркетингового бюджету (2/5)&quot;,
+        &quot;Маркетингові дані системно не впливають на зміни у стратегії (2/5)&quot;,
+        &quot;Відсутня автоматизація та впровадження ШІ-інструментів у маркетинг і пресейл&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Опрацьована стратегічна архітектура: наявність якісної документації (місія, візія до 2035 року, Стратегічна карта 2026, сценарне планування)&quot;,
+    &quot;Чітке позиціонування та відмова від збиткового цінового демпінгу на користь комплексної цінності (EPC+ESS+SLA)&quot;,
+    &quot;Контроль ланцюга постачання завдяки власному імпорту обладнання з ЄС (Procarte)&quot;,
+    &quot;Сильна економічна аргументація для клієнтів (розрахунок окупності 1,5–3 роки проти ринкових 4–7 років)&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Критична дефіцитність монтажних і технічних кадрів (оцінка 1/5), що обмежує виробіток і призводить до втрати попиту&quot;,
+    &quot;Некерована воронка продажів: CRM придбана, але не впроваджена в щоденну роботу, метрики CAC/LTV відсутні&quot;,
+    &quot;Низький рівень залученості команди у стратегію та відсутність прив&#x27;язки мотивації працівників до стратегічних KPI (оцінка 2/5)&quot;,
+    &quot;Слабкий фінансовий буфер (оцінка 2/5) та дефіцит оборотного капіталу для стрімкого масштабування&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Критична нестача людських ресурсів (Оцінка 1/5 у забезпеченні стратегії)&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Без розширення штату монтажників та найму інженера виконання цілей зі зростання доходу на 25%+ є фізично неможливим.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Управління маркетингом і продажами «наосліп» (непрацююча CRM, відсутність CAC/LTV)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Спроба масштабувати інтернет-магазин та B2B-продажі без керованої CRM-воронки призведе до неефективного витрачання маркетингового бюджету.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Розрив між стратегічними цілями та системою мотивації (Оцінка 2/5)&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Команда фокусуватиметься на поточній операційній плинності, ігноруючи стратегічні проєкти (O&amp;M-контракти, e-commerce, ESS).&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Декларується стратегічна мета довести частку інтернет-магазину до 30% обороту до кінця 2026 року, проте CRM-воронка не оцифрована, а маркетинговий бюджет оцінено у 2 з 5.&quot;,
+    &quot;Компанія обирає фокусовану диференціацію за рахунок якості, швидкості та SLA, але працює в умовах двократного дефіциту монтажників і без штатного інженера-проєктанта.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні розраховані значення CAC (вартість залучення клієнта) та LTV у розрізі каналів збуту.&quot;,
+    &quot;Відсутні точні дані щодо конверсій воронки продажів на кожному етапі (від ліда до підписаного договору).&quot;,
+    &quot;Відсутня оцифрована статистика задоволеності клієнтів (NPS/CSAT) після введення об&#x27;єктів в експлуатацію.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язкове ведення CRM-системи для 100% угод та оцифрувати воронку продажів (CAC, конверсії).&quot;,
+      &quot;why&quot;: &quot;Усунути управління «наосліп», забезпечити контроль маркетингових витрат та підготувати базову інфраструктуру для зростання.&quot;,
+      &quot;expected_result&quot;: &quot;Повна прозорість воронки продажів, розрахований CAC по каналах та зниження втрат лідів на 15–20%.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник відділу продажів / Маркетолог&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розширити монтажні потужності: найняти 1 штатного інженера-проєктанта та 5 монтажників (нова бригада).&quot;,
+      &quot;why&quot;: &quot;Усунути головне операційне вузьке місце, яке призводить до втрати 30% попиту та стримує зростання компанії.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення спроможності монтажу до 300+ кВт/міс та зняття ризиків із якості проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напряму монтажу / HR&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити та запровадити цінову політику з жорстким порогом маржі (GM-floor 18–19%).&quot;,
+      &quot;why&quot;: &quot;Захистити прибутковість бізнесу від цінових війн та тиску зростання заробітних плат.&quot;,
+      &quot;expected_result&quot;: &quot;Захист валової маржі P&amp;L на рівні не нижче 20–22% та відмова від збиткових тендерів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Фінансовий директор&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити стандартизований продукт «СЕС+ESS + SLA/O&amp;M сервіс» як обов&#x27;язкову опцію в комерційних пропозиціях.&quot;,
+      &quot;why&quot;: &quot;Розпочати формування довгострокового захисного бар&#x27;єру (moat) та перехід до повторюваного доходу (recurring revenue).&quot;,
+      &quot;expected_result&quot;: &quot;Укладання перших 15–20 сервісних контрактів та підвищення середнього чека проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Комерційний директор / Технічний директор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Каскадувати стратегічні цілі (OKR/KPI) на керівників напрямів та прив&#x27;язати до них систему преміювання.&quot;,
+      &quot;why&quot;: &quot;Підвищити залученість команди у реалізацію стратегії з поточного низького рівня (2/5).&quot;,
+      &quot;expected_result&quot;: &quot;100% узгодженість дій управлінської команди навколо стратегічних фокусів 2026 року.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / HR&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Стратегічний аналіз показує, що «Солар Вест Буд» має чудово опрацьовану візію, місію та сценарне планування. Ви обрали правильну модель — конкурувати комплексною цінністю, а не демпінгом. Проте зараз бізнес знаходиться в зоні високого ризику через «розрив виконання»: стратегія не підкріплена людьми (дефіцит монтажників та інженера) і даними (CRM не працює, воронка не керована). Першочергове завдання власника — негайно приборкати хаос у продажах через CRM, найняти кадри для зняття обмежень за обсягами та прив&#x27;язати мотивацію команди до виконання стратегічних KPI.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ INN — Gemini 3.6 Flash
+{
+  &quot;module_code&quot;: &quot;INN&quot;,
+  &quot;module_name&quot;: &quot;Інновації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 67,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» володіє точним ринковим відчуттям та фокусною картою гіпотез (СЕС+ESS, O&amp;M, AI-продажі), проте швидкість експериментів і масштабування блокується кадровим дефіцитом та ручною обробкою даних.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія демонструє високий рівень розуміння потреб ринку в умовах енергетичної нестабільності, сформувавши портфель з трьох ключових фокусів: комплекси СЕС+ESS, регулярний сервіс O&amp;M/SLA та прискорення продажів за допомогою ШІ. Засновники та топ-менеджмент якісно визначили критерії перевірки та зупинки невдалих ідей (Stop/Pivot/Scale), а також показали високу самокритичність щодо минулих помилок (запізнення з ESS, відсутність CRM-дисципліни). Проте системний процес інновацій зараз існує лише у вигляді окремих точкових проєктів, а не безперервного конвеєра. Головним гальмом для перетворення гіпотез у реальні прибуткові продукти є кадровий дефіцит (відсутність штатного інженера та брак монтажників) та тривалий цикл від ідеї до першого тесту (60 днів замість цільових 30). Окрім того, ручне формування комерційних пропозицій і відсутність оцифрованої CRM-воронки створюють ризик втрати попиту ще на етапі першого контакту з клієнтом. Для досягнення стратегічних цілей компанії необхідно автоматизувати пресейл, запровадити стандартизовані пакети обладнання та ресурсно забезпечити підрозділ сервісу.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;strategy_portfolio&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Портфель чітко збалансований навколо 3 стратегічних ставок: пакетні СЕС+ESS, сервіс O&amp;M/SLA та AI/CRM-автоматизація продажів&quot;,
+        &quot;Для кожного напряму призначено конкретного власника (технічний керівник, керівник сервісу, керівник продажів)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Управління інноваціями існує лише у вигляді окремих проєктів без виділеного бюджету розвитку (бюджет пілотів розмитий в операційних витратах)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;customer_value&quot;,
+      &quot;score&quot;: 72,
+      &quot;evidence&quot;: [
+        &quot;Чітке розуміння JTBD клієнтів (енергонезалежність, захист від відключень, зменшення простоїв для МСБ)&quot;,
+        &quot;Визначено конкретні порогові значення попиту (наприклад, 20 кваліфікованих лідів для СЕС+ESS, 10 контрактів для O&amp;M)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Дослідження клієнтів спирається переважно на якісні інтерв&#x27;ю та аналіз відгуків, без системної оцифрованої аналітики відмов у CRM&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;experiments&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Зафіксована формальна воронка ідей (12 ідей/кв -&gt; 3 експерименти -&gt; 2 пілоти -&gt; 1 масштабований напрям на півріччя)&quot;,
+        &quot;Формалізовані суворі критерії Stop/Pivot/Scale (зупинка після 2 невдалих ітерацій, вимога маржі від 25% та NPS &gt;= 50 для масштабування)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Тривалий медіанний строк від гіпотези до тесту (60 днів при цільових 30)&quot;,
+        &quot;Слабке документальне фіксування результатів закритих пілотів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;lean_process&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Правильно обрано найкритичніший процес для інноваційного покращення — продажі та проєктування СЕС&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Висока присутність операційних втрат: зайві погодження (3/3), повторне введення даних (3/3), очікування (3/3)&quot;,
+        &quot;Індивідуальні нестандартизовані розрахунки затягують цикл підготовки комерційних пропозицій&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;idea_ecosystem&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Висока активність збору ідей від клієнтів (4/5), постачальників (4/5) та першої лінії (3/3)&quot;,
+        &quot;Безпечне середовище для працівників у разі конструктивних помилок (3/3)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Слабке залучення зовнішніх джерел інновацій (стартапи 1/5, університети 1/5, венчурні програми 1/5)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;управління_scaling&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Наявність щотижневого та щомісячного ритму перегляду ініціатив на рівні керівників&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Головні бар’єри масштабування — дефіцит людей (3/3), брак бюджету (3/3) та недоведена економіка (3/3)&quot;,
+        &quot;Операційні вузькі місця в монтажі загрожують якісному виконанню нових пілотів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;failures_ai&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Високий рівень рефлексії: компанія проаналізувала запізнення з пакетами ESS у 2024 році та невдалі ручні рекламні кампанії&quot;,
+        &quot;Практичний та реалістичний вектор застосування ШІ (шаблони КП, калькулятор окупності, дашборди воронки)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Ризик повторення помилок масштабування за умов відсутності жорсткої регламентації даних у CRM&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Сфокусований і стратегічно точний портфель інновацій (СЕС+ESS, O&amp;M/SLA, AI/CRM), що відповідає потребам ринку&quot;,
+    &quot;Наявність прозорих і кількісно вимірюваних критеріїв зупинки, зміни напряму та масштабування гіпотез (Stop/Pivot/Scale)&quot;,
+    &quot;Висока культура прийняття помилок та зданість аналізувати минулий негативний досвід&quot;,
+    &quot;Чітке розуміння прикладного застосування ШІ для скорочення операційного циклу у продажах&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Довгий цикл перевірки гіпотез (60 днів від ідеї до першого тесту)&quot;,
+    &quot;Критична залежність успіху масштабування від кадрового дефіциту (відсутність інженера та брак монтажників)&quot;,
+    &quot;Високий рівень операційних втрат у процесі продажів (повторне введення даних, ручні розрахунки, очікування)&quot;,
+    &quot;Управління інноваціями у формі фрагментарних проєктів без виділеного інноваційного бюджету&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Масштабування нових продуктів (СЕС+ESS) планується на тлі 2-кратного дефіциту монтажників та відсутності інженера&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Створення попиту на нові складні комплекси без ресурсів для їх встановлення призведе до зриву строків, втрати репутації та фінансових збитків.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Залежність масштабування інновацій від неналаштованої CRM-системи&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Неможливо об&#x27;єктивно оцінити конверсію та CAC нових продуктів (AI КП або O&amp;M), якщо дані про ліди вносяться некоректно або неповністю.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Компанія ставить ціль скоротити час підготовки КП на 30% за допомогою ШІ, але водночас продажі продовжують працювати в ручному режимі із високим рівнем повторного введення даних.&quot;,
+    &quot;Визначено амбітну ціль отримати 50 сервісних контрактів O&amp;M до кінця 2026 року, проте в організації відсутній виділений сервісний юніт із власним автотранспортом та обладнанням.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні точні дані щодо фактичної валової маржі пілотних продажів пакетів СЕС+ESS.&quot;,
+    &quot;Не обраховано поточний часовий норматив (у годинах/днях) на підготовку однієї індивідуальної комерційної пропозиції до впровадження ШІ-шаблонів.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Розробити та затвердити 3 стандартизовані типові специфікації (BOM) для пакетів СЕС+ESS (30, 60, 100 кВт) та впровадити AI-калькулятор КП.&quot;,
+      &quot;why&quot;: &quot;Скоротити час підготовки комерційної пропозиції на 30% та усунути ручні інженерні розрахунки для типових угод.&quot;,
+      &quot;expected_result&quot;: &quot;Прискорення реакції на лід до 2 годин, зростання конверсії пресейлу на 15%.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / Керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести тестування пілоту O&amp;M/SLA на базі 10 існуючих об&#x27;єктів із розробкою стандартного регламенту обслуговування та затвердженим прайсом.&quot;,
+      &quot;why&quot;: &quot;Перевірити готовність клієнтів платити за сервісний контракт та сформувати базу для повторюваного доходу (ARR).&quot;,
+      &quot;expected_result&quot;: &quot;Укладання перших 10 оплачених сервісних угоди та підтвердження гіпотези попиту.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник сервісу&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Скоротити час від ідеї до першого тесту з 60 до 30 днів шляхом впровадження регламенту «Quick-Test Sprint» (ліміт пілотного бюджету та 14 днів на тест).&quot;,
+      &quot;why&quot;: &quot;Прискорити оборотність експериментів і не витрачати ресурси на довгі узгодження.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення кількості протестованих гіпотез удвічі без збільшення загального бюджету.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / CEO&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити в CRM обов&#x27;язкову фіксацію причин відмов по всіх лідах, що беруть участь у пілотах СЕС+ESS та O&amp;M.&quot;,
+      &quot;why&quot;: &quot;Отримувати об&#x27;єктивні дані для рішень Pivot/Stop замість суб&#x27;єктивних вражень менеджерів.&quot;,
+      &quot;expected_result&quot;: &quot;100% оцифровка причин втрати угод та прозора воронка конверсії для портфельного комітету.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Виділити захищений міні-бюджет інновацій (до 5% від операційних витрат) під управління продуктового скводу.&quot;,
+      &quot;why&quot;: &quot;Усунути бар&#x27;єр «немає бюджету» для проведення дрібних експериментів і закупівель тестових BOM.&quot;,
+      &quot;expected_result&quot;: &quot;Безперебійний запуск 3 запланованих експериментів 2026 року без затримок на додаткові погодження.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Фінансовий директор&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Інноваційний потенціал «Солар Вест Буд» є досить високим: ви правильно обрали стратегічні ставки (СЕС+ESS, сервіс O&amp;M та цифровізація продажів), які прямо відповідають запитам ринку. Головний ризик полягає в тому, що гарні ідеї гальмуються на етапі запуску через дефіцит монтажників, відсутність інженера та ручну обробку лідів. Для успішного масштабування необхідно стандартизувати комплектації обладнання, автоматизувати видачу КП за допомогою ШІ та забезпечити сувору дисципліну внесення даних у CRM.&quot;
+}</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

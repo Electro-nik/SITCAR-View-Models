@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini 3.6 Flash</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>Gemini 3.6 Flash</h1>
+<div class="muted">Google Gemini · Prompt: ORG · 2026-08-28T11:53:37</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Returned</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Response ID</span><strong>WUyRatWXEKeNkdUPtbabgAI</strong></div>
+<div class="metric"><span>Context window</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Max output</span><strong>65 536</strong></div>
+<div class="metric"><span>Latency</span><strong>56.857 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>910 222</strong></div>
+<div class="metric"><span>Cached input</span><strong>—</strong></div>
+<div class="metric"><span>Output tokens</span><strong>6 304</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>3 374</strong></div>
+<div class="metric"><span>Total tokens</span><strong>916 526</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.750000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.682666</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.075000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$3.750000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.023640</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.706306</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted attachment-summary">Кількість: 8 · Загальний розмір: 2.76 MB</div>
+        <div class="table-wrap"><table>
+        <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
+        <tbody><tr><td><strong>_Презентація Солар Вест буд.pdf</strong></td><td>1.83 MB</td><td>Gemini inline PDF</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>Паспорт_бізнесу_шаблон.xlsx</strong></td><td>88.79 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>Реалізовані об&#x27;єкти СВБ.xlsx</strong></td><td>13.41 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>Солар Вест опис компанії.docx</strong></td><td>14.69 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>форма 2 СВБ грудень 2024.xlsx</strong></td><td>273.13 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>форма 2 СВБ.xlsx</strong></td><td>301.93 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>форма 3 СВБ  грудень.xlsx</strong></td><td>62.51 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr><tr><td><strong>форма 3 СВБ вересень 2025.xlsx</strong></td><td>196.84 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-28T11:52:40+03:00</td></tr></tbody>
+        </table></div>
+        </section>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">ORG</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Профіль організації</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">complete</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">80</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">85</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">«Солар Вест Буд» — прибуткова та динамічна компанія на ринку відновлюваної енергетики, що спирається на партнерство з корпоративною групою, але стримується дефіцитом кадрів, оборотних коштів та високою залежністю від засновника.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Компанія «Солар Вест Буд» демонструє вражаючий старт: за перший рік роботи з серпня 2024 року встановлено понад 1 МВт потужностей, а річний оборот досяг рівня 0,5–2 млн дол. США зі стійкою прибутковістю. Ключовою перевагою є наявність гарантованого якірного замовника в особі мережі SPAR та підприємств групи Volwest, що забезпечує стабільний грошовий потік і базу для розвитку. Водночас оперування компанією ускладнено дефіцитом кваліфікованого персоналу: у штаті відсутній штатний інженер, а кількість монтажників удвічі менша за потребу. Швидке зростання виручки понад 20% випереджає наявний оборотний капітал, що створює ризик касових розривів при великих закупівлях обладнання. Високі темпи зростання заробітних плат починають тиснути на маржинальність проєктів, що вимагає суворого контролю собівартості. Для досягнення стратегічної мети — увійти до топ-5 інтеграторів України до 2035 року — компанії необхідно систематизувати делегування, залучити оборотне фінансування та розширити монтажні потужності.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Якість контексту та повнота операційних даних</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">82</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Деталізовані звіти P&amp;L (Форма 2) та Cash Flow (Форма 3) за 2024-2025 роки</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Наявний реєстр реалізованих об&#x27;єктів із розбивкою доходів та собівартості</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Заповнена структура штату FTE з фіксацією поточного складу та потреб</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутні розраховані метрики CAC (вартість залучення клієнта) та LTV (довічна цінність)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутня регулярна системна оцінка задоволеності клієнтів (NPS/CSAT)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Фінансова стійкість та динаміка</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">85</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Статус стійко прибуткового бізнесу з річним оборотом $0,5–2 млн</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Зростання доходу понад 20% за останні 12 місяців</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Наявність усталених маржинальних орієнтирів (price floor 20% для B2B/B2C, 13% для внутрішніх)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Нестача оборотних коштів для забезпечення стрімкого зростання закупівлі обладнання</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Вплив зростання зарплат на зниження підсумкової маржинальності проєктів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Організаційна структура та кадрове забезпечення</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">60</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Штат розширено до 11–50 людей</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Чітко виявлено дефіцит кадрів: 5 монтажників при потребі в 10 осіб</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Критична залежність від щоденної участі засновника (оцінка 5 з 5)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Повна відсутність у штаті інженера (потреба — 1 FTE)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Неповна зайнятість фінансового директора та бухгалтера (по 0,5 FTE)</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Стратегічне фокусування та ринкові канали</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">75</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Формалізовані довгострокові цілі до 2026 та 2035 років</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Прямий імпорт обладнання з Європи (Procarte) та надійні суміжні постачальники</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Диверсифікація клієнтів: B2B, B2C, внутрішній корпоративний клієнт</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Низька частка e-commerce продажів при цільовому показнику 30% до кінця 2026 року</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Частка ринку в регіонах присутності наразі складає менше 1%</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявність гарантованого якірного замовника (Volwest Group / SPAR), що забезпечує базовий обсяг робіт і стабільний виторг</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Прямий імпорт сонячних панелей та інверторів із Європи (компанія Procarte, Польща)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Висока якість і прозорість управлінського обліку (P&amp;L, Cash Flow, облік об&#x27;єктів)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Швидкий старт і вихід на прибутковість за перший рік діяльності (понад 1 МВт змонтованих потужностей)</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Вузьке місце у монтажних потужностях (лише 5 монтажників у штаті, що обмежує виробіток до 150 кВт/міс)</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутність штатного інженера-проєктанта для забезпечення зростаючих обсягів замовлень</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Висока залежність операційної діяльності та ухвалення рішень від засновника</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Нестача власного оборотного капіталу для масштабних закупівель обладнання під зростаючий попит</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Відсутність у штаті інженера при зростанні кількості та складності об&#x27;єктів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Створює ризик проєктних помилок, затримок у здачі об&#x27;єктів та фінансових втрат через гарантійні випадки.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Двократний дефіцит монтажників (5 факт проти 10 за потребою)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Створює обмеження виробітку на рівні 150 кВт/місяць, що унеможливлює виконання плану зростання продажів.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Тиск зростання заробітних плат на маржу проєктів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Загрожує падінням рентабельності B2B-проєктів нижче цільового порогу в 20% маржі.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Власник зазначає фінансовий стан як «стійко прибутковий», але серед головних факторів обмеження вказує «нестачу оборотних коштів для стрімкого розвитку».</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Декларується мета зі зростання інтернет-магазину до 30% від обороту компанії до 2026 року, проте поточний фокус за джерелами доходів повністю зміщений на разові B2B/B2C проєкти та внутрішнє замовлення.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Відсутні розраховані значення CAC (вартості залучення клієнта) та LTV по каналах збуту.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Відсутні систематизовані дані щодо оцінки задоволеності клієнтів (NPS/CSAT) після реалізації об&#x27;єктів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не вказані точні обсяги загального ринку СЕС у регіонах присутності для розрахунку потенціалу зростання.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Закрити критичні вакансії: найняти штатного інженера-проєктанта та сформувати ще одну монтажну бригаду (+5 осіб).</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Ліквідувати вузьке місце у 150 кВт/міс та зняти ризики якості та строків виконання проєктів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Збільшення монтажних потужностей удвічі та зниження ризику помилок у проєктній документації.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівник напрямку / HR-менеджер</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Залучити відновлювану кредитну лінію або овердрафт під контракти B2B/SPAR.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Поповнити оборотні кошти для закупівлі обладнання з Європи та покрити касові розриви під час зростання.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Забезпечення безперебійного постачання обладнання без затримки виконання проєктів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий директор (CFO)</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити та впровадити матрицю делегування операційних рішень від власника до проєктного менеджера та виконроба.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Знизити залежність бізнесу від засновника (з рівня 5 до 2-3) та вивільнити його час для стратегії.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Вивільнення 30%+ часу власника та прискорення операційного погодження об&#x27;єктів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / Засновник</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">60 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розробити окрему комерційну та маркетингову стратегію для e-commerce каналу (Prom.ua / власний сайт).</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Наразі інтернет-продажі не мають чіткої структури, що загрожує невиконанням цілі у 30% обороту до 2026 року.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Зростання високомаржинальних разових продажів обладнання без залучення монтажних бригад.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Менеджер з продажів / Маркетолог</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Впровадити обов&#x27;язковий анкетний замір CSAT/NPS після введення кожної СЕС в експлуатацію.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Отримувати системний зворотний зв&#x27;язок та конвертувати разові монтажі у довгострокові сервісні контракти.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Формування прогнозованого повторного доходу від обслуговування СЕС.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Менеджер проєктів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Організаційний профіль «Солар Вест Буд» сформовано на високому рівні завдяки якісним фінансово-управлінським даним. Компанія має сильний старт і надійний фундамент у вигляді корпоративного замовника. Головні виклики зараз — кадровий дефіцит (інженер та монтажники), залежність від власника та брак оборотного капіталу для масштабування. Впровадження запропонованих кроків дозволить зняти операційні обмеження та створити основу для стійкого зростання.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>```json
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 80,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» — прибуткова та динамічна компанія на ринку відновлюваної енергетики, що спирається на партнерство з корпоративною групою, але стримується дефіцитом кадрів, оборотних коштів та високою залежністю від засновника.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» демонструє вражаючий старт: за перший рік роботи з серпня 2024 року встановлено понад 1 МВт потужностей, а річний оборот досяг рівня 0,5–2 млн дол. США зі стійкою прибутковістю. Ключовою перевагою є наявність гарантованого якірного замовника в особі мережі SPAR та підприємств групи Volwest, що забезпечує стабільний грошовий потік і базу для розвитку. Водночас оперування компанією ускладнено дефіцитом кваліфікованого персоналу: у штаті відсутній штатний інженер, а кількість монтажників удвічі менша за потребу. Швидке зростання виручки понад 20% випереджає наявний оборотний капітал, що створює ризик касових розривів при великих закупівлях обладнання. Високі темпи зростання заробітних плат починають тиснути на маржинальність проєктів, що вимагає суворого контролю собівартості. Для досягнення стратегічної мети — увійти до топ-5 інтеграторів України до 2035 року — компанії необхідно систематизувати делегування, залучити оборотне фінансування та розширити монтажні потужності.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Якість контексту та повнота операційних даних&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Деталізовані звіти P&amp;L (Форма 2) та Cash Flow (Форма 3) за 2024-2025 роки&quot;,
+        &quot;Наявний реєстр реалізованих об&#x27;єктів із розбивкою доходів та собівартості&quot;,
+        &quot;Заповнена структура штату FTE з фіксацією поточного складу та потреб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутні розраховані метрики CAC (вартість залучення клієнта) та LTV (довічна цінність)&quot;,
+        &quot;Відсутня регулярна системна оцінка задоволеності клієнтів (NPS/CSAT)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансова стійкість та динаміка&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Статус стійко прибуткового бізнесу з річним оборотом $0,5–2 млн&quot;,
+        &quot;Зростання доходу понад 20% за останні 12 місяців&quot;,
+        &quot;Наявність усталених маржинальних орієнтирів (price floor 20% для B2B/B2C, 13% для внутрішніх)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нестача оборотних коштів для забезпечення стрімкого зростання закупівлі обладнання&quot;,
+        &quot;Вплив зростання зарплат на зниження підсумкової маржинальності проєктів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та кадрове забезпечення&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Штат розширено до 11–50 людей&quot;,
+        &quot;Чітко виявлено дефіцит кадрів: 5 монтажників при потребі в 10 осіб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критична залежність від щоденної участі засновника (оцінка 5 з 5)&quot;,
+        &quot;Повна відсутність у штаті інженера (потреба — 1 FTE)&quot;,
+        &quot;Неповна зайнятість фінансового директора та бухгалтера (по 0,5 FTE)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічне фокусування та ринкові канали&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Формалізовані довгострокові цілі до 2026 та 2035 років&quot;,
+        &quot;Прямий імпорт обладнання з Європи (Procarte) та надійні суміжні постачальники&quot;,
+        &quot;Диверсифікація клієнтів: B2B, B2C, внутрішній корпоративний клієнт&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька частка e-commerce продажів при цільовому показнику 30% до кінця 2026 року&quot;,
+        &quot;Частка ринку в регіонах присутності наразі складає менше 1%&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Наявність гарантованого якірного замовника (Volwest Group / SPAR), що забезпечує базовий обсяг робіт і стабільний виторг&quot;,
+    &quot;Прямий імпорт сонячних панелей та інверторів із Європи (компанія Procarte, Польща)&quot;,
+    &quot;Висока якість і прозорість управлінського обліку (P&amp;L, Cash Flow, облік об&#x27;єктів)&quot;,
+    &quot;Швидкий старт і вихід на прибутковість за перший рік діяльності (понад 1 МВт змонтованих потужностей)&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Вузьке місце у монтажних потужностях (лише 5 монтажників у штаті, що обмежує виробіток до 150 кВт/міс)&quot;,
+    &quot;Відсутність штатного інженера-проєктанта для забезпечення зростаючих обсягів замовлень&quot;,
+    &quot;Висока залежність операційної діяльності та ухвалення рішень від засновника&quot;,
+    &quot;Нестача власного оборотного капіталу для масштабних закупівель обладнання під зростаючий попит&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Відсутність у штаті інженера при зростанні кількості та складності об&#x27;єктів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює ризик проєктних помилок, затримок у здачі об&#x27;єктів та фінансових втрат через гарантійні випадки.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою)&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює обмеження виробітку на рівні 150 кВт/місяць, що унеможливлює виконання плану зростання продажів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Тиск зростання заробітних плат на маржу проєктів&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Загрожує падінням рентабельності B2B-проєктів нижче цільового порогу в 20% маржі.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Власник зазначає фінансовий стан як «стійко прибутковий», але серед головних факторів обмеження вказує «нестачу оборотних коштів для стрімкого розвитку».&quot;,
+    &quot;Декларується мета зі зростання інтернет-магазину до 30% від обороту компанії до 2026 року, проте поточний фокус за джерелами доходів повністю зміщений на разові B2B/B2C проєкти та внутрішнє замовлення.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні розраховані значення CAC (вартості залучення клієнта) та LTV по каналах збуту.&quot;,
+    &quot;Відсутні систематизовані дані щодо оцінки задоволеності клієнтів (NPS/CSAT) після реалізації об&#x27;єктів.&quot;,
+    &quot;Не вказані точні обсяги загального ринку СЕС у регіонах присутності для розрахунку потенціалу зростання.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Закрити критичні вакансії: найняти штатного інженера-проєктанта та сформувати ще одну монтажну бригаду (+5 осіб).&quot;,
+      &quot;why&quot;: &quot;Ліквідувати вузьке місце у 150 кВт/міс та зняти ризики якості та строків виконання проєктів.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення монтажних потужностей удвічі та зниження ризику помилок у проєктній документації.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напрямку / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Залучити відновлювану кредитну лінію або овердрафт під контракти B2B/SPAR.&quot;,
+      &quot;why&quot;: &quot;Поповнити оборотні кошти для закупівлі обладнання з Європи та покрити касові розриви під час зростання.&quot;,
+      &quot;expected_result&quot;: &quot;Забезпечення безперебійного постачання обладнання без затримки виконання проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор (CFO)&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити та впровадити матрицю делегування операційних рішень від власника до проєктного менеджера та виконроба.&quot;,
+      &quot;why&quot;: &quot;Знизити залежність бізнесу від засновника (з рівня 5 до 2-3) та вивільнити його час для стратегії.&quot;,
+      &quot;expected_result&quot;: &quot;Вивільнення 30%+ часу власника та прискорення операційного погодження об&#x27;єктів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;60 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити окрему комерційну та маркетингову стратегію для e-commerce каналу (Prom.ua / власний сайт).&quot;,
+      &quot;why&quot;: &quot;Наразі інтернет-продажі не мають чіткої структури, що загрожує невиконанням цілі у 30% обороту до 2026 року.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання високомаржинальних разових продажів обладнання без залучення монтажних бригад.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер з продажів / Маркетолог&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язковий анкетний замір CSAT/NPS після введення кожної СЕС в експлуатацію.&quot;,
+      &quot;why&quot;: &quot;Отримувати системний зворотний зв&#x27;язок та конвертувати разові монтажі у довгострокові сервісні контракти.&quot;,
+      &quot;expected_result&quot;: &quot;Формування прогнозованого повторного доходу від обслуговування СЕС.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер проєктів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Організаційний профіль «Солар Вест Буд» сформовано на високому рівні завдяки якісним фінансово-управлінським даним. Компанія має сильний старт і надійний фундамент у вигляді корпоративного замовника. Головні виклики зараз — кадровий дефіцит (інженер та монтажники), залежність від власника та брак оборотного капіталу для масштабування. Впровадження запропонованих кроків дозволить зняти операційні обмеження та створити основу для стійкого зростання.&quot;
+}
+```</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;complete&quot;,
+  &quot;score&quot;: 80,
+  &quot;confidence&quot;: 85,
+  &quot;headline&quot;: &quot;«Солар Вест Буд» — прибуткова та динамічна компанія на ринку відновлюваної енергетики, що спирається на партнерство з корпоративною групою, але стримується дефіцитом кадрів, оборотних коштів та високою залежністю від засновника.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія «Солар Вест Буд» демонструє вражаючий старт: за перший рік роботи з серпня 2024 року встановлено понад 1 МВт потужностей, а річний оборот досяг рівня 0,5–2 млн дол. США зі стійкою прибутковістю. Ключовою перевагою є наявність гарантованого якірного замовника в особі мережі SPAR та підприємств групи Volwest, що забезпечує стабільний грошовий потік і базу для розвитку. Водночас оперування компанією ускладнено дефіцитом кваліфікованого персоналу: у штаті відсутній штатний інженер, а кількість монтажників удвічі менша за потребу. Швидке зростання виручки понад 20% випереджає наявний оборотний капітал, що створює ризик касових розривів при великих закупівлях обладнання. Високі темпи зростання заробітних плат починають тиснути на маржинальність проєктів, що вимагає суворого контролю собівартості. Для досягнення стратегічної мети — увійти до топ-5 інтеграторів України до 2035 року — компанії необхідно систематизувати делегування, залучити оборотне фінансування та розширити монтажні потужності.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Якість контексту та повнота операційних даних&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Деталізовані звіти P&amp;L (Форма 2) та Cash Flow (Форма 3) за 2024-2025 роки&quot;,
+        &quot;Наявний реєстр реалізованих об&#x27;єктів із розбивкою доходів та собівартості&quot;,
+        &quot;Заповнена структура штату FTE з фіксацією поточного складу та потреб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутні розраховані метрики CAC (вартість залучення клієнта) та LTV (довічна цінність)&quot;,
+        &quot;Відсутня регулярна системна оцінка задоволеності клієнтів (NPS/CSAT)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансова стійкість та динаміка&quot;,
+      &quot;score&quot;: 85,
+      &quot;evidence&quot;: [
+        &quot;Статус стійко прибуткового бізнесу з річним оборотом $0,5–2 млн&quot;,
+        &quot;Зростання доходу понад 20% за останні 12 місяців&quot;,
+        &quot;Наявність усталених маржинальних орієнтирів (price floor 20% для B2B/B2C, 13% для внутрішніх)&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нестача оборотних коштів для забезпечення стрімкого зростання закупівлі обладнання&quot;,
+        &quot;Вплив зростання зарплат на зниження підсумкової маржинальності проєктів&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та кадрове забезпечення&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Штат розширено до 11–50 людей&quot;,
+        &quot;Чітко виявлено дефіцит кадрів: 5 монтажників при потребі в 10 осіб&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Критична залежність від щоденної участі засновника (оцінка 5 з 5)&quot;,
+        &quot;Повна відсутність у штаті інженера (потреба — 1 FTE)&quot;,
+        &quot;Неповна зайнятість фінансового директора та бухгалтера (по 0,5 FTE)&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегічне фокусування та ринкові канали&quot;,
+      &quot;score&quot;: 75,
+      &quot;evidence&quot;: [
+        &quot;Формалізовані довгострокові цілі до 2026 та 2035 років&quot;,
+        &quot;Прямий імпорт обладнання з Європи (Procarte) та надійні суміжні постачальники&quot;,
+        &quot;Диверсифікація клієнтів: B2B, B2C, внутрішній корпоративний клієнт&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Низька частка e-commerce продажів при цільовому показнику 30% до кінця 2026 року&quot;,
+        &quot;Частка ринку в регіонах присутності наразі складає менше 1%&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Наявність гарантованого якірного замовника (Volwest Group / SPAR), що забезпечує базовий обсяг робіт і стабільний виторг&quot;,
+    &quot;Прямий імпорт сонячних панелей та інверторів із Європи (компанія Procarte, Польща)&quot;,
+    &quot;Висока якість і прозорість управлінського обліку (P&amp;L, Cash Flow, облік об&#x27;єктів)&quot;,
+    &quot;Швидкий старт і вихід на прибутковість за перший рік діяльності (понад 1 МВт змонтованих потужностей)&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Вузьке місце у монтажних потужностях (лише 5 монтажників у штаті, що обмежує виробіток до 150 кВт/міс)&quot;,
+    &quot;Відсутність штатного інженера-проєктанта для забезпечення зростаючих обсягів замовлень&quot;,
+    &quot;Висока залежність операційної діяльності та ухвалення рішень від засновника&quot;,
+    &quot;Нестача власного оборотного капіталу для масштабних закупівель обладнання під зростаючий попит&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Відсутність у штаті інженера при зростанні кількості та складності об&#x27;єктів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює ризик проєктних помилок, затримок у здачі об&#x27;єктів та фінансових втрат через гарантійні випадки.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою)&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Створює обмеження виробітку на рівні 150 кВт/місяць, що унеможливлює виконання плану зростання продажів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Тиск зростання заробітних плат на маржу проєктів&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Загрожує падінням рентабельності B2B-проєктів нижче цільового порогу в 20% маржі.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Власник зазначає фінансовий стан як «стійко прибутковий», але серед головних факторів обмеження вказує «нестачу оборотних коштів для стрімкого розвитку».&quot;,
+    &quot;Декларується мета зі зростання інтернет-магазину до 30% від обороту компанії до 2026 року, проте поточний фокус за джерелами доходів повністю зміщений на разові B2B/B2C проєкти та внутрішнє замовлення.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Відсутні розраховані значення CAC (вартості залучення клієнта) та LTV по каналах збуту.&quot;,
+    &quot;Відсутні систематизовані дані щодо оцінки задоволеності клієнтів (NPS/CSAT) після реалізації об&#x27;єктів.&quot;,
+    &quot;Не вказані точні обсяги загального ринку СЕС у регіонах присутності для розрахунку потенціалу зростання.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Закрити критичні вакансії: найняти штатного інженера-проєктанта та сформувати ще одну монтажну бригаду (+5 осіб).&quot;,
+      &quot;why&quot;: &quot;Ліквідувати вузьке місце у 150 кВт/міс та зняти ризики якості та строків виконання проєктів.&quot;,
+      &quot;expected_result&quot;: &quot;Збільшення монтажних потужностей удвічі та зниження ризику помилок у проєктній документації.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник напрямку / HR-менеджер&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Залучити відновлювану кредитну лінію або овердрафт під контракти B2B/SPAR.&quot;,
+      &quot;why&quot;: &quot;Поповнити оборотні кошти для закупівлі обладнання з Європи та покрити касові розриви під час зростання.&quot;,
+      &quot;expected_result&quot;: &quot;Забезпечення безперебійного постачання обладнання без затримки виконання проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор (CFO)&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити та впровадити матрицю делегування операційних рішень від власника до проєктного менеджера та виконроба.&quot;,
+      &quot;why&quot;: &quot;Знизити залежність бізнесу від засновника (з рівня 5 до 2-3) та вивільнити його час для стратегії.&quot;,
+      &quot;expected_result&quot;: &quot;Вивільнення 30%+ часу власника та прискорення операційного погодження об&#x27;єктів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / Засновник&quot;,
+      &quot;deadline&quot;: &quot;60 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розробити окрему комерційну та маркетингову стратегію для e-commerce каналу (Prom.ua / власний сайт).&quot;,
+      &quot;why&quot;: &quot;Наразі інтернет-продажі не мають чіткої структури, що загрожує невиконанням цілі у 30% обороту до 2026 року.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання високомаржинальних разових продажів обладнання без залучення монтажних бригад.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер з продажів / Маркетолог&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Впровадити обов&#x27;язковий анкетний замір CSAT/NPS після введення кожної СЕС в експлуатацію.&quot;,
+      &quot;why&quot;: &quot;Отримувати системний зворотний зв&#x27;язок та конвертувати разові монтажі у довгострокові сервісні контракти.&quot;,
+      &quot;expected_result&quot;: &quot;Формування прогнозованого повторного доходу від обслуговування СЕС.&quot;,
+      &quot;owner_role&quot;: &quot;Менеджер проєктів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Організаційний профіль «Солар Вест Буд» сформовано на високому рівні завдяки якісним фінансово-управлінським даним. Компанія має сильний старт і надійний фундамент у вигляді корпоративного замовника. Головні виклики зараз — кадровий дефіцит (інженер та монтажники), залежність від власника та брак оборотного капіталу для масштабування. Впровадження запропонованих кроків дозволить зняти операційні обмеження та створити основу для стійкого зростання.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;cache_tokens_details&quot;: null,
+  &quot;cached_content_token_count&quot;: null,
+  &quot;candidates_token_count&quot;: 2930,
+  &quot;candidates_tokens_details&quot;: null,
+  &quot;prompt_token_count&quot;: 910222,
+  &quot;prompt_tokens_details&quot;: [
+    {
+      &quot;modality&quot;: &quot;IMAGE&quot;,
+      &quot;token_count&quot;: 7905
+    },
+    {
+      &quot;modality&quot;: &quot;TEXT&quot;,
+      &quot;token_count&quot;: 902317
+    }
+  ],
+  &quot;thoughts_token_count&quot;: 3374,
+  &quot;tool_use_prompt_token_count&quot;: null,
+  &quot;tool_use_prompt_tokens_details&quot;: null,
+  &quot;total_token_count&quot;: 916526,
+  &quot;traffic_type&quot;: null
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;sdk_http_response&quot;: {
+    &quot;headers&quot;: {
+      &quot;x-gemini-service-tier&quot;: &quot;standard&quot;,
+      &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,
+      &quot;vary&quot;: &quot;Origin, X-Origin, Referer&quot;,
+      &quot;content-encoding&quot;: &quot;gzip&quot;,
+      &quot;date&quot;: &quot;Fri, 28 Aug 2026 08:53:37 GMT&quot;,
+      &quot;server&quot;: &quot;scaffolding on HTTPServer2&quot;,
+      &quot;x-xss-protection&quot;: &quot;0&quot;,
+      &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+      &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+      &quot;server-timing&quot;: &quot;gfet4t7; dur=56653&quot;,
+      &quot;alt-svc&quot;: &quot;h3=\&quot;:443\&quot;; ma=2592000,h3-29=\&quot;:443\&quot;; ma=2592000&quot;,
+      &quot;transfer-encoding&quot;: &quot;chunked&quot;
+    },
+    &quot;body&quot;: null
+  },
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: {
+        &quot;parts&quot;: [
+          {
+            &quot;media_resolution&quot;: null,
+            &quot;code_execution_result&quot;: null,
+            &quot;executable_code&quot;: null,
+            &quot;file_data&quot;: null,
+            &quot;function_call&quot;: null,
+            &quot;function_response&quot;: null,
+            &quot;inline_data&quot;: null,
+            &quot;text&quot;: &quot;```json\n{\n  \&quot;module_code\&quot;: \&quot;ORG\&quot;,\n  \&quot;module_name\&quot;: \&quot;Профіль організації\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;complete\&quot;,\n  \&quot;score\&quot;: 80,\n  \&quot;confidence\&quot;: 85,\n  \&quot;headline\&quot;: \&quot;«Солар Вест Буд» — прибуткова та динамічна компанія на ринку відновлюваної енергетики, що спирається на партнерство з корпоративною групою, але стримується дефіцитом кадрів, оборотних коштів та високою залежністю від засновника.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Компанія «Солар Вест Буд» демонструє вражаючий старт: за перший рік роботи з серпня 2024 року встановлено понад 1 МВт потужностей, а річний оборот досяг рівня 0,5–2 млн дол. США зі стійкою прибутковістю. Ключовою перевагою є наявність гарантованого якірного замовника в особі мережі SPAR та підприємств групи Volwest, що забезпечує стабільний грошовий потік і базу для розвитку. Водночас оперування компанією ускладнено дефіцитом кваліфікованого персоналу: у штаті відсутній штатний інженер, а кількість монтажників удвічі менша за потребу. Швидке зростання виручки понад 20% випереджає наявний оборотний капітал, що створює ризик касових розривів при великих закупівлях обладнання. Високі темпи зростання заробітних плат починають тиснути на маржинальність проєктів, що вимагає суворого контролю собівартості. Для досягнення стратегічної мети — увійти до топ-5 інтеграторів України до 2035 року — компанії необхідно систематизувати делегування, залучити оборотне фінансування та розширити монтажні потужності.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;Якість контексту та повнота операційних даних\&quot;,\n      \&quot;score\&quot;: 82,\n      \&quot;evidence\&quot;: [\n        \&quot;Деталізовані звіти P&amp;L (Форма 2) та Cash Flow (Форма 3) за 2024-2025 роки\&quot;,\n        \&quot;Наявний реєстр реалізованих об&#x27;єктів із розбивкою доходів та собівартості\&quot;,\n        \&quot;Заповнена структура штату FTE з фіксацією поточного складу та потреб\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Відсутні розраховані метрики CAC (вартість залучення клієнта) та LTV (довічна цінність)\&quot;,\n        \&quot;Відсутня регулярна системна оцінка задоволеності клієнтів (NPS/CSAT)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Фінансова стійкість та динаміка\&quot;,\n      \&quot;score\&quot;: 85,\n      \&quot;evidence\&quot;: [\n        \&quot;Статус стійко прибуткового бізнесу з річним оборотом $0,5–2 млн\&quot;,\n        \&quot;Зростання доходу понад 20% за останні 12 місяців\&quot;,\n        \&quot;Наявність усталених маржинальних орієнтирів (price floor 20% для B2B/B2C, 13% для внутрішніх)\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Нестача оборотних коштів для забезпечення стрімкого зростання закупівлі обладнання\&quot;,\n        \&quot;Вплив зростання зарплат на зниження підсумкової маржинальності проєктів\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Організаційна структура та кадрове забезпечення\&quot;,\n      \&quot;score\&quot;: 60,\n      \&quot;evidence\&quot;: [\n        \&quot;Штат розширено до 11–50 людей\&quot;,\n        \&quot;Чітко виявлено дефіцит кадрів: 5 монтажників при потребі в 10 осіб\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Критична залежність від щоденної участі засновника (оцінка 5 з 5)\&quot;,\n        \&quot;Повна відсутність у штаті інженера (потреба — 1 FTE)\&quot;,\n        \&quot;Неповна зайнятість фінансового директора та бухгалтера (по 0,5 FTE)\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Стратегічне фокусування та ринкові канали\&quot;,\n      \&quot;score\&quot;: 75,\n      \&quot;evidence\&quot;: [\n        \&quot;Формалізовані довгострокові цілі до 2026 та 2035 років\&quot;,\n        \&quot;Прямий імпорт обладнання з Європи (Procarte) та надійні суміжні постачальники\&quot;,\n        \&quot;Диверсифікація клієнтів: B2B, B2C, внутрішній корпоративний клієнт\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Низька частка e-commerce продажів при цільовому показнику 30% до кінця 2026 року\&quot;,\n        \&quot;Частка ринку в регіонах присутності наразі складає менше 1%\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Наявність гарантованого якірного замовника (Volwest Group / SPAR), що забезпечує базовий обсяг робіт і стабільний виторг\&quot;,\n    \&quot;Прямий імпорт сонячних панелей та інверторів із Європи (компанія Procarte, Польща)\&quot;,\n    \&quot;Висока якість і прозорість управлінського обліку (P&amp;L, Cash Flow, облік об&#x27;єктів)\&quot;,\n    \&quot;Швидкий старт і вихід на прибутковість за перший рік діяльності (понад 1 МВт змонтованих потужностей)\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Вузьке місце у монтажних потужностях (лише 5 монтажників у штаті, що обмежує виробіток до 150 кВт/міс)\&quot;,\n    \&quot;Відсутність штатного інженера-проєктанта для забезпечення зростаючих обсягів замовлень\&quot;,\n    \&quot;Висока залежність операційної діяльності та ухвалення рішень від засновника\&quot;,\n    \&quot;Нестача власного оборотного капіталу для масштабних закупівель обладнання під зростаючий попит\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;Відсутність у штаті інженера при зростанні кількості та складності об&#x27;єктів\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Створює ризик проєктних помилок, затримок у здачі об&#x27;єктів та фінансових втрат через гарантійні випадки.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Двократний дефіцит монтажників (5 факт проти 10 за потребою)\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Створює обмеження виробітку на рівні 150 кВт/місяць, що унеможливлює виконання плану зростання продажів.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Тиск зростання заробітних плат на маржу проєктів\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Загрожує падінням рентабельності B2B-проєктів нижче цільового порогу в 20% маржі.\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Власник зазначає фінансовий стан як «стійко прибутковий», але серед головних факторів обмеження вказує «нестачу оборотних коштів для стрімкого розвитку».\&quot;,\n    \&quot;Декларується мета зі зростання інтернет-магазину до 30% від обороту компанії до 2026 року, проте поточний фокус за джерелами доходів повністю зміщений на разові B2B/B2C проєкти та внутрішнє замовлення.\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Відсутні розраховані значення CAC (вартості залучення клієнта) та LTV по каналах збуту.\&quot;,\n    \&quot;Відсутні систематизовані дані щодо оцінки задоволеності клієнтів (NPS/CSAT) після реалізації об&#x27;єктів.\&quot;,\n    \&quot;Не вказані точні обсяги загального ринку СЕС у регіонах присутності для розрахунку потенціалу зростання.\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Закрити критичні вакансії: найняти штатного інженера-проєктанта та сформувати ще одну монтажну бригаду (+5 осіб).\&quot;,\n      \&quot;why\&quot;: \&quot;Ліквідувати вузьке місце у 150 кВт/міс та зняти ризики якості та строків виконання проєктів.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Збільшення монтажних потужностей удвічі та зниження ризику помилок у проєктній документації.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівник напрямку / HR-менеджер\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Залучити відновлювану кредитну лінію або овердрафт під контракти B2B/SPAR.\&quot;,\n      \&quot;why\&quot;: \&quot;Поповнити оборотні кошти для закупівлі обладнання з Європи та покрити касові розриви під час зростання.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Забезпечення безперебійного постачання обладнання без затримки виконання проєктів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Фінансовий директор (CFO)\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Розробити та впровадити матрицю делегування операційних рішень від власника до проєктного менеджера та виконроба.\&quot;,\n      \&quot;why\&quot;: \&quot;Знизити залежність бізнесу від засновника (з рівня 5 до 2-3) та вивільнити його час для стратегії.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Вивільнення 30%+ часу власника та прискорення операційного погодження об&#x27;єктів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / Засновник\&quot;,\n      \&quot;deadline\&quot;: \&quot;60 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Розробити окрему комерційну та маркетингову стратегію для e-commerce каналу (Prom.ua / власний сайт).\&quot;,\n      \&quot;why\&quot;: \&quot;Наразі інтернет-продажі не мають чіткої структури, що загрожує невиконанням цілі у 30% обороту до 2026 року.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Зростання високомаржинальних разових продажів обладнання без залучення монтажних бригад.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Менеджер з продажів / Маркетолог\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Впровадити обов&#x27;язковий анкетний замір CSAT/NPS після введення кожної СЕС в експлуатацію.\&quot;,\n      \&quot;why\&quot;: \&quot;Отримувати системний зворотний зв&#x27;язок та конвертувати разові монтажі у довгострокові сервісні контракти.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Формування прогнозованого повторного доходу від обслуговування СЕС.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Менеджер проєктів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Організаційний профіль «Солар Вест Буд» сформовано на високому рівні завдяки якісним фінансово-управлінським даним. Компанія має сильний старт і надійний фундамент у вигляді корпоративного замовника. Головні виклики зараз — кадровий дефіцит (інженер та монтажники), залежність від власника та брак оборотного капіталу для масштабування. Впровадження запропонованих кроків дозволить зняти операційні обмеження та створити основу для стійкого зростання.\&quot;\n}\n```&quot;,
+            &quot;thought&quot;: null,
+            &quot;thought_signature&quot;: &quot;Evh1CvV1ARFNMg_Ovj7O9VcqfPTMWL1lEQcgxp9rZGXSwCx2hyrHJ5lsaTUFv83c__jgj28nt7dW2bQvOYcLLJOb3S3W21AltOjyu9ZP5OgItXEytFHQ5klsckaAmrrGs4CW-PJ6RERgLByeCPMkXncP1RFX4m8Mafwjin43oVScnzIXtXDCsSx0hamOFMBOzNED2IlpEmHX9jduhgRClsvJzWMh1ooENO3Estr9hcVSv9QdlYs4-D-iI42XwVEe15__KrtUrgMamQ0OTxdrV9vxeV3oBnVK8spAd3k5GOnpSsnLLNRnjwVJLSpO3bq8Fuo_lsuBwS0AwD76zXC78oCSyo_xD5i04WkUY_smrFateD4P6z7xl_kXaWlnM7x_E7yu5e37ek1VTePE-F1MSGO4xMcH9Tie-fE8Ku4qc3tMfzdHgaitmZFeztLu-M9Vb3YIK43iWlIJl4ShIG6foHV631bo05mJv86qbGv_O17riblRTYQGtGzK_9Ly_mIh7df-WUy_kQW_S8GMD_KIKwsxWcjKw0-0yw3tDp-mGF2RAtQ12jCn3SIT6zLawJDDbQeXjUuDrPFTm5M3pw_36c0ZstTqmGIkVxoUoo_B1g8OSpIBVsssH8qiIl7i7m3c7CFh_tN75w6MfwXknYGiI9QoFQhdU0vXlBPZjM0OzUHAqdkXo-SVz4uK6g50vguG5T-WOnuMkQ_Y6msj1EJTlY03MfyPswm6sBZZwRfCKY2ZmAtjD4nO8mG9yqvGGCD5esilxnnvycuKIr2_lDlC0OjP1ct3Ff5VImw8sDBEcDkll5rmxNui5p5jB7qXtVbIzsjMk3KA3DGBMCuIP7gXROrm1bDdbiFsM9h8Yeuuzjo8Ky9_t9kNV5tNmSAJ2cfMDi8qSXFf0DGNxQ5TlmzhL9V7OBh4S4R-ehZr8E95UEMgJ0JFG7UngwQhM8WWkBqbokuk9goJECGHgWFbvsEXauR1w2K1P-AmAaeJoAUPATTnfYmcqo-ZMX0CaBH7lriNHT5_UkuFu96LEA86Wsgk98iCUL4i4UhZvU9GYQmcEigSqAG49rRQExbCxGtHy7nxToTyLMkXhnm2MmIRdeU_HYUpoiX5XqBYqTSLU8BjfazMHJVZ1xt11hd7MohppR1gHkJBaNbtqrgZBom2J5i4V8Ctho6yV0d7r1Dqr7bkC65-ljCog9fpuLJ6CItKtLwh7uz_3mPWdtPW9bku1LshepPliihHxjJtALmuMDiyjWkY16EGEPRwFBYdsrLlgFNPbDhFTgRCozzO8pWU-hjuHbXNEfCYBBWb--YYHoVbVc2kdfpto7xgsAOq13eEwsYuyJ94RCXj9eBZFbGasCEKBT62Fguz4x1B_IxA-cxPPrkrLOb--WPdE8E7f_XGFQyw6VqSHVmvxZ7a53D4Sw5FbJGGNqN7-SBLAC-TsLatzjTZQiWXLmohvu385ThKp-GK7PzrEPFOOSyXEGeELhSicVUNw1RvH3qrcbYXVfH1IKajOyzGmGXsNk4F-3c9blnfKE3girSjU4B6tatemUy-hitsnkufME6sYTXWj9RVxzRk5X4mjaTRcZvTEbtH4OHI9r6UiNgQZdrc4rLNASsHYQUCWMZ2h3lhjoVpVRAH9GOggLNSRVUAxwisvpTaiuWW3sG8U6EmuXhlZ1ZXzhsh2EysCCPmwg3-T7tIJB-Po2BOi8ZKLsnJtnyaWsZOwd001cjwFXF48naKbt9a-bp-oQiA6KPk-Gn50YTZPvab3R9TGgC372w6vJ2Z0FCHDMsv35vUyAR6BHQqlajSLcaNY64MBgp8ftwXVtCa9ejiTeBRAzMbUKi9ZrrQWTn6vo-DAzaI3Pj6txWebVqgDpt0__HytDnsadJvnt1qY7Mj2w28FLuxEBOo8gPRW8ZkEvaNeZ46enOq6G_Qy66wfSmvPbjcfyfq0BLSV_0q2bQ7zI6gaVK9BzAq0RwIF3IuaM5UR178QepkM5KgzlI_baVC5dOuKYsAjE2ZR24qw2o9bl1Njl4JrcqTwRBdRU_-A1F1aRCbvKZ7gNYbRCYBPBNpeNcML4ZCnxpAskWTH2cgrHh_s8SCFUAXOLTYkfQYkkpjdKFiwY-qlL8-eUOHjEddvyeY-F_ZXVqlpjKkC1m2kPThs_NvK0A_H83HOf3XWjPVJ9VeW7Bo5f8ANwEfblnNTOfMONuvWCbqeb7qnO4_NqI0kMSJoMKC9oZ98s1eUTqgpGYwee1zIDuE5DPC4jz9ls4OmN0H0nHTY6CAeh_ULta8ZzeWXImcuoRr47kiv1eYCpKLvUpzUnpVBpHr3LkdTGP0VYkRLtxcGwudHrQDw99NSwi9FtQwIhmMsbFPl7Uv1iFt9YK9eHscXyHkJU8xo-4lvmp33NmOto7TqMFdWHm6iYFpiAPqeKUNNJj1HSVJCrpUrSIfPXY5UV9---lj2RTDu3sPYK0gdiRcJs6OKU97_GVmj7FAJTi90MdF7tN-xK4WrzzKsTMB5XLkFZVibtFzeuy9KztBLZlzq_hAI3HBDaP094-l8ViHoxiYmwofkCHz1C6mJiSmn7TghE1crhMzyl-bTNr5aJiyOfZML-qSxFywPAYIKpeuYch6uTwl6sGuWh8_BNGFiOZBXGlxxvzyFDji2BuRy1CgKfB5fWpFGf12QIXIg3ezhw6W73inbfhobOqyoVVSZOK1lxvHieARJ2BkZJeLvG4JP9pKdWQDIqu-LiSBNvBxGk8tE8Zwjnw8yUjN93PLlGtd-VA1s5-RJJlm0YVnR1DON8KnaEdOIhrX4my5DyWGrtYI2HaJIhQ92DdIwS-hzn8ymhhplKQLg1zesTZZ1QVI6vUJ1w__JXzxFLGE1wuLC32QeM-Rjt2OMCNWmWhzhQkfbVS_rL8FZP5WWpx8fuDOLFI13sgyLIVXK1E1ItAS2bvOX5ADi2ww7PJZSIW-NXkRyOWp9vPvqznNDZeFbnhlJk044KLth_h3J4ESIhPssd8z5wKvHr5KArxOixUHEWrbOIiovSLoRqbakiRrxvvglBLqVzt6GaBRbULOR52uMzuASSA9Rt3kKR3P-O8_I0Kd8Wc_cfWfr0TC51DmgWbMBTFYyJXwb92XP8iky5wHD8R5YBh80WjkgHvrhPUCVbXUFGgCW0vCKSq4GU5N2FRTuL--Siz2ArI7RmpmAQ4ejLOnFi7XmRwgazGV3CjGOFJHSmZlZ3OKIr7FvIW0UQJ1GhRXcJJnlLXeanmmny51oiPwwrMobsmgwFwfNc7H8zS9dtVVW5w7bnSTPNs79nrtmj4OoCfLTXN95v-CLY_Fe7AUWfy0aO6uVN9WQrskdMeeSg_ciuT70zEFDnjL7vCi8jb4EQJmrHvJ2KHusEhNi73Q2jX-gh1zbA2vjYCyAXI1UTYDMTlqdABIJQPhHq5bwql3PC_5-fWlMdzLR7YTxA9Mowqx4ndwFdADt8OuDoqmkkfwRS1Y-7HFE02bnyv_jvLIX3Kb9RS4mVI45fhu9lz278H8FqDN5mTefZVKmMd2BRnM5sdadd6mJ5CMR95QR_JaK_GPJH-Sc6KEhwT_hzTFDUDh73HkHyIZ2MqW59Z3uRPELvZdJJi70HxYsl9t2QpZm8H69WULHxNo-ij89sDiM5c3FiH2uUpn4lQIlH5-szJQZORtFqEtGxzkECXuh-DWfFoIZRGfAVXl4SaCeF21f8KZcpIlqWg4jF52tRAqlN985fyPIQ_nL_hv0D2qT-HbJXV9js7hvHYRSnsLJKfuXabU1zelUDKzkvKcasnZImb-ypatjQplRMwW8V9eg0jUK8E7U0FS8LztsHYAm1fmU4T9ZSvC7VqkuHuRhIwanlFRb0mT3Ru_rnOn4icSssbxH7m9XTLAlSnje6_i_IV7aZnu6ImXcKhHWDiP5NI9e32oRyTsPng9IWytUeK-HnCc94NzsF0JpK-Iq-vDgH96u533VGSMxPv6GNIaX6avSzZ6nuzSrUN3y8V9G8CyxeT9p9b97qRYuYAnZzv4a-leZjrFEUkFVxkfbSUuu3y0ifoYv1fJnzEih6ymkprKD8DIpAsWo2MffJv0LZq2XMI-HiL-er8EVIlSNIFR6p_LUvVjgfW45P65HH2W7PWtwNNF0Sy7_oMWG1MEqTx7WMnLLSq6M7WWDNs17fRrmsS6NAx0r6rnB2L8BinQZNNCDH93tsTNxccRD1_l9xF3HcipqIqTdbbCOwCnHdB1i433taENJxwKUVUI_ZXnrYVZ6Rldr0YWWb9brFgkctfrZ5FMWdikm1RwO5qfvYSy6fb-6nigvAdfntgG8zUK2oKTdq301i8r3lKWV69sRn3Ug_yKZeokxWOp2ZMYTUEO7USNhtyK7KgSygfWJvCMCXC8GLyfd2uqwriV5hQhsa_ZGkMJrII1S1ZopXJVXFoIL1kiTXzrbeFhV7FFVJWRp2nYW4ilgCyMNz_WNG1rZCeRsrtCVmJZA0ZFZ1VeDoGErkrY-cA8ZliFLRCoNMhOiWmjcr8okayXVcdi5YpNUOi-rdActZrvNMKYwW-8XGHqjezmoEj086gj19C2_bm3uy1a3qoqKnUQ4h7k_Sc_xjYlH6fzUtvhwnpLagbbi7kfxqbrECxXU73Ws_P9eQ_-nQl6P-5j_gyfMI8mwylBe0PtknxHM5lCYzmsr2VOMkmZqGr926BK__AChNpk0Lcqrb89domR2pb0p1ZJgCM3E8dyMC6fGzhkhuQbtUdu1B3tihVofMJk_J-kUBRhvOtJb_9MDy91DuUtfyBsF7pwPIH63v3uJviSA6ya_fj-QAn0LutFMgOsdE2b3zrcfU-UuClOYGtdVMeqjURV2XEFNVjA29godqzu85h374hYZTqtdWUmmH2XXjbdP57dXVqZJFZ1YjfaKR9yjBk2eBQUKlFioMVRx5U1jYPRh3TgaYs87cmOJk_Zt2TKUFzXa1SmoxEzeyk8OzDV2m66d6JYTUy2EPThwOdESRD3EnJD6X9rWaLQGW5tTaDDiWd_PDk7LVAxXNrkUpgUgcf9254wnEVIz_70FYqlT-sDsr7FniVmO2z4IG5id9FdpW72juSwaTQnYkpOZf-0NvGKb_6JwInEIos3ooTuBnCH7Ono6AqfJEOS7t1X-myFo8twi6ayG-Vt1MnRprM37UiaE3Cjn39WJtdqR1mkfPlpKgX3ZQTt4nNjJiA9Tl78izjSm_xMOXqBxvP6zwiiabDSLZFEEkKtmHaRJ72VpAbpTcnDZ2X-G7XTJiCzUf4xvkRX3wunQiYUUG429ajS1VLqr3VfWmDVdlb48TD_zJhdPvHWLrlvAeFf0PZq12pcq1tNKIImNS0uUuqept0Gx_BQ6EfOuNtaO6heno3XxOSyHnOB9eDoIqifKmiK6Lt6klzkOR2SO62Sh6McSd8dCaSpWST0BFeN99vkP8YebKjla95ISCdNoceGBQLdQvn0u2I2QQ6FtrFit6XCNLNgR7xFgU3IJRtqHP7bFiVEGsaXIB3YzD4wMpjpEAhUNKUBG11tmh9SUMJEdxjhoBU_M7oV4nINuq99L_u8Nhgt3tik7HljGaT2yhzR8LJM6DnYc5IUqZmtGSTcFFT8827vpXCgQHizLLlGPvfdhbkiZNnkEZEaYXE41ghqVVo0swXg5y9nVwHZDO3mvJ2ByQVb2pn3Wit3SzVfWIyj5R1VGuuO_i6mm3BaPntHSWV52FWoLVXkr01_p7LQKDd41Z9x6Kvc2UzXMKEYH6SIWFyFNbk32eDUR6M8sAprDzxKPEzDaRUN6hJyXxRMuqR10yX3XE6HanBtsTGq8_3I9X1MlLQTakvTrwUyjIa_-wha1RIdDhfJpwvPeu4mw0feK2cx_ToUtgMqGfIYlr_jSlIOzECGu8aY1UtKss5GkP0UmMwdIfhTzPp4tQvFrBvDkkQvd16Axq6HoKGP4seqdGqN-3-bRlIFoa6YFlovqwi2hlVSNoAsX740YQikq7TkgzHxQIRYbKa-_jEbo9ty2WJZWqkAXFCUkFCmdNzyr9M7m0mUczXlVi12KagimVNs9s1sdsHF5E9Hkm0jZ2WsYF2zlB0Z7HCEGnjIA4lXWSyxX5bAzB_otQNwF4vDc_gOUFQHM8qM3-tDzY-yPNDQcey7J_XzxKrtgSmbFfDxt1kEz2Yh4s80oepjbl3zHjh3Rs1jTNOAh6JiQkMTucWkRudGhpoAwfOp7CnfUFcS25wRjVGWRTEq35hnm4C8vDMvmHpFDBi63zZBZ4JuGJBtfkihR7WY3yC2ZlmXw66me5INHMDpXvfmSTwHzdq1cXBy0PeUGj0B0tFrD30bj0dLUKW-_auCW3Kd08uRHPUETocfMUZIqWbpE-eUCpGnPOs780g4Ve-e-PRNUnOBUY-Bp96X09jkDvcXiZ0OATefo5lHMwXTt_NDyj4JUjAQhCqwRola_l7_hUcGjMAcDs-jYXDh8P7nLNREDFyknQWEuF1rObe-b5qy8RIHhn_vtRGjs0BsskQsFVlIaStKHsXkU4n4jFLpBmhdP6Xk8iLG4F19FaPYe2kxS8BbnnYx2oTDKToSVzb5MlpQV8nzSufcl6UtPhHTADhbp6cDBgCxpePiAlD-pcF88bQdSDQyRiphnUktVA0D6WGEw8LaMTMOqqMQQ0_A2poyT0VGwgaD-uXsE0FjvHFx-JV19BomWAO1jWdv3edgp-9g0SAHWjo2FJvQGdzENK1z8KAZqj3sg9CDvTIDGPCsIuAny8ETFvaFD_KSk22SFBRM6PtDvdVUkbBLOSpuZ24_JLI-AQXesUAlW8G4TDkuQWXVsc9Dq6BhxGWoiQUXhyrK7CaIFXJFePOx2iZ9XSlrUFS-4fitf2tzrauuRBzRwLCotWNPB-kO61f4gCFm6AXWBO1qOpUfnji-X6jASbodm9UiWMXMA5Om9jQGCp-Gbu365H6GrsuHhV1e7jILqyC3BDFezm5ksgRIgLWj1SD0eGjvs5d35K2mV0ZirIGjMynOWKKlDP59NWfBsTL35FpRcARFwBZyNEdYezWk3yPXU_wPT_06RcOi1Ovh_SSMNMcgW72CHu2tVHQo9BNTbcuyv4VjAuY6Gr2F0YXD7J2m8z5Yb0lR4hj67vzl_ktlIVBfR4hxQYayi682c-728VZwD4fImdyyw-J8EH5DQj-_yZZnJOQaKNBBXnShihOVKOaZCBRHbL3zulByifrYJSgOlzoI3QZbtpsiTSp5KLQil6fk1OGDSXrdUZRwrxKX6M7IR2wi0N3yyFi8XrBEZ7rGbRYqJ66CbcWUizq6vG9pFfK4gFx0Bv409QlJicscClEG6biY_Y6S7AGtIMQUKbOM5i-4k11DN89JYhqzXX7Y7j7HEQk2rs2j-eC-5Jb9OdOLvUMmx695fWnD6r6PyiI8WeY8yyHkE56J63-WBXvu39YfHu_lxkvl1mGHUqmURWpyjZtXA0tF7XM9LM4SppaBke8hw0non4bfKTVFm8kmroZrKsRYF5IgPyP5helJAiWyEQrtW2oMhNBjux054YXO_IxUj_Nwq2_5qhtNYvhrJJ-cjPNVmdLyl8bFHelshQKmYomXpS2A3BOxwW74b-LtKNH9L9xo7gBkgxK9sFEo-RIQ_leF4aYO2eXxuWH_MkKT1IQrCh_CvyE_mKGdq2_s383gHD7CTPiMuMoTt1DQeQcUWJJXI0xpLSiWCrJWInk45wGUGLktkauvw4J71zrx42fh4Pcr_PSLp9ZZaOc6hfYh-g2lbFWXNUKpOK_kB1x8dQILX0rT1ndOFQR04yPHJoT9qyVwIiTeLaQqvhIMwrS-GN1rzxLyRLDxtVjZho8qZeztQxylM664Ec1b_jBtmAAK_NQCEXEoYT706tOfuWQA31gha2yNIgOEjybkyvbeDdpguet8vG0ySKU2bQowpYRygEY97-ihk55B-Zy0uS5hdAuuGxryM2ExdQPiop6CzADIg92qSg6YI5PDMUfAvgbcfWKsDFslpwdpDVrXHp_-7A3nV8S8-TflIUWH5PRBMfCkCGyQUrglegE8n62xOm9MyX3cVOjbdSPooCrNBuwcWjdBTvQ1yw_4AXAsl6MY2aWHmCJdfAohoGrp052ePNWipRvmVjJ4ILXMkDNx8vOzb-7J-aXe8ln5mh1iAPlZMLS0jx6Y-AEwKwKkn84vhIyiMGPlpPzqiEiP4WJwUhpLVzEFRT6cRhXINQbTIMF0jejWLP9hUzj0HgQ6decYZ7MOhEYtlGDoDkOTOLIMXXT_9hubdHMHCqZ0kM3u5LI9ZIa10bbA2UsvK05DJ_KdpibeT6jR0-je080pZBff2u0id8jrHVp-vPd0zn5nsHovbu4Z8JWAhWenodB0WO6yeOCV2-n9bvbmEsIP8aST9RyGLWyTsmj-VwWG3ZhrnyH9T21RTRsyygHIL_xyRlS2-na36h_dJjC_tlYqtwABt0t-KQBkbp6bAyIa4CB-QjafohnvcEud5pRCfrUsDvKDYcGrTp1ResUmZrvGgNsxMrYoFybTt3vxHv6UGLn_r_83Uv4waSW3jU2_Sa21lPJyFN9ARnLMd0uzOEXqfCGqa_SQH5JuSN8CaNuN__aK0FZ-od3ic5uJ-hetCpVBwJB6XKNroKDc_g9GFBnelmDu-11WYU4WV0XO8KxGqcm03ULFjSkaACFaycQdL0BKZE-TpmpctlVaCqTYGiRok1FPRawlaNnc2OrNCGSTaGCyOSmqPPloxPvcbjO--R6YzceIcHIQdeq43pDqILFhrT1LOhDHNWu8bT1Yypf1Dj29OFwvGBGMJqNPI6EA1QXdXhLeuE2DZdYc_zYz9F2UbZzG942DJ2saP_WitKvRngZQCBmWh_2ImeKuXGj40lGfCYmxIQmO0eCZ95wtQjvIsKxlTO-mw1oKXa0A302EeBS46CLsNUakkQsyYGmANZ6SMhAG6Hnsj1-Gfr3wpFGLf0s9PT0uPKMkQ550-y1vTjhw2x_F11UQAsRvFBMLcp_M4oDglGAAx93jJFJVnD5e-QoCRwsOpU2rLUbEtfmLUj9pVgSQ3QQ2DFC9FNSgmTdoC8GwFTZE8upsIuOG3Pk5PpHphin1uvHCWABLxOhD-j525MzqGQCoD3QrGErlQNOsjTUltmdr6EP0gq10poDw3vNabA3rG166tEDolyGQqtERp67Q3hIewOFO8QPRc1iz6S53XVCPRKuzWwsJhU2PjYMD1NBsubOYmHKzEyg5_cW2laRhD91gwcudby3uaieKefzNe3Mfh5rqx2eo0ieWSxf9j3nKX044ndS5IstcVssy1oRU0bRa4cFyJqipdL1yyjyWS1UxH6xxgqts8gvZmKS27JXWAwmbXt7yYmXLvJEsL-jKV2WghEwZCXcuhYMVUFZO8OqxdjTPXviFwM1DhEc4bMwh_FbTqqP8pMMbfs63DYuDWUNGIFE-QwrRuBvNY4kGOBhaOvAL92k1uXD4aepluDJhcanzrH1H3Ik6zFw15B28cBQTqMF4UsxleQlUXnGTwV9zI3ONeVVt49AGr313G4VZc6IK9G0I41dcp1xbsU8YqGA8SPHAJ-ZsNkMTbO0gcZ5lrx40_jziCZioNONZeK7J_TYY_nLt2ewtW2C6ciMnCKqvU_LsdO3IW7Br1dLvz7hJuhPAPLGgwtAe056l41yeiXSgaOmJLFXQsu6vD4UvRZOcxdEA_dAV_EwBxwX7UFaatvBKdJ1l7Q4vYTBqq_2gwsW0qaxMi1VWmvUu8q4UKeV-EYiJmqcnJOJ1qXVJKkBws-Sf6AlAosoEBLnHet9D192mJ40Q4DvJwL3gQrcftVfrU0e2jLZb0Q9IYh1rdgNLGeoB0ZxzHp3ujx50nD8J1U9I2Rv2RK5ueEFuHCWuhQOOMMZ6AMnp5ZWxQL4EV8MvQjWT-1AyH-kulqbzlHtAjmncDImLd8OlQYlx6_peN18Ib-BX1qOY-abWk5eOneXbX70ORJCFP4CAUNLnh91fNw9qiYPEEVV1Mr_bi2rIsGO55Ei4TBMEs9lgfaKeZeK8NH39tv9LV_Gl6xvptX8TkMZt--7Tcy4T-BCHuoNofhrue17UPwt5FikUL1Qq0GrAwTX7Jx1eZKlTuR07xeNDea9Wh0RLGLtgTDnRHHidLjtbTwm48hBuKNq70ZDK5WwPfX93hYybwGzUZIFwqg6qDyC6CO4AGatZSivY7B8gIVmKN9L2iAZIH8K4JGutVaPj1uNBvCgjJXuwm6_vOMe8br-U-5baqFKAwfNqJQVv2WOMIa4bQbI3wSJ0zmftQjak_ylZwiM3ABeHfD9XihzhYunHTzXjjqWHsCh9EcGN-U_mzgSkg4feKM8w-0Wg3Sghvqxx7lTutR2nFSEBw0JQ2ZJK7gxu8frjZvlIcAsg6bbOx4c2_lXN8720c3jugOSXZUY9fJOxDaOBZL2TDOLSa5zjcBgE1muaBENbaLCHXi7vOuBxHAWCFy5_zvSyDDdQdnITL15MVPmk7IBe3wT_WtUzKy3RTtqctPk4doT30d2DyfquLVHlNM91avOTn_4NbmozIPNJJSy1XYELJXkzPFHi0JDVxFQFFm92Xcy_K-88B8bAdW4hVFOkmAdqWQ1jU923kPZUFQFNTjx7BZJQ5DqDeEYe0C-4nu_kfCzFtDBRi4P2t-Ga_ECJJyPwtJiFO7Ii4_AJCHTeu5z_ivvN_8IaDSTUnX7JfEtEfr7CTc0LQNByTfPR9Zn7SmTYntLagUfhomach5nn1XakZ2T_X0bGjpJ50i49WvekKSfk1AabpBL0sr3voeKOPLiblNESIlekpAnjR3fimAkLbqClqyFQtmORYA7XojHTBWLj_dVAo3LiudTyDI_0fqLjTaZQhH7jV7xIRhSrP4h-YfVmdUiR0DvAzhbEHFwhQi8Rh8wAzB7r8OQnb-nAsYgqTEYrZuWd9MOOl5g0xru1q6l5wbI-ge79R9gV2MNtn7t9Xya_3ezXJDV9NEMFiBStXPPM4T-I9hTwI8Oul0CtY7Bejyn3W1f9VnKr9BmgVXYEn6L6b_meyoWhi7HLqHJzT17Cy5rkAH0i-oXH_psKwYvtlFzxbRY-JSb3GFC1R_tiR7TUVT92X4_ywTAVf-WA_QgHwFd0RWyP2qVFaHviLYmBspPIIP2jRIWL0e9SU_foHrdKA2_RQqacBtOHL4rdKecixGrwf7PXl55tGsDkQqGMQisN7hiE3MJ3LP-RE8GMgJmFljA01oxPizk66OyPFxhvk5JwRxjOA-aXd_E5Gb2H9RMumC7QpxGDJvPVtp_aw-qj2ieWPJYbI1HZhEWgFqyvaZdZ-5k48_7hij5q9a2z6ATlm_C2tXHneLplCmoj3haWs-LquayqHB-2q8dBukhJNGXfrNblVCaT_P3MPutQpApipmSVEx_Py2Aj4m6wiw6N224H3FCRPfjAEddcYCaLAjt1jDJ3xsk8pP19ghYbFpsQuKTXNokp9fR5KKk6yeLoSCDs-VaSOYBKjbTubkfmyRwHUSAksnq68XsvipgS-4KPWy7S5wxf5A2lVLUz6zOyNG1ngBvTkt8uNjHtQ6yKlKqyIvx8LIsUPPN5f6RMxZSzv8rsADPaxFiArpXJoMQR2p2vbXusjNLyFvWcgMvabbj5gCdT3qhnAWemMOMZWLu64o90IfIKB2niMDYWAqQwZj9Mw1h64eT9NsC3Ci9RmRPi4lLXkzvJoYu27UxZDvcaHKZvUBDVdLrusZCFz3D0VPavszSXdrb97EtAvM30yH_wiPeYLubHAI4v0-e9OLYodQ_iN86aDPUL5rhnR2gLmlwsZ5emI3iqU9mcS5qPvFVcyRfi2iMZMtGXYw-_TTQMQ973LzcCaAjWFLitnr3sPV91Z8OFXliKy0c3HGWaadCfXr420O_YjeU855qp_rBAJuTJHsupDtlnZ1Fs5nEC9yjvxUBG30hPsuSJbF7eXI4Wjh1knfZ395w2-iOu4iAWlXhp2o6h4cfe2aPm-0IoUBRXTFde7FRtqdwoOyFkjkyY-k7CNMupAhJDCL1WK8R2ty0vmhksfe3-UePJptoF57zplN20dj7weCRDTJRTgkXL9_K1LTEOKscQ2tELpb65gMgSKpZIT8guaFWJMru2ZZZVlqrZg53OOA_lCpflgizjNvOVYSxq-pakZCl-kMTNJgifQFd4ewMG9VETuqbkIF4VHz9mTAJX6Coplx56fY_8h1-cwAXpYinGeb0ThzpeQYPCVfS-sVxJJ0RxcJ5F2Q0NXybgzDDRqW_1gQiKU27sHhRkCQFdoKs0godAxJrLTOBP40MpTod3h5znnBPfCHas5xJfc20PbO6s9edfLR4cCQzJIEJxpajhSmT-Z3BEaHtjwTv-kTJMsTvUfED97boaUfLbBMAaTaaep7kzBIhrIn4Dekycoc4Qe2Zu52RqFh0qY9M_ol9w6uNWhgcRuhAJByOLIPBg1pcD9kB_oS80rL8D0PI0T8PRST7YqouM2btY64wDxZsZ0uWQ90zXbA-tdBE4O59bh8Gzoo2Kb6i4A8WiEL5NIUy3ObuAX0Yw2U75APe3XSxazdBCQpbZxU6qixp0_EAXv05EW3B41I042Mstnqk2cZhRHUGAYSpJGTznWgRlaaNk8XacKo3Wz7d8m-GrFJUIom40zoDFCaty7oWsGmQ2z-Okr24e7Rct_cJ3KKpOFLMrfwGHFQAVXLCKxqsE9i_nVoLGe1b5s_AcSmnMqNyCSV_7NYVh6ohG4UPMWdKT87DhosHHfT91HZ4QHbOlKlfK-E7iZDHhjP36Rdtne_sPAqmU2GB0mdWkQB10Jf8dzpk6OcIjVMiYCsVyn-KecQrX5FF2hn8Xy_-sl95nvRQ9EgXsuofOIo1ZTVmgCCnV0qsTBlkXkkRdbiYXxIVkgjgLLJC7op6P0r4FacIFWySiT0Bmq-y0-Mw7wJSoxVwkrJz72hDEw9jouPbeYMa9Ac3DTHTUpFju1WkV0IWG8FIPyOlXuTf-MZN-apGUqT6_1hxjFiMtaZ9GTfMKEdU-p8VWCOKVPZgSvp1D7oSxDiJMIrXaMFtr2Jh1xcJNsxtTrmhMMU1v1tGEGSOQ8znVT4H3tCNsPkGcmm7DkSYKPbGe_rjjaTMMiPPV09WS6dHIB-8aJyZ2LVnSJ1U0oHEA9zbXQIx5xcoCXAEKhDFWK-ejoqNWFz17pxbMiIGtXOVFKV-eiT7JMAR3Bz0dPA-A1k4uatXh6LsOvXvyDRujvFNK_2g-xkhkZCPngUdGxDH9kAc8B3VR-pxIwzSS7HJ8d-ss4w4OHslsFmtY7Zp_maEmhn1STJOCJF6rbSGh4dpaIWak_5AYTPTriZ2xgZapBWuBo5cfq6RT-eCeT7bs96BvAWckHHFRajzsvfpnLIpumiUc1ZyxmBQXtd8kRTWNdWCq4jxmVlq0f2w0YQuPMYSJPUOMOoiACjEI17ivKM352fcKaft6d7xgSvRg41PBIAokOaIhcbA9koYYMAfhRVYD8Yy-IcWTqmP2K6G1SzxH0xedDK2ONR0lS77RaFXQIRS3v0ipap69PK3twWPmaZXJACRHYCV0d5VVPWLn3YViZu41TPl79cKPY5ueBDYx0zIFkuxjZ7VNfc6LneEIoGoZ9jGiKOXI4MUMBMp66XKuGZ4b1a-A_Q7-oZkMB8yxJvgTlaguvxMaaMA2g6WtW-NXHRzU3jtgHr1TT0Y8SoT9H4Tvf-39kyAn_hxpCdwVCX6KewBte-LGsu1OkY972GpGh0pxiF5m-jL_TyoPXYvaqvGY35PGFGmM8O6iUbcJSjEuopHnr-F8SuHfPGhrY5vRgZhBuicsavBW3Wuu5_Yxbv0TtTm_fX9WMY_kf1lc8nGPBHVk6zQ0JorI2ohmh3xXS-xEyWd6BLcMfnHucu-1dedZMh2-jjsLhoGjEtI1uFz1TOE8kpl_Iq-fPzfKBbKd5KPAnXIXS1x6GFX3rfNF5rfoW2Ea7iUzEaWv2oVPyQJ5BMGde7bLE-m5oVcmriZzV42b9W4LpVB8qkNM2S0z4DrgXoR0LxneI9yuic4RZVnjGMIo99NXVUMg5v-5VE9aNt5Wba1e2q3CRist0oXjgRqFeYsOCsNQrIISOO-iPIG5938fMSOplbtkCjpMh5Y11erjQqZx5rHcsfxhB6GReukKfCguaJeOo2-AOGbSSIBD8hcwKJRK6AHwb6MHnDhyNED1KKRbbq2LhIWUH7tnGD3hwZaXDlsP9cvz56oanmDb5hjd0xZ3qBqqcKs9Rva2SMmwHe9yCcFHRl1PKfQLpO1u2hrOI2roer998MufCwtIxecfMxsXgqWOJhX8yTibckns-EkgDf0ikDcoYLNY-xGUFFwPAmGnivsHPBAx2SkHsAeR-YjNIYma7hBNuDE4uRaCiIm0n0fxJuQKa2cHCRFFpIHko7yA7-7wqA-eKXpz5dw9JydRhID6-vrpbFPURy4tj45gF3D44oh0CS1JyxTg_tnJHnsg8Rq1n14jzHqgDbpYf09DEqpFkhUh_AgQzHo5b_0cGEA7t5REYuYA-PqFFTQdYczDt_-guBdGcc29a6Y94ZWdDsfQjMkKUrxC2RduzML2CPNBaWoSK_O95Ffn8p4QxOeWcAET9bS78fESn6sEWjFGSflC6TtCisUU7jWv87-Gg-OiPlNrkR1E4-CncSmzFIEiCcquvEAXyg0UJ28FLccL2e9gkGDipH0T3nXXEy_8pIzO04TDd1j9fiFh3ES1rcHDbJH3YV1kN-0L6SpC-XFmYmQvVU9m22dy7mfHCdKygEQ2NLWnrmmJJUKYGB5qQmpTbymvluv2Ed-u7_yfTaTAdz-U_R7uufWqw1Xr_8lrbkKMTjmzO4g6UIrl9ECEnqorGuLw4qVUG28TxDoL6-bIu9xj-YLq8Xsg8ojy0wPiJPiTK1Qn4fb2p8p4IGoMXF4m8q0iGL6pFMVFcrhKXJ3QIIjwu5UctXo4czcI9ZIFSfGe0-Kqxr-pOFhNpezRCudF0H7BSw-a4evsY18B4o7U58eKliNl9rGJP-ZNE_vZ4X12ns6ffU-KJj_0neCoaAk5tHHHSJuMlzc39-jtlamy5UzYVYr1pVO8VDgZ2zg_rPZ0x5dlg61AKaYnMf1esDZpOD2AATLes6JdNH2h6U-qDmMmSBbXN28fxJArX5QVlAYAPGtiN2L3MssZPw-a8IG6cL-h9S2YVOTI_mdkECPpZlOXv2GpZ2EVA1mS2rpSk2jGSCXm_VHIKCs9P8u3L6EpJ5GKlZpAeHIlgUYlJbp53wqzMyRX772J6T65rvmOAi8xIOOLqyolet-B3bdJNgiNmqpUBt6KwfyeNoAssH7wi5PZJ9Moew0W_SB0h6_G1nijxA6yjGYQtAge0pyyVJTSWhb7wHVyrLOuXTfbLJNRTst1TT4INJM7DlhxKOviAqKAUauzh-O8WebhKv9sed2Juo8RS3DjVKARhPsXmdDQC-ZqEQSyEzmIeGzuuoxt24LWC7w-BdcZS6PMskSrmVwf4w9yoeREmv_N5MycE9LKhPVnTK2q_3oEBNzFQLb5wu8NUGLPfn6G67g_AsIS5NfkPFL4tmBcw_3EENF8R4oKHjuEt0Ue524tr22qP4kUsf7hBvabkMMhAkH5_V4WH9ykNUvtLrgPEYxg8_ZzqCwbo5gSCOIfXi1bbpa0M8wwYAdsmvZDZLU88_wg-SLizsE7xCpHf_CSiZqAeOpnU7Z860t6ondNDSqFENDaPKX2HWkbCKAZQax40x5pJiszK-X3cIglB9CWJJMgoq8GZKOUC0vAOZVliNFAEeHyTcmnSdCgcWOxpj8EpydtWo9cJJ_vq8ISasseWy8mBN7DkkxHuTuyy3X_P8GabJH8-cB-DHlnpuBnw22d1sriCyNux8VyG12eboCxkonLPRhvNXdeHm1N_a8MUle7MmQU-ZnEiPSPcFuYbEo5lYXghRUBUStRcncgscNotN8vp59-pn72MKM5UDzmG65rB2ucNei0VO6QfOQXPH2WKJ-D-6JtlBvxBSsxmXVKmRxC8oAnDNGKudUTOq3RgXG8fwrV4RwAxNlA8dv4MOpEZmVeA_3WFw2MXQ038E6R9ZsTuJO_-3x7rXm5uLXayXb9nRKLTUkFtDq8dB785LDxY18wJlMB9X-AZ07B8b-Gr2c57DR3Ll-gYzDit7tJAL5-2FYBnNemoveZ74y3JeKn1_9RIWpOsMz-OF7qBQm1m5dKIVOyK3SnabqITO0br6poA5JJr1EfuxfAQyh5nN47-XsG1j-oDlI5ZXa3JtsQhpo6m-HHTF7_FKup_lMDsJ4MsaHShcCWvAWBHXi9BbJhXIdzUgWlsnHMcvzEI80mkuVqQXRJBT5u1kefdEBSki6eSIJJUf6EWjggdwDiOVoaVhVg7nBrMqJ-GhYSC8j8tFRd4edMgPNK8gT2SUXgl46D-aEFrVQHpVhHx8JllQ-h3RLQ0wdNrOhm1PLo9DagLQYhtgsLhAgryWQ4yumyFdEslIRVBWP3m2DLT_fDb25ZvLIA0EElDstWLF4tTGTkfiEL8rjo4QhxwRCx0VJiOul7DxAu59lZ2j90x0-ZRpkR5P2RUFAsLdstA2Rb4xJOWiAzNjNH7rtwJq5X51ynnwAuraewAqvK3JOOMvUdY1ap88lbb2N62NLAs_ygHplz03fAAuamg80wVLjHBVdUuGJFfCnAT0Xp2CRr8HMI2HJk7GJP5EFaRgHvtwc0rCWhUuS_Y6XVgqeCujnoAkEpw4ZOtW7lxnV-m23W80GeOHlwqwN6YKIoq6UYLkZoEUw21fq52bivnf2eBsMBpN6-r-ps-FiwVWalzwDolYQ4f-5TNYCON4IZm8WbcmzKQkQ4Kntdm9Txl6H-mblFSkbioahaMmr6ENgeAXDHgupJAT95NTy5E9JlcbeC3m84FTcmHr_duwU28OPOXgWeCK3m-vxOeemkP86uN7OrnWL2NsUjGtR-76ZYVF5LiyaMVsM-b5uO8WCQs-f1J_Mz_iDwW9BfxzW0xm0EukSLn9olzvX5wEFfpqsI1YXpD-RUR4aBSHXnYPP26Jqz0ILQWYZrUvRdZn8bVo2VzPS-iNHkFcLWMfk--18J0Utlag7OcVpok6W692wFRnQCXCGEX2YgvbdYdT2JklU1jcTlgnDFcvmi0gkHam2q3rCKJkXC0DEAKk0Rp0-11bY94gippwWW8Iv2qURvMatyA7MJ3sdP1GN2x0HrUI8HFfwnpizxVS4CshDpGkhbdsFwezel5uMXjfnhBLEXKIiTwpfPtRYbd8915dHqoit7AlhvlFaIwu5xijOKFFGnkH7eZoiXB3R6zArWH2Y0xlsJJwBo6dkPwEKiEM8xMVRZSRrYN0PfQneTJeh8YJ0GULhqev6QtQSbjWmDUbRYuaCsb1TZHTzJ6dbj67qNGa6hLAqBdTA8aJveze-pFFlz9DccnY9ra9y-atCzXIBSpAKkcF4q7f1Ek0hCQpEJLWUlnp1uBhluHkgpGw8tZeANS1nfLK78VpV2bIrOiX7WebEzA0tXuWAME-TtEYheCQQogPxK4_ZK2Vf7iqFA9PzPosk5XdudI0H_QBLU8xuIpVbQnL-Ohka_NQF8oiFubqnlCuAdZ4zkHFo50Cgq3WSjnc7GgX0CO4hC5QvzjViGsn1Rxt3SFMT0l4ihVE77TpEK2VfrOF9Eswtvl2tIAK8vjA2knl-DPYxEXHs3Cp7xORm6is5Up1w1aZuzPQxHVD1aFAp1mBQVqGyl3CflkjBVRWWw1J5pWyKDxDR4nWV5Fg6NfOGVdz9wpR6ZMddqcCZrwWOVrWyxdoVm-XeA8tEdg7BTKKTn5J7dlZePKrxuL3OByuPuX2h9Z9kCIMq9RuoZNtdXatatNiOsp0MK9HiTPiKekltdsNxcYWRjcWWOY8Z7hYQhLUlCax_uQpMvpYuA6OUKrByggF_ClMmpnuZktm_ChjDouT6pJxpSJFBSb9NQ2laC285UqkpnF4o8WIkmqHPfRXuqHGsNucq3qYrTJVZ1vumAexsG0kZ4cS-Bng1rIG9wT3TY02FunfMC5GkGlV3zAYJBqtkR0N9dMCa-w1DsmxJPF94rp6eBmNge0tjStIK7ja-9WnBm74oMckeEE9IJBvtNiGiGgiQj4nhJzmY8qHUPae0ibjBW7UeBY3zCqnLptYda9kRP9r43l60ZgWo4PNmfQ3mn2tlqUjdKCyvkBzi2quj6OIzeAnz1K9VQgm09OvZ_f0GPmx7K6vAUsxpFWuj2OEjfUUmhTSDp6FXChQ42DtJVGKcsJAUS13MPpiVBwn9Ii0RSmriE5bgLMyU9h1E0B7UwUK06HGxL1-XOzGnqMjYKsbseG2wOWbF-nTnNaAFHxjZP1r5lgs8e_xeQZQwvzBG7AlfmMYqayrDSQz4_Q5PXqokQUzoiJVKdAngnoJ_ZBGcCHWrlsMRMkz5H9cxftTsW8pbRtN_mlVvB2ZZYfJPq1RGq4oNSEATzm4lWVawHINcVJfullEhu24di41AqiHUzy1n8kMPXERCg61Fm2-MtbciNY23bQAALHlfQaZbuyrz1SzD1URj-RSnNRbNFUxgxl6hEeYqfpB2fbGF8znNn1hXDWePS85AyrDRFA3qPHJ8SEgx9gzQhF-9viqDuWUg9auMiBw0Hj9g5ZcubkU9WAw1AyvfMpbIANFa94vytMtjI0FlfclAq5UXOT5n2iaEKrug7ej8nt5SIJc-b9SOiZs1En0rTWrk5dd8lSOQEIHTWkGowMwxwtuq5k49omOpcbxKPlC2apWvHJDUAecQWI4pLpevreGNRQ6bgr-fK-XVOVQquC1y3YT3Ar12e29ACeS4UMakYE-a8w5vjYRxEzfG1ABBg-43H296Bv73LmYvSNjkoES02f1NtbDsT99G8oxmKLGLB97ja4MsV3QC5JPOkr9vvo4kKgu4qmIpMtnDHDlb48mcH9Vc4sS5HVKpMqQOSisTg4O6s1Djv3XBOXlG3TOOW2yUcOp-eAmBLTS8ruNwbqdZP0gaGU8O0iOv9prxf2eRn4-iZVS7Y8-sj-zmkp4j2E6xDcldTq0DbLCumN7j3XsVrLASNN1Cf_HLaGQYMWsZKjpJOl6JD-9qMYVenoF6qE_7iGrJFt4lHl6guZhdKyVevVQhvyl2V5CWKg-qTjsrTqNX7I8IIVsuFeI_Iec6lizQF-yuIeOZDt9sfglUJx5fCGHtIz3PrJHySWEWMwWOs30RcpTxinVu4z5TCyDpvQNXzZtGffhCeWGI6cGUDBXRoDTQlSuBmlzdkErsHcWK_WQLpCabu7UPQyX3-GCXmmocUTR751RYrG0EDD_7XeDZ8z-ZAE9a_eEguy5Q8pYjLfeoognwv0nXQ4X-RafnMxqY9MSlIVjZapqKb-51TvKW29GyYcEBrB8VFAPoUDxkm4Ferv8Kf4duBywRxJ-m2GCk_VQ8Y_b4OJSEViw23ZTMG_lrIjM59qYmV4VcDHZh6ZAdsbl7fE15RRgsMSbqDcW12gbVrVL7MQiUtRNDynWHgitCXV2gwJKDNjtJ9eSsNzR4dEVym3LkcQKoEho_w9kNovqbkCvX_HwTesM1vw8HOtJN0-dCeSl_gfwKkdngHdNGAAItsKyxl5npG9jM_1C6NBehL7PmyJF8n1kKEWSyg41RVvHAPK0uTBZzdE4EASlBSHDULm8-GAeClU2T1mr22vsGtm0EsWqdB6mDWFZYWvK-25t33Ngw8f27uDPEo6y5pa2FW_rTE-HWUwF7_GTSO6_DqtoYMijRcVm_oOxMQCuHKsv8hdOO9CS7ry_OPrh9DnRnBS9aaEgFT33ujf65Bwibpu9yJhSWQ4O1cQk6tWZsy8wRjqGAo-7oulpqYPRoyzVXCdCfYW9cEXCtJeQ4sUfI56O1QXTTzktBmqKGGeexTIv4cSgRc9dNUJnuSsiZcx2V7qfGt-yzEgGnN8M4SLgGu9OOWj6ry0__hCyiAOUoAQeRO_57OJec_qiWh8NXu-I8SZRPBqRkBBCci6uwnaXpKVBHFQb9vWrgsqH031WzTLdehAGTTZqIYCvRWzzl7k4JdFzEchFZSPTtzeCIguu1tLNs_eg9FQxUQPTuyqY7b&quot;,
+            &quot;video_metadata&quot;: null,
+            &quot;tool_call&quot;: null,
+            &quot;tool_response&quot;: null,
+            &quot;part_metadata&quot;: null,
+            &quot;audio_transcription&quot;: null
+          }
+        ],
+        &quot;role&quot;: &quot;model&quot;
+      },
+      &quot;citation_metadata&quot;: null,
+      &quot;finish_message&quot;: null,
+      &quot;token_count&quot;: null,
+      &quot;finish_reason&quot;: &quot;STOP&quot;,
+      &quot;grounding_metadata&quot;: null,
+      &quot;avg_logprobs&quot;: null,
+      &quot;index&quot;: 0,
+      &quot;logprobs_result&quot;: null,
+      &quot;safety_ratings&quot;: null,
+      &quot;url_context_metadata&quot;: null
+    }
+  ],
+  &quot;create_time&quot;: null,
+  &quot;model_version&quot;: &quot;gemini-3.6-flash&quot;,
+  &quot;prompt_feedback&quot;: null,
+  &quot;response_id&quot;: &quot;WUyRatWXEKeNkdUPtbabgAI&quot;,
+  &quot;usage_metadata&quot;: {
+    &quot;cache_tokens_details&quot;: null,
+    &quot;cached_content_token_count&quot;: null,
+    &quot;candidates_token_count&quot;: 2930,
+    &quot;candidates_tokens_details&quot;: null,
+    &quot;prompt_token_count&quot;: 910222,
+    &quot;prompt_tokens_details&quot;: [
+      {
+        &quot;modality&quot;: &quot;IMAGE&quot;,
+        &quot;token_count&quot;: 7905
+      },
+      {
+        &quot;modality&quot;: &quot;TEXT&quot;,
+        &quot;token_count&quot;: 902317
+      }
+    ],
+    &quot;thoughts_token_count&quot;: 3374,
+    &quot;tool_use_prompt_token_count&quot;: null,
+    &quot;tool_use_prompt_tokens_details&quot;: null,
+    &quot;total_token_count&quot;: 916526,
+    &quot;traffic_type&quot;: null
+  },
+  &quot;model_status&quot;: null,
+  &quot;automatic_function_calling_history&quot;: [],
+  &quot;parsed&quot;: null
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

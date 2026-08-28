@@ -1,0 +1,2143 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPT-5.6 Sol</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>GPT-5.6 Sol</h1>
+<div class="muted">OpenAI · Prompt: STR · 2026-08-28T11:03:59</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gpt-5.6-sol</strong></div>
+<div class="metric"><span>Returned</span><strong>gpt-5.6-sol</strong></div>
+<div class="metric"><span>Response ID</span><strong>resp_0a2e770eb3bfd293006a91407edd3887d2b8395f2a05f094b0</strong></div>
+<div class="metric"><span>Context window</span><strong>1 050 000</strong></div>
+<div class="metric"><span>Max output</span><strong>128 000</strong></div>
+<div class="metric"><span>Latency</span><strong>113.299 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>141 438</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>8 847</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>2 536</strong></div>
+<div class="metric"><span>Total tokens</span><strong>150 285</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$4.000000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.565752</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.400000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$20.000000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.176940</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.742692</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted attachment-summary">Кількість: 8 · Загальний розмір: 918.12 KB</div>
+        <div class="table-wrap"><table>
+        <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
+        <tbody><tr><td><strong>!Стратегія_Солар_Вест_2026_ключове.docx</strong></td><td>60.41 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>1 Дослідження СЕС Deep Research 51 стор.docx</strong></td><td>681.11 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>10 Стратегія маркетингу 3.docx</strong></td><td>42.16 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>2 Рейтинг привабливості галузі.docx</strong></td><td>26.88 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>6 Місія і візія.docx</strong></td><td>22.66 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>7 Стратегічна_карта_2026.xlsx</strong></td><td>23.77 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>9 Вибір стратегії 3.docx</strong></td><td>37.80 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr><tr><td><strong>Стратегічна_карта_2026.xlsx</strong></td><td>23.34 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T11:02:06+03:00</td></tr></tbody>
+        </table></div>
+        </section>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">STR</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Стратегія</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">limited</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">61</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">76</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Стратегічний напрям обрано логічно, але суперечливі планові версії, слабка доказовість переваг і дефіцит ресурсів створюють значний розрив між задумом та виконанням.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Солар Вест працює на структурно зростаючому ринку, привабливість якого обмежують висока конкуренція, низькі бар’єри входу, воєнні, валютні та регуляторні ризики. Ринок проаналізовано детально, однак значна частина показників є експертними оцінками, а прогнози зростання і місткості відрізняються між документами, тому їх не можна вважати єдиною затвердженою базою. Місія, бачення та клієнтська цінність сформульовані послідовно навколо енергонезалежності, гібридних рішень, сервісу й моніторингу. Компанія має фактичний доказ спроможності у вигляді понад 1 МВт реалізованих проєктів, повного циклу робіт і власних каналів імпорту, але бренд, команда та управлінські системи перебувають на ранній стадії. Поточні переваги переважно легко копіюються, тоді як сильніші бар’єри у вигляді сервісних контрактів, клієнтської платформи, даних і фінансових рішень поки залишаються планами. Стратегічний вибір і сценарії описані змістовно, але одночасно заявлено забагато сегментів, продуктів та ініціатив для наявного рівня фінансів, людей і управлінського часу. Найбільший розрив знаходиться у виконанні: CRM використовується недостатньо, CAC, LTV, NPS та операційні показники не мають надійної фактичної бази, мотивація слабко пов’язана зі стратегією, а кадровий дефіцит уже обмежує монтажі. Отже, стратегія має перспективне ядро, але до масштабування потрібно скоротити портфель пріоритетів, узгодити цифри та забезпечити виконання ресурсами.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">market_intelligence</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">76</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: описані основні драйвери попиту — зростання тарифів, потреба в автономності, розвиток накопичення енергії та розподіленої генерації.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: підготовлено аналіз зовнішніх факторів, п’яти конкурентних сил, клієнтських сегментів, замінників, можливостей, загроз і сценаріїв.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: визначені ранні сигнали — падіння потоку лідів, валова маржа нижче 19–20%, строк постачання понад 12 тижнів, DSO понад 45 днів і недостатній грошовий резерв.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Самооцінка: регулярний аналіз ринку оцінено на 5 із 5, але системне спостереження за конкурентами та опору рішень на дані — лише на 3 із 5.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Прогнози CAGR відрізняються: 15–20%, 18–25%, 30–35% і 30–40% залежно від документа.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не узгоджено межі та місткість ринку: наведено приблизно 11–12 млрд грн на рік, 300 млрд грн за 2023–2027 роки та формулювання про сотні мільярдів грн.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Значна частина конкурентних оцінок, часток ринку, CAC, LTV і готовності клієнтів платити позначена як експертна оцінка, а не підтверджений факт.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Немає регулярного порівняння фактичних цін, умов, строків і результатів виграних та програних угод проти конкурентів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">company_capabilities</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">57</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: компанія виконує повний цикл від проєктування та постачання до монтажу й сервісу.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: заявлено понад 1 МВт встановленої потужності та портфель дахових, наземних, мережевих, гібридних і автономних рішень.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: власний імпорт і партнерські канали постачання можуть підтримувати контроль комплектації та собівартості.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Факт: компанія оцінює партнерства і повноваження на 4 із 5, але фінанси — на 2, людей — на 1, потужності — на 2, дані — на 2.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Не підтверджені фактичні OTIF, строки монтажу, завантаження бригад, рівень дефектів і гарантійних звернень.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає узгодженої чисельності команди та підтвердження, що всі зазначені у стратегії ролі — CFO, CMO, CTO, сервісний директор, BI та CRM-власник — реально укомплектовані.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Недостатньо даних про оборотний капітал, доступні фінансові ліміти та вартість масштабування запасів і монтажних потужностей.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Заявлені високі оцінки якості й сервісу не підтверджені системними NPS, SLA, рекламаціями та незалежними клієнтськими доказами.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">strategic_core</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">78</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: місія визначає цінність через дешевшу, надійнішу та прогнозовану енергію для бізнесу й домогосподарств.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: бачення до 2035 року передбачає позицію топ-5 інтеграторів, десятки мегават нових СЕС щороку, тисячі сервісних клієнтів та енергетичну платформу.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: сформульовано спосіб перемоги — комплексне рішення СЕС+ESS+сервіс, прозора економіка, якість і швидка реакція замість демпінгу.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Факт: визначено стратегічні обмеження — не брати збиткові тендери та не масштабуватися без стандартів якості, ресурсів і контролю маржі.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Місія за відповіддю відома керівникам, але її фактичне розуміння всіма працівниками не перевірене.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Візійні орієнтири 15–20 МВт і 25–35 МВт на рік, а також 30–40% і 50% сервісної виручки відрізняються між документами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не побудовано підтверджений кількісний маршрут від поточних понад 1 МВт до позиції топ-5.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Межі між стратегічним ядром, інтернет-магазином обладнання та довгостроковою платформною моделлю потребують уточнення.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">advantages</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">54</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: повний цикл, власний імпорт, інженерна експертиза та портфель гібридних рішень створюють цінність для клієнта.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: понад 1 МВт реалізованих проєктів є початковим доказом здатності виконувати роботи.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: прозорий розрахунок економіки та окупності може полегшувати інвестиційне рішення клієнта.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Самооцінка показує сильні позиції за цінністю, якістю і сервісом — 5 із 5, але бренд оцінено на 2–3, команду й ефективність витрат — на 3.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Більшість наявних переваг оцінена самою компанією лише на 2–3 із 5 за рідкісністю або складністю копіювання.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Сервісні контракти, клієнтська платформа, довгострокові підписки та майбутня агрегація енергії ще не підтверджені масштабованими результатами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Розрахунки окупності 15–20 місяців є прогнозними та потребують підтвердження фактичними профілями споживання і результатами після запуску.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не вимірюються готовність клієнта платити премію, win-rate без знижки, повторні продажі та утримання клієнтів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">strategic_choice</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">70</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: основний напрям розвитку визначений як проникнення на наявний ринок із додаванням СЕС+ESS та сервісу для наявних клієнтів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: обрана вибірково агресивна поведінка — зростання у маржинальних сегментах із захистом мінімальної маржі.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: описані базовий, оптимістичний і стресовий сценарії та тригери переходу між ними.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Факт: для суміжних напрямів визначено різні режими — запуск O&amp;M і Hybrid Shield, партнерський тест фінансування, пілоти BIPV, агровольтаїки та критичної інфраструктури.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">У різних версіях фокус охоплює 30–200 кВт, 30–500 кВт, домогосподарства, агро, HoReCa, логістику, BIPV, громади та критичну інфраструктуру; остаточні 2–3 пріоритетні сегменти не затверджені.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Опис стратегії коливається між широкою диференціацією і фокусованою диференціацією.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Сценарії спираються переважно на оцінні фінансові значення та не узгоджені з останнім фактичним P&amp;L.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не визначено єдину черговість запуску суміжних напрямів з урахуванням дефіциту людей і коштів.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">execution</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">43</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: сформовані цілі, KPI, проєкти, дорожні карти, відповідальні ролі та зв’язок ініціатив із фінансовими результатами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: основні цілі форми — зростання доходу не менше 25% при маржі EPC від 20%, 30% обороту інтернет-магазину та 50 сервісних контрактів до кінця 2026 року.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: щомісячний і розширений щоквартальний перегляд стратегії заявлений як управлінська практика.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Факт: ресурсне забезпечення оцінене низько — люди 1 із 5, фінанси 2, час керівників 2, дані 2, потужності 2.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Факт: підтримка стратегії мотивацією та відповідальністю оцінена переважно на 2 із 5; CRM придбана, але активно не використовується.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Існує декілька наборів цілей і KPI з різними базами, строками та цільовими значеннями; частина показників позначена як оцінна.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Фінансова база не узгоджена: у документах фігурують приблизно 7,06 млн грн, 10 млн грн і 17,35 млн грн виручки для різних контурів або періодів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Більшість ініціатив перебуває у статусі Planned, а фактичний відсоток виконання, витрачений бюджет і досягнутий ефект не наведені.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Немає підтвердженого бюджету та доступних FTE для одночасного запуску CRM, сервісу, платформи, маркетингу, навчання, BIPV і регіонального розвитку.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Не налагоджені фактичні CAC, LTV, NPS, OTIF, defect rate, utilization, DSO і повна проєктна маржа.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">marketing_ai</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">40</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Факт: визначені цільові сегменти, позиціонування, клієнтські мотиви, канали, рекламні тести та партнерські програми.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Факт: передбачені A/B-тести повідомлень про економію та автономність, контроль CPL, CAC, ROMI і конверсії.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Факт: описані маркетингові та фінансові ранні сигнали, які мають запускати коригувальні дії.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Факт: відповідність маркетингового бюджету пріоритетам і вплив маркетингових даних на стратегію оцінені лише на 2 із 5.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає фактичної каналової аналітики, підтверджених CAC, ROMI, конверсій і атрибуції.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Маркетингові бюджети та очікувані ефекти є переважно плановими оцінками.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не наведено прикладів практичного використання ШІ у прогнозуванні попиту, скорингу лідів, підготовці пропозицій, сервісі або управлінні ризиками.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не визначено правила якості даних, перевірки моделей, інформаційної безпеки та відповідальності за використання ШІ.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Глибоко описані ринкові драйвери, клієнтські сегменти, ризики та можливі сценарії.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Місія, бачення й клієнтська цінність логічно поєднані навколо енергонезалежності, сервісу та моніторингу.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Є фактична операційна база: понад 1 МВт реалізованих проєктів, повний цикл робіт і власні канали імпорту.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Визначено спосіб конкуренції без демпінгу та встановлено принципи захисту маржі.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Стратегічні ініціативи на папері пов’язані з KPI, фінансовим ефектом, відповідальними та сценарними тригерами.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Стратегічний портфель перевищує наявні фінансові, кадрові та управлінські ресурси.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Конкурентні переваги переважно легко копіюються, а сервісний і цифровий захист ще не доведений.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">CRM, CAC/LTV, NPS та операційні KPI не дають надійної фактичної бази для масштабування.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Між документами не узгоджені ринок, фінансові бази, цільові сегменти, річні цілі й довгострокові метрики.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Висока залежність від власника та ключових працівників поєднується з дефіцитом монтажної спроможності й оборотних коштів.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Плани зростання не забезпечені людьми, фінансами та потужностями</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">critical</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Люди оцінені на 1 із 5, а фінанси, дані та потужності — на 2 із 5; попередній модуль також зафіксував втрату частини попиту через дефіцит монтажного персоналу. Додаткові продажі без усунення цього обмеження можуть збільшити прострочення, рекламації та касові розриви.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Масштабування продажів планується без активної CRM і перевіреної економіки каналів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Без конверсій, CAC, LTV, циклу продажу та маржі за каналами компанія не може визначити, які інвестиції у маркетинг створюють прибуток, а які лише збільшують оборот.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Фінансові бази та цілі різняться між стратегічними документами</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Різні значення виручки, EBITDA, сервісної частки та встановленої потужності не дозволяють однозначно оцінювати прогрес і відповідальність керівників.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Стратегія одночасно запускає занадто багато нових напрямів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">CRM, інтернет-магазин, O&amp;M, ESS, платформа, BIPV, банківські програми, громади та регіональна експансія конкурують за тих самих людей, кошти й увагу власника.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Заявлений сервісний і цифровий захист поки не існує як доведена перевага</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">До появи регулярних контрактів, вимірюваного SLA, NPS і платформи компанія залишається інтегратором на ринку з низькими бар’єрами входу та високим ціновим тиском.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Темп зростання ринку оцінюється як 15–20%, 18–25%, 30–35% або 30–40% залежно від документа.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Місткість ринку подана як приблизно 11–12 млрд грн на рік, близько 300 млрд грн за 2023–2027 роки та «сотні мільярдів до 2027 року» без єдиного визначення сегментів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Місія формально відома керівникам, але її зрозумілість усім працівникам одночасно оцінена на 5 із 5 без підтвердження опитуванням.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Стратегія забороняє перетворення на магазин панелей, але окремою ключовою ціллю є 30% обороту інтернет-магазину; роль товарного каналу в загальній моделі не уточнена.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Стратегія одночасно описується як широка та як фокусована диференціація, а пріоритетний діапазон B2B-рішень змінюється від 30–200 до 30–500 кВт.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><span class="j-str">У документах фігурують різні фінансові орієнтири: близько 7,06 млн грн фактичної виручки, 10 млн грн базового сценарію та 17,35 млн грн у P&amp;L 2025 року.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><span class="j-str">Ціль сервісної моделі змінюється між 50 контрактами, 50% нових СЕС із O&amp;M, 15–20%, 25–30%, 30–40% та 50% сервісної або цифрової виручки.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">8</div>
+                    <div><span class="j-str">План передбачає підвищення завантаження бригад до 70–80%, але паралельно зафіксовано постійну нестачу монтажників і неможливість виконати весь попит; потрібне розділення проблеми завантаження та дефіциту потужності.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Єдина затверджена база 2025 року: виручка, валова маржа, EBITDA, грошовий потік, встановлена потужність і кількість проєктів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Фактична економіка за кожним проєктом, продуктом, сегментом і каналом із повним розподілом прямих та операційних витрат.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">CRM-історія за 6–12 місяців: джерело ліда, стадії, win-rate, цикл продажу, CAC, причина відмови й маржа угоди.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Фактичний портфель замовлень, продуктивність бригад, завантаження, OTIF, дефекти, рекламації та втрачені через обмеження замовлення.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Поточна кількість сервісних контрактів, сервісна виручка і маржа, SLA, NPS та готовність клієнтів платити за O&amp;M.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><span class="j-str">Точна чисельність команди, наявні та вакантні стратегічні ролі, фонд оплати праці й календар найму.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><span class="j-str">Бюджет, потреба у FTE, джерело фінансування та критерії зупинки для кожної стратегічної ініціативи.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">8</div>
+                    <div><span class="j-str">Підтверджені ціни й умови конкурентів, результати виграних і програних угод та готовність клієнтів платити премію за сервіс.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">9</div>
+                    <div><span class="j-str">Узгоджене визначення цільового ринку, джерела ринкових оцінок та єдиний базовий сценарій до 2027 року.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">10</div>
+                    <div><span class="j-str">Фактичні або заплановані сценарії застосування ШІ, вимоги до даних, безпеки й відповідальності.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Затвердити одну стратегічну карту 2026 року: узгодити фактичну базу 2025 року, залишити три пріоритети, встановити єдині цілі виручки, маржі, потужності й сервісу, а попередні версії позначити як неактуальні.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Різні документи містять суперечливі фінансові бази, сегменти й цільові значення, через що керівники можуть виконувати різні версії стратегії.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Одна офіційна версія плану з трьома пріоритетами, спільними показниками, ресурсними межами та правилами відмови від збиткових проєктів.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник спільно з фінансовою та комерційною ролями</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Запустити робочу CRM-воронку й єдиний щотижневий дашборд: перенести всі активні угоди, відновити історію щонайменше за шість місяців і контролювати ліди, конверсії, CAC, цикл продажу, маржу, backlog, OTIF та DSO.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Зараз компанія планує масштабування без надійних даних про економіку каналів і пропускну спроможність виконання.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Керівництво бачить, які сегменти та канали створюють прибуток, де втрачаються клієнти та чи може операційна команда виконати продане.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівник продажів / власник CRM спільно з CFO та керівником операцій</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Скласти інтегрований план потужності й ліквідності: 13-тижневий грошовий потік, портфель замовлень у кВт, завантаження бригад, потреба в наймі або підрядниках, закупівлі та тригери базового і стресового сценаріїв.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Дефіцит людей, оборотних коштів і запасів взаємно підсилюється та може зробити прискорене зростання руйнівним для строків і грошового потоку.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Реалістичний темп продажів і монтажів, підтверджена потреба у фінансуванні та заздалегідь визначені дії при GM нижче 19%, DSO понад 45 днів або недостатньому грошовому резерві.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">CFO спільно з керівником монтажу та власником</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Перевірити майбутню конкурентну перевагу через пілот: продати 10 контрактів O&amp;M та реалізувати 3 пакетні СЕС+ESS, вимірюючи валову маржу, частку прийняття пропозиції, SLA, NPS, фактичну окупність і потребу в сервісних ресурсах.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Сервіс, накопичення та моніторинг визначені як головний захист від копіювання, але їхня економіка і готовність клієнтів платити ще не доведені.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Фактичне рішення про масштабування, зміну або зупинку сервісної та гібридної пропозиції на основі результатів клієнтів і компанії.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Технічний керівник / керівник сервісу спільно з комерційним керівником</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">90 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Прив’язати відповідальність і квартальні бонуси керівників до чотирьох спільних результатів: валової маржі, OTIF, грошового резерву та якості CRM-даних; зафіксувати рішення, які можуть ухвалюватися без власника.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Поточна мотивація слабко підтримує стратегію, власники проєктів визначені недостатньо, а залежність від засновника обмежує масштабування.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Менше ручного управління власником, узгоджена поведінка продажів, фінансів та операцій і відповідальність не лише за виручку, а й за якість зростання.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник / CEO спільно з HR та CFO</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Стратегія Солар Вест має правильне ядро: зростати у вибраних сегментах через комплексні СЕС+ESS, сервіс і моніторинг, не вступаючи у збитковий демпінг. Проте компанія ще не готова масштабувати цей задум: цифри між документами не узгоджені, CRM і ключові показники фактично не працюють, переваги легко копіюються, а людей і фінансів недостатньо. Перший пріоритет — затвердити одну версію плану, забезпечити прозору воронку, синхронізувати продажі з монтажною та фінансовою спроможністю і перевірити сервісну модель на реальних пілотах.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;STR&quot;,
+  &quot;module_name&quot;: &quot;Стратегія&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 61,
+  &quot;confidence&quot;: 76,
+  &quot;headline&quot;: &quot;Стратегічний напрям обрано логічно, але суперечливі планові версії, слабка доказовість переваг і дефіцит ресурсів створюють значний розрив між задумом та виконанням.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест працює на структурно зростаючому ринку, привабливість якого обмежують висока конкуренція, низькі бар’єри входу, воєнні, валютні та регуляторні ризики. Ринок проаналізовано детально, однак значна частина показників є експертними оцінками, а прогнози зростання і місткості відрізняються між документами, тому їх не можна вважати єдиною затвердженою базою. Місія, бачення та клієнтська цінність сформульовані послідовно навколо енергонезалежності, гібридних рішень, сервісу й моніторингу. Компанія має фактичний доказ спроможності у вигляді понад 1 МВт реалізованих проєктів, повного циклу робіт і власних каналів імпорту, але бренд, команда та управлінські системи перебувають на ранній стадії. Поточні переваги переважно легко копіюються, тоді як сильніші бар’єри у вигляді сервісних контрактів, клієнтської платформи, даних і фінансових рішень поки залишаються планами. Стратегічний вибір і сценарії описані змістовно, але одночасно заявлено забагато сегментів, продуктів та ініціатив для наявного рівня фінансів, людей і управлінського часу. Найбільший розрив знаходиться у виконанні: CRM використовується недостатньо, CAC, LTV, NPS та операційні показники не мають надійної фактичної бази, мотивація слабко пов’язана зі стратегією, а кадровий дефіцит уже обмежує монтажі. Отже, стратегія має перспективне ядро, але до масштабування потрібно скоротити портфель пріоритетів, узгодити цифри та забезпечити виконання ресурсами.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;market_intelligence&quot;,
+      &quot;score&quot;: 76,
+      &quot;evidence&quot;: [
+        &quot;Факт: описані основні драйвери попиту — зростання тарифів, потреба в автономності, розвиток накопичення енергії та розподіленої генерації.&quot;,
+        &quot;Факт: підготовлено аналіз зовнішніх факторів, п’яти конкурентних сил, клієнтських сегментів, замінників, можливостей, загроз і сценаріїв.&quot;,
+        &quot;Факт: визначені ранні сигнали — падіння потоку лідів, валова маржа нижче 19–20%, строк постачання понад 12 тижнів, DSO понад 45 днів і недостатній грошовий резерв.&quot;,
+        &quot;Самооцінка: регулярний аналіз ринку оцінено на 5 із 5, але системне спостереження за конкурентами та опору рішень на дані — лише на 3 із 5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Прогнози CAGR відрізняються: 15–20%, 18–25%, 30–35% і 30–40% залежно від документа.&quot;,
+        &quot;Не узгоджено межі та місткість ринку: наведено приблизно 11–12 млрд грн на рік, 300 млрд грн за 2023–2027 роки та формулювання про сотні мільярдів грн.&quot;,
+        &quot;Значна частина конкурентних оцінок, часток ринку, CAC, LTV і готовності клієнтів платити позначена як експертна оцінка, а не підтверджений факт.&quot;,
+        &quot;Немає регулярного порівняння фактичних цін, умов, строків і результатів виграних та програних угод проти конкурентів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;company_capabilities&quot;,
+      &quot;score&quot;: 57,
+      &quot;evidence&quot;: [
+        &quot;Факт: компанія виконує повний цикл від проєктування та постачання до монтажу й сервісу.&quot;,
+        &quot;Факт: заявлено понад 1 МВт встановленої потужності та портфель дахових, наземних, мережевих, гібридних і автономних рішень.&quot;,
+        &quot;Факт: власний імпорт і партнерські канали постачання можуть підтримувати контроль комплектації та собівартості.&quot;,
+        &quot;Факт: компанія оцінює партнерства і повноваження на 4 із 5, але фінанси — на 2, людей — на 1, потужності — на 2, дані — на 2.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не підтверджені фактичні OTIF, строки монтажу, завантаження бригад, рівень дефектів і гарантійних звернень.&quot;,
+        &quot;Немає узгодженої чисельності команди та підтвердження, що всі зазначені у стратегії ролі — CFO, CMO, CTO, сервісний директор, BI та CRM-власник — реально укомплектовані.&quot;,
+        &quot;Недостатньо даних про оборотний капітал, доступні фінансові ліміти та вартість масштабування запасів і монтажних потужностей.&quot;,
+        &quot;Заявлені високі оцінки якості й сервісу не підтверджені системними NPS, SLA, рекламаціями та незалежними клієнтськими доказами.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_core&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Факт: місія визначає цінність через дешевшу, надійнішу та прогнозовану енергію для бізнесу й домогосподарств.&quot;,
+        &quot;Факт: бачення до 2035 року передбачає позицію топ-5 інтеграторів, десятки мегават нових СЕС щороку, тисячі сервісних клієнтів та енергетичну платформу.&quot;,
+        &quot;Факт: сформульовано спосіб перемоги — комплексне рішення СЕС+ESS+сервіс, прозора економіка, якість і швидка реакція замість демпінгу.&quot;,
+        &quot;Факт: визначено стратегічні обмеження — не брати збиткові тендери та не масштабуватися без стандартів якості, ресурсів і контролю маржі.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Місія за відповіддю відома керівникам, але її фактичне розуміння всіма працівниками не перевірене.&quot;,
+        &quot;Візійні орієнтири 15–20 МВт і 25–35 МВт на рік, а також 30–40% і 50% сервісної виручки відрізняються між документами.&quot;,
+        &quot;Не побудовано підтверджений кількісний маршрут від поточних понад 1 МВт до позиції топ-5.&quot;,
+        &quot;Межі між стратегічним ядром, інтернет-магазином обладнання та довгостроковою платформною моделлю потребують уточнення.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;advantages&quot;,
+      &quot;score&quot;: 54,
+      &quot;evidence&quot;: [
+        &quot;Факт: повний цикл, власний імпорт, інженерна експертиза та портфель гібридних рішень створюють цінність для клієнта.&quot;,
+        &quot;Факт: понад 1 МВт реалізованих проєктів є початковим доказом здатності виконувати роботи.&quot;,
+        &quot;Факт: прозорий розрахунок економіки та окупності може полегшувати інвестиційне рішення клієнта.&quot;,
+        &quot;Самооцінка показує сильні позиції за цінністю, якістю і сервісом — 5 із 5, але бренд оцінено на 2–3, команду й ефективність витрат — на 3.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Більшість наявних переваг оцінена самою компанією лише на 2–3 із 5 за рідкісністю або складністю копіювання.&quot;,
+        &quot;Сервісні контракти, клієнтська платформа, довгострокові підписки та майбутня агрегація енергії ще не підтверджені масштабованими результатами.&quot;,
+        &quot;Розрахунки окупності 15–20 місяців є прогнозними та потребують підтвердження фактичними профілями споживання і результатами після запуску.&quot;,
+        &quot;Не вимірюються готовність клієнта платити премію, win-rate без знижки, повторні продажі та утримання клієнтів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_choice&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Факт: основний напрям розвитку визначений як проникнення на наявний ринок із додаванням СЕС+ESS та сервісу для наявних клієнтів.&quot;,
+        &quot;Факт: обрана вибірково агресивна поведінка — зростання у маржинальних сегментах із захистом мінімальної маржі.&quot;,
+        &quot;Факт: описані базовий, оптимістичний і стресовий сценарії та тригери переходу між ними.&quot;,
+        &quot;Факт: для суміжних напрямів визначено різні режими — запуск O&amp;M і Hybrid Shield, партнерський тест фінансування, пілоти BIPV, агровольтаїки та критичної інфраструктури.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У різних версіях фокус охоплює 30–200 кВт, 30–500 кВт, домогосподарства, агро, HoReCa, логістику, BIPV, громади та критичну інфраструктуру; остаточні 2–3 пріоритетні сегменти не затверджені.&quot;,
+        &quot;Опис стратегії коливається між широкою диференціацією і фокусованою диференціацією.&quot;,
+        &quot;Сценарії спираються переважно на оцінні фінансові значення та не узгоджені з останнім фактичним P&amp;L.&quot;,
+        &quot;Не визначено єдину черговість запуску суміжних напрямів з урахуванням дефіциту людей і коштів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;execution&quot;,
+      &quot;score&quot;: 43,
+      &quot;evidence&quot;: [
+        &quot;Факт: сформовані цілі, KPI, проєкти, дорожні карти, відповідальні ролі та зв’язок ініціатив із фінансовими результатами.&quot;,
+        &quot;Факт: основні цілі форми — зростання доходу не менше 25% при маржі EPC від 20%, 30% обороту інтернет-магазину та 50 сервісних контрактів до кінця 2026 року.&quot;,
+        &quot;Факт: щомісячний і розширений щоквартальний перегляд стратегії заявлений як управлінська практика.&quot;,
+        &quot;Факт: ресурсне забезпечення оцінене низько — люди 1 із 5, фінанси 2, час керівників 2, дані 2, потужності 2.&quot;,
+        &quot;Факт: підтримка стратегії мотивацією та відповідальністю оцінена переважно на 2 із 5; CRM придбана, але активно не використовується.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Існує декілька наборів цілей і KPI з різними базами, строками та цільовими значеннями; частина показників позначена як оцінна.&quot;,
+        &quot;Фінансова база не узгоджена: у документах фігурують приблизно 7,06 млн грн, 10 млн грн і 17,35 млн грн виручки для різних контурів або періодів.&quot;,
+        &quot;Більшість ініціатив перебуває у статусі Planned, а фактичний відсоток виконання, витрачений бюджет і досягнутий ефект не наведені.&quot;,
+        &quot;Немає підтвердженого бюджету та доступних FTE для одночасного запуску CRM, сервісу, платформи, маркетингу, навчання, BIPV і регіонального розвитку.&quot;,
+        &quot;Не налагоджені фактичні CAC, LTV, NPS, OTIF, defect rate, utilization, DSO і повна проєктна маржа.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;marketing_ai&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Факт: визначені цільові сегменти, позиціонування, клієнтські мотиви, канали, рекламні тести та партнерські програми.&quot;,
+        &quot;Факт: передбачені A/B-тести повідомлень про економію та автономність, контроль CPL, CAC, ROMI і конверсії.&quot;,
+        &quot;Факт: описані маркетингові та фінансові ранні сигнали, які мають запускати коригувальні дії.&quot;,
+        &quot;Факт: відповідність маркетингового бюджету пріоритетам і вплив маркетингових даних на стратегію оцінені лише на 2 із 5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає фактичної каналової аналітики, підтверджених CAC, ROMI, конверсій і атрибуції.&quot;,
+        &quot;Маркетингові бюджети та очікувані ефекти є переважно плановими оцінками.&quot;,
+        &quot;Не наведено прикладів практичного використання ШІ у прогнозуванні попиту, скорингу лідів, підготовці пропозицій, сервісі або управлінні ризиками.&quot;,
+        &quot;Не визначено правила якості даних, перевірки моделей, інформаційної безпеки та відповідальності за використання ШІ.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Глибоко описані ринкові драйвери, клієнтські сегменти, ризики та можливі сценарії.&quot;,
+    &quot;Місія, бачення й клієнтська цінність логічно поєднані навколо енергонезалежності, сервісу та моніторингу.&quot;,
+    &quot;Є фактична операційна база: понад 1 МВт реалізованих проєктів, повний цикл робіт і власні канали імпорту.&quot;,
+    &quot;Визначено спосіб конкуренції без демпінгу та встановлено принципи захисту маржі.&quot;,
+    &quot;Стратегічні ініціативи на папері пов’язані з KPI, фінансовим ефектом, відповідальними та сценарними тригерами.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Стратегічний портфель перевищує наявні фінансові, кадрові та управлінські ресурси.&quot;,
+    &quot;Конкурентні переваги переважно легко копіюються, а сервісний і цифровий захист ще не доведений.&quot;,
+    &quot;CRM, CAC/LTV, NPS та операційні KPI не дають надійної фактичної бази для масштабування.&quot;,
+    &quot;Між документами не узгоджені ринок, фінансові бази, цільові сегменти, річні цілі й довгострокові метрики.&quot;,
+    &quot;Висока залежність від власника та ключових працівників поєднується з дефіцитом монтажної спроможності й оборотних коштів.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Плани зростання не забезпечені людьми, фінансами та потужностями&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Люди оцінені на 1 із 5, а фінанси, дані та потужності — на 2 із 5; попередній модуль також зафіксував втрату частини попиту через дефіцит монтажного персоналу. Додаткові продажі без усунення цього обмеження можуть збільшити прострочення, рекламації та касові розриви.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Масштабування продажів планується без активної CRM і перевіреної економіки каналів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без конверсій, CAC, LTV, циклу продажу та маржі за каналами компанія не може визначити, які інвестиції у маркетинг створюють прибуток, а які лише збільшують оборот.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Фінансові бази та цілі різняться між стратегічними документами&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Різні значення виручки, EBITDA, сервісної частки та встановленої потужності не дозволяють однозначно оцінювати прогрес і відповідальність керівників.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Стратегія одночасно запускає занадто багато нових напрямів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;CRM, інтернет-магазин, O&amp;M, ESS, платформа, BIPV, банківські програми, громади та регіональна експансія конкурують за тих самих людей, кошти й увагу власника.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Заявлений сервісний і цифровий захист поки не існує як доведена перевага&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;До появи регулярних контрактів, вимірюваного SLA, NPS і платформи компанія залишається інтегратором на ринку з низькими бар’єрами входу та високим ціновим тиском.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Темп зростання ринку оцінюється як 15–20%, 18–25%, 30–35% або 30–40% залежно від документа.&quot;,
+    &quot;Місткість ринку подана як приблизно 11–12 млрд грн на рік, близько 300 млрд грн за 2023–2027 роки та «сотні мільярдів до 2027 року» без єдиного визначення сегментів.&quot;,
+    &quot;Місія формально відома керівникам, але її зрозумілість усім працівникам одночасно оцінена на 5 із 5 без підтвердження опитуванням.&quot;,
+    &quot;Стратегія забороняє перетворення на магазин панелей, але окремою ключовою ціллю є 30% обороту інтернет-магазину; роль товарного каналу в загальній моделі не уточнена.&quot;,
+    &quot;Стратегія одночасно описується як широка та як фокусована диференціація, а пріоритетний діапазон B2B-рішень змінюється від 30–200 до 30–500 кВт.&quot;,
+    &quot;У документах фігурують різні фінансові орієнтири: близько 7,06 млн грн фактичної виручки, 10 млн грн базового сценарію та 17,35 млн грн у P&amp;L 2025 року.&quot;,
+    &quot;Ціль сервісної моделі змінюється між 50 контрактами, 50% нових СЕС із O&amp;M, 15–20%, 25–30%, 30–40% та 50% сервісної або цифрової виручки.&quot;,
+    &quot;План передбачає підвищення завантаження бригад до 70–80%, але паралельно зафіксовано постійну нестачу монтажників і неможливість виконати весь попит; потрібне розділення проблеми завантаження та дефіциту потужності.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Єдина затверджена база 2025 року: виручка, валова маржа, EBITDA, грошовий потік, встановлена потужність і кількість проєктів.&quot;,
+    &quot;Фактична економіка за кожним проєктом, продуктом, сегментом і каналом із повним розподілом прямих та операційних витрат.&quot;,
+    &quot;CRM-історія за 6–12 місяців: джерело ліда, стадії, win-rate, цикл продажу, CAC, причина відмови й маржа угоди.&quot;,
+    &quot;Фактичний портфель замовлень, продуктивність бригад, завантаження, OTIF, дефекти, рекламації та втрачені через обмеження замовлення.&quot;,
+    &quot;Поточна кількість сервісних контрактів, сервісна виручка і маржа, SLA, NPS та готовність клієнтів платити за O&amp;M.&quot;,
+    &quot;Точна чисельність команди, наявні та вакантні стратегічні ролі, фонд оплати праці й календар найму.&quot;,
+    &quot;Бюджет, потреба у FTE, джерело фінансування та критерії зупинки для кожної стратегічної ініціативи.&quot;,
+    &quot;Підтверджені ціни й умови конкурентів, результати виграних і програних угод та готовність клієнтів платити премію за сервіс.&quot;,
+    &quot;Узгоджене визначення цільового ринку, джерела ринкових оцінок та єдиний базовий сценарій до 2027 року.&quot;,
+    &quot;Фактичні або заплановані сценарії застосування ШІ, вимоги до даних, безпеки й відповідальності.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Затвердити одну стратегічну карту 2026 року: узгодити фактичну базу 2025 року, залишити три пріоритети, встановити єдині цілі виручки, маржі, потужності й сервісу, а попередні версії позначити як неактуальні.&quot;,
+      &quot;why&quot;: &quot;Різні документи містять суперечливі фінансові бази, сегменти й цільові значення, через що керівники можуть виконувати різні версії стратегії.&quot;,
+      &quot;expected_result&quot;: &quot;Одна офіційна версія плану з трьома пріоритетами, спільними показниками, ресурсними межами та правилами відмови від збиткових проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник спільно з фінансовою та комерційною ролями&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити робочу CRM-воронку й єдиний щотижневий дашборд: перенести всі активні угоди, відновити історію щонайменше за шість місяців і контролювати ліди, конверсії, CAC, цикл продажу, маржу, backlog, OTIF та DSO.&quot;,
+      &quot;why&quot;: &quot;Зараз компанія планує масштабування без надійних даних про економіку каналів і пропускну спроможність виконання.&quot;,
+      &quot;expected_result&quot;: &quot;Керівництво бачить, які сегменти та канали створюють прибуток, де втрачаються клієнти та чи може операційна команда виконати продане.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник продажів / власник CRM спільно з CFO та керівником операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Скласти інтегрований план потужності й ліквідності: 13-тижневий грошовий потік, портфель замовлень у кВт, завантаження бригад, потреба в наймі або підрядниках, закупівлі та тригери базового і стресового сценаріїв.&quot;,
+      &quot;why&quot;: &quot;Дефіцит людей, оборотних коштів і запасів взаємно підсилюється та може зробити прискорене зростання руйнівним для строків і грошового потоку.&quot;,
+      &quot;expected_result&quot;: &quot;Реалістичний темп продажів і монтажів, підтверджена потреба у фінансуванні та заздалегідь визначені дії при GM нижче 19%, DSO понад 45 днів або недостатньому грошовому резерві.&quot;,
+      &quot;owner_role&quot;: &quot;CFO спільно з керівником монтажу та власником&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Перевірити майбутню конкурентну перевагу через пілот: продати 10 контрактів O&amp;M та реалізувати 3 пакетні СЕС+ESS, вимірюючи валову маржу, частку прийняття пропозиції, SLA, NPS, фактичну окупність і потребу в сервісних ресурсах.&quot;,
+      &quot;why&quot;: &quot;Сервіс, накопичення та моніторинг визначені як головний захист від копіювання, але їхня економіка і готовність клієнтів платити ще не доведені.&quot;,
+      &quot;expected_result&quot;: &quot;Фактичне рішення про масштабування, зміну або зупинку сервісної та гібридної пропозиції на основі результатів клієнтів і компанії.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / керівник сервісу спільно з комерційним керівником&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Прив’язати відповідальність і квартальні бонуси керівників до чотирьох спільних результатів: валової маржі, OTIF, грошового резерву та якості CRM-даних; зафіксувати рішення, які можуть ухвалюватися без власника.&quot;,
+      &quot;why&quot;: &quot;Поточна мотивація слабко підтримує стратегію, власники проєктів визначені недостатньо, а залежність від засновника обмежує масштабування.&quot;,
+      &quot;expected_result&quot;: &quot;Менше ручного управління власником, узгоджена поведінка продажів, фінансів та операцій і відповідальність не лише за виручку, а й за якість зростання.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / CEO спільно з HR та CFO&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Стратегія Солар Вест має правильне ядро: зростати у вибраних сегментах через комплексні СЕС+ESS, сервіс і моніторинг, не вступаючи у збитковий демпінг. Проте компанія ще не готова масштабувати цей задум: цифри між документами не узгоджені, CRM і ключові показники фактично не працюють, переваги легко копіюються, а людей і фінансів недостатньо. Перший пріоритет — затвердити одну версію плану, забезпечити прозору воронку, синхронізувати продажі з монтажною та фінансовою спроможністю і перевірити сервісну модель на реальних пілотах.&quot;
+}</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;STR&quot;,
+  &quot;module_name&quot;: &quot;Стратегія&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 61,
+  &quot;confidence&quot;: 76,
+  &quot;headline&quot;: &quot;Стратегічний напрям обрано логічно, але суперечливі планові версії, слабка доказовість переваг і дефіцит ресурсів створюють значний розрив між задумом та виконанням.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест працює на структурно зростаючому ринку, привабливість якого обмежують висока конкуренція, низькі бар’єри входу, воєнні, валютні та регуляторні ризики. Ринок проаналізовано детально, однак значна частина показників є експертними оцінками, а прогнози зростання і місткості відрізняються між документами, тому їх не можна вважати єдиною затвердженою базою. Місія, бачення та клієнтська цінність сформульовані послідовно навколо енергонезалежності, гібридних рішень, сервісу й моніторингу. Компанія має фактичний доказ спроможності у вигляді понад 1 МВт реалізованих проєктів, повного циклу робіт і власних каналів імпорту, але бренд, команда та управлінські системи перебувають на ранній стадії. Поточні переваги переважно легко копіюються, тоді як сильніші бар’єри у вигляді сервісних контрактів, клієнтської платформи, даних і фінансових рішень поки залишаються планами. Стратегічний вибір і сценарії описані змістовно, але одночасно заявлено забагато сегментів, продуктів та ініціатив для наявного рівня фінансів, людей і управлінського часу. Найбільший розрив знаходиться у виконанні: CRM використовується недостатньо, CAC, LTV, NPS та операційні показники не мають надійної фактичної бази, мотивація слабко пов’язана зі стратегією, а кадровий дефіцит уже обмежує монтажі. Отже, стратегія має перспективне ядро, але до масштабування потрібно скоротити портфель пріоритетів, узгодити цифри та забезпечити виконання ресурсами.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;market_intelligence&quot;,
+      &quot;score&quot;: 76,
+      &quot;evidence&quot;: [
+        &quot;Факт: описані основні драйвери попиту — зростання тарифів, потреба в автономності, розвиток накопичення енергії та розподіленої генерації.&quot;,
+        &quot;Факт: підготовлено аналіз зовнішніх факторів, п’яти конкурентних сил, клієнтських сегментів, замінників, можливостей, загроз і сценаріїв.&quot;,
+        &quot;Факт: визначені ранні сигнали — падіння потоку лідів, валова маржа нижче 19–20%, строк постачання понад 12 тижнів, DSO понад 45 днів і недостатній грошовий резерв.&quot;,
+        &quot;Самооцінка: регулярний аналіз ринку оцінено на 5 із 5, але системне спостереження за конкурентами та опору рішень на дані — лише на 3 із 5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Прогнози CAGR відрізняються: 15–20%, 18–25%, 30–35% і 30–40% залежно від документа.&quot;,
+        &quot;Не узгоджено межі та місткість ринку: наведено приблизно 11–12 млрд грн на рік, 300 млрд грн за 2023–2027 роки та формулювання про сотні мільярдів грн.&quot;,
+        &quot;Значна частина конкурентних оцінок, часток ринку, CAC, LTV і готовності клієнтів платити позначена як експертна оцінка, а не підтверджений факт.&quot;,
+        &quot;Немає регулярного порівняння фактичних цін, умов, строків і результатів виграних та програних угод проти конкурентів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;company_capabilities&quot;,
+      &quot;score&quot;: 57,
+      &quot;evidence&quot;: [
+        &quot;Факт: компанія виконує повний цикл від проєктування та постачання до монтажу й сервісу.&quot;,
+        &quot;Факт: заявлено понад 1 МВт встановленої потужності та портфель дахових, наземних, мережевих, гібридних і автономних рішень.&quot;,
+        &quot;Факт: власний імпорт і партнерські канали постачання можуть підтримувати контроль комплектації та собівартості.&quot;,
+        &quot;Факт: компанія оцінює партнерства і повноваження на 4 із 5, але фінанси — на 2, людей — на 1, потужності — на 2, дані — на 2.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не підтверджені фактичні OTIF, строки монтажу, завантаження бригад, рівень дефектів і гарантійних звернень.&quot;,
+        &quot;Немає узгодженої чисельності команди та підтвердження, що всі зазначені у стратегії ролі — CFO, CMO, CTO, сервісний директор, BI та CRM-власник — реально укомплектовані.&quot;,
+        &quot;Недостатньо даних про оборотний капітал, доступні фінансові ліміти та вартість масштабування запасів і монтажних потужностей.&quot;,
+        &quot;Заявлені високі оцінки якості й сервісу не підтверджені системними NPS, SLA, рекламаціями та незалежними клієнтськими доказами.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_core&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Факт: місія визначає цінність через дешевшу, надійнішу та прогнозовану енергію для бізнесу й домогосподарств.&quot;,
+        &quot;Факт: бачення до 2035 року передбачає позицію топ-5 інтеграторів, десятки мегават нових СЕС щороку, тисячі сервісних клієнтів та енергетичну платформу.&quot;,
+        &quot;Факт: сформульовано спосіб перемоги — комплексне рішення СЕС+ESS+сервіс, прозора економіка, якість і швидка реакція замість демпінгу.&quot;,
+        &quot;Факт: визначено стратегічні обмеження — не брати збиткові тендери та не масштабуватися без стандартів якості, ресурсів і контролю маржі.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Місія за відповіддю відома керівникам, але її фактичне розуміння всіма працівниками не перевірене.&quot;,
+        &quot;Візійні орієнтири 15–20 МВт і 25–35 МВт на рік, а також 30–40% і 50% сервісної виручки відрізняються між документами.&quot;,
+        &quot;Не побудовано підтверджений кількісний маршрут від поточних понад 1 МВт до позиції топ-5.&quot;,
+        &quot;Межі між стратегічним ядром, інтернет-магазином обладнання та довгостроковою платформною моделлю потребують уточнення.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;advantages&quot;,
+      &quot;score&quot;: 54,
+      &quot;evidence&quot;: [
+        &quot;Факт: повний цикл, власний імпорт, інженерна експертиза та портфель гібридних рішень створюють цінність для клієнта.&quot;,
+        &quot;Факт: понад 1 МВт реалізованих проєктів є початковим доказом здатності виконувати роботи.&quot;,
+        &quot;Факт: прозорий розрахунок економіки та окупності може полегшувати інвестиційне рішення клієнта.&quot;,
+        &quot;Самооцінка показує сильні позиції за цінністю, якістю і сервісом — 5 із 5, але бренд оцінено на 2–3, команду й ефективність витрат — на 3.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Більшість наявних переваг оцінена самою компанією лише на 2–3 із 5 за рідкісністю або складністю копіювання.&quot;,
+        &quot;Сервісні контракти, клієнтська платформа, довгострокові підписки та майбутня агрегація енергії ще не підтверджені масштабованими результатами.&quot;,
+        &quot;Розрахунки окупності 15–20 місяців є прогнозними та потребують підтвердження фактичними профілями споживання і результатами після запуску.&quot;,
+        &quot;Не вимірюються готовність клієнта платити премію, win-rate без знижки, повторні продажі та утримання клієнтів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_choice&quot;,
+      &quot;score&quot;: 70,
+      &quot;evidence&quot;: [
+        &quot;Факт: основний напрям розвитку визначений як проникнення на наявний ринок із додаванням СЕС+ESS та сервісу для наявних клієнтів.&quot;,
+        &quot;Факт: обрана вибірково агресивна поведінка — зростання у маржинальних сегментах із захистом мінімальної маржі.&quot;,
+        &quot;Факт: описані базовий, оптимістичний і стресовий сценарії та тригери переходу між ними.&quot;,
+        &quot;Факт: для суміжних напрямів визначено різні режими — запуск O&amp;M і Hybrid Shield, партнерський тест фінансування, пілоти BIPV, агровольтаїки та критичної інфраструктури.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У різних версіях фокус охоплює 30–200 кВт, 30–500 кВт, домогосподарства, агро, HoReCa, логістику, BIPV, громади та критичну інфраструктуру; остаточні 2–3 пріоритетні сегменти не затверджені.&quot;,
+        &quot;Опис стратегії коливається між широкою диференціацією і фокусованою диференціацією.&quot;,
+        &quot;Сценарії спираються переважно на оцінні фінансові значення та не узгоджені з останнім фактичним P&amp;L.&quot;,
+        &quot;Не визначено єдину черговість запуску суміжних напрямів з урахуванням дефіциту людей і коштів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;execution&quot;,
+      &quot;score&quot;: 43,
+      &quot;evidence&quot;: [
+        &quot;Факт: сформовані цілі, KPI, проєкти, дорожні карти, відповідальні ролі та зв’язок ініціатив із фінансовими результатами.&quot;,
+        &quot;Факт: основні цілі форми — зростання доходу не менше 25% при маржі EPC від 20%, 30% обороту інтернет-магазину та 50 сервісних контрактів до кінця 2026 року.&quot;,
+        &quot;Факт: щомісячний і розширений щоквартальний перегляд стратегії заявлений як управлінська практика.&quot;,
+        &quot;Факт: ресурсне забезпечення оцінене низько — люди 1 із 5, фінанси 2, час керівників 2, дані 2, потужності 2.&quot;,
+        &quot;Факт: підтримка стратегії мотивацією та відповідальністю оцінена переважно на 2 із 5; CRM придбана, але активно не використовується.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Існує декілька наборів цілей і KPI з різними базами, строками та цільовими значеннями; частина показників позначена як оцінна.&quot;,
+        &quot;Фінансова база не узгоджена: у документах фігурують приблизно 7,06 млн грн, 10 млн грн і 17,35 млн грн виручки для різних контурів або періодів.&quot;,
+        &quot;Більшість ініціатив перебуває у статусі Planned, а фактичний відсоток виконання, витрачений бюджет і досягнутий ефект не наведені.&quot;,
+        &quot;Немає підтвердженого бюджету та доступних FTE для одночасного запуску CRM, сервісу, платформи, маркетингу, навчання, BIPV і регіонального розвитку.&quot;,
+        &quot;Не налагоджені фактичні CAC, LTV, NPS, OTIF, defect rate, utilization, DSO і повна проєктна маржа.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;marketing_ai&quot;,
+      &quot;score&quot;: 40,
+      &quot;evidence&quot;: [
+        &quot;Факт: визначені цільові сегменти, позиціонування, клієнтські мотиви, канали, рекламні тести та партнерські програми.&quot;,
+        &quot;Факт: передбачені A/B-тести повідомлень про економію та автономність, контроль CPL, CAC, ROMI і конверсії.&quot;,
+        &quot;Факт: описані маркетингові та фінансові ранні сигнали, які мають запускати коригувальні дії.&quot;,
+        &quot;Факт: відповідність маркетингового бюджету пріоритетам і вплив маркетингових даних на стратегію оцінені лише на 2 із 5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає фактичної каналової аналітики, підтверджених CAC, ROMI, конверсій і атрибуції.&quot;,
+        &quot;Маркетингові бюджети та очікувані ефекти є переважно плановими оцінками.&quot;,
+        &quot;Не наведено прикладів практичного використання ШІ у прогнозуванні попиту, скорингу лідів, підготовці пропозицій, сервісі або управлінні ризиками.&quot;,
+        &quot;Не визначено правила якості даних, перевірки моделей, інформаційної безпеки та відповідальності за використання ШІ.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Глибоко описані ринкові драйвери, клієнтські сегменти, ризики та можливі сценарії.&quot;,
+    &quot;Місія, бачення й клієнтська цінність логічно поєднані навколо енергонезалежності, сервісу та моніторингу.&quot;,
+    &quot;Є фактична операційна база: понад 1 МВт реалізованих проєктів, повний цикл робіт і власні канали імпорту.&quot;,
+    &quot;Визначено спосіб конкуренції без демпінгу та встановлено принципи захисту маржі.&quot;,
+    &quot;Стратегічні ініціативи на папері пов’язані з KPI, фінансовим ефектом, відповідальними та сценарними тригерами.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Стратегічний портфель перевищує наявні фінансові, кадрові та управлінські ресурси.&quot;,
+    &quot;Конкурентні переваги переважно легко копіюються, а сервісний і цифровий захист ще не доведений.&quot;,
+    &quot;CRM, CAC/LTV, NPS та операційні KPI не дають надійної фактичної бази для масштабування.&quot;,
+    &quot;Між документами не узгоджені ринок, фінансові бази, цільові сегменти, річні цілі й довгострокові метрики.&quot;,
+    &quot;Висока залежність від власника та ключових працівників поєднується з дефіцитом монтажної спроможності й оборотних коштів.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Плани зростання не забезпечені людьми, фінансами та потужностями&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Люди оцінені на 1 із 5, а фінанси, дані та потужності — на 2 із 5; попередній модуль також зафіксував втрату частини попиту через дефіцит монтажного персоналу. Додаткові продажі без усунення цього обмеження можуть збільшити прострочення, рекламації та касові розриви.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Масштабування продажів планується без активної CRM і перевіреної економіки каналів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без конверсій, CAC, LTV, циклу продажу та маржі за каналами компанія не може визначити, які інвестиції у маркетинг створюють прибуток, а які лише збільшують оборот.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Фінансові бази та цілі різняться між стратегічними документами&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Різні значення виручки, EBITDA, сервісної частки та встановленої потужності не дозволяють однозначно оцінювати прогрес і відповідальність керівників.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Стратегія одночасно запускає занадто багато нових напрямів&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;CRM, інтернет-магазин, O&amp;M, ESS, платформа, BIPV, банківські програми, громади та регіональна експансія конкурують за тих самих людей, кошти й увагу власника.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Заявлений сервісний і цифровий захист поки не існує як доведена перевага&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;До появи регулярних контрактів, вимірюваного SLA, NPS і платформи компанія залишається інтегратором на ринку з низькими бар’єрами входу та високим ціновим тиском.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Темп зростання ринку оцінюється як 15–20%, 18–25%, 30–35% або 30–40% залежно від документа.&quot;,
+    &quot;Місткість ринку подана як приблизно 11–12 млрд грн на рік, близько 300 млрд грн за 2023–2027 роки та «сотні мільярдів до 2027 року» без єдиного визначення сегментів.&quot;,
+    &quot;Місія формально відома керівникам, але її зрозумілість усім працівникам одночасно оцінена на 5 із 5 без підтвердження опитуванням.&quot;,
+    &quot;Стратегія забороняє перетворення на магазин панелей, але окремою ключовою ціллю є 30% обороту інтернет-магазину; роль товарного каналу в загальній моделі не уточнена.&quot;,
+    &quot;Стратегія одночасно описується як широка та як фокусована диференціація, а пріоритетний діапазон B2B-рішень змінюється від 30–200 до 30–500 кВт.&quot;,
+    &quot;У документах фігурують різні фінансові орієнтири: близько 7,06 млн грн фактичної виручки, 10 млн грн базового сценарію та 17,35 млн грн у P&amp;L 2025 року.&quot;,
+    &quot;Ціль сервісної моделі змінюється між 50 контрактами, 50% нових СЕС із O&amp;M, 15–20%, 25–30%, 30–40% та 50% сервісної або цифрової виручки.&quot;,
+    &quot;План передбачає підвищення завантаження бригад до 70–80%, але паралельно зафіксовано постійну нестачу монтажників і неможливість виконати весь попит; потрібне розділення проблеми завантаження та дефіциту потужності.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Єдина затверджена база 2025 року: виручка, валова маржа, EBITDA, грошовий потік, встановлена потужність і кількість проєктів.&quot;,
+    &quot;Фактична економіка за кожним проєктом, продуктом, сегментом і каналом із повним розподілом прямих та операційних витрат.&quot;,
+    &quot;CRM-історія за 6–12 місяців: джерело ліда, стадії, win-rate, цикл продажу, CAC, причина відмови й маржа угоди.&quot;,
+    &quot;Фактичний портфель замовлень, продуктивність бригад, завантаження, OTIF, дефекти, рекламації та втрачені через обмеження замовлення.&quot;,
+    &quot;Поточна кількість сервісних контрактів, сервісна виручка і маржа, SLA, NPS та готовність клієнтів платити за O&amp;M.&quot;,
+    &quot;Точна чисельність команди, наявні та вакантні стратегічні ролі, фонд оплати праці й календар найму.&quot;,
+    &quot;Бюджет, потреба у FTE, джерело фінансування та критерії зупинки для кожної стратегічної ініціативи.&quot;,
+    &quot;Підтверджені ціни й умови конкурентів, результати виграних і програних угод та готовність клієнтів платити премію за сервіс.&quot;,
+    &quot;Узгоджене визначення цільового ринку, джерела ринкових оцінок та єдиний базовий сценарій до 2027 року.&quot;,
+    &quot;Фактичні або заплановані сценарії застосування ШІ, вимоги до даних, безпеки й відповідальності.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Затвердити одну стратегічну карту 2026 року: узгодити фактичну базу 2025 року, залишити три пріоритети, встановити єдині цілі виручки, маржі, потужності й сервісу, а попередні версії позначити як неактуальні.&quot;,
+      &quot;why&quot;: &quot;Різні документи містять суперечливі фінансові бази, сегменти й цільові значення, через що керівники можуть виконувати різні версії стратегії.&quot;,
+      &quot;expected_result&quot;: &quot;Одна офіційна версія плану з трьома пріоритетами, спільними показниками, ресурсними межами та правилами відмови від збиткових проєктів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник спільно з фінансовою та комерційною ролями&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити робочу CRM-воронку й єдиний щотижневий дашборд: перенести всі активні угоди, відновити історію щонайменше за шість місяців і контролювати ліди, конверсії, CAC, цикл продажу, маржу, backlog, OTIF та DSO.&quot;,
+      &quot;why&quot;: &quot;Зараз компанія планує масштабування без надійних даних про економіку каналів і пропускну спроможність виконання.&quot;,
+      &quot;expected_result&quot;: &quot;Керівництво бачить, які сегменти та канали створюють прибуток, де втрачаються клієнти та чи може операційна команда виконати продане.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник продажів / власник CRM спільно з CFO та керівником операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Скласти інтегрований план потужності й ліквідності: 13-тижневий грошовий потік, портфель замовлень у кВт, завантаження бригад, потреба в наймі або підрядниках, закупівлі та тригери базового і стресового сценаріїв.&quot;,
+      &quot;why&quot;: &quot;Дефіцит людей, оборотних коштів і запасів взаємно підсилюється та може зробити прискорене зростання руйнівним для строків і грошового потоку.&quot;,
+      &quot;expected_result&quot;: &quot;Реалістичний темп продажів і монтажів, підтверджена потреба у фінансуванні та заздалегідь визначені дії при GM нижче 19%, DSO понад 45 днів або недостатньому грошовому резерві.&quot;,
+      &quot;owner_role&quot;: &quot;CFO спільно з керівником монтажу та власником&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Перевірити майбутню конкурентну перевагу через пілот: продати 10 контрактів O&amp;M та реалізувати 3 пакетні СЕС+ESS, вимірюючи валову маржу, частку прийняття пропозиції, SLA, NPS, фактичну окупність і потребу в сервісних ресурсах.&quot;,
+      &quot;why&quot;: &quot;Сервіс, накопичення та моніторинг визначені як головний захист від копіювання, але їхня економіка і готовність клієнтів платити ще не доведені.&quot;,
+      &quot;expected_result&quot;: &quot;Фактичне рішення про масштабування, зміну або зупинку сервісної та гібридної пропозиції на основі результатів клієнтів і компанії.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний керівник / керівник сервісу спільно з комерційним керівником&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Прив’язати відповідальність і квартальні бонуси керівників до чотирьох спільних результатів: валової маржі, OTIF, грошового резерву та якості CRM-даних; зафіксувати рішення, які можуть ухвалюватися без власника.&quot;,
+      &quot;why&quot;: &quot;Поточна мотивація слабко підтримує стратегію, власники проєктів визначені недостатньо, а залежність від засновника обмежує масштабування.&quot;,
+      &quot;expected_result&quot;: &quot;Менше ручного управління власником, узгоджена поведінка продажів, фінансів та операцій і відповідальність не лише за виручку, а й за якість зростання.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / CEO спільно з HR та CFO&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Стратегія Солар Вест має правильне ядро: зростати у вибраних сегментах через комплексні СЕС+ESS, сервіс і моніторинг, не вступаючи у збитковий демпінг. Проте компанія ще не готова масштабувати цей задум: цифри між документами не узгоджені, CRM і ключові показники фактично не працюють, переваги легко копіюються, а людей і фінансів недостатньо. Перший пріоритет — затвердити одну версію плану, забезпечити прозору воронку, синхронізувати продажі з монтажною та фінансовою спроможністю і перевірити сервісну модель на реальних пілотах.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;input_tokens&quot;: 141438,
+  &quot;input_tokens_details&quot;: {
+    &quot;cache_write_tokens&quot;: 0,
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;output_tokens&quot;: 8847,
+  &quot;output_tokens_details&quot;: {
+    &quot;reasoning_tokens&quot;: 2536
+  },
+  &quot;total_tokens&quot;: 150285
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;resp_0a2e770eb3bfd293006a91407edd3887d2b8395f2a05f094b0&quot;,
+  &quot;created_at&quot;: 1787904126.0,
+  &quot;error&quot;: null,
+  &quot;incomplete_details&quot;: null,
+  &quot;instructions&quot;: null,
+  &quot;metadata&quot;: {},
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;object&quot;: &quot;response&quot;,
+  &quot;output&quot;: [
+    {
+      &quot;id&quot;: &quot;rs_0a2e770eb3bfd293006a91408c75a087d297dcdcb248f5057d&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0a2e770eb3bfd293006a9140921af087d2975aeabd3ab4c0a3&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0a2e770eb3bfd293006a914098008887d2b162a0dfdaa33593&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0a2e770eb3bfd293006a91409d92e887d2a66887b1e33b7a7f&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0a2e770eb3bfd293006a9140a3ef4487d2ad84c57395674426&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;msg_0a2e770eb3bfd293006a9140a9c86887d2976874221785069e&quot;,
+      &quot;content&quot;: [
+        {
+          &quot;annotations&quot;: [],
+          &quot;text&quot;: &quot;{\n  \&quot;module_code\&quot;: \&quot;STR\&quot;,\n  \&quot;module_name\&quot;: \&quot;Стратегія\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;limited\&quot;,\n  \&quot;score\&quot;: 61,\n  \&quot;confidence\&quot;: 76,\n  \&quot;headline\&quot;: \&quot;Стратегічний напрям обрано логічно, але суперечливі планові версії, слабка доказовість переваг і дефіцит ресурсів створюють значний розрив між задумом та виконанням.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Солар Вест працює на структурно зростаючому ринку, привабливість якого обмежують висока конкуренція, низькі бар’єри входу, воєнні, валютні та регуляторні ризики. Ринок проаналізовано детально, однак значна частина показників є експертними оцінками, а прогнози зростання і місткості відрізняються між документами, тому їх не можна вважати єдиною затвердженою базою. Місія, бачення та клієнтська цінність сформульовані послідовно навколо енергонезалежності, гібридних рішень, сервісу й моніторингу. Компанія має фактичний доказ спроможності у вигляді понад 1 МВт реалізованих проєктів, повного циклу робіт і власних каналів імпорту, але бренд, команда та управлінські системи перебувають на ранній стадії. Поточні переваги переважно легко копіюються, тоді як сильніші бар’єри у вигляді сервісних контрактів, клієнтської платформи, даних і фінансових рішень поки залишаються планами. Стратегічний вибір і сценарії описані змістовно, але одночасно заявлено забагато сегментів, продуктів та ініціатив для наявного рівня фінансів, людей і управлінського часу. Найбільший розрив знаходиться у виконанні: CRM використовується недостатньо, CAC, LTV, NPS та операційні показники не мають надійної фактичної бази, мотивація слабко пов’язана зі стратегією, а кадровий дефіцит уже обмежує монтажі. Отже, стратегія має перспективне ядро, але до масштабування потрібно скоротити портфель пріоритетів, узгодити цифри та забезпечити виконання ресурсами.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;market_intelligence\&quot;,\n      \&quot;score\&quot;: 76,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: описані основні драйвери попиту — зростання тарифів, потреба в автономності, розвиток накопичення енергії та розподіленої генерації.\&quot;,\n        \&quot;Факт: підготовлено аналіз зовнішніх факторів, п’яти конкурентних сил, клієнтських сегментів, замінників, можливостей, загроз і сценаріїв.\&quot;,\n        \&quot;Факт: визначені ранні сигнали — падіння потоку лідів, валова маржа нижче 19–20%, строк постачання понад 12 тижнів, DSO понад 45 днів і недостатній грошовий резерв.\&quot;,\n        \&quot;Самооцінка: регулярний аналіз ринку оцінено на 5 із 5, але системне спостереження за конкурентами та опору рішень на дані — лише на 3 із 5.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Прогнози CAGR відрізняються: 15–20%, 18–25%, 30–35% і 30–40% залежно від документа.\&quot;,\n        \&quot;Не узгоджено межі та місткість ринку: наведено приблизно 11–12 млрд грн на рік, 300 млрд грн за 2023–2027 роки та формулювання про сотні мільярдів грн.\&quot;,\n        \&quot;Значна частина конкурентних оцінок, часток ринку, CAC, LTV і готовності клієнтів платити позначена як експертна оцінка, а не підтверджений факт.\&quot;,\n        \&quot;Немає регулярного порівняння фактичних цін, умов, строків і результатів виграних та програних угод проти конкурентів.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;company_capabilities\&quot;,\n      \&quot;score\&quot;: 57,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: компанія виконує повний цикл від проєктування та постачання до монтажу й сервісу.\&quot;,\n        \&quot;Факт: заявлено понад 1 МВт встановленої потужності та портфель дахових, наземних, мережевих, гібридних і автономних рішень.\&quot;,\n        \&quot;Факт: власний імпорт і партнерські канали постачання можуть підтримувати контроль комплектації та собівартості.\&quot;,\n        \&quot;Факт: компанія оцінює партнерства і повноваження на 4 із 5, але фінанси — на 2, людей — на 1, потужності — на 2, дані — на 2.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Не підтверджені фактичні OTIF, строки монтажу, завантаження бригад, рівень дефектів і гарантійних звернень.\&quot;,\n        \&quot;Немає узгодженої чисельності команди та підтвердження, що всі зазначені у стратегії ролі — CFO, CMO, CTO, сервісний директор, BI та CRM-власник — реально укомплектовані.\&quot;,\n        \&quot;Недостатньо даних про оборотний капітал, доступні фінансові ліміти та вартість масштабування запасів і монтажних потужностей.\&quot;,\n        \&quot;Заявлені високі оцінки якості й сервісу не підтверджені системними NPS, SLA, рекламаціями та незалежними клієнтськими доказами.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;strategic_core\&quot;,\n      \&quot;score\&quot;: 78,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: місія визначає цінність через дешевшу, надійнішу та прогнозовану енергію для бізнесу й домогосподарств.\&quot;,\n        \&quot;Факт: бачення до 2035 року передбачає позицію топ-5 інтеграторів, десятки мегават нових СЕС щороку, тисячі сервісних клієнтів та енергетичну платформу.\&quot;,\n        \&quot;Факт: сформульовано спосіб перемоги — комплексне рішення СЕС+ESS+сервіс, прозора економіка, якість і швидка реакція замість демпінгу.\&quot;,\n        \&quot;Факт: визначено стратегічні обмеження — не брати збиткові тендери та не масштабуватися без стандартів якості, ресурсів і контролю маржі.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Місія за відповіддю відома керівникам, але її фактичне розуміння всіма працівниками не перевірене.\&quot;,\n        \&quot;Візійні орієнтири 15–20 МВт і 25–35 МВт на рік, а також 30–40% і 50% сервісної виручки відрізняються між документами.\&quot;,\n        \&quot;Не побудовано підтверджений кількісний маршрут від поточних понад 1 МВт до позиції топ-5.\&quot;,\n        \&quot;Межі між стратегічним ядром, інтернет-магазином обладнання та довгостроковою платформною моделлю потребують уточнення.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;advantages\&quot;,\n      \&quot;score\&quot;: 54,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: повний цикл, власний імпорт, інженерна експертиза та портфель гібридних рішень створюють цінність для клієнта.\&quot;,\n        \&quot;Факт: понад 1 МВт реалізованих проєктів є початковим доказом здатності виконувати роботи.\&quot;,\n        \&quot;Факт: прозорий розрахунок економіки та окупності може полегшувати інвестиційне рішення клієнта.\&quot;,\n        \&quot;Самооцінка показує сильні позиції за цінністю, якістю і сервісом — 5 із 5, але бренд оцінено на 2–3, команду й ефективність витрат — на 3.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Більшість наявних переваг оцінена самою компанією лише на 2–3 із 5 за рідкісністю або складністю копіювання.\&quot;,\n        \&quot;Сервісні контракти, клієнтська платформа, довгострокові підписки та майбутня агрегація енергії ще не підтверджені масштабованими результатами.\&quot;,\n        \&quot;Розрахунки окупності 15–20 місяців є прогнозними та потребують підтвердження фактичними профілями споживання і результатами після запуску.\&quot;,\n        \&quot;Не вимірюються готовність клієнта платити премію, win-rate без знижки, повторні продажі та утримання клієнтів.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;strategic_choice\&quot;,\n      \&quot;score\&quot;: 70,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: основний напрям розвитку визначений як проникнення на наявний ринок із додаванням СЕС+ESS та сервісу для наявних клієнтів.\&quot;,\n        \&quot;Факт: обрана вибірково агресивна поведінка — зростання у маржинальних сегментах із захистом мінімальної маржі.\&quot;,\n        \&quot;Факт: описані базовий, оптимістичний і стресовий сценарії та тригери переходу між ними.\&quot;,\n        \&quot;Факт: для суміжних напрямів визначено різні режими — запуск O&amp;M і Hybrid Shield, партнерський тест фінансування, пілоти BIPV, агровольтаїки та критичної інфраструктури.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;У різних версіях фокус охоплює 30–200 кВт, 30–500 кВт, домогосподарства, агро, HoReCa, логістику, BIPV, громади та критичну інфраструктуру; остаточні 2–3 пріоритетні сегменти не затверджені.\&quot;,\n        \&quot;Опис стратегії коливається між широкою диференціацією і фокусованою диференціацією.\&quot;,\n        \&quot;Сценарії спираються переважно на оцінні фінансові значення та не узгоджені з останнім фактичним P&amp;L.\&quot;,\n        \&quot;Не визначено єдину черговість запуску суміжних напрямів з урахуванням дефіциту людей і коштів.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;execution\&quot;,\n      \&quot;score\&quot;: 43,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: сформовані цілі, KPI, проєкти, дорожні карти, відповідальні ролі та зв’язок ініціатив із фінансовими результатами.\&quot;,\n        \&quot;Факт: основні цілі форми — зростання доходу не менше 25% при маржі EPC від 20%, 30% обороту інтернет-магазину та 50 сервісних контрактів до кінця 2026 року.\&quot;,\n        \&quot;Факт: щомісячний і розширений щоквартальний перегляд стратегії заявлений як управлінська практика.\&quot;,\n        \&quot;Факт: ресурсне забезпечення оцінене низько — люди 1 із 5, фінанси 2, час керівників 2, дані 2, потужності 2.\&quot;,\n        \&quot;Факт: підтримка стратегії мотивацією та відповідальністю оцінена переважно на 2 із 5; CRM придбана, але активно не використовується.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Існує декілька наборів цілей і KPI з різними базами, строками та цільовими значеннями; частина показників позначена як оцінна.\&quot;,\n        \&quot;Фінансова база не узгоджена: у документах фігурують приблизно 7,06 млн грн, 10 млн грн і 17,35 млн грн виручки для різних контурів або періодів.\&quot;,\n        \&quot;Більшість ініціатив перебуває у статусі Planned, а фактичний відсоток виконання, витрачений бюджет і досягнутий ефект не наведені.\&quot;,\n        \&quot;Немає підтвердженого бюджету та доступних FTE для одночасного запуску CRM, сервісу, платформи, маркетингу, навчання, BIPV і регіонального розвитку.\&quot;,\n        \&quot;Не налагоджені фактичні CAC, LTV, NPS, OTIF, defect rate, utilization, DSO і повна проєктна маржа.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;marketing_ai\&quot;,\n      \&quot;score\&quot;: 40,\n      \&quot;evidence\&quot;: [\n        \&quot;Факт: визначені цільові сегменти, позиціонування, клієнтські мотиви, канали, рекламні тести та партнерські програми.\&quot;,\n        \&quot;Факт: передбачені A/B-тести повідомлень про економію та автономність, контроль CPL, CAC, ROMI і конверсії.\&quot;,\n        \&quot;Факт: описані маркетингові та фінансові ранні сигнали, які мають запускати коригувальні дії.\&quot;,\n        \&quot;Факт: відповідність маркетингового бюджету пріоритетам і вплив маркетингових даних на стратегію оцінені лише на 2 із 5.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає фактичної каналової аналітики, підтверджених CAC, ROMI, конверсій і атрибуції.\&quot;,\n        \&quot;Маркетингові бюджети та очікувані ефекти є переважно плановими оцінками.\&quot;,\n        \&quot;Не наведено прикладів практичного використання ШІ у прогнозуванні попиту, скорингу лідів, підготовці пропозицій, сервісі або управлінні ризиками.\&quot;,\n        \&quot;Не визначено правила якості даних, перевірки моделей, інформаційної безпеки та відповідальності за використання ШІ.\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Глибоко описані ринкові драйвери, клієнтські сегменти, ризики та можливі сценарії.\&quot;,\n    \&quot;Місія, бачення й клієнтська цінність логічно поєднані навколо енергонезалежності, сервісу та моніторингу.\&quot;,\n    \&quot;Є фактична операційна база: понад 1 МВт реалізованих проєктів, повний цикл робіт і власні канали імпорту.\&quot;,\n    \&quot;Визначено спосіб конкуренції без демпінгу та встановлено принципи захисту маржі.\&quot;,\n    \&quot;Стратегічні ініціативи на папері пов’язані з KPI, фінансовим ефектом, відповідальними та сценарними тригерами.\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Стратегічний портфель перевищує наявні фінансові, кадрові та управлінські ресурси.\&quot;,\n    \&quot;Конкурентні переваги переважно легко копіюються, а сервісний і цифровий захист ще не доведений.\&quot;,\n    \&quot;CRM, CAC/LTV, NPS та операційні KPI не дають надійної фактичної бази для масштабування.\&quot;,\n    \&quot;Між документами не узгоджені ринок, фінансові бази, цільові сегменти, річні цілі й довгострокові метрики.\&quot;,\n    \&quot;Висока залежність від власника та ключових працівників поєднується з дефіцитом монтажної спроможності й оборотних коштів.\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;Плани зростання не забезпечені людьми, фінансами та потужностями\&quot;,\n      \&quot;severity\&quot;: \&quot;critical\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Люди оцінені на 1 із 5, а фінанси, дані та потужності — на 2 із 5; попередній модуль також зафіксував втрату частини попиту через дефіцит монтажного персоналу. Додаткові продажі без усунення цього обмеження можуть збільшити прострочення, рекламації та касові розриви.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Масштабування продажів планується без активної CRM і перевіреної економіки каналів\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Без конверсій, CAC, LTV, циклу продажу та маржі за каналами компанія не може визначити, які інвестиції у маркетинг створюють прибуток, а які лише збільшують оборот.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Фінансові бази та цілі різняться між стратегічними документами\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Різні значення виручки, EBITDA, сервісної частки та встановленої потужності не дозволяють однозначно оцінювати прогрес і відповідальність керівників.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Стратегія одночасно запускає занадто багато нових напрямів\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;CRM, інтернет-магазин, O&amp;M, ESS, платформа, BIPV, банківські програми, громади та регіональна експансія конкурують за тих самих людей, кошти й увагу власника.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Заявлений сервісний і цифровий захист поки не існує як доведена перевага\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;До появи регулярних контрактів, вимірюваного SLA, NPS і платформи компанія залишається інтегратором на ринку з низькими бар’єрами входу та високим ціновим тиском.\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;Темп зростання ринку оцінюється як 15–20%, 18–25%, 30–35% або 30–40% залежно від документа.\&quot;,\n    \&quot;Місткість ринку подана як приблизно 11–12 млрд грн на рік, близько 300 млрд грн за 2023–2027 роки та «сотні мільярдів до 2027 року» без єдиного визначення сегментів.\&quot;,\n    \&quot;Місія формально відома керівникам, але її зрозумілість усім працівникам одночасно оцінена на 5 із 5 без підтвердження опитуванням.\&quot;,\n    \&quot;Стратегія забороняє перетворення на магазин панелей, але окремою ключовою ціллю є 30% обороту інтернет-магазину; роль товарного каналу в загальній моделі не уточнена.\&quot;,\n    \&quot;Стратегія одночасно описується як широка та як фокусована диференціація, а пріоритетний діапазон B2B-рішень змінюється від 30–200 до 30–500 кВт.\&quot;,\n    \&quot;У документах фігурують різні фінансові орієнтири: близько 7,06 млн грн фактичної виручки, 10 млн грн базового сценарію та 17,35 млн грн у P&amp;L 2025 року.\&quot;,\n    \&quot;Ціль сервісної моделі змінюється між 50 контрактами, 50% нових СЕС із O&amp;M, 15–20%, 25–30%, 30–40% та 50% сервісної або цифрової виручки.\&quot;,\n    \&quot;План передбачає підвищення завантаження бригад до 70–80%, але паралельно зафіксовано постійну нестачу монтажників і неможливість виконати весь попит; потрібне розділення проблеми завантаження та дефіциту потужності.\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Єдина затверджена база 2025 року: виручка, валова маржа, EBITDA, грошовий потік, встановлена потужність і кількість проєктів.\&quot;,\n    \&quot;Фактична економіка за кожним проєктом, продуктом, сегментом і каналом із повним розподілом прямих та операційних витрат.\&quot;,\n    \&quot;CRM-історія за 6–12 місяців: джерело ліда, стадії, win-rate, цикл продажу, CAC, причина відмови й маржа угоди.\&quot;,\n    \&quot;Фактичний портфель замовлень, продуктивність бригад, завантаження, OTIF, дефекти, рекламації та втрачені через обмеження замовлення.\&quot;,\n    \&quot;Поточна кількість сервісних контрактів, сервісна виручка і маржа, SLA, NPS та готовність клієнтів платити за O&amp;M.\&quot;,\n    \&quot;Точна чисельність команди, наявні та вакантні стратегічні ролі, фонд оплати праці й календар найму.\&quot;,\n    \&quot;Бюджет, потреба у FTE, джерело фінансування та критерії зупинки для кожної стратегічної ініціативи.\&quot;,\n    \&quot;Підтверджені ціни й умови конкурентів, результати виграних і програних угод та готовність клієнтів платити премію за сервіс.\&quot;,\n    \&quot;Узгоджене визначення цільового ринку, джерела ринкових оцінок та єдиний базовий сценарій до 2027 року.\&quot;,\n    \&quot;Фактичні або заплановані сценарії застосування ШІ, вимоги до даних, безпеки й відповідальності.\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Затвердити одну стратегічну карту 2026 року: узгодити фактичну базу 2025 року, залишити три пріоритети, встановити єдині цілі виручки, маржі, потужності й сервісу, а попередні версії позначити як неактуальні.\&quot;,\n      \&quot;why\&quot;: \&quot;Різні документи містять суперечливі фінансові бази, сегменти й цільові значення, через що керівники можуть виконувати різні версії стратегії.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Одна офіційна версія плану з трьома пріоритетами, спільними показниками, ресурсними межами та правилами відмови від збиткових проєктів.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник спільно з фінансовою та комерційною ролями\&quot;,\n      \&quot;deadline\&quot;: \&quot;7 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Запустити робочу CRM-воронку й єдиний щотижневий дашборд: перенести всі активні угоди, відновити історію щонайменше за шість місяців і контролювати ліди, конверсії, CAC, цикл продажу, маржу, backlog, OTIF та DSO.\&quot;,\n      \&quot;why\&quot;: \&quot;Зараз компанія планує масштабування без надійних даних про економіку каналів і пропускну спроможність виконання.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Керівництво бачить, які сегменти та канали створюють прибуток, де втрачаються клієнти та чи може операційна команда виконати продане.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівник продажів / власник CRM спільно з CFO та керівником операцій\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Скласти інтегрований план потужності й ліквідності: 13-тижневий грошовий потік, портфель замовлень у кВт, завантаження бригад, потреба в наймі або підрядниках, закупівлі та тригери базового і стресового сценаріїв.\&quot;,\n      \&quot;why\&quot;: \&quot;Дефіцит людей, оборотних коштів і запасів взаємно підсилюється та може зробити прискорене зростання руйнівним для строків і грошового потоку.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Реалістичний темп продажів і монтажів, підтверджена потреба у фінансуванні та заздалегідь визначені дії при GM нижче 19%, DSO понад 45 днів або недостатньому грошовому резерві.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;CFO спільно з керівником монтажу та власником\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Перевірити майбутню конкурентну перевагу через пілот: продати 10 контрактів O&amp;M та реалізувати 3 пакетні СЕС+ESS, вимірюючи валову маржу, частку прийняття пропозиції, SLA, NPS, фактичну окупність і потребу в сервісних ресурсах.\&quot;,\n      \&quot;why\&quot;: \&quot;Сервіс, накопичення та моніторинг визначені як головний захист від копіювання, але їхня економіка і готовність клієнтів платити ще не доведені.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Фактичне рішення про масштабування, зміну або зупинку сервісної та гібридної пропозиції на основі результатів клієнтів і компанії.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Технічний керівник / керівник сервісу спільно з комерційним керівником\&quot;,\n      \&quot;deadline\&quot;: \&quot;90 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Прив’язати відповідальність і квартальні бонуси керівників до чотирьох спільних результатів: валової маржі, OTIF, грошового резерву та якості CRM-даних; зафіксувати рішення, які можуть ухвалюватися без власника.\&quot;,\n      \&quot;why\&quot;: \&quot;Поточна мотивація слабко підтримує стратегію, власники проєктів визначені недостатньо, а залежність від засновника обмежує масштабування.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Менше ручного управління власником, узгоджена поведінка продажів, фінансів та операцій і відповідальність не лише за виручку, а й за якість зростання.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник / CEO спільно з HR та CFO\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Стратегія Солар Вест має правильне ядро: зростати у вибраних сегментах через комплексні СЕС+ESS, сервіс і моніторинг, не вступаючи у збитковий демпінг. Проте компанія ще не готова масштабувати цей задум: цифри між документами не узгоджені, CRM і ключові показники фактично не працюють, переваги легко копіюються, а людей і фінансів недостатньо. Перший пріоритет — затвердити одну версію плану, забезпечити прозору воронку, синхронізувати продажі з монтажною та фінансовою спроможністю і перевірити сервісну модель на реальних пілотах.\&quot;\n}&quot;,
+          &quot;type&quot;: &quot;output_text&quot;,
+          &quot;logprobs&quot;: []
+        }
+      ],
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;type&quot;: &quot;message&quot;,
+      &quot;phase&quot;: &quot;final_answer&quot;
+    }
+  ],
+  &quot;parallel_tool_calls&quot;: true,
+  &quot;temperature&quot;: 1.0,
+  &quot;tool_choice&quot;: &quot;auto&quot;,
+  &quot;tools&quot;: [],
+  &quot;top_p&quot;: 0.98,
+  &quot;background&quot;: true,
+  &quot;completed_at&quot;: 1787904236.0,
+  &quot;conversation&quot;: null,
+  &quot;max_output_tokens&quot;: null,
+  &quot;max_tool_calls&quot;: null,
+  &quot;moderation&quot;: null,
+  &quot;previous_response_id&quot;: null,
+  &quot;prompt&quot;: null,
+  &quot;prompt_cache_key&quot;: null,
+  &quot;prompt_cache_options&quot;: null,
+  &quot;prompt_cache_retention&quot;: &quot;24h&quot;,
+  &quot;reasoning&quot;: {
+    &quot;context&quot;: &quot;all_turns&quot;,
+    &quot;effort&quot;: &quot;high&quot;,
+    &quot;generate_summary&quot;: null,
+    &quot;mode&quot;: &quot;standard&quot;,
+    &quot;summary&quot;: null
+  },
+  &quot;safety_identifier&quot;: null,
+  &quot;service_tier&quot;: &quot;default&quot;,
+  &quot;status&quot;: &quot;completed&quot;,
+  &quot;text&quot;: {
+    &quot;format&quot;: {
+      &quot;type&quot;: &quot;text&quot;
+    },
+    &quot;verbosity&quot;: &quot;medium&quot;
+  },
+  &quot;top_logprobs&quot;: 0,
+  &quot;truncation&quot;: &quot;disabled&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 141438,
+    &quot;input_tokens_details&quot;: {
+      &quot;cache_write_tokens&quot;: 0,
+      &quot;cached_tokens&quot;: 0
+    },
+    &quot;output_tokens&quot;: 8847,
+    &quot;output_tokens_details&quot;: {
+      &quot;reasoning_tokens&quot;: 2536
+    },
+    &quot;total_tokens&quot;: 150285
+  },
+  &quot;user&quot;: null,
+  &quot;billing&quot;: {
+    &quot;payer&quot;: &quot;developer&quot;
+  },
+  &quot;frequency_penalty&quot;: 0.0,
+  &quot;presence_penalty&quot;: 0.0,
+  &quot;store&quot;: true,
+  &quot;tool_usage&quot;: {
+    &quot;image_gen&quot;: {
+      &quot;input_tokens&quot;: 0,
+      &quot;input_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;output_tokens&quot;: 0,
+      &quot;output_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;total_tokens&quot;: 0
+    },
+    &quot;web_search&quot;: {
+      &quot;num_requests&quot;: 0
+    }
+  }
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Оціни стратегічну систему: ринок, вибір, конкурентні переваги, цілі, ключові показники, ресурси, сценарії та розрив між стратегією і виконанням.
+Виміри оцінювання:
+- market_intelligence — Розуміння ринку та середовища — 15%
+- company_capabilities — Можливості та конкурентна позиція — 15%
+- strategic_core — Місія, візія та фокус — 15%
+- advantages — КФУ та конкурентні переваги — 15%
+- strategic_choice — Стратегічний вибір і сценарії — 15%
+- execution — Цілі, ключові показники, проєкти та ресурси — 20%
+- marketing_ai — Маркетинг, тривожні сигнали та ШІ — 5%
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;STR&quot;,
+&quot;module_name&quot;: &quot;Стратегія&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Оберіть або опишіть головні стратегічні питання, які потрібно проаналізувати.
+Прискорити зростання; Посилити конкурентні переваги
+2) Чи є зараз і в якому вигляді оформлена стратегія організації?
+Є формалізований документ
+Файл 1
+3) Як змінюється ваш основний ринок?
+Швидко зростає
+Пояснення
+Ринок СЕС в Україні швидко зростає: у дослідженні проєкту — близько 800–850 МВт нових вводів у 2024 році та прогноз CAGR 18–25% до 2027 року. Зростання супроводжується ціновою конкуренцією, валютними, воєнними й постачальницькими ризиками.
+4) Які тенденції найбільше змінюють ваш ринок?
+Тенденція | Опис | Позитивний/негативний/змішаний вплив | Сила 1–5 | Горизонт | Джерело
+Бурхливе зростання ринку. | Ринок активно розвивається, попит зростає, кількість операторів на ринку зростає, але всім вистачає роботи. | Позитивний. | 5 | 3 роки | ринок
+Війна в Україні. | Впливає на нестачу чоловіків активного віку і зменшує кількість потенційного персоналу, який можна залучити до роботи в організації. | Негативний. | 5 | Невідомо. | Ринок.
+Розвиток систем накопичення енергії та гібридних СЕС | Попит зміщується від простої генерації до рішень, що забезпечують резервування, самоспоживання й керування енергією. | Позитивний за наявності інженерних компетенцій; змішаний через вищу складність і CAPEX. | 5 | 2026–2027 | SWOT і дослідження ринку СЕС у проєкті «Солар Вест»
+5) Які зовнішні фактори змінюють попит, пропозицію та умови роботи?
+Політичні | Економічні | Соціальні | Технологічні | Екологічні | Законодавчі | Клієнтська поведінка | Ресурси/постачання | Вплив +/0/- | Сила 1–5 | Горизонт | Коментар
+Воєнні ризики та пріоритет енергетичної стійкості | Девальвація гривні й висока вартість капіталу | Дефіцит кваліфікованих монтажників і електриків | ESS, гібридні інвертори, дистанційний моніторинг | Попит на декарбонізацію та локальну генерацію | Зміни податкових пільг і мита на обладнання | Клієнт купує не панелі, а передбачувану економію й резервування | Залежність від імпорту панелей, інверторів та АКБ | Змішаний | 5 | Постійно / 2026–2027 | Потрібні FX-клаузи, диверсифікація постачальників і резерви
+Державна політика підтримки розподіленої генерації | Економія на електроенергії та зростання тарифів | Попит на автономність під час відключень | Стандартизація пакетів 30–200 кВт | Зниження вуглецевого сліду для бізнесу | Правила підключення та продажу електроенергії | Вища чутливість до окупності та гарантій | Ризик lead-time і дефіциту критичних компонентів | Позитивний | 4 | 2026–2027 | Пакетні СЕС+ESS та фінансування під ключ підвищують конверсію
+Євроінтеграція та гармонізація енергетичних правил | Коливання цін на компоненти й морську логістику | Зростання вимог до надійності та сервісу | Швидке оновлення обладнання та потреба в навчанні | Потреба в утилізації та безпечній роботі з АКБ | Доступність програм 5-7-9% і компенсацій | Більше значення мають кейси, відгуки й швидкість реакції | Потреба в мультивендорному портфелі та запасах | Змішаний | 5 | Постійно | Критичні: навчання команди, запаси та стандарти якості
+6) Хто є основними прямими й непрямими конкурентами?
+Назва | Прямий/непрямий/замінник | Цільовий сегмент | Сильні сторони | Слабкі сторони | Ціна/позиція | Головна перевага | Рівень загрози
+кербіс | Прямий | B2B, B2C | Широка робота з B2B і B2C, локальна впізнаваність | Можлива цінова конкуренція без сильного сервісного SLA | Середня | Доступність та ширше охоплення сегментів | Середній
+Лайт Хаус Енергозбереження | Прямий | B2B | Фокус на енергоефективності для бізнесу | Вужча диференціація на зростаючому ринку | Середня | Робота з бізнес-клієнтами | Середній
+ВО Електрик | Прямий | B2B | Технічна спеціалізація та робота з B2B | Ймовірно слабша комплексна пропозиція ESS+O&amp;M | Середня | Технічна експертиза | Середній
+Set Tech | Прямий | B2B, B2C | Пропозиція для бізнесу й домогосподарств | Ризик стандартизованої товарної пропозиції | Середня | Комбінування B2B і B2C | Середній
+Дрібні монтажники В2С (без назви) | Прямий | B2C | Низький поріг ціни та локальна швидкість | Нерівномірна якість, гарантія й післяпродажний сервіс | Вище середньої | Нижча стартова ціна | Високий у B2C-ціновому сегменті
+7) Що може обрати клієнт замість вашого продукту?
+Прямий аналог
+Дешевше рішення
+Відкласти/відмовитися
+Пояснення або пріоритет
+8) Які нові можливості формуються на горизонті?
+Можливість | Потенційний ефект | Необхідні ресурси | Горизонт | Упевненість | Перший тест
+Держпрограми компенсацій і пільгового кредитування для СЕС | Це драйвер попиту й аргумент у продажах, особливо для домогосподарств | Банк-партнер, зрозумілий фінансовий пакет, продажі | 2026 | Середня | Пілот 10 угод із фінансуванням під ключ
+Тренд на сторідж (АКБ) та гібридні рішення | Дає змогу продавати дорожчі комплекти з вищою маржею й створювати moat за рахунок складності рішень | Навчання інженерів, ESS-постачання, типові рішення | 2026–2027 | Висока | Запустити 2–3 пакетні СЕС+ESS і перевірити конверсію
+Сервіс для чинних СЕС, зокрема змонтованих іншими підрядниками | Повторний дохід, NPS і реферальні продажі | Сервісні бригади, SLA, CRM і стандарти діагностики | Перші 90 днів, масштабування у 2026 | Висока | Пілотна кампанія на 10 сервісних контрактів
+9) Які загрози можуть суттєво погіршити позицію організації?
+Загроза | Ймовірність | Вплив | Горизонт | Ранній сигнал | Захист
+Ціновий демпінг і стандартизація EPC-пропозицій | високий | Можуть зірвати проєкти, збільшити страхові й резервні витрати, відлякати інвесторів | середній | Падіння win-rate, тиск на ціну/кВт, маржа EPC нижче 20% | Value-based pricing, стандарти якості, кейси й гарантійний сервіс
+Зриви постачання, валютні коливання та залежність від окремих постачальників | середня | Може змінити окупність проєктів, вимагати перегляду оферт і моделей доходу | 2026–2027 | Lead-time критичних компонентів понад 12 тижнів або різке зростання цін | Мультивендорні BOM, запас критичних компонентів на 90 днів, FX-клаузи
+Перетворення ринку на товарний; слабша сервісна якість у конкурентів може знецінювати довіру до сегмента | середня | Тисне на ціни й маржу, ускладнює побудову бренду | 2026–2027 | NPS нижче 50, більше скарг або зниження частки повторних/реферальних звернень | Пакети EPC+ESS+SLA, прозора окупність, вимірювання NPS і швидка сервісна реакція
+Коливання цін на обладнання й логістика | Понад 1 МВт встановлених потужностей; повний цикл від проєкту до сервісу | Непередбачувані зміни CAPEX, ризик «з’їдання» маржі фіксованих контрактів | Постійно; найближчі 6–12 місяців | Зростання закупівельних цін, затримки поставок, перегляд кошторисів | Фіксація цін із постачальниками, FX-буфер у договорах, регулярний перегляд прайсу
+10) оцініть якість розуміння ринку в організації.
+Регулярно аналізуємо ринок
+5
+Розуміємо причини зміни попиту
+4
+Системно стежимо за конкурентами
+3
+Відстежуємо технології та бізнес-моделі
+4
+Розуміємо сегменти зростання
+4
+Бачимо можливості й загрози на 3 роки
+5
+Рішення спираються на дані
+3
+11) Які сильні сторони реально підсилюють результати організації?
+Сильна сторона | Доказ | Вплив на результат | Складність копіювання | Власник/носій
+Повний цикл «під ключ» (проєктування → монтаж → сервіс) | Понад 1 МВт встановлених потужностей; повний цикл від проєкту до сервісу | Дозволяє брати премію за сервіс, контролювати якість і створювати довгострокові відносини, а не разові продажі | низька | Технічна команда та керівник монтажу
+Власний імпорт панелей та обладнання | Імпорт обладнання з ЄС і наявні партнерські канали | Кращий контроль собівартості й якості; потенційно вищий маржинальний коридор проти реселерів. | середня | Закупівлі / власник
+Портфель рішень для бізнесу й дому, включно з гібридними й автономними станціями | Пропозиція СЕС для дому та бізнесу, монтаж і сервіс | Відповідає інтересам клієнтів щодо енергонезалежності, особливо на фоні блекаутів. | середня | Продажі, інженери та монтажні бригади
+Сильна економіка для клієнта (окупність 1,5–3 роки) | Презентаційні розрахунки окупності близько 15–20 місяців для типових рішень | Легко аргументувати інвестицію, особливо при високих тарифах на електроенергію. | висока | Власник, продажі та фінансовий блок
+12) Які слабкі сторони стримують розвиток або створюють ризики?
+Слабкість | Прояв | Наслідок | Критичність 1–5 | Що вже робили
+Неструктурована CRM-воронка та відсутність чітких LTV/CAC | Дані про канали, конверсію, CAC і LTV не формують регулярну управлінську звітність | Неможливо раціонально масштабувати маркетинг і продажі: неясно, які сегменти реально окуповують CAC | 5 | купили ліцензію на CRM, однак з нею активно ще не працюємо
+Бренд ранньої стадії, мало сильних proof-points | Мало системних кейсів, відгуків і видимих доказів для нових сегментів | У конкурентному полі клієнти обирають «кого знають»; це підсилює силу покупця | 4 | сторінка в інстаграм, рекламні кампанії в соцмережах
+Недостатня стандартизація сервісного напрямку та пакетів СЕС+ESS | Дефіцит монтажників, залежність від ключових людей, високі зарплати | Обмежує швидкість монтажу й здатність задовольнити попит; тисне на маржу | 5 | Планують розширення монтажних бригад і залучення електрика
+13) Наскільки організація відповідає базовим стандартам галузі?
+Якість
+5
+Асортимент/функціональність
+3
+Ціна
+4
+Сервіс
+5
+Швидкість
+4
+Технологічність
+4
+Ефективність процесів
+3
+Цифрові канали
+3
+Компетенції
+4
+Бренд
+2
+Фінансова стійкість
+3
+Дані
+3
+Регуляторна відповідність
+5
+14) оцініть позицію організації порівняно з ключовими конкурентами.
+Цінність для клієнта
+5
+Якість
+5
+Ціна
+4
+Асортимент
+3
+Сервіс
+5
+Швидкість
+3
+Інноваційність
+4
+Технології
+4
+Доступ до клієнта
+4
+Бренд
+3
+Репутація
+4
+Команда
+3
+Ефективність витрат
+3
+Фінансові ресурси
+3
+15) Які стратегічні проблеми потрібно вирішити вже зараз?
+Проблема | Симптоми | Можлива першопричина | Наслідок | Терміновість 1–5 | Відповідальна роль
+Немає керованої воронки продажів, CAC/LTV | CRM-воронка, NPS, CAC/LTV фактично не вимірюються; маркетинг не керований | CRM впроваджена без процесів, відповідальних і регулярного аналізу | CRM_Воронка, NPS, CAC/LTV фактично не вимірюються; воронка не керована, маркетинг не керований | 5 | Власник + керівник продажів/маркетингу
+Слабкий moat на ринку з високою конкуренцією | Модель легко копіюється, у ціновій війні складно втримати маржу | Немає оформлених сервісних контрактів, платформи та довгих відносин із клієнтом | модель копійована: інтегратор «під ключ» з власним імпортом, без платформи, сервісних контрактів, підписок, довгих енергосервісних договорів → у ціновій війні з десятками інтеграторів важко втримати маржу | 4 | Власник + керівники продажів і сервісу
+Дефіцит монтажних потужностей і залежність від ключових людей | Не всі замовлення можна монтувати швидко; зростають витрати на персонал | Ринок праці обмежений війною; недостатній кадровий резерв і стандартизація робіт | Втрачений попит, ризик зриву строків і перевантаження команди | 5 | Керівник монтажу + HR/власник
+16) Де можуть бути недооцінені або нішеві можливості для зростання?
+Нова група клієнтів
+Новий регіон
+Додатковий сервіс
+Підписка
+Пояснення або пріоритет
+17) Чи сформована місія і як вона використовується?
+Відома керівникам
+Пояснення
+Ми будуємо спільноту енергонезалежних будівель і підприємств: об’єднуємо їхні сонячні станції, накопичувачі й сервіс в одну екосистему, що дає дешевшу та надійнішу енергію сьогодні й відкриває нові можливості заробляти на гнучкості завтра
+18) оцініть, наскільки місія реально працює.
+Пояснює, для кого існуємо
+5
+Пояснює цінність
+5
+Відображає унікальність
+5
+Допомагає рішенням
+5
+Зрозуміла працівникам
+5
+Не є рекламним слоганом
+5
+Довгостроково актуальна
+5
+19) Якою має стати організація наприкінці стратегічного горизонту?
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг
+20) Які переваги дають клієнту цінність і дозволяють перемагати?
+Перевага | Цінність для клієнта | Доказ | Рідкісність 1–5 | Складність копіювання 1–5 | Масштабованість 1–5 | Очікувана довговічність
+Інженерна експертиза та монтаж СЕС під ключ | Один відповідальний підрядник за проєктування, постачання, монтаж, запуск і сервіс. Менше ризиків, затримок та витрат часу клієнта | У переліку послуг зафіксовано повний цикл: від консультації й індивідуального проєкту до монтажу, налаштування та обслуговування | 2 | 2 | 4 | 3–5 років
+Партнерства й доступ до обладнання з ЄС | Клієнт отримує систему, оптимізовану під його споживання, бюджет, площу, режим роботи та ризики блекаутів, а не стандартний комплект обладнання | Компанія декларує індивідуальний підбір рішень; у портфоліо є дахові, наземні та фасадні СЕС | 3 | 3 | 3 | 5+ років за умови розвитку інженерної команди
+Комплексна цінність: енергонезалежність, сервіс і швидка реакція | Можливість використати фасади, навіси й інші поверхні, коли площі даху або землі недостатньо; додаткова архітектурна та іміджева цінність | У фактичному портфоліо зазначені фасадні СЕС. Дослідження визначають BIPV і фасадні рішення як недостатньо зайняту конкурентами нішу | 4 | 4 | 3 | 5–7 років
+Самостійний імпорт обладнання з Європи | Менше посередників, більша гнучкість у комплектації та потенційно краща ціна і доступність обладнання | Прямий імпорт панелей та обладнання зафіксований в описі компанії; дослідження називають контроль постачання одним із ключових факторів успіху | 3 | 3 | 4 | 3–5 років; потребує стабільних контрактів і складських запасів
+Підтверджена здатність швидко реалізовувати проєкти | Зменшення ризику, що клієнт отримає недобудовану станцію або підрядника без практичного досвіду | Понад 1 МВт встановленої потужності за перший рік роботи; представлені фото реалізованих наземних і дахових об’єктів | 3 | 4 | 4 | 3–5 років; посилюватиметься зі зростанням портфоліо
+Широка продуктова лінійка: мережеві, гібридні та автономні СЕС | Клієнт може обрати рішення під конкретну мету: економія, резервне живлення або повна автономність | У презентації описані три типи станцій та готові рішення потужністю від 10 до 100 кВт | 2 | 3 | 4 | 5+ років
+Прозорий економічний розрахунок до укладання договору | Клієнт бачить необхідну площу, прогноз генерації, вартість, економію та строк окупності; це полегшує інвестиційне рішення | Для рішень 10–100 кВт наведені розрахунки вартості, річної генерації та окупності 15–20 місяців. Це прогнозна модель, яку потрібно підтверджувати фактичним профілем споживання | 2 | 2 | 5 | 2–3 роки; калькуляцію легко копіювати
+Післяпродажне обслуговування та моніторинг | Підтримання генерації, швидше виявлення несправностей і захист інвестиції протягом життєвого циклу станції | Обслуговування входить до переліку послуг; процес запуску передбачає налаштування мобільного застосунку моніторингу | 2 | 3 | 4 | 5–10 років, якщо оформити сервісні пакети та SLA
+21) Що може знецінити або зруйнувати ваші конкурентні переваги?
+Перевага | Загроза | Хто/що може скопіювати або замінити | Ранній сигнал | Захист
+Інженерна експертиза та монтаж СЕС під ключ | Ціновий демпінг і стандартизація EPC-пропозицій | Локальні інтегратори, що копіюють комплектацію та нижчу ціну | Падіння win-rate, тиск на ціну/кВт, маржа EPC нижче 20% | Value-based pricing, стандарти якості, кейси й гарантійний сервіс
+Партнерства й доступ до обладнання з ЄС | Зриви постачання, валютні коливання та залежність від окремих постачальників | Конкуренти з ширшою мережею дистриб’юторів або прямим імпортом | Lead-time критичних компонентів понад 12 тижнів або різке зростання цін | Мультивендорні BOM, запас критичних компонентів на 90 днів, FX-клаузи
+Комплексна цінність: енергонезалежність, сервіс і швидка реакція | Перетворення ринку на товарний і знецінення сервісу | Дешеві монтажники, маркетплейси та клієнти, які відкладають інвестицію | NPS нижче 50, більше скарг або зниження реферальних звернень | Пакети EPC+ESS+SLA, прозора окупність, NPS і швидка сервісна реакція
+22) сформулюйте межі стратегії: де ми граємо, як перемагаємо і чого свідомо не робимо.
+Цільові клієнти
+Домогосподарства та малі/середні підприємства, які прагнуть знизити витрати на електроенергію, отримати енергонезалежність і безперервність живлення.
+Продукти/потреби
+Проєктування, постачання, монтаж і сервіс дахових, наземних і гібридних СЕС; системи накопичення енергії; обладнання через інтернет-магазин.
+Географія
+Україна з розширенням через регіональних партнерів у 2–3 областях; постачання обладнання з ЄС.
+Канали
+Відділ продажів, сайт та інтернет-магазин, соціальні мережі, Prom.ua, партнерства і реферальні кейси.
+Спосіб перемоги
+Перемагати не демпінгом, а комплексним рішенням EPC+ESS+сервіс/SLA, прозорою окупністю, якістю монтажу та швидкою реакцією.
+Ключові компетенції
+Інженерне проєктування, монтаж і сервіс СЕС, енергоаудит, робота з постачальниками та якісна комунікація з клієнтами.
+Що не робимо
+Не брати збиткові цінові тендери та не масштабуватися без стандартів якості, ресурсів і контролю маржі.
+23) Який основний спосіб конкуренції обрала організація?
+Поєднання доступної ціни й відмінної цінності
+Пояснення
+Конкуруємо через доступну ціну за умови відмінної цінності: якість, швидкість монтажу, прозора окупність і сервіс після запуску.
+24) За рахунок якої цінності клієнт має обрати саме вас?
+Вища якість
+Кращий сервіс
+Швидкість
+Довіра
+Експертність
+Технологічність
+Докази
+Коментар
+Клієнт отримує не просто обладнання, а передбачуваний результат: проєктування, монтаж, економію, енергонезалежність і сервіс у одного відповідального партнера.
+25) Який напрям розвитку є основним?
+Наявний продукт — наявний ринок
+Новий продукт — наявний ринок
+Пояснення або пріоритет
+Основний пріоритет 2026: масштабувати наявні СЕС і додати пакетні СЕС+ESS та сервіс/O&amp;M на чинному ринку.
+26) Наскільки агресивно організація планує діяти на ринку?
+Вибірково агресивно
+Пояснення
+Інвестувати в сегменти з вищою цінністю та маржею, але не входити у збитковий демпінг; масштабуватися відповідно до людей, оборотного капіталу й стандартів якості.
+27) Чи планується диверсифікація і наскільки вона стратегічно обґрунтована?
+Диверсифікація обґрунтована суміжними напрямами: ESS, O&amp;M/SLA, онлайн-продажі та регіональні партнерства. Вони спираються на наявні інженерні компетенції, клієнтську базу та ланцюг постачання.
+28) Які цілі мають забезпечити реалізацію стратегії?
+Ціль | Що змінюємо | Базове значення | Цільове значення | Строк | Власник | Чому важливо
+Забезпечити прибуткове зростання основного бізнесу | Стандартизуємо продажі, ціноутворення та монтаж | Зростання доходу понад 20% за останні 12 місяців | Щорічне зростання не менше 25% за маржі EPC від 20% | 31.12.2026 | Власник і керівники продажів/монтажу | Стабільне масштабування без втрати прибутковості
+Довести частку інтернет-магазину до стратегічного рівня | Будуємо керовану онлайн-воронку, контент і асортимент | Онлайн-канал ще не формує 30% обороту | 30% обороту до кінця 2026 року | 31.12.2026 | Керівник онлайн-продажів / власник | Диверсифікація каналів і масштабування без пропорційного росту витрат
+Запустити сервісний напрям та пакетні рішення СЕС+ESS | Формуємо сервісні бригади, SLA і типові комплектації | Напрям не оформлено як регулярний продукт | 50 сервісних/SLA-контрактів до кінця 2026 року | 31.12.2026 | Власник і технічний керівник | Вища маржа, енергонезалежність клієнтів і повторний дохід
+29) Які показники контролюють просування стратегії?
+Ключові показники | Тип: leading/lagging | Поточне значення | Ціль | Періодичність | Відповідальний | Джерело даних | Пов’язана ціль
+Зростання доходу | Lagging | Понад 20% річного зростання | Не менше 25% на рік при маржі EPC від 20% | Щомісяця | Власник і керівник продажів | CRM, фінанси, управлінський P&amp;L | Прибуткове масштабування
+Частка обороту інтернет-магазину | Lagging | Менше 30% обороту | 30% обороту до кінця 2026 року | Щомісяця | Керівник онлайн-продажів | Аналітика сайту, CRM, ERP/облік | Розвиток онлайн-каналу
+Кількість сервісних/SLA-контрактів | Leading | Напрямок не оформлено як регулярний продукт | 50 контрактів до кінця 2026 року | Щомісяця | Технічний керівник / сервіс | CRM, сервісні акти, NPS | СЕС+ESS та повторний дохід
+30) Які проєкти реалізують стратегію?
+Проєкт | Пов’язана ціль | Власник | Строк | Бюджет/ресурс | Статус | Очікуваний результат | Ключові показники | Головний ризик
+Стандартизація продажів і масштабування монтажних бригад | Прибуткове зростання | Власник + керівники продажів і монтажу | 31.12.2026 | Найм монтажників та електрика, SOP, CRM | У роботі | Зростання без втрати якості та прострочення монтажів | Зростання доходу, маржа EPC, строк монтажу | Дефіцит персоналу та падіння маржі
+Зростання інтернет-магазину та цифрової воронки | 30% обороту через онлайн-канал | Керівник онлайн-продажів / власник | 31.12.2026 | Контент, реклама, асортимент, аналітика та CRM | У роботі | 30% обороту від інтернет-магазину | Частка онлайн-обороту, конверсія, CAC | Зростання CAC і слабка конверсія
+Запуск пакетів СЕС+ESS і сервісу O&amp;M/SLA | Повторний дохід і диференціація | Власник + технічний керівник | 31.12.2026 | Навчання, сервісна бригада, ESS-постачання, SLA-процеси | Планування | 50 SLA-контрактів і перші системні продажі СЕС+ESS | 30% обороту через онлайн-канал | Дефіцит компонентів, недостатня сервісна спроможність
+31) Наскільки стратегія забезпечена ресурсами?
+Фінанси
+2
+Люди
+1
+Компетенції
+3
+Час керівників
+2
+Технології
+3
+Дані
+2
+Потужності
+2
+Партнерства
+4
+Повноваження
+4
+Управлінська увага
+3
+32) Наскільки система мотивації та відповідальності підтримує стратегію?
+ключові показники керівників пов’язані зі стратегією
+2
+Працівники розуміють внесок
+2
+Винагороджуються стратегічні результати
+2
+Немає конфлікту між підрозділами
+3
+Довгострокове не жертвується короткостроковому
+2
+Проєкти мають власників
+2
+33) Наскільки стратегія пов’язана з маркетингом і реальною цінністю для клієнта?
+Визначені цільові сегменти
+4
+Є позиціонування
+3
+Цінність зрозуміла клієнту
+4
+Обіцянка відповідає продукту
+4
+Канали відповідають поведінці клієнта
+3
+Бюджет підтримує пріоритети
+2
+Маркетингові дані змінюють стратегію
+2
+34) Як організація контролює й переглядає стратегію?
+Частота: не переглядається/криза/рік/квартал/місяць
+Щомісяця; щокварталу — розширений перегляд стратегії.
+Учасники
+Власник, керівники продажів і монтажу, фінанси/закупівлі; за потреби ключові партнери.
+Які дані
+Продажі й конверсія, маржа та грошовий потік, завантаження бригад, строки монтажу, ціни/наявність обладнання, сигнали клієнтів і ринку.
+Хто ухвалює рішення
+Засновник або власник із ключовою управлінською командою.
+Остання зміна стратегії та причина
+Стратегія 2026: фокус на масштабуванні інсталяцій, інтернет-магазині, СЕС+ESS та сервісному напрямі через зміну попиту й потребу в енергонезалежності.
+35) оцініть ранні сигнали слабкості стратегії.
+Немає фокусу
+1
+Забагато пріоритетів
+2
+Команда не знає 3 цілі
+2
+Немає унікальності
+2
+Переваги легко копіюються
+3
+Рішення запізнюються
+2
+Стратегія не переглядається
+1
+Ріст без ресурсів
+3
+Проєкти не пов’язані з цілями
+2
+ключові показники не показують прогрес
+2
+Мотивація суперечить стратегії
+2
+Обіцянка не відповідає продукту
+1
+Диверсифікація розпорошує ресурси
+2
+Застарілі припущення
+2
+Стратегія лише в голові власника
+2
+Копіювання конкурентів
+3
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+ПЕРВИННІ ВХІДНІ ДАНІ МОДУЛЯ ORG
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія
+РЕЗУЛЬТАТ МОДУЛЯ ORG — GPT-5.6 Sol
+{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 67,
+  &quot;confidence&quot;: 73,
+  &quot;headline&quot;: &quot;Базовий профіль бізнесу сформований, але суперечності у фінансових версіях, чисельності команди та структурі доходів обмежують точність подальшої діагностики.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест Буд — створена у серпні 2024 року компанія у сфері сонячної енергетики, яка проєктує, монтує й обслуговує СЕС та продає відповідне обладнання для бізнесу, домогосподарств і монтажників. Заявлена географія — вся Україна, хоча деталізовані ринкові дані наведені лише для Волинської та Чернігівської областей. Продуктова пропозиція, основні клієнтські проблеми, канали продажу, постачальники та частина реалізованих проєктів описані достатньо для первинного паспорта. Фінансові й проєктні документи підтверджують наявність фактичної діяльності, однак декілька версій звітів містять різні контури даних, значні коригування та неузгоджені підсумки, тому їх потрібно звірити перед фінансовою діагностикою. Ключові рішення ухвалює засновник, а залежність від першої особи зазначена на рівні 5, що має бути враховано під час аналізу масштабування. Робоче припущення для наступних модулів: поточне ядро моделі — разові проєктні продажі СЕС та обладнання, тоді як регулярна сервісна виручка ще не підтверджена окремими показниками. Оцінка 67 відображає якість і повноту контексту, а не ефективність організації.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентичність і межі організації&quot;,
+      &quot;score&quot;: 92,
+      &quot;evidence&quot;: [
+        &quot;Офіційна назва в паспорті: ТзОВ «Солар Вест Буд»; бренд: Солар Вест / Solar West.&quot;,
+        &quot;Компанія розпочала роботу в серпні 2024 року.&quot;,
+        &quot;Основна галузь і ніша визначені: відновлювана енергетика, проєктування та монтаж сонячних електростанцій.&quot;,
+        &quot;Країна присутності — Україна; заявлена географія роботи — вся Україна.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не описано юридичну та операційну структуру взаємодії з Volwest Group.&quot;,
+        &quot;Не визначено, які активи, працівники, клієнти та фінансові потоки належать саме ТзОВ «Солар Вест Буд», а які — групі або пов’язаним особам.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Клієнти, сегменти та ринок&quot;,
+      &quot;score&quot;: 66,
+      &quot;evidence&quot;: [
+        &quot;Виділено три групи клієнтів: юридичні особи, фізичні особи та монтажники.&quot;,
+        &quot;У таблиці каналів зазначено 5 активних B2B-клієнтів, 10 B2C-клієнтів і 4 внутрішніх клієнти.&quot;,
+        &quot;Наведено список ключових клієнтів із сумами проєктів.&quot;,
+        &quot;Названо п’ять груп конкурентів.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не заповнено опис потреб, бар’єрів, тригерів і критеріїв вибору для кожного клієнтського сегмента.&quot;,
+        &quot;Немає оцінки розміру ринку та підтвердженої частки компанії.&quot;,
+        &quot;Не показано структуру виручки, маржі та кількості клієнтів за B2B, B2C, внутрішнім каналом і монтажниками.&quot;,
+        &quot;Національне покриття не деталізоване за регіонами, обсягами та доступністю монтажних бригад.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Продукти та цінність для клієнта&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Описано повний цикл робіт: консультація, проєктування, монтаж, введення в експлуатацію, моніторинг і сервіс.&quot;,
+        &quot;Портфель містить панелі, інвертори, системи кріплення, кабелі, автоматику, акумулятори, монтаж і обслуговування.&quot;,
+        &quot;Клієнтська цінність сформульована через економію електроенергії та підвищення безперебійності енергопостачання.&quot;,
+        &quot;Презентація містить типові рішення потужністю 10–100 кВт із орієнтовною вартістю, генерацією та окупністю.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Відсутні ідентифікатори продуктів, конкретні комплектації, гарантійні умови та статуси продуктового портфеля.&quot;,
+        &quot;Не відокремлено фактичні результати клієнтських проєктів від розрахункових рекламних показників.&quot;,
+        &quot;Немає структури доходу й маржі за продажем обладнання, проєктуванням, монтажем та сервісом.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Бізнес-модель і канали доходу&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Основне джерело фінансування діяльності визначено як разовий продаж.&quot;,
+        &quot;Канали залучення та продажу: сайт, інтернет-продажі, відділ продажів і соціальні мережі.&quot;,
+        &quot;Ціль на 2026 рік передбачає доведення інтернет-магазину до 30% обороту.&quot;,
+        &quot;У фінансових документах окремо відображені доходи від товарів і послуг.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не наведено поточну частку інтернет-магазину в обороті та базовий обсяг онлайн-продажів.&quot;,
+        &quot;CRM-воронка, конверсії, тривалість циклу продажу, вартість залучення клієнта та повторні продажі не заповнені.&quot;,
+        &quot;Не підтверджена частка регулярної сервісної виручки, хоча довгострокове сервісне обслуговування входить до бачення компанії.&quot;,
+        &quot;Відсутня повна цінова архітектура за продуктами й каналами.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Операційні ресурси та спроможність&quot;,
+      &quot;score&quot;: 64,
+      &quot;evidence&quot;: [
+        &quot;Заявлена монтажна спроможність — 150 кВт СЕС на місяць.&quot;,
+        &quot;У презентаційних матеріалах зазначено встановлення понад 1 МВт панелей за перший рік роботи.&quot;,
+        &quot;Таблиця штату містить фактичні й потрібні ресурси за ключовими функціями.&quot;,
+        &quot;Компанія прямо називає людей, компетенції, час, технології та бюджет обмеженнями зростання.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не наведено фактичне місячне завантаження монтажних бригад і портфель замовлень.&quot;,
+        &quot;Немає фактичних показників строків проєктування, монтажу, введення в експлуатацію, дефектів, гарантійних звернень і сервісу.&quot;,
+        &quot;Не визначено вузькі місця, резерв потужності та план розширення.&quot;,
+        &quot;Не заповнено карту компетенцій і план закриття кадрових дефіцитів.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Управління та стратегічні орієнтири&quot;,
+      &quot;score&quot;: 58,
+      &quot;evidence&quot;: [
+        &quot;Ключові рішення фактично ухвалює засновник або власник.&quot;,
+        &quot;Залежність від щоденної участі першої особи зазначена на рівні 5.&quot;,
+        &quot;Є цілі до 31.12.2026 та довгострокове бачення до 31.12.2035.&quot;,
+        &quot;Серед цілей — масштабована модель без втрати прибутковості, розвиток інтернет-магазину та входження до топ-5 інтеграторів.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає річних і квартальних етапів досягнення цілей, бюджетів, відповідальних та переліку ініціатив.&quot;,
+        &quot;Показник стабільності грошового потоку сформульований без числової бази й цільового значення.&quot;,
+        &quot;Завантажений матеріал під назвою «Стратегія» переважно є клієнтською презентацією та шаблоном паспорта, а не формалізованим стратегічним планом.&quot;,
+        &quot;Не описано розподіл повноважень між власником, директором, фінансовою функцією, продажами й операціями.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінансовий контекст&quot;,
+      &quot;score&quot;: 65,
+      &quot;evidence&quot;: [
+        &quot;Надані P&amp;L і звіти про рух коштів за 2024 та 2025 роки.&quot;,
+        &quot;Форма містить заяву про зростання доходу понад 20% і поточний прибутковий стан.&quot;,
+        &quot;У підсумку P&amp;L 2025 зазначено 17,35 млн грн доходу, 5,33 млн грн маржинального доходу та 2,77 млн грн EBITDA.&quot;,
+        &quot;Надано реєстр окремих проєктів за червень–вересень 2025 року з доходом, собівартістю та прибутком.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не узгоджено P&amp;L, рух коштів, проєктний реєстр і паспортний діапазон обороту.&quot;,
+        &quot;Відсутні баланс, дебіторська та кредиторська заборгованість, залишки обладнання, оборотний капітал і строки оплати.&quot;,
+        &quot;Значні коригування у P&amp;L не мають пояснення за джерелом і правилами визнання.&quot;,
+        &quot;Не наведено фінансові результати за клієнтами, продуктами та каналами на єдиній методологічній основі.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Цілісність і придатність даних&quot;,
+      &quot;score&quot;: 45,
+      &quot;evidence&quot;: [
+        &quot;Наявні первинні таблиці клієнтів, постачальників, штату, проєктів, P&amp;L і руху коштів.&quot;,
+        &quot;Частина документів має помісячну деталізацію та розподіл плану, бухгалтерського факту й коригувань.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Багато ключових аркушів залишилися порожніми: ризики, операційні KPI, unit-економіка, CRM, маркетинговий план, інвестиції, сценарії та портфель ініціатив.&quot;,
+        &quot;У файлі залишено значний обсяг прикладів для харчового виробництва, які не стосуються сонячної енергетики.&quot;,
+        &quot;Не визначено єдину актуальну версію фінансових файлів і власників наборів даних.&quot;,
+        &quot;Не зафіксовано дати оновлення та періоди більшості показників.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Чітко визначені юридична назва, бренд, галузь, дата старту та основний напрям діяльності.&quot;,
+    &quot;Достатньо повно описані продукти, послуги, клієнтські сегменти та базова цінність пропозиції.&quot;,
+    &quot;Надані кількісні документи щодо проєктів, клієнтів, штату, доходів, витрат і руху коштів.&quot;,
+    &quot;Сформульовані середньострокові та довгострокові цілі з датами.&quot;,
+    &quot;Є початкові переліки ключових клієнтів, конкурентів і постачальників.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Відсутній цілісний стратегічний план із проміжними показниками, бюджетами, власниками та ініціативами.&quot;,
+    &quot;Фінансові документи не зведені до однієї узгодженої версії з єдиним контуром і правилами обліку.&quot;,
+    &quot;Не заповнені дані про unit-економіку, воронку продажів, операційні KPI, ризики та комплаєнс.&quot;,
+    &quot;Чисельність і структура команди описані непослідовно, а карта компетенцій відсутня.&quot;,
+    &quot;Шаблон паспорта містить багато нерелевантних прикладів харчового бізнесу, що створює ризик помилкового використання.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Висока концентрація зазначеного клієнтського портфеля&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;У списку ключових клієнтів SPAR / Наш Край становить 10 млн грн із 17,1 млн грн зазначеного обсягу, або близько 58%; внутрішні клієнти разом — близько 76%. Це може суттєво впливати на висновки про стійкість джерел доходу, тому концентрацію потрібно перевірити на повній виручці.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Ключові рішення зосереджені у засновника, залежність від першої особи зазначена як 5&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без опису делегованих повноважень, резервних відповідальних і регламентів неможливо коректно оцінити готовність моделі до масштабування.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Суттєвий заявлений кадровий дефіцит&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Таблиця штату містить 9 фактичних FTE проти потреби 17, зокрема 5 монтажників проти потреби 10 та відсутність інженера. Водночас форма вказує загальну чисельність 11–50 людей, тому склад команди потребує звірки.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Фінансові звіти мають різні контури та значні коригування&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без узгодження P&amp;L, руху коштів, проєктної аналітики та внутрішньогрупових операцій наступні висновки про маржу, грошовий потік і потребу в оборотному капіталі можуть бути неточними.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Непослідовні клієнтські та регуляторні твердження у презентації&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Матеріали одночасно згадують NetBilling і «зелений тариф», а загальна обіцянка енергонезалежності не завжди відокремлена від мережевих СЕС, які, за тією ж презентацією, не працюють під час блекауту. Це потребує технічної та юридичної перевірки.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Форма вказує 11–50 працівників, тоді як таблиця «Штат_FTE» містить сумарно 9 фактичних FTE; неясно, чи враховані підрядники, продавці та працівники групи.&quot;,
+    &quot;Поточний стан визначено як «стійко прибутковий», але P&amp;L 2024 містить підсумковий чистий збиток близько 87,8 тис. грн, а P&amp;L 2025 — прибуток; потрібне уточнення періоду, з якого стан вважається стійким.&quot;,
+    &quot;Заявлений річний оборот 0,5–2 млн дол. США не можна прямо звірити з наданими гривневими звітами через різні періоди, контури та відсутність пояснення курсу й бази розрахунку.&quot;,
+    &quot;Заявлена робота по всій Україні не підкріплена регіональною аналітикою: у таблиці ринків описані лише Волинська та Чернігівська області.&quot;,
+    &quot;Презентація описує надлишки електроенергії як продаж через NetBilling, але в іншому місці посилається на «зелений тариф».&quot;,
+    &quot;Обіцянка енергонезалежності подається як загальна цінність СЕС, хоча в матеріалах окремо зазначено, що мережева станція не працює під час блекауту.&quot;,
+    &quot;Під назвою «Стратегія» надані переважно клієнтська презентація, фінансові форми та частково заповнений шаблон, але не окремий стратегічний документ.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Точна організаційна схема, повний перелік ролей, типи зайнятості та зв’язок персоналу з Volwest Group.&quot;,
+    &quot;Виручка, маржа та кількість угод за продуктами, послугами, каналами, сегментами й клієнтами.&quot;,
+    &quot;Поточна частка інтернет-магазину, трафік, конверсія, середній чек, вартість залучення та частка повторних продажів.&quot;,
+    &quot;Частка регулярної сервісної виручки, кількість сервісних контрактів, гарантійні зобов’язання та база встановлених станцій.&quot;,
+    &quot;Баланс, дебіторська і кредиторська заборгованість, запаси, потреба в оборотному капіталі та графік позик.&quot;,
+    &quot;Фактичне завантаження монтажних бригад, портфель замовлень, строки виконання, якість і сервісні показники.&quot;,
+    &quot;Розмір ринку, частки конкурентів, регіональна структура попиту та критерії позиціонування.&quot;,
+    &quot;Строки постачання, мінімальні партії, надійність, валютні ризики й альтернативи за критичними постачальниками.&quot;,
+    &quot;Реєстр технічних, правових, безпекових і репутаційних ризиків, необхідні дозволи, сертифікації та страхування.&quot;,
+    &quot;План досягнення цілей 2026 і 2035 років із квартальними показниками, бюджетами, відповідальними та контрольними точками.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Визначити одну офіційну версію P&amp;L, руху коштів і реєстру проєктів за 2024–2025 роки та звірити між ними виручку, собівартість, коригування, внутрішньогрупові операції й залишки коштів.&quot;,
+      &quot;why&quot;: &quot;Наявні звіти мають різні контури та підсумки, що обмежує точність усіх наступних фінансових висновків.&quot;,
+      &quot;expected_result&quot;: &quot;Єдиний перевірений набір фінансових даних із поясненням відмінностей між нарахуваннями та рухом коштів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Оновити паспорт команди: зафіксувати точну чисельність, штатних працівників, підрядників, працівників групи, функції, вакансії та резервних відповідальних за критичні процеси.&quot;,
+      &quot;why&quot;: &quot;Діапазон 11–50 людей не узгоджується з 9 фактичними FTE у таблиці, а компанія зазначає залежність від ключових працівників.&quot;,
+      &quot;expected_result&quot;: &quot;Достовірна організаційна карта та зрозумілий перелік кадрових обмежень для масштабування.&quot;,
+      &quot;owner_role&quot;: &quot;Директор компанії / HR&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Побудувати структуру виручки та маржі за клієнтами, B2B/B2C/внутрішнім каналом, обладнанням, монтажем і сервісом; окремо показати частку топ-5 клієнтів та пов’язаних сторін.&quot;,
+      &quot;why&quot;: &quot;Поточний список ключових клієнтів вказує на можливу високу концентрацію, але не охоплює всю виручку на єдиній основі.&quot;,
+      &quot;expected_result&quot;: &quot;Підтверджена картина джерел доходу, концентрації та внеску кожного сегмента.&quot;,
+      &quot;owner_role&quot;: &quot;Комерційний директор спільно з фінансовим директором&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Перетворити цілі 2026 і 2035 років на дорожню карту: встановити річні та квартальні показники виручки, маржі, грошового потоку, онлайн-продажів, встановленої потужності, сервісних контрактів, бюджетів і відповідальних.&quot;,
+      &quot;why&quot;: &quot;Наявні цілі задають напрям, але не дозволяють контролювати прогрес і потребу в ресурсах.&quot;,
+      &quot;expected_result&quot;: &quot;Керований план розвитку з вимірюваними контрольними точками та відповідальністю.&quot;,
+      &quot;owner_role&quot;: &quot;Власник спільно з директором компанії&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Провести технічну та юридичну перевірку клієнтських матеріалів, гарантій, дозволів, страхування й тверджень про окупність, енергонезалежність, NetBilling та «зелений тариф»; створити реєстр ризиків і доказів.&quot;,
+      &quot;why&quot;: &quot;Непослідовні або непідтверджені твердження можуть викривляти продуктову діагностику та створювати договірні й репутаційні ризики.&quot;,
+      &quot;expected_result&quot;: &quot;Узгоджена комунікація, перевірені розрахунки та базовий реєстр технічних і правових ризиків.&quot;,
+      &quot;owner_role&quot;: &quot;Технічний директор / юрист&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Профіль Солар Вест Буд достатній для розуміння основного бізнесу: компанія продає обладнання та реалізує СЕС під ключ для B2B і B2C, має фактичні проєкти, фінансові звіти й цілі розвитку. Водночас перед поглибленою діагностикою потрібно узгодити фінансові версії, точну чисельність команди, структуру доходів і межі взаємодії з Volwest Group. Найбільші ризики точності — концентрація на внутрішніх клієнтах і SPAR, залежність від засновника, кадровий дефіцит та велика кількість незаповнених або нерелевантних розділів паспорта.&quot;
+}
+РЕЗУЛЬТАТ МОДУЛЯ SYS — GPT-5.6 Sol
+{
+  &quot;module_code&quot;: &quot;SYS&quot;,
+  &quot;module_name&quot;: &quot;Системна перевірка&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 53,
+  &quot;confidence&quot;: 76,
+  &quot;headline&quot;: &quot;Компанія добре помічає зміни ринку та швидко реагує, але масштабування вже стримують постійний дефіцит монтажної спроможності, концентрація фінансування і клієнтів та залежність управління від власника.&quot;,
+  &quot;diagnosis&quot;: &quot;Компанія регулярно аналізує зовнішнє середовище, використовує різні джерела інформації та може навести приклад рішення у відповідь на сигнал постачальника. За самооцінкою менеджера, проблеми безпечно піднімаються, доходять до керівників і отримують відповідальних, що є хорошою основою для швидкого реагування. Водночас завантажені матеріали не містять системно заповнених даних CRM, клієнтського зворотного зв’язку та операційних показників, а наведений приклад закупівлі не показує, чи було захищено маржу, строки постачання або доступність товару. Головне підтверджене обмеження — постійна нестача монтажного персоналу, через яку компанія не виконує весь попит та оцінює втрату товарообороту у 30%. Фінансування, запаси, одне джерело фінансування й один великий клієнт утворюють взаємопов’язану зону крихкості: збій одного елемента може одночасно вдарити по закупівлях, монтажах і грошовому потоку. Управлінські рішення ухвалюються швидко, але ролі зрозумілі лише частково, а попередній модуль підтверджує максимальну залежність від щоденної участі засновника. Пріоритети зрозумілі команді не повністю, власники процесів на стиках і міжфункціональні проєкти розвинені посередньо, хоча менеджер не бачить внутрішніх конфліктів і синергій. Ймовірна першопричина повторюваних проблем — не відсутність ринкових можливостей, а недостатньо формалізоване управління пропускною спроможністю, відповідальністю, ліквідністю та перевіркою результатів рішень.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;openness — Відкритість і зовнішня чутливість&quot;,
+      &quot;score&quot;: 78,
+      &quot;evidence&quot;: [
+        &quot;Здатність помічати зміни та навчатися оцінена на 4 із 5.&quot;,
+        &quot;Керівництво аналізує зовнішнє середовище щотижня або постійно.&quot;,
+        &quot;Регулярно використовуються сигнали клієнтів, продажів, партнерів, першої лінії, конкурентів, технологічних трендів і медіа.&quot;,
+        &quot;Сигнал постачальника про можливе зростання вартості панелей привів до додаткової закупівлі.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає підтвердження сигналу з незалежного другого джерела.&quot;,
+        &quot;Не показано результат закупівлі для маржі, доступності обладнання, оборотного капіталу або виконання замовлень.&quot;,
+        &quot;Не вказано дату проведення перевірки, тому неможливо звірити, чи лютий 2026 року входить до останніх 12 місяців.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;feedback_learning — Зворотний зв’язок і навчання&quot;,
+      &quot;score&quot;: 60,
+      &quot;evidence&quot;: [
+        &quot;Усі п’ять складових зворотного зв’язку менеджер оцінив на 5 із 5.&quot;,
+        &quot;Заявлено, що працівники можуть безпечно повідомляти про проблеми, а інформація доходить до відповідальних керівників.&quot;,
+        &quot;За сигналами, за словами менеджера, призначаються дії та відповідальні.&quot;,
+        &quot;Організація визнає проблему нестачі оборотних коштів, яку може недооцінювати.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У завантажених матеріалах відсутні заповнені показники CRM, NPS/CSAT і системні операційні дані, які підтверджували б максимальну оцінку.&quot;,
+        &quot;У прикладі зовнішнього сигналу результат описано як факт закупівлі, а не як перевірений економічний або операційний ефект.&quot;,
+        &quot;На питання про вже здійснені дії для усунення системних проблем надано відповідь «нічого».&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;synergy_alignment — Узгодженість і синергія&quot;,
+      &quot;score&quot;: 56,
+      &quot;evidence&quot;: [
+        &quot;Робота підрозділів на спільні цілі та використання узгоджених даних оцінені на 4 із 5.&quot;,
+        &quot;Швидкість вирішення конфліктів оцінена на 5 із 5.&quot;,
+        &quot;Організація використовує стратегічних партнерів, дистриб’юторів, торгові мережі, спільні проєкти та платформи.&quot;,
+        &quot;Визначені спільні напрями розвитку: СЕС+ESS, сервіс/O&amp;M, інтернет-магазин і регіональні партнерства.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Спільне розуміння трьох головних пріоритетів оцінене лише на 3 із 5.&quot;,
+        &quot;Власники процесів на стиках і міжфункціональні проєкти оцінені на 3 із 5.&quot;,
+        &quot;Менеджер прямо зазначив, що внутрішні синергетичні можливості не використовуються.&quot;,
+        &quot;Немає показників економічного ефекту зовнішніх партнерств.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;bottlenecks_resilience — Вузькі місця і стійкість&quot;,
+      &quot;score&quot;: 26,
+      &quot;evidence&quot;: [
+        &quot;Основними вузькими місцями названо фінансування, запаси та пошук і утримання працівників.&quot;,
+        &quot;Нестача монтажного персоналу є постійною та не дозволяє виконати всі замовлення.&quot;,
+        &quot;Оцінені втрати через кадрове обмеження становлять 30% товарообороту.&quot;,
+        &quot;Організація залежить від одного джерела фінансування та одного великого клієнта.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає реєстру замовлень, фактичного завантаження бригад, строків монтажу та частки прострочених проєктів.&quot;,
+        &quot;Не визначено точний дефіцит монтажників, електриків і керівників бригад.&quot;,
+        &quot;Відсутні дані про частку великого клієнта у виручці та умови єдиного джерела фінансування.&quot;,
+        &quot;Немає розрахунку потреби в оборотному капіталі, оборотності запасів і резервних сценаріїв.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;governance_architecture — Архітектура управління&quot;,
+      &quot;score&quot;: 51,
+      &quot;evidence&quot;: [
+        &quot;Швидкість критичних рішень і відсутність зайвих погоджень оцінені на 5 із 5.&quot;,
+        &quot;Рішення на рівні інформації та відповідальності оцінені на 4 із 5.&quot;,
+        &quot;Корисність звітів, нарад і процедур оцінена на 4 із 5.&quot;,
+        &quot;Попередній модуль зафіксував, що ключові рішення ухвалює засновник, а залежність від його щоденної участі оцінена на 5 із 5.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Зрозумілість ролей і повноважень оцінена лише на 3 із 5.&quot;,
+        &quot;Немає карти делегованих рішень, фінансових лімітів, резервних відповідальних і плану заміщення власника.&quot;,
+        &quot;Не описано розподіл відповідальності між продажами, фінансами, закупівлями, проєктуванням і монтажем.&quot;,
+        &quot;Не пояснено, чому додаткова централізація або децентралізація не потрібна за високої залежності від засновника.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;strategic_longevity — Стратегічна цілісність і гени довголіття&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Зрозумілість місії та сенсу існування оцінена на 4 із 5.&quot;,
+        &quot;Є цілі до 2026 і бачення до 2035 року, включно з масштабованістю, розвитком онлайн-продажів і входженням до топ-5 інтеграторів.&quot;,
+        &quot;Розглядаються нові продукти, ринки, канали продажу та підвищення ефективності.&quot;,
+        &quot;До джерел довголіття віднесено репутацію, близькість до клієнта, стратегічний фокус і партнерства.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Здатність команди назвати три головні пріоритети оцінена на 3 із 5.&quot;,
+        &quot;Немає узгодженої послідовності між розширенням монтажних потужностей, СЕС+ESS, O&amp;M, інтернет-магазином і регіональними партнерствами.&quot;,
+        &quot;Для більшості напрямів не визначені бюджети, відповідальні, проміжні показники та ресурсні обмеження.&quot;,
+        &quot;Стратегічні плани не пов’язані з підтвердженим планом фінансування й оборотного капіталу.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;renewal_aging — Оновлення та відсутність старіння&quot;,
+      &quot;score&quot;: 52,
+      &quot;evidence&quot;: [
+        &quot;Компанія створена у 2024 році та перебуває на етапі зростання.&quot;,
+        &quot;Розглядаються нові продукти й моделі: пакетні СЕС+ESS, O&amp;M, онлайн-продажі та регіональні партнерства.&quot;,
+        &quot;Менеджер оцінив усі запропоновані ознаки старіння на 0.&quot;,
+        &quot;Організація визнає необхідність трансформації у відповідь на зміни ринку.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Нульові оцінки старіння не підтверджені даними про плинність, перевтому, оновлення компетенцій, інноваційний портфель або наступність керівництва.&quot;,
+        &quot;Повторювані проблеми, постійний кадровий дефіцит і залежність від засновника суперечать висновку про повну відсутність небезпечних симптомів.&quot;,
+        &quot;Організація не навела жодної вже здійсненої системної дії для усунення повторюваних проблем.&quot;,
+        &quot;Менеджер не бачить потреби щось спрощувати або припиняти, хоча одночасно заявляє потребу в перебудові та трансформації.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Регулярний аналіз ринку та широкий набір джерел зовнішніх сигналів.&quot;,
+    &quot;Швидке ухвалення критичних рішень і низька кількість зайвих погоджень за самооцінкою менеджера.&quot;,
+    &quot;Готовність прямо назвати нестачу оборотних коштів і кадрове обмеження.&quot;,
+    &quot;Наявність зовнішніх партнерств, каналів збуту та кількох реальних напрямів розвитку.&quot;,
+    &quot;Чітко визначені недовикористані можливості: сервіс/O&amp;M, пакетні СЕС+ESS та інтернет-магазин.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Постійний дефіцит монтажної спроможності, який уже обмежує виконання попиту.&quot;,
+    &quot;Концентрація на одному джерелі фінансування, одному великому клієнті та щоденній участі засновника.&quot;,
+    &quot;Неповне спільне розуміння пріоритетів, слабко визначені власники процесів на стиках і мало міжфункціональних проєктів.&quot;,
+    &quot;Внутрішні синергетичні можливості не використовуються.&quot;,
+    &quot;Високі самооцінки зворотного зв’язку не підкріплені системними даними про результати рішень.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;Постійний кадровий дефіцит блокує монтажі та, за оцінкою менеджера, коштує 30% товарообороту&quot;,
+      &quot;severity&quot;: &quot;critical&quot;,
+      &quot;why_it_matters&quot;: &quot;Це вже не потенційний ризик, а чинне обмеження виручки, строків виконання та клієнтської довіри.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Залежність від одного джерела фінансування та одного великого клієнта&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Проблема з фінансуванням або втрата клієнта може одночасно створити касовий розрив, надлишок запасів і недозавантаження команди.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Нестача оборотних коштів поєднується з потребою фінансувати запаси та прискорювати зростання&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Додаткові закупівлі та розширення бригад можуть посилити дефіцит коштів, якщо не управляти строками оплати, запасами й маржею.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Максимальна залежність від щоденної участі засновника&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Це обмежує швидкість масштабування, створює єдину точку відмови та може перевантажити власника під час одночасного запуску кількох напрямів.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Заявлена відсутність конфліктів і старіння при повторюваних проблемах та відсутності системних коригувальних дій&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Це може свідчити не про відсутність проблем, а про недостатню здатність їх класифікувати, вимірювати та доводити до усунення першопричин.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;Усі складові зворотного зв’язку оцінені на 5 із 5, але CRM, NPS/CSAT та операційні показники у завантажених матеріалах не заповнені, а приклад закупівлі не містить перевірки економічного результату.&quot;,
+    &quot;Заявлено, що внутрішніх конфліктів немає, хоча спільне розуміння пріоритетів, власники процесів на стиках і міжфункціональні проєкти оцінені лише на 3 із 5, а внутрішні синергії не використовуються.&quot;,
+    &quot;Менеджер не бачить потреби в централізації або децентралізації, але попередній модуль фіксує ухвалення ключових рішень засновником і залежність від нього на рівні 5 із 5.&quot;,
+    &quot;Усі ознаки старіння оцінені на 0, але організація проходить перевірку через повторювані проблеми, потребу в перебудові та трансформації, а системних дій для їх усунення ще не здійснювала.&quot;,
+    &quot;Поточна відповідь описує постійний дефіцит монтажної спроможності та втрату 30% товарообороту, тоді як попередні матеріали припускали наявність резерву номінальної потужності; без фактичного завантаження бригад ці твердження неможливо узгодити.&quot;,
+    &quot;Компанія заявляє потребу в трансформації, але не бачить потреби щось спростити, об’єднати, передати назовні або припинити.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Фактичний портфель замовлень: кількість, потужність, строки, прострочення та причини затримок.&quot;,
+    &quot;Кількість монтажних бригад, їхній склад, фактична продуктивність, завантаження та дефіцит за ролями.&quot;,
+    &quot;Точна чисельність команди: форма містить діапазон 11–50 людей, тоді як попередні матеріали показують 9 фактичних FTE.&quot;,
+    &quot;Розмір втраченої виручки через кадрове обмеження та методика оцінки 30% товарообороту.&quot;,
+    &quot;Частка найбільшого клієнта у виручці, маржі, дебіторській заборгованості та портфелі майбутніх замовлень.&quot;,
+    &quot;Умови єдиного джерела фінансування, доступний ліміт, вартість, строк і наявність альтернатив.&quot;,
+    &quot;Потреба в оборотному капіталі, оборотність запасів, строки оплати клієнтів і постачальників.&quot;,
+    &quot;Документовані результати зворотного зв’язку: рішення, відповідальні, строки, очікуваний і фактичний ефект.&quot;,
+    &quot;Карта делегованих повноважень, власники наскрізних процесів і резервні відповідальні за засновника.&quot;,
+    &quot;Поточні показники O&amp;M, СЕС+ESS та інтернет-магазину: виручка, маржа, клієнти, конверсія і потреба в ресурсах.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Створити єдиний щотижневий реєстр монтажної спроможності: усі замовлення, потужність у кВт, обіцяні строки, призначена бригада, фактичне завантаження, затримки, їхні причини та втрачена виручка.&quot;,
+      &quot;why&quot;: &quot;Кадрове вузьке місце назване постійним і оцінене у 30% товарообороту, але фактична пропускна спроможність не вимірюється на єдиній основі.&quot;,
+      &quot;expected_result&quot;: &quot;Підтверджений розмір дефіциту людей, прозорий порядок пріоритетів і база для рішення про найм або залучення підрядників.&quot;,
+      &quot;owner_role&quot;: &quot;Операційний директор / керівник монтажу&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити план розширення монтажної спроможності: визначити потрібну кількість монтажників та електриків, відкрити найм, сформувати резерв перевірених підрядних бригад і запровадити єдині чек-листи якості та безпеки.&quot;,
+      &quot;why&quot;: &quot;Без збільшення й стандартизації монтажного ресурсу додаткові продажі лише збільшуватимуть чергу та ризик зриву строків.&quot;,
+      &quot;expected_result&quot;: &quot;Зростання доступної потужності монтажу без неконтрольованого погіршення якості та менша залежність від окремих працівників.&quot;,
+      &quot;owner_role&quot;: &quot;Директор компанії спільно з HR та керівником монтажу&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Підготувати 13-тижневий план грошового потоку та стійкості запасів: потреба в закупівлях, строки оплат, мінімальні залишки, сценарій втрати великого клієнта, переговори про альтернативне фінансування й кращі умови з постачальниками.&quot;,
+      &quot;why&quot;: &quot;Нестача оборотних коштів, запаси та концентрація фінансування взаємно підсилюють ризик касових розривів.&quot;,
+      &quot;expected_result&quot;: &quot;Зрозумілий дефіцит фінансування за тижнями, менше надлишкових закупівель і щонайменше підготовлена альтернатива єдиному джерелу коштів.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор спільно з власником&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Зафіксувати три спільні пріоритети на найближчі 90 днів, призначити власників наскрізних процесів і затвердити матрицю рішень: що вирішує власник, директор, продажі, фінанси, закупівлі та операції.&quot;,
+      &quot;why&quot;: &quot;Команда не повністю узгоджена щодо пріоритетів, ролі зрозумілі частково, а ключові рішення концентруються у засновника.&quot;,
+      &quot;expected_result&quot;: &quot;Менше залежності від власника, швидше вирішення питань на стиках і зниження ризику одночасного розпорошення ресурсів на надто багато напрямів.&quot;,
+      &quot;owner_role&quot;: &quot;Власник / генеральний директор&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Запустити пілот регулярного сервісу й O&amp;M зі SLA для 10 чинних або нових клієнтів та вимірювати собівартість обслуговування, швидкість реакції, частку прийняття пропозиції, маржу й намір продовження.&quot;,
+      &quot;why&quot;: &quot;Сервісна база використовується недостатньо, а регулярний дохід може частково зменшити залежність від разових проєктів і великого клієнта.&quot;,
+      &quot;expected_result&quot;: &quot;Перевірена сервісна пропозиція, перші регулярні надходження та фактичні дані для рішення про масштабування O&amp;M.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник сервісу / операційний директор&quot;,
+      &quot;deadline&quot;: &quot;90 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Компанія бачить ринкові зміни та швидко реагує, але її поточна система ще не готова до безпечного масштабування. Найгостріша проблема — постійна нестача монтажного персоналу з оціненою втратою 30% товарообороту; її посилюють дефіцит оборотних коштів, залежність від одного фінансиста, великого клієнта та засновника. Перший управлінський пріоритет — виміряти й розширити монтажну спроможність, одночасно захистивши ліквідність, делегувавши рішення та запустивши регулярний сервісний дохід.&quot;
+}</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

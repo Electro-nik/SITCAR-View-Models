@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPT-5.6 Luna</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.json-object { display:flex; flex-direction:column; gap:9px; }
+.json-row { display:grid; grid-template-columns:minmax(180px,28%) 1fr; gap:12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:10px; padding:11px; }
+.json-key { font-weight:800; color:#79c0ff; overflow-wrap:anywhere; }
+.json-value { min-width:0; overflow-wrap:anywhere; }
+.json-array { display:flex; flex-direction:column; gap:10px; }
+.json-array-item { display:grid; grid-template-columns:34px 1fr; gap:10px; }
+.json-index { height:32px; display:grid; place-items:center; background:#21262d; border-radius:8px; color:#79c0ff; font-weight:800; }
+.j-num { color:#56d364; } .j-bool { color:#e3b341; } .j-null { color:#d2a8ff; }
+.warning { padding:13px; border:1px solid #6e5926; background:#261f0d; border-radius:10px; margin-bottom:12px; color:#e3b341; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="index.html">← index.html</a>
+<section class="hero">
+<h1>GPT-5.6 Luna</h1>
+<div class="muted">OpenAI · Prompt: ORG · 2026-08-28T10:20:59</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gpt-5.6-luna</strong></div>
+<div class="metric"><span>Returned</span><strong>gpt-5.6-luna</strong></div>
+<div class="metric"><span>Response ID</span><strong>resp_054f332775c55fdc006a913671b2a087d2aac4e24fc2d57508</strong></div>
+<div class="metric"><span>Context window</span><strong>1 050 000</strong></div>
+<div class="metric"><span>Max output</span><strong>128 000</strong></div>
+<div class="metric"><span>Latency</span><strong>110.071 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>199 529</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>7 954</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>2 910</strong></div>
+<div class="metric"><span>Total tokens</span><strong>207 483</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.200000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.039906</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.020000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$1.200000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.009545</strong></div>
+<div class="metric total"><span>TOTAL COST</span><strong>$0.049451</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted attachment-summary">Кількість: 8 · Загальний розмір: 2.76 MB</div>
+        <div class="table-wrap"><table>
+        <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
+        <tbody><tr><td><strong>_Презентація Солар Вест буд.pdf</strong></td><td>1.83 MB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>Паспорт_бізнесу_шаблон.xlsx</strong></td><td>88.79 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>Реалізовані об&#x27;єкти СВБ.xlsx</strong></td><td>13.41 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>Солар Вест опис компанії.docx</strong></td><td>14.69 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>форма 2 СВБ грудень 2024.xlsx</strong></td><td>273.13 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>форма 2 СВБ.xlsx</strong></td><td>301.93 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>форма 3 СВБ  грудень.xlsx</strong></td><td>62.51 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr><tr><td><strong>форма 3 СВБ вересень 2025.xlsx</strong></td><td>196.84 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-28T10:19:09+03:00</td></tr></tbody>
+        </table></div>
+        </section>
+<section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
+                    <div class="json-key">module_code</div>
+                    <div class="json-value"><span class="j-str">ORG</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">module_name</div>
+                    <div class="json-value"><span class="j-str">Профіль організації</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">analysis_status</div>
+                    <div class="json-value"><span class="j-str">limited</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">61</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">confidence</div>
+                    <div class="json-value"><span class="j-num">74</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">headline</div>
+                    <div class="json-value"><span class="j-str">Солар Вест Буд має достатньо зрозумілий профіль бізнесу, але фінансові, стратегічні та операційні дані ще не зведені в єдину узгоджену картину.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">diagnosis</div>
+                    <div class="json-value"><span class="j-str">Солар Вест Буд — молодий бізнес у сфері сонячної енергетики, який поєднує продаж обладнання, проєктування, монтаж і сервіс для B2B та B2C-клієнтів по Україні. Основна пропозиція та цінність для клієнта описані зрозуміло: зниження витрат на електроенергію та підвищення енергонезалежності. Організація демонструє ознаки швидкого зростання: у документах зазначено понад 1 МВт встановлених панелей за перший рік, зростання продажів і наявність кількох реалізованих об’єктів. Водночас дані про фінансові результати, грошові потоки та прибутковість подані в кількох версіях і не мають єдиного періоду, валюти та правила відображення плану, факту й коригувань, тому їх не можна безпечно використовувати як одну фінансову базу. Стратегічні цілі сформульовані на 2026 і 2035 роки, але більшість із них не має конкретних проміжних показників, бюджету, відповідальних і розрахунку необхідних потужностей. Організаційна модель також недостатньо описана: відомий загальний діапазон 11–50 працівників, але детальна таблиця містить інший обсяг FTE та показує значну потребу в додаткових монтажниках, проєктанті й інженері. Окремий ризик для подальшої діагностики — змішування актуальних даних Солар Вест Буд із шаблонними матеріалами для харчового виробництва, через що частина показників і рекомендацій не належить до цього бізнесу. Отже, контекст придатний для базового профілю, але перед глибшою оцінкою потрібно спочатку синхронізувати фінанси, клієнтську структуру, потужності та стратегічні припущення.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">dimension_scores</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Ідентичність і бізнес-модель</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">82</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Вказано офіційну назву ТзОВ «Солар Вест Буд», бренд Solar West і рік створення — 2024.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Описано модель «під ключ»: проєктування, монтаж, сервіс і продаж обладнання.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Визначено роботу на ринку відновлюваної енергетики в Україні для B2B і B2C.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Не описано юридичну структуру, частки власників, взаємодію з Volwest Group та межі відповідальності між компаніями.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не визначено, який напрям є основним за виручкою і стратегічним пріоритетом: обладнання, монтаж чи сервіс.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Продукти, послуги та ціннісна пропозиція</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">76</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Є перелік основних товарів: панелі, інвертори, кабелі, кріплення, автоматика та акумулятори.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Описано три типи СЕС: мережеві, гібридні та автономні.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Документи містять приклади готових рішень потужністю від 10 до 100 кВт і опис етапів реалізації проєкту.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">У портфелі немає SKU-кодів, актуальних цін, собівартості, маржі та мінімально допустимої ціни за товаром і каналом.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не визначено стандартизований склад сервісного пакета, гарантій, строків реагування та умов післяпродажного обслуговування.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Клієнти, ринки та канали</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">62</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Названо три групи клієнтів: юридичні особи, приватні клієнти та монтажники, яким потрібне обладнання.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Визначено канали продажу: сайт, інтернет-продажі, відділ продажів і соціальні мережі.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">У таблицях є приклади B2B, B2C та внутрішніх клієнтів, а також дані щодо двох регіонів із часткою менше 1% і позитивним трендом.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає повної сегментації клієнтів за потребою, розміром проєкту, регіоном, маржинальністю та потенціалом повторних продажів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не визначено розмір ринку, цільову частку, конкурентну позицію та пріоритетні регіони.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Відсутні дані CRM: обсяг воронки, конверсії, тривалість угоди, CAC, LTV та причини програшу угод.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Фінанси та економіка напрямів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">50</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Наявні форми P&amp;L, cash flow і таблиця доходів та собівартості окремих об’єктів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">У проектній таблиці за окремими об’єктами зазначені доходи, собівартість і прибуток; націнка за наведеними прикладами коливається приблизно від 8% до 33%.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Керівництву, за формою, доступні дані про продажі, грошовий потік, операційні показники, прибуток і маржу.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Фінансові файли містять різні версії 2024–2025 років із різними сумами, планами, фактами, коригуваннями та прогнозами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не визначено, які суми є бухгалтерськими, управлінськими, касовими, проектними або консолідованими.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Немає узгодженої економіки за напрямами, каналами, клієнтами та типами СЕС.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не заповнені аркуші PnL_Історія, Unit_Економіка, Гроші_Інвестиції та Припущення_сценаріїв.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Організаційна структура та операційні потужності</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">55</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Зазначено діапазон чисельності 11–50 працівників і наведено окремий розподіл FTE за функціями.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">У таблиці FTE вказано 5 монтажників фактично при потребі 10, одного менеджера-проєктанта при потребі 2 та потребу в інженері.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Серед основних обмежень названо людей, компетенції, час, технології та бюджет.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Немає узгодженої фактичної чисельності: загальний діапазон 11–50 не збігається з деталізованою таблицею FTE.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не описані ролі, повноваження, процеси передачі проєкту від продажу до монтажу та відповідальні за результат.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не визначена фактична монтажна потужність у кВт/місяць, завантаження бригад, частка субпідрядників і резерв на піковий сезон.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не заповнені реєстри компетенцій, ризиків, операційних KPI та планів розвитку персоналу.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Стратегія та цілі</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">63</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Сформульовано ціль перейти від крихкої стратегії до стабільної та масштабованої до 31.12.2026.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Є кількісна ціль довести продажі інтернет-магазину до 30% обороту до 31.12.2026.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Описано довгострокове бачення стати одним із топ-5 інтеграторів сонячних рішень в Україні до 2035 року.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Для ключової цілі стабільного грошового потоку не вказано конкретних значень виручки, EBITDA, запасу ліквідності або частки повторних доходів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Немає річного плану на 2025–2026 роки з бюджетом, ресурсами, відповідальними та контрольними точками.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Не зафіксовано стратегічні припущення щодо ринку, цін на обладнання, курсу валют, фінансування та кадрової спроможності.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">dimension</div>
+                    <div class="json-value"><span class="j-str">Повнота та надійність управлінського контексту</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">score</div>
+                    <div class="json-value"><span class="j-num">38</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">evidence</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Завантажено значний обсяг матеріалів: презентації, проектні розрахунки, P&amp;L, cash flow, список клієнтів і постачальників.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Частина таблиць має правильну структуру для подальшого заповнення.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">У багатьох аркушах відсутні фактичні значення, власники показників, періодичність і цілі.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Частина матеріалів містить приклади для харчового виробництва: соуси, хрін, скляна тара, OEE харчової лінії та FMCG-бенчмарки.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Фінансові та cash flow-форми представлені в кількох варіантах із різними підписами, структурами та сумами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Не визначено єдине джерело правдивих даних для управлінських рішень.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">strengths</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Чітко визначена спеціалізація: сонячні електростанції та комплексні рішення «під ключ».</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Поєднано кілька джерел доходу: продаж обладнання, монтаж, проєктування та сервіс.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Описані основні клієнтські групи, канали продажу, ключові постачальники та приклади реалізованих об’єктів.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Є довгострокове бачення розвитку та одна конкретна ціль щодо частки інтернет-магазину в обороті.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Наявні первинні управлінські матеріали для переходу до системного обліку: P&amp;L, cash flow, проектні розрахунки, FTE та перелік постачальників.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">weaknesses</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Фінансові дані не зведені в одну узгоджену систему та не дозволяють надійно порівнювати виручку, прибуток і грошовий потік.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Не видно фактичної економіки окремих напрямів, клієнтів і каналів після врахування логістики, зарплат, гарантійних витрат і фінансування.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Клієнтська база описана переважно списком назв без повної інформації про договори, строки оплати, повторні продажі та концентрацію.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Операційна спроможність і кадрова модель не відповідають заявленій амбіції масштабування без додаткового планування.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Стратегічний паспорт частково заповнений шаблонними матеріалами, що не належать до сонячної енергетики.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">red_flags</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">У завантажених документах змішані дані Солар Вест Буд і шаблонні матеріали для харчового виробництва.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Таке змішування може призвести до використання нерелевантних KPI, бенчмарків і управлінських висновків під час подальшої діагностики.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Фінансові форми за 2024–2025 роки мають різні версії, суми та структуру плану, факту, коригувань і прогнозу.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Без узгодження неможливо достовірно визначити реальну виручку, прибутковість, потребу в оборотному капіталі та динаміку бізнесу.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">У cash flow зафіксовані значні надходження фінансових позик, а нестача оборотних коштів прямо названа серед основних проблем.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Зростання може підтримуватися зовнішнім фінансуванням, але без графіка повернення, вартості коштів і прогнозу ліквідності неможливо оцінити стійкість грошового потоку.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Заявлена кадрова потреба суттєво перевищує фактичну за ключовими монтажними та інженерними ролями.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">high</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Дефіцит монтажників, проєктантів та інженерної компетенції може обмежити виконання замовлень і масштабування навіть за наявності попиту.</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">signal</div>
+                    <div class="json-value"><span class="j-str">Комерційні матеріали містять твердження про економію до 80%, окупність 15–20 місяців і енергетичну незалежність без прив’язки до конкретних умов розрахунку.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">severity</div>
+                    <div class="json-value"><span class="j-str">medium</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why_it_matters</div>
+                    <div class="json-value"><span class="j-str">Без методики, періоду, тарифів, типу станції та фактичних кейсів такі твердження складно використовувати як перевірені докази для продажів і стратегії.</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">contradictions</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">У формі вказано статус «стійко прибуткова», але у фінансових формах є окремі місяці з від’ємним EBITDA або чистим результатом; це може бути сезонністю чи різницею між планом і фактом, але пояснення не наведено.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">У формі заявлений разовий продаж як основний спосіб заробітку, водночас у пропозиції є сервісне обслуговування, а стратегічна ціль передбачає стабільні та зростаючі джерела грошового потоку.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Діапазон обороту вказано в доларах США, тоді як завантажені фінансові файли подані в гривнях і містять різні періоди та варіанти підсумків; база для порівняння не визначена.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">У таблиці клієнтів SPAR / Наш Край віднесено до внутрішнього каналу та пов’язано з Volwest Group, тоді як у формі SPAR зазначено як зовнішнього критично важливого партнера; характер взаємозв’язку не пояснено.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Заявлено роботу по всій Україні, але фактичні регіональні дані заповнені лише для Волинської та Чернігівської областей; це не обов’язково суперечність, але підтвердження загальноукраїнського охоплення відсутнє.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">data_gaps</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><span class="j-str">Єдина узгоджена фінансова база за місяцями: виручка без ПДВ, собівартість, валова маржа, операційні витрати, EBITDA, чистий прибуток і cash flow.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><span class="j-str">Правила обліку для розмежування бухгалтерських, управлінських, касових, проектних і консолідованих даних.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><span class="j-str">Фактичний оборот за напрямами: обладнання, монтаж, проєктування, сервіс та інтернет-магазин.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><span class="j-str">Розподіл виручки, маржі та дебіторської заборгованості за клієнтами й каналами.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><span class="j-str">Повний реєстр проєктів: потужність у кВт/МВт, статус, план-факт строків, бюджет, маржа, гарантійні зобов’язання та сервісний потенціал.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">6</div>
+                    <div><span class="j-str">Дані про воронку продажів, конверсії, тривалість угод, джерела лідів, CAC, LTV і повторні покупки.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">7</div>
+                    <div><span class="j-str">Фактична чисельність працівників, залучені підрядники, ролі, повноваження та відповідальні за ключові процеси.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">8</div>
+                    <div><span class="j-str">Монтажна потужність у кВт/місяць, завантаження бригад, сезонність і обмеження постачання.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">9</div>
+                    <div><span class="j-str">Умови договорів із ключовими клієнтами та постачальниками: строки оплати, передоплати, гарантії, штрафи, lead time і валютні ризики.</span></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">10</div>
+                    <div><span class="j-str">Підтвердження дозволів, сертифікацій, страхування, охорони праці, гарантійної політики та імпортних процедур.</span></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">recommendations</div>
+                    <div class="json-value"><div class="json-array"><div class="json-array-item">
+                    <div class="json-index">1</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Створити єдину управлінську фінансову таблицю за 2024–2025 роки та провести звірку P&amp;L, cash flow і проектних даних.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">У поточних файлах різні суми, періоди та способи відображення плану, факту й коригувань.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Єдина цифра виручки, прибутку, грошового потоку та потреби в оборотному капіталі; фінансові дані можна буде використовувати для діагностики.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий директор спільно з власником</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">2</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Розкласти виручку та маржу за чотирма напрямами: обладнання, монтаж, проєктування і сервіс, а також за B2B, B2C та інтернет-магазином.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Зараз неможливо визначити, які напрями формують основний результат і де виникає втрата маржі.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Матриця напрям × канал із виручкою, собівартістю, валовою маржею, операційними витратами та грошовим внеском.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Фінансовий директор і керівник продажів</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">3</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Оновити стратегічний план на 2026 рік у форматі 5–7 вимірюваних цілей із бюджетом, відповідальним, квартальними етапами та критеріями успіху.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Поточні цілі містять загальний напрям і окремі показники, але не показують, які ресурси потрібні для масштабування.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Керівництво матиме узгоджений план щодо виручки, EBITDA, частки інтернет-магазину, сервісних доходів, монтажних потужностей і ліквідності.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник спільно з фінансовим директором і керівником операцій</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">4</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Затвердити фактичну організаційну структуру та план кадрового забезпечення: монтажники, проєктанти, інженер, сервіс і резерв на піки.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">У документах зафіксовано нестачу кваліфікованих людей і залежність від ключових працівників, але немає плану закриття цих ризиків.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Підтверджена монтажна спроможність у кВт/місяць, визначені критичні ролі, строки найму або підрядників і резервні відповідальні.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Власник і керівник операцій</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">30 днів</span></div>
+                </div></div></div>
+                </div><div class="json-array-item">
+                    <div class="json-index">5</div>
+                    <div><div class="json-object"><div class="json-row">
+                    <div class="json-key">action</div>
+                    <div class="json-value"><span class="j-str">Очистити паспорт організації від матеріалів харчового виробництва та заповнити мінімальний реєстр проєктів, клієнтів, постачальників, ризиків і KPI саме для сонячної енергетики.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">why</div>
+                    <div class="json-value"><span class="j-str">Нерелевантні шаблони знижують точність подальшої діагностики та створюють ризик неправильних управлінських висновків.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">expected_result</div>
+                    <div class="json-value"><span class="j-str">Актуальний паспорт із перевіреними даними, відповідальними особами, періодичністю оновлення та зрозумілим статусом кожного показника.</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">owner_role</div>
+                    <div class="json-value"><span class="j-str">Керівник операцій або призначений бізнес-аналітик</span></div>
+                </div><div class="json-row">
+                    <div class="json-key">deadline</div>
+                    <div class="json-value"><span class="j-str">7 днів</span></div>
+                </div></div></div>
+                </div></div></div>
+                </div><div class="json-row">
+                    <div class="json-key">manager_summary</div>
+                    <div class="json-value"><span class="j-str">Профіль Солар Вест Буд уже зрозумілий на рівні бізнес-моделі, продуктів і клієнтів. Основне обмеження — не відсутність інформації, а її неузгодженість: різні фінансові форми, неповна операційна статистика та змішані шаблони з іншої галузі. Перед оцінкою ефективності організації потрібно синхронізувати фінансову базу, структуру доходів, кадрові потужності та цілі на 2026 рік.</span></div>
+                </div></div></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Raw model output</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 61,
+  &quot;confidence&quot;: 74,
+  &quot;headline&quot;: &quot;Солар Вест Буд має достатньо зрозумілий профіль бізнесу, але фінансові, стратегічні та операційні дані ще не зведені в єдину узгоджену картину.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест Буд — молодий бізнес у сфері сонячної енергетики, який поєднує продаж обладнання, проєктування, монтаж і сервіс для B2B та B2C-клієнтів по Україні. Основна пропозиція та цінність для клієнта описані зрозуміло: зниження витрат на електроенергію та підвищення енергонезалежності. Організація демонструє ознаки швидкого зростання: у документах зазначено понад 1 МВт встановлених панелей за перший рік, зростання продажів і наявність кількох реалізованих об’єктів. Водночас дані про фінансові результати, грошові потоки та прибутковість подані в кількох версіях і не мають єдиного періоду, валюти та правила відображення плану, факту й коригувань, тому їх не можна безпечно використовувати як одну фінансову базу. Стратегічні цілі сформульовані на 2026 і 2035 роки, але більшість із них не має конкретних проміжних показників, бюджету, відповідальних і розрахунку необхідних потужностей. Організаційна модель також недостатньо описана: відомий загальний діапазон 11–50 працівників, але детальна таблиця містить інший обсяг FTE та показує значну потребу в додаткових монтажниках, проєктанті й інженері. Окремий ризик для подальшої діагностики — змішування актуальних даних Солар Вест Буд із шаблонними матеріалами для харчового виробництва, через що частина показників і рекомендацій не належить до цього бізнесу. Отже, контекст придатний для базового профілю, але перед глибшою оцінкою потрібно спочатку синхронізувати фінанси, клієнтську структуру, потужності та стратегічні припущення.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентичність і бізнес-модель&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Вказано офіційну назву ТзОВ «Солар Вест Буд», бренд Solar West і рік створення — 2024.&quot;,
+        &quot;Описано модель «під ключ»: проєктування, монтаж, сервіс і продаж обладнання.&quot;,
+        &quot;Визначено роботу на ринку відновлюваної енергетики в Україні для B2B і B2C.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не описано юридичну структуру, частки власників, взаємодію з Volwest Group та межі відповідальності між компаніями.&quot;,
+        &quot;Не визначено, який напрям є основним за виручкою і стратегічним пріоритетом: обладнання, монтаж чи сервіс.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Продукти, послуги та ціннісна пропозиція&quot;,
+      &quot;score&quot;: 76,
+      &quot;evidence&quot;: [
+        &quot;Є перелік основних товарів: панелі, інвертори, кабелі, кріплення, автоматика та акумулятори.&quot;,
+        &quot;Описано три типи СЕС: мережеві, гібридні та автономні.&quot;,
+        &quot;Документи містять приклади готових рішень потужністю від 10 до 100 кВт і опис етапів реалізації проєкту.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У портфелі немає SKU-кодів, актуальних цін, собівартості, маржі та мінімально допустимої ціни за товаром і каналом.&quot;,
+        &quot;Не визначено стандартизований склад сервісного пакета, гарантій, строків реагування та умов післяпродажного обслуговування.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Клієнти, ринки та канали&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Названо три групи клієнтів: юридичні особи, приватні клієнти та монтажники, яким потрібне обладнання.&quot;,
+        &quot;Визначено канали продажу: сайт, інтернет-продажі, відділ продажів і соціальні мережі.&quot;,
+        &quot;У таблицях є приклади B2B, B2C та внутрішніх клієнтів, а також дані щодо двох регіонів із часткою менше 1% і позитивним трендом.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає повної сегментації клієнтів за потребою, розміром проєкту, регіоном, маржинальністю та потенціалом повторних продажів.&quot;,
+        &quot;Не визначено розмір ринку, цільову частку, конкурентну позицію та пріоритетні регіони.&quot;,
+        &quot;Відсутні дані CRM: обсяг воронки, конверсії, тривалість угоди, CAC, LTV та причини програшу угод.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінанси та економіка напрямів&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Наявні форми P&amp;L, cash flow і таблиця доходів та собівартості окремих об’єктів.&quot;,
+        &quot;У проектній таблиці за окремими об’єктами зазначені доходи, собівартість і прибуток; націнка за наведеними прикладами коливається приблизно від 8% до 33%.&quot;,
+        &quot;Керівництву, за формою, доступні дані про продажі, грошовий потік, операційні показники, прибуток і маржу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Фінансові файли містять різні версії 2024–2025 років із різними сумами, планами, фактами, коригуваннями та прогнозами.&quot;,
+        &quot;Не визначено, які суми є бухгалтерськими, управлінськими, касовими, проектними або консолідованими.&quot;,
+        &quot;Немає узгодженої економіки за напрямами, каналами, клієнтами та типами СЕС.&quot;,
+        &quot;Не заповнені аркуші PnL_Історія, Unit_Економіка, Гроші_Інвестиції та Припущення_сценаріїв.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та операційні потужності&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Зазначено діапазон чисельності 11–50 працівників і наведено окремий розподіл FTE за функціями.&quot;,
+        &quot;У таблиці FTE вказано 5 монтажників фактично при потребі 10, одного менеджера-проєктанта при потребі 2 та потребу в інженері.&quot;,
+        &quot;Серед основних обмежень названо людей, компетенції, час, технології та бюджет.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає узгодженої фактичної чисельності: загальний діапазон 11–50 не збігається з деталізованою таблицею FTE.&quot;,
+        &quot;Не описані ролі, повноваження, процеси передачі проєкту від продажу до монтажу та відповідальні за результат.&quot;,
+        &quot;Не визначена фактична монтажна потужність у кВт/місяць, завантаження бригад, частка субпідрядників і резерв на піковий сезон.&quot;,
+        &quot;Не заповнені реєстри компетенцій, ризиків, операційних KPI та планів розвитку персоналу.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегія та цілі&quot;,
+      &quot;score&quot;: 63,
+      &quot;evidence&quot;: [
+        &quot;Сформульовано ціль перейти від крихкої стратегії до стабільної та масштабованої до 31.12.2026.&quot;,
+        &quot;Є кількісна ціль довести продажі інтернет-магазину до 30% обороту до 31.12.2026.&quot;,
+        &quot;Описано довгострокове бачення стати одним із топ-5 інтеграторів сонячних рішень в Україні до 2035 року.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Для ключової цілі стабільного грошового потоку не вказано конкретних значень виручки, EBITDA, запасу ліквідності або частки повторних доходів.&quot;,
+        &quot;Немає річного плану на 2025–2026 роки з бюджетом, ресурсами, відповідальними та контрольними точками.&quot;,
+        &quot;Не зафіксовано стратегічні припущення щодо ринку, цін на обладнання, курсу валют, фінансування та кадрової спроможності.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Повнота та надійність управлінського контексту&quot;,
+      &quot;score&quot;: 38,
+      &quot;evidence&quot;: [
+        &quot;Завантажено значний обсяг матеріалів: презентації, проектні розрахунки, P&amp;L, cash flow, список клієнтів і постачальників.&quot;,
+        &quot;Частина таблиць має правильну структуру для подальшого заповнення.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У багатьох аркушах відсутні фактичні значення, власники показників, періодичність і цілі.&quot;,
+        &quot;Частина матеріалів містить приклади для харчового виробництва: соуси, хрін, скляна тара, OEE харчової лінії та FMCG-бенчмарки.&quot;,
+        &quot;Фінансові та cash flow-форми представлені в кількох варіантах із різними підписами, структурами та сумами.&quot;,
+        &quot;Не визначено єдине джерело правдивих даних для управлінських рішень.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Чітко визначена спеціалізація: сонячні електростанції та комплексні рішення «під ключ».&quot;,
+    &quot;Поєднано кілька джерел доходу: продаж обладнання, монтаж, проєктування та сервіс.&quot;,
+    &quot;Описані основні клієнтські групи, канали продажу, ключові постачальники та приклади реалізованих об’єктів.&quot;,
+    &quot;Є довгострокове бачення розвитку та одна конкретна ціль щодо частки інтернет-магазину в обороті.&quot;,
+    &quot;Наявні первинні управлінські матеріали для переходу до системного обліку: P&amp;L, cash flow, проектні розрахунки, FTE та перелік постачальників.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Фінансові дані не зведені в одну узгоджену систему та не дозволяють надійно порівнювати виручку, прибуток і грошовий потік.&quot;,
+    &quot;Не видно фактичної економіки окремих напрямів, клієнтів і каналів після врахування логістики, зарплат, гарантійних витрат і фінансування.&quot;,
+    &quot;Клієнтська база описана переважно списком назв без повної інформації про договори, строки оплати, повторні продажі та концентрацію.&quot;,
+    &quot;Операційна спроможність і кадрова модель не відповідають заявленій амбіції масштабування без додаткового планування.&quot;,
+    &quot;Стратегічний паспорт частково заповнений шаблонними матеріалами, що не належать до сонячної енергетики.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;У завантажених документах змішані дані Солар Вест Буд і шаблонні матеріали для харчового виробництва.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Таке змішування може призвести до використання нерелевантних KPI, бенчмарків і управлінських висновків під час подальшої діагностики.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Фінансові форми за 2024–2025 роки мають різні версії, суми та структуру плану, факту, коригувань і прогнозу.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без узгодження неможливо достовірно визначити реальну виручку, прибутковість, потребу в оборотному капіталі та динаміку бізнесу.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;У cash flow зафіксовані значні надходження фінансових позик, а нестача оборотних коштів прямо названа серед основних проблем.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Зростання може підтримуватися зовнішнім фінансуванням, але без графіка повернення, вартості коштів і прогнозу ліквідності неможливо оцінити стійкість грошового потоку.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Заявлена кадрова потреба суттєво перевищує фактичну за ключовими монтажними та інженерними ролями.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Дефіцит монтажників, проєктантів та інженерної компетенції може обмежити виконання замовлень і масштабування навіть за наявності попиту.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Комерційні матеріали містять твердження про економію до 80%, окупність 15–20 місяців і енергетичну незалежність без прив’язки до конкретних умов розрахунку.&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Без методики, періоду, тарифів, типу станції та фактичних кейсів такі твердження складно використовувати як перевірені докази для продажів і стратегії.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;У формі вказано статус «стійко прибуткова», але у фінансових формах є окремі місяці з від’ємним EBITDA або чистим результатом; це може бути сезонністю чи різницею між планом і фактом, але пояснення не наведено.&quot;,
+    &quot;У формі заявлений разовий продаж як основний спосіб заробітку, водночас у пропозиції є сервісне обслуговування, а стратегічна ціль передбачає стабільні та зростаючі джерела грошового потоку.&quot;,
+    &quot;Діапазон обороту вказано в доларах США, тоді як завантажені фінансові файли подані в гривнях і містять різні періоди та варіанти підсумків; база для порівняння не визначена.&quot;,
+    &quot;У таблиці клієнтів SPAR / Наш Край віднесено до внутрішнього каналу та пов’язано з Volwest Group, тоді як у формі SPAR зазначено як зовнішнього критично важливого партнера; характер взаємозв’язку не пояснено.&quot;,
+    &quot;Заявлено роботу по всій Україні, але фактичні регіональні дані заповнені лише для Волинської та Чернігівської областей; це не обов’язково суперечність, але підтвердження загальноукраїнського охоплення відсутнє.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Єдина узгоджена фінансова база за місяцями: виручка без ПДВ, собівартість, валова маржа, операційні витрати, EBITDA, чистий прибуток і cash flow.&quot;,
+    &quot;Правила обліку для розмежування бухгалтерських, управлінських, касових, проектних і консолідованих даних.&quot;,
+    &quot;Фактичний оборот за напрямами: обладнання, монтаж, проєктування, сервіс та інтернет-магазин.&quot;,
+    &quot;Розподіл виручки, маржі та дебіторської заборгованості за клієнтами й каналами.&quot;,
+    &quot;Повний реєстр проєктів: потужність у кВт/МВт, статус, план-факт строків, бюджет, маржа, гарантійні зобов’язання та сервісний потенціал.&quot;,
+    &quot;Дані про воронку продажів, конверсії, тривалість угод, джерела лідів, CAC, LTV і повторні покупки.&quot;,
+    &quot;Фактична чисельність працівників, залучені підрядники, ролі, повноваження та відповідальні за ключові процеси.&quot;,
+    &quot;Монтажна потужність у кВт/місяць, завантаження бригад, сезонність і обмеження постачання.&quot;,
+    &quot;Умови договорів із ключовими клієнтами та постачальниками: строки оплати, передоплати, гарантії, штрафи, lead time і валютні ризики.&quot;,
+    &quot;Підтвердження дозволів, сертифікацій, страхування, охорони праці, гарантійної політики та імпортних процедур.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Створити єдину управлінську фінансову таблицю за 2024–2025 роки та провести звірку P&amp;L, cash flow і проектних даних.&quot;,
+      &quot;why&quot;: &quot;У поточних файлах різні суми, періоди та способи відображення плану, факту й коригувань.&quot;,
+      &quot;expected_result&quot;: &quot;Єдина цифра виручки, прибутку, грошового потоку та потреби в оборотному капіталі; фінансові дані можна буде використовувати для діагностики.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор спільно з власником&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розкласти виручку та маржу за чотирма напрямами: обладнання, монтаж, проєктування і сервіс, а також за B2B, B2C та інтернет-магазином.&quot;,
+      &quot;why&quot;: &quot;Зараз неможливо визначити, які напрями формують основний результат і де виникає втрата маржі.&quot;,
+      &quot;expected_result&quot;: &quot;Матриця напрям × канал із виручкою, собівартістю, валовою маржею, операційними витратами та грошовим внеском.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор і керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Оновити стратегічний план на 2026 рік у форматі 5–7 вимірюваних цілей із бюджетом, відповідальним, квартальними етапами та критеріями успіху.&quot;,
+      &quot;why&quot;: &quot;Поточні цілі містять загальний напрям і окремі показники, але не показують, які ресурси потрібні для масштабування.&quot;,
+      &quot;expected_result&quot;: &quot;Керівництво матиме узгоджений план щодо виручки, EBITDA, частки інтернет-магазину, сервісних доходів, монтажних потужностей і ліквідності.&quot;,
+      &quot;owner_role&quot;: &quot;Власник спільно з фінансовим директором і керівником операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити фактичну організаційну структуру та план кадрового забезпечення: монтажники, проєктанти, інженер, сервіс і резерв на піки.&quot;,
+      &quot;why&quot;: &quot;У документах зафіксовано нестачу кваліфікованих людей і залежність від ключових працівників, але немає плану закриття цих ризиків.&quot;,
+      &quot;expected_result&quot;: &quot;Підтверджена монтажна спроможність у кВт/місяць, визначені критичні ролі, строки найму або підрядників і резервні відповідальні.&quot;,
+      &quot;owner_role&quot;: &quot;Власник і керівник операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Очистити паспорт організації від матеріалів харчового виробництва та заповнити мінімальний реєстр проєктів, клієнтів, постачальників, ризиків і KPI саме для сонячної енергетики.&quot;,
+      &quot;why&quot;: &quot;Нерелевантні шаблони знижують точність подальшої діагностики та створюють ризик неправильних управлінських висновків.&quot;,
+      &quot;expected_result&quot;: &quot;Актуальний паспорт із перевіреними даними, відповідальними особами, періодичністю оновлення та зрозумілим статусом кожного показника.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник операцій або призначений бізнес-аналітик&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Профіль Солар Вест Буд уже зрозумілий на рівні бізнес-моделі, продуктів і клієнтів. Основне обмеження — не відсутність інформації, а її неузгодженість: різні фінансові форми, неповна операційна статистика та змішані шаблони з іншої галузі. Перед оцінкою ефективності організації потрібно синхронізувати фінансову базу, структуру доходів, кадрові потужності та цілі на 2026 рік.&quot;
+}</pre></div></details>
+<details><summary>Parsed JSON</summary><div class="details-body"><pre>{
+  &quot;module_code&quot;: &quot;ORG&quot;,
+  &quot;module_name&quot;: &quot;Профіль організації&quot;,
+  &quot;analysis_status&quot;: &quot;limited&quot;,
+  &quot;score&quot;: 61,
+  &quot;confidence&quot;: 74,
+  &quot;headline&quot;: &quot;Солар Вест Буд має достатньо зрозумілий профіль бізнесу, але фінансові, стратегічні та операційні дані ще не зведені в єдину узгоджену картину.&quot;,
+  &quot;diagnosis&quot;: &quot;Солар Вест Буд — молодий бізнес у сфері сонячної енергетики, який поєднує продаж обладнання, проєктування, монтаж і сервіс для B2B та B2C-клієнтів по Україні. Основна пропозиція та цінність для клієнта описані зрозуміло: зниження витрат на електроенергію та підвищення енергонезалежності. Організація демонструє ознаки швидкого зростання: у документах зазначено понад 1 МВт встановлених панелей за перший рік, зростання продажів і наявність кількох реалізованих об’єктів. Водночас дані про фінансові результати, грошові потоки та прибутковість подані в кількох версіях і не мають єдиного періоду, валюти та правила відображення плану, факту й коригувань, тому їх не можна безпечно використовувати як одну фінансову базу. Стратегічні цілі сформульовані на 2026 і 2035 роки, але більшість із них не має конкретних проміжних показників, бюджету, відповідальних і розрахунку необхідних потужностей. Організаційна модель також недостатньо описана: відомий загальний діапазон 11–50 працівників, але детальна таблиця містить інший обсяг FTE та показує значну потребу в додаткових монтажниках, проєктанті й інженері. Окремий ризик для подальшої діагностики — змішування актуальних даних Солар Вест Буд із шаблонними матеріалами для харчового виробництва, через що частина показників і рекомендацій не належить до цього бізнесу. Отже, контекст придатний для базового профілю, але перед глибшою оцінкою потрібно спочатку синхронізувати фінанси, клієнтську структуру, потужності та стратегічні припущення.&quot;,
+  &quot;dimension_scores&quot;: [
+    {
+      &quot;dimension&quot;: &quot;Ідентичність і бізнес-модель&quot;,
+      &quot;score&quot;: 82,
+      &quot;evidence&quot;: [
+        &quot;Вказано офіційну назву ТзОВ «Солар Вест Буд», бренд Solar West і рік створення — 2024.&quot;,
+        &quot;Описано модель «під ключ»: проєктування, монтаж, сервіс і продаж обладнання.&quot;,
+        &quot;Визначено роботу на ринку відновлюваної енергетики в Україні для B2B і B2C.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Не описано юридичну структуру, частки власників, взаємодію з Volwest Group та межі відповідальності між компаніями.&quot;,
+        &quot;Не визначено, який напрям є основним за виручкою і стратегічним пріоритетом: обладнання, монтаж чи сервіс.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Продукти, послуги та ціннісна пропозиція&quot;,
+      &quot;score&quot;: 76,
+      &quot;evidence&quot;: [
+        &quot;Є перелік основних товарів: панелі, інвертори, кабелі, кріплення, автоматика та акумулятори.&quot;,
+        &quot;Описано три типи СЕС: мережеві, гібридні та автономні.&quot;,
+        &quot;Документи містять приклади готових рішень потужністю від 10 до 100 кВт і опис етапів реалізації проєкту.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У портфелі немає SKU-кодів, актуальних цін, собівартості, маржі та мінімально допустимої ціни за товаром і каналом.&quot;,
+        &quot;Не визначено стандартизований склад сервісного пакета, гарантій, строків реагування та умов післяпродажного обслуговування.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Клієнти, ринки та канали&quot;,
+      &quot;score&quot;: 62,
+      &quot;evidence&quot;: [
+        &quot;Названо три групи клієнтів: юридичні особи, приватні клієнти та монтажники, яким потрібне обладнання.&quot;,
+        &quot;Визначено канали продажу: сайт, інтернет-продажі, відділ продажів і соціальні мережі.&quot;,
+        &quot;У таблицях є приклади B2B, B2C та внутрішніх клієнтів, а також дані щодо двох регіонів із часткою менше 1% і позитивним трендом.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає повної сегментації клієнтів за потребою, розміром проєкту, регіоном, маржинальністю та потенціалом повторних продажів.&quot;,
+        &quot;Не визначено розмір ринку, цільову частку, конкурентну позицію та пріоритетні регіони.&quot;,
+        &quot;Відсутні дані CRM: обсяг воронки, конверсії, тривалість угоди, CAC, LTV та причини програшу угод.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Фінанси та економіка напрямів&quot;,
+      &quot;score&quot;: 50,
+      &quot;evidence&quot;: [
+        &quot;Наявні форми P&amp;L, cash flow і таблиця доходів та собівартості окремих об’єктів.&quot;,
+        &quot;У проектній таблиці за окремими об’єктами зазначені доходи, собівартість і прибуток; націнка за наведеними прикладами коливається приблизно від 8% до 33%.&quot;,
+        &quot;Керівництву, за формою, доступні дані про продажі, грошовий потік, операційні показники, прибуток і маржу.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Фінансові файли містять різні версії 2024–2025 років із різними сумами, планами, фактами, коригуваннями та прогнозами.&quot;,
+        &quot;Не визначено, які суми є бухгалтерськими, управлінськими, касовими, проектними або консолідованими.&quot;,
+        &quot;Немає узгодженої економіки за напрямами, каналами, клієнтами та типами СЕС.&quot;,
+        &quot;Не заповнені аркуші PnL_Історія, Unit_Економіка, Гроші_Інвестиції та Припущення_сценаріїв.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Організаційна структура та операційні потужності&quot;,
+      &quot;score&quot;: 55,
+      &quot;evidence&quot;: [
+        &quot;Зазначено діапазон чисельності 11–50 працівників і наведено окремий розподіл FTE за функціями.&quot;,
+        &quot;У таблиці FTE вказано 5 монтажників фактично при потребі 10, одного менеджера-проєктанта при потребі 2 та потребу в інженері.&quot;,
+        &quot;Серед основних обмежень названо людей, компетенції, час, технології та бюджет.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Немає узгодженої фактичної чисельності: загальний діапазон 11–50 не збігається з деталізованою таблицею FTE.&quot;,
+        &quot;Не описані ролі, повноваження, процеси передачі проєкту від продажу до монтажу та відповідальні за результат.&quot;,
+        &quot;Не визначена фактична монтажна потужність у кВт/місяць, завантаження бригад, частка субпідрядників і резерв на піковий сезон.&quot;,
+        &quot;Не заповнені реєстри компетенцій, ризиків, операційних KPI та планів розвитку персоналу.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Стратегія та цілі&quot;,
+      &quot;score&quot;: 63,
+      &quot;evidence&quot;: [
+        &quot;Сформульовано ціль перейти від крихкої стратегії до стабільної та масштабованої до 31.12.2026.&quot;,
+        &quot;Є кількісна ціль довести продажі інтернет-магазину до 30% обороту до 31.12.2026.&quot;,
+        &quot;Описано довгострокове бачення стати одним із топ-5 інтеграторів сонячних рішень в Україні до 2035 року.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;Для ключової цілі стабільного грошового потоку не вказано конкретних значень виручки, EBITDA, запасу ліквідності або частки повторних доходів.&quot;,
+        &quot;Немає річного плану на 2025–2026 роки з бюджетом, ресурсами, відповідальними та контрольними точками.&quot;,
+        &quot;Не зафіксовано стратегічні припущення щодо ринку, цін на обладнання, курсу валют, фінансування та кадрової спроможності.&quot;
+      ]
+    },
+    {
+      &quot;dimension&quot;: &quot;Повнота та надійність управлінського контексту&quot;,
+      &quot;score&quot;: 38,
+      &quot;evidence&quot;: [
+        &quot;Завантажено значний обсяг матеріалів: презентації, проектні розрахунки, P&amp;L, cash flow, список клієнтів і постачальників.&quot;,
+        &quot;Частина таблиць має правильну структуру для подальшого заповнення.&quot;
+      ],
+      &quot;gaps&quot;: [
+        &quot;У багатьох аркушах відсутні фактичні значення, власники показників, періодичність і цілі.&quot;,
+        &quot;Частина матеріалів містить приклади для харчового виробництва: соуси, хрін, скляна тара, OEE харчової лінії та FMCG-бенчмарки.&quot;,
+        &quot;Фінансові та cash flow-форми представлені в кількох варіантах із різними підписами, структурами та сумами.&quot;,
+        &quot;Не визначено єдине джерело правдивих даних для управлінських рішень.&quot;
+      ]
+    }
+  ],
+  &quot;strengths&quot;: [
+    &quot;Чітко визначена спеціалізація: сонячні електростанції та комплексні рішення «під ключ».&quot;,
+    &quot;Поєднано кілька джерел доходу: продаж обладнання, монтаж, проєктування та сервіс.&quot;,
+    &quot;Описані основні клієнтські групи, канали продажу, ключові постачальники та приклади реалізованих об’єктів.&quot;,
+    &quot;Є довгострокове бачення розвитку та одна конкретна ціль щодо частки інтернет-магазину в обороті.&quot;,
+    &quot;Наявні первинні управлінські матеріали для переходу до системного обліку: P&amp;L, cash flow, проектні розрахунки, FTE та перелік постачальників.&quot;
+  ],
+  &quot;weaknesses&quot;: [
+    &quot;Фінансові дані не зведені в одну узгоджену систему та не дозволяють надійно порівнювати виручку, прибуток і грошовий потік.&quot;,
+    &quot;Не видно фактичної економіки окремих напрямів, клієнтів і каналів після врахування логістики, зарплат, гарантійних витрат і фінансування.&quot;,
+    &quot;Клієнтська база описана переважно списком назв без повної інформації про договори, строки оплати, повторні продажі та концентрацію.&quot;,
+    &quot;Операційна спроможність і кадрова модель не відповідають заявленій амбіції масштабування без додаткового планування.&quot;,
+    &quot;Стратегічний паспорт частково заповнений шаблонними матеріалами, що не належать до сонячної енергетики.&quot;
+  ],
+  &quot;red_flags&quot;: [
+    {
+      &quot;signal&quot;: &quot;У завантажених документах змішані дані Солар Вест Буд і шаблонні матеріали для харчового виробництва.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Таке змішування може призвести до використання нерелевантних KPI, бенчмарків і управлінських висновків під час подальшої діагностики.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Фінансові форми за 2024–2025 роки мають різні версії, суми та структуру плану, факту, коригувань і прогнозу.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Без узгодження неможливо достовірно визначити реальну виручку, прибутковість, потребу в оборотному капіталі та динаміку бізнесу.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;У cash flow зафіксовані значні надходження фінансових позик, а нестача оборотних коштів прямо названа серед основних проблем.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Зростання може підтримуватися зовнішнім фінансуванням, але без графіка повернення, вартості коштів і прогнозу ліквідності неможливо оцінити стійкість грошового потоку.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Заявлена кадрова потреба суттєво перевищує фактичну за ключовими монтажними та інженерними ролями.&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;why_it_matters&quot;: &quot;Дефіцит монтажників, проєктантів та інженерної компетенції може обмежити виконання замовлень і масштабування навіть за наявності попиту.&quot;
+    },
+    {
+      &quot;signal&quot;: &quot;Комерційні матеріали містять твердження про економію до 80%, окупність 15–20 місяців і енергетичну незалежність без прив’язки до конкретних умов розрахунку.&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;why_it_matters&quot;: &quot;Без методики, періоду, тарифів, типу станції та фактичних кейсів такі твердження складно використовувати як перевірені докази для продажів і стратегії.&quot;
+    }
+  ],
+  &quot;contradictions&quot;: [
+    &quot;У формі вказано статус «стійко прибуткова», але у фінансових формах є окремі місяці з від’ємним EBITDA або чистим результатом; це може бути сезонністю чи різницею між планом і фактом, але пояснення не наведено.&quot;,
+    &quot;У формі заявлений разовий продаж як основний спосіб заробітку, водночас у пропозиції є сервісне обслуговування, а стратегічна ціль передбачає стабільні та зростаючі джерела грошового потоку.&quot;,
+    &quot;Діапазон обороту вказано в доларах США, тоді як завантажені фінансові файли подані в гривнях і містять різні періоди та варіанти підсумків; база для порівняння не визначена.&quot;,
+    &quot;У таблиці клієнтів SPAR / Наш Край віднесено до внутрішнього каналу та пов’язано з Volwest Group, тоді як у формі SPAR зазначено як зовнішнього критично важливого партнера; характер взаємозв’язку не пояснено.&quot;,
+    &quot;Заявлено роботу по всій Україні, але фактичні регіональні дані заповнені лише для Волинської та Чернігівської областей; це не обов’язково суперечність, але підтвердження загальноукраїнського охоплення відсутнє.&quot;
+  ],
+  &quot;data_gaps&quot;: [
+    &quot;Єдина узгоджена фінансова база за місяцями: виручка без ПДВ, собівартість, валова маржа, операційні витрати, EBITDA, чистий прибуток і cash flow.&quot;,
+    &quot;Правила обліку для розмежування бухгалтерських, управлінських, касових, проектних і консолідованих даних.&quot;,
+    &quot;Фактичний оборот за напрямами: обладнання, монтаж, проєктування, сервіс та інтернет-магазин.&quot;,
+    &quot;Розподіл виручки, маржі та дебіторської заборгованості за клієнтами й каналами.&quot;,
+    &quot;Повний реєстр проєктів: потужність у кВт/МВт, статус, план-факт строків, бюджет, маржа, гарантійні зобов’язання та сервісний потенціал.&quot;,
+    &quot;Дані про воронку продажів, конверсії, тривалість угод, джерела лідів, CAC, LTV і повторні покупки.&quot;,
+    &quot;Фактична чисельність працівників, залучені підрядники, ролі, повноваження та відповідальні за ключові процеси.&quot;,
+    &quot;Монтажна потужність у кВт/місяць, завантаження бригад, сезонність і обмеження постачання.&quot;,
+    &quot;Умови договорів із ключовими клієнтами та постачальниками: строки оплати, передоплати, гарантії, штрафи, lead time і валютні ризики.&quot;,
+    &quot;Підтвердження дозволів, сертифікацій, страхування, охорони праці, гарантійної політики та імпортних процедур.&quot;
+  ],
+  &quot;recommendations&quot;: [
+    {
+      &quot;action&quot;: &quot;Створити єдину управлінську фінансову таблицю за 2024–2025 роки та провести звірку P&amp;L, cash flow і проектних даних.&quot;,
+      &quot;why&quot;: &quot;У поточних файлах різні суми, періоди та способи відображення плану, факту й коригувань.&quot;,
+      &quot;expected_result&quot;: &quot;Єдина цифра виручки, прибутку, грошового потоку та потреби в оборотному капіталі; фінансові дані можна буде використовувати для діагностики.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор спільно з власником&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Розкласти виручку та маржу за чотирма напрямами: обладнання, монтаж, проєктування і сервіс, а також за B2B, B2C та інтернет-магазином.&quot;,
+      &quot;why&quot;: &quot;Зараз неможливо визначити, які напрями формують основний результат і де виникає втрата маржі.&quot;,
+      &quot;expected_result&quot;: &quot;Матриця напрям × канал із виручкою, собівартістю, валовою маржею, операційними витратами та грошовим внеском.&quot;,
+      &quot;owner_role&quot;: &quot;Фінансовий директор і керівник продажів&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Оновити стратегічний план на 2026 рік у форматі 5–7 вимірюваних цілей із бюджетом, відповідальним, квартальними етапами та критеріями успіху.&quot;,
+      &quot;why&quot;: &quot;Поточні цілі містять загальний напрям і окремі показники, але не показують, які ресурси потрібні для масштабування.&quot;,
+      &quot;expected_result&quot;: &quot;Керівництво матиме узгоджений план щодо виручки, EBITDA, частки інтернет-магазину, сервісних доходів, монтажних потужностей і ліквідності.&quot;,
+      &quot;owner_role&quot;: &quot;Власник спільно з фінансовим директором і керівником операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Затвердити фактичну організаційну структуру та план кадрового забезпечення: монтажники, проєктанти, інженер, сервіс і резерв на піки.&quot;,
+      &quot;why&quot;: &quot;У документах зафіксовано нестачу кваліфікованих людей і залежність від ключових працівників, але немає плану закриття цих ризиків.&quot;,
+      &quot;expected_result&quot;: &quot;Підтверджена монтажна спроможність у кВт/місяць, визначені критичні ролі, строки найму або підрядників і резервні відповідальні.&quot;,
+      &quot;owner_role&quot;: &quot;Власник і керівник операцій&quot;,
+      &quot;deadline&quot;: &quot;30 днів&quot;
+    },
+    {
+      &quot;action&quot;: &quot;Очистити паспорт організації від матеріалів харчового виробництва та заповнити мінімальний реєстр проєктів, клієнтів, постачальників, ризиків і KPI саме для сонячної енергетики.&quot;,
+      &quot;why&quot;: &quot;Нерелевантні шаблони знижують точність подальшої діагностики та створюють ризик неправильних управлінських висновків.&quot;,
+      &quot;expected_result&quot;: &quot;Актуальний паспорт із перевіреними даними, відповідальними особами, періодичністю оновлення та зрозумілим статусом кожного показника.&quot;,
+      &quot;owner_role&quot;: &quot;Керівник операцій або призначений бізнес-аналітик&quot;,
+      &quot;deadline&quot;: &quot;7 днів&quot;
+    }
+  ],
+  &quot;manager_summary&quot;: &quot;Профіль Солар Вест Буд уже зрозумілий на рівні бізнес-моделі, продуктів і клієнтів. Основне обмеження — не відсутність інформації, а її неузгодженість: різні фінансові форми, неповна операційна статистика та змішані шаблони з іншої галузі. Перед оцінкою ефективності організації потрібно синхронізувати фінансову базу, структуру доходів, кадрові потужності та цілі на 2026 рік.&quot;
+}</pre></div></details>
+<details><summary>Provider raw usage</summary><div class="details-body"><pre>{
+  &quot;input_tokens&quot;: 199529,
+  &quot;input_tokens_details&quot;: {
+    &quot;cache_write_tokens&quot;: 0,
+    &quot;cached_tokens&quot;: 0
+  },
+  &quot;output_tokens&quot;: 7954,
+  &quot;output_tokens_details&quot;: {
+    &quot;reasoning_tokens&quot;: 2910
+  },
+  &quot;total_tokens&quot;: 207483
+}</pre></div></details>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;resp_054f332775c55fdc006a913671b2a087d2aac4e24fc2d57508&quot;,
+  &quot;created_at&quot;: 1787901554.0,
+  &quot;error&quot;: null,
+  &quot;incomplete_details&quot;: null,
+  &quot;instructions&quot;: null,
+  &quot;metadata&quot;: {},
+  &quot;model&quot;: &quot;gpt-5.6-luna&quot;,
+  &quot;object&quot;: &quot;response&quot;,
+  &quot;output&quot;: [
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a91367fab7087d2a3c8504bfa9392ae&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a913687228c87d285a05fc2347c4e2f&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a91368e1d5087d2b89ee35ed5a5de98&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a913695b77887d2bb8e50d83802ac80&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a91369c462887d2b2ac2a15d9063239&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_054f332775c55fdc006a9136a1fd6087d2b3946435193666b9&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;msg_054f332775c55fdc006a9136a5f08c87d2b3c89cf9f574641f&quot;,
+      &quot;content&quot;: [
+        {
+          &quot;annotations&quot;: [],
+          &quot;text&quot;: &quot;{\n  \&quot;module_code\&quot;: \&quot;ORG\&quot;,\n  \&quot;module_name\&quot;: \&quot;Профіль організації\&quot;,\n  \&quot;analysis_status\&quot;: \&quot;limited\&quot;,\n  \&quot;score\&quot;: 61,\n  \&quot;confidence\&quot;: 74,\n  \&quot;headline\&quot;: \&quot;Солар Вест Буд має достатньо зрозумілий профіль бізнесу, але фінансові, стратегічні та операційні дані ще не зведені в єдину узгоджену картину.\&quot;,\n  \&quot;diagnosis\&quot;: \&quot;Солар Вест Буд — молодий бізнес у сфері сонячної енергетики, який поєднує продаж обладнання, проєктування, монтаж і сервіс для B2B та B2C-клієнтів по Україні. Основна пропозиція та цінність для клієнта описані зрозуміло: зниження витрат на електроенергію та підвищення енергонезалежності. Організація демонструє ознаки швидкого зростання: у документах зазначено понад 1 МВт встановлених панелей за перший рік, зростання продажів і наявність кількох реалізованих об’єктів. Водночас дані про фінансові результати, грошові потоки та прибутковість подані в кількох версіях і не мають єдиного періоду, валюти та правила відображення плану, факту й коригувань, тому їх не можна безпечно використовувати як одну фінансову базу. Стратегічні цілі сформульовані на 2026 і 2035 роки, але більшість із них не має конкретних проміжних показників, бюджету, відповідальних і розрахунку необхідних потужностей. Організаційна модель також недостатньо описана: відомий загальний діапазон 11–50 працівників, але детальна таблиця містить інший обсяг FTE та показує значну потребу в додаткових монтажниках, проєктанті й інженері. Окремий ризик для подальшої діагностики — змішування актуальних даних Солар Вест Буд із шаблонними матеріалами для харчового виробництва, через що частина показників і рекомендацій не належить до цього бізнесу. Отже, контекст придатний для базового профілю, але перед глибшою оцінкою потрібно спочатку синхронізувати фінанси, клієнтську структуру, потужності та стратегічні припущення.\&quot;,\n  \&quot;dimension_scores\&quot;: [\n    {\n      \&quot;dimension\&quot;: \&quot;Ідентичність і бізнес-модель\&quot;,\n      \&quot;score\&quot;: 82,\n      \&quot;evidence\&quot;: [\n        \&quot;Вказано офіційну назву ТзОВ «Солар Вест Буд», бренд Solar West і рік створення — 2024.\&quot;,\n        \&quot;Описано модель «під ключ»: проєктування, монтаж, сервіс і продаж обладнання.\&quot;,\n        \&quot;Визначено роботу на ринку відновлюваної енергетики в Україні для B2B і B2C.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Не описано юридичну структуру, частки власників, взаємодію з Volwest Group та межі відповідальності між компаніями.\&quot;,\n        \&quot;Не визначено, який напрям є основним за виручкою і стратегічним пріоритетом: обладнання, монтаж чи сервіс.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Продукти, послуги та ціннісна пропозиція\&quot;,\n      \&quot;score\&quot;: 76,\n      \&quot;evidence\&quot;: [\n        \&quot;Є перелік основних товарів: панелі, інвертори, кабелі, кріплення, автоматика та акумулятори.\&quot;,\n        \&quot;Описано три типи СЕС: мережеві, гібридні та автономні.\&quot;,\n        \&quot;Документи містять приклади готових рішень потужністю від 10 до 100 кВт і опис етапів реалізації проєкту.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;У портфелі немає SKU-кодів, актуальних цін, собівартості, маржі та мінімально допустимої ціни за товаром і каналом.\&quot;,\n        \&quot;Не визначено стандартизований склад сервісного пакета, гарантій, строків реагування та умов післяпродажного обслуговування.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Клієнти, ринки та канали\&quot;,\n      \&quot;score\&quot;: 62,\n      \&quot;evidence\&quot;: [\n        \&quot;Названо три групи клієнтів: юридичні особи, приватні клієнти та монтажники, яким потрібне обладнання.\&quot;,\n        \&quot;Визначено канали продажу: сайт, інтернет-продажі, відділ продажів і соціальні мережі.\&quot;,\n        \&quot;У таблицях є приклади B2B, B2C та внутрішніх клієнтів, а також дані щодо двох регіонів із часткою менше 1% і позитивним трендом.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає повної сегментації клієнтів за потребою, розміром проєкту, регіоном, маржинальністю та потенціалом повторних продажів.\&quot;,\n        \&quot;Не визначено розмір ринку, цільову частку, конкурентну позицію та пріоритетні регіони.\&quot;,\n        \&quot;Відсутні дані CRM: обсяг воронки, конверсії, тривалість угоди, CAC, LTV та причини програшу угод.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Фінанси та економіка напрямів\&quot;,\n      \&quot;score\&quot;: 50,\n      \&quot;evidence\&quot;: [\n        \&quot;Наявні форми P&amp;L, cash flow і таблиця доходів та собівартості окремих об’єктів.\&quot;,\n        \&quot;У проектній таблиці за окремими об’єктами зазначені доходи, собівартість і прибуток; націнка за наведеними прикладами коливається приблизно від 8% до 33%.\&quot;,\n        \&quot;Керівництву, за формою, доступні дані про продажі, грошовий потік, операційні показники, прибуток і маржу.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Фінансові файли містять різні версії 2024–2025 років із різними сумами, планами, фактами, коригуваннями та прогнозами.\&quot;,\n        \&quot;Не визначено, які суми є бухгалтерськими, управлінськими, касовими, проектними або консолідованими.\&quot;,\n        \&quot;Немає узгодженої економіки за напрямами, каналами, клієнтами та типами СЕС.\&quot;,\n        \&quot;Не заповнені аркуші PnL_Історія, Unit_Економіка, Гроші_Інвестиції та Припущення_сценаріїв.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Організаційна структура та операційні потужності\&quot;,\n      \&quot;score\&quot;: 55,\n      \&quot;evidence\&quot;: [\n        \&quot;Зазначено діапазон чисельності 11–50 працівників і наведено окремий розподіл FTE за функціями.\&quot;,\n        \&quot;У таблиці FTE вказано 5 монтажників фактично при потребі 10, одного менеджера-проєктанта при потребі 2 та потребу в інженері.\&quot;,\n        \&quot;Серед основних обмежень названо людей, компетенції, час, технології та бюджет.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Немає узгодженої фактичної чисельності: загальний діапазон 11–50 не збігається з деталізованою таблицею FTE.\&quot;,\n        \&quot;Не описані ролі, повноваження, процеси передачі проєкту від продажу до монтажу та відповідальні за результат.\&quot;,\n        \&quot;Не визначена фактична монтажна потужність у кВт/місяць, завантаження бригад, частка субпідрядників і резерв на піковий сезон.\&quot;,\n        \&quot;Не заповнені реєстри компетенцій, ризиків, операційних KPI та планів розвитку персоналу.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Стратегія та цілі\&quot;,\n      \&quot;score\&quot;: 63,\n      \&quot;evidence\&quot;: [\n        \&quot;Сформульовано ціль перейти від крихкої стратегії до стабільної та масштабованої до 31.12.2026.\&quot;,\n        \&quot;Є кількісна ціль довести продажі інтернет-магазину до 30% обороту до 31.12.2026.\&quot;,\n        \&quot;Описано довгострокове бачення стати одним із топ-5 інтеграторів сонячних рішень в Україні до 2035 року.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;Для ключової цілі стабільного грошового потоку не вказано конкретних значень виручки, EBITDA, запасу ліквідності або частки повторних доходів.\&quot;,\n        \&quot;Немає річного плану на 2025–2026 роки з бюджетом, ресурсами, відповідальними та контрольними точками.\&quot;,\n        \&quot;Не зафіксовано стратегічні припущення щодо ринку, цін на обладнання, курсу валют, фінансування та кадрової спроможності.\&quot;\n      ]\n    },\n    {\n      \&quot;dimension\&quot;: \&quot;Повнота та надійність управлінського контексту\&quot;,\n      \&quot;score\&quot;: 38,\n      \&quot;evidence\&quot;: [\n        \&quot;Завантажено значний обсяг матеріалів: презентації, проектні розрахунки, P&amp;L, cash flow, список клієнтів і постачальників.\&quot;,\n        \&quot;Частина таблиць має правильну структуру для подальшого заповнення.\&quot;\n      ],\n      \&quot;gaps\&quot;: [\n        \&quot;У багатьох аркушах відсутні фактичні значення, власники показників, періодичність і цілі.\&quot;,\n        \&quot;Частина матеріалів містить приклади для харчового виробництва: соуси, хрін, скляна тара, OEE харчової лінії та FMCG-бенчмарки.\&quot;,\n        \&quot;Фінансові та cash flow-форми представлені в кількох варіантах із різними підписами, структурами та сумами.\&quot;,\n        \&quot;Не визначено єдине джерело правдивих даних для управлінських рішень.\&quot;\n      ]\n    }\n  ],\n  \&quot;strengths\&quot;: [\n    \&quot;Чітко визначена спеціалізація: сонячні електростанції та комплексні рішення «під ключ».\&quot;,\n    \&quot;Поєднано кілька джерел доходу: продаж обладнання, монтаж, проєктування та сервіс.\&quot;,\n    \&quot;Описані основні клієнтські групи, канали продажу, ключові постачальники та приклади реалізованих об’єктів.\&quot;,\n    \&quot;Є довгострокове бачення розвитку та одна конкретна ціль щодо частки інтернет-магазину в обороті.\&quot;,\n    \&quot;Наявні первинні управлінські матеріали для переходу до системного обліку: P&amp;L, cash flow, проектні розрахунки, FTE та перелік постачальників.\&quot;\n  ],\n  \&quot;weaknesses\&quot;: [\n    \&quot;Фінансові дані не зведені в одну узгоджену систему та не дозволяють надійно порівнювати виручку, прибуток і грошовий потік.\&quot;,\n    \&quot;Не видно фактичної економіки окремих напрямів, клієнтів і каналів після врахування логістики, зарплат, гарантійних витрат і фінансування.\&quot;,\n    \&quot;Клієнтська база описана переважно списком назв без повної інформації про договори, строки оплати, повторні продажі та концентрацію.\&quot;,\n    \&quot;Операційна спроможність і кадрова модель не відповідають заявленій амбіції масштабування без додаткового планування.\&quot;,\n    \&quot;Стратегічний паспорт частково заповнений шаблонними матеріалами, що не належать до сонячної енергетики.\&quot;\n  ],\n  \&quot;red_flags\&quot;: [\n    {\n      \&quot;signal\&quot;: \&quot;У завантажених документах змішані дані Солар Вест Буд і шаблонні матеріали для харчового виробництва.\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Таке змішування може призвести до використання нерелевантних KPI, бенчмарків і управлінських висновків під час подальшої діагностики.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Фінансові форми за 2024–2025 роки мають різні версії, суми та структуру плану, факту, коригувань і прогнозу.\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Без узгодження неможливо достовірно визначити реальну виручку, прибутковість, потребу в оборотному капіталі та динаміку бізнесу.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;У cash flow зафіксовані значні надходження фінансових позик, а нестача оборотних коштів прямо названа серед основних проблем.\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Зростання може підтримуватися зовнішнім фінансуванням, але без графіка повернення, вартості коштів і прогнозу ліквідності неможливо оцінити стійкість грошового потоку.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Заявлена кадрова потреба суттєво перевищує фактичну за ключовими монтажними та інженерними ролями.\&quot;,\n      \&quot;severity\&quot;: \&quot;high\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Дефіцит монтажників, проєктантів та інженерної компетенції може обмежити виконання замовлень і масштабування навіть за наявності попиту.\&quot;\n    },\n    {\n      \&quot;signal\&quot;: \&quot;Комерційні матеріали містять твердження про економію до 80%, окупність 15–20 місяців і енергетичну незалежність без прив’язки до конкретних умов розрахунку.\&quot;,\n      \&quot;severity\&quot;: \&quot;medium\&quot;,\n      \&quot;why_it_matters\&quot;: \&quot;Без методики, періоду, тарифів, типу станції та фактичних кейсів такі твердження складно використовувати як перевірені докази для продажів і стратегії.\&quot;\n    }\n  ],\n  \&quot;contradictions\&quot;: [\n    \&quot;У формі вказано статус «стійко прибуткова», але у фінансових формах є окремі місяці з від’ємним EBITDA або чистим результатом; це може бути сезонністю чи різницею між планом і фактом, але пояснення не наведено.\&quot;,\n    \&quot;У формі заявлений разовий продаж як основний спосіб заробітку, водночас у пропозиції є сервісне обслуговування, а стратегічна ціль передбачає стабільні та зростаючі джерела грошового потоку.\&quot;,\n    \&quot;Діапазон обороту вказано в доларах США, тоді як завантажені фінансові файли подані в гривнях і містять різні періоди та варіанти підсумків; база для порівняння не визначена.\&quot;,\n    \&quot;У таблиці клієнтів SPAR / Наш Край віднесено до внутрішнього каналу та пов’язано з Volwest Group, тоді як у формі SPAR зазначено як зовнішнього критично важливого партнера; характер взаємозв’язку не пояснено.\&quot;,\n    \&quot;Заявлено роботу по всій Україні, але фактичні регіональні дані заповнені лише для Волинської та Чернігівської областей; це не обов’язково суперечність, але підтвердження загальноукраїнського охоплення відсутнє.\&quot;\n  ],\n  \&quot;data_gaps\&quot;: [\n    \&quot;Єдина узгоджена фінансова база за місяцями: виручка без ПДВ, собівартість, валова маржа, операційні витрати, EBITDA, чистий прибуток і cash flow.\&quot;,\n    \&quot;Правила обліку для розмежування бухгалтерських, управлінських, касових, проектних і консолідованих даних.\&quot;,\n    \&quot;Фактичний оборот за напрямами: обладнання, монтаж, проєктування, сервіс та інтернет-магазин.\&quot;,\n    \&quot;Розподіл виручки, маржі та дебіторської заборгованості за клієнтами й каналами.\&quot;,\n    \&quot;Повний реєстр проєктів: потужність у кВт/МВт, статус, план-факт строків, бюджет, маржа, гарантійні зобов’язання та сервісний потенціал.\&quot;,\n    \&quot;Дані про воронку продажів, конверсії, тривалість угод, джерела лідів, CAC, LTV і повторні покупки.\&quot;,\n    \&quot;Фактична чисельність працівників, залучені підрядники, ролі, повноваження та відповідальні за ключові процеси.\&quot;,\n    \&quot;Монтажна потужність у кВт/місяць, завантаження бригад, сезонність і обмеження постачання.\&quot;,\n    \&quot;Умови договорів із ключовими клієнтами та постачальниками: строки оплати, передоплати, гарантії, штрафи, lead time і валютні ризики.\&quot;,\n    \&quot;Підтвердження дозволів, сертифікацій, страхування, охорони праці, гарантійної політики та імпортних процедур.\&quot;\n  ],\n  \&quot;recommendations\&quot;: [\n    {\n      \&quot;action\&quot;: \&quot;Створити єдину управлінську фінансову таблицю за 2024–2025 роки та провести звірку P&amp;L, cash flow і проектних даних.\&quot;,\n      \&quot;why\&quot;: \&quot;У поточних файлах різні суми, періоди та способи відображення плану, факту й коригувань.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Єдина цифра виручки, прибутку, грошового потоку та потреби в оборотному капіталі; фінансові дані можна буде використовувати для діагностики.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Фінансовий директор спільно з власником\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Розкласти виручку та маржу за чотирма напрямами: обладнання, монтаж, проєктування і сервіс, а також за B2B, B2C та інтернет-магазином.\&quot;,\n      \&quot;why\&quot;: \&quot;Зараз неможливо визначити, які напрями формують основний результат і де виникає втрата маржі.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Матриця напрям × канал із виручкою, собівартістю, валовою маржею, операційними витратами та грошовим внеском.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Фінансовий директор і керівник продажів\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Оновити стратегічний план на 2026 рік у форматі 5–7 вимірюваних цілей із бюджетом, відповідальним, квартальними етапами та критеріями успіху.\&quot;,\n      \&quot;why\&quot;: \&quot;Поточні цілі містять загальний напрям і окремі показники, але не показують, які ресурси потрібні для масштабування.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Керівництво матиме узгоджений план щодо виручки, EBITDA, частки інтернет-магазину, сервісних доходів, монтажних потужностей і ліквідності.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник спільно з фінансовим директором і керівником операцій\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Затвердити фактичну організаційну структуру та план кадрового забезпечення: монтажники, проєктанти, інженер, сервіс і резерв на піки.\&quot;,\n      \&quot;why\&quot;: \&quot;У документах зафіксовано нестачу кваліфікованих людей і залежність від ключових працівників, але немає плану закриття цих ризиків.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Підтверджена монтажна спроможність у кВт/місяць, визначені критичні ролі, строки найму або підрядників і резервні відповідальні.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Власник і керівник операцій\&quot;,\n      \&quot;deadline\&quot;: \&quot;30 днів\&quot;\n    },\n    {\n      \&quot;action\&quot;: \&quot;Очистити паспорт організації від матеріалів харчового виробництва та заповнити мінімальний реєстр проєктів, клієнтів, постачальників, ризиків і KPI саме для сонячної енергетики.\&quot;,\n      \&quot;why\&quot;: \&quot;Нерелевантні шаблони знижують точність подальшої діагностики та створюють ризик неправильних управлінських висновків.\&quot;,\n      \&quot;expected_result\&quot;: \&quot;Актуальний паспорт із перевіреними даними, відповідальними особами, періодичністю оновлення та зрозумілим статусом кожного показника.\&quot;,\n      \&quot;owner_role\&quot;: \&quot;Керівник операцій або призначений бізнес-аналітик\&quot;,\n      \&quot;deadline\&quot;: \&quot;7 днів\&quot;\n    }\n  ],\n  \&quot;manager_summary\&quot;: \&quot;Профіль Солар Вест Буд уже зрозумілий на рівні бізнес-моделі, продуктів і клієнтів. Основне обмеження — не відсутність інформації, а її неузгодженість: різні фінансові форми, неповна операційна статистика та змішані шаблони з іншої галузі. Перед оцінкою ефективності організації потрібно синхронізувати фінансову базу, структуру доходів, кадрові потужності та цілі на 2026 рік.\&quot;\n}&quot;,
+          &quot;type&quot;: &quot;output_text&quot;,
+          &quot;logprobs&quot;: []
+        }
+      ],
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;type&quot;: &quot;message&quot;,
+      &quot;phase&quot;: &quot;final_answer&quot;
+    }
+  ],
+  &quot;parallel_tool_calls&quot;: true,
+  &quot;temperature&quot;: 1.0,
+  &quot;tool_choice&quot;: &quot;auto&quot;,
+  &quot;tools&quot;: [],
+  &quot;top_p&quot;: 0.98,
+  &quot;background&quot;: true,
+  &quot;completed_at&quot;: 1787901657.0,
+  &quot;conversation&quot;: null,
+  &quot;max_output_tokens&quot;: null,
+  &quot;max_tool_calls&quot;: null,
+  &quot;moderation&quot;: null,
+  &quot;previous_response_id&quot;: null,
+  &quot;prompt&quot;: null,
+  &quot;prompt_cache_key&quot;: null,
+  &quot;prompt_cache_options&quot;: null,
+  &quot;prompt_cache_retention&quot;: &quot;24h&quot;,
+  &quot;reasoning&quot;: {
+    &quot;context&quot;: &quot;all_turns&quot;,
+    &quot;effort&quot;: &quot;high&quot;,
+    &quot;generate_summary&quot;: null,
+    &quot;mode&quot;: &quot;standard&quot;,
+    &quot;summary&quot;: null
+  },
+  &quot;safety_identifier&quot;: null,
+  &quot;service_tier&quot;: &quot;default&quot;,
+  &quot;status&quot;: &quot;completed&quot;,
+  &quot;text&quot;: {
+    &quot;format&quot;: {
+      &quot;type&quot;: &quot;text&quot;
+    },
+    &quot;verbosity&quot;: &quot;medium&quot;
+  },
+  &quot;top_logprobs&quot;: 0,
+  &quot;truncation&quot;: &quot;disabled&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 199529,
+    &quot;input_tokens_details&quot;: {
+      &quot;cache_write_tokens&quot;: 0,
+      &quot;cached_tokens&quot;: 0
+    },
+    &quot;output_tokens&quot;: 7954,
+    &quot;output_tokens_details&quot;: {
+      &quot;reasoning_tokens&quot;: 2910
+    },
+    &quot;total_tokens&quot;: 207483
+  },
+  &quot;user&quot;: null,
+  &quot;billing&quot;: {
+    &quot;payer&quot;: &quot;developer&quot;
+  },
+  &quot;frequency_penalty&quot;: 0.0,
+  &quot;presence_penalty&quot;: 0.0,
+  &quot;store&quot;: true,
+  &quot;tool_usage&quot;: {
+    &quot;image_gen&quot;: {
+      &quot;input_tokens&quot;: 0,
+      &quot;input_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;output_tokens&quot;: 0,
+      &quot;output_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;total_tokens&quot;: 0
+    },
+    &quot;web_search&quot;: {
+      &quot;num_requests&quot;: 0
+    }
+  }
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Роль: ти — ШІ-аналітик SITCAR System. Проаналізуй відповіді менеджера в цьому розділі та сформуй зрозумілий діагноз для власника / керівника / менеджера. Людина не знає методику SITCAR, тому пиши управлінською мовою без внутрішнього жаргону.
+Вхідні дані користувача наведено наприкінці цього запиту.
+Фокус аналізу:
+Побудуй Паспорт організації. Не оцінюй менеджера. Оціни якість контексту, повноту даних, ключові прогалини, суперечності, ризики для подальшої діагностики.
+Виміри оцінювання:
+Для ORG оцінюй context_quality_оцінку 0–100, але не роби висновок про ефективність організації. ORG є базою для інших модулів.
+Правила:
+1. Використовуй тільки відповіді та завантажені документи. Не вигадуй фактів.
+2. Відокремлюй факти, припущення, суперечності та прогалини даних.
+3. Відсутність даних знижує рівень упевненості, але не автоматично оцінка.
+4. Для кожного важливого висновку дай коротке пояснення «чому».
+5. Не давай більше 5 рекомендацій. Рекомендації мають бути конкретними: дія, причина, очікуваний результат, відповідальна роль, строк.
+6. Якщо даних недостатньо, поверни обмежений результат і список уточнень.
+Поверни JSON:
+{
+&quot;module_code&quot;: &quot;ORG&quot;,
+&quot;module_name&quot;: &quot;Профіль організації&quot;,
+&quot;analysis_status&quot;: &quot;complete | limited | insufficient&quot;,
+&quot;score&quot;: 0,
+&quot;confidence&quot;: 0,
+&quot;headline&quot;: &quot;короткий висновок одним реченням&quot;,
+&quot;diagnosis&quot;: &quot;5-8 речень управлінського висновку&quot;,
+&quot;dimension_scores&quot;: [{&quot;dimension&quot;: &quot;...&quot;, &quot;score&quot;: 0, &quot;evidence&quot;: [&quot;...&quot;], &quot;gaps&quot;: [&quot;...&quot;]}],
+&quot;strengths&quot;: [&quot;3-5 сильних сторін&quot;],
+&quot;weaknesses&quot;: [&quot;3-5 слабких місць&quot;],
+&quot;red_flags&quot;: [{&quot;signal&quot;: &quot;...&quot;, &quot;severity&quot;: &quot;low | medium | high | critical&quot;, &quot;why_it_matters&quot;: &quot;...&quot;}],
+&quot;contradictions&quot;: [&quot;...&quot;],
+&quot;data_gaps&quot;: [&quot;...&quot;],
+&quot;recommendations&quot;: [{&quot;action&quot;: &quot;...&quot;, &quot;why&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;...&quot;, &quot;owner_role&quot;: &quot;...&quot;, &quot;deadline&quot;: &quot;7/30/90 днів&quot;}],
+&quot;manager_summary&quot;: &quot;короткий текст для показу користувачу в інтерфейсі&quot;
+}
+ВІДПОВІДІ КОРИСТУВАЧА З ФОРМИ:
+1) Яку організацію ви діагностуєте?
+Існуючий бізнес
+2) Назва організації або проєкту
+Солар Вест Буд
+3) Опишіть організацію одним абзацом
+СЕС під ключ для дому та бізнесу Проєктування • Монтаж • Сервіс Енергоаудит та консультації
+4) Оберіть основну галузь
+відновлювані джерела енергії
+5) Уточніть підгалузь або нішу
+сонячні електростанції, проектування та монтаж
+6) У якому році створена організація?
+2024
+7) На якому етапі розвитку перебуває організація?
+Зростання
+8) Де працює організація?
+По всій Україні
+9) Хто є вашими основними клієнтами або бенефіціарами?
+Юридичні особи, які хочуть зекономити на електроенергії. Фізичні особи, які хочуть встановити сонячну електростанцію для власних потреб та бути енергонезалежними. Монтажники, які потребують обладнання для сонячних електростанцій.
+10) Які основні продукти або послуги ви пропонуєте?
+Сонячні панелі, кабелі для монтажу сонячних панелей, кріплення, електрообладнання. Це якщо говорити про товари. Послуги – це проєктування та монтаж сонячних електростанцій.
+11) Яку головну проблему клієнта вирішує організація?
+Економія на електроенергії, зменшення витрат на електроенергію, енергонезалежність, тобто безперебійність енергопостачання за рахунок встановлення сонячної електростанції.
+12) Через які канали клієнти дізнаються, купують і отримують продукт?
+Сайт або інтернет-продажі; Відділ продажів; Соціальні мережі
+13) Як організація заробляє або фінансує свою діяльність?
+Разовий продаж
+14) Хто є критично важливими партнерами, постачальниками або платформами?
+Мережа маркетів SPAR Україна. Procarte - компанія у Польщі, яка постачає сонячні панелі. Платформа Prom.ua, на якій розміщено сайт компанії.
+15) Скільки людей працює в організації?
+11–50
+16) Оберіть діапазон річного обороту або бюджету
+0,5–2 млн дол. США
+17) Як змінився дохід або бюджет за останні 12 місяців?
+Зростання понад 20%
+18) Який поточний фінансовий стан організації?
+Стійко прибуткова
+19) Як фактично ухвалюються ключові рішення?
+Засновником або власником
+20) Наскільки організація залежить від щоденної участі засновника або першої особи?
+5
+21) Які управлінські дані регулярно доступні керівництву?
+Продажі або дохід; Грошовий потік; Операційні ключові показники; Прибуток або маржа
+22) назвіть до трьох головних цілей організації
+Ціль | Строк | Показник успіху
+**ЦільСтрокПоказник успіху** |  |
+перейти з «крихкої» стратегії до стабільної й масштабованої, не втрачаючи прибутковість. | 31.12.2026 | Надійність і стабільність джерел надходжень грошового потоку, а також його постійне зростання.
+Зростання продажів інтернет-магазину. | 31.12.2026 | 30% від обороту компанії становлять продажі інтернет-магазину.
+Через 10 років Солар Вест — один із топ-5 інтеграторів сонячних рішень в Україні, який щороку запускає десятки мегават дахових, наземних і гібридних СЕС, забезпечує сервісне обслуговування тисяч клієнтів та керує власною енергетичною платформою, що поєднує генерацію, акумуляцію та онлайн-моніторинг. | 31.12.2035 | входження до числа ключових топ-5 інтеграторів сонячних рішень в Україні
+23) назвіть до п’яти проблем, які найбільше стримують організацію
+1\. Нестача кваліфікованого персоналу. 2. Не стача оборотних коштів для стрімкого розвитку. 3. Залежність від ключових працівників маленькій компанії. 4. Високі темпи зростання зарплат, внаслідок чого зменшується маржинальність проєктів.
+24) Які важливі події відбулися протягом останніх 24 місяців?
+Швидке зростання
+Вихід на новий ринок
+Коментар
+25) Які обмеження потрібно врахувати?
+Люди
+Компетенції
+Час
+Технології
+Бюджет
+Коментар
+26) Яка ваша роль в організації?
+Власник або засновник
+27) Які матеріали ви готові додати для підвищення точності?
+Стратегія</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>
