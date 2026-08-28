@@ -11,11 +11,11 @@ from urllib.parse import quote, unquote
 
 
 # ============================================================
-# SITCAR MODEL BENCHMARK INDEX BUILDER v13
+# SITCAR MODEL BENCHMARK INDEX BUILDER v15
 # ============================================================
 # Поклади цей файл у директорію з результатами моделей і запусти:
 #
-#     python build_sitcar_index_v13.py
+#     python build_sitcar_index_v15.py
 #
 # Скрипт:
 #   1) знаходить HTML/PDF виду MODEL_MODULE_YYYY-MM-DD_HH-MM-SS.*
@@ -37,7 +37,7 @@ FILES_DIR = BASE_DIR / "Files"
 # TOTAL COST залишається чистою API-вартістю; TOTAL + 20% показується окремо.
 RESULT_HTML_TAX_RATE = 0.20
 
-# v13: result HTML вже підготовлені попереднім запуском.
+# v15: result HTML вже підготовлені попереднім запуском.
 # False = builder лише ЧИТАЄ result HTML і генерує index.html, нічого в них не змінює.
 # Якщо колись додаси нові сирі HTML і захочеш знову автоматично виправити
 # back-link / Files/ / TOTAL + 20%, тимчасово постав True.
@@ -1012,7 +1012,7 @@ def discover_artifacts() -> list[Artifact]:
     """
     artifacts: list[Artifact] = []
 
-    # v13 за замовчуванням не змінює result HTML.
+    # v15 за замовчуванням не змінює result HTML.
     # Lookup потрібен лише якщо вручну увімкнути AUTO_PATCH_RESULT_HTML.
     if AUTO_PATCH_RESULT_HTML:
         relative_files, basename_files = build_files_lookup()
@@ -2532,96 +2532,161 @@ code {
 }
 .footer { color:var(--muted); text-align:center; font-size:10px; }
 
-/* MOBILE -> CARDS */
-@media(max-width:760px) {
+/* =========================================================
+   TABLET + MOBILE RESPONSIVE LAYOUT
+   ========================================================= */
+
+/* Tablet and mobile: convert the wide benchmark into readable cards. */
+@media(max-width:1100px) {
     body { overflow-x:hidden; }
-    .container { width:calc(100% - 14px); padding-top:8px; }
-    .hero { padding:17px 14px; }
-    h1 { font-size:26px; }
-    .hero p { font-size:12px; }
-    .summary-grid { grid-template-columns:1fr 1fr; }
-    .toolbar { display:grid; grid-template-columns:1fr auto; }
+    .container { width:calc(100% - 20px); padding-top:10px; }
+
+    .hero { padding:16px; }
+    .hero-top { gap:10px; }
+    h1 { font-size:clamp(25px,4.3vw,34px); }
+    .hero p { font-size:12px; max-width:none; }
+    .status { font-size:10px; padding:6px 9px; }
+
+    .summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+    .toolbar {
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        align-items:center;
+    }
     .search { min-width:0; grid-column:1 / -1; }
     .search input { font-size:16px; }
-    .toolbar-note { display:none; }
-    .tech-toggle { justify-self:start; }
-    .visual-legend { display:grid; grid-template-columns:1fr 1fr; }
-    .legend-item { border-radius:8px; align-items:flex-start; }
+    .toolbar-note { font-size:9px; }
+    .tech-toggle { justify-self:end; }
 
+    .visual-legend {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+    .legend-item {
+        width:100%;
+        border-radius:8px;
+        align-items:flex-start;
+        line-height:1.3;
+    }
+
+    /* ---------- MAIN BENCHMARK ---------- */
     .table-card { background:transparent; border:0; overflow:visible; }
     .table-scroll { overflow:visible; }
-    table { display:block; width:100%; min-width:0; table-layout:auto; }
-    thead { display:none; }
-    tbody { display:block; width:100%; }
-    tbody .model-row {
+
+    #modelsTable {
         display:block;
+        width:100%;
+        min-width:0;
+        table-layout:auto;
+        font-size:11px;
+    }
+    #modelsTable colgroup,
+    #modelsTable thead { display:none; }
+
+    #modelsTable tbody {
+        display:grid;
+        width:100%;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:9px;
+    }
+
+    #modelsTable tbody .model-row {
+        display:block;
+        min-width:0;
         width:100%;
         background:var(--card);
         border:1px solid var(--border);
         border-radius:13px;
         overflow:hidden;
-        margin-bottom:9px;
+        margin:0;
     }
-    tbody .model-row td {
+
+    #modelsTable tbody .model-row td {
         display:flex;
-        width:100%;
+        width:100% !important;
+        min-width:0;
         align-items:center;
         justify-content:space-between;
         gap:10px;
-        padding:8px 11px;
+        padding:7px 10px;
         border-right:0;
         border-bottom:1px solid rgba(255,255,255,.06);
         white-space:normal;
         text-align:right;
+        position:static;
     }
-    tbody .model-row td::before {
-        flex:1;
+    #modelsTable tbody .model-row td:last-child { border-bottom:0; }
+
+    #modelsTable tbody .model-row td::before {
+        content:"";
+        flex:0 1 48%;
+        min-width:105px;
         text-align:left;
         color:var(--muted);
         font-size:9px;
+        line-height:1.2;
         font-weight:750;
     }
-    tbody .model-row .model-cell {
+
+    #modelsTable tbody .model-row .model-cell {
         position:static;
         display:block;
+        width:100% !important;
         background:linear-gradient(135deg,rgba(88,166,255,.11),rgba(188,140,255,.04));
         text-align:left;
-        padding:13px;
+        padding:12px;
     }
-    tbody .model-row .model-cell::before { display:none; }
-    .model-name { font-size:17px; }
-    .provider,.model-meta { font-size:10px; }
-    .module-badge { font-size:8px; }
+    #modelsTable tbody .model-row .model-cell::before { display:none; }
+    #modelsTable .model-name { font-size:16px; overflow-wrap:anywhere; }
+    #modelsTable .provider,
+    #modelsTable .model-meta { font-size:9px; }
+    #modelsTable .module-badge { font-size:8px; }
 
-    tbody .model-row td:nth-child(2)::before { content:"AA Intelligence"; }
-    tbody .model-row td:nth-child(3)::before { content:"Input / 1M"; }
-    tbody .model-row td:nth-child(4)::before { content:"Output / 1M"; }
-    tbody .model-row td:nth-child(5)::before { content:"Max context"; }
-    tbody .model-row td:nth-child(6)::before { content:"Max output"; }
-    tbody .model-row td:nth-child(7)::before { content:"БЕЗПЛАТНА · фактично"; }
-    tbody .model-row td:nth-child(8)::before { content:"ПОВНА"; }
-    tbody .model-row td:nth-child(9)::before { content:"БЕЗПЛАТНА · MAX"; }
-    tbody .model-row td:nth-child(10)::before { content:"ПОВНА · MAX"; }
-    tbody .model-row td:nth-child(11)::before { content:"Результати"; }
+    #modelsTable tbody .model-row td:nth-child(2)::before { content:"AA Intelligence"; }
+    #modelsTable tbody .model-row td:nth-child(3)::before { content:"Input / 1M"; }
+    #modelsTable tbody .model-row td:nth-child(4)::before { content:"Output / 1M"; }
+    #modelsTable tbody .model-row td:nth-child(5)::before { content:"Max context"; }
+    #modelsTable tbody .model-row td:nth-child(6)::before { content:"Max output"; }
+    #modelsTable tbody .model-row td:nth-child(7)::before { content:"БЕЗПЛАТНА · фактично"; }
+    #modelsTable tbody .model-row td:nth-child(8)::before { content:"ПОВНА"; }
+    #modelsTable tbody .model-row td:nth-child(9)::before { content:"БЕЗПЛАТНА · MAX"; }
+    #modelsTable tbody .model-row td:nth-child(10)::before { content:"ПОВНА · MAX"; }
+    #modelsTable tbody .model-row td:nth-child(11)::before { content:"Результати"; }
 
-    .money { display:flex !important; }
-    .money > strong,.money > .coverage { display:block; }
-    .view-cell { display:block !important; width:100% !important; text-align:left !important; padding:10px !important; }
-    .view-cell::before { display:block; margin-bottom:6px; }
+    #modelsTable .main-intel-cell {
+        width:100% !important;
+        text-align:right;
+        white-space:normal;
+    }
+    #modelsTable .main-intel-cell strong { font-size:13px; }
+    #modelsTable .main-intel-cell span { font-size:8px; }
+    #modelsTable .money { display:flex !important; }
+    #modelsTable .money > strong,
+    #modelsTable .money > .coverage { display:block; }
 
-    /* На телефоні також тримаємо 2 модулі в ряд,
-       а на дуже вузькому екрані нижче перемикаємо на 1. */
+    #modelsTable .view-cell {
+        display:block !important;
+        width:100% !important;
+        text-align:left !important;
+        padding:9px !important;
+    }
+    #modelsTable .view-cell::before {
+        display:block;
+        margin-bottom:6px;
+    }
+
     .results-main-grid {
         grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:6px;
+        gap:5px;
     }
     .result-main-card {
         display:block;
         min-height:0;
     }
     .result-main-label {
-        min-height:37px;
-        padding:6px 7px;
+        min-height:34px;
+        padding:5px 6px;
         border-bottom:1px solid rgba(139,148,158,.18);
     }
     .result-main-code { font-size:9px; }
@@ -2635,9 +2700,10 @@ code {
         flex:1 1 50%;
         width:auto !important;
         min-width:0 !important;
-        min-height:34px !important;
+        min-height:32px !important;
         border:0;
         border-radius:0 !important;
+        font-size:9px;
     }
     .result-main-btn + .result-main-btn {
         border-left:1px solid rgba(139,148,158,.20);
@@ -2645,29 +2711,217 @@ code {
     .result-main-card.single-format .result-main-btn {
         flex:0 1 80%;
         margin:4px auto;
-        min-height:30px !important;
+        min-height:29px !important;
         border:1px solid rgba(139,148,158,.24);
         border-radius:6px !important;
     }
 
-    .results-list { justify-content:flex-start; }
-    .result-link { font-size:9px; padding:5px 6px; }
+    /* ---------- OTHER / REJECTED MODELS ---------- */
+    .other-models-section { overflow:visible; }
+    .other-models-head { padding:14px; }
+    .other-models-head h2 { font-size:18px; }
+    .other-models-head p { font-size:10px; }
+    .other-table-wrap { overflow:visible; padding:8px; }
 
+    .other-models-table {
+        display:block;
+        min-width:0;
+        width:100%;
+        table-layout:auto;
+    }
+    .other-models-table thead { display:none; }
+    .other-models-table tbody {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:8px;
+        width:100%;
+    }
+    .other-models-table tr {
+        display:block;
+        min-width:0;
+        border:1px solid rgba(139,148,158,.22);
+        border-radius:10px;
+        overflow:hidden;
+        background:rgba(255,255,255,.015);
+    }
+    .other-models-table td,
+    .other-models-table td:nth-child(3),
+    .other-models-table td:nth-child(4),
+    .other-models-table td:nth-child(5),
+    .other-models-table td:nth-child(6) {
+        display:grid;
+        grid-template-columns:minmax(105px,38%) minmax(0,1fr);
+        gap:8px;
+        align-items:start;
+        width:100%;
+        min-width:0;
+        padding:7px 9px;
+        border-right:0;
+        border-bottom:1px solid rgba(255,255,255,.055);
+        text-align:right !important;
+        white-space:normal;
+        overflow-wrap:anywhere;
+    }
+    .other-models-table td:last-child { border-bottom:0; }
+    .other-models-table td::before {
+        display:block;
+        text-align:left;
+        color:var(--muted);
+        font-size:8px;
+        font-weight:800;
+        line-height:1.25;
+    }
+    .other-models-table td:nth-child(2)::before { content:"AA Intelligence"; }
+    .other-models-table td:nth-child(3)::before { content:"Input / 1M"; }
+    .other-models-table td:nth-child(4)::before { content:"Output / 1M"; }
+    .other-models-table td:nth-child(5)::before { content:"Max context"; }
+    .other-models-table td:nth-child(6)::before { content:"Max output"; }
+    .other-models-table td:nth-child(7)::before { content:"Статус"; }
+    .other-models-table td:nth-child(8)::before { content:"Коментар"; }
+
+    .other-models-table .other-model-name {
+        display:block;
+        width:100%;
+        min-width:0;
+        padding:10px;
+        text-align:left !important;
+        background:linear-gradient(135deg,rgba(188,140,255,.08),rgba(88,166,255,.035));
+    }
+    .other-models-table .other-model-name::before { display:none; }
+    .other-model-name strong { font-size:12px; overflow-wrap:anywhere; }
+    .other-model-name span { font-size:8px; }
+
+    .other-models-table .intel-cell {
+        display:grid;
+        width:100%;
+        min-width:0;
+        text-align:right !important;
+    }
+    .intel-cell strong { font-size:13px; }
+    .candidate-status {
+        justify-self:end;
+        white-space:normal;
+        text-align:center;
+        line-height:1.2;
+    }
+    .other-models-table .other-comment {
+        display:block;
+        width:100%;
+        min-width:0;
+        text-align:left !important;
+        line-height:1.4;
+    }
+    .other-models-table .other-comment::before {
+        content:"Коментар для SITCAR";
+        display:block;
+        margin-bottom:4px;
+    }
+    .observed-note { margin-top:5px; }
+    .other-models-note { font-size:9px; padding:9px 11px; }
+
+    /* ---------- TECH / INFO ---------- */
     .technical-panel-title { display:block; }
     .technical-panel-title p { margin-top:3px; }
     .tech-model-details > summary { display:block; }
     .tech-summary-meta { display:block; text-align:left; margin-top:4px; }
-    .tech-grid { grid-template-columns:1fr; }
+    .tech-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .tech-metrics-grid { grid-template-columns:1fr 1fr; }
     .formula { grid-template-columns:1fr; }
 }
 
+/* Portrait tablets and large phones: one model per row for better readability. */
+@media(max-width:900px) {
+    .container { width:calc(100% - 16px); }
+    #modelsTable tbody { grid-template-columns:1fr; }
+    .other-models-table tbody { grid-template-columns:1fr; }
+    .tech-grid { grid-template-columns:1fr; }
+}
+
+/* Phones. */
+@media(max-width:600px) {
+    .container { width:calc(100% - 12px); padding-top:7px; }
+    .hero { padding:14px 12px; }
+    h1 { font-size:25px; }
+    .hero p { font-size:11px; }
+    .status { width:100%; justify-content:center; }
+
+    .summary-grid { grid-template-columns:1fr 1fr; gap:6px; }
+    .summary-card { padding:8px 9px; }
+    .summary-value { font-size:16px; }
+    .summary-value.small { font-size:10px; overflow-wrap:anywhere; }
+
+    .toolbar {
+        grid-template-columns:1fr;
+        padding:7px;
+    }
+    .search { grid-column:1; }
+    .toolbar-note { display:none; }
+    .tech-toggle { justify-self:stretch; text-align:center; }
+
+    .visual-legend { grid-template-columns:1fr 1fr; gap:5px; }
+    .legend-item { padding:5px 6px; font-size:8px; }
+    .legend-item b { font-size:8px; }
+
+    #modelsTable tbody .model-row td {
+        padding:7px 9px;
+        gap:8px;
+    }
+    #modelsTable tbody .model-row td::before {
+        min-width:95px;
+        font-size:8px;
+    }
+    #modelsTable .model-name { font-size:15px; }
+    #modelsTable .view-cell { padding:8px !important; }
+
+    .results-main-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+    .other-models-head { padding:12px; }
+    .other-models-head h2 { font-size:17px; }
+    .other-table-wrap { padding:6px; }
+    .other-models-table td,
+    .other-models-table td:nth-child(3),
+    .other-models-table td:nth-child(4),
+    .other-models-table td:nth-child(5),
+    .other-models-table td:nth-child(6) {
+        grid-template-columns:minmax(92px,36%) minmax(0,1fr);
+        padding:6px 8px;
+    }
+    .candidate-status { font-size:7px; padding:3px 5px; }
+
+    .tech-metrics-grid { grid-template-columns:1fr 1fr; }
+    .info-card { padding:13px; }
+    .info-card h2 { font-size:17px; }
+    .info-card p,.info-card li { font-size:11px; }
+}
+
+/* Very narrow phones. */
 @media(max-width:430px) {
     .summary-grid { grid-template-columns:1fr; }
     .visual-legend { grid-template-columns:1fr; }
-    .tech-metrics-grid { grid-template-columns:1fr; }
     .results-main-grid { grid-template-columns:1fr; }
+    .tech-metrics-grid { grid-template-columns:1fr; }
+
+    #modelsTable tbody .model-row td {
+        display:grid;
+        grid-template-columns:minmax(95px,40%) minmax(0,1fr);
+        align-items:start;
+    }
+    #modelsTable tbody .model-row td::before {
+        min-width:0;
+    }
+    #modelsTable .view-cell {
+        display:block !important;
+    }
+
+    .other-models-table td,
+    .other-models-table td:nth-child(3),
+    .other-models-table td:nth-child(4),
+    .other-models-table td:nth-child(5),
+    .other-models-table td:nth-child(6) {
+        grid-template-columns:minmax(86px,39%) minmax(0,1fr);
+    }
 }
+
 </style>
 </head>
 <body>
@@ -2807,7 +3061,7 @@ code {
         <li>Тому коректніше використовувати реальну вартість кожного окремого модуля, а не множити ORG на кількість запитів.</li>
         <li>Позначка <strong>частково</strong> означає, що для цієї моделі ще немає всіх необхідних тестів; показана сума — лише за реально наявні HTML-запуски.</li>
         <li>PDF-файли з папки <code>PDF_RESULTS</code> показуються поруч з HTML як альтернативний формат результату, але сам PDF не додає окремої вартості — розрахунок виконується за HTML API-запуском.</li>
-        <li>У v13 result HTML працюють у read-only режимі: builder їх не переписує, а лише читає для метрик і формує <code>index.html</code>.</li>
+        <li>У v15 result HTML працюють у read-only режимі: builder їх не переписує, а лише читає для метрик і формує <code>index.html</code>.</li>
         <li>Колонка <strong>AA Intelligence</strong> показує актуальний Artificial Analysis Intelligence Index для наших протестованих моделей; вищий бал = сильніша модель.</li>
         <li><code>FULL.html</code> — це <strong>окремий фінальний API-запит</strong>, тому його фактичні токени, latency і вартість входять у Повну версію. <code>FULL.pdf</code> — лише альтернативний формат цього самого результату і окремої вартості не додає.</li>
         <li>Окрема презентація / фінальний загальний API-запит не додається до ціни автоматично без реального HTML тестового файла. Якщо HTML з кодом FINAL / PRES / PRESENTATION з'явиться, скрипт підхопить його.</li>
@@ -2910,7 +3164,7 @@ function sortTable(column, ascending) {
 def main() -> None:
     print()
     print("=" * 76)
-    print("SITCAR — MULTI-MODULE MODEL INDEX BUILDER v13 (HTML + PDF + FULL API + INTELLIGENCE)")
+    print("SITCAR — MULTI-MODULE MODEL INDEX BUILDER v15 (HTML + PDF + FULL API + INTELLIGENCE)")
     print("=" * 76)
     print(f"Директорія: {BASE_DIR}")
     print(f"PDF_RESULTS: {PDF_RESULTS_DIR}")
