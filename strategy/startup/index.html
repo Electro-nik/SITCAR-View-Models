@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Стратегія для стартапу (Geovizor)</title>
+<style>
+
+:root {
+    --bg:#0d1117;
+    --card:#161b22;
+    --card2:#1c2128;
+    --border:#30363d;
+    --text:#f0f6fc;
+    --muted:#8b949e;
+    --blue:#58a6ff;
+    --green:#3fb950;
+    --yellow:#d29922;
+    --red:#f85149;
+    --purple:#bc8cff;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Segoe UI,Inter,Arial,sans-serif;
+    line-height:1.45;
+}
+a { color:inherit; }
+.container { width:min(1900px,calc(100% - 24px)); margin:auto; padding:14px 0 70px; }
+.site-nav { display:flex; gap:8px; margin-bottom:9px; }
+.home-link {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    min-height:36px;
+    padding:7px 12px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:var(--card);
+    color:#79c0ff;
+    font-size:12px;
+    font-weight:800;
+    text-decoration:none;
+}
+.home-link:hover { border-color:rgba(88,166,255,.55); background:rgba(88,166,255,.09); }
+.hero {
+    background:radial-gradient(circle at 85% 10%,rgba(88,166,255,.14),transparent 35%),linear-gradient(135deg,#161b22,#111820);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:9px;
+}
+.eyebrow { color:var(--blue); font-size:10px; font-weight:900; letter-spacing:.09em; text-transform:uppercase; }
+h1 { margin:3px 0 0; font-size:clamp(26px,3vw,40px); line-height:1.12; }
+.hero p { max-width:1050px; margin:8px 0 0; color:var(--muted); font-size:13px; }
+.summary-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:9px; }
+.summary-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 12px; }
+.summary-label { color:var(--muted); font-size:9px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; }
+.summary-value { margin-top:2px; font-size:19px; font-weight:900; }
+.toolbar { display:flex; align-items:center; gap:9px; margin-bottom:9px; padding:8px; border:1px solid var(--border); border-radius:12px; background:var(--card); }
+.toolbar input { width:100%; min-width:0; padding:9px 11px; border:1px solid var(--border); border-radius:8px; background:#0d1117; color:var(--text); outline:none; }
+.toolbar input:focus { border-color:var(--blue); }
+.toolbar span { flex:0 0 auto; color:var(--muted); font-size:10px; }
+.stage-legend { display:grid; grid-template-columns:repeat(var(--stage-count),minmax(0,1fr)); gap:5px; margin-bottom:9px; }
+.legend-stage { min-width:0; padding:6px 7px; border:1px solid var(--border); border-radius:8px; background:var(--card); }
+.legend-stage b { display:block; color:#79c0ff; font-size:9px; }
+.legend-stage span { display:block; margin-top:2px; color:var(--muted); font-size:9px; line-height:1.2; overflow-wrap:anywhere; }
+.models { display:flex; flex-direction:column; gap:9px; }
+.model-card { overflow:hidden; border:1px solid var(--border); border-radius:14px; background:var(--card); }
+.model-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 13px; border-bottom:1px solid var(--border); background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(188,140,255,.03)); }
+.model-header h2 { margin:0; font-size:17px; }
+.provider { margin-top:1px; color:var(--blue); font-size:10px; font-weight:700; }
+.model-metrics { display:flex; align-items:center; justify-content:flex-end; gap:8px; color:var(--muted); font-size:10px; text-align:right; }
+.model-metrics strong { color:#d2a8ff; font-size:14px; }
+.model-metrics small { font-size:8px; }
+.coverage { padding:3px 6px; border-radius:999px; border:1px solid rgba(227,179,65,.35); color:#e3b341; background:rgba(227,179,65,.08); font-weight:800; }
+.coverage.complete { border-color:rgba(63,185,80,.35); color:#7ee787; background:rgba(63,185,80,.08); }
+.results-grid { display:grid; grid-template-columns:repeat(var(--stage-count),minmax(0,1fr)); gap:5px; padding:8px; }
+.stage-card { min-width:0; min-height:94px; display:flex; flex-direction:column; padding:7px; border:1px solid rgba(88,166,255,.20); border-radius:9px; background:rgba(255,255,255,.018); }
+.stage-card.integrated { border-color:rgba(188,140,255,.34); background:rgba(188,140,255,.045); }
+.stage-card.unavailable { border-style:dashed; opacity:.68; }
+.stage-head { min-width:0; display:flex; align-items:flex-start; gap:5px; }
+.stage-number { flex:0 0 auto; display:grid; place-items:center; width:19px; height:19px; border-radius:5px; background:rgba(88,166,255,.13); color:#79c0ff; font-size:9px; font-weight:900; }
+.stage-name { min-width:0; color:#c9d1d9; font-size:clamp(8px,.68vw,10px); font-weight:850; line-height:1.18; overflow-wrap:anywhere; }
+.stage-note { margin:4px 0 0 24px; color:#d2a8ff; font-size:8px; line-height:1.1; }
+.stage-actions { display:grid; grid-template-columns:repeat(auto-fit,minmax(35px,1fr)); gap:4px; margin-top:auto; padding-top:7px; }
+.result-btn { display:grid; place-items:center; min-height:27px; border:1px solid rgba(88,166,255,.38); border-radius:6px; color:#79c0ff; background:rgba(88,166,255,.07); font-size:8px; font-weight:900; text-decoration:none; }
+.result-btn:hover { background:rgba(88,166,255,.17); }
+.result-btn.pdf { border-color:rgba(248,81,73,.35); color:#ff7b72; background:rgba(248,81,73,.06); }
+.result-btn.file { border-color:rgba(63,185,80,.35); color:#7ee787; background:rgba(63,185,80,.06); }
+.stage-missing { margin-top:auto; padding-top:7px; color:var(--muted); font-size:8px; line-height:1.15; text-align:center; }
+.source-section { margin-top:12px; padding:14px; border:1px solid var(--border); border-radius:14px; background:var(--card); }
+.section-heading h2 { margin:0; font-size:18px; }
+.section-heading p { margin:4px 0 0; color:var(--muted); font-size:11px; }
+.source-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:6px; margin-top:10px; }
+.source-link { min-width:0; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:8px; padding:8px; border:1px solid rgba(63,185,80,.22); border-radius:8px; background:rgba(63,185,80,.035); text-decoration:none; }
+.source-link:hover { border-color:rgba(63,185,80,.55); background:rgba(63,185,80,.08); }
+.source-ext { padding:3px 5px; border-radius:5px; background:rgba(63,185,80,.12); color:#7ee787; font-size:8px; font-weight:900; }
+.source-name { min-width:0; color:#c9d1d9; font-size:10px; overflow-wrap:anywhere; }
+.source-size { color:var(--muted); font-size:8px; white-space:nowrap; }
+.info-card { margin-top:9px; padding:13px 15px; border:1px solid var(--border); border-radius:12px; background:var(--card); color:var(--muted); font-size:11px; }
+.info-card strong { color:var(--text); }
+.footer { padding-top:18px; color:var(--muted); font-size:10px; text-align:center; }
+@media(max-width:1100px) {
+    .stage-legend,.results-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:720px) {
+    .container { width:min(100% - 16px,1900px); padding-top:8px; }
+    .summary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .stage-legend,.results-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .model-header { align-items:flex-start; }
+    .model-metrics { flex-direction:column; align-items:flex-end; gap:2px; }
+    .toolbar span,.model-metrics small { display:none; }
+}
+@media(max-width:420px) {
+    .stage-legend,.results-grid { grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="site-nav" aria-label="Головна навігація">
+    <a class="home-link" href="../../index.html">← На головну</a>
+</nav>
+<section class="hero">
+    <div class="eyebrow">SITCAR · Стартап</div>
+    <h1>Стратегія для стартапу (Geovizor)</h1>
+    <p>Сім послідовних етапів розробки стратегії стартапу GeoVizor — від дослідження ринку до інтегрованої стратегії.</p>
+</section>
+<section class="summary-grid" aria-label="Підсумок">
+    <div class="summary-card"><div class="summary-label">Моделей</div><div class="summary-value">4</div></div>
+    <div class="summary-card"><div class="summary-label">HTML результатів</div><div class="summary-value">28</div></div>
+    <div class="summary-card"><div class="summary-label">PDF результатів</div><div class="summary-value">28</div></div>
+    <div class="summary-card"><div class="summary-label">Вхідних файлів</div><div class="summary-value">4</div></div>
+</section>
+<div class="toolbar">
+    <input id="modelSearch" type="search" placeholder="Пошук моделі або етапу…" aria-label="Пошук">
+    <span>HTML відкриває детальний звіт · PDF відкриває його PDF-версію</span>
+</div>
+<section class="stage-legend" style="--stage-count:7" aria-label="Етапи">
+    <div class="legend-stage"><b>01</b><span>Дослідження ринку</span></div><div class="legend-stage"><b>02</b><span>Можливості стартапу та засновників</span></div><div class="legend-stage"><b>03</b><span>Профіль СІТКАР</span></div><div class="legend-stage"><b>04</b><span>Вибір стратегії розвитку</span></div><div class="legend-stage"><b>05</b><span>Формалізація та фінансова модель</span></div><div class="legend-stage"><b>06</b><span>GTM</span></div><div class="legend-stage"><b>07</b><span>Інтегрована стратегія</span></div>
+</section>
+<main id="models" class="models" style="--stage-count:7">
+    
+<article class="model-card" data-search="gpt-5.6 sol openai дослідження ринку можливості стартапу та засновників профіль сіткар вибір стратегії розвитку формалізація та фінансова модель gtm інтегрована стратегія">
+    <header class="model-header">
+        <div>
+            <h2>GPT-5.6 Sol</h2>
+            <div class="provider">OpenAI</div>
+        </div>
+        <div class="model-metrics">
+            <span class="coverage complete">7/7 етапів</span>
+            <span>19 хв 37 с</span>
+            <strong>$5.33</strong>
+            <small>разом із податком</small>
+        </div>
+    </header>
+    <div class="results-grid"><div class="stage-card"><div class="stage-head"><span class="stage-number">1</span><span class="stage-name">Дослідження ринку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_1_2026-08-31_14-33-49.html" title="Дослідження ринку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_1_2026-08-31_14-33-49.pdf" title="Дослідження ринку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">2</span><span class="stage-name">Можливості стартапу та засновників</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_2_2026-08-31_15-07-15.html" title="Можливості стартапу та засновників · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_2_2026-08-31_15-07-15.pdf" title="Можливості стартапу та засновників · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">3</span><span class="stage-name">Профіль СІТКАР</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_3_2026-08-31_15-26-06.html" title="Профіль СІТКАР · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_3_2026-08-31_15-26-06.pdf" title="Профіль СІТКАР · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">4</span><span class="stage-name">Вибір стратегії розвитку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_4_2026-08-31_15-36-29.html" title="Вибір стратегії розвитку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_4_2026-08-31_15-36-29.pdf" title="Вибір стратегії розвитку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">5</span><span class="stage-name">Формалізація та фінансова модель</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_5_2026-08-31_15-44-30.html" title="Формалізація та фінансова модель · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_5_2026-08-31_15-44-30.pdf" title="Формалізація та фінансова модель · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">6</span><span class="stage-name">GTM</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_6_2026-08-31_16-01-48.html" title="GTM · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_6_2026-08-31_16-01-48.pdf" title="GTM · PDF">PDF</a></div></div><div class="stage-card integrated"><div class="stage-head"><span class="stage-number">7</span><span class="stage-name">Інтегрована стратегія</span></div><span class="stage-note">Об’єднаний результат</span><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Sol_STEP_7_2026-08-31_16-27-35.html" title="Інтегрована стратегія · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Sol_STEP_7_2026-08-31_16-27-35.pdf" title="Інтегрована стратегія · PDF">PDF</a></div></div></div>
+</article>
+
+<article class="model-card" data-search="gpt-5.6 terra openai дослідження ринку можливості стартапу та засновників профіль сіткар вибір стратегії розвитку формалізація та фінансова модель gtm інтегрована стратегія">
+    <header class="model-header">
+        <div>
+            <h2>GPT-5.6 Terra</h2>
+            <div class="provider">OpenAI</div>
+        </div>
+        <div class="model-metrics">
+            <span class="coverage complete">7/7 етапів</span>
+            <span>17 хв 29 с</span>
+            <strong>$2.67</strong>
+            <small>разом із податком</small>
+        </div>
+    </header>
+    <div class="results-grid"><div class="stage-card"><div class="stage-head"><span class="stage-number">1</span><span class="stage-name">Дослідження ринку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_1_2026-08-31_14-35-42.html" title="Дослідження ринку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_1_2026-08-31_14-35-42.pdf" title="Дослідження ринку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">2</span><span class="stage-name">Можливості стартапу та засновників</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_2_2026-08-31_15-09-12.html" title="Можливості стартапу та засновників · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_2_2026-08-31_15-09-12.pdf" title="Можливості стартапу та засновників · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">3</span><span class="stage-name">Профіль СІТКАР</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_3_2026-08-31_15-27-54.html" title="Профіль СІТКАР · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_3_2026-08-31_15-27-54.pdf" title="Профіль СІТКАР · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">4</span><span class="stage-name">Вибір стратегії розвитку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_4_2026-08-31_15-37-45.html" title="Вибір стратегії розвитку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_4_2026-08-31_15-37-45.pdf" title="Вибір стратегії розвитку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">5</span><span class="stage-name">Формалізація та фінансова модель</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_5_2026-08-31_15-46-57.html" title="Формалізація та фінансова модель · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_5_2026-08-31_15-46-57.pdf" title="Формалізація та фінансова модель · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">6</span><span class="stage-name">GTM</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_6_2026-08-31_16-04-45.html" title="GTM · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_6_2026-08-31_16-04-45.pdf" title="GTM · PDF">PDF</a></div></div><div class="stage-card integrated"><div class="stage-head"><span class="stage-number">7</span><span class="stage-name">Інтегрована стратегія</span></div><span class="stage-note">Об’єднаний результат</span><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Terra_STEP_7_2026-08-31_16-32-52.html" title="Інтегрована стратегія · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Terra_STEP_7_2026-08-31_16-32-52.pdf" title="Інтегрована стратегія · PDF">PDF</a></div></div></div>
+</article>
+
+<article class="model-card" data-search="gpt-5.6 luna openai дослідження ринку можливості стартапу та засновників профіль сіткар вибір стратегії розвитку формалізація та фінансова модель gtm інтегрована стратегія">
+    <header class="model-header">
+        <div>
+            <h2>GPT-5.6 Luna</h2>
+            <div class="provider">OpenAI</div>
+        </div>
+        <div class="model-metrics">
+            <span class="coverage complete">7/7 етапів</span>
+            <span>18 хв 21 с</span>
+            <strong>$0.31</strong>
+            <small>разом із податком</small>
+        </div>
+    </header>
+    <div class="results-grid"><div class="stage-card"><div class="stage-head"><span class="stage-number">1</span><span class="stage-name">Дослідження ринку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_1_2026-08-31_14-22-30.html" title="Дослідження ринку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_1_2026-08-31_14-22-30.pdf" title="Дослідження ринку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">2</span><span class="stage-name">Можливості стартапу та засновників</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_2_2026-08-31_15-04-55.html" title="Можливості стартапу та засновників · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_2_2026-08-31_15-04-55.pdf" title="Можливості стартапу та засновників · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">3</span><span class="stage-name">Профіль СІТКАР</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_3_2026-08-31_15-23-58.html" title="Профіль СІТКАР · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_3_2026-08-31_15-23-58.pdf" title="Профіль СІТКАР · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">4</span><span class="stage-name">Вибір стратегії розвитку</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_4_2026-08-31_15-34-53.html" title="Вибір стратегії розвитку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_4_2026-08-31_15-34-53.pdf" title="Вибір стратегії розвитку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">5</span><span class="stage-name">Формалізація та фінансова модель</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_5_2026-08-31_15-41-35.html" title="Формалізація та фінансова модель · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_5_2026-08-31_15-41-35.pdf" title="Формалізація та фінансова модель · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">6</span><span class="stage-name">GTM</span></div><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_6_2026-08-31_15-58-40.html" title="GTM · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_6_2026-08-31_15-58-40.pdf" title="GTM · PDF">PDF</a></div></div><div class="stage-card integrated"><div class="stage-head"><span class="stage-number">7</span><span class="stage-name">Інтегрована стратегія</span></div><span class="stage-note">Об’єднаний результат</span><div class="stage-actions"><a class="result-btn html" href="GPT-5.6_Luna_STEP_7_2026-08-31_16-22-35.html" title="Інтегрована стратегія · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/GPT-5.6_Luna_STEP_7_2026-08-31_16-22-35.pdf" title="Інтегрована стратегія · PDF">PDF</a></div></div></div>
+</article>
+
+<article class="model-card" data-search="gemini 3.6 flash google gemini дослідження ринку можливості стартапу та засновників профіль сіткар вибір стратегії розвитку формалізація та фінансова модель gtm інтегрована стратегія">
+    <header class="model-header">
+        <div>
+            <h2>Gemini 3.6 Flash</h2>
+            <div class="provider">Google Gemini</div>
+        </div>
+        <div class="model-metrics">
+            <span class="coverage complete">7/7 етапів</span>
+            <span>10 хв 43 с</span>
+            <strong>$0.55</strong>
+            <small>разом із податком</small>
+        </div>
+    </header>
+    <div class="results-grid"><div class="stage-card"><div class="stage-head"><span class="stage-number">1</span><span class="stage-name">Дослідження ринку</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_1_2026-08-31_14-30-38.html" title="Дослідження ринку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_1_2026-08-31_14-30-38.pdf" title="Дослідження ринку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">2</span><span class="stage-name">Можливості стартапу та засновників</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_2_2026-08-31_15-11-59.html" title="Можливості стартапу та засновників · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_2_2026-08-31_15-11-59.pdf" title="Можливості стартапу та засновників · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">3</span><span class="stage-name">Профіль СІТКАР</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_3_2026-08-31_15-19-56.html" title="Профіль СІТКАР · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_3_2026-08-31_15-19-56.pdf" title="Профіль СІТКАР · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">4</span><span class="stage-name">Вибір стратегії розвитку</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_4_2026-08-31_15-31-13.html" title="Вибір стратегії розвитку · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_4_2026-08-31_15-31-13.pdf" title="Вибір стратегії розвитку · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">5</span><span class="stage-name">Формалізація та фінансова модель</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_5_2026-08-31_15-49-25.html" title="Формалізація та фінансова модель · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_5_2026-08-31_15-49-25.pdf" title="Формалізація та фінансова модель · PDF">PDF</a></div></div><div class="stage-card"><div class="stage-head"><span class="stage-number">6</span><span class="stage-name">GTM</span></div><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_6_2026-08-31_15-54-41.html" title="GTM · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_6_2026-08-31_15-54-41.pdf" title="GTM · PDF">PDF</a></div></div><div class="stage-card integrated"><div class="stage-head"><span class="stage-number">7</span><span class="stage-name">Інтегрована стратегія</span></div><span class="stage-note">Об’єднаний результат</span><div class="stage-actions"><a class="result-btn html" href="Gemini_3.6_Flash_STEP_7_2026-08-31_16-18-26.html" title="Інтегрована стратегія · HTML">HTML</a><a class="result-btn pdf" href="pdf_result/Gemini_3.6_Flash_STEP_7_2026-08-31_16-18-26.pdf" title="Інтегрована стратегія · PDF">PDF</a></div></div></div>
+</article>
+
+</main>
+<section class="source-section">
+    <div class="section-heading">
+        <h2>Вхідні матеріали</h2>
+        <p>Усі вихідні документи доступні за прямими посиланнями для завантаження.</p>
+    </div>
+    <div class="source-grid"><a class="source-link" href="Files/AI-powered%20Self-Checkout%20System%20-%20Business%20Proposal%20%282%29.pdf" download title="Завантажити AI-powered Self-Checkout System - Business Proposal (2).pdf"><span class="source-ext">PDF</span><span class="source-name">AI-powered Self-Checkout System - Business Proposal (2).pdf</span><span class="source-size">1.80 MB</span></a><a class="source-link" href="Files/Geo%20Vizor%202026-08-26.docx" download title="Завантажити Geo Vizor 2026-08-26.docx"><span class="source-ext">DOCX</span><span class="source-name">Geo Vizor 2026-08-26.docx</span><span class="source-size">21.93 KB</span></a><a class="source-link" href="Files/GeoVizor%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%20%281%29.xlsx" download title="Завантажити GeoVizor продукт (1).xlsx"><span class="source-ext">XLSX</span><span class="source-name">GeoVizor продукт (1).xlsx</span><span class="source-size">31.63 KB</span></a><a class="source-link" href="Files/%D0%9A%D0%B0%D1%82%D0%B0%D0%BB%D0%BE%D0%B3%20Strongpoint%20%28%D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D0%B5%D0%BD%D1%82%29.pdf" download title="Завантажити Каталог Strongpoint (конкурент).pdf"><span class="source-ext">PDF</span><span class="source-name">Каталог Strongpoint (конкурент).pdf</span><span class="source-size">1.99 MB</span></a></div>
+</section>
+<section class="info-card">
+    <strong>Перевірка комплектності:</strong> Для кожної моделі наявні HTML- та PDF-результати всіх згенерованих етапів.
+    Кнопка «← До огляду стратегії» у кожному детальному HTML повертає саме на цю сторінку.
+</section>
+<div class="footer">SITCAR System · Strategy model comparison</div>
+</div>
+<script>
+const search = document.getElementById('modelSearch');
+const cards = Array.from(document.querySelectorAll('.model-card'));
+search.addEventListener('input', () => {
+    const value = search.value.trim().toLowerCase();
+    cards.forEach(card => {
+        card.hidden = !card.dataset.search.includes(value);
+    });
+});
+</script>
+</body>
+</html>

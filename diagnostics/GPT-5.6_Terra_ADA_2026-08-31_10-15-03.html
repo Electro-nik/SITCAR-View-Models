@@ -45,11 +45,22 @@ summary { cursor:pointer; padding:15px 18px; font-weight:800; }
 .details-body { border-top:1px solid var(--border); padding:16px; }
 pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
 @media(max-width:900px) { .grid { grid-template-columns:1fr; } .json-row { grid-template-columns:1fr; } }
+
+/* SITCAR_SITE_ATTACHMENT_LINKS */
+.attachments-card a.attachment-file-link {
+    color:var(--accent);
+    font-weight:700;
+    text-decoration:none;
+    overflow-wrap:anywhere;
+}
+.attachments-card a.attachment-file-link:hover { text-decoration:underline; }
+
+.total-with-tax strong { color:#d2a8ff; }
 </style>
 </head>
 <body>
 <div class="container">
-<a class="back" href="index.html">← index.html</a>
+<a class="back" href="index.html">← До огляду діагностики</a>
 <section class="hero">
 <h1>GPT-5.6 Terra</h1>
 <div class="muted">OpenAI · Prompt: ADA · 2026-08-31T10:15:03</div>
@@ -81,6 +92,7 @@ pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-w
 <div class="metric"><span>Output price / 1M</span><strong>$12.000000</strong></div>
 <div class="metric"><span>Output cost</span><strong>$0.075564</strong></div>
 <div class="metric total"><span>TOTAL COST</span><strong>$0.172944</strong></div>
+<div class="metric total total-with-tax"><span>TOTAL + 20%</span><strong>$0.207533</strong></div>
 </section>
 </div>
 <section class="result-card attachments-card">
@@ -88,7 +100,7 @@ pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-w
         <div class="muted attachment-summary">Кількість: 1 · Загальний розмір: 44.56 KB</div>
         <div class="table-wrap"><table>
         <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
-        <tbody><tr><td><strong>8 Ризики Сценарії Люди 3.docx</strong></td><td>44.56 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-31T10:13:57+03:00</td></tr></tbody>
+        <tbody><tr><td><strong><a class="attachment-file-link" href="Files/8%20%D0%A0%D0%B8%D0%B7%D0%B8%D0%BA%D0%B8%20%D0%A1%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D1%96%D1%97%20%D0%9B%D1%8E%D0%B4%D0%B8%203.docx" download title="Завантажити 8 Ризики Сценарії Люди 3.docx">8 Ризики Сценарії Люди 3.docx</a></strong></td><td>44.56 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-31T10:13:57+03:00</td></tr></tbody>
         </table></div>
         </section>
 <section class="result-card"><h2>ОБРОБЛЕНИЙ РЕЗУЛЬТАТ</h2><div class="json-object"><div class="json-row">
