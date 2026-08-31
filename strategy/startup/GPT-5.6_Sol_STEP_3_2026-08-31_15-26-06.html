@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPT-5.6 Sol</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← index.html</a>
+<section class="hero">
+<h1>GPT-5.6 Sol</h1>
+<div class="muted">OpenAI · Prompt: STEP_3 · 2026-08-31T15:26:06</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gpt-5.6-sol</strong></div>
+<div class="metric"><span>Returned</span><strong>gpt-5.6-sol</strong></div>
+<div class="metric"><span>Response ID</span><strong>resp_0b2d24b9ea9add55006a95725ef65087d292f96e71768e23d6</strong></div>
+<div class="metric"><span>Context window</span><strong>1 050 000</strong></div>
+<div class="metric"><span>Max output</span><strong>128 000</strong></div>
+<div class="metric"><span>Latency</span><strong>127.042 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>26 133</strong></div>
+<div class="metric"><span>Cached input</span><strong>0</strong></div>
+<div class="metric"><span>Output tokens</span><strong>10 963</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>4 451</strong></div>
+<div class="metric"><span>Total tokens</span><strong>37 096</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$4.000000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.104532</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.400000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$20.000000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.219260</strong></div>
+<div class="metric"><span>Subtotal</span><strong>$0.323792</strong></div>
+<div class="metric"><span>Tax (20%)</span><strong>$0.064758</strong></div>
+<div class="metric total"><span>TOTAL WITH TAX</span><strong>$0.388550</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted attachment-summary">Кількість: 2 · Загальний розмір: 53.56 KB</div>
+        <div class="table-wrap"><table>
+        <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
+        <tbody><tr><td><strong>Geo Vizor 2026-08-26.docx</strong></td><td>21.93 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-31T15:23:59+03:00</td></tr><tr><td><strong>GeoVizor продукт (1).xlsx</strong></td><td>31.63 KB</td><td>OpenAI input_file (inline base64)</td><td>2026-08-31T15:23:59+03:00</td></tr></tbody>
+        </table></div>
+        </section>
+<section class="result-card"><h2>ПОВНА ВІДПОВІДЬ МОДЕЛІ</h2><pre># Запит 3. Профіль СІТКАР для GeoVizor
+
+## Executive Summary
+
+1. **Поточна стадія GeoVizor — MVP / тестування продукту.** Є технології, розгортання й продукти різної готовності, але немає підтвердженої базової лінії платних клієнтів, повторних продажів, маржі та rollout. Наступна стадія — **перші продажі**.
+2. Середня готовність шести опор — **5,7/10**. Найсильніші опори: **Інновації — 8/10** та **Адаптивність — 7/10**. Найслабші: **Культура — 4/10** і **Репутація — 4/10**.
+3. Найсильніша вісь — **Оновлення, 8/10**: команда генерує й тестує багато технологічних рішень. Найслабша — **Виконання, 4/10**: є прострочення, задачі без власників, незатверджені ціни, SLA та критерії готовності.
+4. Засновницький архетип — **Творець**, поточний проєктний — **Герой**, цільовий — **Правитель**. Необхідний перехід від широкого створення продуктів і ручної мобілізації до стандартів, відповідальності та повторюваної моделі.
+5. Головне системне обмеження — **відсутність завершеного комерційного контуру для одного пріоритетного продукту**: паспорт → ціна й unit economics → доказ результату → платний пілот → SLA → rollout.
+6. Найближчим до продажу основним wedge є **AI Queue Monitoring**: є технічна база й дані, але потрібні дашборд, before/after, метрики реакції магазинів і пакет платного пілота. Store Location доцільно залишити окремим другим продуктом, а не центром усієї стратегії.
+7. КСО не слід закуповувати партією 50 одиниць до фіналізації специфікації, landed cost, гарантійної моделі, запасу компонентів і підтвердженого попиту. AI Self-Checkout залишається на стадії розробки/PoC.
+8. Три пріоритети: **продуктизація AI Queue Monitoring; доказові платні продажі; операційна система з RACI, Help Desk, SLA, договорами та закупівельними gates.**
+
+---
+
+## 1. Стадія стартапу
+
+### Загальна оцінка: **MVP / тестування продукту**
+
+GeoVizor уже пройшов базову problem validation: є галузевий досвід, інтерв’ю, технічні розгортання та доступ до ритейлерів. Водночас стадія «перші продажі» ще не підтверджена.
+
+| Ознака стадії | Поточний статус |
+|---|---|
+| Проблема підтверджена | Так: досвід, клієнтські обговорення, технічні розгортання |
+| Пріоритетний ICP | Визначений аналітично: FMCG/convenience-мережі на 20–300 магазинів |
+| MVP | Є для AI Queue Monitoring; окремі інші продукти мають різну готовність |
+| Платні клієнти | Не підтверджено |
+| Повторні продажі | Не підтверджено |
+| Затверджена ціна та unit economics | Ні |
+| Пілот → rollout | Не підтверджено |
+| Product-market fit | Не застосовується на поточній стадії |
+| Масштабування | Передчасне до підтвердження продажів, маржі та SLA |
+
+### Готовність окремих продуктів
+
+| Продукт | Фактична стадія за наявними доказами |
+|---|---|
+| AI Queue Monitoring | MVP / технічне тестування; потрібна комерційна доказовість |
+| Store Standards &amp; Photo Audit | MVP; технічна готовність заявлена, продажі та ефект не підтверджені |
+| Store Location Feasibility | Problem/product validation; методика та прогнозна точність не надані |
+| Self-Checkout | Передпродажна підготовка; специфікація, ціна, логістика й сервіс не фіналізовані |
+| AI Self-Checkout &amp; Loss Prevention | Розробка / PoC |
+| POS, ERP, loyalty | Партнерські рішення; комерційні умови й статус reseller/white-label не затверджені |
+| Concept, equipment, turnkey opening | Проєктні послуги; повторюваність і маржа не підтверджені |
+
+**Висновок:** внутрішнє формулювання «готовий продуктовий портфель» слід трактувати як **готовність частини технологій до демонстрації**, а не як підтверджену комерційну готовність.
+
+---
+
+## 2. Профіль шести опор СІТКАР
+
+Шкала оцінює готовність перейти до перших повторюваних продажів, а не зрілість компанії.
+
+| Опора | Оцінка | Сила | Прогалина | Ключова дія |
+|---|---:|---|---|---|
+| **Стратегія** | **5/10** | Визначено ринок, ICP, ціль перших продажів і потенційний wedge | Портфель охоплює близько 12 позицій; внутрішній план продажу всього каталогу конфліктує з необхідністю одного фокуса | Затвердити AI Queue Monitoring як основний wedge, Location — як другий окремий продукт; решті присвоїти статуси й gates |
+| **Інновації** | **8/10** | Компетенції у computer vision, edge AI, POS, фотоаудиті та автоматизації магазинів | Точність, uptime, реальний бізнес-ефект, IP і вартість масштабування ще не доведені | Затвердити acceptance criteria, технічний паспорт, права на код/дані та метрики реального магазину |
+| **Таланти** | **6/10** | Кросфункціональна команда; Денис Ткачук визначений відповідальним за розвиток і продажі | Не підтверджено FTE й доступну потужність; немає Help Desk; частина задач не має власника | Затвердити RACI, capacity plan і одного P&amp;L/product owner для кожного активного продукту |
+| **Культура** | **4/10** | Введено принцип персональної відповідальності «пообіцяв — виконав» | Є прострочені задачі, непогоджені строки та доручення без відповідальних | Запровадити щотижневий operating review: власник, термін, результат, блокер, рішення |
+| **Адаптивність** | **7/10** | Команда переглянула надмірний фокус на location-сервісі та відклала predictive-функції на наступний етап | Зміни поки реактивні; немає формальних go/no-go критеріїв для продуктів і закупівель | Ввести stage-gate: Discovery → MVP → Paid Pilot → Rollout → Scale |
+| **Репутація** | **4/10** | Є повідомлені розгортання для SPAR/Євроспар і матеріали реальних інсталяцій | Немає погодженого публічного кейсу, before/after, підтвердженого ROI, SLA та customer reference | Отримати дозвіл на кейс і випустити один доказовий звіт із технічними та бізнес-метриками |
+
+### Загальна готовність: **5,7/10**
+
+Це достатньо для **1–3 контрольованих платних пілотів**, але недостатньо для одночасного rollout усього портфеля або закупівлі значної партії обладнання без додаткових gates.
+
+---
+
+## 3. Чотири осі
+
+| Вісь | Оцінка | Обґрунтування |
+|---|---:|---|
+| **Ясність** | **5/10** | Клієнт, проблема й напрям зрозумілі, але продуктовий фокус, статуси готовності, ціни та межі рішень не затверджені |
+| **Оновлення** | **8/10** | Висока швидкість створення й адаптації технологій: нові GPU, edge AI, фотоаудит, інтеграція AI з касою |
+| **Довіра** | **5/10** | Є доступ до клієнтів і технічний досвід, але недостатньо вимірюваних кейсів, SLA, публічних references та доказів ROI |
+| **Виконання** | **4/10** | Визначено координатора й дедлайни, проте є прострочення, задачі без власників і критичні незавершені залежності |
+
+### Діагноз осей
+
+&gt; GeoVizor має достатньо оновлення, але інноваційний потік випереджає ясність і виконання. Довіра клієнта не зростатиме пропорційно кількості продуктів, доки немає доказового результату та передбачуваного сервісу.
+
+---
+
+## 4. Архетипний профіль
+
+Архетип засновників визначено як організаційний відбиток команди, а не як психологічний профіль конкретної особи.
+
+| Рівень | Архетип | Природна сила | Можлива тінь | Рівень упевненості |
+|---|---|---|---|---|
+| **Засновницький** | **Творець** | Ідеї та нові продукти | Ідеї без реалізації | Середній |
+| **Проєктний, поточний** | **Герой** | Дія і мобілізація | Героїзм замість системи | Високий |
+| **Цільовий** | **Правитель** | Порядок і стандарти | Бюрократія | Високий |
+
+### Природна сила
+
+**GeoVizor уміє поєднувати різні retail-tech компетенції та швидко мобілізувати команду навколо нового рішення.** Це дозволяє виконувати складні інтеграційні пілоти, де стандартного коробкового продукту недостатньо.
+
+### Можлива тіньова форма
+
+**Героїзм замість системи:** результат залежить від ручної координації, ключових людей і термінового вирішення проблем. Кожний новий клієнт ризикує перетворитися на окремий проєкт, а не на повторюваний rollout.
+
+### Три факти, що підтверджують висновок
+
+1. Портфель містить близько **12 продуктових позицій**, включно з AI, аналітикою, ПЗ, обладнанням і відкриттям магазинів — сильний відбиток Творця.
+2. Денис Ткачук отримує фактичну координацію бізнесу, вводиться принцип «пообіцяв — виконав» і поставлена близька ціль перших продажів — перехід до Героя.
+3. У реєстрі залишаються задачі без власників і строків, відсутні затверджені SLA, unit economics та єдиний стандарт rollout — прояв тіні «героїзм замість системи».
+
+### Необхідна трансформація
+
+**Творець → Герой → Правитель**
+
+Цільовий Правитель потрібен не для збільшення бюрократії, а для створення:
+
+- єдиних статусів продуктів;
+- стандартів пілота й rollout;
+- SLA та Help Desk;
+- RACI й фінансових gates;
+- контрактного й data/IP governance.
+
+---
+
+## 5. Неузгодженості, які потребують перевірки
+
+| Неузгодженість | Робоче трактування |
+|---|---|
+| Продукти названі «готовими», але в плані ще потрібно визначити статус Ready/MVP/Development/Partner | До завершення класифікації не використовувати загальну заяву «всі продукти готові» |
+| У протоколі проблема драйвера принтера КСО позначена вирішеною, у проєктному реєстрі вона ще відкрита | Оновити реєстр і залишити лише невирішені технічні питання |
+| Безкоштовна резервна КСО в таблиці передбачена для партії 100 шт., у протоколі поставлено ціль домовитися вже для 50 шт. | Не враховувати резервну КСО в економіці, доки умова не підтверджена постачальником письмово |
+| Попередній аналіз рекомендував Queue + Location, тоді як новий протокол вимагає зменшити фокус на Location | Queue зробити основним wedge; Location залишити окремою другою пропозицією, а не основою всього позиціонування |
+| Дати в таблиці є плановими, а не доказом виконання | Статус виконання перевіряти окремо через Worksection/CRM |
+
+---
+
+## 6. Red flags
+
+| № | Red flag | Наслідок |
+|---:|---|---|
+| 1 | **Комерційна готовність декларується раніше, ніж завершено паспорти, ціни, SLA й договори** | Ризик невиконаних обіцянок і репутаційних втрат |
+| 2 | **Близько 12 продуктів для команди на стадії MVP** | Розпорошення продажів, розробки, бюджету та уваги керівника |
+| 3 | **Ціль перших продажів не забезпечена доказовим кейсом і затвердженою unit economics** | Можливий продаж із негативною маржею або без переходу до rollout |
+| 4 | **КСО: MOQ 50, цикл поставки 93–105 днів і незавершена специфікація** | Ризик замороження капіталу, дорогої помилки конфігурації та складського залишку |
+| 5 | **Задачі без власників, непогоджені строки та залежність від ключових людей** | Низька передбачуваність виконання й масштабування |
+
+---
+
+## 7. Міжопорні конфлікти
+
+| Конфлікт | Прояв | Рішення |
+|---|---|---|
+| **Стратегія ↔ Інновації** | Кількість продуктів зростає швидше, ніж визначається основний wedge | Заморозити нові комерційні напрями до проходження Queue Monitoring через paid pilot gate |
+| **Таланти ↔ Культура** | Компетенції наявні, але частина задач не має власника, строку або підтвердженої потужності | RACI, ліміти одночасних проєктів, щотижневий контроль зобов’язань |
+| **Репутація ↔ Виконання** | Обіцянка end-to-end партнера випереджає Help Desk, SLA, кейси й сервісну готовність | Продавати лише продукти, що мають owner, паспорт, ціну, SLA та acceptance criteria |
+
+---
+
+## 8. Головне системне обмеження
+
+&gt; **GeoVizor не має завершеного повторюваного комерційного контуру для одного пріоритетного продукту.**
+
+Йдеться не про брак ідей, технології чи доступу до клієнтів. Обмеженням є розрив між технічним рішенням і повторюваним продажем:
+
+**паспорт продукту → вимірюваний результат → ціна й маржа → договір платного пілота → впровадження → Help Desk/SLA → рішення про rollout.**
+
+Поки цей контур не працює хоча б для AI Queue Monitoring, збільшення кількості продуктів, сайту, SMM або обладнання не переводить GeoVizor на наступну стадію.
+
+---
+
+## 9. Три пріоритети
+
+| Пріоритет | Результат | Основні KPI |
+|---|---|---|
+| **1. Продуктизувати AI Queue Monitoring** | Один повністю готовий до продажу wedge | Паспорт; дашборд; setup/subscription/SLA; acceptance criteria; стандартний запуск ≤4 тижнів |
+| **2. Побудувати доказову машину продажів** | Платні пілоти, вимірюваний ефект і рішення про rollout | 10 кваліфікованих можливостей; 3 платні пілоти; 100% із baseline; ≥2 rollout-рішення |
+| **3. Створити операційний backbone** | Передбачуване виконання, підтримка й контроль ризику обладнання | RACI; Help Desk; SLA; договори IP/data; 100% інцидентів у системі; закупівельний gate для КСО |
+
+---
+
+## 10. План 30 / 90 / 365 днів
+
+План відраховується від дати затвердження цього профілю. Вказані показники є управлінськими цілями, а не прогнозом.
+
+### Перші 30 днів — завершити комерційний контур
+
+| Пріоритет | Дії та результат |
+|---|---|
+| **AI Queue Monitoring** | Затвердити паспорт, ICP, межі продукту, вимоги до камер, дашборд, baseline, KPI, setup fee, підписку, мінімальну плату за магазин і SLA |
+| **Продажі** | Завести в CRM щонайменше 10 кваліфікованих мереж; провести discovery; направити не менше 3 пропозицій платного пілота; ціль — 1 підписаний платний пілот/перший продаж |
+| **Операції** | Присвоїти всім продуктам статус Ready/MVP/Development/Partner/Hold; призначити owner; запустити щотижневий review; підготувати NDA, пілотний договір і data-processing умови |
+| **КСО** | Не замовляти 50 одиниць; завершити специфікацію, landed cost, гарантію, запас компонентів, cash-flow і умови сервісу |
+
+### 90 днів — отримати доказ і рішення про rollout
+
+| Пріоритет | Дії та результат |
+|---|---|
+| **AI Queue Monitoring** | Провести до 3 платних пілотів із погодженими метриками: false alerts, час реакції персоналу, тривалість черги, пропускна здатність, uptime і вартість підтримки |
+| **Продажі** | Усі пілоти мають завершуватися рішенням stop/change/rollout; ціль — не менше 2 позитивних rollout-рішень із 3 |
+| **Репутація** | Оформити щонайменше один погоджений клієнтом кейс із before/after і правом використання в продажах |
+| **Операції** | Запустити Help Desk, журналювання 100% інцидентів, базовий SLA, onboarding checklist, стандартний rollout-процес і бібліотеку технічної документації |
+| **КСО** | Go/no-go на партію лише після підтвердження специфікації, маржі, строку поставки та договорів/авансів, що покривають незворотний закупівельний ризик |
+
+### 365 днів — підтвердити повторювану модель
+
+| Пріоритет | Дії та результат |
+|---|---|
+| **Продукт** | Не більше 2–3 активно масштабованих продуктів; кожний має паспорт, owner, ціну, маржу, SLA, кейс і rollout-процес |
+| **Продажі** | Мінімум 3 завершені платні пілоти, ≥2 rollout-клієнти та щонайменше один повторний продаж або cross-sell |
+| **Економіка** | Цільова SaaS gross margin ≥65%, blended gross margin ≥45%; підтверджені support cost, CAC/ACV і cash-flow |
+| **Сервіс** | Help Desk працює за SLA; uptime та час реакції вимірюються; критичні процеси не залежать від однієї людини |
+| **Конкурентна перевага** | Сформовано перший набір локальних POS/CCTV-конекторів і benchmark-базу за форматами магазинів |
+| **Масштабування** | Міжнародний вихід та розширення AI Self-Checkout — лише після проходження фінансових, технічних і сервісних gates в Україні |
+
+---
+
+## Підсумковий управлінський вердикт
+
+**GeoVizor готовий продавати контрольований платний пілот, але ще не готовий масштабувати весь портфель.** Команда має достатню інноваційну й галузеву силу, проте наступна стадія залежить не від створення нових рішень, а від завершення одного повторюваного комерційного циклу.
+
+Найкраща послідовність:
+
+1. **AI Queue Monitoring як основний wedge.**
+2. **Один доказовий кейс і три платні пілоти.**
+3. **SLA, Help Desk, RACI та unit economics.**
+4. Лише після цього — rollout, KСО та розширення портфеля.
+
+---
+
+## Джерела й обмеження
+
+1. Анкета GeoVizor, надана користувачем.
+2. Результати Запитів 1–2 цього проєкту.
+3. Підсумок робочої зустрічі GeoVizor, імовірна дата **26.08.2026** за назвою експортованого файлу та контекстом; дати завдань є плановими.
+4. Робоча таблиця «Продукт / Проєкт / Сайт структура», дата файлу не зазначена; містить планові строки на серпень–вересень 2026 року.
+5. DevsX, *AI-powered Self-Checkout System*, **09.04.2026** — використано статус зовнішнього PoC, а не як доказ готового продукту.
+6. SaaS Capital, *2024 B2B SaaS Benchmarking*; KeyBanc Capital Markets, *2024 SaaS Survey* — перенесені з попередніх модулів орієнтири маржі та SaaS-економіки.
+
+Архетипи та бали опор є аналітичною оцінкою. Загальна впевненість — **середня**: продуктові й організаційні дані достатні, але немає підтверджених фінансових результатів, FTE, CRM-воронки та клієнтських метрик.
+
+---
+
+## Структурований блок даних для наступного запиту
+
+```yaml
+project: GeoVizor
+module: SITCAR_profile
+
+stage:
+  current: MVP_product_testing
+  next: first_sales
+  confidence: high
+  rationale:
+    - technical_deployments_exist
+    - customer_access_exists
+    - paid_customer_baseline_not_verified
+    - repeat_sales_and_rollout_not_verified
+    - pricing_and_unit_economics_not_approved
+
+SITCAR_pillars:
+  Strategy:
+    score: 5
+    strength: defined_market_ICP_and_first_sales_goal
+    gap: broad_portfolio_without_single_commercial_wedge
+    action: approve_AI_Queue_as_primary_wedge_and_product_stage_gates
+  Innovation:
+    score: 8
+    strength: AI_video_edge_POS_and_retail_automation_capability
+    gap: real_store_quality_ROI_IP_and_scale_cost_not_proven
+    action: approve_acceptance_criteria_technical_passport_and_IP_data_rights
+  Talents:
+    score: 6
+    strength: cross_functional_team_and_named_business_coordinator
+    gap: FTE_capacity_Help_Desk_and_some_owners_unconfirmed
+    action: approve_RACI_capacity_plan_and_product_PnL_owners
+  Culture:
+    score: 4
+    strength: explicit_personal_accountability_principle
+    gap: overdue_tasks_unagreed_deadlines_and_unowned_work
+    action: weekly_operating_review_with_owner_deadline_output_and_blocker
+  Adaptability:
+    score: 7
+    strength: strategy_reprioritization_and_staged_feature_scope
+    gap: reactive_changes_without_formal_go_no_go_gates
+    action: implement_Discovery_MVP_Paid_Pilot_Rollout_Scale_model
+  Reputation:
+    score: 4
+    strength: reported_SPAR_Eurospar_deployments_and_real_installation_materials
+    gap: no_approved_public_case_ROI_reference_or_operational_SLA
+    action: create_one_customer_approved_before_after_case
+
+average_readiness_score: 5.7
+
+axes:
+  Clarity: 5
+  Renewal: 8
+  Trust: 5
+  Execution: 4
+
+archetypes:
+  founder:
+    type: Creator
+    natural_strength: ideas_and_new_products
+    shadow: ideas_without_execution
+    confidence: medium
+  current_project:
+    type: Hero
+    natural_strength: action_and_mobilization
+    shadow: heroism_instead_of_system
+    confidence: high
+  target:
+    type: Ruler
+    natural_strength: order_and_standards
+    shadow: bureaucracy
+    confidence: high
+
+main_system_constraint:
+  statement: no_complete_repeatable_commercial_loop_for_one_priority_product
+  missing_chain:
+    - product_passport
+    - measurable_customer_result
+    - approved_price_and_unit_economics
+    - paid_pilot_contract
+    - standardized_deployment
+    - Help_Desk_and_SLA
+    - rollout_decision
+
+primary_wedge:
+  product: AI_Queue_Monitoring
+  required_proof:
+    - performance_dashboard
+    - before_after_baseline
+    - store_response_metrics
+    - false_alert_rate
+    - uptime
+    - support_cost
+    - customer_ROI
+
+portfolio_decisions:
+  Store_Location: secondary_separate_offer
+  Photo_Audit: MVP_until_commercial_proof
+  Self_Checkout: procurement_gate_before_order
+  AI_Self_Checkout: development_or_PoC
+  POS_ERP_Loyalty: partner_solution_pending_terms
+  new_product_expansion: hold_until_primary_wedge_validation
+
+red_flags:
+  - readiness_claims_ahead_of_passports_pricing_SLA_and_contracts
+  - approximately_12_products_at_MVP_stage
+  - first_sales_goal_without_approved_unit_economics_and_case
+  - KSO_MOQ_50_with_93_105_day_lead_time_and_unfinished_specification
+  - unowned_tasks_and_key_person_dependency
+
+cross_pillar_conflicts:
+  - Strategy_vs_Innovation
+  - Talents_vs_Culture
+  - Reputation_vs_Execution
+
+priorities:
+  - productize_AI_Queue_Monitoring
+  - build_paid_evidence_sales_engine
+  - create_operating_service_and_procurement_backbone
+
+gates:
+  first_30_days:
+    - approve_product_statuses_and_owners
+    - approve_AI_Queue_passport_price_dashboard_and_SLA
+    - create_10_qualified_CRM_opportunities
+    - send_at_least_3_paid_pilot_proposals
+    - target_1_signed_paid_pilot
+    - do_not_order_50_KSO_before_procurement_gate
+  first_90_days:
+    - complete_up_to_3_paid_pilots
+    - baseline_and_acceptance_criteria_for_100_percent_of_pilots
+    - target_at_least_2_rollout_decisions
+    - launch_Help_Desk_and_incident_tracking
+    - publish_1_customer_approved_case
+  first_365_days:
+    - at_least_3_completed_paid_pilots
+    - at_least_2_rollout_customers
+    - at_least_1_repeat_sale_or_cross_sell
+    - SaaS_gross_margin_target_at_least_65_percent
+    - blended_gross_margin_target_at_least_45_percent
+    - maximum_2_to_3_actively_scaled_products
+    - no_international_scale_before_Ukraine_validation
+
+data_conflicts_to_verify:
+  - ready_portfolio_claim_vs_pending_product_status_classification
+  - printer_driver_marked_resolved_vs_open_project_register_item
+  - free_backup_KSO_at_100_units_vs_negotiation_goal_at_50_units
+  - planned_deadlines_vs_actual_completion_status
+```</pre></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;id&quot;: &quot;resp_0b2d24b9ea9add55006a95725ef65087d292f96e71768e23d6&quot;,
+  &quot;created_at&quot;: 1788179038.0,
+  &quot;error&quot;: null,
+  &quot;incomplete_details&quot;: null,
+  &quot;instructions&quot;: null,
+  &quot;metadata&quot;: {},
+  &quot;model&quot;: &quot;gpt-5.6-sol&quot;,
+  &quot;object&quot;: &quot;response&quot;,
+  &quot;output&quot;: [
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a9572645b7487d281ebf0333555d2c9&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a95726bb17087d299dd8bcb4666afdf&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a9572734f3c87d28ec457c232621c10&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a95727907c487d2b2143f7f31bb4145&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a95727f05e487d2ac16d8ccb0d98bfd&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a957285675487d2bb546388c72d4350&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a95728bacf487d2aba29291a2894d96&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a9572919d1087d2ac480644921793d8&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;rs_0b2d24b9ea9add55006a957297af5887d2a7580dd3ad724c90&quot;,
+      &quot;summary&quot;: [],
+      &quot;type&quot;: &quot;reasoning&quot;,
+      &quot;content&quot;: [],
+      &quot;encrypted_content&quot;: null,
+      &quot;status&quot;: null
+    },
+    {
+      &quot;id&quot;: &quot;msg_0b2d24b9ea9add55006a95729b1a2c87d29b39d1af2cd92729&quot;,
+      &quot;content&quot;: [
+        {
+          &quot;annotations&quot;: [],
+          &quot;text&quot;: &quot;# Запит 3. Профіль СІТКАР для GeoVizor\n\n## Executive Summary\n\n1. **Поточна стадія GeoVizor — MVP / тестування продукту.** Є технології, розгортання й продукти різної готовності, але немає підтвердженої базової лінії платних клієнтів, повторних продажів, маржі та rollout. Наступна стадія — **перші продажі**.\n2. Середня готовність шести опор — **5,7/10**. Найсильніші опори: **Інновації — 8/10** та **Адаптивність — 7/10**. Найслабші: **Культура — 4/10** і **Репутація — 4/10**.\n3. Найсильніша вісь — **Оновлення, 8/10**: команда генерує й тестує багато технологічних рішень. Найслабша — **Виконання, 4/10**: є прострочення, задачі без власників, незатверджені ціни, SLA та критерії готовності.\n4. Засновницький архетип — **Творець**, поточний проєктний — **Герой**, цільовий — **Правитель**. Необхідний перехід від широкого створення продуктів і ручної мобілізації до стандартів, відповідальності та повторюваної моделі.\n5. Головне системне обмеження — **відсутність завершеного комерційного контуру для одного пріоритетного продукту**: паспорт → ціна й unit economics → доказ результату → платний пілот → SLA → rollout.\n6. Найближчим до продажу основним wedge є **AI Queue Monitoring**: є технічна база й дані, але потрібні дашборд, before/after, метрики реакції магазинів і пакет платного пілота. Store Location доцільно залишити окремим другим продуктом, а не центром усієї стратегії.\n7. КСО не слід закуповувати партією 50 одиниць до фіналізації специфікації, landed cost, гарантійної моделі, запасу компонентів і підтвердженого попиту. AI Self-Checkout залишається на стадії розробки/PoC.\n8. Три пріоритети: **продуктизація AI Queue Monitoring; доказові платні продажі; операційна система з RACI, Help Desk, SLA, договорами та закупівельними gates.**\n\n---\n\n## 1. Стадія стартапу\n\n### Загальна оцінка: **MVP / тестування продукту**\n\nGeoVizor уже пройшов базову problem validation: є галузевий досвід, інтерв’ю, технічні розгортання та доступ до ритейлерів. Водночас стадія «перші продажі» ще не підтверджена.\n\n| Ознака стадії | Поточний статус |\n|---|---|\n| Проблема підтверджена | Так: досвід, клієнтські обговорення, технічні розгортання |\n| Пріоритетний ICP | Визначений аналітично: FMCG/convenience-мережі на 20–300 магазинів |\n| MVP | Є для AI Queue Monitoring; окремі інші продукти мають різну готовність |\n| Платні клієнти | Не підтверджено |\n| Повторні продажі | Не підтверджено |\n| Затверджена ціна та unit economics | Ні |\n| Пілот → rollout | Не підтверджено |\n| Product-market fit | Не застосовується на поточній стадії |\n| Масштабування | Передчасне до підтвердження продажів, маржі та SLA |\n\n### Готовність окремих продуктів\n\n| Продукт | Фактична стадія за наявними доказами |\n|---|---|\n| AI Queue Monitoring | MVP / технічне тестування; потрібна комерційна доказовість |\n| Store Standards &amp; Photo Audit | MVP; технічна готовність заявлена, продажі та ефект не підтверджені |\n| Store Location Feasibility | Problem/product validation; методика та прогнозна точність не надані |\n| Self-Checkout | Передпродажна підготовка; специфікація, ціна, логістика й сервіс не фіналізовані |\n| AI Self-Checkout &amp; Loss Prevention | Розробка / PoC |\n| POS, ERP, loyalty | Партнерські рішення; комерційні умови й статус reseller/white-label не затверджені |\n| Concept, equipment, turnkey opening | Проєктні послуги; повторюваність і маржа не підтверджені |\n\n**Висновок:** внутрішнє формулювання «готовий продуктовий портфель» слід трактувати як **готовність частини технологій до демонстрації**, а не як підтверджену комерційну готовність.\n\n---\n\n## 2. Профіль шести опор СІТКАР\n\nШкала оцінює готовність перейти до перших повторюваних продажів, а не зрілість компанії.\n\n| Опора | Оцінка | Сила | Прогалина | Ключова дія |\n|---|---:|---|---|---|\n| **Стратегія** | **5/10** | Визначено ринок, ICP, ціль перших продажів і потенційний wedge | Портфель охоплює близько 12 позицій; внутрішній план продажу всього каталогу конфліктує з необхідністю одного фокуса | Затвердити AI Queue Monitoring як основний wedge, Location — як другий окремий продукт; решті присвоїти статуси й gates |\n| **Інновації** | **8/10** | Компетенції у computer vision, edge AI, POS, фотоаудиті та автоматизації магазинів | Точність, uptime, реальний бізнес-ефект, IP і вартість масштабування ще не доведені | Затвердити acceptance criteria, технічний паспорт, права на код/дані та метрики реального магазину |\n| **Таланти** | **6/10** | Кросфункціональна команда; Денис Ткачук визначений відповідальним за розвиток і продажі | Не підтверджено FTE й доступну потужність; немає Help Desk; частина задач не має власника | Затвердити RACI, capacity plan і одного P&amp;L/product owner для кожного активного продукту |\n| **Культура** | **4/10** | Введено принцип персональної відповідальності «пообіцяв — виконав» | Є прострочені задачі, непогоджені строки та доручення без відповідальних | Запровадити щотижневий operating review: власник, термін, результат, блокер, рішення |\n| **Адаптивність** | **7/10** | Команда переглянула надмірний фокус на location-сервісі та відклала predictive-функції на наступний етап | Зміни поки реактивні; немає формальних go/no-go критеріїв для продуктів і закупівель | Ввести stage-gate: Discovery → MVP → Paid Pilot → Rollout → Scale |\n| **Репутація** | **4/10** | Є повідомлені розгортання для SPAR/Євроспар і матеріали реальних інсталяцій | Немає погодженого публічного кейсу, before/after, підтвердженого ROI, SLA та customer reference | Отримати дозвіл на кейс і випустити один доказовий звіт із технічними та бізнес-метриками |\n\n### Загальна готовність: **5,7/10**\n\nЦе достатньо для **1–3 контрольованих платних пілотів**, але недостатньо для одночасного rollout усього портфеля або закупівлі значної партії обладнання без додаткових gates.\n\n---\n\n## 3. Чотири осі\n\n| Вісь | Оцінка | Обґрунтування |\n|---|---:|---|\n| **Ясність** | **5/10** | Клієнт, проблема й напрям зрозумілі, але продуктовий фокус, статуси готовності, ціни та межі рішень не затверджені |\n| **Оновлення** | **8/10** | Висока швидкість створення й адаптації технологій: нові GPU, edge AI, фотоаудит, інтеграція AI з касою |\n| **Довіра** | **5/10** | Є доступ до клієнтів і технічний досвід, але недостатньо вимірюваних кейсів, SLA, публічних references та доказів ROI |\n| **Виконання** | **4/10** | Визначено координатора й дедлайни, проте є прострочення, задачі без власників і критичні незавершені залежності |\n\n### Діагноз осей\n\n&gt; GeoVizor має достатньо оновлення, але інноваційний потік випереджає ясність і виконання. Довіра клієнта не зростатиме пропорційно кількості продуктів, доки немає доказового результату та передбачуваного сервісу.\n\n---\n\n## 4. Архетипний профіль\n\nАрхетип засновників визначено як організаційний відбиток команди, а не як психологічний профіль конкретної особи.\n\n| Рівень | Архетип | Природна сила | Можлива тінь | Рівень упевненості |\n|---|---|---|---|---|\n| **Засновницький** | **Творець** | Ідеї та нові продукти | Ідеї без реалізації | Середній |\n| **Проєктний, поточний** | **Герой** | Дія і мобілізація | Героїзм замість системи | Високий |\n| **Цільовий** | **Правитель** | Порядок і стандарти | Бюрократія | Високий |\n\n### Природна сила\n\n**GeoVizor уміє поєднувати різні retail-tech компетенції та швидко мобілізувати команду навколо нового рішення.** Це дозволяє виконувати складні інтеграційні пілоти, де стандартного коробкового продукту недостатньо.\n\n### Можлива тіньова форма\n\n**Героїзм замість системи:** результат залежить від ручної координації, ключових людей і термінового вирішення проблем. Кожний новий клієнт ризикує перетворитися на окремий проєкт, а не на повторюваний rollout.\n\n### Три факти, що підтверджують висновок\n\n1. Портфель містить близько **12 продуктових позицій**, включно з AI, аналітикою, ПЗ, обладнанням і відкриттям магазинів — сильний відбиток Творця.\n2. Денис Ткачук отримує фактичну координацію бізнесу, вводиться принцип «пообіцяв — виконав» і поставлена близька ціль перших продажів — перехід до Героя.\n3. У реєстрі залишаються задачі без власників і строків, відсутні затверджені SLA, unit economics та єдиний стандарт rollout — прояв тіні «героїзм замість системи».\n\n### Необхідна трансформація\n\n**Творець → Герой → Правитель**\n\nЦільовий Правитель потрібен не для збільшення бюрократії, а для створення:\n\n- єдиних статусів продуктів;\n- стандартів пілота й rollout;\n- SLA та Help Desk;\n- RACI й фінансових gates;\n- контрактного й data/IP governance.\n\n---\n\n## 5. Неузгодженості, які потребують перевірки\n\n| Неузгодженість | Робоче трактування |\n|---|---|\n| Продукти названі «готовими», але в плані ще потрібно визначити статус Ready/MVP/Development/Partner | До завершення класифікації не використовувати загальну заяву «всі продукти готові» |\n| У протоколі проблема драйвера принтера КСО позначена вирішеною, у проєктному реєстрі вона ще відкрита | Оновити реєстр і залишити лише невирішені технічні питання |\n| Безкоштовна резервна КСО в таблиці передбачена для партії 100 шт., у протоколі поставлено ціль домовитися вже для 50 шт. | Не враховувати резервну КСО в економіці, доки умова не підтверджена постачальником письмово |\n| Попередній аналіз рекомендував Queue + Location, тоді як новий протокол вимагає зменшити фокус на Location | Queue зробити основним wedge; Location залишити окремою другою пропозицією, а не основою всього позиціонування |\n| Дати в таблиці є плановими, а не доказом виконання | Статус виконання перевіряти окремо через Worksection/CRM |\n\n---\n\n## 6. Red flags\n\n| № | Red flag | Наслідок |\n|---:|---|---|\n| 1 | **Комерційна готовність декларується раніше, ніж завершено паспорти, ціни, SLA й договори** | Ризик невиконаних обіцянок і репутаційних втрат |\n| 2 | **Близько 12 продуктів для команди на стадії MVP** | Розпорошення продажів, розробки, бюджету та уваги керівника |\n| 3 | **Ціль перших продажів не забезпечена доказовим кейсом і затвердженою unit economics** | Можливий продаж із негативною маржею або без переходу до rollout |\n| 4 | **КСО: MOQ 50, цикл поставки 93–105 днів і незавершена специфікація** | Ризик замороження капіталу, дорогої помилки конфігурації та складського залишку |\n| 5 | **Задачі без власників, непогоджені строки та залежність від ключових людей** | Низька передбачуваність виконання й масштабування |\n\n---\n\n## 7. Міжопорні конфлікти\n\n| Конфлікт | Прояв | Рішення |\n|---|---|---|\n| **Стратегія ↔ Інновації** | Кількість продуктів зростає швидше, ніж визначається основний wedge | Заморозити нові комерційні напрями до проходження Queue Monitoring через paid pilot gate |\n| **Таланти ↔ Культура** | Компетенції наявні, але частина задач не має власника, строку або підтвердженої потужності | RACI, ліміти одночасних проєктів, щотижневий контроль зобов’язань |\n| **Репутація ↔ Виконання** | Обіцянка end-to-end партнера випереджає Help Desk, SLA, кейси й сервісну готовність | Продавати лише продукти, що мають owner, паспорт, ціну, SLA та acceptance criteria |\n\n---\n\n## 8. Головне системне обмеження\n\n&gt; **GeoVizor не має завершеного повторюваного комерційного контуру для одного пріоритетного продукту.**\n\nЙдеться не про брак ідей, технології чи доступу до клієнтів. Обмеженням є розрив між технічним рішенням і повторюваним продажем:\n\n**паспорт продукту → вимірюваний результат → ціна й маржа → договір платного пілота → впровадження → Help Desk/SLA → рішення про rollout.**\n\nПоки цей контур не працює хоча б для AI Queue Monitoring, збільшення кількості продуктів, сайту, SMM або обладнання не переводить GeoVizor на наступну стадію.\n\n---\n\n## 9. Три пріоритети\n\n| Пріоритет | Результат | Основні KPI |\n|---|---|---|\n| **1. Продуктизувати AI Queue Monitoring** | Один повністю готовий до продажу wedge | Паспорт; дашборд; setup/subscription/SLA; acceptance criteria; стандартний запуск ≤4 тижнів |\n| **2. Побудувати доказову машину продажів** | Платні пілоти, вимірюваний ефект і рішення про rollout | 10 кваліфікованих можливостей; 3 платні пілоти; 100% із baseline; ≥2 rollout-рішення |\n| **3. Створити операційний backbone** | Передбачуване виконання, підтримка й контроль ризику обладнання | RACI; Help Desk; SLA; договори IP/data; 100% інцидентів у системі; закупівельний gate для КСО |\n\n---\n\n## 10. План 30 / 90 / 365 днів\n\nПлан відраховується від дати затвердження цього профілю. Вказані показники є управлінськими цілями, а не прогнозом.\n\n### Перші 30 днів — завершити комерційний контур\n\n| Пріоритет | Дії та результат |\n|---|---|\n| **AI Queue Monitoring** | Затвердити паспорт, ICP, межі продукту, вимоги до камер, дашборд, baseline, KPI, setup fee, підписку, мінімальну плату за магазин і SLA |\n| **Продажі** | Завести в CRM щонайменше 10 кваліфікованих мереж; провести discovery; направити не менше 3 пропозицій платного пілота; ціль — 1 підписаний платний пілот/перший продаж |\n| **Операції** | Присвоїти всім продуктам статус Ready/MVP/Development/Partner/Hold; призначити owner; запустити щотижневий review; підготувати NDA, пілотний договір і data-processing умови |\n| **КСО** | Не замовляти 50 одиниць; завершити специфікацію, landed cost, гарантію, запас компонентів, cash-flow і умови сервісу |\n\n### 90 днів — отримати доказ і рішення про rollout\n\n| Пріоритет | Дії та результат |\n|---|---|\n| **AI Queue Monitoring** | Провести до 3 платних пілотів із погодженими метриками: false alerts, час реакції персоналу, тривалість черги, пропускна здатність, uptime і вартість підтримки |\n| **Продажі** | Усі пілоти мають завершуватися рішенням stop/change/rollout; ціль — не менше 2 позитивних rollout-рішень із 3 |\n| **Репутація** | Оформити щонайменше один погоджений клієнтом кейс із before/after і правом використання в продажах |\n| **Операції** | Запустити Help Desk, журналювання 100% інцидентів, базовий SLA, onboarding checklist, стандартний rollout-процес і бібліотеку технічної документації |\n| **КСО** | Go/no-go на партію лише після підтвердження специфікації, маржі, строку поставки та договорів/авансів, що покривають незворотний закупівельний ризик |\n\n### 365 днів — підтвердити повторювану модель\n\n| Пріоритет | Дії та результат |\n|---|---|\n| **Продукт** | Не більше 2–3 активно масштабованих продуктів; кожний має паспорт, owner, ціну, маржу, SLA, кейс і rollout-процес |\n| **Продажі** | Мінімум 3 завершені платні пілоти, ≥2 rollout-клієнти та щонайменше один повторний продаж або cross-sell |\n| **Економіка** | Цільова SaaS gross margin ≥65%, blended gross margin ≥45%; підтверджені support cost, CAC/ACV і cash-flow |\n| **Сервіс** | Help Desk працює за SLA; uptime та час реакції вимірюються; критичні процеси не залежать від однієї людини |\n| **Конкурентна перевага** | Сформовано перший набір локальних POS/CCTV-конекторів і benchmark-базу за форматами магазинів |\n| **Масштабування** | Міжнародний вихід та розширення AI Self-Checkout — лише після проходження фінансових, технічних і сервісних gates в Україні |\n\n---\n\n## Підсумковий управлінський вердикт\n\n**GeoVizor готовий продавати контрольований платний пілот, але ще не готовий масштабувати весь портфель.** Команда має достатню інноваційну й галузеву силу, проте наступна стадія залежить не від створення нових рішень, а від завершення одного повторюваного комерційного циклу.\n\nНайкраща послідовність:\n\n1. **AI Queue Monitoring як основний wedge.**\n2. **Один доказовий кейс і три платні пілоти.**\n3. **SLA, Help Desk, RACI та unit economics.**\n4. Лише після цього — rollout, KСО та розширення портфеля.\n\n---\n\n## Джерела й обмеження\n\n1. Анкета GeoVizor, надана користувачем.\n2. Результати Запитів 1–2 цього проєкту.\n3. Підсумок робочої зустрічі GeoVizor, імовірна дата **26.08.2026** за назвою експортованого файлу та контекстом; дати завдань є плановими.\n4. Робоча таблиця «Продукт / Проєкт / Сайт структура», дата файлу не зазначена; містить планові строки на серпень–вересень 2026 року.\n5. DevsX, *AI-powered Self-Checkout System*, **09.04.2026** — використано статус зовнішнього PoC, а не як доказ готового продукту.\n6. SaaS Capital, *2024 B2B SaaS Benchmarking*; KeyBanc Capital Markets, *2024 SaaS Survey* — перенесені з попередніх модулів орієнтири маржі та SaaS-економіки.\n\nАрхетипи та бали опор є аналітичною оцінкою. Загальна впевненість — **середня**: продуктові й організаційні дані достатні, але немає підтверджених фінансових результатів, FTE, CRM-воронки та клієнтських метрик.\n\n---\n\n## Структурований блок даних для наступного запиту\n\n```yaml\nproject: GeoVizor\nmodule: SITCAR_profile\n\nstage:\n  current: MVP_product_testing\n  next: first_sales\n  confidence: high\n  rationale:\n    - technical_deployments_exist\n    - customer_access_exists\n    - paid_customer_baseline_not_verified\n    - repeat_sales_and_rollout_not_verified\n    - pricing_and_unit_economics_not_approved\n\nSITCAR_pillars:\n  Strategy:\n    score: 5\n    strength: defined_market_ICP_and_first_sales_goal\n    gap: broad_portfolio_without_single_commercial_wedge\n    action: approve_AI_Queue_as_primary_wedge_and_product_stage_gates\n  Innovation:\n    score: 8\n    strength: AI_video_edge_POS_and_retail_automation_capability\n    gap: real_store_quality_ROI_IP_and_scale_cost_not_proven\n    action: approve_acceptance_criteria_technical_passport_and_IP_data_rights\n  Talents:\n    score: 6\n    strength: cross_functional_team_and_named_business_coordinator\n    gap: FTE_capacity_Help_Desk_and_some_owners_unconfirmed\n    action: approve_RACI_capacity_plan_and_product_PnL_owners\n  Culture:\n    score: 4\n    strength: explicit_personal_accountability_principle\n    gap: overdue_tasks_unagreed_deadlines_and_unowned_work\n    action: weekly_operating_review_with_owner_deadline_output_and_blocker\n  Adaptability:\n    score: 7\n    strength: strategy_reprioritization_and_staged_feature_scope\n    gap: reactive_changes_without_formal_go_no_go_gates\n    action: implement_Discovery_MVP_Paid_Pilot_Rollout_Scale_model\n  Reputation:\n    score: 4\n    strength: reported_SPAR_Eurospar_deployments_and_real_installation_materials\n    gap: no_approved_public_case_ROI_reference_or_operational_SLA\n    action: create_one_customer_approved_before_after_case\n\naverage_readiness_score: 5.7\n\naxes:\n  Clarity: 5\n  Renewal: 8\n  Trust: 5\n  Execution: 4\n\narchetypes:\n  founder:\n    type: Creator\n    natural_strength: ideas_and_new_products\n    shadow: ideas_without_execution\n    confidence: medium\n  current_project:\n    type: Hero\n    natural_strength: action_and_mobilization\n    shadow: heroism_instead_of_system\n    confidence: high\n  target:\n    type: Ruler\n    natural_strength: order_and_standards\n    shadow: bureaucracy\n    confidence: high\n\nmain_system_constraint:\n  statement: no_complete_repeatable_commercial_loop_for_one_priority_product\n  missing_chain:\n    - product_passport\n    - measurable_customer_result\n    - approved_price_and_unit_economics\n    - paid_pilot_contract\n    - standardized_deployment\n    - Help_Desk_and_SLA\n    - rollout_decision\n\nprimary_wedge:\n  product: AI_Queue_Monitoring\n  required_proof:\n    - performance_dashboard\n    - before_after_baseline\n    - store_response_metrics\n    - false_alert_rate\n    - uptime\n    - support_cost\n    - customer_ROI\n\nportfolio_decisions:\n  Store_Location: secondary_separate_offer\n  Photo_Audit: MVP_until_commercial_proof\n  Self_Checkout: procurement_gate_before_order\n  AI_Self_Checkout: development_or_PoC\n  POS_ERP_Loyalty: partner_solution_pending_terms\n  new_product_expansion: hold_until_primary_wedge_validation\n\nred_flags:\n  - readiness_claims_ahead_of_passports_pricing_SLA_and_contracts\n  - approximately_12_products_at_MVP_stage\n  - first_sales_goal_without_approved_unit_economics_and_case\n  - KSO_MOQ_50_with_93_105_day_lead_time_and_unfinished_specification\n  - unowned_tasks_and_key_person_dependency\n\ncross_pillar_conflicts:\n  - Strategy_vs_Innovation\n  - Talents_vs_Culture\n  - Reputation_vs_Execution\n\npriorities:\n  - productize_AI_Queue_Monitoring\n  - build_paid_evidence_sales_engine\n  - create_operating_service_and_procurement_backbone\n\ngates:\n  first_30_days:\n    - approve_product_statuses_and_owners\n    - approve_AI_Queue_passport_price_dashboard_and_SLA\n    - create_10_qualified_CRM_opportunities\n    - send_at_least_3_paid_pilot_proposals\n    - target_1_signed_paid_pilot\n    - do_not_order_50_KSO_before_procurement_gate\n  first_90_days:\n    - complete_up_to_3_paid_pilots\n    - baseline_and_acceptance_criteria_for_100_percent_of_pilots\n    - target_at_least_2_rollout_decisions\n    - launch_Help_Desk_and_incident_tracking\n    - publish_1_customer_approved_case\n  first_365_days:\n    - at_least_3_completed_paid_pilots\n    - at_least_2_rollout_customers\n    - at_least_1_repeat_sale_or_cross_sell\n    - SaaS_gross_margin_target_at_least_65_percent\n    - blended_gross_margin_target_at_least_45_percent\n    - maximum_2_to_3_actively_scaled_products\n    - no_international_scale_before_Ukraine_validation\n\ndata_conflicts_to_verify:\n  - ready_portfolio_claim_vs_pending_product_status_classification\n  - printer_driver_marked_resolved_vs_open_project_register_item\n  - free_backup_KSO_at_100_units_vs_negotiation_goal_at_50_units\n  - planned_deadlines_vs_actual_completion_status\n```&quot;,
+          &quot;type&quot;: &quot;output_text&quot;,
+          &quot;logprobs&quot;: []
+        }
+      ],
+      &quot;role&quot;: &quot;assistant&quot;,
+      &quot;status&quot;: &quot;completed&quot;,
+      &quot;type&quot;: &quot;message&quot;,
+      &quot;phase&quot;: &quot;final_answer&quot;
+    }
+  ],
+  &quot;parallel_tool_calls&quot;: true,
+  &quot;temperature&quot;: 1.0,
+  &quot;tool_choice&quot;: &quot;auto&quot;,
+  &quot;tools&quot;: [],
+  &quot;top_p&quot;: 0.98,
+  &quot;background&quot;: true,
+  &quot;completed_at&quot;: 1788179163.0,
+  &quot;conversation&quot;: null,
+  &quot;max_output_tokens&quot;: null,
+  &quot;max_tool_calls&quot;: null,
+  &quot;moderation&quot;: null,
+  &quot;previous_response_id&quot;: null,
+  &quot;prompt&quot;: null,
+  &quot;prompt_cache_key&quot;: null,
+  &quot;prompt_cache_options&quot;: null,
+  &quot;prompt_cache_retention&quot;: &quot;24h&quot;,
+  &quot;reasoning&quot;: {
+    &quot;context&quot;: &quot;all_turns&quot;,
+    &quot;effort&quot;: &quot;high&quot;,
+    &quot;generate_summary&quot;: null,
+    &quot;mode&quot;: &quot;standard&quot;,
+    &quot;summary&quot;: null
+  },
+  &quot;safety_identifier&quot;: null,
+  &quot;service_tier&quot;: &quot;default&quot;,
+  &quot;status&quot;: &quot;completed&quot;,
+  &quot;text&quot;: {
+    &quot;format&quot;: {
+      &quot;type&quot;: &quot;text&quot;
+    },
+    &quot;verbosity&quot;: &quot;medium&quot;
+  },
+  &quot;top_logprobs&quot;: 0,
+  &quot;truncation&quot;: &quot;disabled&quot;,
+  &quot;usage&quot;: {
+    &quot;input_tokens&quot;: 26133,
+    &quot;input_tokens_details&quot;: {
+      &quot;cache_write_tokens&quot;: 0,
+      &quot;cached_tokens&quot;: 0
+    },
+    &quot;output_tokens&quot;: 10963,
+    &quot;output_tokens_details&quot;: {
+      &quot;reasoning_tokens&quot;: 4451
+    },
+    &quot;total_tokens&quot;: 37096
+  },
+  &quot;user&quot;: null,
+  &quot;billing&quot;: {
+    &quot;payer&quot;: &quot;developer&quot;
+  },
+  &quot;frequency_penalty&quot;: 0.0,
+  &quot;presence_penalty&quot;: 0.0,
+  &quot;store&quot;: true,
+  &quot;tool_usage&quot;: {
+    &quot;image_gen&quot;: {
+      &quot;input_tokens&quot;: 0,
+      &quot;input_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;output_tokens&quot;: 0,
+      &quot;output_tokens_details&quot;: {
+        &quot;image_tokens&quot;: 0,
+        &quot;text_tokens&quot;: 0
+      },
+      &quot;total_tokens&quot;: 0
+    },
+    &quot;web_search&quot;: {
+      &quot;num_requests&quot;: 0
+    }
+  }
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Загальні правила для всіх запитів
+1. Використовуй усю анкету, всі завантажені документи, уточнення користувача, перевірені зовнішні дані та всі результати, раніше згенеровані SITCAR System у межах цього проєкту.
+2. Кожен наступний запит розвиває попередні результати. Не проси повторно дані, які вже надані.
+3. Пріоритет даних: підтверджені факти користувача → документи й звіти → уточнення → перевірені зовнішні джерела → результати попередніх запитів → аналітичні припущення.
+4. Не вигадуй відсутніх фактів. Використовуй діапазони, позначай припущення та рівень упевненості.
+5. Якщо джерела суперечать одне одному, покажи суперечність і поясни, що потребує перевірки.
+6. Опрацьовуй усі релевантні пункти. Нерелевантні показники позначай як «не застосовується» без зайвого опису.
+7. Проміжні відповіді мають бути лаконічними: головні висновки, рішення, ризики та план дій. Повна деталізація формується у фінальному Запиті 7.
+8. На кожному етапі перевіряй узгодженість проблеми, клієнта, продукту, цінності, бізнес-моделі, конкурентних переваг, ресурсів, фінансів, команди, KPI та GTM.
+9. Для зовнішніх фактів вказуй джерело й дату. Не заявляй про доступ до баз, яких фактично немає.
+10. Наприкінці кожної відповіді сформуй структурований блок даних для наступного запиту.
+11. Формуй відповіді на кожен запит окремо. Формуй відповіді на кожен пункт.
+Запит 3. Профіль СІТКАР для стартапу
+Мета: Оцінити готовність стартапу за шістьма опорами, визначити архетип, природну силу, тіньову форму та головне системне обмеження.
+Використай анкету, матеріали користувача та результати Запитів 1–2. Оцінюй стартап як організацію, що проєктується, а не як зрілу компанію.
+Завдання
+1. Визнач стадію: ідея, problem validation, MVP, перші продажі, product-market fit або масштабування.
+2. Оціни готовність кожної опори СІТКАР від 1 до 10: Стратегія, Інновації, Таланти, Культура, Адаптивність, Репутація.
+3. Для кожної опори вкажи одну силу, одну прогалину та одну ключову дію.
+4. Оціни чотири осі: Ясність, Оновлення, Довіра, Виконання.
+5. Визнач засновницький архетип, проєктний архетип і цільовий архетип. Використовуй лише: Мандрівник, Мудрець, Творець, Герой, Опікун, Правитель, Бунтар, Персона.
+6. Визнач природну силу архетипу, можливу тіньову форму та три факти, які підтверджують висновок.
+7. Сформуй не більше п’яти red flags і не більше трьох міжопорних конфліктів.
+8. Визнач одне головне системне обмеження переходу до наступної стадії.
+9. Обери три пріоритети й сформуй план 30 / 90 / 365 днів.
+Архетипи
+Архетип | Природна сила | Тінь
+Мандрівник | Пошук і рух | Розпорошення
+Мудрець | Знання і ясність | Аналіз замість дії
+Творець | Ідеї та нові продукти | Ідеї без реалізації
+Герой | Дія і мобілізація | Героїзм замість системи
+Опікун | Довіра і турбота | Надмірна обережність
+Правитель | Порядок і стандарти | Бюрократія
+Бунтар | Прорив і зміна правил | Хаос і виснаження
+Персона | Бренд і образ | Фасадність
+Ключові таблиці
+Профіль шести опор: оцінка, сила, прогалина, дія.
+Архетип: засновницький, проєктний, цільовий.
+Red flags і міжопорні конфлікти.
+Три пріоритети та план 30 / 90 / 365.
+Формат відповіді
+Обсяг проміжної відповіді — орієнтовно 3–5 сторінок.
+Почни з Executive Summary: 5–8 ключових висновків.
+Використовуй короткі таблиці, а не довгі теоретичні пояснення.
+Дай не більше трьох пріоритетів і конкретний план дій.
+Вхідні дані:
+Текст анкети:
+ЧАСТИНА I. АНКЕТА ДЛЯ СТВОРЕННЯ СТРАТЕГІЇ СТАРТАПУ
+Інструкція: Заповнення основних питань займе орієнтовно 15–20 хвилин. Якщо відповідь ще не визначена, оберіть «Ще не визначено». Додаткові матеріали можна завантажити одразу або пізніше.
+Обов’язкові поля: назва або опис ідеї, проблема, клієнт, продукт, географія запуску, наявні ресурси та головна ціль.
+Рекомендовані поля: MVP, ціна, канали, команда, бюджет, підтвердження попиту.
+SITCAR System не просить повторно інформацію, яка вже міститься у відповідях або завантажених файлах.
+Крок 1. Ідея
+1. На якому етапі перебуває ваш проєкт?
+Оберіть один варіант:
+маю конкретну бізнес-ідею;
+розглядаю кілька бізнес-ідей;
+знаю галузь або проблему, але ще не визначився з продуктом;
+створюю прототип або MVP;
+✓ уже тестую продукт;
+маю перших клієнтів або продажі.
+2. Назва проєкту
+Вкажіть робочу назву стартапу.
+Ваша відповідь:
+GeoVizor
+Якщо назви ще немає, поле можна залишити порожнім.
+3. Коротко опишіть бізнес-ідею
+Що ви хочете створити, виробляти, продавати або організувати?
+Ваша відповідь:
+GeoVizor — B2B retail-tech екосистема для планування, запуску, автоматизації та операційного контролю магазинів. Портфель поєднує аналітику локацій, AI-моніторинг черг і фотоаудит, POS/ERP/лояльність, каси самообслуговування та запуск магазину «під ключ».
+4. У якій галузі ви плануєте працювати?
+Оберіть один або декілька варіантів:
+харчова промисловість;
+агро;
+✓ IT та цифрові продукти;
+✓ ритейл;
+медицина та здоров’я;
+освіта;
+туризм і гостинність;
+виробництво;
+енергетика;
+✓ логістика;
+фінанси;
+нерухомість;
+креативні індустрії;
+✓ професійні послуги;
+інше;
+ще не визначено.
+5. Де плануєте запускати бізнес?
+Вкажіть країну, регіон або місто першого запуску та бажаний майбутній масштаб.
+локальний;
+регіональний;
+✓ національний;
+✓ міжнародний;
+глобальний;
+ще не визначено.
+Ваша відповідь:
+Перший ринок — Україна: регіональні й національні торговельні мережі, франчайзингові формати та оператори магазинів. Масштаб — національний; для цифрових модулів після підтвердження повторюваної моделі — вихід на суміжні міжнародні ринки.
+Крок 2. Клієнт і продукт
+6. Яку проблему вирішуватиме стартап?
+Опишіть проблему, у кого вона виникає і чому наявні рішення недостатні.
+Ваша відповідь:
+Ритейлери приймають рішення про локації, відкриття й операційне управління за розрізненими даними; черги, стандарти та касові процеси часто контролюються вручну. Окремі інтегратори закривають лише частину задачі, тому бракує одного відповідального партнера від аналізу й запуску магазину до автоматизації, аналітики та сервісу.
+6.1. Чим підтверджено існування проблеми?
+Оберіть усі відповідні варіанти:
+✓ особистим досвідом;
+✓ інтерв’ю з потенційними клієнтами;
+опитуванням;
+заявками;
+попередніми замовленнями;
+✓ пілотом;
+тестовими продажами;
+✓ ринковими даними;
+ще не перевірено;
+інше.
+Ваша відповідь:
+Підтвердження: галузевий досвід команди, технічні розгортання та обговорення з ритейлом; у матеріалах проєкту зафіксовано роботу GeoVizor для виявлення черг у магазинах SPAR/Євроспар. Для нового масштабованого пакета додатково формуємо доказову базу: інтерв’ю, CRM-воронка, платні пілоти й вимірювання ефекту.
+7. Хто ваш клієнт?
+Оберіть модель і опишіть основного клієнта, користувача, особу, яка приймає рішення, та платника.
+B2C — фізичні особи;
+✓ B2B — компанії;
+B2G — державні або комунальні установи;
+✓ B2B2C — через бізнес-партнера до кінцевого споживача;
+змішана модель;
+ще не визначено.
+Ваша відповідь:
+Основна модель — B2B; опосередковано B2B2C через кращий досвід покупця магазину. Клієнт і платник — торговельна мережа, франчайзер, власник або оператор магазину. Користувачі — операційні менеджери, керівники магазинів, IT/цифрові команди. Рішення ухвалюють CEO/COO, комерційний, операційний, IT або фінансовий керівник.
+8. Який продукт або послугу ви плануєте запропонувати?
+Опишіть основний продукт, послугу, платформу або рішення.
+Ваша відповідь:
+Продукт — модульна retail-tech пропозиція GeoVizor: Store Location &amp; Opening Feasibility, AI Queue Monitoring, Store Standards &amp; Photo Audit, POS/ERP/CRM і loyalty, каси самообслуговування та обладнання/запуск магазину. Для першого продажу фокус — аналіз локації та AI-моніторинг черг із впровадженням і сервісом.
+9. Що має входити до першої версії продукту — MVP?
+Вкажіть мінімальний набір функцій, товарів або послуг, достатній для перевірки попиту.
+Ваша відповідь:
+MVP для перевірки попиту: AI-моніторинг черг для одного магазину або зони — підключення камер, налаштування зон і порогів, алерти, базовий дашборд/API та щотижневий звіт. Паралельно — пакет аналізу локації з чітким рішенням «відкривати/не відкривати» і прогнозом ключових факторів.
+Якщо MVP ще не визначено, SITCAR System запропонує 1–3 варіанти.
+10. Яку головну цінність отримає клієнт?
+Завершіть: «Наш стартап допомагає [кому] отримати [результат] краще, швидше, дешевше або зручніше завдяки [механізм]».
+Ваша відповідь:
+GeoVizor допомагає операторам роздрібних мереж швидше й обґрунтованіше відкривати та керувати магазинами, зменшуючи втрати від черг і ручного контролю, завдяки поєднанню аналітики, AI-відеомоніторингу, касових технологій і сервісу впровадження.
+11. Як клієнт вирішує цю проблему зараз?
+Оберіть усі відповідні варіанти та назвіть відомих конкурентів або альтернативи.
+купує в інших компаній;
+виконує самостійно;
+використовує застаріле або незручне рішення;
+користується безкоштовною альтернативою;
+відкладає вирішення;
+не вирішує проблему;
+не знаю;
+інше.
+Ваша відповідь:
+Сьогодні клієнти використовують внутрішні таблиці, ручні обходи, окремі POS/ERP- або відеорішення, локальних інтеграторів чи відкладають інвестицію. Альтернативи: власна операційна команда, окремі постачальники кас/ПЗ та міжнародні платформи. Відмінність GeoVizor — інтегрований локальний підхід і відповідальність за результат у магазині.
+Повний перелік конкурентів збере SITCAR System.
+Крок 3. Бізнес-модель
+12. Як стартап зароблятиме гроші?
+Оберіть усі можливі варіанти:
+✓ разовий продаж товару;
+✓ разова оплата за послугу;
+✓ підписка;
+оренда або лізинг;
+✓ ліцензія;
+комісія;
+✓ сервісна оплата;
+франшиза;
+маркетплейс;
+реклама;
+freemium;
+✓ додаткові функції або послуги;
+ще не визначено;
+інше.
+13. Якою може бути ціна?
+Вкажіть орієнтовну ціну, середній чек або ціновий діапазон.
+Ваша відповідь:
+Ціну затверджуємо за продуктовими паспортами після розрахунку собівартості, логістики, монтажу та підтримки по кожному рішенню. Для AI-моніторингу в робочих матеріалах раніше обговорювався орієнтир USD 20 за камеру; це не затверджена ціна й має бути перевірене пілотом разом із маржею та willingness-to-pay.
+Якщо ціна не визначена, SITCAR System запропонує цінову модель і спосіб перевірки willingness-to-pay.
+14. Як часто клієнт купуватиме?
+один раз;
+декілька разів на рік;
+щомісяця;
+щотижня;
+✓ за підпискою;
+✓ основна покупка плюс сервіс і додаткові продажі;
+ще не визначено.
+15. Як ви плануєте знаходити перших клієнтів?
+Оберіть основні канали:
+✓ особисті контакти;
+✓ рекомендації;
+✓ партнери;
+✓ прямі B2B-продажі;
+✓ сайт;
+✓ SEO;
+соціальні мережі;
+платна реклама;
+✓ email;
+маркетплейси;
+дистриб’ютори;
+✓ торгові мережі;
+тендери;
+✓ виставки й події;
+фізична точка;
+ще не визначено;
+інше.
+16. Чи маєте доступ до потенційних клієнтів і які результати вже отримано?
+Позначте наявне та додайте цифри, якщо вони є.
+✓ конкретні потенційні клієнти;
+✓ база контактів;
+попередні домовленості;
+✓ партнерський канал;
+власна аудиторія;
+✓ проведені інтерв’ю;
+заявки;
+користувачі;
+✓ пілоти;
+перші клієнти;
+перші продажі;
+повторні покупки;
+результатів ще немає.
+Ваша відповідь:
+Є доступ до потенційних B2B-клієнтів через роздрібні мережі, франчайзинговий сегмент, партнерів і особисті контакти команди. У проєктних матеріалах є технічні розгортання для SPAR/Євроспар; кількість платних клієнтів, заявок і повторних продажів у цій анкеті не підтверджуємо — базову лінію формуємо в CRM та за результатами пілотів.
+Крок 4. Ресурси
+17. Що у вас уже є для запуску?
+Позначте все наявне:
+✓ бізнес-ідея;
+✓ галузевий досвід;
+✓ співзасновник;
+✓ команда;
+✓ прототип або MVP;
+✓ технологія;
+виробнича база;
+✓ обладнання;
+✓ приміщення;
+✓ постачальники;
+✓ партнери;
+✓ потенційні клієнти;
+✓ канали продажу;
+✓ бренд;
+аудиторія;
+✓ дані;
+інтелектуальна власність;
+✓ стартовий капітал;
+інше.
+18. Які ваші найсильніші ресурси та компетенції?
+Наприклад: галузевий досвід, управління, продажі, технології, виробництво, маркетинг, клієнтська база, партнерства, репутація, фінансування.
+Ваша відповідь:
+Сильні ресурси: практичне розуміння операцій ритейлу, розробка й інтеграція AI/відеоаналітики, POS і каси самообслуговування, запуск і оснащення магазинів, партнерська мережа та досвід роботи з мережевими форматами. Сильна сторона — можливість зібрати єдине рішення «від локації до сервісу» замість продажу ізольованого інструменту.
+19. Хто входить до команди та як розподілені ролі?
+Вкажіть учасників, компетенції, ролі, зайнятість, хто працює full-time, хто приймає фінальні рішення, яких людей бракує та чи погоджені частки співзасновників.
+Ваша відповідь:
+За поточним планом: О. Дідицький — координація розвитку, сайту та комерційних задач; Д. Ткачук — керівник Sales, продуктові, маркетингові й CRM-активності; П. Кульпач — фінансові розрахунки та ціноутворення; Д. Обертинський і П. Куриляк — технічна/інтеграційна частина; А. Слива — сервіс; С. Супрунюк — правові питання. Частки співзасновників погоджені. Бракує ресурсу Help Desk для масштабування.
+20. Яку суму ви готові інвестувати на першому етапі?
+до €5 000;
+€5 000–25 000;
+€25 000–100 000;
+€100 000–500 000;
+понад €500 000;
+✓ ще не визначено;
+інша сума.
+Ваша відповідь:
+Ще не визначено як затверджений бюджет. Першочергово формуємо кошторис і cash-flow за трьома сценаріями: пілоти цифрових модулів, масштабування сервісу та партія до 50 кас самообслуговування. Рішення про суму інвестицій — після unit economics, умов постачання та графіка передоплат.
+21. Яке джерело фінансування ви розглядаєте?
+✓ власні кошти;
+✓ кошти партнера;
+приватний інвестор;
+інвестиційний фонд;
+кредит;
+грант;
+краудфандинг;
+✓ фінансування з перших продажів;
+ще не визначено;
+інше.
+22. Що найбільше обмежує запуск?
+Оберіть не більше п’яти факторів:
+нестача фінансування;
+відсутність команди;
+✓ нестача компетенцій;
+відсутність технології;
+виробничі обмеження;
+відсутність клієнтів;
+слабке знання ринку;
+✓ сильна конкуренція;
+регуляторні вимоги;
+сертифікація;
+✓ постачальники;
+партнери;
+✓ логістика;
+брак часу;
+невизначеність бізнес-моделі;
+інше.
+23. Які ризики турбують вас найбільше?
+Назвіть не більше п’яти ризиків.
+Ваша відповідь:
+Ключові ризики: 1) довгі B2B-цикли — передоплати та поетапні договори; 2) постачання, курс і логістика обладнання — кілька постачальників і запас часу; 3) стабільність інтеграцій/відеопотоків — SLA, моніторинг і пілотні критерії; 4) залежність від ключових людей — RACI та документація; 5) репутаційний, воєнний і регуляторний ризик — захист даних, резервні сценарії та прозора комунікація.
+24. Які матеріали ви можете надати?
+Завантаження необов’язкове, але підвищує точність стратегії.
+✓ презентація проєкту;
+✓ опис продукту;
+✓ технічне завдання;
+✓ фінансові розрахунки;
+✓ макети або фотографії;
+перелік потенційних клієнтів;
+дані про конкурентів;
+результати інтерв’ю, тестів або продажів;
+✓ домовленості з партнерами;
+інше.
+Крок 5. Цілі
+25. Який результат для вас найважливіший?
+Оберіть не більше трьох варіантів:
+швидко вийти на прибуток;
+✓ створити масштабований бізнес;
+вийти на міжнародний ринок;
+✓ створити сильний бренд;
+залучити інвестиції;
+✓ створити інноваційний продукт;
+створити довгостроковий сімейний бізнес;
+досягти соціального ефекту;
+у майбутньому продати компанію;
+інше.
+26. Коли ви хочете отримати перший вимірюваний результат?
+1–3 місяці;
+✓ 3–6 місяців;
+6–12 місяців;
+1–2 роки;
+ще не визначено.
+27. Чого ви хочете досягти протягом 12 місяців?
+Вкажіть 3–5 вимірюваних результатів: MVP, клієнти, виручка, інвестиції, ринок тощо.
+1) До 31.12.2026 — затвердити продуктові паспорти, ціни, собівартість і цільову маржу для пріоритетних рішень. 2) Провести щонайменше 3 вимірювані B2B-пілоти (ціль, не історичний факт) для Store Location/AI Queue Monitoring. 3) Запустити CRM-воронку, сайт, кейси й пакет продажу. 4) Ввести Help Desk/SLA та базові KPI сервісу. 5) Підтвердити повторюваність продажу за конверсією, маржею, CSAT і часом впровадження.
+28. Чого ви хочете досягти протягом трьох років?
+Вкажіть бажаний масштаб, ринки, продукти, клієнтів, команду й фінансовий результат.
+Ваша відповідь:
+За 3 роки — стандартизований B2B-портфель GeoVizor для українського ритейлу з повторюваними продажами цифрових модулів, обладнання і сервісу; кілька відпрацьованих вертикалей/форматів магазинів; керована команда продажів, впровадження і підтримки. Вихід на міжнародні ринки — лише після підтвердження unit economics, SLA та локалізації продукту.
+29. Яким ви бачите бізнес через 10 років?
+Опишіть географію, позицію на ринку, продуктову лінійку, команду, роль засновника й суспільний вплив.
+Ваша відповідь:
+GeoVizor — помітний retail-tech партнер із масштабованими рішеннями для вибору локацій, відкриття, автоматизації та контролю магазинів в Україні й на вибраних міжнародних ринках. Продуктова лінійка поєднує дані, AI, касові технології та сервіс; засновники переходять від операційного контролю до стратегічного управління, а бізнес підвищує доступність і якість обслуговування покупців.
+30. Які головні стратегічні питання має вирішити SITCAR System?
+Оберіть не більше трьох:
+чи варто запускати бізнес-ідею;
+який продукт створити першим;
+який ринок обрати;
+✓ на якому клієнті сфокусуватися;
+✓ як відрізнятися від конкурентів;
+яку бізнес-модель обрати;
+як знайти перших клієнтів;
+скільки потрібно ресурсів;
+✓ як масштабувати бізнес;
+як залучити інвестиції;
+інше.
+Ваша відповідь:
+1) Як відрізнятися від конкурентів. 2) На якому ICP сфокусуватися та як отримати перші повторювані B2B-продажі. 3) Яка бізнес-модель, ціна, ресурсний план і послідовність масштабування дають позитивну unit economics без надмірної залежності від засновника.
+Після заповнення: Після анкети SITCAR System перевіряє повноту відповідей, використовує всі завантажені файли й ставить не більше п’яти уточнювальних запитань лише тоді, коли без них неможливо прийняти ключове стратегічне рішення.
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+РЕЗУЛЬТАТ МОДУЛЯ STEP_1 — GPT-5.6 Sol
+# Запит 1. Дослідження ринку GeoVizor
+
+## Executive Summary
+
+1. **Рекомендований стартовий ринок** — українські регіональні FMCG/convenience-мережі на 20–300 магазинів, які мають централізоване операційне управління, наявні камери та планують відкриття нових точок. Великі національні мережі доцільні як другий етап через довші закупівлі та складні інтеграції.
+2. **Перший продукт** — не вся екосистема, а два окремо продавані модулі: **AI Queue Monitoring** як повторювана підписка та **Store Location Feasibility** як швидкий оплачуваний проєкт.
+3. Орієнтовний річний ринок цих двох модулів в Україні: **TAM $18–60 млн**, доступний стартовий **SAM $8–25 млн**. Реалістичний трирічний **SOM — $0,5–2,0 млн річної виручки**, з яких $0,3–1,4 млн може становити ARR.
+4. Ринок зростає завдяки дефіциту персоналу, тиску на витрати, поширенню self-checkout, доступності computer vision та необхідності централізованого контролю мереж.
+5. Головна проблема — **висока сила покупця і насиченість альтернативами**: ритейлер може обрати локального інтегратора, міжнародну платформу, внутрішню розробку або ручний контроль.
+6. Заява «єдиний партнер від відкриття до сервісу» **не є достатньо унікальною**: StrongPoint уже позиціонує себе як end-to-end retail ecosystem із POS, self-checkout, аналітикою, обладнанням, установкою та Help Desk. Диференціація GeoVizor має спиратися на локальні інтеграції, швидкість, вимірюваний ROI і модель «пілот → rollout».
+7. Привабливість ринку — **6,7/10**. Вердикт: **входити за умов**, що три платні пілоти підтвердять точність, економічний ефект, willingness-to-pay і позитивну маржу.
+8. Критичний ризик: орієнтир **$20 за камеру на місяць не підтверджений**. За малої кількості камер така ціна може не покривати продаж, впровадження, підтримку й обчислення.
+
+---
+
+## 1. Визначення ринку, продукту та клієнта
+
+| Параметр | Висновок |
+|---|---|
+| Ринок | B2B retail-tech: операційна аналітика фізичних магазинів, computer vision, location intelligence, POS/self-checkout та інтеграційні послуги |
+| Стартовий продукт | 1) AI Queue Monitoring; 2) Store Location &amp; Opening Feasibility |
+| Основний ICP | FMCG/convenience-мережі на 20–300 магазинів, 2–8 кас на точку, наявне CCTV, централізований COO/operations |
+| Покупець | CEO/COO, операційний або комерційний директор |
+| Впливові особи | IT, безпека, керівники магазинів, фінансовий директор |
+| Географія | Україна; міжнародна експансія — після підтвердження unit economics і SLA |
+| Стадія | Тестування продукту; є технічні розгортання, але кількість платних клієнтів, повторні продажі й підтверджений ARR відсутні |
+| Другий сегмент | Франчайзери та мережі аптек; перевіряти після FMCG |
+| Не рекомендовано на старті | Незалежні одиничні магазини через низький ACV; tier-1 мережі як єдиний фокус через цикл продажу та vendor lock-in |
+
+**Примітка щодо фактів:** GeoVizor повідомляє про розгортання для SPAR/Євроспар. Каталог StrongPoint також містить SPAR у переліку клієнтів. Це не обов’язково та сама країна чи юридична особа, тому ексклюзивність або конкурентний конфлікт потребують окремої перевірки.
+
+---
+
+## 2. Привабливість ринку
+
+| Критерій | Оцінка | Коментар |
+|---|---:|---|
+| Обсяг | 6/10 | Український сегмент достатній для прибуткового B2B-бізнесу, але для венчурного масштабу знадобиться міжнародна експансія |
+| Темпи росту | 8/10 | Retail analytics і computer vision глобально зростають двозначними темпами; оцінки дослідників різняться приблизно від 17% до понад 20% CAGR |
+| Прибутковість | 7/10 | Висока потенційна маржа SaaS, але її знижують монтаж, підтримка, кастомні інтеграції та обладнання |
+| Життєвий цикл | 8/10 | Стадія росту; автоматизація магазинів ще не досягла повного проникнення |
+| Бар’єри входу | 6/10 | Потрібні референси, інтеграції, стабільність відеопотоків, SLA, інформаційна безпека |
+| Конкуренція | 4/10 | Багато глобальних і локальних постачальників та сильна внутрішня альтернатива |
+| Регуляторні/воєнні ризики | 4/10 | Персональні дані, кібербезпека, нестабільність інфраструктури, валютний і логістичний ризик |
+
+### Прибутковість за продуктовими лініями — робочі benchmarks
+
+| Лінія | Цільова валова маржа |
+|---|---:|
+| Стандартизований SaaS/computer vision | 65–80% після масштабування |
+| Location-аналітика | 50–70% за умови шаблонізації |
+| Впровадження та інтеграції | 25–45% |
+| Help Desk / SLA | 35–60% |
+| Перепродаж обладнання | 15–30% |
+
+Це **цільові галузеві діапазони**, а не підтверджена економіка GeoVizor.
+
+### Регуляторні й технологічні обмеження
+
+- Закон України «Про захист персональних даних» застосовується до обробки відеоданих, якщо можна ідентифікувати фізичну особу.
+- Для ЄС релевантні GDPR та EU AI Act; ризик значно знижується, якщо GeoVizor не використовує розпізнавання облич, зберігає мінімум відео та передає агреговані події.
+- POS/self-checkout потребують відповідності українському фіскальному регулюванню та інтеграції з РРО/ПРРО.
+- Технологічні обмеження: різна якість камер, перекриття людей, зміна освітлення, перебої живлення та інтернету, edge/cloud-витрати, модельний drift.
+- Для rollout необхідні privacy-by-design, role-based access, журналювання, політики зберігання даних і резервний режим роботи.
+
+---
+
+## 3. TAM / SAM / SOM
+
+### Метод
+
+Bottom-up розрахунок за кількістю організованих торгових точок і потенційною річною виручкою на магазин.
+
+За галузевими оглядами RAU різні вибірки найбільших мереж охоплюють приблизно **19–22 тис. торгових точок**. Це не повний реєстр усієї роздрібної торгівлі, тому використано діапазон.
+
+### Основні припущення
+
+- AI Queue Monitoring: **4–8 камер на магазин**.
+- Ціна: **$15–30 за камеру/місяць**, база — незатверджені $20.
+- Location Feasibility: **$1 500–5 000 за аналіз**.
+- Частка магазинів, що відкриваються, переміщуються або проходять істотну реконфігурацію: приблизно **5–10% на рік**.
+- SAM охоплює переважно FMCG, convenience, pharmacy та франчайзингові мережі з централізованим управлінням.
+- Обладнання, повний POS/ERP і будівництво магазинів у TAM не включено, оскільки немає підтверджених цін, маржі та частоти закупівлі.
+
+### Розрахунок
+
+| Показник | Обсяг | Формула та результат |
+|---|---:|---|
+| **TAM** | **$18–60 млн/рік** | 19–22 тис. магазинів × 4–8 камер × $15–30 × 12 + location-проєкти |
+| **SAM** | **$8–25 млн/рік** | 7–11 тис. придатних магазинів ICP + 400–1 000 location-рішень на рік |
+| **SOM, 3-й рік** | **$0,5–2,0 млн/рік** | 15–30 клієнтів, 300–800 магазинів, 4–6 камер + 50–150 location-проєктів та впровадження |
+| SOM ARR | **$0,3–1,4 млн** | Підписка AI Queue Monitoring |
+| Базовий SOM | **близько $1,1 млн/рік** | Приблизно 500 магазинів, 5 камер, $20/камера/місяць + location та rollout |
+
+**Рівень упевненості:** середній для TAM/SAM, нижче середнього для SOM через непідтверджену ціну, кількість камер і конверсію пілотів.
+
+Ключова перевірка: якщо магазин має лише 2–3 релевантні камери, виручка $40–60 на місяць може бути недостатньою без мінімальної плати за магазин, setup fee або мережевого контракту.
+
+---
+
+## 4. Головні рушії змін
+
+| Рушій | Попит і ціна | Собівартість і ризик |
+|---|---|---|
+| Дефіцит персоналу та зростання вартості праці | Підвищує попит на self-service й автоматизацію; дозволяє outcome-based pricing | Зростає потреба у швидкому ROI |
+| Тиск на операційні витрати | Підсилює попит на контроль черг і продуктивності | Покупці жорсткіше торгуються та вимагають доказів |
+| Поширення computer vision та edge AI | Знижує технологічний бар’єр і підвищує точність | Одночасно спрощує вхід нових конкурентів |
+| Розвиток self-checkout | Збільшує потребу в контролі потоку, помилок і персоналу | Зростають ризики shrinkage та інтеграцій |
+| Розширення й релокація мереж | Підвищує попит на location-аналітику | Воєнні та демографічні зміни знижують якість історичних даних |
+| Кібербезпека і приватність | Перевага постачальникам із privacy-by-design | Підвищує витрати на зберігання, контроль доступу й аудит |
+| Валюта, логістика та перебої інфраструктури | Підтримує попит на локальний сервіс | Підвищує собівартість обладнання та SLA-ризик |
+
+---
+
+## 5. П’ять сил Портера
+
+Шкала: 1 — слабкий негативний вплив, 10 — дуже сильний.
+
+| Сила | Бал | Як зменшити вплив |
+|---|---:|---|
+| Конкуренція між постачальниками | 8 | Фокус на одному ICP, локальних інтеграціях і доказовому ROI замість широкого каталогу |
+| Сила покупців | 9 | Мінімальна плата за магазин, платний пілот, багаторічні rollout-контракти, пакетні ціни |
+| Загроза замінників | 8 | Порівнювати результат не з іншою AI-системою, а з ручним контролем і втраченими продажами |
+| Загроза нових гравців | 6 | Накопичувати датасети, шаблони інтеграцій, benchmarks і кейси за форматами магазинів |
+| Сила постачальників | 6 | Підтримка кількох камер/серверів, hardware-agnostic архітектура, два постачальники критичних компонентів |
+
+---
+
+## 6. Карта конкурентів
+
+Ціни більшості enterprise-рішень не публікуються і визначаються індивідуально.
+
+| Конкурент / альтернатива | Сегмент і продукт | Ціна / модель | Сильні сторони | Слабкі сторони відносно GeoVizor |
+|---|---|---|---|---|
+| **StrongPoint** | End-to-end grocery tech: POS, self-checkout, lockers, picking, OneView, shopfitting, Help Desk | Enterprise quote; обладнання + ПЗ + сервіс | Дуже широкий портфель, міжнародні клієнти, ISO, 24/7 support | Потенційно дорожчий і менш локалізований для України |
+| **SystemGroup Україна** | POS, касове обладнання, self-checkout, інтеграція та сервіс | Проєктна ціна, сервіс | Локальний досвід, інсталяційна база, підтримка | Менш виразне позиціонування у location intelligence та AI-чергах |
+| **Modern Expo** | Обладнання магазинів, checkout і smart retail | Продаж обладнання та проєкти | Виробництво, масштаб, міжнародна присутність | Hardware-first; аналітика може бути партнерською |
+| **NCR Voyix** | Enterprise POS, self-checkout, payments, retail software | Quote, ліцензії та сервіс | Глобальний масштаб, зрілі інтеграції | Висока складність і вартість, довге впровадження |
+| **RetailNext** | In-store analytics, traffic, shopper journey, computer vision | SaaS/обладнання, quote | Зріла аналітика та міжнародні references | Не є партнером «від локації до запуску магазину» |
+| **WaitTime** | AI-аналіз черг, натовпу й потоків | Enterprise SaaS, quote | Спеціалізація на real-time crowd intelligence | Обмежена локальна інтеграція і ширина портфеля |
+| **Esri Business Analyst / CARTO** | Location intelligence, catchment і site selection | Річна ліцензія / enterprise quote | Потужна GIS-аналітика та екосистема даних | Потрібні аналітична команда і локальні дані; немає реалізації магазину |
+| **Внутрішня команда + CCTV/POS** | Таблиці, ручні обходи, звіти з камер і кас | Зарплата та внутрішні витрати | Контроль даних, відсутність нового vendor | Повільність, нерівномірна якість, відсутність єдиного SLA |
+
+### Стратегічний висновок із каталогу StrongPoint
+
+StrongPoint уже пропонує майже повний аналог концепції end-to-end retail ecosystem: POS, self-checkout, in-store analytics, OneView, installation, maintenance та Help Desk. Тому GeoVizor не варто конкурувати шириною каталогу.
+
+**Рекомендована позиція:**
+
+&gt; «Локальна операційна платформа для українських мереж, яка за 30–60 днів доводить фінансовий ефект на наявних камерах, а після пілота масштабується на всю мережу».
+
+---
+
+## 7. Ключові фактори успіху та benchmarks
+
+| Фактор | Benchmark / ціль |
+|---|---|
+| Доведений економічний результат | ROI клієнта до 12 місяців; результат визначається до пілота |
+| Валова маржа | SaaS ≥65%; blended ≥45%; hardware ≥20% |
+| CAC payback | До 12–18 місяців |
+| LTV/CAC | Не менше 3x |
+| Retention | Logo retention ≥90%; NRR 100–115% після появи бази клієнтів |
+| Конверсія пілот → rollout | Робоча ціль ≥40%; потребує валідації |
+| SLA | Uptime 99,5–99,9%; реакція на критичний інцидент за погодженим SLA |
+| Швидкість запуску | 2–4 тижні на стандартний магазин після доступу до камер |
+| Якість AI | False alerts &lt;10–15%; точність визначається окремо для кожного сценарію |
+| WTP | Річна плата бажано не більше 10–20% підтвердженого річного ефекту для клієнта |
+
+Для enterprise B2B SaaS типові орієнтири валової маржі близько 70–80%, але моделі з обладнанням і professional services мають нижчий blended-показник. Джерело benchmark: SaaS Capital, *2024 B2B SaaS Benchmarking*; KeyBanc Capital Markets, *2024 SaaS Survey*.
+
+---
+
+## 8. Можливості, загрози та відповіді
+
+| Тип | Фактор | Дія |
+|---|---|---|
+| Можливість | Використання наявних камер клієнта | Пропонувати hardware-agnostic пілот без великого CAPEX |
+| Можливість | Дефіцит персоналу | Продавати зменшення часу очікування та оптимізацію змін |
+| Можливість | Фрагментований локальний ринок | Стандартизувати інтеграції з основними POS/CCTV |
+| Можливість | Розширення франчайзингових мереж | Створити пакет «оцінка локації + стандарт відкриття» |
+| Можливість | Cross-sell після AI-пілота | Photo Audit, Help Desk, self-checkout і POS продавати лише після довіри |
+| Загроза | StrongPoint та інші end-to-end конкуренти | Не конкурувати шириною; фокус на локальному ROI і швидкості |
+| Загроза | Внутрішня розробка ритейлерів | API, white-label і спільне впровадження замість повної заміни |
+| Загроза | Ціна $20/камера не покриває витрати | Мінімальна плата за магазин + setup fee + річний контракт |
+| Загроза | Нестабільні камери, інтернет і живлення | Edge-режим, remote monitoring, критерії готовності магазину |
+| Загроза | Приватність і репутаційний ризик | Відмова від face recognition, мінімізація зберігання відео, DPIA |
+
+---
+
+## 9. Рейтинг привабливості та вердикт
+
+| Компонент | Вага | Бал | Зважений бал |
+|---|---:|---:|---:|
+| Попит і зростання | 20% | 8 | 1,60 |
+| Доступний обсяг | 15% | 6 | 0,90 |
+| Маржинальність | 15% | 7 | 1,05 |
+| Доступ GeoVizor до клієнтів | 15% | 8 | 1,20 |
+| Конкурентна позиція | 15% | 5 | 0,75 |
+| Масштабованість | 10% | 7 | 0,70 |
+| Регуляторні та воєнні ризики | 10% | 5 | 0,50 |
+| **Разом** | **100%** |  | **6,7/10** |
+
+### Вердикт: **входити за умов**
+
+Обов’язкові умови:
+
+1. Принаймні **два з трьох пілотів мають перейти в оплачуваний rollout**.
+2. Підтверджена blended gross margin має бути **не нижче 45%**, а SaaS-маржа — не нижче 65% після стабілізації.
+3. Потрібна мінімальна контрактна вартість, яка покриває інтеграцію та Help Desk; тариф лише «за камеру» небезпечний.
+4. Кожний пілот повинен мати зафіксовані baseline, KPI, відповідального клієнта і рішення про rollout.
+
+---
+
+## 10. Три першочергові дії
+
+### Пріоритет 1. Перевірити ICP і willingness-to-pay — 4 тижні
+
+- 15–20 інтерв’ю: 10 FMCG/convenience, 3–5 аптечних, 3–5 франчайзерів.
+- Перевірити три тарифи: за магазин, за камеру та комбінований.
+- Результат: один основний ICP, мінімальний ACV, список 10 кваліфікованих можливостей у CRM.
+
+### Пріоритет 2. Провести три платні пілоти — 8–12 тижнів
+
+- Мінімум один магазин і 2–6 камер на пілот.
+- KPI: точність алертів, час черги, реакція персоналу, вплив на пропускну здатність, витрати впровадження.
+- Пілот має завершуватися наперед погодженим рішенням: stop, доопрацювання або rollout.
+
+### Пріоритет 3. Затвердити unit economics і стандарт rollout
+
+- Розділити ціну на setup, subscription, SLA, кастомну інтеграцію та обладнання.
+- Порахувати маржу для 1, 10, 50 і 200 магазинів.
+- Сформувати стандартні вимоги до камер, мережі, безпеки, термінів і Help Desk.
+
+---
+
+## Джерела та обмеження
+
+1. **Каталог StrongPoint**, наданий користувачем; матеріал пов’язаний із Retail Technology Show 2025. Використано дані про продуктовий портфель, OneView, Help Desk, партнерства та заявлених клієнтів.
+2. **RAU, «Географія ритейлу України 2024»**, публікації 2024–2025 років. Використано як орієнтир кількості точок провідних мереж; різні вибірки й дати дають відмінні значення.
+3. **Grand View Research, Retail Analytics Market**, редакція 2024 року; **MarketsandMarkets, Retail Analytics**, 2024. Використано лише як контекст глобальних двозначних темпів росту через різницю методологій.
+4. **SaaS Capital, 2024 B2B SaaS Benchmarking**; **KeyBanc Capital Markets, 2024 SaaS Survey** — орієнтири маржі, retention та CAC payback.
+5. **Regulation (EU) 2024/1689 — EU AI Act**, набув чинності 1 серпня 2024 року.
+6. **Закон України №2297-VI «Про захист персональних даних»**; **Закон №265/95-ВР про РРО** — регуляторний контекст.
+
+Точні актуальні ціни конкурентів здебільшого не публікуються та потребують комерційних запитів. Кількість придатних магазинів і камер, WTP та unit economics GeoVizor залишаються припущеннями до завершення пілотів.
+
+---
+
+## Структурований блок даних для наступного запиту
+
+```yaml
+project: GeoVizor
+stage: product_testing
+launch_market: Ukraine
+
+recommended_ICP:
+  primary:
+    segment: regional_FMCG_and_convenience_chains
+    chain_size: 20-300_stores
+    characteristics:
+      - central_operations
+      - existing_CCTV
+      - 2-8_checkouts_per_store
+      - active_expansion_or_operational_cost_pressure
+  secondary:
+    - pharmacy_chains
+    - franchisors
+  deprioritized:
+    - single_independent_stores
+    - tier_1_national_chains_as_only_initial_focus
+
+entry_products:
+  - AI_Queue_Monitoring
+  - Store_Location_Opening_Feasibility
+
+market_size_USD_annual:
+  TAM:
+    range: 18m-60m
+    confidence: medium
+  SAM:
+    range: 8m-25m
+    confidence: medium_low
+  SOM_year_3:
+    revenue_range: 0.5m-2.0m
+    ARR_range: 0.3m-1.4m
+    base_case_revenue: 1.1m
+    expected_clients: 15-30
+    expected_stores: 300-800
+    confidence: low_medium
+
+pricing_assumptions:
+  AI_per_camera_month: 15-30_USD
+  base_price: 20_USD_not_validated
+  location_analysis: 1500-5000_USD
+  required_model:
+    - minimum_fee_per_store
+    - setup_fee
+    - annual_subscription
+    - separate_custom_integration
+    - paid_SLA
+
+market_attractiveness:
+  score: 6.7_of_10
+  verdict: enter_with_conditions
+
+main_competitors:
+  - StrongPoint
+  - SystemGroup_Ukraine
+  - Modern_Expo
+  - NCR_Voyix
+  - RetailNext
+  - WaitTime
+  - Esri_Business_Analyst_or_CARTO
+  - internal_retail_IT_and_manual_processes
+
+differentiation:
+  insufficient_claim: single_end_to_end_partner
+  recommended:
+    - Ukrainian_localization
+    - use_of_existing_cameras
+    - deployment_in_30_60_days
+    - quantified_ROI
+    - local_POS_CCTV_integrations
+    - pilot_to_rollout_model
+
+key_conditions:
+  - at_least_2_of_3_pilots_convert_to_rollout
+  - blended_gross_margin_at_least_45_percent
+  - SaaS_gross_margin_at_least_65_percent
+  - clear_privacy_and_security_architecture
+  - standardized_Help_Desk_and_SLA
+
+next_actions:
+  - 15_20_ICP_and_WTP_interviews
+  - 3_paid_measurable_pilots
+  - unit_economics_for_1_10_50_200_stores
+
+critical_validation_gaps:
+  - actual_number_of_paid_clients
+  - pilot_to_rollout_conversion
+  - cameras_per_store
+  - willingness_to_pay
+  - infrastructure_and_cloud_cost_per_camera
+  - support_cost_per_store
+  - legal_status_of_video_processing
+  - StrongPoint_SPAR_overlap
+```
+РЕЗУЛЬТАТ МОДУЛЯ STEP_2 — GPT-5.6 Sol
+# Запит 2. Аналіз можливостей GeoVizor та засновників
+
+## Executive Summary
+
+1. **Ресурсів GeoVizor достатньо для 1–3 контрольованих B2B-пілотів, але недостатньо для одночасного масштабування всього портфеля.** Команда охоплює продажі, фінанси, інтеграції, сервіс і право, однак не підтверджено full-time зайнятість, єдиного product owner та наявність Help Desk.
+2. **Головна стратегічна проблема — розрив між широкою end-to-end амбіцією та відсутністю стандартизованого, доказового продукту.** Нині GeoVizor більше схожий на сильну проєктно-інтеграційну команду, ніж на повторюваний продуктово-сервісний бізнес.
+3. **Жодна конкурентна перевага ще не доведена повністю.** Найкращі кандидати: локальна інтеграція, швидкий пілот на наявній інфраструктурі, знання операцій українського ритейлу та вимірюваний ROI.
+4. Розгортання AI-моніторингу черг для SPAR/Євроспар підтверджує технічну спроможність, але **не підтверджує комерційну перевагу**, доки немає метрик точності, ефекту, маржі, повторного продажу та права публічно використовувати кейс.
+5. Пропозиція DevsX щодо AI Self-Checkout є **планом створення PoC, а не готовою технологією GeoVizor**. У документі суперечать одне одному 8–12 тис. SKU, строк 4–5 тижнів і примітка про обмежений набір SKU; це потребує перегляду scope.
+6. За поточною конкурентною силою GeoVizor поступається StrongPoint у зрілості, портфелі, references і підтримці, а SystemGroup — у локальній інсталяційній базі. Конкурувати потрібно не шириною каталогу, а **швидкістю отримання підтвердженого ефекту для конкретного ICP**.
+7. Три пріоритети: **продуктова стандартизація й unit economics; три платні доказові пілоти; Help Desk/IP/data governance та операційна готовність до rollout.**
+
+---
+
+## 1. Короткий SWOT із доказами
+
+Позначення: **Р** — ресурс; **К** — компетенція; **С** — сильна сторона; **КП** — підтверджена конкурентна перевага; **П** — непідтверджене припущення.
+
+| SWOT | Фактор і класифікація | Доказ / статус |
+|---|---|---|
+| **S** | Доступ до ритейлерів, контактної бази та партнерських каналів — **Р** | Підтверджено анкетою; кількість активних можливостей і конверсія не надані |
+| **S** | Знання операцій ритейлу, POS, кас самообслуговування, інтеграцій і запуску магазинів — **К** | Підтверджено досвідом команди й розподілом технічних ролей |
+| **S** | Технічні розгортання AI Queue Monitoring у SPAR/Євроспар — **С** | Факт повідомлений користувачем; бізнес-результати та платний статус не підтверджені |
+| **S** | Кросфункціональна команда: sales, finance, tech, service, legal — **Р** | Ролі названі; зайнятість, доступна потужність і фінальні decision rights не визначені |
+| **S** | Можливість зібрати рішення від аналітики до сервісу — **С, не КП** | StrongPoint уже має значно ширшу end-to-end екосистему |
+| **W** | Немає підтверджених платних клієнтів, повторних продажів, ARR і маржі | Критична прогалина між технічним виконанням і бізнес-моделлю |
+| **W** | Немає Help Desk, затвердженого SLA та сервісної потужності | Нестачу Help Desk прямо зазначено в анкеті |
+| **W** | Бюджет, cash-flow і допустимий обсяг інвестицій не затверджені | Неможливо підтвердити готовність до закупівлі обладнання або rollout |
+| **W** | Не підтверджено власність на IP, моделі, код і датасети | У DevsX описано майбутню розробку; умови передачі IP і data rights відсутні |
+| **W** | Надмірно широкий портфель для поточної стадії | Queue, Location, Photo Audit, POS/ERP/CRM, self-checkout та відкриття магазинів мають різні цикли й ресурси |
+| **O** | Створити локальні інтеграційні шаблони POS/CCTV/ПРРО — потенційна **КП** | Потребує 2–3 повторних впроваджень і документованих конекторів |
+| **O** | Накопичити benchmark-базу операційних показників магазинів — потенційна **КП** | Може стати data moat за наявності прав на агреговані дані |
+| **O** | Партнерська модель обладнання, монтажу та фінансування | Знижує CAPEX і залежність від власної сервісної команди |
+| **O** | AI-антифрод для self-checkout як другий етап | Важлива потреба, але технічна й ресурсна складність значно вища за Queue Monitoring |
+| **T** | Зрілі end-to-end конкуренти | StrongPoint має POS, self-checkout, OneView, deployment, maintenance і Help Desk |
+| **T** | Внутрішні IT-команди та локальні інтегратори | Можуть відтворити базові функції без зміни постачальника |
+| **T** | Якість відео, POS API, освітлення, схожі SKU, перебої | Підтверджено технічними ризиками DevsX |
+| **T** | Приватність, кібербезпека й репутаційний ризик | Потрібні privacy-by-design, data minimization, контроль доступу та договори обробки даних |
+
+**Висновок SWOT:** сьогодні GeoVizor має ресурси й компетенції, але ще не має доведеної, економічно підтвердженої та захищеної конкурентної переваги.
+
+---
+
+## 2. Оцінка ресурсів засновників
+
+| Ресурс | Оцінка | Висновок |
+|---|---:|---|
+| Команда | **3/5** | Функції охоплені, але не вказано FTE, завантаженість і єдиного відповідального за продукт/P&amp;L |
+| Галузеві компетенції | **4/5** | Практичне розуміння магазинів, POS, обладнання, інтеграцій і B2B-продажу — один із найсильніших активів |
+| Технологія AI Queue | **3/5** | Є повідомлені розгортання, але немає технічного паспорта, accuracy, uptime, собівартості та оформленого IP |
+| Store Location | **2/5** | Продукт визначений концептуально; джерела даних, методика прогнозу та історична точність не надані |
+| AI Self-Checkout | **1,5/5** | Є пропозиція на розробку PoC від зовнішнього підрядника; готового продукту або ownership не підтверджено |
+| Клієнтський доступ | **4/5** | Є потенційні мережі, база контактів, партнери та досвід інтерв’ю; CRM-воронка ще не має підтвердженої базової лінії |
+| Партнери й постачальники | **3/5** | Наявність заявлена, але немає карти залежностей, альтернативних постачальників і підтверджених SLA |
+| Фінансування | **2/5** | Джерела можливі, але бюджет і cash runway не визначені |
+| Час засновників | **2/5** | Full-time/part-time статус не вказаний; існує ризик залежності від ключових людей |
+| Виконання пілотів | **4/5** | Команда, ймовірно, здатна реалізувати обмежений проєкт для 1–3 магазинів |
+| Масовий rollout | **2/5** | Немає Help Desk, стандартизованого onboarding, SLA, capacity plan та перевіреної unit economics |
+
+### Окрема оцінка пропозиції DevsX
+
+Позитивні елементи:
+
+- edge-обробка на NVIDIA Jetson;
+- робота за обмеженого інтернету;
+- POS API, device management, model rollback;
+- автоматичний збір low-confidence випадків;
+- MLOps-підхід і ручна валідація.
+
+Критичні невідповідності:
+
+1. Документ називає рішення **MVP**, але roadmap прямо визначає його як **PoC з обмеженим набором SKU**.
+2. Заявлено збір даних для **8–12 тис. SKU**, але загальний строк становить 4–5 тижнів, а оцінка — 215–330 годин. Без автоматизованої генерації даних це виглядає непогодженим за обсягом.
+3. Не встановлено acceptance criteria: precision/recall, top-1 SKU accuracy, false intervention rate, latency, пропускна здатність і фактичне зменшення shrinkage.
+4. Не включено або не оцінено окремо масове відеознімання, annotation, CDN/storage, GPU-сервер, польовий монтаж, підтримку й повторне навчання.
+5. Апаратна конфігурація становить приблизно **29,3 тис. грн на касу** без сервера та операційних витрат.
+6. Не визначено власність GeoVizor на код, моделі, датасети, похідні моделі та право переносити розробку до іншого постачальника.
+
+**Рішення:** не починати PoC на 8–12 тис. SKU. Перший тест обмежити 50–200 високоризиковими або візуально схожими SKU та 3–5 сценаріями порушень.
+
+---
+
+## 3. Порівняння з benchmarks і конкурентами
+
+### 3.1. GeoVizor проти галузевих benchmarks
+
+| Фактор успіху | Робочий benchmark | Поточний статус GeoVizor |
+|---|---:|---|
+| Пілот → rollout | ≥40%; стратегічна умова — 2 із 3 | Немає підтвердженої конверсії |
+| Запуск стандартного магазину | 2–4 тижні після доступу до інфраструктури | Не виміряно; для self-checkout пропонується 4–5 тижнів лише на PoC |
+| AI quality | False alerts орієнтовно &lt;10–15%; окремі precision/recall | Метрики не надані |
+| Uptime | 99,5–99,9% залежно від SLA | SLA відсутній |
+| SaaS gross margin | ≥65% після стабілізації | Не розрахована |
+| Blended gross margin | ≥45% | Не розрахована |
+| CAC payback | 12–18 місяців | Немає CAC/ACV |
+| Logo retention | ≥90% після формування бази | Не застосовується до появи повторних клієнтів |
+| LTV/CAC | ≥3x | Не розраховано |
+
+Джерела benchmark: SaaS Capital, *2024 B2B SaaS Benchmarking*; KeyBanc Capital Markets, *2024 SaaS Survey*. AI/SLA benchmarks — робочі орієнтири із Запиту 1, які мають бути адаптовані до конкретного сценарію.
+
+### 3.2. Матриця конкурентної сили
+
+Шкала 1–5. Оцінки є аналітичними, оскільки ціни, SLA і технічні показники більшості конкурентів не публікуються.
+
+| Фактор | Вага | GeoVizor зараз | StrongPoint | SystemGroup UA | Modern Expo | RetailNext |
+|---|---:|---:|---:|---:|---:|---:|
+| Доведений ROI і references | 20% | 2 | 4 | 3 | 3 | 4 |
+| Локалізація та інтеграції в Україні | 20% | 4 | 2 | 5 | 4 | 1 |
+| Швидкість і гнучкість впровадження | 15% | 3 | 3 | 4 | 3 | 3 |
+| Ширина портфеля | 10% | 4* | 5 | 4 | 4 | 2 |
+| Зрілість продукту й інсталяційна база | 15% | 2 | 5 | 4 | 5 | 5 |
+| Help Desk, SLA, lifecycle support | 10% | 2 | 5 | 4 | 4 | 3 |
+| AI/data differentiation | 10% | 3 | 3 | 2 | 2 | 5 |
+| **Зважений бал** | **100%** | **2,85** | **3,70** | **3,80** | **3,60** | **3,20** |
+
+\*Ширина портфеля GeoVizor є заявленою, а не однаково зрілою за всіма модулями.
+
+### Ключові висновки матриці
+
+- **StrongPoint:** сильніший у зрілості, ширині, сертифікаціях, OneView, deployment, maintenance і Help Desk. Каталог також заявляє AI/self-checkout та 99%+ product recognition для StrongPoint GO; це маркетингова заява для іншого сценарію, а не незалежний benchmark антифроду.
+- **SystemGroup:** головний локальний конкурент за інтеграційною базою, POS/self-checkout, обладнанням і сервісом.
+- **Modern Expo:** перевага у виробництві, фізичній інфраструктурі та масштабі; слабше позиціонування саме в location intelligence і queue analytics.
+- **RetailNext:** значно сильніший у спеціалізованій in-store analytics, але не закриває весь цикл відкриття й оснащення магазину.
+- GeoVizor може виграти не шириною, а зв’язкою **«локальний ICP → швидкий пілот → вимірюваний ROI → rollout через готові інтеграції»**.
+
+---
+
+## 4. Головна стратегічна проблема і критичні слабкі місця
+
+### Головна проблема
+
+&gt; **GeoVizor намагається продавати широку retail-tech екосистему до того, як стандартизував і довів один повторюваний продуктовий wedge.**
+
+Це розпорошує технічні, комерційні та сервісні ресурси й посилює залежність від засновників та зовнішніх підрядників.
+
+### П’ять критичних слабких місць
+
+1. **Відсутність доказової економіки:** немає затвердженого ACV, gross margin, CAC, support cost і cash-flow.
+2. **Недостатня продуктова фокусованість:** одночасно заявлено щонайменше шість різних продуктових напрямів.
+3. **Незріла сервісна модель:** немає Help Desk, SLA, incident management і підтвердженої потужності rollout.
+4. **Невизначене володіння технологією та даними:** особливо щодо зовнішньої розробки DevsX, навчальних даних і похідних моделей.
+5. **Немає публічної доказової бази:** вимірюваних кейсів, конверсії пілотів і підтвердженого клієнтського ROI.
+
+---
+
+## 5. Перевірка наявних конкурентних переваг
+
+| Заявлена перевага | Важливість клієнту | Перевага над конкурентами | Доказ | Економічний ефект | Захист від копіювання | Вердикт |
+|---|---:|---:|---:|---:|---:|---|
+| Єдиний партнер «від локації до сервісу» | Висока | Низька | Частковий | Не виміряно | Низький | **Не є КП:** StrongPoint пропонує ширший end-to-end портфель |
+| Локальне знання українського ритейлу | Висока | Середня | Досвід команди | Не виміряно | Низько-середній | **Тимчасова перевага** |
+| AI/відеоаналітика й технічні розгортання | Висока | Середня | SPAR/Євроспар, повідомлено користувачем | Не надано | Низький без власних даних | **Кандидат у КП** |
+| Швидке використання наявних камер | Висока | Середня | Потрібно підтвердити пілотом | Потенційно знижує CAPEX | Низько-середній | **Кандидат у КП для Queue Monitoring** |
+| Сильний локальний сервіс | Висока | Наразі низька | Help Desk відсутній | Не виміряно | Середній після побудови мережі | **Поки не є перевагою** |
+| AI Self-Checkout anti-fraud | Висока | Не визначено | Лише пропозиція на PoC | Потенційно значний | Середній за наявності датасету | **Непідтверджена гіпотеза** |
+
+**Загальний висновок:** GeoVizor поки має **потенціал диференціації**, а не доведену конкурентну перевагу.
+
+---
+
+## 6. Потенційні конкурентні переваги
+
+| Потенційна перевага | Як створити | Захисний механізм |
+|---|---|---|
+| **1. ROI-платформа для конкретного формату магазину** | Baseline до пілота, вимірювання черг/втрат/реакції, фінансовий звіт і benchmark за форматом | Накопичені агреговані дані, методика й кейси |
+| **2. Ukrainian Retail Integration Kit** | Готові конектори до основних POS, CCTV, loyalty, РРО/ПРРО та шаблони API | Бібліотека інтеграцій, документація, партнерські домовленості |
+| **3. Privacy-preserving edge AI** | Локальна обробка, offline mode, відмова від face recognition, мінімальне зберігання відео | Архітектура, security-процеси, сертифікація в перспективі |
+| **4. Операційний data flywheel** | Об’єднати події черг, фотоаудиту, POS і сервісу в агреговану модель ефективності магазину | Права на агреговані дані, quality pipeline, історичні benchmarks |
+| **5. Партнерський rollout під одним SLA** | Мережа монтажу, кілька постачальників, remote monitoring, єдина відповідальність GeoVizor | Контракти, навчена сервісна мережа, стандарти впровадження |
+
+### Рекомендована стратегічна обіцянка
+
+&gt; **GeoVizor за 30–60 днів перевіряє фінансовий ефект retail-tech рішення на реальній точці, використовуючи локальні інтеграції та мінімальний додатковий CAPEX, після чого масштабує підтверджену конфігурацію на мережу.**
+
+До завершення пілотів це слід подавати як **цільову позицію**, а не як доведений факт.
+
+---
+
+## 7. ERRC-матриця
+
+| Усунути | Зменшити | Підвищити | Створити |
+|---|---|---|---|
+| Продаж «усієї екосистеми» як першої пропозиції | Кількість одночасних продуктів та ICP | Доказовість ROI і точності AI | Стандарт «платний пілот → rollout» |
+| Безкоштовні або нечітко обмежені пілоти | Кастомізацію без окремої оплати | Швидкість і повторюваність інтеграцій | Retail Integration Kit |
+| PoC на 8–12 тис. SKU у поточному scope | Залежність від одного постачальника й ключових людей | SLA, Help Desk, безпеку та документацію | Benchmark-базу за форматами магазинів |
+| Заяви про переваги без вимірюваних кейсів | Hardware-залежність там, де можна використати наявну інфраструктуру | Мінімальний ACV і blended margin | Правила IP, data rights і MLOps governance |
+
+---
+
+## 8. Три пріоритетні проєкти
+
+| Пріоритетний проєкт | Очікуваний результат | KPI | Термін | Відповідальний |
+|---|---|---|---|---|
+| **1. Продуктові паспорти та unit economics** | Два стандартизовані продукти: AI Queue Monitoring і Store Location Feasibility | 2 затверджені паспорти; ціни setup/subscription/SLA; економіка для 1/10/50/200 магазинів; SaaS GM ≥65%, blended GM ≥45% як ціль | 4–6 тижнів | **Д. Ткачук** — продукт/продажі; **П. Кульпач** — фінанси; **О. Дідицький** — координація |
+| **2. Три платні доказові пілоти** | Підтвердження ICP, WTP, технічної якості та рішення про rollout | 3 платні пілоти; 100% із baseline і acceptance criteria; ≥2 рішення про rollout; запуск стандартної точки ≤4 тижнів; false alerts у погодженому діапазоні | 8–12 тижнів | **Д. Ткачук** — клієнт; **Д. Обертинський / П. Куриляк** — техніка; **А. Слива** — сервіс |
+| **3. Scale-ready Service, IP &amp; Data Backbone** | Help Desk/SLA, RACI, договірні права на технологію та дані, стандарт rollout | SLA затверджено; 100% інцидентів у системі; uptime вимірюється; договори IP/data processing підписані; 2 альтернативні постачальники критичних компонентів | 8–12 тижнів | **А. Слива** — Help Desk; **С. Супрунюк** — IP/privacy; **О. Дідицький** — RACI |
+
+### Рішення щодо AI Self-Checkout
+
+До завершення цих трьох проєктів **не запускати повномасштабну розробку на 8–12 тис. SKU**. Допустимий лише окремий технічний spike:
+
+- 50–200 SKU;
+- одна каса;
+- зафіксовані precision/recall, latency і false intervention rate;
+- окремий бюджет на збір та annotation даних;
+- передача GeoVizor прав на код, моделі й датасет;
+- рішення go/no-go після 4–6 тижнів.
+
+---
+
+## Джерела й обмеження
+
+1. Анкета GeoVizor та матеріали проєкту, надані користувачем.
+2. DevsX, **«AI-powered Self-Checkout System»**, дата, зазначена в документі: **09.04.2026**. Документ описує майбутній PoC і не підтверджує наявність готового продукту.
+3. StrongPoint, **Product Catalogue, Retail Technology Show 2025**. Використано заявлені дані про POS, self-checkout, OneView, deployment, ISO 27001/9001, support, партнерів і клієнтів. Заяви каталогу є маркетинговими та не розглядаються як незалежно перевірені показники ефективності.
+4. SaaS Capital, **2024 B2B SaaS Benchmarking**; KeyBanc Capital Markets, **2024 SaaS Survey** — орієнтири SaaS-маржі, retention і CAC payback.
+5. Оцінки конкурентної сили є аналітичними: публічні дані про ціни, SLA, локальні інсталяції та accuracy конкурентів неповні.
+
+---
+
+## Структурований блок даних для наступного запиту
+
+```yaml
+project: GeoVizor
+module: founder_and_capability_analysis
+
+capability_verdict:
+  pilot_readiness: sufficient_for_1_to_3_controlled_pilots
+  portfolio_scale_readiness: insufficient
+  confidence: medium
+
+main_strategic_problem:
+  statement: broad_end_to_end_ambition_without_one_standardized_proven_wedge
+  consequence:
+    - resource_dilution
+    - founder_dependency
+    - weak_repeatability
+    - unclear_unit_economics
+
+strongest_resources:
+  - Ukrainian_retail_domain_expertise
+  - access_to_B2B_retail_clients
+  - cross_functional_team
+  - AI_video_and_POS_integration_experience
+  - reported_SPAR_Eurospar_deployments
+  - partner_and_supplier_network
+
+critical_weaknesses:
+  - no_verified_paid_customer_and_repeat_sales_baseline
+  - no_approved_unit_economics_or_budget
+  - no_Help_Desk_and_operational_SLA
+  - unclear_IP_data_and_vendor_ownership
+  - portfolio_too_broad_for_current_stage
+
+validated_competitive_advantages: []
+
+temporary_strengths:
+  - local_retail_knowledge
+  - customer_access
+  - technical_integration_capability
+
+potential_competitive_advantages:
+  - ROI_platform_and_store_format_benchmarks
+  - Ukrainian_Retail_Integration_Kit
+  - privacy_preserving_edge_AI
+  - operational_data_flywheel
+  - partner_rollout_under_one_SLA
+
+competitive_strength_score_out_of_5:
+  GeoVizor_current: 2.85
+  StrongPoint: 3.70
+  SystemGroup_Ukraine: 3.80
+  Modern_Expo: 3.60
+  RetailNext: 3.20
+
+self_checkout_assessment:
+  status: external_PoC_proposal_not_owned_product
+  document_provider: DevsX
+  document_date: 2026-04-09
+  estimate_hours: 215-330
+  roadmap_weeks: 4-5
+  stated_SKU_range: 8000-12000
+  contradiction: stated_SKU_scope_inconsistent_with_limited_PoC_and_timeline
+  approximate_edge_hardware_UAH_per_lane: 29300
+  recommendation:
+    - reduce_initial_scope_to_50_200_SKUs
+    - define_precision_recall_latency_and_false_intervention
+    - separate_data_collection_and_annotation_budget
+    - contract_IP_and_data_rights
+    - go_no_go_after_technical_spike
+
+priority_projects:
+  - name: product_passports_and_unit_economics
+    term: 4-6_weeks
+    owners:
+      - D_Tkachuk
+      - P_Kulpach
+      - O_Didytskyi
+  - name: three_paid_evidence_pilots
+    term: 8-12_weeks
+    owners:
+      - D_Tkachuk
+      - D_Obratynskyi
+      - P_Kuryliak
+      - A_Slyva
+  - name: service_IP_and_data_backbone
+    term: 8-12_weeks
+    owners:
+      - A_Slyva
+      - S_Supruniuk
+      - O_Didytskyi
+
+success_gates:
+  - at_least_2_of_3_pilots_receive_rollout_decision
+  - standardized_store_deployment_at_most_4_weeks
+  - SaaS_gross_margin_target_at_least_65_percent
+  - blended_gross_margin_target_at_least_45_percent
+  - approved_Help_Desk_and_SLA
+  - signed_IP_and_data_processing_terms
+```</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>

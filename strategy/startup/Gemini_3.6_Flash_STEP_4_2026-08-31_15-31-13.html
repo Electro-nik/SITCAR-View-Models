@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemini 3.6 Flash</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#f0f6fc; --muted:#8b949e; --accent:#58a6ff; --good:#3fb950; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Segoe UI,Arial,sans-serif; line-height:1.5; }
+.container { width:min(1400px,calc(100% - 32px)); margin:auto; padding:30px 0 70px; }
+.back { display:inline-block; margin-bottom:18px; color:var(--accent); text-decoration:none; font-weight:700; }
+.hero,.card,.result-card,details { background:var(--card); border:1px solid var(--border); border-radius:16px; }
+.hero { padding:28px; margin-bottom:18px; }
+.hero h1 { margin:0 0 5px; font-size:42px; }
+.muted { color:var(--muted); }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; margin-bottom:18px; }
+.card { padding:20px; }
+.card h2,.result-card h2 { margin-top:0; font-size:17px; }
+.metric { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid rgba(255,255,255,.06); padding:9px 0; }
+.metric:last-child { border-bottom:0; }
+.metric span { color:var(--muted); }
+.metric strong { text-align:right; }
+.total strong { color:var(--good); }
+.result-card { padding:22px; margin-bottom:18px; }
+.attachment-summary { margin-bottom:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; vertical-align:top; }
+th { color:#79c0ff; font-size:13px; }
+tbody tr:last-child td { border-bottom:0; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; margin:15px 0; }
+button { cursor:pointer; border:1px solid var(--border); background:#21262d; color:var(--text); border-radius:9px; padding:9px 13px; font-weight:700; }
+details { margin:10px 0; overflow:hidden; }
+summary { cursor:pointer; padding:15px 18px; font-weight:800; }
+.details-body { border-top:1px solid var(--border); padding:16px; }
+pre { margin:0; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; padding:15px; background:#090c10; border:1px solid var(--border); border-radius:10px; }
+@media(max-width:900px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+<a class="back" href="../index.html">← index.html</a>
+<section class="hero">
+<h1>Gemini 3.6 Flash</h1>
+<div class="muted">Google Gemini · Prompt: STEP_4 · 2026-08-31T15:31:13</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>MODEL</h2>
+<div class="metric"><span>Requested</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Returned</span><strong>gemini-3.6-flash</strong></div>
+<div class="metric"><span>Response ID</span><strong>33OVasS2K7nm7M8PheTb0QI</strong></div>
+<div class="metric"><span>Context window</span><strong>1 048 576</strong></div>
+<div class="metric"><span>Max output</span><strong>65 536</strong></div>
+<div class="metric"><span>Latency</span><strong>49.913 s</strong></div>
+</section>
+<section class="card">
+<h2>TOKENS FROM API</h2>
+<div class="metric"><span>Input tokens</span><strong>29 135</strong></div>
+<div class="metric"><span>Cached input</span><strong>—</strong></div>
+<div class="metric"><span>Output tokens</span><strong>7 228</strong></div>
+<div class="metric"><span>Reasoning / thinking</span><strong>2 236</strong></div>
+<div class="metric"><span>Total tokens</span><strong>36 363</strong></div>
+</section>
+<section class="card">
+<h2>COST</h2>
+<div class="metric"><span>Input price / 1M</span><strong>$0.750000</strong></div>
+<div class="metric"><span>Input cost</span><strong>$0.021851</strong></div>
+<div class="metric"><span>Cached price / 1M</span><strong>$0.075000</strong></div>
+<div class="metric"><span>Cached cost</span><strong>$0.000000</strong></div>
+<div class="metric"><span>Output price / 1M</span><strong>$3.750000</strong></div>
+<div class="metric"><span>Output cost</span><strong>$0.027105</strong></div>
+<div class="metric"><span>Subtotal</span><strong>$0.048956</strong></div>
+<div class="metric"><span>Tax (20%)</span><strong>$0.009791</strong></div>
+<div class="metric total"><span>TOTAL WITH TAX</span><strong>$0.058748</strong></div>
+</section>
+</div>
+<section class="result-card attachments-card">
+        <h2>ФАЙЛИ, НАДІСЛАНІ РАЗОМ ІЗ ПРОМПТОМ</h2>
+        <div class="muted attachment-summary">Кількість: 2 · Загальний розмір: 53.56 KB</div>
+        <div class="table-wrap"><table>
+        <thead><tr><th>Файл</th><th>Розмір</th><th>Як передано</th><th>Час надсилання</th></tr></thead>
+        <tbody><tr><td><strong>GeoVizor продукт (1).xlsx</strong></td><td>31.63 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-31T15:30:23+03:00</td></tr><tr><td><strong>Geo Vizor 2026-08-26.docx</strong></td><td>21.93 KB</td><td>Текст витягнуто локально з DOCX/XLSX без обрізання</td><td>2026-08-31T15:30:23+03:00</td></tr></tbody>
+        </table></div>
+        </section>
+<section class="result-card"><h2>ПОВНА ВІДПОВІДЬ МОДЕЛІ</h2><pre># ЗВІТ З ВИБОРУ СТРАТЕГІЇ РОЗВИТКУ (ЗАПИТ 4)
+
+**Проєкт:** GeoVizor  
+**Галузь:** Retail-Tech / B2B Automation &amp; Analytics  
+**Аналітичний модуль:** SITCAR System (Стратегічне вибороутворення та конфігурація)
+
+---
+
+## EXECUTIVE SUMMARY
+
+1. **Обрана конкурентна стратегія:** **Сфокусована диференціація (Focused Differentiation)** у сегменті SMB та Mid-market мережевого ритейлу в Україні. GeoVizor диференціюється через модель «Єдиного вікна» (Edge AI-аналітика + каси самообслуговування + сервіс), пропонуючи суттєво нижчу TCO порівняно з міжнародним бенчмарком StrongPoint.
+2. **Основний напрям росту за Ансоффом (12–24 місяці):** **Проникнення на ринок (Market Penetration)** з фокусом на 2–3 базові MVP-модулі (*AI Queue Monitoring*, *Store Location Feasibility*, каси SCO) серед українських торговельних мереж і франчайзі.
+3. **Модель інтеграції:** **Стратегічна кооперація та партнерські альянси** (партнерство з розробниками POS/ERP, локальними інсталяторами та OEM/ODM-виробниками КСО в Китаї). Вертикальну інтеграцію та M&amp;A **відкладено** до стадії після PMF.
+4. **Ринкова поведінка та позиція:** **Наступальний переслідувач-спеціаліст (Challenger / Niche Specialist)**. Атакує застарілих локальних інтеграторів та заповнює вакуум між «чистими SaaS-стартапами без обладнання» та «наддорогими enterprise-інтеграторами».
+5. **Стадія галузі:** **Динамічне зростання (Growth)** для Edge AI та автоматизації черг; **Зрілість / Модернізація (Maturity)** для касового обладнання та POS.
+6. **Сфокусована диверсифікація:** Суворе розмежування портфеля на «Зараз» (Queue AI, Location, SCO), «Після PMF» (AI Loss Prevention, Loyalty, CRM) та «Відкласти» (будівництво точок під ключ, складний інтер’єрний дизайн, вихід за межі ритейлу).
+7. **Головний стратегічний орієнтир:** Ліквідувати оперативне розпилення Творця (Creator) та перейти до системного виконання Правителя (Ruler) через 3 чіткі пріоритети на 12 місяців.
+
+---
+
+## 1. ОСНОВНА КОНКУРЕНТНА СТРАТЕГІЯ (ЗА ПОРТЕРОМ)
+
+### Обрана стратегія: **Сфокусована диференціація (Focused Differentiation)** 
+*(з поступовим переходом до стратегії Оптимальних витрат / Best-Cost при масштабуванні)*.
+
+* **Обґрунтування вибору:** 
+  * GeoVizor не має ресурсів змагатися у прямому «лідерстві за витратами» з масовими китайськими постачальниками небренованого обладнання.
+  * Проєкт не може реалізувати «широку диференціацію» на всьому ринку корпоративного IT через обмеженість команди засновників і стадію MVP.
+  * **Фокус:** Мережевий роздріб (Grocery, Convenience, Drogerie) та франчайзингові мережі в Україні (сегмент 5–150 точок).
+  * **Диференціація:** Пакетне рішення «Single Window» (оцінка локації + Edge AI контроль черг + каси SCO + Help Desk SLA), яке вирішує проблему розрізненості постачальників за ціною, нижчою на 30–50% від преміального бенчмарку (StrongPoint).
+
+---
+
+## 2. ОСНОВНИЙ НАПРЯМ РОСТУ ЗА АНСОФФОМ (12–24 МІСЯЦІ)
+
+### Обраний напрям: **Проникнення на ринок (Market Penetration)** 
+*(із супровідним точковим **Розвитком продукту** для доведення MVP до стандарту)*.
+
+### Таблиця 1. Матриця Ансоффа для GeoVizor (12–24 місяці)
+
+| Вектор росту | Статус | Обґрунтування та межі застосування |
+| :--- | :---: | :--- |
+| **Проникнення на ринок (Market Penetration)** | **ПРИОРИТЕТ №1** | Масштабування продажів існуючих MVP-модулів (*AI Queue*, *Store Location*, *SCO*) на існуючому ринку мережевого ритейлу України. Наявна місткість ринку SAM ($32M–$48M) повністю достатня для досягнення цільового SOM ($0.8M–$1.5M ARR). |
+| **Розвиток продукту (Product Development)** | **Вторинний фокус (Точково)** | Завершення інтеграції AI-модуля з касовим ПЗ, створення операційного дашборду черг та виведення Help Desk. *Не створювати нові продукти з нуля до досягнення продажів у вересні 2026!* |
+| **Розвиток ринку (Market Development)** | **Відкласти (Після PMF)** | Вихід на суміжні ринки CEE (Центрально-Східна Європа) або в інші вертикалі (HoReCa/АЗС) відкладається до підтвердження повторюваної unit-економіки в Україні. |
+| **Диверсифікація (Diversification)** | **ЗАБОРОНЕНО** | Спроби виходу в непрофільні галузі (B2C, агро, промисловість) несуть смертельний ризик розпилення ресурсів. |
+
+---
+
+## 3. МОДЕЛЬ ІНТЕГРАЦІЇ ТА КООПЕРАЦІЇ
+
+### Обрана модель: **Стратегічна кооперація та партнеральне партнерство (Cooperation &amp; Strategic Alliances)**.
+
+* **Партнерства по софту:** Реселерські та інтеграційні угоди з розробниками касового та ERP-програмного забезпечення (наприклад, Script Solution), систем лояльності та ПРРО.
+* **Партнерства по хардвару:** OEM/ODM-кооперація з випробуваними фабриками в Китаї (закупівля КСО з брендуванням та модифікацією корпусів без володіння виробничими потужностями).
+* **Сервісні партнерства:** Залучення сертифікованих регіональних підрядників для фізичного монтажу та первинної технічної підтримки на місцях.
+
+### Що необхідно ВІДКЛАСТИ на поточній стадії:
+1. **Вертикальна інтеграція вгору (Upstream):** Відкриття власного виробництва касових корпусів або розробка власних плашок/комплектуючих (високий CAPEX, заморожування капіталу).
+2. **Горизонтальна інтеграція та M&amp;A:** Поглинання дрібних локальних конкурентів або SaaS-стартапів (відсутність вільного ліквідного капіталу).
+
+---
+
+## 4. РИНКОВА ПОВЕДІНКА ТА КОНКУРЕНТНА ПОЗИЦІЯ
+
+* **Ринкова поведінка:** **Наступальна (Offensive / Challenger)**. GeoVizor атакує традиційних локальних інтеграторів (таких як SystemGroup), які продають &quot;застаріле залізо без розумної відеоаналітики&quot;, та відбирає частку у нішевих SaaS-гравців за рахунок комплексності й наявності сервісу.
+* **Реалістична конкурентна позиція:** **Переслідувач-спеціаліст (Niche Specialist Challenger)**. 
+  * GeoVizor не позиціонує себе як абсолютного лідера ринку на старті.
+  * Роль — високоадаптивний нішевий гравець, що спеціалізується на цифровізації торговельного залу та касових зон для зростаючих регіональних мереж і франчайзі.
+
+---
+
+## 5. СТАДІЯ ГАЛУЗІ ТА СТРАТЕГІЧНИЙ КОНТЕКСТ
+
+* **Стадія галузі Retail-Tech в Україні:** **Динамічне зростання / Трансформація (Dynamic Growth &amp; Modernization)**.
+* **Ключовий фактор:** Ринок знаходиться у фазі активного вимушеного переозброєння. Дефіцит персоналу (касирів, працівників залу) та зростання витрат на оплату праці змушують ритейлерів інвестувати в каси самообслуговування (SCO) та AI-автоматизацію.
+* **Стратегічна відповідь GeoVizor:** Швидке захоплення точок ритейлу через платні fast-track пілоти з показами чіткого ROI (зменшення втрат від черг на 15–20% та оптимізація ФОП).
+
+---
+
+## 6. СПОРІДНЕНА ДИВЕРСИФІКАЦІЯ (ФОКУСУВАННЯ ПОРТФЕЛЯ)
+
+Для запобігання системному розпиленню Творця (Creator) портфель продуктів GeoVizor розділено на три чіткі часові горизонти:
+
+### Таблиця 2. Грейдування продуктового портфеля GeoVizor
+
+| Горизонт | Напрями та продукти | Обґрунтування та цільовий стан |
+| :--- | :--- | :--- |
+| **ЗАРАЗ** &lt;br&gt; *(До PMF / 0–6 міс)* | 1. *AI Queue Monitoring* &lt;br&gt; 2. *Store Location Feasibility* &lt;br&gt; 3. *Self-Checkout (SCO)* &lt;br&gt; 4. *Store Standards &amp; Photo Audit* | **Фокусний MVP-пакет.** Продукти мають найвищу готовність, вирішують найгостріші проблеми ритейлу (черги, вибір локацій, брак касирів) та формують перші продажі у вересні 2026 р. |
+| **ПІСЛЯ PMF** &lt;br&gt; *(6–18 міс)* | 1. *AI Loss Prevention on SCO* &lt;br&gt; 2. *Loyalty Platform &amp; CRM Integration* &lt;br&gt; 3. *Competitive Price Monitoring* | **Upsell-модулі.** Запускаються лише після того, як базовий софт розгорнуто в 15+ мережах, а Help Desk працює за стандартними SLA. |
+| **ВІДКЛАСТИ** &lt;br&gt; *(18+ міс / За умов)* | 1. *Turnkey Store Opening (Будівництво)* &lt;br&gt; 2. *Store Concept &amp; Interior Design* &lt;br&gt; 3. *Retail Equipment Manufacturing* | **Високоризикові напрями.** Продаж фізичних послуг будівництва/дизайну вимагає великої штатної команди та заморожує ресурси, відволікаючи від високої маржі SaaS. |
+
+---
+
+## 7. П’ЯТЬ ДІЙ «ЩО РОБИТИ» ТА П’ЯТЬ ДІЙ «ЧОГО НЕ РОБИТИ»
+
+### ✅ П&#x27;ять дій, які ПУБЛІЧНО ТА ОПЕРАЦІЙНО РОБИМО (TO-DO):
+1. **Сфокусувати продажі на вересень 2026 р. лише на 3 готових рішеннях:** *AI Queue Monitoring*, *Store Location Feasibility* та базові каси *SCO*.
+2. **Запровадити стандартизований 30-денний платний пілот (Fast-Track Pilot):** Із фіксованим дашбордом ROI для переконання ОПР (CEO/COO ритейлу).
+3. **Побудувати первинну інфраструктуру Help Desk:** Зафіксувати відповідального (А. Слива) та запровадити SLA з часом реакції до 2 годин.
+4. **Затвердити фінальні продуктові паспорти та юніт-економіку:** Розрахувати точну себевартість монтажу, підтримки, мита та логістики КСО з Китаю до укладання контрактів.
+5. **Створити локальний буфер запчастин для КСО:** Забезпечити складський резерв критичних блоків в Україні для гарантії безперебійної заміни.
+
+### ❌ П&#x27;ять дій, яких ЖОРСТКО УНИКАЄМО (NOT-TO-DO):
+1. **НЕ продавати послуги з будівництва та дизайну магазинів «під ключ»** до моменту побудови стабільного SaaS ARR.
+2. **НЕ проводити безкоштовні та безлімітні пілоти** без чітко підписаних KPI та критеріїв успішної конверсії у плату.
+3. **НЕ замовляти партію 50 КСО з Китаю** до затвердження остаточної конфігурації (вентиляція, кріплення, камери) та авансування клієнтами.
+4. **НЕ розпорошувати маркетинг і продажі на суміжні галузі** (HoReCa, АЗС, B2C) до підтвердження PMF у мережевому ритейлі.
+5. **НЕ допускати «героїзму засновників» без фіксації процесів:** Не приймати задачі без відповідального, бюджету та погодженого дедлайну в CRM/Worksection.
+
+---
+
+## 8. ПІДСУМКОВА МАТРИЦЯ СТРАТЕГІЧНОЇ КОНФІГУРАЦІЇ
+
+### Таблиця 3. Підсумкова стратегічна конфігурація GeoVizor
+
+| Вимір стратегії | Рекомендований вибір | Обґрунтування | Що робити (To-Do) | Чого не робити (Not-To-Do) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Основна конкурентна стратегія** | **Сфокусована диференціація (Focused Differentiation)** | Оптимальне поєднання високої цінності &quot;Single Window&quot; та доступної TCO для SMB/Mid ритейлу UA. | Пакетувати софт + обладнання + SLA за ціною нижче StrongPoint. | Не вступати у цінову війну з дешевим неякісним хардваром. |
+| **Напрям росту (Ансофф)** | **Проникнення на ринок (Market Penetration)** | Найвищий потенціал у наявному SAM ($32M–$48M) без витрат на географічну експансію. | Фокусувати B2B-продажі на мережах Grocery, Convenience, Drogerie UA. | Не виходити на ринки ЄС/CEE до підтвердження unit-економіки в UA. |
+| **Модель інтеграції** | **Стратегічна кооперація / Альянси** | Мінімізує CAPEX і дозволяє швидко закрити прогалини у софті (POS/ERP) та хардварі. | Укласти партнерські угоди з POS-розробниками та OEM-заводами. | Не купувати та не будувати власні виробничі потужності. |
+| **Ринкова поведінка** | **Наступальний переслідувач (Offensive Challenger)** | Дозволяє відбирати клієнтів у застарілих системних інтеграторів через швидкість Edge AI. | Пропонувати 30-денні пілоти з доведеним ефектом ROI. | Не чекати пасивного запиту від ринку; активно вести B2B-воронку. |
+| **Конкурентна позиція** | **Переслідувач-спеціаліст (Niche Specialist)** | Спеціалізація на касовій зоні та аналітиці залу створює чітке позиціонування. | Просувати експертизу в Edge AI та оптимізації черг. | Не позиціонуватися як «універсальне IT для всього бізнесу». |
+| **Стадія галузі** | **Динамічне зростання (Growth)** | Ринок гостро потребує автоматизації через дефіцит кадрів в Україні. | Битви за точки ритейлу через автоматизацію ручної праці. | Не зволікати із запуском продажів (ціль — вересень 2026). |
+
+---
+
+## 9. ТРИ ОСНОВНІ СТРАТЕГІЧНІ ПРІОРИТЕТИ ТА ПЛАН ДІЙ
+
+### Пріоритет 1: Фіналізація MVP-продуктового портфеля та Юніт-економіки (30 днів)
+* **Дія 1.1:** Провести засідання з ціноутворення (П. Кульпач) та затвердити деталізовані Паспорти продуктів для *AI Queue*, *Store Location* та *SCO*.
+* **Дія 1.2:** Зафіксувати цільову валову маржу (&gt;70% для SaaS, &gt;20% для КСО) та граничні дилерські/партнерські знижки (до 25%).
+
+### Пріоритет 2: Запуск B2B-продажів та Fast-Track пілотів (90 днів)
+* **Дія 2.1:** Сформувати активну CRM-воронку B2B-продажів (Д. Ткачук) та укласти угоди на проведення **3 платних пілотів**.
+* **Дія 2.2:** Реалізувати та продемонструвати операційному блоку клієнтів Дашборд результативності моніторингу черг.
+
+### Пріоритет 3: Розбудова інфраструктури Help Desk та підготовка закупівлі КСО (180 днів)
+* **Дія 3.1:** Впровадити систему Help Desk (А. Слива) із затвердженим SLA (First Response &lt; 30 хв, Resolution &lt; 4 год).
+* **Дія 3.2:** Затвердити фінальне ТЗ на КСО (вентиляція, поворотний механізм, камери) та підписати контракт на поставку першої партії під підтверджений попит.
+
+---
+
+## СТРУКТУРОВАНИЙ БЛОК ДАНИХ ДЛЯ ЗАПИТУ 5
+
+```json
+{
+  &quot;project_name&quot;: &quot;GeoVizor&quot;,
+  &quot;strategic_configuration_summary&quot;: {
+    &quot;generic_strategy&quot;: &quot;Focused Differentiation (Сфокусована диференціація)&quot;,
+    &quot;ansoff_direction&quot;: &quot;Market Penetration (Проникнення на ринок)&quot;,
+    &quot;integration_model&quot;: &quot;Strategic Cooperation &amp; Partnerships (Партнерські альянси)&quot;,
+    &quot;market_stance&quot;: &quot;Offensive Challenger (Наступальний переслідувач)&quot;,
+    &quot;competitive_position&quot;: &quot;Niche Specialist in Retail-Tech (Переслідувач-спеціаліст)&quot;,
+    &quot;industry_stage&quot;: &quot;Dynamic Growth &amp; Modernization (Динамічне зростання)&quot;,
+    &quot;diversification_roadmap&quot;: {
+      &quot;now_mvp&quot;: [
+        &quot;AI Queue Monitoring&quot;,
+        &quot;Store Location Feasibility&quot;,
+        &quot;Self-Checkout (SCO)&quot;,
+        &quot;Store Standards &amp; Photo Audit&quot;
+      ],
+      &quot;after_pmf&quot;: [
+        &quot;AI Loss Prevention on SCO&quot;,
+        &quot;Loyalty Platform &amp; CRM Integration&quot;,
+        &quot;Competitive Price Monitoring&quot;
+      ],
+      &quot;postpone&quot;: [
+        &quot;Turnkey Store Opening (Construction)&quot;,
+        &quot;Store Concept &amp; Interior Design&quot;,
+        &quot;Retail Equipment Manufacturing&quot;
+      ]
+    },
+    &quot;top_5_todo&quot;: [
+      &quot;Focus September 2026 sales launch exclusively on 3 core MVP modules&quot;,
+      &quot;Implement standardized 30-day paid Fast-Track Pilots with ROI dashboard&quot;,
+      &quot;Establish basic Help Desk infrastructure with 2-hour SLA response&quot;,
+      &quot;Finalize product passports, COGS, and margin calculations&quot;,
+      &quot;Create local spare parts stock for SCO servicing&quot;
+    ],
+    &quot;top_5_not_todo&quot;: [
+      &quot;Do not sell turnkey construction/design services before software PMF&quot;,
+      &quot;Do not conduct free/unmanaged unlimited pilots&quot;,
+      &quot;Do not order 50 SCO units without verified specs and customer pre-orders&quot;,
+      &quot;Do not expand marketing into non-retail verticals (HoReCa, B2C)&quot;,
+      &quot;Do not allow unassigned tasks without deadlines and budget in CRM&quot;
+    ],
+    &quot;top_3_priorities&quot;: [
+      &quot;Finalize MVP Product Passports &amp; Unit Economics (30 days)&quot;,
+      &quot;Launch B2B Sales &amp; Execute 3 Paid Fast-Track Pilots (90 days)&quot;,
+      &quot;Deploy Help Desk SLA Infrastructure &amp; Secure Hardware Supply (180 days)&quot;
+    ]
+  }
+}
+```</pre></section>
+<div class="actions"><button onclick="toggleAll(true)">Розкрити все</button><button onclick="toggleAll(false)">Закрити все</button></div>
+<details><summary>Full API response</summary><div class="details-body"><pre>{
+  &quot;sdk_http_response&quot;: {
+    &quot;headers&quot;: {
+      &quot;x-gemini-service-tier&quot;: &quot;standard&quot;,
+      &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,
+      &quot;vary&quot;: &quot;Origin, X-Origin, Referer&quot;,
+      &quot;content-encoding&quot;: &quot;gzip&quot;,
+      &quot;date&quot;: &quot;Mon, 31 Aug 2026 12:31:12 GMT&quot;,
+      &quot;server&quot;: &quot;scaffolding on HTTPServer2&quot;,
+      &quot;x-xss-protection&quot;: &quot;0&quot;,
+      &quot;x-frame-options&quot;: &quot;SAMEORIGIN&quot;,
+      &quot;x-content-type-options&quot;: &quot;nosniff&quot;,
+      &quot;server-timing&quot;: &quot;gfet4t7; dur=49692&quot;,
+      &quot;alt-svc&quot;: &quot;h3=\&quot;:443\&quot;; ma=2592000,h3-29=\&quot;:443\&quot;; ma=2592000&quot;,
+      &quot;transfer-encoding&quot;: &quot;chunked&quot;
+    },
+    &quot;body&quot;: null
+  },
+  &quot;candidates&quot;: [
+    {
+      &quot;content&quot;: {
+        &quot;parts&quot;: [
+          {
+            &quot;media_resolution&quot;: null,
+            &quot;code_execution_result&quot;: null,
+            &quot;executable_code&quot;: null,
+            &quot;file_data&quot;: null,
+            &quot;function_call&quot;: null,
+            &quot;function_response&quot;: null,
+            &quot;inline_data&quot;: null,
+            &quot;text&quot;: &quot;# ЗВІТ З ВИБОРУ СТРАТЕГІЇ РОЗВИТКУ (ЗАПИТ 4)\n\n**Проєкт:** GeoVizor  \n**Галузь:** Retail-Tech / B2B Automation &amp; Analytics  \n**Аналітичний модуль:** SITCAR System (Стратегічне вибороутворення та конфігурація)\n\n---\n\n## EXECUTIVE SUMMARY\n\n1. **Обрана конкурентна стратегія:** **Сфокусована диференціація (Focused Differentiation)** у сегменті SMB та Mid-market мережевого ритейлу в Україні. GeoVizor диференціюється через модель «Єдиного вікна» (Edge AI-аналітика + каси самообслуговування + сервіс), пропонуючи суттєво нижчу TCO порівняно з міжнародним бенчмарком StrongPoint.\n2. **Основний напрям росту за Ансоффом (12–24 місяці):** **Проникнення на ринок (Market Penetration)** з фокусом на 2–3 базові MVP-модулі (*AI Queue Monitoring*, *Store Location Feasibility*, каси SCO) серед українських торговельних мереж і франчайзі.\n3. **Модель інтеграції:** **Стратегічна кооперація та партнерські альянси** (партнерство з розробниками POS/ERP, локальними інсталяторами та OEM/ODM-виробниками КСО в Китаї). Вертикальну інтеграцію та M&amp;A **відкладено** до стадії після PMF.\n4. **Ринкова поведінка та позиція:** **Наступальний переслідувач-спеціаліст (Challenger / Niche Specialist)**. Атакує застарілих локальних інтеграторів та заповнює вакуум між «чистими SaaS-стартапами без обладнання» та «наддорогими enterprise-інтеграторами».\n5. **Стадія галузі:** **Динамічне зростання (Growth)** для Edge AI та автоматизації черг; **Зрілість / Модернізація (Maturity)** для касового обладнання та POS.\n6. **Сфокусована диверсифікація:** Суворе розмежування портфеля на «Зараз» (Queue AI, Location, SCO), «Після PMF» (AI Loss Prevention, Loyalty, CRM) та «Відкласти» (будівництво точок під ключ, складний інтер’єрний дизайн, вихід за межі ритейлу).\n7. **Головний стратегічний орієнтир:** Ліквідувати оперативне розпилення Творця (Creator) та перейти до системного виконання Правителя (Ruler) через 3 чіткі пріоритети на 12 місяців.\n\n---\n\n## 1. ОСНОВНА КОНКУРЕНТНА СТРАТЕГІЯ (ЗА ПОРТЕРОМ)\n\n### Обрана стратегія: **Сфокусована диференціація (Focused Differentiation)** \n*(з поступовим переходом до стратегії Оптимальних витрат / Best-Cost при масштабуванні)*.\n\n* **Обґрунтування вибору:** \n  * GeoVizor не має ресурсів змагатися у прямому «лідерстві за витратами» з масовими китайськими постачальниками небренованого обладнання.\n  * Проєкт не може реалізувати «широку диференціацію» на всьому ринку корпоративного IT через обмеженість команди засновників і стадію MVP.\n  * **Фокус:** Мережевий роздріб (Grocery, Convenience, Drogerie) та франчайзингові мережі в Україні (сегмент 5–150 точок).\n  * **Диференціація:** Пакетне рішення «Single Window» (оцінка локації + Edge AI контроль черг + каси SCO + Help Desk SLA), яке вирішує проблему розрізненості постачальників за ціною, нижчою на 30–50% від преміального бенчмарку (StrongPoint).\n\n---\n\n## 2. ОСНОВНИЙ НАПРЯМ РОСТУ ЗА АНСОФФОМ (12–24 МІСЯЦІ)\n\n### Обраний напрям: **Проникнення на ринок (Market Penetration)** \n*(із супровідним точковим **Розвитком продукту** для доведення MVP до стандарту)*.\n\n### Таблиця 1. Матриця Ансоффа для GeoVizor (12–24 місяці)\n\n| Вектор росту | Статус | Обґрунтування та межі застосування |\n| :--- | :---: | :--- |\n| **Проникнення на ринок (Market Penetration)** | **ПРИОРИТЕТ №1** | Масштабування продажів існуючих MVP-модулів (*AI Queue*, *Store Location*, *SCO*) на існуючому ринку мережевого ритейлу України. Наявна місткість ринку SAM ($32M–$48M) повністю достатня для досягнення цільового SOM ($0.8M–$1.5M ARR). |\n| **Розвиток продукту (Product Development)** | **Вторинний фокус (Точково)** | Завершення інтеграції AI-модуля з касовим ПЗ, створення операційного дашборду черг та виведення Help Desk. *Не створювати нові продукти з нуля до досягнення продажів у вересні 2026!* |\n| **Розвиток ринку (Market Development)** | **Відкласти (Після PMF)** | Вихід на суміжні ринки CEE (Центрально-Східна Європа) або в інші вертикалі (HoReCa/АЗС) відкладається до підтвердження повторюваної unit-економіки в Україні. |\n| **Диверсифікація (Diversification)** | **ЗАБОРОНЕНО** | Спроби виходу в непрофільні галузі (B2C, агро, промисловість) несуть смертельний ризик розпилення ресурсів. |\n\n---\n\n## 3. МОДЕЛЬ ІНТЕГРАЦІЇ ТА КООПЕРАЦІЇ\n\n### Обрана модель: **Стратегічна кооперація та партнеральне партнерство (Cooperation &amp; Strategic Alliances)**.\n\n* **Партнерства по софту:** Реселерські та інтеграційні угоди з розробниками касового та ERP-програмного забезпечення (наприклад, Script Solution), систем лояльності та ПРРО.\n* **Партнерства по хардвару:** OEM/ODM-кооперація з випробуваними фабриками в Китаї (закупівля КСО з брендуванням та модифікацією корпусів без володіння виробничими потужностями).\n* **Сервісні партнерства:** Залучення сертифікованих регіональних підрядників для фізичного монтажу та первинної технічної підтримки на місцях.\n\n### Що необхідно ВІДКЛАСТИ на поточній стадії:\n1. **Вертикальна інтеграція вгору (Upstream):** Відкриття власного виробництва касових корпусів або розробка власних плашок/комплектуючих (високий CAPEX, заморожування капіталу).\n2. **Горизонтальна інтеграція та M&amp;A:** Поглинання дрібних локальних конкурентів або SaaS-стартапів (відсутність вільного ліквідного капіталу).\n\n---\n\n## 4. РИНКОВА ПОВЕДІНКА ТА КОНКУРЕНТНА ПОЗИЦІЯ\n\n* **Ринкова поведінка:** **Наступальна (Offensive / Challenger)**. GeoVizor атакує традиційних локальних інтеграторів (таких як SystemGroup), які продають \&quot;застаріле залізо без розумної відеоаналітики\&quot;, та відбирає частку у нішевих SaaS-гравців за рахунок комплексності й наявності сервісу.\n* **Реалістична конкурентна позиція:** **Переслідувач-спеціаліст (Niche Specialist Challenger)**. \n  * GeoVizor не позиціонує себе як абсолютного лідера ринку на старті.\n  * Роль — високоадаптивний нішевий гравець, що спеціалізується на цифровізації торговельного залу та касових зон для зростаючих регіональних мереж і франчайзі.\n\n---\n\n## 5. СТАДІЯ ГАЛУЗІ ТА СТРАТЕГІЧНИЙ КОНТЕКСТ\n\n* **Стадія галузі Retail-Tech в Україні:** **Динамічне зростання / Трансформація (Dynamic Growth &amp; Modernization)**.\n* **Ключовий фактор:** Ринок знаходиться у фазі активного вимушеного переозброєння. Дефіцит персоналу (касирів, працівників залу) та зростання витрат на оплату праці змушують ритейлерів інвестувати в каси самообслуговування (SCO) та AI-автоматизацію.\n* **Стратегічна відповідь GeoVizor:** Швидке захоплення точок ритейлу через платні fast-track пілоти з показами чіткого ROI (зменшення втрат від черг на 15–20% та оптимізація ФОП).\n\n---\n\n## 6. СПОРІДНЕНА ДИВЕРСИФІКАЦІЯ (ФОКУСУВАННЯ ПОРТФЕЛЯ)\n\nДля запобігання системному розпиленню Творця (Creator) портфель продуктів GeoVizor розділено на три чіткі часові горизонти:\n\n### Таблиця 2. Грейдування продуктового портфеля GeoVizor\n\n| Горизонт | Напрями та продукти | Обґрунтування та цільовий стан |\n| :--- | :--- | :--- |\n| **ЗАРАЗ** &lt;br&gt; *(До PMF / 0–6 міс)* | 1. *AI Queue Monitoring* &lt;br&gt; 2. *Store Location Feasibility* &lt;br&gt; 3. *Self-Checkout (SCO)* &lt;br&gt; 4. *Store Standards &amp; Photo Audit* | **Фокусний MVP-пакет.** Продукти мають найвищу готовність, вирішують найгостріші проблеми ритейлу (черги, вибір локацій, брак касирів) та формують перші продажі у вересні 2026 р. |\n| **ПІСЛЯ PMF** &lt;br&gt; *(6–18 міс)* | 1. *AI Loss Prevention on SCO* &lt;br&gt; 2. *Loyalty Platform &amp; CRM Integration* &lt;br&gt; 3. *Competitive Price Monitoring* | **Upsell-модулі.** Запускаються лише після того, як базовий софт розгорнуто в 15+ мережах, а Help Desk працює за стандартними SLA. |\n| **ВІДКЛАСТИ** &lt;br&gt; *(18+ міс / За умов)* | 1. *Turnkey Store Opening (Будівництво)* &lt;br&gt; 2. *Store Concept &amp; Interior Design* &lt;br&gt; 3. *Retail Equipment Manufacturing* | **Високоризикові напрями.** Продаж фізичних послуг будівництва/дизайну вимагає великої штатної команди та заморожує ресурси, відволікаючи від високої маржі SaaS. |\n\n---\n\n## 7. П’ЯТЬ ДІЙ «ЩО РОБИТИ» ТА П’ЯТЬ ДІЙ «ЧОГО НЕ РОБИТИ»\n\n### ✅ П&#x27;ять дій, які ПУБЛІЧНО ТА ОПЕРАЦІЙНО РОБИМО (TO-DO):\n1. **Сфокусувати продажі на вересень 2026 р. лише на 3 готових рішеннях:** *AI Queue Monitoring*, *Store Location Feasibility* та базові каси *SCO*.\n2. **Запровадити стандартизований 30-денний платний пілот (Fast-Track Pilot):** Із фіксованим дашбордом ROI для переконання ОПР (CEO/COO ритейлу).\n3. **Побудувати первинну інфраструктуру Help Desk:** Зафіксувати відповідального (А. Слива) та запровадити SLA з часом реакції до 2 годин.\n4. **Затвердити фінальні продуктові паспорти та юніт-економіку:** Розрахувати точну себевартість монтажу, підтримки, мита та логістики КСО з Китаю до укладання контрактів.\n5. **Створити локальний буфер запчастин для КСО:** Забезпечити складський резерв критичних блоків в Україні для гарантії безперебійної заміни.\n\n### ❌ П&#x27;ять дій, яких ЖОРСТКО УНИКАЄМО (NOT-TO-DO):\n1. **НЕ продавати послуги з будівництва та дизайну магазинів «під ключ»** до моменту побудови стабільного SaaS ARR.\n2. **НЕ проводити безкоштовні та безлімітні пілоти** без чітко підписаних KPI та критеріїв успішної конверсії у плату.\n3. **НЕ замовляти партію 50 КСО з Китаю** до затвердження остаточної конфігурації (вентиляція, кріплення, камери) та авансування клієнтами.\n4. **НЕ розпорошувати маркетинг і продажі на суміжні галузі** (HoReCa, АЗС, B2C) до підтвердження PMF у мережевому ритейлі.\n5. **НЕ допускати «героїзму засновників» без фіксації процесів:** Не приймати задачі без відповідального, бюджету та погодженого дедлайну в CRM/Worksection.\n\n---\n\n## 8. ПІДСУМКОВА МАТРИЦЯ СТРАТЕГІЧНОЇ КОНФІГУРАЦІЇ\n\n### Таблиця 3. Підсумкова стратегічна конфігурація GeoVizor\n\n| Вимір стратегії | Рекомендований вибір | Обґрунтування | Що робити (To-Do) | Чого не робити (Not-To-Do) |\n| :--- | :--- | :--- | :--- | :--- |\n| **Основна конкурентна стратегія** | **Сфокусована диференціація (Focused Differentiation)** | Оптимальне поєднання високої цінності \&quot;Single Window\&quot; та доступної TCO для SMB/Mid ритейлу UA. | Пакетувати софт + обладнання + SLA за ціною нижче StrongPoint. | Не вступати у цінову війну з дешевим неякісним хардваром. |\n| **Напрям росту (Ансофф)** | **Проникнення на ринок (Market Penetration)** | Найвищий потенціал у наявному SAM ($32M–$48M) без витрат на географічну експансію. | Фокусувати B2B-продажі на мережах Grocery, Convenience, Drogerie UA. | Не виходити на ринки ЄС/CEE до підтвердження unit-економіки в UA. |\n| **Модель інтеграції** | **Стратегічна кооперація / Альянси** | Мінімізує CAPEX і дозволяє швидко закрити прогалини у софті (POS/ERP) та хардварі. | Укласти партнерські угоди з POS-розробниками та OEM-заводами. | Не купувати та не будувати власні виробничі потужності. |\n| **Ринкова поведінка** | **Наступальний переслідувач (Offensive Challenger)** | Дозволяє відбирати клієнтів у застарілих системних інтеграторів через швидкість Edge AI. | Пропонувати 30-денні пілоти з доведеним ефектом ROI. | Не чекати пасивного запиту від ринку; активно вести B2B-воронку. |\n| **Конкурентна позиція** | **Переслідувач-спеціаліст (Niche Specialist)** | Спеціалізація на касовій зоні та аналітиці залу створює чітке позиціонування. | Просувати експертизу в Edge AI та оптимізації черг. | Не позиціонуватися як «універсальне IT для всього бізнесу». |\n| **Стадія галузі** | **Динамічне зростання (Growth)** | Ринок гостро потребує автоматизації через дефіцит кадрів в Україні. | Битви за точки ритейлу через автоматизацію ручної праці. | Не зволікати із запуском продажів (ціль — вересень 2026). |\n\n---\n\n## 9. ТРИ ОСНОВНІ СТРАТЕГІЧНІ ПРІОРИТЕТИ ТА ПЛАН ДІЙ\n\n### Пріоритет 1: Фіналізація MVP-продуктового портфеля та Юніт-економіки (30 днів)\n* **Дія 1.1:** Провести засідання з ціноутворення (П. Кульпач) та затвердити деталізовані Паспорти продуктів для *AI Queue*, *Store Location* та *SCO*.\n* **Дія 1.2:** Зафіксувати цільову валову маржу (&gt;70% для SaaS, &gt;20% для КСО) та граничні дилерські/партнерські знижки (до 25%).\n\n### Пріоритет 2: Запуск B2B-продажів та Fast-Track пілотів (90 днів)\n* **Дія 2.1:** Сформувати активну CRM-воронку B2B-продажів (Д. Ткачук) та укласти угоди на проведення **3 платних пілотів**.\n* **Дія 2.2:** Реалізувати та продемонструвати операційному блоку клієнтів Дашборд результативності моніторингу черг.\n\n### Пріоритет 3: Розбудова інфраструктури Help Desk та підготовка закупівлі КСО (180 днів)\n* **Дія 3.1:** Впровадити систему Help Desk (А. Слива) із затвердженим SLA (First Response &lt; 30 хв, Resolution &lt; 4 год).\n* **Дія 3.2:** Затвердити фінальне ТЗ на КСО (вентиляція, поворотний механізм, камери) та підписати контракт на поставку першої партії під підтверджений попит.\n\n---\n\n## СТРУКТУРОВАНИЙ БЛОК ДАНИХ ДЛЯ ЗАПИТУ 5\n\n```json\n{\n  \&quot;project_name\&quot;: \&quot;GeoVizor\&quot;,\n  \&quot;strategic_configuration_summary\&quot;: {\n    \&quot;generic_strategy\&quot;: \&quot;Focused Differentiation (Сфокусована диференціація)\&quot;,\n    \&quot;ansoff_direction\&quot;: \&quot;Market Penetration (Проникнення на ринок)\&quot;,\n    \&quot;integration_model\&quot;: \&quot;Strategic Cooperation &amp; Partnerships (Партнерські альянси)\&quot;,\n    \&quot;market_stance\&quot;: \&quot;Offensive Challenger (Наступальний переслідувач)\&quot;,\n    \&quot;competitive_position\&quot;: \&quot;Niche Specialist in Retail-Tech (Переслідувач-спеціаліст)\&quot;,\n    \&quot;industry_stage\&quot;: \&quot;Dynamic Growth &amp; Modernization (Динамічне зростання)\&quot;,\n    \&quot;diversification_roadmap\&quot;: {\n      \&quot;now_mvp\&quot;: [\n        \&quot;AI Queue Monitoring\&quot;,\n        \&quot;Store Location Feasibility\&quot;,\n        \&quot;Self-Checkout (SCO)\&quot;,\n        \&quot;Store Standards &amp; Photo Audit\&quot;\n      ],\n      \&quot;after_pmf\&quot;: [\n        \&quot;AI Loss Prevention on SCO\&quot;,\n        \&quot;Loyalty Platform &amp; CRM Integration\&quot;,\n        \&quot;Competitive Price Monitoring\&quot;\n      ],\n      \&quot;postpone\&quot;: [\n        \&quot;Turnkey Store Opening (Construction)\&quot;,\n        \&quot;Store Concept &amp; Interior Design\&quot;,\n        \&quot;Retail Equipment Manufacturing\&quot;\n      ]\n    },\n    \&quot;top_5_todo\&quot;: [\n      \&quot;Focus September 2026 sales launch exclusively on 3 core MVP modules\&quot;,\n      \&quot;Implement standardized 30-day paid Fast-Track Pilots with ROI dashboard\&quot;,\n      \&quot;Establish basic Help Desk infrastructure with 2-hour SLA response\&quot;,\n      \&quot;Finalize product passports, COGS, and margin calculations\&quot;,\n      \&quot;Create local spare parts stock for SCO servicing\&quot;\n    ],\n    \&quot;top_5_not_todo\&quot;: [\n      \&quot;Do not sell turnkey construction/design services before software PMF\&quot;,\n      \&quot;Do not conduct free/unmanaged unlimited pilots\&quot;,\n      \&quot;Do not order 50 SCO units without verified specs and customer pre-orders\&quot;,\n      \&quot;Do not expand marketing into non-retail verticals (HoReCa, B2C)\&quot;,\n      \&quot;Do not allow unassigned tasks without deadlines and budget in CRM\&quot;\n    ],\n    \&quot;top_3_priorities\&quot;: [\n      \&quot;Finalize MVP Product Passports &amp; Unit Economics (30 days)\&quot;,\n      \&quot;Launch B2B Sales &amp; Execute 3 Paid Fast-Track Pilots (90 days)\&quot;,\n      \&quot;Deploy Help Desk SLA Infrastructure &amp; Secure Hardware Supply (180 days)\&quot;\n    ]\n  }\n}\n```&quot;,
+            &quot;thought&quot;: null,
+            &quot;thought_signature&quot;: &quot;Eo9JCoxJARFNMg9Jd8jJDg2K7m_uyjnyWYyBCH-6DrJtddH2FFt-bl6AE2wbijjvk-w1PzfcVE1Fcm9F5AmGRoz1M6eOzkhfp_48YNmSljWijIp_gI39NTASLFWH77twnU30JDK5lfbmlSO_Nq8EAycZkT_szwcVVCgy7ycmP-iFbDlGYTM2f0PCt87gFrGgcqzzpUTTndNLAYMuIpDy9G-v71F70-RXk7G-oiSqhn-5G43Hja6dZgkF96K2J4CFak0fts6rPg9uLgd70m1QLgpR3LBp8D4tLOJoPsSZsa8f8hNKWV-VIEyaoPJzAOeZzEHmchTatYDcQsJ9vodBcJj2QXSXmdccsvipUZhZ4z2MKS0mgMwTQn1tmK-ZEGctB9-chUxcPuOBmpiGfSAUFgX__Dz-sQrKRFwqiurA-1Maaj8Pu7L3tObdbsUmNFHUHIsGWf46YX3kVCex--dDFrLfTXk8_-IIVoF2K5U3pmbEoHIFtdNLTwPM3KkCrx43VuaQQhQQLkQbHLqKtRfn_VynZkJ8gvTC2Xmsf-E-VPGz47NV0S31e-NDU4hNP9Ee2BSievO5YJC9rGJknhl7MEh9iRrEB-Nd8YDImn0RekTwOfR6T2M9qHputKXHI1HQguVL6NmhESJDm7YUCht2AAU6WlOSVqEY5RRezubnnHjtSRcinv5leqY0XgUGnLsV6JjYHl6YbFOIdQeFgMra4hgV2S2NKNK1xiSnjs3bhaitYytILU-D81OICaImyOuIIh_htT2_vQDhB1Pn5GKkrVCXnwErSmBvu8ZIHN_ISVySpIEF23hwkwtoUjeXcsTv1CnVYg4j-vla8B9OMUaDVVNW1nuudAVju5W6x-hasA2Aw8O539bhojGPF9NYYJQOF3s3V5fs5ML6hBIP7-TXgDKtd-LXgjCpxPCjstk8iwKoMWSvQWj5c0lFU4d8hny4tag9md6XkqV2LG0d0EaSV_CNWDP5vsmaaSZ8S8R_XqdW2s6KyegNRLZ0ggHMgv2q7aDzG4Vqd-pXgPROrc9Cv1OnB4OEHrcojFas06NE-UnYJiMLQPA6zjMeCF6Q1Ht0qYEKYukK5S_yzeHg_8ljyLgV_qMcpum5PAsbe-pl-d4lcXIUyupkpQe5g7dF_--JCv6X2ssytPADKgZw9TGoZpRTMVBNDEXlluLZdyxdY_fbC3bUW4QnYH6stjtFqJ9uuq8ZmYCjZAFhwgLLp8qaZasQuDnDx9l6N41t0qKdPV8vrTLI1EarQjZli0nV7BtvX-YCV5DuODTAbtTYCjus1E7KOh6iP9t69YGUkDIkVXl9IeqhJuTu83rxMLtoQEv4GQLokU8fmpuamfx-_HTL-iZoG9hupIvaVb3fCGNQiSluMh9C5-iqroe1C9R4L1ycGM3kJHf-NMlnC8OGENER1fUuFoxbDkNkkAqIHsMm-fPodCAOrsTnk3mxAESaVAkwUxOzW5sDIdkRLkHMJNWdrX6aCZ8yQ1XKzvhrAlWmvXbaiYx7l8nH46m0spR-j4B-yu-PjttJG-btaKYXRyBz-2A36fSibwwHeRktlgdYffP-xlhEDaPLn6IQi4WnFQpi5tfe6EDjZg_qj9YHmh_p9MCcFS3_C7TD4TwPcn20FGpxT_QZVMm-jHYJ3hsPFUgJQd8ZqaXOxPCj3Ytmiw_KyuYvrSvWgYy0XdVRamxXi7B8zfeER9WPXRR9BNHH4BKx6SLnn1ogAjKGveZdnRpHaqyK4Bk16Aq8ghX_zyKysS3C9OCStV8pHmPvnMgdvJN1GFPYAUt1w5pRW1AaDpLrxx9dud1dtj_4zY1ImrJ8XowUJrXdkhdKPboA8a8QQlw3Oup79ZhWh0iHWyoLBNg-X31uBS3NK9-Rhj6C9GsDSCOEFMlz_jpA3GIrjg6k1pgEM7eOc5B6hSCRIkpBT0RxMrhcN-ewOyHK-wHk4uRt7uv0uua2xSgY5BuazYIAWXCRVJ9XATlxdib-LlWUT6_rlywotpH6JVqJLZEkGxReAQs609ZdhE_sZYhm17gXgQJuE2ho98pcp7Shr-tqfijeR6OL7fz0EXZlty2HtXgsMRbVYNHXBqboFbogp5uykvtZAc8K1H5lherBFhs2q41nmCTfIzEu1Prqd1YY9X5Pa_Y2jrbmnvnLgXRmOZZ94EjRLgUA6dzBGEIv_l8T_rlfgJ_Mb4ELvDlr0DTLKJVYTGslHaagTNO3tZKbeyFJRKB9FNPpTAAv1UVXYqpe4lvvRgfQTsoi50waPTunxlWpjRFmoHMpmVQ6TJJstFjr93cCgnPPo2DFGuDvfWCsO-tZLmOLyt5ta-r5pr3GShU7-HlNMvnQXwKW_Ri5rqKtLVKGeebaGyI1nq_M4c3xapaq98_3QoYUfFhV6_g_K2eOSNUEYLLZ6fWDbksX0q4y32U9I_7_O63tGMIHb5a5HinVpPfvXUZduxOxraqrkShHM9S8ggDKcvpUkIQ8IYLeprgm7kdl1EmeuxRxRnjMDzitVZUkwilZcEjyispjhC-ZSDgdSsQK9IN2Y6AYHWp-tE25kgcNETa56GFNoUVWufa3NFGNKKNsNSnhrXZYcylnov2QbI12LjMokLO4DKfstlSi9Yx1rWP3z2-iWCeUIzjA6W0RmlDgo4CF8QboRl8BSfRwGuHKIVa3PYtYC8Q8w8GklcCNjTnerMTwAzGp-gtcQMbuaEXx-dOAZ65ds4PKjCAHQn6DjflLTySKnuLn-icz4jg4IAkMB2GeJTTccrIF70SHqQJ3rl9b0EtvQVuHD6eX8t1uKfIJ6-0nyyEXhaAVIE8DZXGBKINs_nhLyMbXChlzxAteslA-Ip--4gN4GEsQ0EJ3tsRkWop6UDj3RHcREP6cxVHQC0wwmgZzO9dhIdp1Cm5wvA_jqGgUWSAWP0kHLWg8ViMb3szlrsu7sNn2YGmOnPNb46ugMwWfgVN1tQLeEcAVGzzgPhVKpDlx36qFyuwu1fG-gtEcT4Aj9F9iiTtueLJKqhsODDWvlkzMi_O3anAC_5-xgYHRtc9T3SVaEV8xCVK5tyjOteefCTABxU5aqnfbnuXrIB1AKIHZoGZhUHGqixVFPPcEGPOWHOoVv3kgPaT-5F_yH9TNCO1mRsjyR7qJO-8bEnEEvTLNK_TlnDmjckSj6_bOr5StqpPqGYAuew7nLrxRk65xq4n-BluYSH37eNms-7jnhZmvfx19OoUw0s-vGInLYjZzNZIJiCWsoBihJ3dWWcRf4NRf4vnFer_HnCg4SWeb8UZQR3ZM_p-ZFtWp-kq7ddzJ_OjYFXVXFH-j4ztvwWQVRfBkKndTtnWCD1n9GKt-nuycpatQOl8Hb6Nh7Q3jdWNJj0nrig1po8DIj5eXOKqU-wGxoW0nA-WdMmlwdDNE-N2xZHVMc8OzhqwEHYG4C0AE0OL13cbysPpSgX-klKHIPuLn6PijI7RKeg9qOj5nNMSlKszvXuU1ApscC-rCzG87ooQ3M9hi0FWu1yqbctPgaahUIrxCYAMedgxhv_2ogDCIcKeo15LCeiZ9EeAsx28_TOGiUkmK3vy1pRH3odWOzuneLfp88dDxTmZ4w0twm9f8ZsbY1fL1WeWd8StWs6y0_dMzNfiQ2G2RnlE8ayoT5H6bd3je2XyBwZP74BdDSk3k6f-eXcQzc5XEcOXcJwx7NrxMFqlwfa_acVKSJkVSwuMuLHaQI6b96SUnnwzMJMYHS6imM56zmzeJ-N4xzFDP-4HF343U-AMI__529rxYtB7IhCi9yXb2eYfREsVDciWhS6_QcIcK2Q7owR_yDpodg5t665yliqZcR5mYOe-HhBfnsRHm7cKfW7A9O1jgGs9i_vewz5alsdEHxF2ua-nFrk71M1IwHPPhRbLDotdl5Lt_2wLR5_ApAkQsPKUIyzAy9-d5B5Zt7d3aqddOestcdkfiEyD5voEiPFU7U4jezU9AZCXpsDuk6tLq8XDzCALuxy2Dj4lCV8irjiR7KuLGegRixZiw739tEjz0dglm-VI-AmCAm9CuVxB_nRFfIEPMvgipSUBKqBidJ1JS4wzWAAOCNv5rjGtGtLqdkYLN1VfvlhUUhXGlEx5_EUWtRpYMrAFRJOwhdrOzZ39QTAu-dKChSqV2ltdvOY3qhhZsNOTtRxastM7IrzxIQE0mJpBJ4-Ba9O_l9Sn_uWTN-bOZZQ-Dw5syC23fwRrjeyHZUPIzZuadar6PFjR0EKWzFpFn3oCDCyIFhk1nPNnMTFHZBN6DREzne9yZv_stwaDY1TzsBp6_ZWpnjGciVavxfhnofQUlAkMbr0a_yAEGjRDSKQLdVAu_Ud7qMFkRlwZ8JLkzZtGzbYhpHfuvcmjlzz99f9i5mSZjYwg9wwh41GE_WEx02gJs8CQD5QQ1R_R8teiA19ob6CSQzRkJtqWmTN1CshQHUE4aKTfjFRReK6MGC6kcxzmiivTug8A55ZKLfMy32Em0LE16M73iKgVYVJmcGJptWPWKvQBGGcKWTnRYtkoxL-PSg60a8gGbCWosYlI8N9qpnwgUP1ukE-eN6iSSMFdQfCGTck1egr2bYAjV7DyeKTVQP1bV18k-UzHqSoNuZIQ49sS_Vp7hWBE-5xu7uPI9o0MtQle_dNqYU6P1dsx2JSpZpsXpyaCqBhMtTxvJyd7RevSZw6kCI5sDRRwafYtFfd9ABmvjP5LRozqE4nXcdmLRcz1kif6ne8l8NPJQS5CW0S-gVPIVzeDDP79HHd3v45S1wnGQJ3_6mG6vxAvgxcG42RRHTJ3pFHppGpp88s5Hb7QKtl89tc-MYuFMuCbIT4f82z7ihrSSTlMES7oAf4mv9FR7gQveYV12Z3-sfvhYxt6thQPsobg4c9saHskKitQuDWTdmYtnPYikNK0mL5fv2pxwZ1aBB4E3pJwVafo7kAp8AMHg1Siy2mamhB3YyKTTlm8p9IptjH99EeHlMzY4p0gK-gqnTgpmjLx1yIKTGG-kdQ7Md1Kq8tPQDkWwTHbH3SXhi41N74slbYOxFNJUGpC7Zw_8KgF9C2dt1K_3z4WPhNBIKLBb1mdmhs6i3NsNDWKeWu2ElEj3Za4Q1cWjmiWe_ztY2qJU6NM1UrsXoZPm6itFejkEP4w_2lVoH2ZciHYSt6qPW4d1qYnwUI1gga5bSVE7gczeHAejDmGR16jzkVuD580SBdk0wZLefufoZ_Y3hM-vekaGm1gDHuu4Bf3TlhdNo-k4HL43iTg-y1WFRUyLE6qzGhKSB9IAhjBAInIDAamcBdqJjyLxDw6r0GqLXqM9AqllC3wYVw_ykvcXOZ2Z3K5aAIKuS35W9x6LjNgzgZZpAkNEyFeac6AjsGH1xRZknxOhRM1FsNMlqwz3HwA8fp2RCpVnDc-LbiJFna5-Un1y6iQj5Q57fDEdpQyU9MfbomG6ZPKZSW98-ym56VV7tsguuJJBbDLDbm1zTI2gdhdF3cDTPVS-7dLaU4xbApXzanLvbjrYwTMwGqG3WXdhNdai2WA5LELs2XlYpTEfNU_0oiWovznj3uThhH3jYJ7NE5tWNfnIqlpvNgLCurYFkjIk7WwmFSO4CqANNlJcD8texoWgb8ypBFPlVyuIplDs4VhDyqx650s3ONbPRyyhbhmHQUE-_TcymivaSW31Te5MKV2pKzSuTVyK9R6uo3k7u1O8x481d31NTvJSFghWKSmLqchyqQwBm3VktloL5PuWCtx6ZbqY4Fo-bexsKmpR_iCUsw5r3Woq9ahVvMjHtfJ7xgTP5RDT7lWd4lpKaZkQTp4ZXdqdMImrFJF9GaCV9yR0NgiyqjMZ3s7laeupWhs5VxiN5SCVbev06e_GP32u_Jipcllf9RN6gQUkz5Bj_EnBaM6qpInTpPbksrviSc-Rjl4Ar_HTKmq-y1Ti7UbujHdaQKKO0STErbnun6i7PfjogNUooBEx9aR9G8FakkVSluEnKwGx7cXgZO4f9P1tZ-GeVx3O6jcnfws7yt7Twbibg-P50M71_hcxGY0yVbHCyIHb0uQyvBYlVtrKu1VBYbL0JRcTfKp_c_Abm-0-jggEwPkf3xoT85bKc54ot4JpIrmgLlkxV30QrdhwKs4PbcIZljmNtZLL3omeWUv91rDKcjZidQI23iMJQr_M-o-D8-vsJr55ohx4-AMFOMmfyzjzWzHBg5n5qISKko_fK9V6ecf-D69UT1HeNk7CIrVfcrdNvtJpdWm6KFS-_5oJ11fuVqTCydyHRmbZDsJPVpcnczotdiIM_iJmu1w-VACegDQ7lsxyLbioNdZXxj5y3_BDv5ha1A54cUHfNERUMJJIe51yp0DAxoBoAPMHDjCMZs4PdJyL-OFlfygQrwrVanTpCq68t6jAl6t-OIKgFOMxeiV1WwOKJj2Bl-69vD2jTtW4AJneSxHmmnRKpTdABk0pwT5XUw4JjE7tJ9gRBYpxLDSbXD5ltW-9qWijDa4Kyq-7n2NP39kCqFiEC8BbB9PEYXmt0m5H_y2NTof5pzqPOZN_gKdd4sqM4grNwJtLH3F00Hayk7aeWa4AJjmEV39W-KQ7ibVynCMrJXKUs5YXg1QMxgqavkx6l6rNUR87ppexK4FOe-N-yM_mB4gHTqVWrlVkVBU6FXy96HUFfrgVOaVjnp9APNhSbfXvecCG35QwzqWpkL_GptHyQBWvp-cYFOgYkZuQSkDScoMqyWw73X4oY88muEkHPVnyYTQlihWUE9YzpGtt8lc5feVZUSAynwXStt2aMoo3voacAPzvHKICiEeOICU9F0l6U7sMnLwvR245tRnS40tmRJzvwuBZIl8bFPoPo88Kz2NDurN1snjwEQKamNlphMD4aEf7yQl-E6xzs-rN1Sq4tc84WvDbBZGnw_6sujIeto9BHiFrDeg7_RLMxjDQdoc7iE_dUdiV25t6hk4ut8jLQYQY09Pfsga03NAUL8GVhVzEE7Fvce7UCu-f4J_j0MU5m6iSopuOSD6ej4jylfXYJv4npgt2pu27yip-aU5I6MoyqNVrem0YDUYMSrG2FPLwLM88PEs_CHyurwqtqpanM0NlFeZ12O89CC1gVGkeM_P-9YLIVrs5V3beKvP1rT9QC82Rcv6wqQc-MpS0VRDdqg9MCpxup2hIVawWzCDN8TeltjgFWuWhOmfoflGbAkMMIpBORRbeYZKJChUXj2wHwQEXq7p1wbRpp17yg2b-D3gZ6sCB13UHKDGM20FOeMzPMAvCXQ0wQ20SpZL70koFShUxyEU825U4f1jT3o8nbBodMvc23F4vH7ZKMj69kJebtGuXVWUvEF_MaCZYnD8oXFKsUH4z5vphepYkbnXme6hTIUPh21LDixkpaoAvYClZTdqRanEGjZrHGE55MfD0qikTDDK2MIhkGytA5YxtliRKRGlylGFAKaCsQAyuknwek-pE4aeRjKk1MpZRHzRNaWKP1peu0MjwZ61slDx4qgBiPYKNubNuW30Z4hxqh2enVTsSf9nLEcXP9mdAUkcfqbzvwJFYf5sh4hL-eu-mnEATQcfUu8FrDQvFF-uxAIwyYLekj0h7KphmP_bIKYw0eStbzNghzflwveJA7ij9J04vB5E5vj68SmRFnjf8NlVeNT96f7fM-fJYaiLTNvTgg6eefOK6kJ_1_jfQdGoVmep23UpLObwBlJWSuWMyT271U0w-RZ64yOidZ-9hdtjqmQ9ucUw4Jze2Is7k3WplY9yBU3kj9OZlU_QH8eeBw9MtNIP3D_ZME7Exc5yMLSakqQAKHSk7TOEOlz8GBRDdKHboX76hfU6IslUL5FcY06xEATfwCLP3P9d4ZjIYBDX2e_vrNkZ8thxU7ucSbofa-gx93g81JkwZELo6JCunCqmEL0ShxrJLa06uFbM7YTSeC0vgoX7Cn3KGWFMlu5pk95ukXvgLMVy86dXLnJ_pm60lDPAI-AKkLo4-l2QNeg8pgbMRVYat7PdInKe2IqTDk_pYUG5sDWKhH-OLcMcFPHlz7Ynrc_iEjgS1o6nCIkrhFZxEXyB75ESGTppp2oyfMD20Q0LkbkvzpeqN5LrDUekzkEzQLlGHCd7RRPf24hBLB32DuEMb3byo7vxNuduIyFj9T6LuheNVhdEGt8zliCdW_IHgjF6LI25jV71gFcBrlXCGTKeDLKZTBwfuIuWm2G6a-J_jxkdZlBPxIOzZtLfzFPM0aXR72ij9_IZZDqNQOJW_2o-VgXzWax5sGUsJHhcF_yOqXYL-jjyneNtnKwOf_k3WYpiz7wkCKq8J2H5K-Zg5GzhXPQE7_vB15Csd0RsNEhelZfifeGNzM57N09rsXuRxhRx_iq3OshnHnfL_q5HIMA2D-FSHfNxEf3RUnaXTSKbchQ2fXNS9iSNXDJydusS3FjNvrRnxnn5C1MjC--5g3nYZcPTio_EW5blcHPpxL0AGQss4Nwcu0bceNyjGJ2StmPcVTd7PfYePrwLJ57B3biJQGYN5H729GnXIO6PLPU-OSVLbpC-Cm816l5BVKxN0qq18g3VQFVkJ6xim51JX-mLa0brrnOtodkewgv47Wtgq6KJEyZTW75JlJcBMEXQOT4U76Tm1gx4-vFu7bIFBSXd2wGlKTJBtyomcqWwMiB5rq_5kLGLg863QmDcNzp5hlMqg5k0_dn53CGH9oF4OEUmttYEN0KtPX7m44s1f8WrHeVHQMt9kTAD-tTvwpOepqF2SZ3ucyGiNAtXp7XjZIj-EOp4HmdsakQYNnOdaT-hzPp9InC_OCsbaT_g3KYnWd6MfOQOiAlHp9ueV2_rkFJMH3EP3U3hnijagw7MbdhYLNuupR_f4nA48ULjELYLjkn-T7AnN0SGv7aAW2_hT_dg8PTU_T3qiWVlrBjEDkc-acZZc8QmglZ1MSAGVkyb0-Smd8uzET_lv45XuWqzm-VSv0Lp8br_oWuBl9UcSIPNbi1r4dtAuFQkRrXXA_6gIEBy3sZFY8K2tRYLmVUD5jM7t6O32AmojGzaKqcQmpuTVY4Yy4wFTFPDgzmbh4wek6PDiE64m3jaT68tav4LKvjsgubMP-jtxU_ZMjcCuPujiDTs8pI8LnhMH0jgEuRqw85UuG54wWfPB3YSYdWN9coZH43Yt5RYZ51I2JtckyqQ8DR3dcHKMSP0_fltKNqd_enUwtJt_8HLeRfjMzf-MQN_RvRpbLuyR_2KlMgxAT01IYTxPEJ-lHXPL-0gKeue5B3gk0YRBm8K7ZbhB63q4pXusKP-Ag6AIKX1xIn4CGuBdyNGvA6Yj62m61iLB2Lkzl42FlZFPUYRbRT-kgt7vy1NuwYUJaED14Cg-_HSLfQBkRaoJ3rBHxscGaeG3S5-3uTPopfOj5HlIzT-dTIxnpUGVVuqvOXIPlBWJa0Fu0iicQqpyUQPBp_aCnDEoweNvTB2-34iRw9xjaV7kXbxhoZxENKeQRBKtdpGGl_Ood5mQpRnYZr0BoBBKP6hQUeL1KkV7jD-qYQEiyFNsy25Mr33tNOaZ8zzlC5zMme2ZvNlW6e6WMApuAyxK-dRDGg-_oU-xiJ2Hc-904S8QUTazDU9J1jyEv9f-eE_EZj4GolwC6LIb72i94rRKrD3_3p5iuLAuWxdx4Cm5sElyBLWB_QhUcaMXAWGnFQhSU5vmQzESZVNuFYmxWhnCUHSGkMZY3yUWn8RaQ3Hqcb_hv6sXQyCSBIFdc1WcA_gtrrMe_ujeDe9mSOvbXWKSq958xhshb7CFH3cIwyZPXxdfqHTX7g6ov-Lb59ep1M9LTJw2vZ6uU0jDDgfHi9CSXj1EwmpAOKnMrH254RqaOBgodNBBuf-iit3aMq63IlTFnQYn87d4OJSSmRkHjQ_UXzUlBTdbBf0yrlmDClpibah3bNjmrhtabDNDqjhYuDHJfi1wq3qY5-6LK0p3J0ENA38EZsOTChhRmrwQMwuk7mEIGKY-rC26_FHpG-aiOAgRmjY932A5MRMRIb-brK_oH3OxieLZk6SyzAC4HROoMaLPXkX2PRv-DMSGEi-s7zVpsGJ6h2OcL5Xp_l3-ecwoTNTK9Z5IgDKOQSCuI4xzg-PneTm-r67oYNr9jeMHkR8-LdjWFVGeaOdK3AFcX3LQ4sqlle50LZUunnM4fhh1CLeA-MFJ_YSUprsdYSYtNO9U1KZfDkqRd-F7qmpT56lvQU9cbSYkDCSTcV71AtuM6xhSgm1Pauirlu1R8DxVBJS9iZq3_U6Cf1lY97ryMVBGH8w0zwdf9JGScrww4EF9tvD-r6x0B3LEAq76uHPfh4aQeManElZLdGsm66aNn6YxO3o07RLxFgUhcBZs-MUfi8osJ4IAALt7utUYBir1bw6w8BHKALF3vQv705h-A8c0lGg20u7BCU851_HW4ePC2iLPIv0fQ0IIT6Zexv5fadtKpjqJ4pbuVmoozCGhciSOWnds2fv9SVgTQFn4OX1U2AVxnSQiTlb1O16R8QzaDQYlIESnr1rtnw5Tktgo6TK33SBkf-6a175sB5N3YqSjwY61sKAdv7aR5w7DCkpkCuCaDyavAak2ndlaj0NJb_ZfO4t2WD2axZ2emvybSFM4arCRC51TxOspWMZpex5VMDftVSjKJyLRM7bq6bqO4kRJiwnrwGAtK5s8T35PHk8MdjqlqYwT-dP0aTLpCUtfVn_V-k8rqGrVdnIlM99ztu5dugeCLyGxznRYaQiTz8kEiKRl-iK5ZiuyN0SBNJVg4kpWyy7Zvh2_gVeno98usYvWq_ny_s8T1jvl_UELF8Zkmu6FRj9i-G18N_7f_VgCN9zazKT2IiEC6xgAGbNfwD6TVdI7W_vEK8ZYbo6Ty15HxhwINsQCxzMak3vQW5ICdix54BlvKPHySXYIxGLJuTVXqzwd3fr0OpQDMBUZ1w57-sPu_kCLNVymdywxwNusMXfm84vqofzKmpWTuLVoAOKrpKx4twQ-5jApZhUs_Czqesx6JqJwmNEXnS2TNR-rEuFxZ1HVKBhmTVSjYQ84KUA3Z_rGhuIGDtnpBG32odQSHFfaNF2gXkYBqQu2vOpSmM3bfE5IM2bE8VrJgWVpO7WMjdZgPRUqFxiXVvQHPexyMabN9H8fos6fBv5I6Ft_ChaOSgqzMTwMu-YvepMO2yRULPJRdWsSsE3Ojd4PFYKcJvbHb9HMab2ABiREU1UqO9zwJ_m_nQrTgeoOpY16Ri2WDabm4pNdTKVPtatk6ofzABvTy9r61lI5IHj4BnVepAdn2-_3ApkB6X65Q94E5qf3-nsXEuLhCFu_2NB72DhsT8LfNElWuUj1jnmfV1iqUXfZvYtlMH4ds5FIDX_ZD9sYMuzdxGSO_l3kZV3PCTiz_PdHPzrnj3vyPzH7VNOpm-8TKjb0gkXn2-xVMbc7-6mtV_Sl26MHpFcqABsEjgm36gRC-6q07Up5f9Jb1SdlmQ7tz-dqz5r06Exw6N4mdItS08NVhW4J0m0_oRIA5kHlUptyEf4OKGfImMuvdLKzHTlzaoYbeRsEpzqcTdpaxssM0y-74td-JtI4Zm7mcSrhvCqPV_ARAGto-KLRmqIXWFefXYKYunPL83aTIqRhxcJshBkE_VBpF4ZSaaMnukLJ2mxu_qzIIAJ7IeAfmtets84nBm8bsV-UjWAYOnl3U-29jmp7K_fT9TK4Dz7jp5_Nyst1UvyULZaVHIPPlDikDFGh8UAlUtv86nuxyF1hB4CFwxtgRaroTSVyXHzpOl_o6axd0ttXUmMImkwMM-ALG0qUv5dVrQgbwtmuTPTQoqC1q6cK1arSBTCW7a1MHEaZzIKjQ51X_hDZUSns6QnBLW539JDHMGvzKqu06_rNF4bj3e7oFf9BYcg_msZpUO_AueO9YX3JWnL-3BBJzrZC3DVuSeLewf4-QwB4zV1xIxwW1Pm3ypmdqmhl-of5X78HcevCof0jvk8lX5QnMSIBVWSZZUUhLFzK5UpXtfX6uk4SCd6woZ-PnM0Pq_rvWmGG48GO0mG1qpJ76Ja89c1CCG5kSMAeDOYmbedyXvg4ryzNUZ_ykOa6HRofuU9hLgtcyyxHPVta2XfYbrRGLZjqrXbQkHc9MwuQiJMLLQPuyp6Zt7AEDLNrzk36pueT2Ay5q5liIHFRW6xAiVVZQM7BTaNeZpTMMuGnsrPnbvALAbutK1N13fbMwIWFDlzTriv3gD-JKJRT9MtREGp2fL3mZv7VTndJN-uPxegWsh2dYh85m12Mm94rcqQaQ_L0Lf09Xgc9DOiQqnSn-m9Szsdn0f7nu3Q4JnhIaHsN_nJwV-eqK5-iAZ6meCZBcaPQ2SOVIf6g4D9uSsMqi2R2v021UGXYhkkBa-HEcEuxCU9lCmMxEijkoqt71b_KZf4jfeloiH8bIrP8y7Wz7ZhV1_TaF2F7_BFcmnYv9Ysrj8X9chQb-E0jIy-6rAlX84PwUdZAhISBuhcOhiwM4776e4b6i2NMsPKOb6reYUnavLA=&quot;,
+            &quot;video_metadata&quot;: null,
+            &quot;tool_call&quot;: null,
+            &quot;tool_response&quot;: null,
+            &quot;part_metadata&quot;: null,
+            &quot;audio_transcription&quot;: null
+          }
+        ],
+        &quot;role&quot;: &quot;model&quot;
+      },
+      &quot;citation_metadata&quot;: null,
+      &quot;finish_message&quot;: null,
+      &quot;token_count&quot;: null,
+      &quot;finish_reason&quot;: &quot;STOP&quot;,
+      &quot;grounding_metadata&quot;: null,
+      &quot;avg_logprobs&quot;: null,
+      &quot;index&quot;: 0,
+      &quot;logprobs_result&quot;: null,
+      &quot;safety_ratings&quot;: null,
+      &quot;url_context_metadata&quot;: null
+    }
+  ],
+  &quot;create_time&quot;: null,
+  &quot;model_version&quot;: &quot;gemini-3.6-flash&quot;,
+  &quot;prompt_feedback&quot;: null,
+  &quot;response_id&quot;: &quot;33OVasS2K7nm7M8PheTb0QI&quot;,
+  &quot;usage_metadata&quot;: {
+    &quot;cache_tokens_details&quot;: null,
+    &quot;cached_content_token_count&quot;: null,
+    &quot;candidates_token_count&quot;: 4992,
+    &quot;candidates_tokens_details&quot;: null,
+    &quot;prompt_token_count&quot;: 29135,
+    &quot;prompt_tokens_details&quot;: [
+      {
+        &quot;modality&quot;: &quot;TEXT&quot;,
+        &quot;token_count&quot;: 29135
+      }
+    ],
+    &quot;thoughts_token_count&quot;: 2236,
+    &quot;tool_use_prompt_token_count&quot;: null,
+    &quot;tool_use_prompt_tokens_details&quot;: null,
+    &quot;total_token_count&quot;: 36363,
+    &quot;traffic_type&quot;: null
+  },
+  &quot;model_status&quot;: null,
+  &quot;automatic_function_calling_history&quot;: [],
+  &quot;parsed&quot;: null
+}</pre></div></details>
+<details><summary>Prompt sent to model</summary><div class="details-body"><pre>Загальні правила для всіх запитів
+1. Використовуй усю анкету, всі завантажені документи, уточнення користувача, перевірені зовнішні дані та всі результати, раніше згенеровані SITCAR System у межах цього проєкту.
+2. Кожен наступний запит розвиває попередні результати. Не проси повторно дані, які вже надані.
+3. Пріоритет даних: підтверджені факти користувача → документи й звіти → уточнення → перевірені зовнішні джерела → результати попередніх запитів → аналітичні припущення.
+4. Не вигадуй відсутніх фактів. Використовуй діапазони, позначай припущення та рівень упевненості.
+5. Якщо джерела суперечать одне одному, покажи суперечність і поясни, що потребує перевірки.
+6. Опрацьовуй усі релевантні пункти. Нерелевантні показники позначай як «не застосовується» без зайвого опису.
+7. Проміжні відповіді мають бути лаконічними: головні висновки, рішення, ризики та план дій. Повна деталізація формується у фінальному Запиті 7.
+8. На кожному етапі перевіряй узгодженість проблеми, клієнта, продукту, цінності, бізнес-моделі, конкурентних переваг, ресурсів, фінансів, команди, KPI та GTM.
+9. Для зовнішніх фактів вказуй джерело й дату. Не заявляй про доступ до баз, яких фактично немає.
+10. Наприкінці кожної відповіді сформуй структурований блок даних для наступного запиту.
+11. Формуй відповіді на кожен запит окремо. Формуй відповіді на кожен пункт.
+Запит 4. Вибір стратегії розвитку
+Мета: Обрати не набір теоретичних варіантів, а одну узгоджену стратегічну конфігурацію, яка відповідає ринку, ресурсам і профілю СІТКАР.
+Використай усі надані й згенеровані дані, зокрема результати Запитів 1–3.
+Завдання
+1. Обери основну конкурентну стратегію: лідерство за витратами, широка диференціація, оптимальні витрати, сфокусовані низькі витрати або сфокусована диференціація.
+2. Обери основний напрям росту за Ансофом на 12–24 місяці: проникнення на ринок, розвиток продукту, розвиток ринку або диверсифікація.
+3. Обери модель інтеграції: співпраця, альянс, вертикальна або горизонтальна інтеграція, M&amp;A. Для раннього стартапу поясни, що варто відкласти.
+4. Обери ринкову поведінку: першопроходець, наступальна або захисна.
+5. Визнач реалістичну конкурентну позицію: лідер у вузькій ніші, переслідувач або інша чітка роль.
+6. Урахуй стадію галузі: формування, динамічний ринок, зрілість або спад.
+7. Запропонуй лише ті напрями спорідненої диверсифікації, які створюють реальну синергію; розділи на «зараз», «після PMF», «відкласти».
+8. Сформуй п’ять дій, які потрібно робити, і п’ять дій, яких потрібно уникати.
+Підсумкова таблиця
+Вимір стратегії → рекомендований вибір → обґрунтування → що робити → чого не робити.
+Формат відповіді
+Обсяг проміжної відповіді — орієнтовно 2–3 сторінки.
+Почни з Executive Summary: 5–8 ключових висновків.
+Використовуй короткі таблиці, а не довгі теоретичні пояснення.
+Дай не більше трьох пріоритетів і конкретний план дій.
+Вхідні дані:
+Текст анкети:
+ЧАСТИНА I. АНКЕТА ДЛЯ СТВОРЕННЯ СТРАТЕГІЇ СТАРТАПУ
+Інструкція: Заповнення основних питань займе орієнтовно 15–20 хвилин. Якщо відповідь ще не визначена, оберіть «Ще не визначено». Додаткові матеріали можна завантажити одразу або пізніше.
+Обов’язкові поля: назва або опис ідеї, проблема, клієнт, продукт, географія запуску, наявні ресурси та головна ціль.
+Рекомендовані поля: MVP, ціна, канали, команда, бюджет, підтвердження попиту.
+SITCAR System не просить повторно інформацію, яка вже міститься у відповідях або завантажених файлах.
+Крок 1. Ідея
+1. На якому етапі перебуває ваш проєкт?
+Оберіть один варіант:
+маю конкретну бізнес-ідею;
+розглядаю кілька бізнес-ідей;
+знаю галузь або проблему, але ще не визначився з продуктом;
+створюю прототип або MVP;
+✓ уже тестую продукт;
+маю перших клієнтів або продажі.
+2. Назва проєкту
+Вкажіть робочу назву стартапу.
+Ваша відповідь:
+GeoVizor
+Якщо назви ще немає, поле можна залишити порожнім.
+3. Коротко опишіть бізнес-ідею
+Що ви хочете створити, виробляти, продавати або організувати?
+Ваша відповідь:
+GeoVizor — B2B retail-tech екосистема для планування, запуску, автоматизації та операційного контролю магазинів. Портфель поєднує аналітику локацій, AI-моніторинг черг і фотоаудит, POS/ERP/лояльність, каси самообслуговування та запуск магазину «під ключ».
+4. У якій галузі ви плануєте працювати?
+Оберіть один або декілька варіантів:
+харчова промисловість;
+агро;
+✓ IT та цифрові продукти;
+✓ ритейл;
+медицина та здоров’я;
+освіта;
+туризм і гостинність;
+виробництво;
+енергетика;
+✓ логістика;
+фінанси;
+нерухомість;
+креативні індустрії;
+✓ професійні послуги;
+інше;
+ще не визначено.
+5. Де плануєте запускати бізнес?
+Вкажіть країну, регіон або місто першого запуску та бажаний майбутній масштаб.
+локальний;
+регіональний;
+✓ національний;
+✓ міжнародний;
+глобальний;
+ще не визначено.
+Ваша відповідь:
+Перший ринок — Україна: регіональні й національні торговельні мережі, франчайзингові формати та оператори магазинів. Масштаб — національний; для цифрових модулів після підтвердження повторюваної моделі — вихід на суміжні міжнародні ринки.
+Крок 2. Клієнт і продукт
+6. Яку проблему вирішуватиме стартап?
+Опишіть проблему, у кого вона виникає і чому наявні рішення недостатні.
+Ваша відповідь:
+Ритейлери приймають рішення про локації, відкриття й операційне управління за розрізненими даними; черги, стандарти та касові процеси часто контролюються вручну. Окремі інтегратори закривають лише частину задачі, тому бракує одного відповідального партнера від аналізу й запуску магазину до автоматизації, аналітики та сервісу.
+6.1. Чим підтверджено існування проблеми?
+Оберіть усі відповідні варіанти:
+✓ особистим досвідом;
+✓ інтерв’ю з потенційними клієнтами;
+опитуванням;
+заявками;
+попередніми замовленнями;
+✓ пілотом;
+тестовими продажами;
+✓ ринковими даними;
+ще не перевірено;
+інше.
+Ваша відповідь:
+Підтвердження: галузевий досвід команди, технічні розгортання та обговорення з ритейлом; у матеріалах проєкту зафіксовано роботу GeoVizor для виявлення черг у магазинах SPAR/Євроспар. Для нового масштабованого пакета додатково формуємо доказову базу: інтерв’ю, CRM-воронка, платні пілоти й вимірювання ефекту.
+7. Хто ваш клієнт?
+Оберіть модель і опишіть основного клієнта, користувача, особу, яка приймає рішення, та платника.
+B2C — фізичні особи;
+✓ B2B — компанії;
+B2G — державні або комунальні установи;
+✓ B2B2C — через бізнес-партнера до кінцевого споживача;
+змішана модель;
+ще не визначено.
+Ваша відповідь:
+Основна модель — B2B; опосередковано B2B2C через кращий досвід покупця магазину. Клієнт і платник — торговельна мережа, франчайзер, власник або оператор магазину. Користувачі — операційні менеджери, керівники магазинів, IT/цифрові команди. Рішення ухвалюють CEO/COO, комерційний, операційний, IT або фінансовий керівник.
+8. Який продукт або послугу ви плануєте запропонувати?
+Опишіть основний продукт, послугу, платформу або рішення.
+Ваша відповідь:
+Продукт — модульна retail-tech пропозиція GeoVizor: Store Location &amp; Opening Feasibility, AI Queue Monitoring, Store Standards &amp; Photo Audit, POS/ERP/CRM і loyalty, каси самообслуговування та обладнання/запуск магазину. Для першого продажу фокус — аналіз локації та AI-моніторинг черг із впровадженням і сервісом.
+9. Що має входити до першої версії продукту — MVP?
+Вкажіть мінімальний набір функцій, товарів або послуг, достатній для перевірки попиту.
+Ваша відповідь:
+MVP для перевірки попиту: AI-моніторинг черг для одного магазину або зони — підключення камер, налаштування зон і порогів, алерти, базовий дашборд/API та щотижневий звіт. Паралельно — пакет аналізу локації з чітким рішенням «відкривати/не відкривати» і прогнозом ключових факторів.
+Якщо MVP ще не визначено, SITCAR System запропонує 1–3 варіанти.
+10. Яку головну цінність отримає клієнт?
+Завершіть: «Наш стартап допомагає [кому] отримати [результат] краще, швидше, дешевше або зручніше завдяки [механізм]».
+Ваша відповідь:
+GeoVizor допомагає операторам роздрібних мереж швидше й обґрунтованіше відкривати та керувати магазинами, зменшуючи втрати від черг і ручного контролю, завдяки поєднанню аналітики, AI-відеомоніторингу, касових технологій і сервісу впровадження.
+11. Як клієнт вирішує цю проблему зараз?
+Оберіть усі відповідні варіанти та назвіть відомих конкурентів або альтернативи.
+купує в інших компаній;
+виконує самостійно;
+використовує застаріле або незручне рішення;
+користується безкоштовною альтернативою;
+відкладає вирішення;
+не вирішує проблему;
+не знаю;
+інше.
+Ваша відповідь:
+Сьогодні клієнти використовують внутрішні таблиці, ручні обходи, окремі POS/ERP- або відеорішення, локальних інтеграторів чи відкладають інвестицію. Альтернативи: власна операційна команда, окремі постачальники кас/ПЗ та міжнародні платформи. Відмінність GeoVizor — інтегрований локальний підхід і відповідальність за результат у магазині.
+Повний перелік конкурентів збере SITCAR System.
+Крок 3. Бізнес-модель
+12. Як стартап зароблятиме гроші?
+Оберіть усі можливі варіанти:
+✓ разовий продаж товару;
+✓ разова оплата за послугу;
+✓ підписка;
+оренда або лізинг;
+✓ ліцензія;
+комісія;
+✓ сервісна оплата;
+франшиза;
+маркетплейс;
+реклама;
+freemium;
+✓ додаткові функції або послуги;
+ще не визначено;
+інше.
+13. Якою може бути ціна?
+Вкажіть орієнтовну ціну, середній чек або ціновий діапазон.
+Ваша відповідь:
+Ціну затверджуємо за продуктовими паспортами після розрахунку собівартості, логістики, монтажу та підтримки по кожному рішенню. Для AI-моніторингу в робочих матеріалах раніше обговорювався орієнтир USD 20 за камеру; це не затверджена ціна й має бути перевірене пілотом разом із маржею та willingness-to-pay.
+Якщо ціна не визначена, SITCAR System запропонує цінову модель і спосіб перевірки willingness-to-pay.
+14. Як часто клієнт купуватиме?
+один раз;
+декілька разів на рік;
+щомісяця;
+щотижня;
+✓ за підпискою;
+✓ основна покупка плюс сервіс і додаткові продажі;
+ще не визначено.
+15. Як ви плануєте знаходити перших клієнтів?
+Оберіть основні канали:
+✓ особисті контакти;
+✓ рекомендації;
+✓ партнери;
+✓ прямі B2B-продажі;
+✓ сайт;
+✓ SEO;
+соціальні мережі;
+платна реклама;
+✓ email;
+маркетплейси;
+дистриб’ютори;
+✓ торгові мережі;
+тендери;
+✓ виставки й події;
+фізична точка;
+ще не визначено;
+інше.
+16. Чи маєте доступ до потенційних клієнтів і які результати вже отримано?
+Позначте наявне та додайте цифри, якщо вони є.
+✓ конкретні потенційні клієнти;
+✓ база контактів;
+попередні домовленості;
+✓ партнерський канал;
+власна аудиторія;
+✓ проведені інтерв’ю;
+заявки;
+користувачі;
+✓ пілоти;
+перші клієнти;
+перші продажі;
+повторні покупки;
+результатів ще немає.
+Ваша відповідь:
+Є доступ до потенційних B2B-клієнтів через роздрібні мережі, франчайзинговий сегмент, партнерів і особисті контакти команди. У проєктних матеріалах є технічні розгортання для SPAR/Євроспар; кількість платних клієнтів, заявок і повторних продажів у цій анкеті не підтверджуємо — базову лінію формуємо в CRM та за результатами пілотів.
+Крок 4. Ресурси
+17. Що у вас уже є для запуску?
+Позначте все наявне:
+✓ бізнес-ідея;
+✓ галузевий досвід;
+✓ співзасновник;
+✓ команда;
+✓ прототип або MVP;
+✓ технологія;
+виробнича база;
+✓ обладнання;
+✓ приміщення;
+✓ постачальники;
+✓ партнери;
+✓ потенційні клієнти;
+✓ канали продажу;
+✓ бренд;
+аудиторія;
+✓ дані;
+інтелектуальна власність;
+✓ стартовий капітал;
+інше.
+18. Які ваші найсильніші ресурси та компетенції?
+Наприклад: галузевий досвід, управління, продажі, технології, виробництво, маркетинг, клієнтська база, партнерства, репутація, фінансування.
+Ваша відповідь:
+Сильні ресурси: практичне розуміння операцій ритейлу, розробка й інтеграція AI/відеоаналітики, POS і каси самообслуговування, запуск і оснащення магазинів, партнерська мережа та досвід роботи з мережевими форматами. Сильна сторона — можливість зібрати єдине рішення «від локації до сервісу» замість продажу ізольованого інструменту.
+19. Хто входить до команди та як розподілені ролі?
+Вкажіть учасників, компетенції, ролі, зайнятість, хто працює full-time, хто приймає фінальні рішення, яких людей бракує та чи погоджені частки співзасновників.
+Ваша відповідь:
+За поточним планом: О. Дідицький — координація розвитку, сайту та комерційних задач; Д. Ткачук — керівник Sales, продуктові, маркетингові й CRM-активності; П. Кульпач — фінансові розрахунки та ціноутворення; Д. Обертинський і П. Куриляк — технічна/інтеграційна частина; А. Слива — сервіс; С. Супрунюк — правові питання. Частки співзасновників погоджені. Бракує ресурсу Help Desk для масштабування.
+20. Яку суму ви готові інвестувати на першому етапі?
+до €5 000;
+€5 000–25 000;
+€25 000–100 000;
+€100 000–500 000;
+понад €500 000;
+✓ ще не визначено;
+інша сума.
+Ваша відповідь:
+Ще не визначено як затверджений бюджет. Першочергово формуємо кошторис і cash-flow за трьома сценаріями: пілоти цифрових модулів, масштабування сервісу та партія до 50 кас самообслуговування. Рішення про суму інвестицій — після unit economics, умов постачання та графіка передоплат.
+21. Яке джерело фінансування ви розглядаєте?
+✓ власні кошти;
+✓ кошти партнера;
+приватний інвестор;
+інвестиційний фонд;
+кредит;
+грант;
+краудфандинг;
+✓ фінансування з перших продажів;
+ще не визначено;
+інше.
+22. Що найбільше обмежує запуск?
+Оберіть не більше п’яти факторів:
+нестача фінансування;
+відсутність команди;
+✓ нестача компетенцій;
+відсутність технології;
+виробничі обмеження;
+відсутність клієнтів;
+слабке знання ринку;
+✓ сильна конкуренція;
+регуляторні вимоги;
+сертифікація;
+✓ постачальники;
+партнери;
+✓ логістика;
+брак часу;
+невизначеність бізнес-моделі;
+інше.
+23. Які ризики турбують вас найбільше?
+Назвіть не більше п’яти ризиків.
+Ваша відповідь:
+Ключові ризики: 1) довгі B2B-цикли — передоплати та поетапні договори; 2) постачання, курс і логістика обладнання — кілька постачальників і запас часу; 3) стабільність інтеграцій/відеопотоків — SLA, моніторинг і пілотні критерії; 4) залежність від ключових людей — RACI та документація; 5) репутаційний, воєнний і регуляторний ризик — захист даних, резервні сценарії та прозора комунікація.
+24. Які матеріали ви можете надати?
+Завантаження необов’язкове, але підвищує точність стратегії.
+✓ презентація проєкту;
+✓ опис продукту;
+✓ технічне завдання;
+✓ фінансові розрахунки;
+✓ макети або фотографії;
+перелік потенційних клієнтів;
+дані про конкурентів;
+результати інтерв’ю, тестів або продажів;
+✓ домовленості з партнерами;
+інше.
+Крок 5. Цілі
+25. Який результат для вас найважливіший?
+Оберіть не більше трьох варіантів:
+швидко вийти на прибуток;
+✓ створити масштабований бізнес;
+вийти на міжнародний ринок;
+✓ створити сильний бренд;
+залучити інвестиції;
+✓ створити інноваційний продукт;
+створити довгостроковий сімейний бізнес;
+досягти соціального ефекту;
+у майбутньому продати компанію;
+інше.
+26. Коли ви хочете отримати перший вимірюваний результат?
+1–3 місяці;
+✓ 3–6 місяців;
+6–12 місяців;
+1–2 роки;
+ще не визначено.
+27. Чого ви хочете досягти протягом 12 місяців?
+Вкажіть 3–5 вимірюваних результатів: MVP, клієнти, виручка, інвестиції, ринок тощо.
+1) До 31.12.2026 — затвердити продуктові паспорти, ціни, собівартість і цільову маржу для пріоритетних рішень. 2) Провести щонайменше 3 вимірювані B2B-пілоти (ціль, не історичний факт) для Store Location/AI Queue Monitoring. 3) Запустити CRM-воронку, сайт, кейси й пакет продажу. 4) Ввести Help Desk/SLA та базові KPI сервісу. 5) Підтвердити повторюваність продажу за конверсією, маржею, CSAT і часом впровадження.
+28. Чого ви хочете досягти протягом трьох років?
+Вкажіть бажаний масштаб, ринки, продукти, клієнтів, команду й фінансовий результат.
+Ваша відповідь:
+За 3 роки — стандартизований B2B-портфель GeoVizor для українського ритейлу з повторюваними продажами цифрових модулів, обладнання і сервісу; кілька відпрацьованих вертикалей/форматів магазинів; керована команда продажів, впровадження і підтримки. Вихід на міжнародні ринки — лише після підтвердження unit economics, SLA та локалізації продукту.
+29. Яким ви бачите бізнес через 10 років?
+Опишіть географію, позицію на ринку, продуктову лінійку, команду, роль засновника й суспільний вплив.
+Ваша відповідь:
+GeoVizor — помітний retail-tech партнер із масштабованими рішеннями для вибору локацій, відкриття, автоматизації та контролю магазинів в Україні й на вибраних міжнародних ринках. Продуктова лінійка поєднує дані, AI, касові технології та сервіс; засновники переходять від операційного контролю до стратегічного управління, а бізнес підвищує доступність і якість обслуговування покупців.
+30. Які головні стратегічні питання має вирішити SITCAR System?
+Оберіть не більше трьох:
+чи варто запускати бізнес-ідею;
+який продукт створити першим;
+який ринок обрати;
+✓ на якому клієнті сфокусуватися;
+✓ як відрізнятися від конкурентів;
+яку бізнес-модель обрати;
+як знайти перших клієнтів;
+скільки потрібно ресурсів;
+✓ як масштабувати бізнес;
+як залучити інвестиції;
+інше.
+Ваша відповідь:
+1) Як відрізнятися від конкурентів. 2) На якому ICP сфокусуватися та як отримати перші повторювані B2B-продажі. 3) Яка бізнес-модель, ціна, ресурсний план і послідовність масштабування дають позитивну unit economics без надмірної залежності від засновника.
+Після заповнення: Після анкети SITCAR System перевіряє повноту відповідей, використовує всі завантажені файли й ставить не більше п’яти уточнювальних запитань лише тоді, коли без них неможливо прийняти ключове стратегічне рішення.
+КОНТЕКСТ ІЗ ПОПЕРЕДНІХ МОДУЛІВ
+Нижче наведено первинні дані та результати попередніх модулів саме цієї моделі. Використовуй їх як контекст для поточного аналізу і не підмінюй ними відповіді поточного модуля.
+РЕЗУЛЬТАТ МОДУЛЯ STEP_1 — Gemini 3.6 Flash
+# ЗВІТ З ДОСЛІДЖЕННЯ РИНКУ (ЗАПИТ 1)
+**Проєкт:** GeoVizor  
+**Галузь:** Retail-Tech / B2B Automation &amp; Analytics  
+**Аналітичний модуль:** SITCAR System (Стратегічний аналіз)
+
+---
+
+## EXECUTIVE SUMMARY
+
+1. **Висока актуальність ринку:** Ринок ритейл-технологій в Україні знаходиться у фазі активної трансформації. Через дефіцит кадрів, зростання витрат на оплату праці та воєнні ризики ритейлери гостро потребують систем автоматизації (каси самообслуговування, AI-контроль черг, аналітика локацій).
+2. **Оцінка обсягу ринку:** SAM ринку автоматизації та аналітики роздрібних мереж України оцінюється в **$32M–$48M/рік**. Реалістичний SOM GeoVizor на горизонті 12–24 місяців становить **$0.8M–$1.5M ARR** (при охопленні 15–25 мереж / 150–300 точок з базовими модулями).
+3. **Гібридна бізнес-модель:** Поєднання SaaS (підписка на AI-модулі та геоаналітику з високою маржинальністю 65–80%) та Hardware/Turn-key (каси, обладнання, монтаж з маржинальністю 15–25%) створює стійкий LTV, проте вимагає суворого контролю оборотного капіталу.
+4. **Конкурентна позиція:** GeoVizor протистоїть як вузькоспеціалізованим SaaS-стартапам (які не надають запуск «під ключ»), так і важким системним інтеграторам (наприклад, рівня StrongPoint, які мають високий чек і складне впровадження). Перевага GeoVizor — локальна адаптивність, швидке впровадження та комплексна відповідальність «від оцінки локації до сервісу».
+5. **Ключовий операційний ризик:** Бракованість ресурсів сервісної підтримки (Help Desk / SLA) та тривалі B2B-цикли ухвалення рішень.
+6. **Підсумковий вердикт:** **ВХОДИТИ ЗА УМОВ** (Загальний рейтинг привабливості ринку: **7.2 / 10**).
+
+---
+
+## 1. ВИЗНАЧЕННЯ СТАРТАПУ ТА РИНКУ
+
+* **Ринок:** B2B Retail-Tech (автоматизація торговельних точок, AI-відеоаналітика, геомаркетинг, POS/SCO системи).
+* **Проєкт:** **GeoVizor** — модульна екосистема для планування, запуску, автоматизації та операційного контролю торгових точок.
+* **MVP-фокус:** Модуль оцінки локації (*Store Location &amp; Opening Feasibility*) + AI-моніторинг черг (*AI Queue Monitoring*) із сервісом впровадження.
+* **Цільовий клієнт (ICP):** Мережевий роздріб (Grocery, Convenience stores, Drogerie), франчайзингові мережі, оператори магазинів (ОПР: CEO, COO, Commercial Director, IT Director).
+* **Географія:** Україна (Національний запуск) з перспективою виходу на ринки CEE (Центральна та Східна Європа) після підтвердження повторюваної unit-економіки.
+* **Стадія:** Тестування продукту / Пілотні розгортання (наявний досвід роботи з виявлення черг у мережах SPAR/Євроспар).
+
+---
+
+## 2. ОЦІНКА ПРИВАБЛИВОСТІ РИНКУ
+
+* **Обсяг і темпи росту:** Глобальний ринок Retail Tech зростає з CAGR ~18.5%. Сегмент AI в ритейлі зростає з CAGR &gt;30%. В Україні ринок відновлюється через зміщення фокусу на формати «магазин біля дому» та суттєву оптимізацію операційних витрат.
+* **Прибутковість галузі:** Валова маржа у SaaS-сегменті ритейл-аналітики становить **65–85%**, у постачанні та монтажі обладнання — **15–30%**. Цільова змішана маржа GeoVizor — **40–55%**.
+* **Життєвий цикл:** AI-відеоаналітика та геомаркетинг перебувають у фазі **активного зростання**; традиційні POS/касові рішення — у фазі **зрілості/модернізації**.
+* **Бар’єри входу:** Середньо-високі. Потребують технічних інтеграцій із legacy ERP/POS системами ритейлерів, довіри до точності даних та наявності сервісної інфраструктури (SLA 24/7 або 14/6).
+* **Обмеження:**
+  * *Регуляторні:* Законодавство про захист персональних даних (GDPR / Закон України «Про захист персональних даних») при відеоспостереженні.
+  * *Технологічні:* Стабільність інтернет-каналу на об’єктах, критичність роботи в умовах відключень електроенергії (вимога до Edge computing vs Cloud).
+
+---
+
+## 3. РОЗРАХУНОК TAM / SAM / SOM
+
+### Методологія та припущення
+* **Метод:** Поєднання Top-Down (галузеві звіти ритейлу України) та Bottom-Up (кількість потенційних точок x сервісний чек).
+* **База розрахунку:** В Україні орієнтовно 25,000–35,000 точок сучасного організованого роздрібу.
+* **Припущення chek/ARPU:** Середній SaaS-чек за AI-моніторинг/аналітику = $20–$40/міс. за камеру/точку; пакет геоаналітики локації = $300–$800/разово або за підпискою; комплексна автоматизація/каси = $2,000–$5,000/точка (разово + сервіс).
+
+### Таблиця 1. Оцінка TAM / SAM / SOM для GeoVizor
+
+| Показник | Опис та рамки | Базовий діапазон ($) | Рівень упевненості |
+| :--- | :--- | :--- | :--- |
+| **TAM** (Total Addressable Market) | Весь ринок Retail Tech &amp; Analytics в регіоні CEE та Україні | $1.2B – $1.8B | Середній (зовнішні аналітичні дані) |
+| **SAM** (Serviceable Addressable Market) | Ринок автоматизації та аналітики роздрібних мереж України (~20,000 точок) | $32M – $48M / рік | Високий (розрахунок по мережах UA) |
+| **SOM** (Serviceable Obtainable Market) | Реалістична частка GeoVizor за 12–24 міс. (150–300 точок, 15–25 мереж) | **$800K – $1.5M ARR** | Високий (на основі воронки та MVP) |
+
+---
+
+## 4. РУШІЇ ЗМІН (DRIVERS OF CHANGE)
+
+1. **Дефіцит робочої сили та зростання зарплат:** Змушує ритейлерів замінювати касирів на SCO (каси самообслуговування) та впроваджувати AI для моніторингу черг. *Вплив: Зростання попиту на продукцію GeoVizor.*
+2. **Енергетичні та логістичні виклики в Україні:** Підвищують вимоги до локального обчислення (Edge AI) та надійності обладнання. *Вплив: Збільшення собівартості (COGS), ризик затримок поставок.*
+3. **Експансія форматів «Магазин біля дому» (Convenience stores):** Потребує швидкого та точного аналізу локацій перед відкриттям. *Вплив: Пряме зростання попиту на модуль Store Location Feasibility.*
+4. **Здешевлення та розвиток Computer Vision / Edge AI:** Дозволяє проводити аналітику безпосередньо на пристроях у магазині без дорогих серверів. *Вплив: Зниження собівартості обробки відео (COGS).*
+5. **Тренд на &quot;Single Window Integrator&quot; (Єдине вікно):** Ритейлери втомлені від інтеграції 5 різних вендорів (окремо POS, окремо відео, окремо каси). *Вплив: Збільшення цінності комплексної пропозиції GeoVizor.*
+
+---
+
+## 5. АНАЛІЗ П’ЯТИ СИЛ ПОРТЕРА
+
+```
+1. Внутрішня конкуренція:      [6/10] Medium
+2. Загроза нових гравців:      [5/10] Medium
+3. Влада постачальників:        [6/10] Medium
+4. Влада покупців (ритейлу):   [7/10] High
+5. Загроза замінників:         [5/10] Medium
+--------------------------------------------------
+ЗАГАЛЬНЕ НАПРУЖЕННЯ РИНКУ:      6.0 / 10
+```
+
+* **Як зменшити негативний вплив:**
+  * **Проти влади покупців (7/10):** Пропонувати чіткий розрахунок ROI (повернення інвестицій &lt; 6 місяців за рахунок зменшення втрачених покупців у чергах).
+  * **Проти влади постачальників (6/10):** Диверсифікувати постачальників касового обладнання та комплектуючих (не залежати від одного вендора).
+  * **Проти замінників (ручний контроль) (5/10):** Давати автоматизовані звіти з точністю &gt;95%, які неможливо підробити ручним аудитом.
+
+---
+
+## 6. КАРТА КОНКУРЕНТІВ
+
+Вхідний бенчмарк для порівняння міжнародної екосистеми ритейл-технологій — каталог **StrongPoint** (міжнародний системний інтегратор: POS, SCO, ESL, логістика, Help Desk).
+
+### Таблиця 2. Порівняльний аналіз конкурентного середовища
+
+| Конкурент / Категорія | Сегмент | Ключовий продукт | Ціновий сегмент | Бізнес-модель | Сильні сторони | Слабкі сторони |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **StrongPoint** (Global Benchmark) | Enterprise Retail | Повний спектр: SCO, POS, ESL, AutoStore, Help Desk | Преміум / High | Продаж обладнання + Ліцензії + SLA | Величезний портфель, міжнародний бренд, стандарти ISO | Висока ціна, повільна адаптація під малий/середній ритейл UA |
+| **SystemGroup** (Локальний інтегратор) | Mid-to-Enterprise UA | Каси, POS, фіскалізація, вагове обладнання | Середній+ | Продаж обладнання + Проектне впровадження | Сильна присутність в Україні, сервісна мережа | Слабка власна AI-відеоаналітика та геомаркетинг |
+| **Нішеві SaaS Video AI** (напр. RetailFlux / Maconomy) | SMB &amp; Mid Retail | Відеоаналітика черг та відвідувачів | Низький / Середній | Pure SaaS (підписка) | Швидке підключення, готовий софт | Немає обладнання, немає запуску точок «під ключ» |
+| **Власна розробка ритейлерів (In-house IT)** | Large Enterprise | Самописні POS / базові камери | N/A (внутрішній бюджет) | Внутрішні кошти | Повна інтеграція під свої процеси | Висока вартість утримання, відсутність експертизи в AI |
+| **GeoVizor** (Наш стартап) | Mid &amp; Growing Chains, Франчайзинг | AI-черги + Геоаналітика + SCO + Сервіс «під ключ» | Доступний / Оптимальний | Гібридна: SaaS + Hardware + SLA | **Комплексність (від гео-оцінки до сервісу), гнучкість, швидкі пілоти** | **Брак власних ресурсів Help Desk на старті, впізнаваність бренду** |
+
+---
+
+## 7. КЛЮЧОВІ ФАКТОРИ УСПІХУ (KSFs) ТА BENCHMARKS
+
+### Ключові фактори успіху в галузі:
+1. **Швидкість та безшовність інтеграції:** Підключення AI-модулів до наявних відеокамер магазину без заміни інфраструктури.
+2. **Безперебійність та SLA:** Наявність оперативної підтримки (Help Desk) із часом реакції на інциденти до 2–4 годин.
+3. **Доведена ROI для B2B:** Здатність надати замовнику цифрові докази окупності (наприклад, зменшення відтоку покупців із черги на 15%).
+4. **Гнучкість модульної архітектури:** Можливість продати спочатку один модуль (геоаналітика або черги), а потім зробити Upsell на каси/POS.
+
+### Галузеві бенчмарки (Retail Tech / B2B SaaS + Hardware):
+* **SaaS Gross Margin:** 70% – 85%
+* **Hardware Gross Margin:** 18% – 28%
+* **LTV / CAC Ratio:** &gt; 3.5x
+* **CAC Payback Period:** 6 – 9 місяців
+* **Net Retention Rate (NRR):** &gt; 110% (за рахунок розширення кількості точок мережі)
+* **Target SLA Resolution (Критичні збої):** &lt; 4 годин
+
+---
+
+## 8. МОВОЖЛИВОСТІ ТА ЗАГРОЗИ (SWOT MATRIX)
+
+### Таблиця 3. Можливості та загрози
+
+| Можливості (Opportunities) | Загрози (Threats) |
+| :--- | :--- |
+| 1. Заміщення дорогих іноземних аналогів доступнішим локальним рішенням | 1. Затяжні B2B-цикли продажів у великих мережах (6–12 місяців) |
+| 2. Стрімкий ріст попиту на каси самообслуговування через дефіцит касирів | 2. Валютні та логістичні коливання при імпорті касового обладнання |
+| 3. Крос-продажі (Upsell): від аналізу локації до повного оснащення магазину | 3. Ризики стабільності енергопостачання та зв’язку у торгових точках |
+| 4. Партнерство з франчайзинговими мережами для масштабування | 4. Перехоплення ініціативи великими системними інтеграторами |
+| 5. Вихід на ринки Східної Європи після відпрацювання кейсів в Україні | 5. Ризик втрати критичних технічних компетенцій / кадрів |
+
+---
+
+## 9. РЕЙТИНГ ПРИВАБЛИВОСТІ РИНКУ ТА ВЕРДИКТ
+
+### Таблиця 4. Оцінка привабливості ринку GeoVizor
+
+| Критерій оцінки | Вага | Оцінка (1-10) | Зважений бал | Коментар |
+| :--- | :--- | :--- | :--- | :--- |
+| Розмір ринку та потенціал росту | 20% | 8 | 1.6 | Високий попит на автоматизацію в роздрібі |
+| Рівень маржинальності (Гібрид) | 20% | 7 | 1.4 | SaaS компенсує нижчу маржу обладнання |
+| Інтенсивність конкуренції | 15% | 6 | 0.9 | Присутні сильні гравці, але ринок незаповнений у ніші AI |
+| Бар’єри входу для стартапу | 15% | 7 | 1.05 | Потрібні інтеграції, але команда має практичний досвід |
+| Стійкість до економічних криз | 15% | 8 | 1.2 | Оптимізація витрат ритейлу актуальна завжди |
+| Масштабованість продукту | 15% | 7 | 1.05 | Софт масштабується легко, обладнання вимагає оборотних коштів |
+| **ЗАГАЛЬНИЙ БАЛ** | **100%** | **7.2 / 10** | **Привабливість вища за середню** |
+
+### Підсумковий вердикт: **ВХОДИТИ ЗА УМОВ**
+
+**Ключові умови для успішного старту:**
+1. **Жорсткий фокус на MVP:** На першому етапі продавати та розгортати лише 2 пріоритетні модулі (*AI Queue Monitoring* та *Store Location Feasibility*), не розпилюючись на складне обладнання до фіксації cash-flow.
+2. **Розбудова підтримки:** Закрити прогалину сервісу (Help Desk) через аутсорс або чіткий SLA-регламент до запуску масштабування.
+3. **Захист від довгих B2B-циклів:** Запровадити стандартизовані платні експрес-пілоти (30–45 днів) із чіткими критеріями успіху.
+
+---
+
+## 10. ПЕРШОЧЕРГОВІ ДІЇ ДЛЯ ПЕРЕВІРКИ РИНКУ
+
+1. **Дія 1 (Продукт та Економіка):** Фіналізувати Продуктові паспорти для MVP (*AI Queue Monitoring* та *Store Location*), зафіксувати рамки собівартості, ціноутворення та цільову валову маржу.
+2. **Дія 2 (Продажі та Пілоти):** Запустити CRM-воронку B2B-продажів та укласти угоди на проведення **3 вимірюваних платних пілотів** із чіткими KPI (зменшення часу очікування в черзі, точність прогнозу локації).
+3. **Дія 3 (Сервісна модель):** Розробити базовий регламент SLA та архітектуру Help Desk для гарантування безперебійності роботи підключених клієнтів.
+
+---
+
+## СТРУКТУРОВАНИЙ БЛОК ДАНИХ ДЛЯ ЗАПИТУ 2
+
+```json
+{
+  &quot;project_name&quot;: &quot;GeoVizor&quot;,
+  &quot;market_research_summary&quot;: {
+    &quot;market_attractiveness_score&quot;: 7.2,
+    &quot;verdict&quot;: &quot;Enter with conditions&quot;,
+    &quot;tam_sam_som&quot;: {
+      &quot;tam&quot;: &quot;$1.2B - $1.8B&quot;,
+      &quot;sam&quot;: &quot;$32M - $48M&quot;,
+      &quot;som_target_12_24m&quot;: &quot;$800K - $1.5M ARR&quot;
+    },
+    &quot;mvp_priority_modules&quot;: [
+      &quot;Store Location &amp; Opening Feasibility&quot;,
+      &quot;AI Queue Monitoring&quot;
+    ],
+    &quot;target_icp&quot;: &quot;Ukrainian retail chains (Grocery, Convenience, Drogerie), franchisors, store operators&quot;,
+    &quot;key_competitors&quot;: [
+      &quot;StrongPoint (Benchmark)&quot;,
+      &quot;SystemGroup&quot;,
+      &quot;Niche SaaS Video AI providers&quot;,
+      &quot;In-house Retail IT&quot;
+    ],
+    &quot;key_risks&quot;: [
+      &quot;Long B2B sales cycles&quot;,
+      &quot;Lack of scalable Help Desk / SLA infrastructure&quot;,
+      &quot;Hardware logistics and FX volatility&quot;
+    ],
+    &quot;immediate_next_steps&quot;: [
+      &quot;Finalize product passports and unit economics for MVP&quot;,
+      &quot;Execute 3 paid/measured B2B pilots&quot;,
+      &quot;Structure SLA and Help Desk support workflow&quot;
+    ]
+  }
+}
+```
+РЕЗУЛЬТАТ МОДУЛЯ STEP_2 — Gemini 3.6 Flash
+# ЗВІТ З АНАЛІЗУ МОЖЛИВОСТЕЙ СТАРТАПУ ТА ЗАСНОВНИКІВ (ЗАПИТ 2)
+
+**Проєкт:** GeoVizor  
+**Галузь:** Retail-Tech / B2B Automation &amp; Analytics  
+**Аналітичний модуль:** SITCAR System (Оцінка спроможності та конкурентоспроможності)
+
+---
+
+## EXECUTIVE SUMMARY
+
+1. **Сильна мультидисциплінарна команда:** Засновники закривають усі ключеві функції (управління, розробка AI/відеоаналітики, POS/Hardware-інтеграція, фінанси, продаж, юридичний супровід, польовий сервіс). Розподіл часток погоджено.
+2. **Головна стратегічна проблема:** Ризик операційного «вузького місця» через високу залежність від засновників у рутинних процесах та **відсутність власного масштабованого Help Desk / SLA-сервісу**, що заважає конвертувати B2B-воронку у стабільний ARR.
+3. **Ключова наявна перевага:** Комплексна модель «Єдиного вікна» (Single Window Partner) — супровід ритейлера від геоаналітики локації до AI-моніторингу черг, кас самообслуговування (SCO) та технічного сервісу, що вигідно відрізняє GeoVizor від вузьких SaaS-стартапів і дорогих системних інтеграторів.
+4. **Технічний заділ:** Наявний досвід розгортання для SPAR/Євроспар та готові архітектурні опрацювання Edge AI (на базі NVIDIA Jetson / DevsX PoC framework) дозволяють проводити аналітику локально на об&#x27;єкті без завищення вимог до каналів зв&#x27;язку.
+5. **Критичні прогалини:** Непідтвердженість unit-економіки та готовності клієнтів платити (willingness-to-pay) за окремими продуктами; брак виділеної лінії підтримки 24/7 / 14/6 для забезпечення жорстких SLA enterprise-ритейлу.
+6. **Стратегічний фокус ERRC:** Скоротити тривалість B2B-продажів та первинний CAPEX, усунути ручні аудити, підвищити точність прогнозів і створити безшовну сквозну аналітику «локація — черга — каса».
+7. **Три пріоритетні проєкти:** 1) Затвердження продуктових паспортів та юніт-економіки; 2) Проведення 3 платних B2B-пілотів (Store Location + AI Queue); 3) Побудова базової інфраструктури Help Desk та SLA.
+
+---
+
+## 1. SWOT-АНАЛІЗ ІЗ ДОКАЗАМИ
+
+Аналіз розмежовує ресурси, компетенції, сильні сторони, конкурентні переваги та непідтверджені припущення.
+
+### Таблиця 1. SWOT-матриця GeoVizor із підтвердженнями
+
+| Категорія | Опис чинника | Тип чинника | Рівень доказовості / Докази |
+| :--- | :--- | :--- | :--- |
+| **Strengths** | Досвід команди в ритейл-операціях, AI, POS та обладнанні | Компетенція / Ресурс | **Підтверджено:** Ролі розподілені між 7 учасниками, є практичний досвід у ритейлі та технічних розгортаннях. |
+| **Strengths** | Готова технологічна концепція Edge AI (DevsX / NVIDIA Jetson) | Технологічний ресурс | **Підтверджено:** Документована бізнес-пропозиція/PoC з Edge-обробкою та API-інтеграцією з POS. |
+| **Strengths** | Комплексна модель «від оцінки локації до сервісу» | Конкурентна перевага | **Підтверджено:** Наявність у портфелі модулів Location, Queue AI, POS/SCO та сервісної команди. |
+| **Strengths** | Досвід виконання проєктів для мережевого ритейлу (SPAR/Євроспар) | Сильна сторона | **Підтверджено:** Проєктні матеріали та анкетні дані про технічні розгортання. |
+| **Weaknesses** | Відсутність виділеного Help Desk для цілодобового SLA | Ресурсна прогалина | **Підтверджено:** Заявлено в анкеті (пункт 19: «Бракує ресурсу Help Desk»). |
+| **Weaknesses** | Незатверджена юніт-економіка та цінова модель | Непідтверджене припущення | **Потребує перевірки:** Орієнтир $20/камеру є гіпотезою, що вимагає розрахунку COGS та WTP. |
+| **Weaknesses** | Операційне завантаження засновників рутиною | Ресурсне обмеження | **Підтверджено:** Всі ключові ролі виконуються співзасновниками без середнього менеджменту. |
+| **Opportunities**| Дефіцит персоналу у ритейлі підштовхує попит на SCO та AI | Зовнішня можливість | **Підтверджено:** Галузеві тренди UA ритейлу 2024–2026 рр. та результати Запиту 1. |
+| **Opportunities**| Upsell цифрових модулів на базі довіри до геоаналітики | Конкурентна перевага | **Аналітичне припущення:** Вимагає відпрацювання на перших 3–5 системних B2B-клієнтах. |
+| **Threats** | Довгі B2B-цикли ухвалення рішень (6–12 місяців) | Зовнішній ризик | **Підтверджено:** Галузевий бенчмарк для Enterprise B2B Retail Tech. |
+| **Threats** | Волатильність валютного курсу, логістики та затримок обладнання | Зовнішній ризик | **Підтверджено:** Зафіксовано як критичний ризик в анкеті засновників. |
+
+---
+
+## 2. ОЦІНКА РЕСУРСІВ ТА СПРОМОЖНОСТІ ЗАСНОВНИКІВ
+
+* **Команда та управління:** Розподіл ролей чіткий (О. Дідицький — розвиток/комерція, Д. Ткачук — Sales/CRM/маркетинг, П. Кульпач — фінанси/ціноутворення, Д. Обертинський / П. Куриляк — R&amp;D/інтеграції, А. Слива — сервіс, С. Супрунюк — юридичні питання). Частки співзасновників узгоджені. *Оцінка спроможності:* **8 / 10**.
+* **Компетенції:** Високі в сфері розробки Computer Vision, POS/ERP інтеграцій, монтажу обладнання та операцій ритейлу. Прогалина — побудова професійного B2B Help Desk та управління enterprise SLA. *Оцінка:* **7.5 / 10**.
+* **Технологія:** Наявність опрацьованої архітектури Edge AI (зменшує вимоги до ширини інтернет-каналу) та API-контрактів з POS-системами. *Оцінка:* **8 / 10**.
+* **Клієнти та партнери:** Наявний доступ до B2B-контактів ритейлерів та франчайзі, досвід роботи з мережею SPAR/Євроспар. Формується систематизована CRM-воронка. *Оцінка:* **6.5 / 10**.
+* **Фінансування та час:** Бутстрапінг / залучення власних коштів засновників та фінансування за рахунок перших продажів. Брак часу засновників загрожує швидкості масштабування. *Оцінка:* **6 / 10**.
+* **Загальна здатність виконати задум:** **Висока** для етапу запуску MVP та перших 5–10 точок; **Середня** для масового масштабування без залучення Help Desk та системного Sales-менеджменту.
+
+---
+
+## 3. ПОРІВНЯННЯ З BENCHMARKS ТА КОНКУРЕНТАМИ
+
+### Таблиця 2. Матриця конкурентної сили (Оцінка за 5-бальною шкалою: 1 — слабко, 5 — відмінно)
+
+| Ключові фактори успіху (KSFs) | StrongPoint (Global Benchmark) | SystemGroup (UA Integrator) | Нішеві SaaS Video AI | In-house IT ритейлерів | **GeoVizor (Стартап)** |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| 1. Комплексність пропозиції (Location -&gt; AI -&gt; SCO -&gt; Service) | **5** | 3 | 1 | 2 | **4** |
+| 2. Швидкість та гнучкість розгортання пілотів | 2 | 3 | **5** | 2 | **4** |
+| 3. Доступність ціни / Вартість володіння (TCO) | 1 | 3 | **4** | 2 | **4** |
+| 4. Інфраструктура Help Desk та жорсткий SLA | **5** | 4 | 2 | 3 | **2** |
+| 5. Інноваційність (Edge AI, геоаналітика) | 4 | 2 | 4 | 2 | **4.5** |
+| 6. Локальна адаптивність та розуміння ринку UA | 3 | **5** | 2 | **5** | **4.5** |
+| 7. Готова клієнтська база та репутація | **5** | **5** | 2 | N/A | **2** |
+| **ЗВАЖЕНИЙ БАЛ (середній)** | **3.57** | **3.57** | **2.86** | **2.67** | **3.57** |
+
+**Висновок порівняння:** GeoVizor випереджає нішеві SaaS-рішення за рахунок наявності обладнання та сервісу, а також є суттєво гнучкішим і дешевшим за глобального бенчмарка StrongPoint. Слабке місце GeoVizor проти SystemGroup та StrongPoint — **відсутність розбудованого Help Desk та репутаційного трек-рекорду**.
+
+---
+
+## 4. СТРАТЕГІЧНА ПРОБЛЕМА ТА КРИТИЧНІ СЛАБКІ МІСЦЯ
+
+### Головна стратегічна проблема:
+**Нестача сервісно-операційної інфраструктури (Help Desk / SLA) та стандартизованої unit-економіки, що створює ризик розриву між B2B-продажами та якістю виконання зобов&#x27;язань перед ритейлерами при масштабуванні.**
+
+### 5 критичних слабких місць:
+1. **Відсутність структури Help Desk 24/7 (або 14/6):** Високий ризик втрати B2B-клієнтів при перших критичних збоях касового або відеообладнання.
+2. **Нестандартизована цінова модель та unit-економіка:** Ціноутворення на AI-модулі та сервіс базується на припущеннях, а не на перевіреній готовності платити (WTP) та розрахованому COGS.
+3. **Висока залежність від засновників (Key Person Risk):** Продажі, впровадження та підтримка замкнені на засновниках без описаних регламентів і стандартизованих SOG/SOP.
+4. **Тривалий B2B-цикл продажів у великих мережах:** Відсутність процедури «fast-track пілоту» (30 днів) затягує укладання контрактів на 6–12 місяців.
+5. **Низька впізнаваність бренду GeoVizor:** Потрібні переконливі публічні кейси з підтвердженим ROI для подолання консерватизму замовників.
+
+---
+
+## 5. ПЕРЕВІРКА НАЯВНИХ КОНКУРЕНТНИХ ПЕРЕВАГ
+
+### Таблиця 3. Оцінка наявних конкурентних переваг GeoVizor
+
+| Назва переваги | Важливість для клієнта | Перевага над конкурентами | Доказ / Факт | Економічний ефект для клієнта | Захист від копіювання |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Екосистема «Під ключ» (Single Window)** | **Висока:** Клієнт не хоче управляти 5 вендорами | Відсутня у нішевих SaaS; дешевша за StrongPoint | Портфель: Location + Queue + SCO + Service | Зниження витрат на адміністрування IT на 20–30% | **Низький:** Вимагає утримання широкої експертизи |
+| **Локальний Edge AI моніторинг** | **Середня/Висока:** Стабільність при збоях мережі | Вища за хмарні SaaS, які вимагають широких каналів | Технічний опис DevsX (NVIDIA Jetson PoC) | Зменшення витрат на хмарний трафік та сервери | **Середній:** Потребує ноу-хау в оптимізації ML-моделей |
+| **Досвід роботи з мережевим ритейлом** | **Висока:** Довіра до розуміння специфіки | Вища за класичні IT-компанії без роздрібного фокусу | Реалізовані розгортання в SPAR/Євроспар | Скорочення термінів впровадження на 40% | **Низький:** Базується на особистому досвіді команди |
+
+---
+
+## 6. ПРИНАДНІ ПОТЕНЦІЙНІ КОНКУРЕНТНІ ПЕРЕВАГИ (ДО 5)
+
+1. **Cross-Module Data Flywheel (Екосистемний маховик даних):** Модель оцінки потенціалу нових локацій (*Store Location Feasibility*), що самонавчається на основі реальних даних про відвідуваність, черги та касові чеки з модуля *AI Queue &amp; POS*.
+2. **Гарантований Fast-Track Pilot (30 днів з фіксованим ROI):** Стандартизований пакет швидкого розгортання AI-моніторингу черг за 48 годин без заміни наявних камер із гарантованим показовим звітом втрат.
+3. **Гібридна архітектура Edge-to-Cloud для роздрібних точок у критичних умовах:** Спеціально адаптований програмно-апаратний комплекс, що зберігає 100% функціоналу аналітики черг і валідації SCO під час відключень інтернету.
+4. **Модульна автоматизація для франчайзингових мереж:** Готове коробочне рішення для франчайзерів, яке дозволяє контролювати дотримання операційних стандартів та черг у локаціях франчайзі в єдиній панелі.
+5. **AI-валидація товарів на касах самообслуговування (Anti-shrinkage):** Комп’ютерний зір для виявлення випадків неповноти сканування та підміни товарів на SCO (за матеріалами DevsX), що прямо знижує втрати ритейлера від крадіжок на 15–25%.
+
+---
+
+## 7. ERRC-МАТРИЦЯ (УСУНУТИ — ЗМЕНШИТИ — ПІДВИЩИТИ — СТВОРИТИ)
+
+```
+--------------------------------------------------------------------------------------------------
+| УСУНУТИ (ELIMINATE)                                 | ЗМЕНШИТИ (REDUCE)                                |
+| 1. Ручні аудити точок та перевірки черг            | 1. Тривалість B2B-циклу продажів (з 9 до 2 міс.) |
+| 2. Потребу клієнта наймати окремих інтеграторів    | 2. Залежність бізнесу від ручної праці засновників|
+| 3. Безкоштовні та безлімітні некеровані пілоти      | 3. Початковий CAPEX клієнта для запуску AI-модулів|
+--------------------------------------------------------------------------------------------------
+| ПІДВИЩИТИ (RAISE)                                  | СТВОРИТИ (CREATE)                                |
+| 1. Швидкість реакції на інциденти (SLA / Help Desk) | 1. Сквозну панель «Локація - Черга - Каса»       |
+| 2. Точність прогнозу виручки точок (&gt;90%)          | 2. Пакет швидкого B2B-пілоту за 30 днів          |
+| 3. Конверсію з платних пілотів у річний SaaS       | 3. Регламент SLA та інфраструктуру Help Desk     |
+--------------------------------------------------------------------------------------------------
+```
+
+---
+
+## 8. ТРИ ПРІОРИТЕТНІ ПРОЄКТИ РОЗВИТКУ СПРОМОЖНОСТІ
+
+### Таблиця 4. Пріоритетні проєкти GeoVizor
+
+| № | Назва проєкту | Очікуваний результат | Ключові KPI успіху | Термін | Відповідальний |
+| :-: | :--- | :--- | :--- | :-: | :--- |
+| **1** | **Стандартизація продуктів, ціноутворення та Unit-економіки** | Затверджені продуктові паспорти MVP-модулів (Location + Queue AI), розрахований COGS, зафіксована цільова маржа (&gt;70% SaaS, &gt;20% Hardware). | 100% затверджених паспортів; прорахована економіка пілоту та підписки. | **1–2 міс.** (до 30.04.2026) | **П. Кульпач** (Фінанси) |
+| **2** | **Укладання та проведення 3 платних B2B-пілотів** | Підтверджений попит і willingness-to-pay. Отримані вимірювані кейси із розрахованим ROI для клієнтів (SPAR / інші мережі). | ≥3 підписаних пілотних угод; WTP підтверджено; конверсія у контракти ≥50%. | **3–5 міс.** (до 30.06.2026) | **Д. Ткачук** (Sales) / **О. Дідицький** |
+| **3** | **Побудова інфраструктури Help Desk та стандарту SLA** | Запущена базова система реєстрації інцидентів (Help Desk) з регламентом реакції до 2 годин для забезпечення безперебійності клієнтів. | SLA First Response &lt; 30 хв; SLA Resolution &lt; 4 год; CSAT клієнтів &gt; 90%. | **3–6 міс.** (до 31.08.2026) | **А. Слива** (Сервіс) / **Д. Обертинський** |
+
+---
+
+## СТРУКТУРОВАНИЙ БЛОК ДАНИХ ДЛЯ ЗАПИТУ 3
+
+```json
+{
+  &quot;project_name&quot;: &quot;GeoVizor&quot;,
+  &quot;capability_analysis_summary&quot;: {
+    &quot;overall_execution_capacity_score&quot;: 7.3,
+    &quot;team_assessment&quot;: {
+      &quot;strengths&quot;: &quot;Full-stack founders team covering Sales, Tech, Finance, Legal, Field Service&quot;,
+      &quot;key_gap&quot;: &quot;Lack of dedicated 24/7 Help Desk staff and middle management&quot;
+    },
+    &quot;main_strategic_problem&quot;: &quot;Operational scaling bottleneck due to founder dependency and lack of SLA/Help Desk infrastructure&quot;,
+    &quot;critical_weaknesses&quot;: [
+      &quot;No dedicated Help Desk / SLA 24/7 capacity&quot;,
+      &quot;Unvalidated pricing &amp; unit economics across modules&quot;,
+      &quot;Founder-dependent operational execution&quot;,
+      &quot;Long enterprise B2B sales cycle without standardized fast-track pilot&quot;,
+      &quot;Low brand recognition vs incumbent integrators&quot;
+    ],
+    &quot;verified_competitive_advantages&quot;: [
+      &quot;Single-Window Retail Tech partner (Location to Service)&quot;,
+      &quot;Edge AI architecture for real-time video analytics without bandwidth overflow&quot;,
+      &quot;Deep domain expertise in regional network retail&quot;
+    ],
+    &quot;errc_priorities&quot;: {
+      &quot;eliminate&quot;: [&quot;Manual store audits&quot;, &quot;Unmanaged free pilots&quot;],
+      &quot;reduce&quot;: [&quot;B2B sales cycle duration&quot;, &quot;Founder operational overload&quot;],
+      &quot;raise&quot;: [&quot;SLA response speed&quot;, &quot;Pilot-to-SaaS conversion rate&quot;],
+      &quot;create&quot;: [&quot;Unified Location-Queue-Checkout analytics&quot;, &quot;Help Desk SLA infrastructure&quot;]
+    },
+    &quot;top_3_capability_projects&quot;: [
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Product Passports &amp; Unit Economics Standardization&quot;,
+        &quot;deadline&quot;: &quot;2026-04-30&quot;,
+        &quot;owner&quot;: &quot;P. Kulpach&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Execution of 3 Measured Paid B2B Pilots&quot;,
+        &quot;deadline&quot;: &quot;2026-06-30&quot;,
+        &quot;owner&quot;: &quot;D. Tkachuk / O. Didytskyi&quot;
+      },
+      {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;Help Desk Architecture &amp; SLA Setup&quot;,
+        &quot;deadline&quot;: &quot;2026-08-31&quot;,
+        &quot;owner&quot;: &quot;A. Slyva / D. Obertinskyi&quot;
+      }
+    ]
+  }
+}
+```
+РЕЗУЛЬТАТ МОДУЛЯ STEP_3 — Gemini 3.6 Flash
+# ЗВІТ З ОЦІНКИ ГОТОВНОСТІ ТА ПРОФІЛЮ СІТКАР (ЗАПИТ 3)
+
+**Проєкт:** GeoVizor  
+**Галузь:** Retail-Tech / B2B Automation &amp; Analytics  
+**Аналітичний модуль:** SITCAR System (Організаційний профіль та системна діагностика)
+
+---
+
+## EXECUTIVE SUMMARY
+
+1. **Поточна стадія:** **MVP / Перші випробування** з активним переходом до **Перших продажів** (цільова дата запусків — вересень 2026 року).
+2. **Профіль опор СІТКАР:** Найсильніші опори стартапу — **Інновації (8.0/10)** та **Таланти (7.5/10)**. Найвразливіші — **Репутація (4.0/10)** та **Культура системності/виконання (5.5/10)**.
+3. **Тріада архетипів:** **Засновницький — Творець (Creator)**, **Проєктний — Герой (Герой)**, **Цільовий — Правитель (Ruler)**. 
+4. **Природна сила та тінь:** Природна сила Творця (генерація комплексних рішень) зараз перекривається тіньовою формою проєктного Героя — **«героїзмом замість системи»**, коли розширення портфелю тримається на ручній праці засновників.
+5. **Головне системне обмеження:** **Сервісно-операційна та економічна незахищеність (відсутність Help Desk/SLA та незатверджений COGS/ціноутворення)**. Це створює бар&#x27;єр для конвертації пілотів у повторювані B2B-контракти.
+6. **Ключовий стратегічний план:** Перехід від розрознених ідей до жорсткого виконання плану 30/90/365 із фокусом на 3 готові продукти (*AI Queue*, *Store Location*, *SCO*) та розбудову підтримки.
+
+---
+
+## 1. ВИЗНАЧЕННЯ СТАДІЇ РОЗВИТКУ
+
+* **Поточна стадія:** **MVP / Перші випробування (Testing)** → **Перехід до Перших продажів (First Sales)**.
+* **Обґрунтування:** Проєкт GeoVizor вихід із суто концептуальної стадії підтверджує наявними технічними розгортаннями (SPAR/Євроспар), готовими прототипами КСО та AI-моделями моніторингу черг. Проте стартап ще не досяг стадії Product-Market Fit (PMF), оскільки триває формування цінової політики, фіналізація конфігурації обладнання та побудова системи Help Desk.
+
+---
+
+## 2. ОЦІНКА ШІСТИ ОПОР СІТКАР
+
+### Таблиця 1. Профіль шести опор СІТКАР для GeoVizor
+
+| Опора СІТКАР | Оцінка (1-10) | Сила (Strength) | Прогалина (Gap) | Ключова дія (Key Action) |
+| :--- | :---: | :--- | :--- | :--- |
+| **Стратегія** | **6.0** | Чітке бачення моделі «Єдиного вікна» для ритейлу | Розпорошення уваги між 10+ модулями замість фокусу | Затвердити деталізовані продуктові паспорти для MVP (Queue AI, Location, SCO) |
+| **Інновації** | **8.0** | Власна Edge AI архітектура (NVIDIA Jetson) та модульний софт | AI-алгоритми для КСО перебувають у стадії донавчання | Завершити інтеграцію AI-модуля з касовим ПЗ та вивести дашборд черг |
+| **Таланти** | **7.5** | Мультидисциплінарна команда засновників (Sales, Tech, Fin, Law, Field) | Відсутність виділеного персоналу Help Desk / Support | Призначити/залучити відповідального за 1st/2nd line Help Desk |
+| **Культура** | **5.5** | Висока мотивація, підприємницький драйв засновників | Слабка дисципліна дедлайнів (наявність прострочених задач) | Впровадити щотижневий контрольний спринт (Worksection, RACI) |
+| **Адаптивність** | **7.0** | Здатність швидко змінювати конфігурацію під запит ринку | Залежність від логістики КСО з Китаю (93–105 днів) | Створити локальний буфер запчастин та опрацювати альтернативну логістику |
+| **Репутація** | **4.0** | Наявність практичного досвіду в мережі SPAR/Євроспар | Низька впізнаваність бренду, брак публічних ROI-кейсів | Опублікувати 3 верифіковані кейси за результатами перших платних пілотів |
+
+---
+
+## 3. ОЦІНКА ЧОТИРЬОХ ОСЕЙ
+
+```
+         Ясність (Clarity): 6.5 / 10
+                  |
+Оновлення (Renewal): 8.0 --+-- Довіра (Trust): 5.0 / 10
+                  |
+       Виконання (Execution): 5.5 / 10
+```
+
+1. **Ясність (Clarity) — 6.5 / 10:** Стратегічний напрям та візія «єдиного вікна» зрозумілі засновникам, проте деталізація цін, пакетування та меж продуктів потребує остаточного затвердження.
+2. **Оновлення (Renewal) — 8.0 / 10:** Високий технологічний потенціал, оновлення AI-моделей, інтеграція нових відеокарт та Edge-пристроїв.
+3. **Довіра (Trust) — 5.0 / 10:** Всередині команди довіра та розподіл часток високі; зовнішня довіра ринку обмежена через молодість бренду GeoVizor.
+4. **Виконання (Execution) — 5.5 / 10:** Процеси оперативної реалізації є найслабшою віссю через прострочення строків, завантаженість засновників та відсутність інфраструктури підтримки.
+
+---
+
+## 4. АНАЛІЗ АРХЕТИПІВ СТАРТАПУ
+
+### Визначення тріади архетипів:
+* **Засновницький архетип:** **Творець (Creator)**
+* **Проєктний архетип:** **Герой (Hero)**
+* **Цільовий архетип:** **Правитель (Ruler)**
+
+### Таблиця 2. Профіль архетипів GeoVizor
+
+| Параметр | Значення / Опис |
+| :--- | :--- |
+| **Природна сила (Творець)** | **Ідеї та нові продукти:** Здатність проектувати складні комплексні екосистеми (від геоаналітики до AI-кас). |
+| **Тіньова форма (Герой)** | **Героїзми замість системи:** Намагання закрити всі операційні прогалини (продажі, технічний сервіс, переговори з Китаєм) особистими зусиллями засновників без побудови стандартних процесів. |
+| **Цільовий стан (Правитель)** | **Порядок і стандарти:** Побудова чіткої інфраструктури (SLA, Help Desk, стандартизовані постачання, упевнена конкуренція з бенчмарком StrongPoint). |
+
+### Три факти з матеріалів проєкту, що підтверджують висновок:
+1. **Факт 1 (Перехід від Творця до фокусу):** У протоколі зустрічі від 26.08.2026 зафіксовано рішення відмовитися від 50-сторінкової загальної стратегії з надмірним фокусом на геоаналітиці на користь конкретних продуктових стратегій готовності до продажів.
+2. **Факт 2 (Проєктний Героїзм):** Засновники (Д. Ткачук, П. Кульпач, О. Дідицький) одночасно виконують ролі C-level менеджменту, продажників, тестувальників обладнання та сервісних інженерів за відсутності середнього ланцюга та Help Desk.
+3. **Факт 3 (Прагнення до Правителя):** Пряме орієнтування структури сайту, портфеля рішень та сервісних стандартів на міжнародного лідера-інтегратора **StrongPoint**.
+
+---
+
+## 5. RED FLAGS ТА МІЖОПОРНІ КОНФЛІКТИ
+
+### Red Flags (Критичні ризики):
+1. **Прогалина в дисципліні виконання (Execution Gap):** Зафіксовано наявність прострочених задач та внесення дедлайнів без погодження з виконавцями (протокол 26.08.2026).
+2. **Логістичний вузол постачання КСО:** Тривалий цикл поставки партії з Китаю (93–105 днів) та MOQ у 50 одиниць створює заморожування капіталу й ризик помилки в конфігурації.
+3. **Відсутність інфраструктури Help Desk:** Відсутність виділеного сервісу підтримки загрожує втратою B2B-клієнтів після першого критичного інциденту в магазині.
+4. **Незатверджена юніт-економіка перед стартом продажів:** Спроба вийти на продажі у вересні 2026 року без остаточно розрахованої собівартості монтажу, підтримки та партнерської маржі.
+5. **Ризик «Ключової особи» (Key Person Dependency):** Денис Ткачук одночасно відповідає за продажі, GTM, партнерства, маркетинг та координацію, що створює високе операційне навантаження.
+
+### Міжопорні конфлікти:
+1. **Інновації vs Культура:** Висока швидкість розробки нових AI-модулів (Edge AI, Loss Prevention) випереджає внутрішню культуру стандартизації та дотримання дедлайнів.
+2. **Стратегія vs Репутація:** Амбітна стратегія продажу B2B Enterprise ритейлу конфліктує з низьким рівнем поточного знання бренду та відсутністю публічно доступних доказових кейсів з виміряним ROI.
+3. **Адаптивність vs Таланти:** Гнучке розширення асортименту послуг (від дизайну точок до AI) створює надмірне розпилення ресурсів наявної мікро-команди засновників.
+
+---
+
+## 6. ГОЛОВНЕ СИСТЕМНЕ ОБМЕЖЕННЯ
+
+**ГОЛОВНЕ СИСТЕМНЕ ОБМЕЖЕННЯ:**  
+**Сервісно-операційна та економічна незахищеність (відсутність інфраструктури Help Desk/SLA та нефіналізована юніт-економіка продуктів).**
+
+*Пояснення:* GeoVizor не зможе здійснити перехід від стадії MVP до систематичних повторюваних продажів (First Sales / PMF), оскільки мережевий B2B-ритейл не підписуватиме довгострокові контракти на критичне касове та відеообладнання без гарантованого SLA підтримки та чітко розрахованої окупності (ROI).
+
+---
+
+## 7. ТРИ ПРІОРИТЕТИ ТА ПЛАН ДІЙ (30 / 90 / 365 ДНІВ)
+
+### Три стратегічні пріоритети:
+1. **Пріоритет 1:** Фіналізація продуктових паспортів, ціноутворення та юніт-економіки (30 днів).
+2. **Пріоритет 2:** Розгортання інфраструктури Help Desk / SLA та проведення 3 платних пілотів (90 днів).
+3. **Пріоритет 3:** Побудова системного B2B-каналу продажів та вихід на повторюваний ARR (365 днів).
+
+---
+
+### Таблиця 3. Операційний план дій 30 / 90 / 365 днів
+
+| Етап | Ключова дія / Завдання | Очікуваний результат | Відповідальний |
+| :--- | :--- | :--- | :--- |
+| **30 ДНІВ** &lt;br&gt; *(до 30.09.2026)* | **1. Затвердити детальні паспорти продуктів** (*Queue AI*, *Location*, *SCO*) з визначенням ціни, COGS та маржі. | 100% готовність продуктової документації та розрахована маржа. | **П. Кульпач** |
+| | **2. Переглянути та підтвердити реалістичні дедлайни** в Worksection для всіх задач команди. | Ліквідовано прострочені задачі, встановлено жорсткий контроль. | **Всі засновники** |
+| | **3. Створити дашборд результативності для *AI Queue Monitoring*** та презентувати операційному блоку. | Готовий доказовий інструмент для B2B-продажів. | **П. Кульпач / П. Куриляк** |
+| | **4. Фіналізувати специфікацію КСО** (кріплення, вентиляція, гібридний режим) перед замовленням з Китаю. | Затверджене ТЗ для виробника в Китаї. | **А. Слива / П. Кульпач** |
+| **90 ДНІВ** &lt;br&gt; *(до 30.11.2026)* | **1. Впровадити базову систему Help Desk** (на базі HelpDeskStar або аналогу) та регламент SLA (реакція &lt; 2 год). | Запущено першу лінію підтримки клієнтів. | **А. Слива** |
+| | **2. Підписати та провести 3 платні B2B-пілоти** (*AI Queue Monitoring* + *Store Location*) з вимірюванням ROI. | Підтверджено willingness-to-pay та сформовано 3 кейси. | **Д. Ткачук / О. Дідицький** |
+| | **3. Запустити новий сайт GeoVizor** із логікою продуктів та сторінками «Проблема → Рішення → ROI». | Отримано діючий інструмент генерації лідів. | **О. Дідицький** |
+| | **4. Здійснити замовлення першої тестової партії 50 КСО** із відпрацьованою логістикою та резервом запчастин. | Контракт укладено, визначено графік поставки. | **П. Кульпач / С. Супрунюк** |
+| **365 ДНІВ** &lt;br&gt; *(до 31.08.2027)* | **1. Вийти на показники SOM:** 15–20 системних B2B-клієнтів, **$300K–$500K ARR**. | Доведено повторюваність бізнес-моделі (PMF). | **Д. Ткачук** |
+| | **2. Сформувати повноцінну сервісну службу Help Desk 24/7** (або 14/6) із власною командою інженерів. | Забезпечено SLA enterprise-рівня. | **А. Слива** |
+| | **3. Налагодити регулярне постачання КСО** із наявністю локального складу готової продукції в Україні. | Скорочено термін виконання замовлень до 3–5 днів. | **П. Кульпач** |
+| | **4. Підготувати модулі *AI Queue* та *Store Location* до експансії** на суміжні ринки CEE (локалізація ПЗ). | Готовність продукту до міжнародних продажів. | **О. Дідицький / Д. Обертинський** |
+
+---
+
+## СТРУКТУРОВАНИЙ БЛОК ДАНИХ ДЛЯ ЗАПИТУ 4
+
+```json
+{
+  &quot;project_name&quot;: &quot;GeoVizor&quot;,
+  &quot;sitcar_profile_summary&quot;: {
+    &quot;stage&quot;: &quot;MVP / Testing transitioning to First Sales&quot;,
+    &quot;target_sales_start_date&quot;: &quot;2026-09&quot;,
+    &quot;sitcar_pillar_scores&quot;: {
+      &quot;strategy&quot;: 6.0,
+      &quot;innovation&quot;: 8.0,
+      &quot;talent&quot;: 7.5,
+      &quot;culture&quot;: 5.5,
+      &quot;adaptability&quot;: 7.0,
+      &quot;reputation&quot;: 4.0
+    },
+    &quot;axes_scores&quot;: {
+      &quot;clarity&quot;: 6.5,
+      &quot;renewal&quot;: 8.0,
+      &quot;trust&quot;: 5.0,
+      &quot;execution&quot;: 5.5
+    },
+    &quot;archetype_triad&quot;: {
+      &quot;founding_archetype&quot;: &quot;Creator (Творець)&quot;,
+      &quot;project_archetype&quot;: &quot;Hero (Герой)&quot;,
+      &quot;target_archetype&quot;: &quot;Ruler (Правитель)&quot;
+    },
+    &quot;archetype_attributes&quot;: {
+      &quot;natural_strength&quot;: &quot;Ideas and new products (Creating end-to-end retail tech ecosystem)&quot;,
+      &quot;shadow_form&quot;: &quot;Heroism over system (Founder burnout &amp; manual operational patching)&quot;,
+      &quot;key_supporting_facts&quot;: [
+        &quot;Shift from 50-page Location document to granular product strategies&quot;,
+        &quot;High reliance on key founders (Tkachuk/Kulpach/Didytskyi) across all operational roles&quot;,
+        &quot;Direct strategic benchmarking against StrongPoint (Ruler enterprise model)&quot;
+      ]
+    },
+    &quot;red_flags&quot;: [
+      &quot;Execution Discipline Gap &amp; unaligned deadlines&quot;,
+      &quot;Hardware Supply Chain Bottleneck (93-105 days China lead time &amp; 50 MOQ risk)&quot;,
+      &quot;Lack of Dedicated Help Desk / SLA 24/7 infrastructure&quot;,
+      &quot;Unapproved Pricing &amp; Unit Economics prior to September sales launch&quot;,
+      &quot;Key Person Dependency on Lead Founders&quot;
+    ],
+    &quot;inter_pillar_conflicts&quot;: [
+      &quot;Innovation vs Culture (High tech speed vs weak execution tracking)&quot;,
+      &quot;Strategy vs Reputation (Enterprise B2B target vs low market awareness)&quot;,
+      &quot;Adaptability vs Talent (Product expansion vs small founder team overload)&quot;
+    ],
+    &quot;main_systemic_constraint&quot;: &quot;Service-operational &amp; economic vulnerability (Lack of SLA/Help Desk &amp; unfinalized unit economics)&quot;,
+    &quot;top_3_priorities&quot;: [
+      &quot;Product Passports, COGS &amp; Pricing Standardization (30 days)&quot;,
+      &quot;Help Desk / SLA Infrastructure Setup &amp; 3 Paid Pilots Execution (90 days)&quot;,
+      &quot;Systemic B2B Sales Channel &amp; Repeatable ARR Growth (365 days)&quot;
+    ]
+  }
+}
+```</pre></div></details>
+</div>
+<script>
+function toggleAll(state) { document.querySelectorAll("details").forEach(el => el.open = state); }
+</script>
+</body>
+</html>
